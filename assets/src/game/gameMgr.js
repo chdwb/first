@@ -33,14 +33,26 @@ cc.Class({
         cc.cs.http.sendRequest(url, externUrl, data, handle, isPost)
     },
 
-    sendRegister : function(ID, password,handle){
+    sendRegister : function(ID, password){
         var data = {}
         data["username"] = ID
         data["password"] = password
-        this.sendHttp("ID_1",data, handle)
+        this.sendHttp("ID_1",data, this.registerHandle)
+    },
+
+    sendLogin : function(ID, password){
+        var data = {}
+        data["username"] = ID
+        data["password"] = password
+        this.sendHttp("ID_2",data, this.loginHandle)
     },
 
     registerHandle : function (ret)
+    {
+        cc.log(ret)
+    },
+
+    loginHandle : function (ret)
     {
         cc.log(ret)
     },
