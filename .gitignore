@@ -6,7 +6,6 @@ library/
 temp/
 local/
 build/
-generate/
 Debug/
 x64/
 xlrd-1.0.0/
