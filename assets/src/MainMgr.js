@@ -20,7 +20,7 @@ cc.Class({
     },
 
     initMgr:function(){
-        cc.cs = []
+        cc.cs = {}
         cc.cs.http = require("HTTPMgr")
         cc.cs.gameData = require("JSDATA")
         var gameMgr = require("gameMgr")
