@@ -512,7 +512,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onDengluCommitclick",
     "customEventData": ""
   },
@@ -742,7 +742,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onZhuCeclick",
     "customEventData": ""
   },
@@ -1124,7 +1124,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onGoTZhuCeclick",
     "customEventData": ""
   },
@@ -1354,7 +1354,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onDengluclick",
     "customEventData": ""
   },
@@ -1719,7 +1719,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onStartGameclick",
     "customEventData": ""
   },
@@ -1949,7 +1949,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onZhuCeclick",
     "customEventData": ""
   },
@@ -2179,7 +2179,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onGoToDengluclick",
     "customEventData": ""
   },
@@ -2648,7 +2648,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "Zhuche",
+    "component": "register",
     "handler": "onclick",
     "customEventData": "666"
   },
