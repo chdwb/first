@@ -26,11 +26,11 @@ cc.Class({
     },
 
     sendHttp:function(id, data, handle){
-        var url = cc.vv.gameData[id]["Host"]
-        var externUrl = cc.vv.gameData[id]["Route"]
-        var isPost = cc.vv.gameData[id]["Method"] == "Post"
+        var url = cc.cs.gameData[id]["Host"]
+        var externUrl = cc.cs.gameData[id]["Route"]
+        var isPost = cc.cs.gameData[id]["Method"] == "Post"
 
-        cc.vv.http.sendRequest(url, externUrl, data, handle, isPost)
+        cc.cs.http.sendRequest(url, externUrl, data, handle, isPost)
     },
 
     sendRegister : function(ID, password,handle){
