@@ -6,8 +6,8 @@ cc.Class({
         sendRequest : function(url, externURL, data, handler, isPost){
             var xmlHttp = cc.loader.getXMLHttpRequest();
             xmlHttp.timeout = 3000;
-             var param = ""
-            if(isPost)
+            var param = ""
+            if(!isPost)
             {
                 param = "?"
             }
@@ -37,7 +37,7 @@ cc.Class({
                     console.log("http res("+ xmlHttp.responseText.length + "):" + xmlHttp.responseText);
                     try {
                         if(handler !== null){
-                            handler(ret);
+                            handler(xmlHttp.responseText);
                         }                        /* code */
                     } catch (e) {
                         console.log("err:" + e);

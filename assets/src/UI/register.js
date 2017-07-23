@@ -169,7 +169,7 @@ cc.Class({
          //发送到服务器
          console.log('手机'+this.editbox_phone.string);
          console.log('密码'+this.editbox_PassWord.string);
-         
+         cc.cs.gameMgr.sendRegister(this.editbox_phone.string,"ccc123",cc.cs.gameMgr.registerHandle )
     },
 
 
