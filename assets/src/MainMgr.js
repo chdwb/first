@@ -20,10 +20,10 @@ cc.Class({
     },
 
     initMgr:function(){
-        cc.vv.http = require("HTTPMgr")
-        cc.vv.gameData = require("JSDATA")
+       // cc.vv.http = require("HTTPMgr")
+       // cc.vv.gameData = require("JSDATA")
         var gameMgr = require("gameMgr")
-        cc.vv.gameMgr =new gameMgr()
+       // cc.vv.gameMgr =new gameMgr()
     }
 
     // called every frame, uncomment this function to activate update callback

@@ -12,38 +12,7 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        E_RES_TYPE : {
-            "VIDEO":1,
-            "AUDIO":2,
-            "IMAGE":3
-        },
-        E_VIDEO_TYPE:{
-            "STORY":1,
-            "BRANCH":2,
-            "VIDEOTYPE":3,
-            "PHOTOVIDEO":4,
-            "STARTVIDEO":5,
-        },
-        E_VIDEO_TYPE:{
-            "STORY":1,
-            "BRANCH":2,
-            "VIDEOTYPE":3,
-            "PHOTOVIDEO":4,
-            "STARTVIDEO":5,
-        },
-        E_AUDIO_TYPE:{
-            "PHONE":1,
-            "BGM":2,
-            "EFFECT":3,
-        },
-        E_IMAGE_TYPE:{
-            "GOODS":1,
-            "WEIBO":2,
-            "DATE":3,
-            "WORK":4,
-            "PACKAGE":5,
-        },
-
+    
     },
 
     // use this for initialization

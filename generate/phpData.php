@@ -3,7 +3,7 @@
 	(
 		"GOODS_ID_1"=>array("GOODS_ID"=>1, "GOODS_NAME"=>"道具1", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>200, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>10, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
 		"GOODS_ID_2"=>array("GOODS_ID"=>2, "GOODS_NAME"=>"道具2", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>200, "GOODS_EFFECT"=>2, "GOODS_EFFECT_VALUE"=>"", "GOODS_DESC"=>"送给女主可将当前亲密值补满"),
-		"GOODS_ID_9"=>array("GOODS_ID"=>9, "GOODS_NAME"=>"道具3", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>200, "GOODS_EFFECT"=>"", "GOODS_EFFECT_VALUE"=>"", "GOODS_DESC"=>"任务A所需道具")
+		"GOODS_ID_9"=>array("GOODS_ID"=>9, "GOODS_NAME"=>"道具3", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>200, "GOODS_EFFECT"=>3, "GOODS_EFFECT_VALUE"=>"", "GOODS_DESC"=>"任务A所需道具")
 	);
 	$level = array
 	(
@@ -85,6 +85,11 @@
 		"WECHAT_ID_16"=>array("WECHAT_ID"=>16, "WECHAT_LEVEL"=>2, "WECHAT_OPTION"=>4, "WECHAT_EXP"=>-1, "WECHAT_NEXT"=>17, "WECHAT_CONTENT"=>"内容16"),
 		"WECHAT_ID_17"=>array("WECHAT_ID"=>17, "WECHAT_LEVEL"=>2, "WECHAT_OPTION"=>"", "WECHAT_EXP"=>"", "WECHAT_NEXT"=>"", "WECHAT_CONTENT"=>"内容17")
 	);
+	$level_up = array
+	(
+		"LEVEL_UP_LEV_2"=>array("LEVEL_UP_LEV"=>2, "PHONE_END_ID"=>12, "WECHAT_END_ID"=>17, "ZONE_END_ID"=>0),
+		"LEVEL_UP_LEV_3"=>array("LEVEL_UP_LEV"=>3, "PHONE_END_ID"=>12, "WECHAT_END_ID"=>17, "ZONE_END_ID"=>3)
+	);
 	$function_conditions = array
 	(
 		"FUNCTION_ID_1"=>array("FUNCTION_ID"=>1, "FUNCTION_LEVEL"=>2),
@@ -101,14 +106,14 @@
 	);
 	$zone = array
 	(
-		"ID_1"=>array("ID"=>1, "ZONE_LEVEL"=>3, "ZONE_TITLE"=>"朋友圈主题内容1", "ZONE_IMG_1"=>1, "ZONE_IMG_2"=>2, "ZONE_IMG_3"=>3, "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>1, "ZONE_FANS_COUNT"=>1, "ZONE_THUMBS_UP"=>1),
-		"ID_2"=>array("ID"=>2, "ZONE_LEVEL"=>4, "ZONE_TITLE"=>"朋友圈主题内容2", "ZONE_IMG_1"=>2, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>3, "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>2, "ZONE_FANS_COUNT"=>2, "ZONE_THUMBS_UP"=>2),
-		"ID_3"=>array("ID"=>3, "ZONE_LEVEL"=>5, "ZONE_TITLE"=>"朋友圈主题内容3", "ZONE_IMG_1"=>3, "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>3, "ZONE_FANS_COUNT"=>3, "ZONE_THUMBS_UP"=>3),
-		"ID_4"=>array("ID"=>4, "ZONE_LEVEL"=>6, "ZONE_TITLE"=>"朋友圈主题内容4", "ZONE_IMG_1"=>4, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>4, "ZONE_FANS_COUNT"=>4, "ZONE_THUMBS_UP"=>4),
-		"ID_5"=>array("ID"=>5, "ZONE_LEVEL"=>7, "ZONE_TITLE"=>"朋友圈主题内容5", "ZONE_IMG_1"=>"", "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>5, "ZONE_FANS_COUNT"=>5, "ZONE_THUMBS_UP"=>5),
-		"ID_6"=>array("ID"=>6, "ZONE_LEVEL"=>8, "ZONE_TITLE"=>"朋友圈主题内容6", "ZONE_IMG_1"=>"", "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>6, "ZONE_FANS_COUNT"=>6, "ZONE_THUMBS_UP"=>6),
-		"ID_7"=>array("ID"=>7, "ZONE_LEVEL"=>9, "ZONE_TITLE"=>"朋友圈主题内容7", "ZONE_IMG_1"=>5, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>7, "ZONE_FANS_COUNT"=>7, "ZONE_THUMBS_UP"=>7),
-		"ID_8"=>array("ID"=>8, "ZONE_LEVEL"=>10, "ZONE_TITLE"=>"朋友圈主题内容8", "ZONE_IMG_1"=>"", "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>8, "ZONE_FANS_COUNT"=>8, "ZONE_THUMBS_UP"=>8)
+		"ID_1"=>array("ID"=>1, "ZONE_LEVEL"=>3, "ZONE_TITLE"=>"朋友圈主题内容1", "ZONE_IMG_1"=>1, "ZONE_IMG_2"=>2, "ZONE_IMG_3"=>3, "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>1, "ZONE_FANS_COUNT"=>1, "ZONE_THUMBS_UP"=>1, "FB_END_ID"=>11),
+		"ID_2"=>array("ID"=>2, "ZONE_LEVEL"=>4, "ZONE_TITLE"=>"朋友圈主题内容2", "ZONE_IMG_1"=>2, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>3, "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>2, "ZONE_FANS_COUNT"=>2, "ZONE_THUMBS_UP"=>2, "FB_END_ID"=>11),
+		"ID_3"=>array("ID"=>3, "ZONE_LEVEL"=>5, "ZONE_TITLE"=>"朋友圈主题内容3", "ZONE_IMG_1"=>3, "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>3, "ZONE_FANS_COUNT"=>3, "ZONE_THUMBS_UP"=>3, "FB_END_ID"=>11),
+		"ID_4"=>array("ID"=>4, "ZONE_LEVEL"=>6, "ZONE_TITLE"=>"朋友圈主题内容4", "ZONE_IMG_1"=>4, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>4, "ZONE_FANS_COUNT"=>4, "ZONE_THUMBS_UP"=>4, "FB_END_ID"=>11),
+		"ID_5"=>array("ID"=>5, "ZONE_LEVEL"=>7, "ZONE_TITLE"=>"朋友圈主题内容5", "ZONE_IMG_1"=>"", "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>5, "ZONE_FANS_COUNT"=>5, "ZONE_THUMBS_UP"=>5, "FB_END_ID"=>11),
+		"ID_6"=>array("ID"=>6, "ZONE_LEVEL"=>8, "ZONE_TITLE"=>"朋友圈主题内容6", "ZONE_IMG_1"=>"", "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>6, "ZONE_FANS_COUNT"=>6, "ZONE_THUMBS_UP"=>6, "FB_END_ID"=>11),
+		"ID_7"=>array("ID"=>7, "ZONE_LEVEL"=>9, "ZONE_TITLE"=>"朋友圈主题内容7", "ZONE_IMG_1"=>5, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>7, "ZONE_FANS_COUNT"=>7, "ZONE_THUMBS_UP"=>7, "FB_END_ID"=>11),
+		"ID_8"=>array("ID"=>8, "ZONE_LEVEL"=>10, "ZONE_TITLE"=>"朋友圈主题内容8", "ZONE_IMG_1"=>"", "ZONE_IMG_2"=>"", "ZONE_IMG_3"=>"", "ZONE_IMG_4"=>"", "ZONE_FOLLOW_NUM"=>8, "ZONE_FANS_COUNT"=>8, "ZONE_THUMBS_UP"=>8, "FB_END_ID"=>11)
 	);
 	$zonefeefback = array
 	(

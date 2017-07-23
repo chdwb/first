@@ -2,7 +2,7 @@ module.exports = {
 	goods:{
 		"GOODS_ID_1":{"GOODS_ID":1, "GOODS_NAME":"道具1", "GOODS_ISSELL":1, "GOODS_PRICE":200, "GOODS_EFFECT":1, "GOODS_EFFECT_VALUE":10, "GOODS_DESC":"使用后可获得{0}点亲密度"},
 		"GOODS_ID_2":{"GOODS_ID":2, "GOODS_NAME":"道具2", "GOODS_ISSELL":1, "GOODS_PRICE":200, "GOODS_EFFECT":2, "GOODS_EFFECT_VALUE":"", "GOODS_DESC":"送给女主可将当前亲密值补满"},
-		"GOODS_ID_9":{"GOODS_ID":9, "GOODS_NAME":"道具3", "GOODS_ISSELL":1, "GOODS_PRICE":200, "GOODS_EFFECT":"", "GOODS_EFFECT_VALUE":"", "GOODS_DESC":"任务A所需道具"}
+		"GOODS_ID_9":{"GOODS_ID":9, "GOODS_NAME":"道具3", "GOODS_ISSELL":1, "GOODS_PRICE":200, "GOODS_EFFECT":3, "GOODS_EFFECT_VALUE":"", "GOODS_DESC":"任务A所需道具"}
 	},
 	level:{
 		"LEV_LEV_1":{"LEV_LEV":1, "LEV_EXP":5, "LEV_DAY":1, "LEV_PLAY_VIDEO_EXP":"", "LEV_VIDEO_ID":"", "LEV_STORY_VIDEO_ID":"", "LEV_STORY_VIDEO_FONT":""},
@@ -76,6 +76,10 @@ module.exports = {
 		"WECHAT_ID_16":{"WECHAT_ID":16, "WECHAT_LEVEL":2, "WECHAT_OPTION":4, "WECHAT_EXP":-1, "WECHAT_NEXT":17, "WECHAT_CONTENT":"内容16"},
 		"WECHAT_ID_17":{"WECHAT_ID":17, "WECHAT_LEVEL":2, "WECHAT_OPTION":"", "WECHAT_EXP":"", "WECHAT_NEXT":"", "WECHAT_CONTENT":"内容17"}
 	},
+	level_up:{
+		"LEVEL_UP_LEV_2":{"LEVEL_UP_LEV":2, "PHONE_END_ID":12, "WECHAT_END_ID":17, "ZONE_END_ID":0},
+		"LEVEL_UP_LEV_3":{"LEVEL_UP_LEV":3, "PHONE_END_ID":12, "WECHAT_END_ID":17, "ZONE_END_ID":3}
+	},
 	function_conditions:{
 		"FUNCTION_ID_1":{"FUNCTION_ID":1, "FUNCTION_LEVEL":2},
 		"FUNCTION_ID_2":{"FUNCTION_ID":2, "FUNCTION_LEVEL":3},
@@ -89,14 +93,14 @@ module.exports = {
 		"GUIDE_ID_5":{"GUIDE_ID":5, "GUIDE_TEXT":"引导文本5"}
 	},
 	zone:{
-		"ID_1":{"ID":1, "ZONE_LEVEL":3, "ZONE_TITLE":"朋友圈主题内容1", "ZONE_IMG_1":1, "ZONE_IMG_2":2, "ZONE_IMG_3":3, "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":1, "ZONE_FANS_COUNT":1, "ZONE_THUMBS_UP":1},
-		"ID_2":{"ID":2, "ZONE_LEVEL":4, "ZONE_TITLE":"朋友圈主题内容2", "ZONE_IMG_1":2, "ZONE_IMG_2":3, "ZONE_IMG_3":3, "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":2, "ZONE_FANS_COUNT":2, "ZONE_THUMBS_UP":2},
-		"ID_3":{"ID":3, "ZONE_LEVEL":5, "ZONE_TITLE":"朋友圈主题内容3", "ZONE_IMG_1":3, "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":3, "ZONE_FANS_COUNT":3, "ZONE_THUMBS_UP":3},
-		"ID_4":{"ID":4, "ZONE_LEVEL":6, "ZONE_TITLE":"朋友圈主题内容4", "ZONE_IMG_1":4, "ZONE_IMG_2":3, "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":4, "ZONE_FANS_COUNT":4, "ZONE_THUMBS_UP":4},
-		"ID_5":{"ID":5, "ZONE_LEVEL":7, "ZONE_TITLE":"朋友圈主题内容5", "ZONE_IMG_1":"", "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":5, "ZONE_FANS_COUNT":5, "ZONE_THUMBS_UP":5},
-		"ID_6":{"ID":6, "ZONE_LEVEL":8, "ZONE_TITLE":"朋友圈主题内容6", "ZONE_IMG_1":"", "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":6, "ZONE_FANS_COUNT":6, "ZONE_THUMBS_UP":6},
-		"ID_7":{"ID":7, "ZONE_LEVEL":9, "ZONE_TITLE":"朋友圈主题内容7", "ZONE_IMG_1":5, "ZONE_IMG_2":3, "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":7, "ZONE_FANS_COUNT":7, "ZONE_THUMBS_UP":7},
-		"ID_8":{"ID":8, "ZONE_LEVEL":10, "ZONE_TITLE":"朋友圈主题内容8", "ZONE_IMG_1":"", "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":8, "ZONE_FANS_COUNT":8, "ZONE_THUMBS_UP":8}
+		"ID_1":{"ID":1, "ZONE_LEVEL":3, "ZONE_TITLE":"朋友圈主题内容1", "ZONE_IMG_1":1, "ZONE_IMG_2":2, "ZONE_IMG_3":3, "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":1, "ZONE_FANS_COUNT":1, "ZONE_THUMBS_UP":1, "FB_END_ID":11},
+		"ID_2":{"ID":2, "ZONE_LEVEL":4, "ZONE_TITLE":"朋友圈主题内容2", "ZONE_IMG_1":2, "ZONE_IMG_2":3, "ZONE_IMG_3":3, "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":2, "ZONE_FANS_COUNT":2, "ZONE_THUMBS_UP":2, "FB_END_ID":11},
+		"ID_3":{"ID":3, "ZONE_LEVEL":5, "ZONE_TITLE":"朋友圈主题内容3", "ZONE_IMG_1":3, "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":3, "ZONE_FANS_COUNT":3, "ZONE_THUMBS_UP":3, "FB_END_ID":11},
+		"ID_4":{"ID":4, "ZONE_LEVEL":6, "ZONE_TITLE":"朋友圈主题内容4", "ZONE_IMG_1":4, "ZONE_IMG_2":3, "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":4, "ZONE_FANS_COUNT":4, "ZONE_THUMBS_UP":4, "FB_END_ID":11},
+		"ID_5":{"ID":5, "ZONE_LEVEL":7, "ZONE_TITLE":"朋友圈主题内容5", "ZONE_IMG_1":"", "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":5, "ZONE_FANS_COUNT":5, "ZONE_THUMBS_UP":5, "FB_END_ID":11},
+		"ID_6":{"ID":6, "ZONE_LEVEL":8, "ZONE_TITLE":"朋友圈主题内容6", "ZONE_IMG_1":"", "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":6, "ZONE_FANS_COUNT":6, "ZONE_THUMBS_UP":6, "FB_END_ID":11},
+		"ID_7":{"ID":7, "ZONE_LEVEL":9, "ZONE_TITLE":"朋友圈主题内容7", "ZONE_IMG_1":5, "ZONE_IMG_2":3, "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":7, "ZONE_FANS_COUNT":7, "ZONE_THUMBS_UP":7, "FB_END_ID":11},
+		"ID_8":{"ID":8, "ZONE_LEVEL":10, "ZONE_TITLE":"朋友圈主题内容8", "ZONE_IMG_1":"", "ZONE_IMG_2":"", "ZONE_IMG_3":"", "ZONE_IMG_4":"", "ZONE_FOLLOW_NUM":8, "ZONE_FANS_COUNT":8, "ZONE_THUMBS_UP":8, "FB_END_ID":11}
 	},
 	zonefeefback:{
 		"ID_1":{"ID":1, "ZONE_FB_LEVEL":3, "ZONE_FB_HAVE_FB":"", "ZONE_FB_FNAME":"阿里巴巴", "ZONE_FB_TEXT":"好友评论1", "ZONE_FB_REPLY":"主人回复1"},
@@ -117,12 +121,12 @@ module.exports = {
 		"ID_3":{"ID":3, "REPLY_LEVEL":3, "REPLY_GROUP_ID":3, "REPLY_TEXT":"男主回复3", "REPLY_REPLY":"女主回复3", "REPLY_PLAYER_REPLY":3}
 	},
 	http:{
-		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username,password", "Method":"POST", "Remark":"用户账号注册使用。"},
-		"ID_2":{"ID":2, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/login", "Params":"username,password", "Method":"POST", "Remark":"用户账号登录，相关数据初始化。"},
+		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username, password", "Method":"POST", "Remark":"用户账号注册使用。"},
+		"ID_2":{"ID":2, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/login", "Params":"username, password", "Method":"POST", "Remark":"用户账号登录，相关数据初始化。"},
 		"ID_3":{"ID":3, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/setname", "Params":"api_token,name", "Method":"POST", "Remark":"给玩家命名"},
-		"ID_4":{"ID":4, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/sign/dosign", "Params":"api_token","Method":"POST", "Remark":"玩家签到与奖励。"},
-		"ID_5":{"ID":5, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/work/dowork", "Params":"api_token","Method":"POST", "Remark":"玩家工作以及相关参数返回。"},
-		"ID_6":{"ID":6, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/backpack/get", "Params":"api_token","Method":"GET", "Remark":"获取玩家背包。"}
+		"ID_4":{"ID":4, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/sign/dosign", "Params":"api_token", "Method":"POST", "Remark":"玩家签到与奖励。"},
+		"ID_5":{"ID":5, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/work/dowork", "Params":"api_token", "Method":"POST", "Remark":"玩家工作以及相关参数返回。"},
+		"ID_6":{"ID":6, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/backpack/get", "Params":"api_token", "Method":"GET", "Remark":"获取玩家背包。"}
 	},
 
 };
