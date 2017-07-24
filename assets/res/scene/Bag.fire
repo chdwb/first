@@ -67,6 +67,9 @@
     "_components": [
       {
         "__id__": 13
+      },
+      {
+        "__id__": 14
       }
     ],
     "_prefab": null,
@@ -332,8 +335,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 220,
-      "height": 400
+      "width": 960,
+      "height": 500
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -502,5 +505,24 @@
     },
     "_fitWidth": false,
     "_fitHeight": true
+  },
+  {
+    "__type__": "7ff10ow4o5P55rX+DoiHul/",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "prefab": {
+      "__uuid__": "2c9f94ed-e53b-4206-bf62-6b9fbec32696"
+    },
+    "scrollView": {
+      "__id__": 12
+    },
+    "spawnCount": 0,
+    "totalRow": 0,
+    "spacing": 0,
+    "bufferZone": 0
   }
 ]
