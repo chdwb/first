@@ -79,18 +79,6 @@ cc.Class({
             default: null,
             type: cc.EditBox
         },
-
-
-
-
-
-        //登录界面
-
-        
-        
-        
-       
-        
     },
 
     // use this for initialization
@@ -99,8 +87,6 @@ cc.Class({
         var Name1 = 'adfklj234';
         this.label_YouKeMingZi.string = QuDaoID+Name1;
         //this.Layer_RandomName.active = true;
-
-
         this.resetView();
     },
 
@@ -108,7 +94,7 @@ cc.Class({
     update: function (dt) {
 
     },
-//随机名字
+    //随机名字
     onclick: function()
     {
          var index = cc.random0To1() * 2031; // 名字随机
@@ -116,24 +102,24 @@ cc.Class({
          var index2 = cc.random0To1() * 580; // 姓随机
         
         this.label.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
-    }
-,
+    },
+
     onedit: function()
     {
         this.label.string = this.NAMEEDITBOX.string;
-    }
-    ,
-//登录游客账号
- onStartGameclick: function()
+    },
+
+    //登录游客账号
+    onStartGameclick: function()
     {
          console.log('直接游客账号登陆');
     },
-     onZhuCeclick: function()
+    onZhuCeclick: function()
     {
         this.nowLayer = 3;
         this.resetView();
     },
-     onDengluclick: function()
+    onDengluclick: function()
     {
         this.nowLayer = 2;
         this.resetView();
@@ -147,29 +133,31 @@ cc.Class({
         this.resetView();
     },
 
-     onGoTZhuCeclick: function()
+    onGoTZhuCeclick: function()
     {
-         console.log('确认注册');
-         //发送到服务器
-         console.log('手机'+this.editbox_phone.string);
-         console.log('密码'+this.editbox_PassWord.string);
-         console.log('再次密码'+this.editbox_PassWord2.string);
+        console.log('确认注册');
+        //发送到服务器
+        console.log('手机'+this.editbox_phone.string);
+        console.log('密码'+this.editbox_PassWord.string);
+        console.log('再次密码'+this.editbox_PassWord2.string);
+
+        if (this.editbox_PassWord.string != this.editbox_PassWord2.string)
+        {
+            cc.log("两次密码不一致")
+            return;
+        }
+            
+            
+        cc.cs.gameMgr.sendRegister(this.editbox_phone.string,this.editbox_PassWord.string)
     },
-
-
-        
-
-
-
-        //登录界面
-
-          onDengluCommitclick: function()
+    //登录界面
+    onDengluCommitclick: function()
     {
          console.log('确认登陆');
          //发送到服务器
          console.log('手机'+this.editbox_phone.string);
          console.log('密码'+this.editbox_PassWord.string);
-         cc.cs.gameMgr.sendRegister(this.editbox_phone.string,"ccc123",cc.cs.gameMgr.registerHandle )
+         cc.cs.gameMgr.sendLogin(this.editbox_phone.string,this.editbox_PassWord.string)
     },
 
 

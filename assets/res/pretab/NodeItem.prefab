@@ -290,7 +290,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 160,
+      "width": 155.57,
       "height": 40
     },
     "_rotationX": 0,
@@ -299,8 +299,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 29,
-      "y": -97
+      "x": 0,
+      "y": -99
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -318,14 +318,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 28,
+    "_fontSize": 28,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "傻逼道具",
+    "_N$string": "道具名6个字",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -365,8 +365,8 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 255,
-      "b": 255,
+      "g": 0,
+      "b": 61,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -377,7 +377,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 88.98,
+      "width": 62.29,
       "height": 40
     },
     "_rotationX": 0,
@@ -386,8 +386,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 8,
-      "y": -46
+      "x": 39,
+      "y": -58
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -405,8 +405,8 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 28,
+    "_fontSize": 28,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
