@@ -13,10 +13,11 @@ cc.Class({
         // },
         // ...
     },
-
+    
     // use this for initialization
     onLoad: function () {
         this.initMgr()
+        cc.cs.loadMgr.loadRes()
     },
 
     initMgr:function(){
@@ -25,6 +26,9 @@ cc.Class({
         cc.cs.gameData = require("JSDATA")
         var gameMgr = require("gameMgr")
         cc.cs.gameMgr =new gameMgr()
+
+        var loadMgr = require("loadMgr")
+        cc.cs.loadMgr = new loadMgr
     }
 
     // called every frame, uncomment this function to activate update callback

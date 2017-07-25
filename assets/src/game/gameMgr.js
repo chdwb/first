@@ -21,7 +21,7 @@ cc.Class({
     },
 
     generateGustInfo:function(){
-        var IDFA = ""
+        var IDFA = "游客"+"DAH278JK"
         return IDFA
     },
 
