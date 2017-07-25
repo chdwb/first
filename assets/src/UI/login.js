@@ -90,17 +90,47 @@ cc.Class({
         this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
         
         this.startGameBtn.on("click", (event)=>{
-            //开始游戏按钮点击事件
-
+            cc.cs.UIMgr.showTip("开始游戏按钮点击事件", 1.0)
         }, this.startGameBtn)
         this.registerConfirmBtn.on("click", (event)=>{
             //注册账号按钮点击事件
             if(self.registerPasswordEdit.string != self.registerConfirmPasswordEdit.string)
             {
+                cc.cs.UIMgr.showTip("输入密码不一致，请重新输入", 1.0)
+                self.registerConfirmPasswordEdit.string = ""
+                self.registerPasswordEdit.string = ""
                 return ;
+            }else if(self.registerIDEdit.string == ""||self.registerIDEdit.string == null )
+            {
+                cc.cs.UIMgr.showTip("请输入手机号", 1.0)
+                return;
+            }else if(self.registerPasswordEdit.string == ""||self.registerPasswordEdit.string == null )
+            {
+                cc.cs.UIMgr.showTip("请输入密码", 1.0)
+                return;
+            }else if(self.registerConfirmPasswordEdit.string == ""||self.registerConfirmPasswordEdit.string == null )
+            {
+                cc.cs.UIMgr.showTip("请输入密码", 1.0)
+                return;
+            }else{
+                cc.cs.UIMgr.showTip("这里添加注册事件", 1.0)
             }
-
         }, this.registerConfirmBtn)
+
+        this.LoginBtn.on("click", (event)=>{
+            if(self.loginIDEdit.string == "" || self.loginIDEdit.string == null)
+            {
+                cc.cs.UIMgr.showTip("请输入ID", 1.0)
+                return;
+            }else if(self.loginPasswordEdit.string == "" || self.loginPasswordEdit.string == null)
+            {
+                cc.cs.UIMgr.showTip("请输入密码", 1.0)
+                return;
+            }else
+            {
+                cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
+            }
+        })
 
         this.intoRegisterNodeBtn.on("click", (event)=>{
             self.startGameNode.active = false;

@@ -13,11 +13,15 @@ cc.Class({
         // },
         // ...
     },
-    
+    loadComplete : function(){
+        cc.find("Canvas/Bg").active = true
+        cc.cs.UIMgr.init()
+    },
+
     // use this for initialization
     onLoad: function () {
         this.initMgr()
-        cc.cs.loadMgr.loadRes()
+        cc.cs.loadMgr.loadRes(this.loadComplete)
     },
 
     initMgr:function(){
@@ -29,6 +33,10 @@ cc.Class({
 
         var loadMgr = require("loadMgr")
         cc.cs.loadMgr = new loadMgr
+
+        var UIMgr = require("UIManager")
+        cc.cs.UIMgr = new UIMgr
+        
     }
 
     // called every frame, uncomment this function to activate update callback

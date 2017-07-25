@@ -9,6 +9,9 @@ cc.Class({
         cc.loader.loadResDir("prefab",(err, prefab) => {
             if(!err){
                 func()
+            }else
+            {
+                cc.log(err)
             }
         })
     },
