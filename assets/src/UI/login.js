@@ -1,3 +1,4 @@
+const i18n = require('i18n');
 cc.Class({
     extends: cc.Component,
 
@@ -92,7 +93,7 @@ cc.Class({
             default:null
         },
         editTip: {
-            type:cc.Node,
+            type:cc.Label,
             default:null
         },
     },
@@ -144,7 +145,15 @@ cc.Class({
 
     randomName:function()
     {
-        cc.cs.UIMgr.showTip("这里添加随机用户名功能", 1.0)
+       //cc.cs.UIMgr.showTip("这里添加随机用户名功能", 1.0)
+      
+      var index = cc.random0To1() * 2031; // 名字随机
+
+         var index2 = cc.random0To1() * 580; // 姓随机
+        var string  =  i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index));
+        this.editTip.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
+       // cc.cs.UIMgr.showTip(string, 1.0)
+        
     },
 
     // use this for initialization

@@ -199,7 +199,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_id": "1c7427QHklM9aCcn3WSuhHz",
@@ -3235,7 +3235,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_id": "a90ecBStkNMQ7S5aF1EOoYk",
@@ -3963,6 +3963,21 @@
     },
     "LoginBtn": {
       "__id__": 62
+    },
+    "randomNameNode": {
+      "__id__": 72
+    },
+    "randomNameConfirmBtn": {
+      "__id__": 73
+    },
+    "randomNameRandomBtn": {
+      "__id__": 80
+    },
+    "playerNameEdit": {
+      "__id__": 79
+    },
+    "editTip": {
+      "__id__": 85
     }
   },
   {
