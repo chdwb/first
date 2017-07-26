@@ -90,43 +90,43 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.shopBtn.on("click", , (event)=>{
+        this.shopBtn.on("click",  (event)=>{
 
         }, this.shopBtn)
 
-        this.giftBtn.on("click", , (event)=>{
+        this.giftBtn.on("click",  (event)=>{
             
         }, this.shopBtn)
 
-        this.bagBtn.on("click", , (event)=>{
+        this.bagBtn.on("click", (event)=>{
             
         }, this.shopBtn)
 
-        this.phoneBtn.on("click", , (event)=>{
+        this.phoneBtn.on("click",  (event)=>{
             
         }, this.shopBtn)
 
-        this.wechatBtn.on("click", , (event)=>{
+        this.wechatBtn.on("click",  (event)=>{
             
         }, this.shopBtn)
 
-        this.zoneBtn.on("click", , (event)=>{
+        this.zoneBtn.on("click", (event)=>{
             
         }, this.shopBtn)
 
-        this.settingBtn.on("click", , (event)=>{
+        this.settingBtn.on("click", (event)=>{
             
         }, this.shopBtn)
 
-        this.buydiamondBtn.on("click", , (event)=>{
+        this.buydiamondBtn.on("click",  (event)=>{
             
         }, this.shopBtn)
 
-        this.buyGoldBtn.on("click", , (event)=>{
+        this.buyGoldBtn.on("click",  (event)=>{
             
         }, this.shopBtn)
 
-        this.missionBtn.on("click", , (event)=>{
+        this.missionBtn.on("click",  (event)=>{
             
         }, this.shopBtn)
     },
