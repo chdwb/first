@@ -219,7 +219,7 @@ cc.Class({
             self.playerName()
         },this.randomNameConfirmBtn)
         this.randomNameRandomBtn.on("click", (event)=>{
-            
+            self.randomName()
         },this.randomNameRandomBtn)
     },
     
