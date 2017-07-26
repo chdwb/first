@@ -25,26 +25,26 @@ cc.Class({
         return IDFA
     },
 
-    sendHttp:function(id, data, handle){
+    sendHttp:function(id, data, handle, obj ){
         var url = cc.cs.gameData.http[id]["Host"]
         var externUrl = cc.cs.gameData.http[id]["Route"]
         var isPost = cc.cs.gameData.http[id]["Method"] == "POST"
 
-        cc.cs.http.sendRequest(url, externUrl, data, handle, isPost)
+        cc.cs.http.sendRequest(url, externUrl, data, handle, isPost, obj)
     },
 
-    sendRegister : function(ID, password){
+    sendRegister : function(ID, password, handle, obj){
         var data = {}
         data["username"] = ID
         data["password"] = password
-        this.sendHttp("ID_1",data, this.registerHandle)
+        this.sendHttp("ID_1",data, handle, obj)
     },
 
-    sendLogin : function(ID, password){
+    sendLogin : function(ID, password, handle, obj){
         var data = {}
         data["username"] = ID
         data["password"] = password
-        this.sendHttp("ID_2",data, this.loginHandle)
+        this.sendHttp("ID_2",data, handle, obj)
     },
 
     registerHandle : function (ret)
@@ -90,17 +90,14 @@ cc.Class({
         //道具ID + 数量
     },
     
-    sendName : function(token,name,handle)
+    sendName : function(token, name, handle, obj)
     {
         data["api_token"] = token
         data["name"] = name
-        //this.sendHttp(id, data, handle)
+        this.sendHttp("ID_6", data, handle, obj)
     },
     
-    sendNameHandle : function(ret)
-    {
-        
-    },
+    
 
 
 

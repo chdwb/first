@@ -130,19 +130,21 @@ cc.Class({
     loginEvent : function()
     {
         //cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
-        cc.cs.gameMgr.sendLogin(this.loginIDEdit.string,this.loginPasswordEdit.string)
+        cc.cs.gameMgr.sendLogin(this.loginIDEdit.string,this.loginPasswordEdit.string, this.loginHandle, this)
         //this.setRandomNameNode()
     },
 
     registerEvent:function()
     {
         //cc.cs.UIMgr.showTip("这里添加注册事件", 1.0)
-        cc.cs.gameMgr.sendRegister(this.registerIDEdit.string,this.registerPasswordEdit.string)
+        cc.cs.gameMgr.sendRegister(this.registerIDEdit.string,this.registerPasswordEdit.string, this.registerHandle, this)
     },
 
     playerName:function()
     {
-        cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
+        //cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
+        var api_token = cc.sys.localStorage.getItem('API_TOKEN')
+        cc.cs.gameMgr.sendName(api_token, this.editTip.sting,  this.sendNameHandle, this)
     },
     
     editplayerName:function()
@@ -164,10 +166,19 @@ cc.Class({
     onLoad: function () {
         var self = this
         this.setStartGameNode()
-        this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
+
+        var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
+        if(login_id != null && login_id != "")
+        {
+            this.gustIDLabel.string = login_id
+        }
+        else
+        {
+            this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
+        }
         
         this.startGameBtn.on("click", (event)=>{
-            self.loginEvent()
+            self.setRandomNameNode()
         }, this.startGameBtn)
         this.registerConfirmBtn.on("click", (event)=>{
             //注册账号按钮点击事件
@@ -235,6 +246,52 @@ cc.Class({
             self.randomName()
         },this.randomNameRandomBtn)
     },
+
+     registerHandle : function (ret)
+    {
+        cc.log(this)
+        cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if( JasonObject.success === true)
+        {
+            cc.cs.UIMgr.showTip("注册成功", 1.0)
+            this.setLoginNode()
+            this.loginIDEdit.string = this.registerIDEdit.string
+            this.loginPasswordEdit.string = this.registerPasswordEdit.string
+        }
+        else
+        {
+            cc.cs.UIMgr.showTip( JasonObject.error , 1.0)
+        }
+
+    },
+
+     loginHandle : function (ret)
+    {
+        cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if( JasonObject.success === true)
+        {
+            cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)
+            cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
+            var api_token = cc.sys.localStorage.getItem('API_TOKEN')
+            cc.cs.UIMgr.showTip("登陆成功 api_token ="+api_token, 1.0)
+            this.setStartGameNode();
+            this.gustIDLabel.string = this.loginIDEdit.string;
+        }
+        else
+        {
+            cc.cs.UIMgr.showTip( JasonObject.error , 1.0)
+        }
+    },
+
+    sendNameHandle : function(ret)
+    {
+         cc.log(ret)
+    },
+
+
+      
     
 
     // called every frame, uncomment this function to activate update callback

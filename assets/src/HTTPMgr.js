@@ -3,7 +3,7 @@ cc.Class({
     statics: {
         url:"",
         token:"",
-        sendRequest : function(url, externURL, data, handler, isPost){
+        sendRequest : function(url, externURL, data, handler, isPost, obj){
             var xmlHttp = cc.loader.getXMLHttpRequest();
             xmlHttp.timeout = 3000;
             var param = ""
@@ -37,7 +37,7 @@ cc.Class({
                     console.log("http res("+ xmlHttp.responseText.length + "):" + xmlHttp.responseText);
                     try {
                         if(handler !== null){
-                            handler(xmlHttp.responseText);
+                            handler.apply(obj, [xmlHttp.responseText]);
                         }                        /* code */
                     } catch (e) {
                         console.log("err:" + e);
