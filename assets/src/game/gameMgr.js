@@ -50,11 +50,30 @@ cc.Class({
     registerHandle : function (ret)
     {
         cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if( JasonObject.success === true)
+        {
+            cc.cs.UIMgr.showTip("注册成功", 1.0)
+        }
+        else
+        {
+            cc.cs.UIMgr.showTip( JasonObject.error , 1.0)
+        }
+
     },
 
     loginHandle : function (ret)
     {
         cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if( JasonObject.success === true)
+        {
+            cc.cs.UIMgr.showTip("登陆成功", 1.0)
+        }
+        else
+        {
+            cc.cs.UIMgr.showTip( JasonObject.error , 1.0)
+        }
     },
 
     sendGetPack : function(token,handle){

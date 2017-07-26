@@ -129,31 +129,35 @@ cc.Class({
 
     loginEvent : function()
     {
-        cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
+        //cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
+        //cc.cs.gameMgr.sendLogin(this.loginIDEdit.string,this.loginPasswordEdit.string)
         this.setRandomNameNode()
     },
 
     registerEvent:function()
     {
-        cc.cs.UIMgr.showTip("这里添加注册事件", 1.0)
+        //cc.cs.UIMgr.showTip("这里添加注册事件", 1.0)
+        cc.cs.gameMgr.sendRegister(this.registerIDEdit.string,this.registerPasswordEdit.string)
     },
 
     playerName:function()
     {
         cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
     },
+    
+    editplayerName:function()
+    {
+        this.editTip.string = this.playerNameEdit.string;
+        this.playerNameEdit.string = "";
+    },
 
     randomName:function()
     {
        //cc.cs.UIMgr.showTip("这里添加随机用户名功能", 1.0)
-      
-      var index = cc.random0To1() * 2031; // 名字随机
-
-         var index2 = cc.random0To1() * 580; // 姓随机
+        var index = cc.random0To1() * 2031; // 名字随机
+        var index2 = cc.random0To1() * 580; // 姓随机
         var string  =  i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index));
         this.editTip.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
-       // cc.cs.UIMgr.showTip(string, 1.0)
-        
     },
 
     // use this for initialization
