@@ -75,22 +75,86 @@ cc.Class({
             type:cc.Node,
             default:null
         },
-        
+        randomNameNode : {
+            type:cc.Node,
+            default:null
+        },
+        randomNameConfirmBtn : {
+            type:cc.Node,
+            default:null
+        },
+        randomNameRandomBtn : {
+            type:cc.Node,
+            default:null
+        },
+        playerNameEdit : {
+            type:cc.EditBox,
+            default:null
+        },
+        editTip: {
+            type:cc.Node,
+            default:null
+        },
     },
 
     
+    setStartGameNode : function(){
+        this.startGameNode.active = true;
+        this.registerNode.active = false;
+        this.loginNode.active = false;
+        this.randomNameNode.active = false;
+    },
 
+    setRegisterNode : function(){
+        this.startGameNode.active = false;
+        this.registerNode.active = true;
+        this.loginNode.active = false;
+        this.randomNameNode.active = false;
+    },
+
+    setLoginNode : function(){
+        this.startGameNode.active = false;
+        this.registerNode.active = false;
+        this.loginNode.active = true;
+        this.randomNameNode.active = false;
+    },
+
+    setRandomNameNode : function(){
+        this.startGameNode.active = false;
+        this.registerNode.active = false;
+        this.loginNode.active = false;
+        this.randomNameNode.active = true;
+    },
+
+    loginEvent : function()
+    {
+        cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
+        this.setRandomNameNode()
+    },
+
+    registerEvent:function()
+    {
+        cc.cs.UIMgr.showTip("这里添加注册事件", 1.0)
+    },
+
+    playerName:function()
+    {
+        cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
+    },
+
+    randomName:function()
+    {
+        cc.cs.UIMgr.showTip("这里添加随机用户名功能", 1.0)
+    },
 
     // use this for initialization
     onLoad: function () {
         var self = this
-        this.startGameNode.active = true;
-        this.registerNode.active = false;
-        this.loginNode.active = false;
+        this.setStartGameNode()
         this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
         
         this.startGameBtn.on("click", (event)=>{
-            cc.cs.UIMgr.showTip("开始游戏按钮点击事件", 1.0)
+            self.loginEvent()
         }, this.startGameBtn)
         this.registerConfirmBtn.on("click", (event)=>{
             //注册账号按钮点击事件
@@ -113,7 +177,7 @@ cc.Class({
                 cc.cs.UIMgr.showTip("请输入密码", 1.0)
                 return;
             }else{
-                cc.cs.UIMgr.showTip("这里添加注册事件", 1.0)
+                self.registerEvent()
             }
         }, this.registerConfirmBtn)
 
@@ -128,41 +192,37 @@ cc.Class({
                 return;
             }else
             {
-                cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
+                self.loginEvent()
+                
             }
         })
 
         this.intoRegisterNodeBtn.on("click", (event)=>{
-            self.startGameNode.active = false;
-            self.registerNode.active = true;
-            self.loginNode.active = false;
+            self.setRegisterNode()
         }, this.intoRegisterNodeBtn)
         this.intoLoginNodeBtn.on("click", (event)=>{
-            self.startGameNode.active = false;
-            self.registerNode.active = false;
-            self.loginNode.active = true;
+            self.setLoginNode()
         }, this.intoLoginNodeBtn)
         this.loginBackBtn.on("click", (event)=>{
-            self.startGameNode.active = true;
-            self.registerNode.active = false;
-            self.loginNode.active = false;
+            self.setStartGameNode()
         }, this.loginBackBtn)
         this.registerBackBtn.on("click", (event)=>{
-            self.startGameNode.active = true;
-            self.registerNode.active = false;
-            self.loginNode.active = false;
+            self.setStartGameNode()
         }, this.registerBackBtn)
         this.regisetrIntoLoginBtn.on("click", (event)=>{
-            self.startGameNode.active = false;
-            self.registerNode.active = false;
-            self.loginNode.active = true;
+            self.setLoginNode()
         }, this.regisetrIntoLoginBtn)
         this.LoginIntoRegisterBtn.on("click", (event)=>{
-            self.startGameNode.active = false;
-            self.registerNode.active = true;
-            self.loginNode.active = false;
+            self.setRegisterNode()
         }, this.LoginIntoRegisterBtn)
+        this.randomNameConfirmBtn.on("click", (event)=>{
+            self.playerName()
+        },this.randomNameConfirmBtn)
+        this.randomNameRandomBtn.on("click", (event)=>{
+            
+        },this.randomNameRandomBtn)
     },
+    
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
