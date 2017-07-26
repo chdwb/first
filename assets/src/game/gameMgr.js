@@ -68,7 +68,10 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if( JasonObject.success === true)
         {
-            cc.cs.UIMgr.showTip("登陆成功", 1.0)
+            cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token);
+            var api_token = cc.sys.localStorage.getItem('API_TOKEN')
+            cc.cs.UIMgr.showTip("登陆成功 api_token ="+api_token, 1.0)
+            
         }
         else
         {
@@ -85,6 +88,18 @@ cc.Class({
     {
         cc.log(ret)
         //道具ID + 数量
+    },
+    
+    sendName : function(token,name,handle)
+    {
+        data["api_token"] = token
+        data["name"] = name
+        //this.sendHttp(id, data, handle)
+    },
+    
+    sendNameHandle : function(ret)
+    {
+        
     },
 
 

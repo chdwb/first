@@ -130,8 +130,8 @@ cc.Class({
     loginEvent : function()
     {
         //cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
-        //cc.cs.gameMgr.sendLogin(this.loginIDEdit.string,this.loginPasswordEdit.string)
-        this.setRandomNameNode()
+        cc.cs.gameMgr.sendLogin(this.loginIDEdit.string,this.loginPasswordEdit.string)
+        //this.setRandomNameNode()
     },
 
     registerEvent:function()
