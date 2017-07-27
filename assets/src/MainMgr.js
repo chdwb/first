@@ -28,20 +28,18 @@ cc.Class({
         cc.cs = {}
         cc.cs.http = require("HTTPMgr")
         cc.cs.gameData = require("JSDATA")
+        
         var gameMgr = require("gameMgr")
         cc.cs.gameMgr =new gameMgr()
 
-        var loadMgr = require("loadMgr")
-        cc.cs.loadMgr = new loadMgr
+        var load = require("loadMgr")
+        cc.cs.loadMgr = new load()
 
         var UIMgr = require("UIManager")
-        cc.cs.UIMgr = new UIMgr
-
-        var UIMgr = require("UIManager")
-        cc.cs.UIMgr = new UIMgr
+        cc.cs.UIMgr = new UIMgr()
 
         var registerMgr = require("registerMgr")
-        cc.cs.registerMgr = new registerMgr
+        cc.cs.registerMgr = new registerMgr()
     }
 
     // called every frame, uncomment this function to activate update callback

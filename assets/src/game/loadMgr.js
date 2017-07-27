@@ -2,13 +2,15 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        
+        isLoadComplete : null,
     },
 
-    loadRes:function(func){
-        cc.loader.loadResDir("prefab",(err, prefab) => {
+    loadRes:function(funCall){
+
+        cc.loader.loadResDir ("prefab",(err, prefab) => {
             if(!err){
-                func()
+                this.isLoadComplete = true
+                funCall()
             }else
             {
                 cc.log(err)

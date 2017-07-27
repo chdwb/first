@@ -14,10 +14,31 @@ cc.Class({
     {
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
     },
-    addItem_LerticalScrollView : function(scrollView, prefab)
+    addItem_verticalScrollView : function(scrollView, node, verticalSpace)
     {
-        if(scrollView == null || prefab == null) return;
+        if(typeof verticalSpace == 'undefined') 
+            verticalSpace = 0;
+        var pos = cc.v2(0.0,0.0)
+        if(scrollView.content.childrenCount == 0)
+        {
+            scrollView.content.height = node.height
+            pos.y = (1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height
+        }else
+        {
+            
+            pos.y = ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height) +
+             ((0 - scrollView.content.anchorY)*(scrollView.content.height + verticalSpace))
 
+            scrollView.content.height += verticalSpace + node.height
+        }
+        var diffWidth = scrollView.content.width - node.width
+        
+        pos.x = (1.0 - scrollView.content.anchorX) * scrollView.content.width - (1.0 - node.anchorX) * node.width - diffWidth * 0.5
+        
+        scrollView.content.addChild(node)
+        node.setPosition(pos)
+
+        cc.log("x == " + pos.x + "     " + "y== " + pos.y + "    " +  " "+scrollView.content.childrenCount+" " + scrollView.content.height);
     },
 
     showTip : function(text, time){

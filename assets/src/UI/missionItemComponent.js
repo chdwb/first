@@ -22,24 +22,32 @@ cc.Class({
         }
     },
 
-    setItem : function (item ){
-        itemText.string = item
+    setNameText : function (item){
+        if(this.itemText == null)
+            this.itemText = this.node.getChildByName("ItemText")
+        
+        this.itemText.getComponent(cc.Label).string = item
     },
 
     isChoose : function (is){
+        if(this.itemText == null)
+            this.itemText = this.node.getChildByName("ItemText")
+        if(this.chooseBG == null)
+            this.chooseBG = this.node.getChildByName("chooseBg")
         if(is)
         {
-            chooseBG.active = true
-            itemText.color = cc.Color.WHITE
+            this.chooseBG.active = true
+            this.itemText.color = cc.Color.WHITE
         }else
         {
-            chooseBG.active = false
-            itemText.color = cc.Color.BLACK
+            this.chooseBG.active = false
+            this.itemText.color = cc.Color.BLACK
         }
     },
 
     // use this for initialization
     onLoad: function () {
+        cc.log("add onload for mission compinent")
         this.chooseBG = this.node.getChildByName("chooseBg")
         this.itemText = this.node.getChildByName("ItemText")
     },
