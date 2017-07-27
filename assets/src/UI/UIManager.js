@@ -14,6 +14,11 @@ cc.Class({
     {
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
     },
+    addItem_LerticalScrollView : function(scrollView, prefab)
+    {
+        if(scrollView == null || prefab == null) return;
+
+    },
 
     showTip : function(text, time){
         var scene = cc.director.getScene();

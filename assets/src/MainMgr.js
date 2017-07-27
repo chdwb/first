@@ -36,7 +36,12 @@ cc.Class({
 
         var UIMgr = require("UIManager")
         cc.cs.UIMgr = new UIMgr
-        
+
+        var UIMgr = require("UIManager")
+        cc.cs.UIMgr = new UIMgr
+
+        var registerMgr = require("registerMgr")
+        cc.cs.registerMgr = new registerMgr
     }
 
     // called every frame, uncomment this function to activate update callback

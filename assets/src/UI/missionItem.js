@@ -12,30 +12,36 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        
-           ItemIcon: {
-            default: null,      
-            type: cc.Sprite ,  
-       
-         },
+        chooseBG : {
+            default : null,
+            type : cc.Node
+        },
+        itemText : {
+            default : null,
+            type : cc.Label
+        }
+    },
 
-          ItemName: {
-            default: null,      
-            type: cc.Label ,  
-       
-         },
+    setItem : function (item ){
+        itemText.string = item
+    },
 
-          ItemNum: {
-            default: null,      
-            type: cc.Label ,  
-       
-         },
-        
+    isChoose : function (is){
+        if(is)
+        {
+            chooseBG.active = true
+            itemText.color = cc.Color.WHITE
+        }else
+        {
+            chooseBG.active = false
+            itemText.color = cc.Color.BLACK
+        }
     },
 
     // use this for initialization
     onLoad: function () {
-
+        this.chooseBG = this.node.getChildByName("chooseBg")
+        this.itemText = this.node.getChildByName("ItemText")
     },
 
     // called every frame, uncomment this function to activate update callback
