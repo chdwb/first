@@ -49,7 +49,7 @@ cc.Class({
 
         }, this.rightNowBtn)
 
-        this.setActionInfo(10, "test", "", this.cccc)
+        //this.setActionInfo(10, "test", "", this.cccc) for test
     },
 
     update: function(dt) {
