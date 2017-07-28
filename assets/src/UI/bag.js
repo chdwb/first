@@ -20,7 +20,7 @@ cc.Class({
         
     },
 
-    // use this for initialization
+    // use this for initialization 666
     onLoad: function () {
                var mycars=new Array();
 mycars[0]="Saab";
