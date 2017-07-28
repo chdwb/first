@@ -89,9 +89,6 @@ cc.Class({
     onLoad: function() {
 
         this.loadWorkItem(1)
-        this.loadWorkItem(1)
-        this.loadWorkItem(1)
-        this.loadWorkItem(1)
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
         }, this.startBtn)
