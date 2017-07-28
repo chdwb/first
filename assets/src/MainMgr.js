@@ -13,25 +13,26 @@ cc.Class({
         // },
         // ...
     },
-    loadComplete : function(){
+    loadComplete: function() {
         cc.find("Canvas/Bg").active = true
         cc.cs.UIMgr.init()
     },
 
     // use this for initialization
-    onLoad: function () {
+    onLoad: function() {
+        cc.game.addPersistRootNode(this.node)
         this.initMgr()
         cc.cs.loadMgr.loadRes(this.loadComplete)
         cc.game.addPersistRootNode(this.node);
     },
 
-    initMgr:function(){
+    initMgr: function() {
         cc.cs = {}
         cc.cs.http = require("HTTPMgr")
         cc.cs.gameData = require("JSDATA")
-        
+
         var gameMgr = require("gameMgr")
-        cc.cs.gameMgr =new gameMgr()
+        cc.cs.gameMgr = new gameMgr()
 
         var load = require("loadMgr")
         cc.cs.loadMgr = new load()

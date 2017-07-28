@@ -5893,7 +5893,11 @@
     },
     "backBtn": {
       "__id__": 132
-    }
+    },
+    "totalTime": 0,
+    "currentTime": 0,
+    "isAction": false,
+    "handle": null
   },
   {
     "__type__": "cc.Sprite",
