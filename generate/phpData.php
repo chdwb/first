@@ -138,11 +138,26 @@ class PhpData{
 	);
 	public $http = array
 	(
-		"ID_1"=>array("ID"=>1, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/register", "Params"=>"username, password", "Method"=>"POST", "Remark"=>"用户账号注册使用。"),
-		"ID_2"=>array("ID"=>2, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/login", "Params"=>"username, password", "Method"=>"POST", "Remark"=>"用户账号登录，相关数据初始化。"),
+		"ID_1"=>array("ID"=>1, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/register", "Params"=>"username, password,$deviceid", "Method"=>"POST", "Remark"=>"用户账号注册使用。"),
+		"ID_2"=>array("ID"=>2, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/login", "Params"=>"$username, $password,$deviceid", "Method"=>"POST", "Remark"=>"用户账号登录，相关数据初始化。"),
 		"ID_3"=>array("ID"=>3, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/setname", "Params"=>"api_token,name", "Method"=>"POST", "Remark"=>"给玩家命名"),
 		"ID_4"=>array("ID"=>4, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/sign/dosign", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"玩家签到与奖励。"),
 		"ID_5"=>array("ID"=>5, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/dowork", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"玩家工作以及相关参数返回。"),
 		"ID_6"=>array("ID"=>6, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/backpack/get", "Params"=>"api_token", "Method"=>"GET", "Remark"=>"获取玩家背包。")
+	);
+	public $errcode = array
+	(
+		"ID_"0""=>array("ID"=>"0", "DESC"=>"正确"),
+		"ID_"10011""=>array("ID"=>"10011", "DESC"=>"请求所提交的参数有误。"),
+		"ID_"10012""=>array("ID"=>"10012", "DESC"=>"用户名或密码有误。"),
+		"ID_"10013""=>array("ID"=>"10013", "DESC"=>"用户名不合法。"),
+		"ID_"10014""=>array("ID"=>"10014", "DESC"=>"密码不合法。"),
+		"ID_"10015""=>array("ID"=>"10015", "DESC"=>"记录保存失败。"),
+		"ID_"10016""=>array("ID"=>"10016", "DESC"=>"错误的登录信息。"),
+		"ID_"10017""=>array("ID"=>"10017", "DESC"=>"非法的重复操作。"),
+		"ID_"10018""=>array("ID"=>"10018", "DESC"=>"请求超过次数限制。"),
+		"ID_"10019""=>array("ID"=>"10019", "DESC"=>"玩家名字不合法。"),
+		"ID_"10020""=>array("ID"=>"10020", "DESC"=>"已存在相同的用户名。"),
+		"ID_"10021""=>array("ID"=>"10021", "DESC"=>"玩家名字中包含敏感字符。")
 	);
 }?>
