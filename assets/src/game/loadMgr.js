@@ -2,24 +2,30 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        isLoadComplete : null,
+        isLoadComplete: null,
     },
 
-    loadRes:function(funCall){
+    loadRes: function(funCall) {
+        var self = this
+        cc.loader.loadResDir("prefab", (err, prefab) => {
+            if (!err) {
+                cc.director.preloadScene("GameScene", function() {
+                    cc.log("Next scene preloaded");
+                    funCall()
+                    self.isLoadComplete = true
+                });
 
-        cc.loader.loadResDir ("prefab",(err, prefab) => {
-            if(!err){
-                this.isLoadComplete = true
-                funCall()
-            }else
-            {
+
+            } else {
                 cc.log(err)
             }
         })
+
+
     },
     // use this for initialization
-    onLoad: function () {
-        
+    onLoad: function() {
+
     },
 
     // called every frame, uncomment this function to activate update callback
