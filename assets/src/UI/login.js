@@ -143,6 +143,7 @@ cc.Class({
     playerName:function()
     {
         //cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
+        cc.log("setplayername")
         var api_token = cc.sys.localStorage.getItem('API_TOKEN')
         cc.cs.gameMgr.sendName(api_token, this.playerNameEdit.sting,  this.sendNameHandle, this)
     },
@@ -164,6 +165,23 @@ cc.Class({
         this.editplayerName.string =  i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
     },
 
+    startgame:function()
+    {
+       var Name = cc.cs.PlayerInfo.playerName;
+       cc.log("Name =" + Name)
+        if(Name == null)
+        {
+             cc.log(1111)
+            this.setRandomNameNode();
+        }
+        else
+        {
+             cc.log(2222)
+            cc.director.loadScene('Game');  
+        }
+
+    },
+
     // use this for initialization
     onLoad: function () {
         var self = this
@@ -180,7 +198,7 @@ cc.Class({
         }
         
         this.startGameBtn.on("click", (event)=>{
-            self.setRandomNameNode()
+            self.startgame()
         }, this.startGameBtn)
         this.registerConfirmBtn.on("click", (event)=>{
             //注册账号按钮点击事件
@@ -251,7 +269,7 @@ cc.Class({
 
      registerHandle : function (ret)
     {
-        cc.log(this)
+        //cc.log(this)
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if( JasonObject.success === true)
@@ -275,6 +293,7 @@ cc.Class({
         if( JasonObject.success === true)
         {
             cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)
+            cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')
             cc.cs.UIMgr.showTip("登陆成功 api_token ="+api_token, 1.0)

@@ -42,8 +42,8 @@ cc.Class({
         var registerMgr = require("registerMgr")
         cc.cs.registerMgr = new registerMgr()
 
-        var SceneMgr = require("SceneMgr")
-        cc.cs.SceneMgr = new SceneMgr()
+        var PlayerInfo = require("PlayerInfo")
+        cc.cs.PlayerInfo = new PlayerInfo()
     }
 
     // called every frame, uncomment this function to activate update callback

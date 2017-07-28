@@ -80,6 +80,7 @@ cc.Class({
     },
 
     sendGetPack : function(token,handle){
+        var data = {}
         data["api_token"] = token
         this.sendHttp("ID_6",data, handle)
     },
@@ -92,9 +93,10 @@ cc.Class({
     
     sendName : function(token, name, handle, obj)
     {
+        var data = {}
         data["api_token"] = token
         data["name"] = name
-        this.sendHttp("ID_6", data, handle, obj)
+        this.sendHttp("ID_3", data, handle, obj)
     },
     
     
