@@ -163,13 +163,14 @@ cc.Class({
     startgame: function() {
         var Name = cc.cs.PlayerInfo.playerName;
         cc.log("Name =" + Name)
-        if (Name == null) {
+        /*if (Name == null) {
             cc.log(1111)
             this.setRandomNameNode();
-        } else {
+        } else*/
+       // {
             cc.log(2222)
             cc.director.loadScene('GameScene');
-        }
+       // }
 
     },
 
