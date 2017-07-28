@@ -1,5 +1,6 @@
 @echo off 
 
+set AAA=""
 set HOME=%cd%
 set TOOLS=%HOME%\tools
 set DATA_GENERATE=%TOOLS%\data\python
