@@ -16,6 +16,37 @@ cc.Class({
             default: null,
             type: cc.String,
         },
+
+        ApiToken : {
+            default: "",
+            type: cc.String,
+        },
+
+        WelCome : {
+            default: "",
+            type: cc.String,
+        },
+
+        Level:1,
+
+        Sign:false,
+
+        Exp:0,
+
+        Power:0,
+
+        FreeWork:2,
+
+        Phone_ID:0,
+
+        Wechat_ID:0,
+
+        ZoneThumbsUp_ID:0,
+
+        ZoneReplay_ID:0,
+
+        Work_ID:0,
+
     },
 
     // use this for initialization
