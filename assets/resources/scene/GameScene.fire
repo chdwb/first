@@ -63,7 +63,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 139
+        "__id__": 140
       }
     ],
     "_prefab": null,
@@ -126,6 +126,9 @@
     "_components": [
       {
         "__id__": 138
+      },
+      {
+        "__id__": 139
       }
     ],
     "_prefab": null,
@@ -211,7 +214,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 66
@@ -4983,7 +4986,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 137
@@ -5921,6 +5924,24 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
+  },
+  {
+    "__type__": "15134MkjMxPl57dde3p7/je",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true,
+    "MainView": {
+      "__id__": 4
+    },
+    "MissonView": {
+      "__id__": 67
+    },
+    "ActionView": {
+      "__id__": 115
+    }
   },
   {
     "__type__": "cc.Canvas",

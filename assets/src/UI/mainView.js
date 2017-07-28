@@ -2,6 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+
         expText: {
             type: cc.Label,
             default: null
@@ -84,10 +85,19 @@ cc.Class({
         this.diamondText = diamond
     },
 
+    goWork: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
 
 
     // use this for initialization
     onLoad: function() {
+
+        var self = this
+
         this.shopBtn.on("click", (event) => {
 
         }, this.shopBtn)
@@ -129,6 +139,7 @@ cc.Class({
         }, this.shopBtn)
 
         this.loveBtn.on("click", (event) => {
+            self.goWork()
 
         }, this.shopBtn)
     },
