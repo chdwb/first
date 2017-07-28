@@ -136,13 +136,28 @@ module.exports = {
 		"TOTAL_COUNT":3
 	},
 	http:{
-		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username, password", "Method":"POST", "Remark":"用户账号注册使用。"},
-		"ID_2":{"ID":2, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/login", "Params":"username, password", "Method":"POST", "Remark":"用户账号登录，相关数据初始化。"},
+		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username, password,$deviceid", "Method":"POST", "Remark":"用户账号注册使用。"},
+		"ID_2":{"ID":2, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/login", "Params":"$username, $password,$deviceid", "Method":"POST", "Remark":"用户账号登录，相关数据初始化。"},
 		"ID_3":{"ID":3, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/setname", "Params":"api_token,name", "Method":"POST", "Remark":"给玩家命名"},
 		"ID_4":{"ID":4, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/sign/dosign", "Params":"api_token", "Method":"POST", "Remark":"玩家签到与奖励。"},
 		"ID_5":{"ID":5, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/work/dowork", "Params":"api_token", "Method":"POST", "Remark":"玩家工作以及相关参数返回。"},
 		"ID_6":{"ID":6, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/backpack/get", "Params":"api_token", "Method":"GET", "Remark":"获取玩家背包。"},
 		"TOTAL_COUNT":6
+	},
+	errcode:{
+		"ID_0":{"ID":"0", "DESC":"正确"},
+		"ID_10011":{"ID":"10011", "DESC":"请求所提交的参数有误。"},
+		"ID_10012":{"ID":"10012", "DESC":"用户名或密码有误。"},
+		"ID_10013":{"ID":"10013", "DESC":"用户名不合法。"},
+		"ID_10014":{"ID":"10014", "DESC":"密码不合法。"},
+		"ID_10015":{"ID":"10015", "DESC":"记录保存失败。"},
+		"ID_10016":{"ID":"10016", "DESC":"错误的登录信息。"},
+		"ID_10017":{"ID":"10017", "DESC":"非法的重复操作。"},
+		"ID_10018":{"ID":"10018", "DESC":"请求超过次数限制。"},
+		"ID_10019":{"ID":"10019", "DESC":"玩家名字不合法。"},
+		"ID_10020":{"ID":"10020", "DESC":"已存在相同的用户名。"},
+		"ID_10021":{"ID":"10021", "DESC":"玩家名字中包含敏感字符。"},
+		"TOTAL_COUNT":12
 	},
 
 };

@@ -164,6 +164,9 @@ cc.Class({
         var Name = cc.cs.PlayerInfo.playerName;
         cc.log("Name =" + Name)
         /*if (Name == null) {
+
+        cc.director.loadScene('GameScene');
+        if (Name == null) {
             cc.log(1111)
             this.setRandomNameNode();
         } else*/
@@ -269,16 +272,16 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)
-            /*cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
-            cc.cs.PlayerInfo.WelCome = JasonObject.content.info.WelCome
-            cc.cs.PlayerInfo.Level = JasonObject.content.info.Level
-            cc.cs.PlayerInfo.Sign = JasonObject.content.info.name
-            cc.cs.PlayerInfo.Exp = JasonObject.content.info.Exp
-            cc.cs.PlayerInfo.Power = JasonObject.content.info.Power
-            cc.cs.PlayerInfo.Phone_ID = JasonObject.content.info.Phone_ID
-            cc.cs.PlayerInfo.Wechat_ID = JasonObject.content.info.Wechat_ID
-            cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.ZoneThumbsUp_ID
-            cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.Work_ID*/
+                /*cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
+                cc.cs.PlayerInfo.WelCome = JasonObject.content.info.WelCome
+                cc.cs.PlayerInfo.Level = JasonObject.content.info.Level
+                cc.cs.PlayerInfo.Sign = JasonObject.content.info.name
+                cc.cs.PlayerInfo.Exp = JasonObject.content.info.Exp
+                cc.cs.PlayerInfo.Power = JasonObject.content.info.Power
+                cc.cs.PlayerInfo.Phone_ID = JasonObject.content.info.Phone_ID
+                cc.cs.PlayerInfo.Wechat_ID = JasonObject.content.info.Wechat_ID
+                cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.ZoneThumbsUp_ID
+                cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.Work_ID*/
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')
             cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)

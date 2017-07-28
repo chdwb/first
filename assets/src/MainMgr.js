@@ -23,7 +23,7 @@ cc.Class({
         cc.game.addPersistRootNode(this.node)
         this.initMgr()
         cc.cs.loadMgr.loadRes(this.loadComplete)
-        cc.game.addPersistRootNode(this.node);
+
     },
 
     initMgr: function() {
