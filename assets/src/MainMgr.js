@@ -22,6 +22,7 @@ cc.Class({
     onLoad: function () {
         this.initMgr()
         cc.cs.loadMgr.loadRes(this.loadComplete)
+        cc.game.addPersistRootNode(this.node);
     },
 
     initMgr:function(){
@@ -40,6 +41,9 @@ cc.Class({
 
         var registerMgr = require("registerMgr")
         cc.cs.registerMgr = new registerMgr()
+
+        var SceneMgr = require("SceneMgr")
+        cc.cs.SceneMgr = new SceneMgr()
     }
 
     // called every frame, uncomment this function to activate update callback

@@ -144,13 +144,13 @@ cc.Class({
     {
         //cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
         var api_token = cc.sys.localStorage.getItem('API_TOKEN')
-        cc.cs.gameMgr.sendName(api_token, this.editTip.sting,  this.sendNameHandle, this)
+        cc.cs.gameMgr.sendName(api_token, this.playerNameEdit.sting,  this.sendNameHandle, this)
     },
     
     editplayerName:function()
     {
-        this.editTip.string = this.playerNameEdit.string;
-        this.playerNameEdit.string = "";
+        //this.editTip.string = this.playerNameEdit.string;
+        //this.playerNameEdit.string = "";
     },
 
     randomName:function()
@@ -159,7 +159,9 @@ cc.Class({
         var index = cc.random0To1() * 2031; // 名字随机
         var index2 = cc.random0To1() * 580; // 姓随机
         var string  =  i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index));
-        this.editTip.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
+        cc.log(string)
+        //this.editTip.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
+        this.editplayerName.string =  i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
     },
 
     // use this for initialization
