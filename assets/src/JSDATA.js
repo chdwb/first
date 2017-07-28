@@ -136,8 +136,8 @@ module.exports = {
 		"TOTAL_COUNT":3
 	},
 	http:{
-		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username, password", "Method":"POST", "Remark":"用户账号注册使用。"},
-		"ID_2":{"ID":2, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/login", "Params":"username, password", "Method":"POST", "Remark":"用户账号登录，相关数据初始化。"},
+		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username, password", "Method":"POST", "Remark":"用户账号注册使用。"},
+		"ID_2":{"ID":2, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/login", "Params":"username, password", "Method":"POST", "Remark":"用户账号登录，相关数据初始化。"},
 		"ID_3":{"ID":3, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/setname", "Params":"api_token,name", "Method":"POST", "Remark":"给玩家命名"},
 		"ID_4":{"ID":4, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/sign/dosign", "Params":"api_token", "Method":"POST", "Remark":"玩家签到与奖励。"},
 		"ID_5":{"ID":5, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/work/dowork", "Params":"api_token", "Method":"POST", "Remark":"玩家工作以及相关参数返回。"},
