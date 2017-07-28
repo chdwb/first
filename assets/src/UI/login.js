@@ -162,11 +162,10 @@ cc.Class({
 
     startgame: function() {
         var Name = cc.cs.PlayerInfo.playerName;
-        cc.director.loadScene('GameScene');
         cc.log("Name =" + Name)
         if (Name == null) {
             cc.log(1111)
-                // this.setRandomNameNode();
+            this.setRandomNameNode();
         } else {
             cc.log(2222)
             cc.director.loadScene('GameScene');
