@@ -11,5 +11,7 @@ set OUTPUT=%HOME%\generate
 
 python %DATA_GENERATE%\main.py -i %DATA_XLSX% -o %OUTPUT%
 
+xcopy /Y %OUTPUT%\JSDATA.js %HOME%\assets\src
+
 pause
 

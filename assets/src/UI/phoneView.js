@@ -234,22 +234,21 @@ cc.Class({
 
     },
 
-
-
     SendPhone:function(phoneid)
     {
-        cc.log("SendPhone = "+phoneid)
+        cc.log("SendPhone = "+phoneid  + "         " + cc.cs.PlayerInfo.ApiToken  )
+
         cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.ApiToken, phoneid , this.SendPhoneHandle, this)
     },
     SendPhoneHandle:function(ret)
     {
-        cc.log(ret)
+        cc.log("CCYCYCCYCYCYCY    =  "+ ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
 
-                
+            //cc.cs.PlayerInfo.PHONE_ID = ????    
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
@@ -308,7 +307,7 @@ cc.Class({
             if (this.currentTime >= this.totalTime) {
                
                 this.showPhone()
-                this.setInputMsg(this.NPCID)
+                this.setInputMsg(cc.cs.PlayerInfo.PHONE_ID)
                 this.isAction = false;
                 this.currentTime = 0
                 this.totalTime = 0
