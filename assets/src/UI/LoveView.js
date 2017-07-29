@@ -64,8 +64,8 @@ cc.Class({
             
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
             parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(JasonObject.content.info.executetime, this.currentWorkID, "image", this.DoneWork,this)
-            cc.cs.PlayerInfo.Love_LogID = JasonObject.content.info.lovelog_id
-            cc.log("work_logID"+JasonObject.content.info.lovelog_id)
+            cc.cs.PlayerInfo.Love_LogID = JasonObject.content.info.datelog_id
+            cc.log("work_logID"+JasonObject.content.info.datelog_id)
            
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)

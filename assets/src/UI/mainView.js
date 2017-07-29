@@ -66,11 +66,11 @@ cc.Class({
     },
 
     setExp: function(currentExp, levlExp) {
-        this.levText.string = currentExp + "/" + levlExp;
+        this.expText.string = currentExp + "/" + levlExp;
     },
 
     setDay: function(day) {
-        this.levText.string = "第  " + day + "  天"
+        this.dayText.string = "第  " + day + "  天"
     },
 
     setLev: function(lev) {
@@ -78,11 +78,13 @@ cc.Class({
     },
 
     setGold: function(gold) {
-        this.goldText = gold
+        //cc.log("set gold"+gold)
+        this.goldText.string = gold+""
     },
 
     setDiamond: function(diamond) {
-        this.diamondText = diamond
+        //cc.log("set diamond"+diamond)
+        this.diamondText.string = diamond+""
     },
 
     goWork: function()
@@ -141,11 +143,21 @@ cc.Class({
     },
 
 
+    updateui:function()
+    {
+        //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
 
+        this.setExp(cc.cs.PlayerInfo.Exp,99999)
+        this.setDiamond(cc.cs.PlayerInfo.Diamond)
+        this.setGold(cc.cs.PlayerInfo.Money)
+
+    },
     // use this for initialization
     onLoad: function() {
 
         var self = this
+
+        this.updateui()
 
         this.shopBtn.on("click", (event) => {
 

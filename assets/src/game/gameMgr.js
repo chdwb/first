@@ -119,7 +119,7 @@ cc.Class({
     {
         var data = {}
         data["api_token"] = token
-        data["loveid"] = loveid
+        data["dateid"] = loveid
         this.sendHttp("ID_9", data, handle, obj)
     },
 
@@ -127,7 +127,7 @@ cc.Class({
     {
         var data = {}
         data["api_token"] = token
-        data["lovelogid"] = lovelogid
+        data["datelogid"] = lovelogid
         this.sendHttp("ID_10", data, handle, obj)
     },
     

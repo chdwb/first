@@ -26,6 +26,10 @@ cc.Class({
 
         Power:0,
 
+        Money:0,
+
+        Diamond:0,
+
         FreeWork:2,
 
         Phone_ID:0,

@@ -213,6 +213,8 @@ cc.Class({
             cc.cs.PlayerInfo.Sign = JasonObject.content.info.sign
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.Power = JasonObject.content.info.power
+            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.Diamond = JasonObject.content.info.diamond
             cc.cs.PlayerInfo.Phone_ID = JasonObject.content.info.phone_id
             cc.cs.PlayerInfo.Wechat_ID = JasonObject.content.info.wechat_id
             cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.zoneThumbsUp_id
@@ -352,6 +354,8 @@ cc.Class({
             cc.cs.PlayerInfo.Sign = JasonObject.content.info.sign
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.Power = JasonObject.content.info.power
+            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.Diamond = JasonObject.content.info.diamond
             cc.cs.PlayerInfo.Phone_ID = JasonObject.content.info.phone_id
             cc.cs.PlayerInfo.Wechat_ID = JasonObject.content.info.wechat_id
             cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.zoneThumbsUp_id

@@ -39,6 +39,8 @@ cc.Class({
         this.MissonView.active = (cc.cs.UIMgr.MISSONVIEW == type);
         this.ActionView.active = (cc.cs.UIMgr.ACTIONVIEW == type);
         this.LoveView.active = (cc.cs.UIMgr.LOVEVIEW == type);
+        
+        this.node.getChildByName("mainView").getComponent("mainView").updateui()
     },
 
     /*ToLoveView:function()
