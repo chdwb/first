@@ -102,7 +102,7 @@ cc.Class({
      goPhone: function()
     {
        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
     },
 
 
@@ -172,7 +172,7 @@ cc.Class({
         }, this.shopBtn)
 
         this.phoneBtn.on("click", (event) => {
-
+            self.goPhone()
         }, this.shopBtn)
 
         this.wechatBtn.on("click", (event) => {

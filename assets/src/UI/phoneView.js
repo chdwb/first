@@ -63,7 +63,28 @@ cc.Class({
 
         talkSummaryInfoPrefab : null,
 
-        inputTablePrefab : null
+        inputTablePrefab : null,
+
+        totalTime: 0,
+
+        currentTime: 0,
+
+        isAction: false,
+
+        
+    },
+
+
+    phoneWait:function(){
+        this.node =true;
+        this.playerInfoView.active =false
+        this.cancelBtn.active = false
+        this.infoText.node.active = true
+        this.inputBtn.active = false
+        this.phoneBtn.active = false
+        this.everInfoScroll.node.active = false
+        this.infoText.string = "正在呼叫中。。。"
+
     },
 
     showNormal:function(){
@@ -84,6 +105,8 @@ cc.Class({
         this.inputBtn.active = true
         this.phoneBtn.active = false
         this.everInfoScroll.node.active = false
+
+        this.infoText.string = "通话中。。。"
     },
 
     showPhoneInfoView:function(){
@@ -98,6 +121,14 @@ cc.Class({
 
     addSummaryItem:function(){
         
+
+    },
+
+    onbackBtn:function()
+    {
+        var parent = this.node.parent
+         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+
 
     },
 
@@ -116,18 +147,38 @@ cc.Class({
         })
 
         this.phoneBtn.on("click", (event)=>{
-            self.showPhone()
+
+            self.phoneWait()
+            self.isAction = true;
+            self.currentTime = 0
+            self.totalTime = 5
+            
         })
 
         this.backBtn.on("click", (event)=>{
             //back
+            this.onbackBtn()
         })
 
 
     },
 
     // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
+     update: function (dt) {
+          if (this.isAction) {
+            this.currentTime += dt;
+            if (this.currentTime >= this.totalTime) {
+               
+                this.showPhone()
+                
+                this.isAction = false;
+                this.currentTime = 0
+                this.totalTime = 0
+            } else {
+                
+            }
+        }
 
-    // },
+
+     },
 });

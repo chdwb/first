@@ -28,6 +28,10 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        PhoneView:{
+            default:null,
+            type:cc.Node,
+        },
         currentLayer:0,
 
     },
@@ -39,8 +43,11 @@ cc.Class({
         this.MissonView.active = (cc.cs.UIMgr.MISSONVIEW == type);
         this.ActionView.active = (cc.cs.UIMgr.ACTIONVIEW == type);
         this.LoveView.active = (cc.cs.UIMgr.LOVEVIEW == type);
-        
-        this.node.getChildByName("mainView").getComponent("mainView").updateui()
+        this.PhoneView.active = (cc.cs.UIMgr.PHONEVIEW == type);
+        if(cc.cs.UIMgr.PHONEVIEW == type)
+        {
+            this.node.getChildByName("mainView").getComponent("mainView").updateui()
+        }
     },
 
     /*ToLoveView:function()

@@ -223,7 +223,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 66
@@ -7963,7 +7963,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 221
@@ -9448,7 +9448,12 @@
     },
     "everyInfoScroll": {
       "__id__": 228
-    }
+    },
+    "talkSummaryInfoPrefab": null,
+    "inputTablePrefab": null,
+    "totalTime": 0,
+    "currentTime": 0,
+    "isAction": false
   },
   {
     "__type__": "cc.Node",
@@ -9992,6 +9997,9 @@
     },
     "ActionView": {
       "__id__": 115
+    },
+    "PhoneView": {
+      "__id__": 186
     },
     "currentLayer": 0
   },

@@ -10,6 +10,7 @@ cc.Class({
         MISSONVIEW:1,
         LOVEVIEW:2,
         ACTIONVIEW:3,
+        PHONEVIEW:4,
     },
 
    
