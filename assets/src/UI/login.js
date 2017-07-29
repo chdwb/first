@@ -240,6 +240,29 @@ cc.Class({
                 cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
                 cc.cs.PlayerInfo.Bag.push(JasonObject.content.info.backpacks[i])
             }  
+            for(var i=0;i<JasonObject.content.info.phones.length;i++){  
+  
+                cc.log("phoneid = "+JasonObject.content.info.phones[i].phone_id)
+                cc.cs.PlayerInfo.Phone_player_ID.push(JasonObject.content.info.phones[i])
+            }
+
+            for(var i=0;i<JasonObject.content.info.wechats.length;i++){  
+  
+                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
+                cc.cs.PlayerInfo.wechat_player_ID.push(JasonObject.content.info.wechats[i])
+            }
+
+            for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
+  
+                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
+                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i])
+            }
+
+            for(var i=0;i<JasonObject.content.info.replies.length;i++){  
+  
+                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
+                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i])
+            }
             
              cc.director.loadScene('GameScene');
         } else {
@@ -372,15 +395,42 @@ cc.Class({
             cc.cs.PlayerInfo.Work2LeftTImes = JasonObject.content.info.date_id2
             cc.cs.PlayerInfo.Work3LeftTImes = JasonObject.content.info.date_id3
             cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.date_id4
+
+         
             
-
-
-            var itemcount = JasonObject.content.info.backpacks.length
             for(var i=0;i<JasonObject.content.info.backpacks.length;i++){  
   
                 cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
                 cc.cs.PlayerInfo.Bag.push(JasonObject.content.info.backpacks[i])
-            }  
+            }
+
+            for(var i=0;i<JasonObject.content.info.phones.length;i++){  
+  
+                cc.log("phoneid = "+JasonObject.content.info.phones[i].phone_id)
+                cc.cs.PlayerInfo.Phone_player_ID.push(JasonObject.content.info.phones[i])
+            }
+
+            for(var i=0;i<JasonObject.content.info.wechats.length;i++){  
+  
+                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
+                cc.cs.PlayerInfo.wechat_player_ID.push(JasonObject.content.info.wechats[i])
+            }
+
+            for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
+  
+                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
+                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i])
+            }
+
+            for(var i=0;i<JasonObject.content.info.replies.length;i++){  
+  
+                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
+                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i])
+            }
+
+
+
+
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')

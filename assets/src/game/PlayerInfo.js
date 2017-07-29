@@ -70,6 +70,9 @@ cc.Class({
 
         Phone_player_ID:[],
         wechat_player_ID:[],
+        weibo_thumbs:[],
+        replies:[],
+
 
 
         Bag:[],
