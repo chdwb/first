@@ -305,6 +305,13 @@ cc.Class({
             self.showPhoneView()
         })
 
+
+        
+
+        this.cancelBtn.on("click", (event)=>{
+            self.showNormal()
+        })
+
         this.phoneBtn.on("click", (event)=>{
 
             self.phoneWait()
