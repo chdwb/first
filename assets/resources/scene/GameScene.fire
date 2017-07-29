@@ -7888,7 +7888,7 @@
     "_atlas": null
   },
   {
-    "__type__": "606d8NZawRG0JkPRaWXov4K",
+    "__type__": "538d04nkrxKOYqaH5qqcez4",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -7911,7 +7911,7 @@
       "__id__": 166
     },
     "goldText": {
-      "__id__": 146
+      "__id__": 153
     },
     "diamondText": {
       "__id__": 146
@@ -7966,9 +7966,13 @@
     "MissonView": {
       "__id__": 67
     },
+    "LoveView": {
+      "__id__": 138
+    },
     "ActionView": {
       "__id__": 115
-    }
+    },
+    "currentLayer": 0
   },
   {
     "__type__": "cc.Canvas",

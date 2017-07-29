@@ -47,7 +47,7 @@ cc.Class({
     onLoad: function() {
         this.backBtn.on("click", (event) => {
             var parent = this.node.parent
-            parent.getComponent("GameScene").ToMainView()
+            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
         }, this.backBtn)
 
         this.rightNowBtn.on("click", (event) => {

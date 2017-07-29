@@ -1,11 +1,20 @@
+
 cc.Class({
     extends: cc.Component,
 
     properties: {
         tipPrefab : null,
         popupPrefab :null,
-        removeList:[]
+        removeList:[],
+        MAINVIEW:0,
+        MISSONVIEW:1,
+        LOVEVIEW:2,
+        ACTIONVIEW:3,
     },
+
+   
+
+   
 
     // use this for initialization
     onLoad: function () {

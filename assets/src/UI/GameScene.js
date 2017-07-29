@@ -20,13 +20,35 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        LoveView:{
+            default:null,
+            type:cc.Node,
+        },
         ActionView:{
             default:null,
             type:cc.Node,
         },
+        currentLayer:0,
 
     },
 
+    SetView:function(type)
+    {
+        this.currentLayer = type
+        this.MainView.active = ( cc.cs.UIMgr.MAINVIEW == type)
+        this.MissonView.active = (cc.cs.UIMgr.MISSONVIEW == type);
+        this.ActionView.active = (cc.cs.UIMgr.ACTIONVIEW == type);
+        this.LoveView.active = (cc.cs.UIMgr.LOVEVIEW == type);
+    },
+
+    /*ToLoveView:function()
+    {
+        this.MainView.active = false;
+        this.MissonView.active = false;
+        this.ActionView.active = false;
+        this.LoveView.active = true;
+        
+    },
     ToMissonView:function()
     {
         this.MainView.active = false;
@@ -46,12 +68,10 @@ cc.Class({
         this.MainView.active = false;
         this.MissonView.active = false;
         this.ActionView.active = true;
-    },
+    },*/
 
     // use this for initialization
     onLoad: function () {
-        
-
     },
 
     // called every frame, uncomment this function to activate update callback

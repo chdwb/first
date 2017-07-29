@@ -88,56 +88,56 @@ cc.Class({
     goWork: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
     },
 
      goLove: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
     },
 
      goPhone: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
 
      goWechat: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
      goWeibo: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
      goBag: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
      goGift: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
      goShop: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
      goSetting: function()
     {
        var parent = this.node.parent
-       parent.getComponent("GameScene").ToMissonView()
+       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
 
@@ -184,7 +184,7 @@ cc.Class({
         }, this.shopBtn)
 
         this.workBtn.on("click", (event) => {
-
+            self.goLove()
         }, this.shopBtn)
 
         this.loveBtn.on("click", (event) => {

@@ -96,6 +96,8 @@ cc.Class({
             type: cc.Label,
             default: null
         },
+
+        isLogin:false,
     },
 
 
@@ -161,8 +163,8 @@ cc.Class({
     },
 
     startgame: function() {
-        var Name = cc.cs.PlayerInfo.playerName;
-        cc.log("Name =" + Name)
+        //var Name = cc.cs.PlayerInfo.playerName;
+        //cc.log("Name =" + Name)
         /*if (Name == null) {
 
         cc.director.loadScene('GameScene');
@@ -171,24 +173,50 @@ cc.Class({
             this.setRandomNameNode();
         } else*/
        // {
-            cc.log(2222)
+        if(this.isLogin)
+        {
             cc.director.loadScene('GameScene');
+        }
+        else
+        {
+            var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
+            var passward = cc.sys.localStorage.getItem('PASSWORD')
+            if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
+                this.gustIDLabel.string = login_id
+                cc.cs.gameMgr.sendLogin(login_id, passward, this.gotoGameScene, this)
+            } else {
+                //this.setStartGameNode()
+                //this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
+            }
+        }
+
+
+
+
+
+            //cc.director.loadScene('GameScene');
        // }
 
+    },
+
+    gotoGameScene:function()
+    {
+        this.isLogin = true;
+        cc.director.loadScene('GameScene');
     },
 
     // use this for initialization
     onLoad: function() {
         var self = this
         this.setStartGameNode()
-
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
-        if (login_id != null && login_id != "") {
+        var passward = cc.sys.localStorage.getItem('PASSWORD')
+         if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
             this.gustIDLabel.string = login_id
+            
         } else {
-            this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
+             this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
         }
-
         this.startGameBtn.on("click", (event) => {
             self.startgame()
         }, this.startGameBtn)
@@ -271,9 +299,9 @@ cc.Class({
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
-            cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)
-
-
+            cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)   
+            //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
+            this.isLogin = true
             cc.cs.PlayerInfo.ApiToken = JasonObject.content.info.api_token
             cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
             cc.cs.PlayerInfo.Welcome = JasonObject.content.info.welcome
@@ -298,6 +326,7 @@ cc.Class({
                 cc.cs.PlayerInfo.Bag.push(JasonObject.content.info.backpacks[i])
             }  
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
+            cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')
             cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
             this.setStartGameNode();
