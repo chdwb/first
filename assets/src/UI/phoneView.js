@@ -71,6 +71,9 @@ cc.Class({
 
         isAction: false,
 
+        inputTableBtn : null,  
+
+        NPCID : 1,
         
     },
 
@@ -138,6 +141,81 @@ cc.Class({
         this.msgText.string =cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_MSG"] 
     },
 
+    showInputTable : function(id){
+        var self = this
+        if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == -1){
+            this.inputTableBtn.active = true
+            var replayId = []
+            var btn1 = this.inputTableBtn.getChildByName("btn1")
+            var btn2 = this.inputTableBtn.getChildByName("btn2")
+            var btn3 = this.inputTableBtn.getChildByName("btn3")
+            btn1.active =true;
+            btn2.active =true;
+            btn3.active =true;
+            for(var i = 1; i <= cc.cs.gameData.phone["TOTAL_COUNT"]; ++i){
+                if(cc.cs.gameData.phone["PHONE_ID_"+i]["PHONE_OPTION"] ==  cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_AUDIO"])
+                {
+                    replayId.push(cc.cs.gameData.phone["PHONE_ID_"+i])
+                }
+            }
+
+            if(replayId.length == 1){
+                btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["PHONE_MSG"]
+                btn1.PHONE_ID = replayId[0]["PHONE_ID"]
+                btn1.on("click",(event)=>{
+                    cc.log("PHONE_ID = "+ event.target.PHONE_ID)
+                    event.target.parent.active = false
+                },btn1)
+                btn2.active = false;
+                btn3.active = false;
+            }else
+            if(replayId.length == 2){
+                btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["PHONE_MSG"]
+                btn2.getChildByName("Label").getComponent(cc.Label).string = replayId[1]["PHONE_MSG"]
+                btn1.PHONE_ID = replayId[0]["PHONE_ID"]
+                btn2.PHONE_ID = replayId[1]["PHONE_ID"]
+                btn1.on("click",(event)=>{
+                    cc.log("PHONE_ID = "+ event.target.PHONE_ID)
+                    event.target.parent.active = false
+                },btn1)
+                btn2.on("click",(event)=>{
+                    cc.log("PHONE_ID = "+ event.target.PHONE_ID)
+                    event.target.parent.active = false
+                },btn2)
+                
+                btn3.active = false;
+            }else
+            {
+                btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["PHONE_MSG"]
+                btn2.getChildByName("Label").getComponent(cc.Label).string = replayId[1]["PHONE_MSG"]
+                btn3.getChildByName("Label").getComponent(cc.Label).string = replayId[2]["PHONE_MSG"]
+                btn1.PHONE_ID = replayId[0]["PHONE_ID"]
+                btn2.PHONE_ID = replayId[1]["PHONE_ID"]
+                btn3.PHONE_ID = replayId[2]["PHONE_ID"]
+
+                btn1.on("click",(event)=>{
+                    cc.log("PHONE_ID = "+ event.target.PHONE_ID)
+                    event.target.parent.active = false
+                },btn1)
+                btn2.on("click",(event)=>{
+                    cc.log("PHONE_ID = "+ event.target.PHONE_ID)
+                    event.target.parent.active = false
+                },btn2)
+                btn3.on("click",(event)=>{
+                    cc.log("PHONE_ID = "+ event.target.PHONE_ID)
+                    event.target.parent.active = false
+                },btn3)
+            }
+
+
+
+        }else
+        {
+            return
+        }
+    },
+
+
 
     addSummaryItem:function(){
 
@@ -160,6 +238,15 @@ cc.Class({
         this.talkSummaryInfoPrefab = cc.loader.getRes("prefab/talkSummaryInfo", cc.Prefab)
         this.inputTablePrefab = cc.loader.getRes("prefab/inputTable", cc.Prefab)
 
+        this.inputTableBtn =  cc.instantiate(this.inputTablePrefab)
+
+        this.node.addChild(this.inputTableBtn, 88)
+
+        this.inputTableBtn.x = 0;
+        this.inputTableBtn.y = 0
+
+        this.inputTableBtn.active = false
+
         this.showNormal()
         this.playerInfoBackBtn.on("click", (event)=>{
             self.showPhoneView()
@@ -176,9 +263,13 @@ cc.Class({
 
         this.backBtn.on("click", (event)=>{
             //back
-            cc.log(self.node + "     " + self.node.parent)
             var parent = self.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        })
+
+        this.inputBtn.on("click", (event)=>{
+            self.showInputTable(self.NPCID)
+            
         })
 
 
@@ -191,7 +282,7 @@ cc.Class({
             if (this.currentTime >= this.totalTime) {
                
                 this.showPhone()
-                this.setInputMsg(1)
+                this.setInputMsg(this.NPCID)
                 this.isAction = false;
                 this.currentTime = 0
                 this.totalTime = 0
