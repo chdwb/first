@@ -47,7 +47,8 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         this.backBtn.on("click", (event) => {
-
+            var parent = this.node.parent
+            parent.getComponent("GameScene").ToMainView()
         }, this.backBtn)
 
         this.rightNowBtn.on("click", (event) => {

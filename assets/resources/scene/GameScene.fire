@@ -214,7 +214,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 66
@@ -4987,7 +4987,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 137
@@ -5898,7 +5898,8 @@
     "totalTime": 0,
     "currentTime": 0,
     "isAction": false,
-    "handle": null
+    "handle": null,
+    "handleobj": null
   },
   {
     "__type__": "cc.Sprite",
