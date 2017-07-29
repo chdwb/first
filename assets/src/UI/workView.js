@@ -83,14 +83,21 @@ cc.Class({
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.showTip("工作完成", 1.0)
-           
+            //cc.cs.UIMgr.showTip("工作完成", 1.0)
+            cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
+
+                var parent = this.node.parent
+                parent.getComponent("GameScene").ToMainView()
+
+            })
            
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
         //弹窗
     },
+
+    
 
     chooseWork: function(target) {
         for (var j = 0; j < this.list.content.children.length; ++j) {

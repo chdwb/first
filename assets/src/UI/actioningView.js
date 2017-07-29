@@ -41,8 +41,7 @@ cc.Class({
         //callback.apply(obj, ["666"]);
         this.handle = callback
         this.handleobj = obj
-        cc.cs.PlayerInfo.Work_LogID = image
-        this.handle.apply(this.handleobj, ["666"]);
+        
     },
     // use this for initialization
     onLoad: function() {
