@@ -153,6 +153,39 @@ cc.Class({
 
     },
     // use this for initialization
+
+     sendReplyHandle(ret)
+     {
+         cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            //cc.cs.UIMgr.showTip("工作完成", 1.0)
+           
+           
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+        //弹窗
+
+     },
+
+      sendReplyHandle(ret)
+     {
+         cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            //cc.cs.UIMgr.showTip("工作完成", 1.0)
+            //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
+
+               
+           
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+        //弹窗
+
+     },
+
     onLoad: function() {
 
         var self = this
@@ -160,49 +193,58 @@ cc.Class({
         this.updateui()
 
         this.shopBtn.on("click", (event) => {
-
+            cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
+            cc.cs.gameMgr.sendReply(cc.cs.PlayerInfo.ApiToken, "1", this.sendReplyHandle, this)
         }, this.shopBtn)
 
         this.giftBtn.on("click", (event) => {
 
-        }, this.shopBtn)
+        }, this.giftBtn)
 
         this.bagBtn.on("click", (event) => {
 
-        }, this.shopBtn)
+        }, this.bagBtn)
 
         this.phoneBtn.on("click", (event) => {
             self.goPhone()
-        }, this.shopBtn)
+        }, this.phoneBtn)
 
         this.wechatBtn.on("click", (event) => {
 
-        }, this.shopBtn)
+
+            
+        }, this.wechatBtn)
 
         this.zoneBtn.on("click", (event) => {
 
-        }, this.shopBtn)
+            
+
+        }, this.zoneBtn)
 
         this.settingBtn.on("click", (event) => {
+             cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
+             cc.cs.gameMgr.sendThumb(cc.cs.PlayerInfo.ApiToken,"1", this.sendReplyHandle, this)
 
-        }, this.shopBtn)
+
+
+        }, this.settingBtn)
 
         this.buydiamondBtn.on("click", (event) => {
 
-        }, this.shopBtn)
+        }, this.buydiamondBtn)
 
         this.buyGoldBtn.on("click", (event) => {
 
-        }, this.shopBtn)
+        }, this.buyGoldBtn)
 
         this.workBtn.on("click", (event) => {
             self.goLove()
-        }, this.shopBtn)
+        }, this.workBtn)
 
         this.loveBtn.on("click", (event) => {
             self.goWork()
 
-        }, this.shopBtn)
+        }, this.loveBtn)
     },
 
     // called every frame, uncomment this function to activate update callback

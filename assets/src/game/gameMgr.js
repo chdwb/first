@@ -137,6 +137,22 @@ cc.Class({
         data["api_token"] = token
         data["phoneid"] = phoneid
         this.sendHttp("ID_13", data, handle, obj)
+    },
+
+     sendThumb:function(token,zoneid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["zoneid"] = zoneid
+        this.sendHttp("ID_14", data, handle, obj)
+    },
+
+     sendReply:function(token,replyid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["replyid"] = replyid
+        this.sendHttp("ID_15", data, handle, obj)
     }
     
     

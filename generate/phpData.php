@@ -150,7 +150,9 @@ class PhpData{
 		"ID_10"=>array("ID"=>10, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/donedate", "Params"=>"api_token,datelogid", "Method"=>"POST", "Remark"=>"约会完成。"),
 		"ID_11"=>array("ID"=>11, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/update", "Params"=>"api_token,dateid", "Method"=>"POST", "Remark"=>"升级约会。"),
 		"ID_12"=>array("ID"=>12, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/buy", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"购买道具。"),
-		"ID_13"=>array("ID"=>13, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/phone", "Params"=>"api_token,phoneid", "Method"=>"POST", "Remark"=>"提交电话。")
+		"ID_13"=>array("ID"=>13, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/phone", "Params"=>"api_token,phoneid", "Method"=>"POST", "Remark"=>"提交电话。"),
+		"ID_14"=>array("ID"=>14, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/thumb", "Params"=>"api_token,zoneid", "Method"=>"POST", "Remark"=>"提交点赞。"),
+		"ID_15"=>array("ID"=>15, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/reply", "Params"=>"api_token,replyid", "Method"=>"POST", "Remark"=>"提交回复。")
 	);
 	public $errcode = array
 	(
