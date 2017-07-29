@@ -223,7 +223,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 66
@@ -7894,7 +7894,7 @@
     "_atlas": null
   },
   {
-    "__type__": "538d04nkrxKOYqaH5qqcez4",
+    "__type__": "606d8NZawRG0JkPRaWXov4K",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -7917,7 +7917,7 @@
       "__id__": 166
     },
     "goldText": {
-      "__id__": 153
+      "__id__": 146
     },
     "diamondText": {
       "__id__": 146
@@ -7963,7 +7963,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 221
@@ -8019,7 +8019,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 191
@@ -9992,15 +9992,11 @@
     "MissonView": {
       "__id__": 67
     },
-    "LoveView": {
-      "__id__": 138
-    },
+    "LoveView": null,
     "ActionView": {
       "__id__": 115
     },
-    "PhoneView": {
-      "__id__": 186
-    },
+    "PhoneView": null,
     "currentLayer": 0
   },
   {

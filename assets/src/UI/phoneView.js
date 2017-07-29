@@ -76,7 +76,7 @@ cc.Class({
 
 
     phoneWait:function(){
-        this.node =true;
+        this.node.active =true;
         this.playerInfoView.active =false
         this.cancelBtn.active = false
         this.infoText.node.active = true
@@ -88,7 +88,7 @@ cc.Class({
     },
 
     showNormal:function(){
-        this.node =true;
+        this.node.active =true;
         this.playerInfoView.active =false
         this.cancelBtn.active = false
         this.infoText.node.active = false
@@ -98,7 +98,7 @@ cc.Class({
     },
 
     showPhone:function(){
-        this.node =true;
+        this.node.active  =true;
         this.playerInfoView.active =false
         this.cancelBtn.active = true
         this.infoText.node.active = true
@@ -110,12 +110,12 @@ cc.Class({
     },
 
     showPhoneInfoView:function(){
-        this.node =false;
+        this.node.active =false;
         this.playerInfoView.active =true
     },
     
     showPhoneView:function(){
-        this.node =true;
+        this.node.active =true;
         this.playerInfoView.active =true
     },
 
@@ -147,7 +147,7 @@ cc.Class({
     onbackBtn:function()
     {
         var parent = this.node.parent
-         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
 
 
     },
@@ -176,7 +176,9 @@ cc.Class({
 
         this.backBtn.on("click", (event)=>{
             //back
-            this.onbackBtn()
+            cc.log(self.node + "     " + self.node.parent)
+            var parent = self.node.parent
+            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
         })
 
 
@@ -189,7 +191,7 @@ cc.Class({
             if (this.currentTime >= this.totalTime) {
                
                 this.showPhone()
-                
+                this.setInputMsg(1)
                 this.isAction = false;
                 this.currentTime = 0
                 this.totalTime = 0
