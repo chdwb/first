@@ -105,8 +105,8 @@ module.exports = {
 		"TOTAL_COUNT":5
 	},
 	zone:{
-		"ID_1":{"ID":1, "ZONE_LEVEL":3, "ZONE_TITLE":"朋友圈主题内容1", "ZONE_IMG_1":1, "ZONE_IMG_2":2, "ZONE_IMG_3":3, "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":1, "ZONE_FANS_COUNT":1, "ZONE_THUMBS_UP":1, "FB_END_ID":11},
-		"ID_2":{"ID":2, "ZONE_LEVEL":4, "ZONE_TITLE":"朋友圈主题内容2", "ZONE_IMG_1":2, "ZONE_IMG_2":3, "ZONE_IMG_3":3, "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":2, "ZONE_FANS_COUNT":2, "ZONE_THUMBS_UP":2, "FB_END_ID":11},
+		"ID_1":{"ID":1, "ZONE_LEVEL":3, "ZONE_TITLE":"朋友圈主题内容1", "ZONE_IMG_1":1, "ZONE_IMG_2":2, "ZONE_IMG_3":3, "ZONE_IMG_4":1, "ZONE_FOLLOW_NUM":1, "ZONE_FANS_COUNT":1, "ZONE_THUMBS_UP":1, "FB_END_ID":11},
+		"ID_2":{"ID":2, "ZONE_LEVEL":4, "ZONE_TITLE":"朋友圈主题内容2", "ZONE_IMG_1":2, "ZONE_IMG_2":3, "ZONE_IMG_3":3, "ZONE_IMG_4":1, "ZONE_FOLLOW_NUM":2, "ZONE_FANS_COUNT":2, "ZONE_THUMBS_UP":2, "FB_END_ID":11},
 		"ID_3":{"ID":3, "ZONE_LEVEL":5, "ZONE_TITLE":"朋友圈主题内容3", "ZONE_IMG_1":3, "ZONE_IMG_2":"dummy", "ZONE_IMG_3":"dummy", "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":3, "ZONE_FANS_COUNT":3, "ZONE_THUMBS_UP":3, "FB_END_ID":11},
 		"ID_4":{"ID":4, "ZONE_LEVEL":6, "ZONE_TITLE":"朋友圈主题内容4", "ZONE_IMG_1":4, "ZONE_IMG_2":3, "ZONE_IMG_3":"dummy", "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":4, "ZONE_FANS_COUNT":4, "ZONE_THUMBS_UP":4, "FB_END_ID":11},
 		"ID_5":{"ID":5, "ZONE_LEVEL":7, "ZONE_TITLE":"朋友圈主题内容5", "ZONE_IMG_1":"dummy", "ZONE_IMG_2":"dummy", "ZONE_IMG_3":"dummy", "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":5, "ZONE_FANS_COUNT":5, "ZONE_THUMBS_UP":5, "FB_END_ID":11},
@@ -144,7 +144,11 @@ module.exports = {
 		"ID_6":{"ID":6, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/work/donework", "Params":"api_token,worklogid", "Method":"POST", "Remark":"工作完成。"},
 		"ID_7":{"ID":7, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/work/upwork", "Params":"api_token,workid", "Method":"POST", "Remark":"升级工作。"},
 		"ID_8":{"ID":8, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/backpack/get", "Params":"api_token", "Method":"GET", "Remark":"获取玩家背包。"},
-		"TOTAL_COUNT":8
+		"ID_9":{"ID":9, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/dodate", "Params":"api_token,dateid", "Method":"POST", "Remark":"约会请求。"},
+		"ID_10":{"ID":10, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/donedate", "Params":"api_token,datelogid", "Method":"POST", "Remark":"约会完成。"},
+		"ID_11":{"ID":11, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/update", "Params":"api_token,dateid", "Method":"POST", "Remark":"升级约会。"},
+		"ID_12":{"ID":12, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/goods/buy", "Params":"api_token,goodsid,num", "Method":"POST", "Remark":"购买道具。"},
+		"TOTAL_COUNT":12
 	},
 	errcode:{
 		"ID_0":{"ID":0, "DESC":"正确"},
@@ -159,11 +163,12 @@ module.exports = {
 		"ID_10019":{"ID":10019, "DESC":"玩家名字不合法。"},
 		"ID_10020":{"ID":10020, "DESC":"已存在相同的用户名。"},
 		"ID_10021":{"ID":10021, "DESC":"玩家名字中包含敏感字符。"},
-		"ID_10022":{"ID":10022, "DESC":"请求的数据未找到。
-"},
-		"ID_10023":{"ID":10023, "DESC":"金币余额不足。
-"},
-		"TOTAL_COUNT":14
+		"ID_10022":{"ID":10022, "DESC":"请求的数据未找到。"},
+		"ID_10023":{"ID":10023, "DESC":"金币余额不足。"},
+		"ID_10024":{"ID":10024, "DESC":"当前体力值不足。"},
+		"ID_10025":{"ID":10025, "DESC":"所需道具数量不足。"},
+		"ID_10026":{"ID":10026, "DESC":"玩家等级不足。"},
+		"TOTAL_COUNT":17
 	},
 
 };

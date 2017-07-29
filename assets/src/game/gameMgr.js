@@ -114,6 +114,22 @@ cc.Class({
         data["worklogid"] = worklogid
         this.sendHttp("ID_6", data, handle, obj)
     },
+
+     sendLove : function(token, loveid, handle, obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["loveid"] = loveid
+        this.sendHttp("ID_9", data, handle, obj)
+    },
+
+     sendLoveDone : function(token, lovelogid, handle, obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["lovelogid"] = lovelogid
+        this.sendHttp("ID_10", data, handle, obj)
+    },
     
     
 

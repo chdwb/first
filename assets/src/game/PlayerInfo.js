@@ -50,6 +50,20 @@ cc.Class({
 
         Work5LeftTImes:0,
 
+        Love1LeftTImes:0,
+
+        Love2LeftTImes:0,
+
+        Love3LeftTImes:0,
+
+        Love4LeftTImes:0,
+
+        Love_ID:0,
+
+        Love_LogID:0,
+
+        
+
         Bag:[],
 
 },

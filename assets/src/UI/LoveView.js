@@ -51,8 +51,7 @@ cc.Class({
     {
         cc.log("token="+cc.cs.PlayerInfo.ApiToken)
         cc.log("workid="+this.currentWorkID)
-        this.node.getTag();
-        cc.cs.gameMgr.sendWork(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.startWorkHandle, this)
+        cc.cs.gameMgr.sendLove(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.startWorkHandle, this)
     },
 
     startWorkHandle(ret)
@@ -60,13 +59,13 @@ cc.Class({
        
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.showTip("开始工作", 1.0)
+            cc.cs.UIMgr.showTip("开始约会", 1.0)
             var parent = this.node.parent
             
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
-            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(JasonObject.content.info.executetime, this.currentWorkID, JasonObject.content.info.worklog_id, this.DoneWork,this)
-            cc.cs.PlayerInfo.Work_LogID = JasonObject.content.info.worklog_id
-            cc.log("work_logID"+JasonObject.content.info.worklog_id)
+            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(JasonObject.content.info.executetime, this.currentWorkID, "image", this.DoneWork,this)
+            cc.cs.PlayerInfo.Love_LogID = JasonObject.content.info.lovelog_id
+            cc.log("work_logID"+JasonObject.content.info.lovelog_id)
            
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
@@ -76,8 +75,8 @@ cc.Class({
     DoneWork:function(ret)
     {
         cc.log("done work"+cc.cs.PlayerInfo.ApiToken)
-        cc.log("done work"+cc.cs.PlayerInfo.Work_LogID)
-        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.ApiToken, cc.cs.PlayerInfo.Work_LogID , this.DoneWorkHandle, this)
+        cc.log("done work"+cc.cs.PlayerInfo.Love_LogID)
+        cc.cs.gameMgr.sendLoveDone(cc.cs.PlayerInfo.ApiToken, cc.cs.PlayerInfo.Love_LogID , this.DoneWorkHandle, this)
     },
 
     DoneWorkHandle:function(ret)
@@ -86,7 +85,7 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
-            cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
+            cc.cs.UIMgr.showPopupO("hehe","约会完成了",()=>{
 
                 var parent = this.node.parent
                 parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
@@ -108,8 +107,8 @@ cc.Class({
             }
         }
 
-        this.rewardText.string = cc.cs.gameData.work[target.csDataID]["REWARD"]
-        this.needTimeText.string = cc.cs.gameData.work[target.csDataID]["EXECUTE_TIME"]
+        this.rewardText.string = cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
+        this.needTimeText.string = cc.cs.gameData.date[target.csDataID]["DATE_EXECUTE_TIME"]
         this.currentWorkID = target.workID
         target.getComponent("missionItemComponent").isChoose(true)
     },
@@ -117,7 +116,7 @@ cc.Class({
     loadWorkItem: function(id) {
         var self = this
         this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
-        var workCount = cc.cs.gameData.work["TOTAL_COUNT"]
+        var workCount = cc.cs.gameData.date["TOTAL_COUNT"]
         var index = 1;
         for (var i = 0; i < workCount; ++i) {
             var itemNode = cc.instantiate(this.missionItemPrefab)
@@ -130,13 +129,13 @@ cc.Class({
             itemNode.active = true
             if (index == id) {
                 itemCom.isChoose(true)
-                this.rewardText.string = cc.cs.gameData.work["ID_" + index]["REWARD"]
-                this.needTimeText.string = cc.cs.gameData.work["ID_" + index]["EXECUTE_TIME"]
+                this.rewardText.string = cc.cs.gameData.date["DATE_ID_" + index]["DATE_EXP"]
+                this.needTimeText.string = cc.cs.gameData.date["DATE_ID_" + index]["DATE_EXECUTE_TIME"]
             } else {
                 itemCom.isChoose(false)
             }
-            itemCom.setNameText(cc.cs.gameData.work["ID_" + index]["NAME"])
-            itemNode.csDataID = "ID_" + index
+            itemCom.setNameText(cc.cs.gameData.date["DATE_ID_" + index]["DATE_NAME"])
+            itemNode.csDataID = "DATE_ID_" + index
             itemNode.workID = "" + index
             index++;
             cc.cs.UIMgr.addItem_verticalScrollView(this.list, itemNode, 0)
