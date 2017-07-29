@@ -47,7 +47,7 @@ cc.Class({
         this.sendHttp("ID_2",data, handle, obj)
     },
 
-    registerHandle : function (ret)
+    /*registerHandle : function (ret)
     {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
@@ -77,7 +77,7 @@ cc.Class({
         {
             cc.cs.UIMgr.showTip( JasonObject.error , 1.0)
         }
-    },
+    },*/
 
     sendGetPack : function(token,handle){
         var data = {}
@@ -85,11 +85,11 @@ cc.Class({
         this.sendHttp("ID_6",data, handle)
     },
 
-    getPackHandle : function(ret)
+    /*getPackHandle : function(ret)
     {
         cc.log(ret)
         //道具ID + 数量
-    },
+    },*/
     
     sendName : function(token, name, handle, obj)
     {
@@ -97,6 +97,23 @@ cc.Class({
         data["api_token"] = token
         data["name"] = name
         this.sendHttp("ID_3", data, handle, obj)
+    },
+
+     sendWork : function(token, workid, handle, obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["workid"] = workid
+        this.sendHttp("ID_5", data, handle, obj)
+    },
+
+     sendWorkDone : function(token, worklogid, handle, obj)
+    {
+        cc.log("heheheh"+handle)
+        var data = {}
+        data["api_token"] = token
+        data["worklogid"] = worklogid
+        this.sendHttp("ID_6", data, handle, obj)
     },
     
     

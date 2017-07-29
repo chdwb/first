@@ -22,7 +22,7 @@ cc.Class({
             type: cc.String,
         },
 
-        WelCome : {
+        Welcome : {
             default: "",
             type: cc.String,
         },
@@ -47,11 +47,25 @@ cc.Class({
 
         Work_ID:0,
 
-    },
+        Work_LogID:0,
+
+        Work1LeftTImes:0,
+
+        Work2LeftTImes:0,
+
+        Work3LeftTImes:0,
+
+        Work4LeftTImes:0,
+
+        Work5LeftTImes:0,
+
+        Bag:[],
+
+},
 
     // use this for initialization
     onLoad: function () {
-
+        
     },
 
     // called every frame, uncomment this function to activate update callback

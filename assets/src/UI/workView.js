@@ -38,10 +38,56 @@ cc.Class({
             type: cc.Node,
             default: null
         },
+
         missionBtnList: [],
 
         missionItemPrefab: null,
 
+        currentWorkID:"",
+
+    },
+
+    startWork: function()
+    {
+        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("workid="+this.currentWorkID)
+        cc.cs.gameMgr.sendWork(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.startWorkHandle, this)
+    },
+
+    startWorkHandle(ret)
+    {
+       
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.UIMgr.showTip("开始工作", 1.0)
+            var parent = this.node.parent
+            parent.getComponent("GameScene").ToActionView()
+            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(/*JasonObject.content.info.executetime*/1, this.currentWorkID, "", this.DoneWork,this)
+            cc.cs.PlayerInfo.Work_LogID = JasonObject.content.info.worklog_id
+           
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+    },
+
+    DoneWork:function(ret)
+    {
+        cc.log("done work"+this)
+        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.ApiToken, cc.cs.PlayerInfo.Work_LogID , this.DoneWorkHandle, this)
+    },
+
+    DoneWorkHandle:function(ret)
+    {
+        cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.UIMgr.showTip("工作完成", 1.0)
+           
+           
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+        //弹窗
     },
 
     chooseWork: function(target) {
@@ -53,15 +99,14 @@ cc.Class({
 
         this.rewardText.string = cc.cs.gameData.work[target.csDataID]["REWARD"]
         this.needTimeText.string = cc.cs.gameData.work[target.csDataID]["EXECUTE_TIME"]
+        currentWorkID = target.csDataID
         target.getComponent("missionItemComponent").isChoose(true)
     },
 
     loadWorkItem: function(id) {
         var self = this
         this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
-        var workCount = 0
-        for (var key in cc.cs.gameData.work)
-            workCount++;
+        var workCount = cc.cs.gameData.work["TOTAL_COUNT"]
         var index = 1;
         for (var i = 0; i < workCount; ++i) {
             var itemNode = cc.instantiate(this.missionItemPrefab)
@@ -89,11 +134,15 @@ cc.Class({
     onLoad: function() {
 
         this.loadWorkItem(1)
+        this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
+            this.startWork()
         }, this.startBtn)
         this.backBtn.on("click", (event) => {
             //添加回退代码
+            var parent = this.node.parent
+            parent.getComponent("GameScene").ToMainView()
         }, this.backBtn)
     },
 

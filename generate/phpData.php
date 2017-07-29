@@ -107,7 +107,7 @@ class PhpData{
 	);
 	public $zone = array
 	(
-		"ID_1"=>array("ID"=>1, "ZONE_LEVEL"=>3, "ZONE_TITLE"=>"朋友圈主题内容1", "ZONE_IMG_1"=>1, "ZONE_IMG_2"=>2, "ZONE_IMG_3"=>3, "ZONE_IMG_4"=>-1, "ZONE_FOLLOW_NUM"=>1, "ZONE_FANS_COUNT"=>1, "ZONE_THUMBS_UP"=>1, "FB_END_ID"=>11),
+		"ID_1"=>array("ID"=>1, "ZONE_LEVEL"=>3, "ZONE_TITLE"=>"朋友圈主题内容1", "ZONE_IMG_1"=>1, "ZONE_IMG_2"=>2, "ZONE_IMG_3"=>3, "ZONE_IMG_4"=>"dummy", "ZONE_FOLLOW_NUM"=>1, "ZONE_FANS_COUNT"=>1, "ZONE_THUMBS_UP"=>1, "FB_END_ID"=>11),
 		"ID_2"=>array("ID"=>2, "ZONE_LEVEL"=>4, "ZONE_TITLE"=>"朋友圈主题内容2", "ZONE_IMG_1"=>2, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>3, "ZONE_IMG_4"=>"dummy", "ZONE_FOLLOW_NUM"=>2, "ZONE_FANS_COUNT"=>2, "ZONE_THUMBS_UP"=>2, "FB_END_ID"=>11),
 		"ID_3"=>array("ID"=>3, "ZONE_LEVEL"=>5, "ZONE_TITLE"=>"朋友圈主题内容3", "ZONE_IMG_1"=>3, "ZONE_IMG_2"=>"dummy", "ZONE_IMG_3"=>"dummy", "ZONE_IMG_4"=>"dummy", "ZONE_FOLLOW_NUM"=>3, "ZONE_FANS_COUNT"=>3, "ZONE_THUMBS_UP"=>3, "FB_END_ID"=>11),
 		"ID_4"=>array("ID"=>4, "ZONE_LEVEL"=>6, "ZONE_TITLE"=>"朋友圈主题内容4", "ZONE_IMG_1"=>4, "ZONE_IMG_2"=>3, "ZONE_IMG_3"=>"dummy", "ZONE_IMG_4"=>"dummy", "ZONE_FOLLOW_NUM"=>4, "ZONE_FANS_COUNT"=>4, "ZONE_THUMBS_UP"=>4, "FB_END_ID"=>11),
@@ -142,22 +142,28 @@ class PhpData{
 		"ID_2"=>array("ID"=>2, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/login", "Params"=>"$username, $password,$deviceid", "Method"=>"POST", "Remark"=>"用户账号登录，相关数据初始化。"),
 		"ID_3"=>array("ID"=>3, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/setname", "Params"=>"api_token,name", "Method"=>"POST", "Remark"=>"给玩家命名"),
 		"ID_4"=>array("ID"=>4, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/sign/dosign", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"玩家签到与奖励。"),
-		"ID_5"=>array("ID"=>5, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/dowork", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"玩家工作以及相关参数返回。"),
-		"ID_6"=>array("ID"=>6, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/backpack/get", "Params"=>"api_token", "Method"=>"GET", "Remark"=>"获取玩家背包。")
+		"ID_5"=>array("ID"=>5, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/dowork", "Params"=>"api_token,workid", "Method"=>"POST", "Remark"=>"玩家工作以及相关参数返回。"),
+		"ID_6"=>array("ID"=>6, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/donework", "Params"=>"api_token,worklogid", "Method"=>"POST", "Remark"=>"工作完成。"),
+		"ID_7"=>array("ID"=>7, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/upwork", "Params"=>"api_token,workid", "Method"=>"POST", "Remark"=>"升级工作。"),
+		"ID_8"=>array("ID"=>8, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/backpack/get", "Params"=>"api_token", "Method"=>"GET", "Remark"=>"获取玩家背包。")
 	);
 	public $errcode = array
 	(
-		"ID_"0""=>array("ID"=>"0", "DESC"=>"正确"),
-		"ID_"10011""=>array("ID"=>"10011", "DESC"=>"请求所提交的参数有误。"),
-		"ID_"10012""=>array("ID"=>"10012", "DESC"=>"用户名或密码有误。"),
-		"ID_"10013""=>array("ID"=>"10013", "DESC"=>"用户名不合法。"),
-		"ID_"10014""=>array("ID"=>"10014", "DESC"=>"密码不合法。"),
-		"ID_"10015""=>array("ID"=>"10015", "DESC"=>"记录保存失败。"),
-		"ID_"10016""=>array("ID"=>"10016", "DESC"=>"错误的登录信息。"),
-		"ID_"10017""=>array("ID"=>"10017", "DESC"=>"非法的重复操作。"),
-		"ID_"10018""=>array("ID"=>"10018", "DESC"=>"请求超过次数限制。"),
-		"ID_"10019""=>array("ID"=>"10019", "DESC"=>"玩家名字不合法。"),
-		"ID_"10020""=>array("ID"=>"10020", "DESC"=>"已存在相同的用户名。"),
-		"ID_"10021""=>array("ID"=>"10021", "DESC"=>"玩家名字中包含敏感字符。")
+		"ID_0"=>array("ID"=>0, "DESC"=>"正确"),
+		"ID_10011"=>array("ID"=>10011, "DESC"=>"请求所提交的参数有误。"),
+		"ID_10012"=>array("ID"=>10012, "DESC"=>"用户名或密码有误。"),
+		"ID_10013"=>array("ID"=>10013, "DESC"=>"用户名不合法。"),
+		"ID_10014"=>array("ID"=>10014, "DESC"=>"密码不合法。"),
+		"ID_10015"=>array("ID"=>10015, "DESC"=>"记录保存失败。"),
+		"ID_10016"=>array("ID"=>10016, "DESC"=>"错误的登录信息。"),
+		"ID_10017"=>array("ID"=>10017, "DESC"=>"非法的重复操作。"),
+		"ID_10018"=>array("ID"=>10018, "DESC"=>"请求超过次数限制。"),
+		"ID_10019"=>array("ID"=>10019, "DESC"=>"玩家名字不合法。"),
+		"ID_10020"=>array("ID"=>10020, "DESC"=>"已存在相同的用户名。"),
+		"ID_10021"=>array("ID"=>10021, "DESC"=>"玩家名字中包含敏感字符。"),
+		"ID_10022"=>array("ID"=>10022, "DESC"=>"请求的数据未找到。
+"),
+		"ID_10023"=>array("ID"=>10023, "DESC"=>"金币余额不足。
+")
 	);
 }?>

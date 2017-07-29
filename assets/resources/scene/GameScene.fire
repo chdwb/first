@@ -4956,7 +4956,8 @@
       "__id__": 84
     },
     "missionBtnList": [],
-    "missionItemPrefab": null
+    "missionItemPrefab": null,
+    "currentWorkID": ""
   },
   {
     "__type__": "cc.Node",

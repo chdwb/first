@@ -29,15 +29,20 @@ cc.Class({
         totalTime: 0,
         currentTime: 0,
         isAction: false,
-        handle: null
+        handle: null,
+        handleobj: null,
     },
 
-    setActionInfo: function(time, desc, image, callback) {
-        this.isAction = true
+    setActionInfo: function(time, desc, image, callback,obj) {
+        //this.isAction = true
         this.totalTime = time
         this.currentTime = 0
         this.DescText.string = desc
+        //callback.apply(obj, ["666"]);
         this.handle = callback
+        this.handleobj = obj
+
+        //this.handle.apply(this.handleobj, ["666"]);
     },
     // use this for initialization
     onLoad: function() {
@@ -58,7 +63,14 @@ cc.Class({
             if (this.currentTime >= this.totalTime) {
                 this.process.progress = 1.0
                 this.processText.string = 100 + "%"
-                this.handle()
+
+               // cc.log("6666"+this.handle)
+       
+
+                //if(this.handler !== null){
+                this.handler.apply(this.handleobj, ["666"]);
+               // }    
+                
                 this.isAction = false;
                 this.currentTime = 0
                 this.totalTime = 0

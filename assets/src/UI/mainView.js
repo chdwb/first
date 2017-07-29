@@ -91,6 +91,55 @@ cc.Class({
        parent.getComponent("GameScene").ToMissonView()
     },
 
+     goLove: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
+     goPhone: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
+
+     goWechat: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
+     goWeibo: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
+     goBag: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
+     goGift: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
+     goShop: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
+     goSetting: function()
+    {
+       var parent = this.node.parent
+       parent.getComponent("GameScene").ToMissonView()
+    },
+
 
 
     // use this for initialization
