@@ -3,7 +3,7 @@
   "_name": "666",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.08333333333333333,
+  "_duration": 0.45,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -18,7 +18,7 @@
           ]
         },
         {
-          "frame": 0.08333333333333333,
+          "frame": 0.45,
           "value": [
             684,
             293
