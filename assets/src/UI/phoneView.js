@@ -133,10 +133,25 @@ cc.Class({
             this.npcName.node.active = true
             this.playerName.node.active = false
             this.npcName.string = cc.cs.PlayerInfo.NPCName
+
+           
+
+            this.inputBtn.once("click", (event)=>{
+            this.showInputTable(cc.cs.PlayerInfo.Phone_ID)
+            
+        })
+            
+        
+
+            
         }else{
             this.npcName.node.active = false
             this.playerName.node.active = true
             this.playerName.string = cc.cs.PlayerInfo.PlayerNmae
+            this.playerName.string = "西门庆"
+            
+            this.inputBtn.targetOff(this.inputBtn)
+
         }
         this.msgText.string =cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_MSG"] 
     },
@@ -168,6 +183,7 @@ cc.Class({
                 btn1.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
+                    self.SendPhone(event.target.PHONE_ID)
                 },btn1)
                 btn2.active = false;
                 btn3.active = false;
@@ -180,11 +196,13 @@ cc.Class({
                 btn1.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
+                    self.SendPhone(event.target.PHONE_ID)
                     
                 },btn1)
                 btn2.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
+                    self.SendPhone(event.target.PHONE_ID)
                 },btn2)
                 
                 btn3.active = false;
@@ -241,7 +259,7 @@ cc.Class({
     SendPhone:function(phoneid)
     {
         cc.log("SendPhone = "+phoneid  + "         " + cc.cs.PlayerInfo.ApiToken  )
-
+        this.setInputMsg(phoneid)
         cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.ApiToken, phoneid , this.SendPhoneHandle, this)
     },
     SendPhoneHandle:function(ret)
@@ -251,8 +269,14 @@ cc.Class({
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
+            cc.cs.PlayerInfo.Phone_ID = JasonObject.content.info.phone_audio
+            
+            this.isAction = true;
+            this.currentTime = 0
+            this.totalTime = cc.random0To1() * 8
 
-            //cc.cs.PlayerInfo.PHONE_ID = ????    
+            
+
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
@@ -286,7 +310,7 @@ cc.Class({
             self.phoneWait()
             self.isAction = true;
             self.currentTime = 0
-            self.totalTime = 5
+            self.totalTime = 3
             
         })
 
@@ -297,7 +321,7 @@ cc.Class({
         })
 
         this.inputBtn.on("click", (event)=>{
-            self.showInputTable(self.NPCID)
+           // self.showInputTable(cc.cs.PlayerInfo.Phone_ID)
             
         })
 
