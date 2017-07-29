@@ -132,14 +132,14 @@ class PhpData{
 	);
 	public $reply = array
 	(
-		"ID_1"=>array("ID"=>1, "REPLY_LEVEL"=>3, "REPLY_GROUP_ID"=>1, "REPLY_TEXT"=>"男主回复1", "REPLY_REPLY"=>"女主回复1", "REPLY_PLAYER_REPLY"=>1),
-		"ID_2"=>array("ID"=>2, "REPLY_LEVEL"=>3, "REPLY_GROUP_ID"=>2, "REPLY_TEXT"=>"男主回复2", "REPLY_REPLY"=>"女主回复2", "REPLY_PLAYER_REPLY"=>2),
-		"ID_3"=>array("ID"=>3, "REPLY_LEVEL"=>3, "REPLY_GROUP_ID"=>3, "REPLY_TEXT"=>"男主回复3", "REPLY_REPLY"=>"女主回复3", "REPLY_PLAYER_REPLY"=>3)
+		"ID_1"=>array("ID"=>1, "REPLY_LEVEL"=>3, "REPLY_GROUP_ID"=>1, "REPLY_TEXT"=>"男主回复1", "REPLY_REPLY"=>"女主回复1", "REPLY_PLAYER_REPLY"=>1, "ZONE_ID"=>1),
+		"ID_2"=>array("ID"=>2, "REPLY_LEVEL"=>3, "REPLY_GROUP_ID"=>2, "REPLY_TEXT"=>"男主回复2", "REPLY_REPLY"=>"女主回复2", "REPLY_PLAYER_REPLY"=>2, "ZONE_ID"=>1),
+		"ID_3"=>array("ID"=>3, "REPLY_LEVEL"=>3, "REPLY_GROUP_ID"=>3, "REPLY_TEXT"=>"男主回复3", "REPLY_REPLY"=>"女主回复3", "REPLY_PLAYER_REPLY"=>3, "ZONE_ID"=>1)
 	);
 	public $http = array
 	(
-		"ID_1"=>array("ID"=>1, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/register", "Params"=>"username, password,$deviceid", "Method"=>"POST", "Remark"=>"用户账号注册使用。"),
-		"ID_2"=>array("ID"=>2, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/login", "Params"=>"$username, $password,$deviceid", "Method"=>"POST", "Remark"=>"用户账号登录，相关数据初始化。"),
+		"ID_1"=>array("ID"=>1, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/register", "Params"=>"username, password,_deviceid", "Method"=>"POST", "Remark"=>"用户账号注册使用。"),
+		"ID_2"=>array("ID"=>2, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/login", "Params"=>"_username, _password,_deviceid", "Method"=>"POST", "Remark"=>"用户账号登录，相关数据初始化。"),
 		"ID_3"=>array("ID"=>3, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/setname", "Params"=>"api_token,name", "Method"=>"POST", "Remark"=>"给玩家命名"),
 		"ID_4"=>array("ID"=>4, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/sign/dosign", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"玩家签到与奖励。"),
 		"ID_5"=>array("ID"=>5, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/dowork", "Params"=>"api_token,workid", "Method"=>"POST", "Remark"=>"玩家工作以及相关参数返回。"),
@@ -149,7 +149,8 @@ class PhpData{
 		"ID_9"=>array("ID"=>9, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/dodate", "Params"=>"api_token,dateid", "Method"=>"POST", "Remark"=>"约会请求。"),
 		"ID_10"=>array("ID"=>10, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/donedate", "Params"=>"api_token,datelogid", "Method"=>"POST", "Remark"=>"约会完成。"),
 		"ID_11"=>array("ID"=>11, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/update", "Params"=>"api_token,dateid", "Method"=>"POST", "Remark"=>"升级约会。"),
-		"ID_12"=>array("ID"=>12, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/buy", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"购买道具。")
+		"ID_12"=>array("ID"=>12, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/buy", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"购买道具。"),
+		"ID_13"=>array("ID"=>13, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/phone", "Params"=>"api_token,phoneid", "Method"=>"POST", "Remark"=>"提交电话。")
 	);
 	public $errcode = array
 	(

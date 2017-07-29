@@ -130,13 +130,13 @@ module.exports = {
 		"TOTAL_COUNT":11
 	},
 	reply:{
-		"ID_1":{"ID":1, "REPLY_LEVEL":3, "REPLY_GROUP_ID":1, "REPLY_TEXT":"男主回复1", "REPLY_REPLY":"女主回复1", "REPLY_PLAYER_REPLY":1},
-		"ID_2":{"ID":2, "REPLY_LEVEL":3, "REPLY_GROUP_ID":2, "REPLY_TEXT":"男主回复2", "REPLY_REPLY":"女主回复2", "REPLY_PLAYER_REPLY":2},
-		"ID_3":{"ID":3, "REPLY_LEVEL":3, "REPLY_GROUP_ID":3, "REPLY_TEXT":"男主回复3", "REPLY_REPLY":"女主回复3", "REPLY_PLAYER_REPLY":3},
+		"ID_1":{"ID":1, "REPLY_LEVEL":3, "REPLY_GROUP_ID":1, "REPLY_TEXT":"男主回复1", "REPLY_REPLY":"女主回复1", "REPLY_PLAYER_REPLY":1, "ZONE_ID":1},
+		"ID_2":{"ID":2, "REPLY_LEVEL":3, "REPLY_GROUP_ID":2, "REPLY_TEXT":"男主回复2", "REPLY_REPLY":"女主回复2", "REPLY_PLAYER_REPLY":2, "ZONE_ID":1},
+		"ID_3":{"ID":3, "REPLY_LEVEL":3, "REPLY_GROUP_ID":3, "REPLY_TEXT":"男主回复3", "REPLY_REPLY":"女主回复3", "REPLY_PLAYER_REPLY":3, "ZONE_ID":1},
 		"TOTAL_COUNT":3
 	},
 	http:{
-		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"_username, password,_deviceid", "Method":"POST", "Remark":"用户账号注册使用。"},
+		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username, password,_deviceid", "Method":"POST", "Remark":"用户账号注册使用。"},
 		"ID_2":{"ID":2, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/login", "Params":"_username, _password,_deviceid", "Method":"POST", "Remark":"用户账号登录，相关数据初始化。"},
 		"ID_3":{"ID":3, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/setname", "Params":"api_token,name", "Method":"POST", "Remark":"给玩家命名"},
 		"ID_4":{"ID":4, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/sign/dosign", "Params":"api_token", "Method":"POST", "Remark":"玩家签到与奖励。"},
@@ -148,7 +148,8 @@ module.exports = {
 		"ID_10":{"ID":10, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/donedate", "Params":"api_token,datelogid", "Method":"POST", "Remark":"约会完成。"},
 		"ID_11":{"ID":11, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/update", "Params":"api_token,dateid", "Method":"POST", "Remark":"升级约会。"},
 		"ID_12":{"ID":12, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/goods/buy", "Params":"api_token,goodsid,num", "Method":"POST", "Remark":"购买道具。"},
-		"TOTAL_COUNT":12
+		"ID_13":{"ID":13, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/make/phone", "Params":"api_token,phoneid", "Method":"POST", "Remark":"提交电话。"},
+		"TOTAL_COUNT":13
 	},
 	errcode:{
 		"ID_0":{"ID":0, "DESC":"正确"},
