@@ -32,6 +32,10 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        ZoneView:{
+            default:null,
+            type:cc.Node,
+        },
         currentLayer:0,
 
     },
@@ -44,6 +48,7 @@ cc.Class({
         this.ActionView.active = (cc.cs.UIMgr.ACTIONVIEW == type);
         this.LoveView.active = (cc.cs.UIMgr.LOVEVIEW == type);
         this.PhoneView.active = (cc.cs.UIMgr.PHONEVIEW == type);
+        this.ZoneView.active = (cc.cs.UIMgr.ZONEVIEW == type);
         if(cc.cs.UIMgr.PHONEVIEW == type)
         {
             this.node.getChildByName("mainView").getComponent("mainView").updateui()

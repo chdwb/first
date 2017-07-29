@@ -11,6 +11,7 @@ cc.Class({
         LOVEVIEW:2,
         ACTIONVIEW:3,
         PHONEVIEW:4,
+        ZONEVIEW:5,
     },
 
    

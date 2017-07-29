@@ -229,7 +229,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 66
@@ -9457,7 +9457,6 @@
     },
     "talkSummaryInfoPrefab": null,
     "inputTablePrefab": null,
-    "startTime": 0,
     "totalTime": 0,
     "currentTime": 0,
     "isAction": false,
@@ -10486,7 +10485,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 270
@@ -11454,7 +11453,11 @@
       "__id__": 249
     },
     "ZoneIDList": [],
-    "ZoneItemPrefab": null
+    "ZoneItemPrefab": null,
+    "inputTablePrefab": null,
+    "inputTableBtn": null,
+    "currentPLID": 0,
+    "currentItem": null
   },
   {
     "__type__": "cc.Sprite",
@@ -11504,6 +11507,9 @@
     },
     "PhoneView": {
       "__id__": 186
+    },
+    "ZoneView": {
+      "__id__": 246
     },
     "currentLayer": 0
   },

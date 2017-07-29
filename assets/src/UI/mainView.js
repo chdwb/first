@@ -99,6 +99,12 @@ cc.Class({
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
     },
 
+    goZone: function()
+    {
+       var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ZONEVIEW)
+    },
+
      goPhone: function()
     {
        var parent = this.node.parent
@@ -194,7 +200,7 @@ cc.Class({
 
         this.shopBtn.on("click", (event) => {
             cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
-            cc.cs.gameMgr.sendReply(cc.cs.PlayerInfo.ApiToken, "1", this.sendReplyHandle, this)
+            
         }, this.shopBtn)
 
         this.giftBtn.on("click", (event) => {
@@ -217,15 +223,12 @@ cc.Class({
 
         this.zoneBtn.on("click", (event) => {
 
-            
+            this.goZone()
 
         }, this.zoneBtn)
 
         this.settingBtn.on("click", (event) => {
              cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
-             cc.cs.gameMgr.sendThumb(cc.cs.PlayerInfo.ApiToken,"1", this.sendReplyHandle, this)
-
-
 
         }, this.settingBtn)
 

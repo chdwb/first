@@ -12,7 +12,7 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        PlayerNmae : "",
+        PlayerNmae : "西门庆",
 
         ApiToken : "",
 
@@ -78,6 +78,35 @@ cc.Class({
         Bag:[],
 
 },
+
+    getZoneReplyID : function(id){
+        for(var i = 0 ;i < this.replies.length; i++)
+        {
+            if(id == 
+            cc.cs.gameData.reply["ID_"+this.replies[i]]["ZONE_ID"])
+            return this.replies[i]
+        }
+        return 0
+    },
+
+    canZanZone:function(id){
+       
+        for(var i = 0 ;i < this.weibo_thumbs.length; i++)
+        {
+            if(id == this.weibo_thumbs[i])return false;
+        }
+        return true;
+    },
+
+    canPLZone:function(id){
+        for(var i = 0 ;i < this.replies.length; i++)
+        {
+            if(id == 
+            cc.cs.gameData.reply["ID_"+this.replies[i]]["ZONE_ID"])
+                return false;
+        }
+        return true;
+    },
 
     // use this for initialization
     onLoad: function () {

@@ -98,6 +98,7 @@ cc.Class({
         this.inputBtn.active = false
         this.phoneBtn.active = true
         this.everInfoScroll.node.active = true
+        this.inputTableBtn.active = false
     },
 
     showPhone:function(){

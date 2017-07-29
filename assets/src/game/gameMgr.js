@@ -99,7 +99,7 @@ cc.Class({
         this.sendHttp("ID_3", data, handle, obj)
     },
 
-     sendWork : function(token, workid, handle, obj)
+    sendWork : function(token, workid, handle, obj)
     {
         var data = {}
         data["api_token"] = token
@@ -107,7 +107,7 @@ cc.Class({
         this.sendHttp("ID_5", data, handle, obj)
     },
 
-     sendWorkDone : function(token, worklogid, handle, obj)
+    sendWorkDone : function(token, worklogid, handle, obj)
     {
         var data = {}
         data["api_token"] = token
@@ -115,7 +115,7 @@ cc.Class({
         this.sendHttp("ID_6", data, handle, obj)
     },
 
-     sendLove : function(token, loveid, handle, obj)
+    sendLove : function(token, loveid, handle, obj)
     {
         var data = {}
         data["api_token"] = token
@@ -123,7 +123,7 @@ cc.Class({
         this.sendHttp("ID_9", data, handle, obj)
     },
 
-     sendLoveDone : function(token, lovelogid, handle, obj)
+    sendLoveDone : function(token, lovelogid, handle, obj)
     {
         var data = {}
         data["api_token"] = token

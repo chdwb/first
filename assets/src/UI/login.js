@@ -207,7 +207,7 @@ cc.Class({
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
             cc.cs.PlayerInfo.ApiToken = JasonObject.content.info.api_token
-            cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
+            //cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
             cc.cs.PlayerInfo.Welcome = JasonObject.content.info.welcome
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
             cc.cs.PlayerInfo.Sign = JasonObject.content.info.sign
@@ -254,20 +254,21 @@ cc.Class({
 
             for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
   
-                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i])
+                cc.log("weibo_thumbs = "+JasonObject.content.info.thumbs[i].zone_id)
+                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i].zone_id)
             }
 
             for(var i=0;i<JasonObject.content.info.replies.length;i++){  
   
-                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i])
+                cc.log("replies = "+JasonObject.content.info.replies[i].reply_id)
+                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i].reply_id)
             }
             
              cc.director.loadScene('GameScene');
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
+        cc.cs.PlayerInfo.zoneReplay_id = 1
     },
 
     // use this for initialization
@@ -368,7 +369,7 @@ cc.Class({
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
             cc.cs.PlayerInfo.ApiToken = JasonObject.content.info.api_token
-            cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
+            //cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
             cc.cs.PlayerInfo.Welcome = JasonObject.content.info.welcome
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
             cc.cs.PlayerInfo.Sign = JasonObject.content.info.sign
@@ -416,13 +417,13 @@ cc.Class({
             for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
   
                 //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i])
+                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i].zone_id)
             }
 
             for(var i=0;i<JasonObject.content.info.replies.length;i++){  
   
                 //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i])
+                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i].reply_id)
             }
 
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
@@ -434,6 +435,7 @@ cc.Class({
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
+        cc.cs.PlayerInfo.zoneReplay_id = 1
     },
 
     sendNameHandle: function(ret) {
