@@ -34,14 +34,14 @@ cc.Class({
     },
 
     setActionInfo: function(time, desc, image, callback,obj) {
-        //this.isAction = true
+        this.isAction = true
         this.totalTime = time
         this.currentTime = 0
         this.DescText.string = desc
         //callback.apply(obj, ["666"]);
         this.handle = callback
         this.handleobj = obj
-
+        cc.cs.PlayerInfo.Work_LogID = image
         this.handle.apply(this.handleobj, ["666"]);
     },
     // use this for initialization
@@ -67,8 +67,8 @@ cc.Class({
                // cc.log("6666"+this.handle)
        
 
-                //if(this.handler !== null){
-                this.handler.apply(this.handleobj, ["666"]);
+                //if(this.handle !== null){
+                this.handle.apply(this.handleobj, ["666"]);
                // }    
                 
                 this.isAction = false;

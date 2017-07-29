@@ -62,7 +62,7 @@ cc.Class({
             cc.cs.UIMgr.showTip("开始工作", 1.0)
             var parent = this.node.parent
             parent.getComponent("GameScene").ToActionView()
-            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(/*JasonObject.content.info.executetime*/1, this.currentWorkID, "", this.DoneWork,this)
+            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(/*JasonObject.content.info.executetime*/1, this.currentWorkID, JasonObject.content.info.worklog_id, this.DoneWork,this)
             cc.cs.PlayerInfo.Work_LogID = JasonObject.content.info.worklog_id
             cc.log("work_logID"+JasonObject.content.info.worklog_id)
            
