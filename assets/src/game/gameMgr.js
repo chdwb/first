@@ -109,7 +109,6 @@ cc.Class({
 
      sendWorkDone : function(token, worklogid, handle, obj)
     {
-        cc.log("heheheh"+handle)
         var data = {}
         data["api_token"] = token
         data["worklogid"] = worklogid

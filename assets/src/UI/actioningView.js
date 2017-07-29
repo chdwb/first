@@ -42,7 +42,7 @@ cc.Class({
         this.handle = callback
         this.handleobj = obj
 
-        //this.handle.apply(this.handleobj, ["666"]);
+        this.handle.apply(this.handleobj, ["666"]);
     },
     // use this for initialization
     onLoad: function() {
