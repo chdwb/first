@@ -230,6 +230,11 @@ cc.Class({
 
     },
 
+    SendPhoneHandle:function(ret)
+    {
+
+    },
+
     // use this for initialization
     onLoad: function () {
         

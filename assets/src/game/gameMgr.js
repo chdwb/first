@@ -130,6 +130,14 @@ cc.Class({
         data["datelogid"] = lovelogid
         this.sendHttp("ID_10", data, handle, obj)
     },
+
+    sendPhone:function(token,phoneid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["phoneid"] = lovelogid
+        this.sendHttp("ID_13", data, handle, obj)
+    }
     
     
 
