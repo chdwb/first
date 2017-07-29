@@ -101,7 +101,7 @@ cc.Class({
 
         this.rewardText.string = cc.cs.gameData.work[target.csDataID]["REWARD"]
         this.needTimeText.string = cc.cs.gameData.work[target.csDataID]["EXECUTE_TIME"]
-        currentWorkID = target.csDataID
+        this.currentWorkID = target.workID
         target.getComponent("missionItemComponent").isChoose(true)
     },
 
@@ -128,6 +128,7 @@ cc.Class({
             }
             itemCom.setNameText(cc.cs.gameData.work["ID_" + index]["NAME"])
             itemNode.csDataID = "ID_" + index
+            itemNode.workID = "" + index
             index++;
             cc.cs.UIMgr.addItem_verticalScrollView(this.list, itemNode, 0)
         }
