@@ -2,7 +2,9 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        tipPrefab : null
+        tipPrefab : null,
+        popupPrefab :null,
+        removeList:[]
     },
 
     // use this for initialization
@@ -13,6 +15,7 @@ cc.Class({
     init : function()
     {
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
+        this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
     },
     addItem_verticalScrollView : function(scrollView, node, verticalSpace)
     {
@@ -53,6 +56,48 @@ cc.Class({
         }, tipNode))
 
         tipNode.runAction(action);
+    },
+
+
+
+    showPopupO : function(title, msg, okHandle){
+
+        var scene = cc.director.getScene();
+        var popupNode =cc.instantiate(this.popupPrefab)
+        scene.getChildByName("Canvas").addChild(popupNode,999)
+        popupNode.setPosition(0,0);
+        popupNode.getChildByName("title").getComponent(cc.Label).string = title
+        popupNode.getChildByName("msg").getComponent(cc.Label).string = msg
+        popupNode.getChildByName("okBtn").x = 0
+        popupNode.getChildByName("cancelBtn").active = false;
+        popupNode.getChildByName("okBtn").on("click", (event) => {
+            if(okHandle != null)
+                okHandle();
+            cc.director.getScene().getChildByName("Canvas").removeChild (event.target.parent)
+        }, popupNode.getChildByName("okBtn"))
+
+    },
+
+
+    showPopupOC : function(title, msg, okHandle, cancelHandle){
+
+        var scene = cc.director.getScene();
+        var popupNode =cc.instantiate(this.popupPrefab)
+        scene.getChildByName("Canvas").addChild(popupNode,999)
+        popupNode.setPosition(0,0);
+        popupNode.getChildByName("title").getComponent(cc.Label).string = title
+        popupNode.getChildByName("msg").getComponent(cc.Label).string = msg
+        popupNode.getChildByName("okBtn").on("click", (event) => {
+            if(okHandle != null)
+                okHandle();
+            cc.director.getScene().getChildByName("Canvas").removeChild (event.target.parent)
+        }, popupNode.getChildByName("okBtn"))
+
+        popupNode.getChildByName("cancelBtn").on("click", (event) => {
+            if(cancelHandle != null)
+                cancelHandle();
+            cc.director.getScene().getChildByName("Canvas").removeChild (event.target.parent)
+        }, popupNode.getChildByName("cancelBtn"))
     },
 
 
