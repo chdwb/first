@@ -21,18 +21,18 @@ class PhpData{
 	);
 	public $phone = array
 	(
-		"PHONE_ID_1"=>array("PHONE_ID"=>1, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>1, "PHONE_OPTION"=>"女主说话内容1"),
-		"PHONE_ID_2"=>array("PHONE_ID"=>2, "PHONE_LEV"=>2, "PHONE_OPTION"=>1, "PHONE_EXP"=>1, "PHONE_AUDIO"=>5, "PHONE_OPTION"=>"用户选项1"),
-		"PHONE_ID_3"=>array("PHONE_ID"=>3, "PHONE_LEV"=>2, "PHONE_OPTION"=>1, "PHONE_EXP"=>2, "PHONE_AUDIO"=>5, "PHONE_OPTION"=>"用户选项1"),
-		"PHONE_ID_4"=>array("PHONE_ID"=>4, "PHONE_LEV"=>2, "PHONE_OPTION"=>1, "PHONE_EXP"=>-1, "PHONE_AUDIO"=>5, "PHONE_OPTION"=>"用户选项1"),
-		"PHONE_ID_5"=>array("PHONE_ID"=>5, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>2, "PHONE_OPTION"=>"女主说话内容2"),
-		"PHONE_ID_6"=>array("PHONE_ID"=>6, "PHONE_LEV"=>2, "PHONE_OPTION"=>2, "PHONE_EXP"=>2, "PHONE_AUDIO"=>9, "PHONE_OPTION"=>"用户选项2"),
-		"PHONE_ID_7"=>array("PHONE_ID"=>7, "PHONE_LEV"=>2, "PHONE_OPTION"=>2, "PHONE_EXP"=>1, "PHONE_AUDIO"=>9, "PHONE_OPTION"=>"用户选项2"),
-		"PHONE_ID_8"=>array("PHONE_ID"=>8, "PHONE_LEV"=>2, "PHONE_OPTION"=>2, "PHONE_EXP"=>3, "PHONE_AUDIO"=>9, "PHONE_OPTION"=>"用户选项2"),
-		"PHONE_ID_9"=>array("PHONE_ID"=>9, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>3, "PHONE_OPTION"=>"女主说话内容3"),
-		"PHONE_ID_10"=>array("PHONE_ID"=>10, "PHONE_LEV"=>2, "PHONE_OPTION"=>3, "PHONE_EXP"=>2, "PHONE_AUDIO"=>12, "PHONE_OPTION"=>"用户选项3"),
-		"PHONE_ID_11"=>array("PHONE_ID"=>11, "PHONE_LEV"=>2, "PHONE_OPTION"=>3, "PHONE_EXP"=>1, "PHONE_AUDIO"=>12, "PHONE_OPTION"=>"用户选项3"),
-		"PHONE_ID_12"=>array("PHONE_ID"=>12, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>"dummy", "PHONE_OPTION"=>"女主说话内容4")
+		"PHONE_ID_1"=>array("PHONE_ID"=>1, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>1, "PHONE_MSG"=>"女主说话内容1"),
+		"PHONE_ID_2"=>array("PHONE_ID"=>2, "PHONE_LEV"=>2, "PHONE_OPTION"=>1, "PHONE_EXP"=>1, "PHONE_AUDIO"=>5, "PHONE_MSG"=>"用户选项1"),
+		"PHONE_ID_3"=>array("PHONE_ID"=>3, "PHONE_LEV"=>2, "PHONE_OPTION"=>1, "PHONE_EXP"=>2, "PHONE_AUDIO"=>5, "PHONE_MSG"=>"用户选项1"),
+		"PHONE_ID_4"=>array("PHONE_ID"=>4, "PHONE_LEV"=>2, "PHONE_OPTION"=>1, "PHONE_EXP"=>-1, "PHONE_AUDIO"=>5, "PHONE_MSG"=>"用户选项1"),
+		"PHONE_ID_5"=>array("PHONE_ID"=>5, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>2, "PHONE_MSG"=>"女主说话内容2"),
+		"PHONE_ID_6"=>array("PHONE_ID"=>6, "PHONE_LEV"=>2, "PHONE_OPTION"=>2, "PHONE_EXP"=>2, "PHONE_AUDIO"=>9, "PHONE_MSG"=>"用户选项2"),
+		"PHONE_ID_7"=>array("PHONE_ID"=>7, "PHONE_LEV"=>2, "PHONE_OPTION"=>2, "PHONE_EXP"=>1, "PHONE_AUDIO"=>9, "PHONE_MSG"=>"用户选项2"),
+		"PHONE_ID_8"=>array("PHONE_ID"=>8, "PHONE_LEV"=>2, "PHONE_OPTION"=>2, "PHONE_EXP"=>3, "PHONE_AUDIO"=>9, "PHONE_MSG"=>"用户选项2"),
+		"PHONE_ID_9"=>array("PHONE_ID"=>9, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>3, "PHONE_MSG"=>"女主说话内容3"),
+		"PHONE_ID_10"=>array("PHONE_ID"=>10, "PHONE_LEV"=>2, "PHONE_OPTION"=>3, "PHONE_EXP"=>2, "PHONE_AUDIO"=>12, "PHONE_MSG"=>"用户选项3"),
+		"PHONE_ID_11"=>array("PHONE_ID"=>11, "PHONE_LEV"=>2, "PHONE_OPTION"=>3, "PHONE_EXP"=>1, "PHONE_AUDIO"=>12, "PHONE_MSG"=>"用户选项3"),
+		"PHONE_ID_12"=>array("PHONE_ID"=>12, "PHONE_LEV"=>2, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>"dummy", "PHONE_MSG"=>"女主说话内容4")
 	);
 	public $work = array
 	(
@@ -165,10 +165,8 @@ class PhpData{
 		"ID_10019"=>array("ID"=>10019, "DESC"=>"玩家名字不合法。"),
 		"ID_10020"=>array("ID"=>10020, "DESC"=>"已存在相同的用户名。"),
 		"ID_10021"=>array("ID"=>10021, "DESC"=>"玩家名字中包含敏感字符。"),
-		"ID_10022"=>array("ID"=>10022, "DESC"=>"请求的数据未找到。
-"),
-		"ID_10023"=>array("ID"=>10023, "DESC"=>"金币余额不足。
-"),
+		"ID_10022"=>array("ID"=>10022, "DESC"=>"请求的数据未找。"),
+		"ID_10023"=>array("ID"=>10023, "DESC"=>"金币余额不足。"),
 		"ID_10024"=>array("ID"=>10024, "DESC"=>"当前体力值不足。"),
 		"ID_10025"=>array("ID"=>10025, "DESC"=>"所需道具数量不足。"),
 		"ID_10026"=>array("ID"=>10026, "DESC"=>"玩家等级不足。")

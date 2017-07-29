@@ -119,8 +119,28 @@ cc.Class({
         this.playerInfoView.active =true
     },
 
+    hideInputMsg : function(){
+        this.npcName.node.active = false
+        this.playerName.node.active = false
+        this.msgText.node.active = false
+    },
+
+    setInputMsg:function(id){
+        if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == -1){
+            this.npcName.node.active = true
+            this.playerName.node.active = false
+            this.npcName.string = cc.cs.PlayerInfo.NPCName
+        }else{
+            this.npcName.node.active = false
+            this.playerName.node.active = true
+            this.playerName.string = cc.cs.PlayerInfo.PlayerNmae
+        }
+        this.msgText.string =cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_MSG"] 
+    },
+
+
     addSummaryItem:function(){
-        
+
 
     },
 
@@ -138,7 +158,6 @@ cc.Class({
         var self = this
 
         this.talkSummaryInfoPrefab = cc.loader.getRes("prefab/talkSummaryInfo", cc.Prefab)
-
         this.inputTablePrefab = cc.loader.getRes("prefab/inputTable", cc.Prefab)
 
         this.showNormal()
