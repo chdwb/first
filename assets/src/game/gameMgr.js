@@ -135,7 +135,7 @@ cc.Class({
     {
         var data = {}
         data["api_token"] = token
-        data["phoneid"] = lovelogid
+        data["phoneid"] = phoneid
         this.sendHttp("ID_13", data, handle, obj)
     }
     

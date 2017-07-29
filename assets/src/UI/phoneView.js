@@ -196,18 +196,18 @@ cc.Class({
                 btn1.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
-                    self.sendPhone(event.target.PHONE_ID)
+                    self.SendPhone(event.target.PHONE_ID)
 
                 },btn1)
                 btn2.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
-                    self.sendPhone(event.target.PHONE_ID)
+                    self.SendPhone(event.target.PHONE_ID)
                 },btn2)
                 btn3.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
-                    self.sendPhone(event.target.PHONE_ID)
+                    self.SendPhone(event.target.PHONE_ID)
                 },btn3)
             }
 
