@@ -268,9 +268,6 @@ cc.Class({
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
-
-
-       
     },
 
     // use this for initialization
@@ -427,9 +424,6 @@ cc.Class({
                 //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
                 cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i])
             }
-
-
-
 
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
