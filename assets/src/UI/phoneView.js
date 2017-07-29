@@ -196,14 +196,18 @@ cc.Class({
                 btn1.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
+                    self.sendPhone(event.target.PHONE_ID)
+
                 },btn1)
                 btn2.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
+                    self.sendPhone(event.target.PHONE_ID)
                 },btn2)
                 btn3.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
+                    self.sendPhone(event.target.PHONE_ID)
                 },btn3)
             }
 
@@ -230,9 +234,26 @@ cc.Class({
 
     },
 
+
+
+    SendPhone:function(phoneid)
+    {
+        cc.log("SendPhone = "+phoneid)
+        cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.ApiToken, phoneid , this.SendPhoneHandle, this)
+    },
     SendPhoneHandle:function(ret)
     {
+        cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            //cc.cs.UIMgr.showTip("工作完成", 1.0)
+            //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
 
+                
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+        //弹窗
     },
 
     // use this for initialization
