@@ -12,20 +12,11 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        PlayerNmae : {
-            default: null,
-            type: cc.String,
-        },
+        PlayerNmae : "",
 
-        ApiToken : {
-            default: "",
-            type: cc.String,
-        },
+        ApiToken : "",
 
-        Welcome : {
-            default: "",
-            type: cc.String,
-        },
+        Welcome : "",
 
         Level:1,
 
