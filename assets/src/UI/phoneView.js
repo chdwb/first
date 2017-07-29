@@ -149,6 +149,9 @@ cc.Class({
             var btn1 = this.inputTableBtn.getChildByName("btn1")
             var btn2 = this.inputTableBtn.getChildByName("btn2")
             var btn3 = this.inputTableBtn.getChildByName("btn3")
+            btn1.targetOff(btn1)
+            btn2.targetOff(btn2)
+            btn3.targetOff(btn3)
             btn1.active =true;
             btn2.active =true;
             btn3.active =true;
@@ -177,6 +180,7 @@ cc.Class({
                 btn1.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
                     event.target.parent.active = false
+                    
                 },btn1)
                 btn2.on("click",(event)=>{
                     cc.log("PHONE_ID = "+ event.target.PHONE_ID)
@@ -307,7 +311,7 @@ cc.Class({
             if (this.currentTime >= this.totalTime) {
                
                 this.showPhone()
-                this.setInputMsg(cc.cs.PlayerInfo.PHONE_ID)
+                this.setInputMsg(cc.cs.PlayerInfo.Phone_ID)
                 this.isAction = false;
                 this.currentTime = 0
                 this.totalTime = 0
