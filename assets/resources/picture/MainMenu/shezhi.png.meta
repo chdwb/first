@@ -7,7 +7,7 @@
   "subMetas": {
     "shezhi": {
       "ver": "1.0.3",
-      "uuid": "63bf5316-cd33-42d8-9ba2-8cd67c2ff260",
+      "uuid": "9411ea9e-0cc8-4880-88aa-f07685d9d46f",
       "rawTextureUuid": "a3aa5827-162f-42f3-8ee5-cbb3b989d494",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 31,
-      "height": 31,
-      "rawWidth": 31,
-      "rawHeight": 31,
+      "width": 58,
+      "height": 57,
+      "rawWidth": 58,
+      "rawHeight": 57,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

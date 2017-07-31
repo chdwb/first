@@ -7,7 +7,7 @@
   "subMetas": {
     "weibo": {
       "ver": "1.0.3",
-      "uuid": "02dae2d4-9f53-46a7-9fd8-cbdb4f86cda0",
+      "uuid": "ee5d8f62-3cdd-456a-8fe5-6abb00e581a0",
       "rawTextureUuid": "6646ea41-ab2d-477f-8294-68aa74b252bc",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 173,
-      "height": 52,
-      "rawWidth": 173,
-      "rawHeight": 52,
+      "width": 272,
+      "height": 82,
+      "rawWidth": 272,
+      "rawHeight": 82,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

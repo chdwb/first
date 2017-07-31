@@ -7,7 +7,7 @@
   "subMetas": {
     "shangcheng": {
       "ver": "1.0.3",
-      "uuid": "334f347a-243c-4372-95d6-ff1656dd0df1",
+      "uuid": "f2995097-a0ce-4cb0-acd0-b4a49f407c49",
       "rawTextureUuid": "59987470-9dc2-4558-bc92-4f46600b5185",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 38,
-      "height": 88,
-      "rawWidth": 38,
-      "rawHeight": 88,
+      "width": 69,
+      "height": 146,
+      "rawWidth": 69,
+      "rawHeight": 146,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

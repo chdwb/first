@@ -7,7 +7,7 @@
   "subMetas": {
     "gongzuo": {
       "ver": "1.0.3",
-      "uuid": "0c33e6ef-c171-4a28-95b4-c4d85c72addc",
+      "uuid": "bdb879ab-805b-4b46-8a86-0d59d867fc39",
       "rawTextureUuid": "ba8793e8-f2f6-4835-96f6-3f9bdb646fbe",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 173,
-      "height": 51,
-      "rawWidth": 173,
-      "rawHeight": 51,
+      "width": 272,
+      "height": 82,
+      "rawWidth": 272,
+      "rawHeight": 82,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
