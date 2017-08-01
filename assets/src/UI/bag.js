@@ -21,21 +21,25 @@ cc.Class({
     },
 
     // use this for initialization 666
+
+    onBack:function(){
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+
+    },
     onLoad: function () {
-               var mycars=new Array();
-mycars[0]="Saab";
-mycars[1]="Volvo";
-mycars[2]="BMW";
+       
         this.content = this.scrollView.content;
         this.items = []; // array to store spawned items
-    	this.initialize(mycars);
+    	this.initialize(cc.cs.PlayerInfo.Bag);
         this.updateTimer = 0;
         this.updateInterval = 0.2;
         this.lastContentPosY = 0; // use this variable to detect if we are scrolling up or down
 
     },
      initialize: function (itemArray) {
-        
+        this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
+        cc.log( "hehe"+itemArray.length)
         if(itemArray.length % 5 == 0)
         {
             this.totalCount = itemArray.length / 5;
@@ -47,10 +51,14 @@ mycars[2]="BMW";
 
          this.spawnCount = itemArray.length;
          
-        this.content.height = this.totalCount * (this.prefab.data.height + this.spacing) + this.spacing; // get total content height
+        this.content.height = this.totalCount * (this.prefab.data.height /*+ this.spacing*/)/* + this.spacing;*/  + 4000     // get total content height 
     	for (let i = 0; i < this.spawnCount; ++i) { // spawn items, we only need to do this once
-    		let item = cc.instantiate(this.prefab);
-    		this.content.addChild(item);
+    		
+            var item = cc.instantiate(this.prefab)
+            var itemCom = item.getComponent("NodeItem")
+            itemCom.setItmeNmae(itemArray[i].goods_id)
+            itemCom.setItmeNum(itemArray[i].num)
+            this.content.addChild(item);
     		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
             let PosY = 0;
               if(i % 5 == 0)

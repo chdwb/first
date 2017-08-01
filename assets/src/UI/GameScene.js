@@ -36,6 +36,13 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        BagView:{
+            default:null,
+            type:cc.Node,
+        },
+
+
+
         currentLayer:0,
 
     },
@@ -49,6 +56,8 @@ cc.Class({
         this.LoveView.active = (cc.cs.UIMgr.LOVEVIEW == type);
         this.PhoneView.active = (cc.cs.UIMgr.PHONEVIEW == type);
         this.ZoneView.active = (cc.cs.UIMgr.ZONEVIEW == type);
+        this.BagView.active = (cc.cs.UIMgr.BAGVIEW == type); 
+
         if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.PHONEVIEW == type)
         {
             this.node.getChildByName("mainView").getComponent("mainView").updateui()

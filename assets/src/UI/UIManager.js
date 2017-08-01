@@ -12,6 +12,7 @@ cc.Class({
         ACTIONVIEW:3,
         PHONEVIEW:4,
         ZONEVIEW:5,
+        BAGVIEW:6,
     },
 
    

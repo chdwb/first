@@ -127,7 +127,7 @@ cc.Class({
      goBag: function()
     {
        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.BAGVIEW)
     },
 
      goGift: function()
@@ -208,7 +208,7 @@ cc.Class({
         }, this.giftBtn)
 
         this.bagBtn.on("click", (event) => {
-
+         self.goBag()
         }, this.bagBtn)
 
         this.phoneBtn.on("click", (event) => {
