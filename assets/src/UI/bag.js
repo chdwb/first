@@ -42,35 +42,46 @@ cc.Class({
         cc.log( "hehe"+itemArray.length)
         if(itemArray.length % 5 == 0)
         {
-            this.totalCount = itemArray.length / 5;
+            this.totalCount = Math.floor(itemArray.length / 5);
         }
         else
         {
-            this.totalCount = itemArray.length / 5 + 1;
+            this.totalCount = Math.floor(itemArray.length / 5) + 1;
         }
 
          this.spawnCount = itemArray.length;
-         
+        cc.log("total count "+this.totalCount)
         this.content.height = this.totalCount * (this.prefab.data.height /*+ this.spacing*/)/* + this.spacing;*/  + 4000     // get total content height 
+        cc.log("prefab height " + this.prefab.data.height)
+        var littlewidth = this.scrollView.content.width / 5
+        var halfwidth = this.scrollView.content.width / 2
     	for (let i = 0; i < this.spawnCount; ++i) { // spawn items, we only need to do this once
     		
             var item = cc.instantiate(this.prefab)
+            
+             //cc.log("item height " + item.height)
             var itemCom = item.getComponent("NodeItem")
             itemCom.setItmeNmae(itemArray[i].goods_id)
             itemCom.setItmeNum(itemArray[i].num)
             this.content.addChild(item);
     		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
             let PosY = 0;
-              if(i % 5 == 0)
+              if((i+1) % 5 == 0)
         {
-            PosY = i / 5;
+            PosY =  Math.floor((i+1) / 5);
         }
         else
         {
-            PosY =i / 5 +1;
-        }
+            PosY =Math.floor((i+1) / 5) +1;
+        }   
+        
+             this.scrollView.content.width / 5
+             
+             var pos = i % 5
+        
+        item.setPosition(- halfwidth + littlewidth*pos +item.width/2 ,-item.height/2 - PosY * item.height)
 
-            item.setPosition( (i%5) * item.width,  (this.totalCount - PosY) * item.height     );
+            //item.setPositionX ( (i%5) * item.width, PosY * item.height);  
     		//item.getComponent('Item').updateItem(i, i);
             this.items.push(item);
     	}
