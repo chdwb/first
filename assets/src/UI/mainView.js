@@ -249,7 +249,7 @@ cc.Class({
 
         }, this.loveBtn)
         
-        self.goBag()
+        
     },
 
     // called every frame, uncomment this function to activate update callback

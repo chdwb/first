@@ -260,7 +260,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_id": "1c7427QHklM9aCcn3WSuhHz",
@@ -502,7 +502,7 @@
     "_lineHeight": 88.49999999999953,
     "_enableWrapText": true,
     "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "游客ABCD1234",
     "_N$horizontalAlign": 1,

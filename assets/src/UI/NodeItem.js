@@ -25,24 +25,37 @@ cc.Class({
         ItmeName :{
             default: null,
             type: cc.Label,
-        }
+        },
+
+         GoodID:0,
+
+        Num:0,
+
     },
 
     // use this for initialization
 
-    setItmeNmae(name)
+    setItmeNmae:function(name)
     {
+        this.GoodID = name
         this.ItmeName.string = name;
     },
 
-    setItmeNum(num)
+    setItmeNum:function(num)
     {
-        this.ItmeNum.string = num;
+        this.Num = num,
+        this.ItmeNum.string = ""+num;
     },
 
-     setItmeIcon(name)
+     setItmeIcon:function(name)
     {
         //this.ItmeName.string = name;
+    },
+
+       onClick:function()
+    {
+        //this.ItmeName.string = name;
+        var parent  = this.node.parent.parent.parent.parent.getComponent("bag").onItmeChoose(this.GoodID,this.Num)
     },
 
     onLoad: function () {
