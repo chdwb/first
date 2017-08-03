@@ -153,6 +153,15 @@ cc.Class({
         data["api_token"] = token
         data["replyid"] = replyid
         this.sendHttp("ID_15", data, handle, obj)
+    },
+    
+    sendGoodUse:function(token,goodsid,num,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["goodsid"] = goodsid
+        data["num"] = num
+        this.sendHttp("ID_17", data, handle, obj)
     }
     
     

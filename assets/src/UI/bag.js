@@ -14,7 +14,7 @@ cc.Class({
         },
         spawnCount: 0, // 总个数
         totalRow: 0, // 行数
-        spacing: 5, // space between each item
+        spacing: 0, // space between each item
         nodeItemUse:{
             default: null,
             type: cc.Node
@@ -24,7 +24,26 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        
+        Exp:{
+            default: null,
+            type: cc.Label
+        },
+        
+        ItemNmae:{
+            default: null,
+            type: cc.Label
+        },
+        
+        ItemCount2:{
+            default: null,
+            type: cc.Label
+        },
+
+
+
         itmeCount:0,
+        currentgoodsid:0,
    
         
     },
@@ -40,8 +59,21 @@ cc.Class({
     onItmeChoose:function(goods_id,num)
     {
         cc.log("goods_id = "+goods_id)
-        this.nodeItemUse.active = true;
+        this.currentgoodsid = goods_id
+        this.nodeItemUse.active = true
         this.itmeCount = num
+        this.ItemCount2.string = num
+        
+        var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goods_id]
+            if(gooddata != undefined)
+            {
+                this.ItemNmae.string = cc.cs.gameData.goods["GOODS_ID_"+goods_id]["GOODS_NAME"]
+            }
+            else
+            {
+                this.ItemNmae.string = goods_id
+            }
+        
 
     },
 
@@ -53,7 +85,7 @@ cc.Class({
 
     onOK:function()
     {
-       
+       this.startGoodsUse();
     },
 
     onPlus:function()
@@ -79,10 +111,12 @@ cc.Class({
     onLoad: function () {
        
         this.content = this.scrollView.content;
-        this.items = []; // array to store spawned items
+        //this.items = []; // array to store spawned items
     	this.initialize(cc.cs.PlayerInfo.Bag);
     },
      initialize: function (itemArray) {
+        this.Exp.string = ""+cc.cs.PlayerInfo.exp
+        this.content.removeAllChildren(true);
         this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
         cc.log( "hehe"+itemArray.length)
         if(itemArray.length % 4 == 0)
@@ -106,8 +140,17 @@ cc.Class({
             
              //cc.log("item height " + item.height)
             var itemCom = item.getComponent("NodeItem")
-            itemCom.setItmeNmae(itemArray[i].goods_id)
+            var gooddata = cc.cs.gameData.goods["GOODS_ID_" +itemArray[i].goods_id]
+            if(gooddata != undefined)
+            {
+                itemCom.setItmeNmae(cc.cs.gameData.goods["GOODS_ID_"+itemArray[i].goods_id]["GOODS_NAME"] )
+            }
+            else
+            {
+                itemCom.setItmeNmae(itemArray[i].goods_id)
+            }
             itemCom.setItmeNum(itemArray[i].num)
+            itemCom.setGoodId(itemArray[i].goods_id)
             this.content.addChild(item);
     		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
             let PosY = 0;
@@ -124,10 +167,50 @@ cc.Class({
              
              var pos = i % 4
         
-            item.setPosition(- halfwidth + littlewidth*pos +item.width/2 ,-item.height/2 - PosY * item.height - 100)
-            this.items.push(item);
+            item.setPosition(- halfwidth + littlewidth*pos +item.width/2 ,-item.height/2 - PosY * (item.height + this.spacing))
+            //this.items.push(item);
     	}
     },
+    
+    startGoodsUse: function()
+    {
+        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("goodid="+this.currentgoodsid)
+        cc.log("itemUseCount="+this.itemUseCount)
+        cc.cs.gameMgr.sendGoodUse(cc.cs.PlayerInfo.ApiToken, this.currentgoodsid, this.itemUseCount, this.GoodUseHandle, this)
+    },
+
+    GoodUseHandle(ret)
+    {
+       
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.UIMgr.showTip("使用成功", 1.0)
+            var parent = this.node.parent
+            
+            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
+            var array = cc.cs.PlayerInfo.Bag
+            for(var i = 0;i < array.length;i++)
+            {
+               if( array[i].goods_id == this.currentgoodsid)
+               {
+                   array[i].num = JasonObject.content.info.num
+                   if(JasonObject.content.info.num == 0 )
+                   {
+                       array.splice(i,1);
+                   }
+                   break;
+               }
+            }
+            this.nodeItemUse.active = false
+            this.initialize(cc.cs.PlayerInfo.Bag)
+            
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+    },
+    
     
     
 

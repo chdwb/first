@@ -35,9 +35,15 @@ cc.Class({
 
     // use this for initialization
 
+    setGoodId:function(goodId)
+    {
+        //this.GoodID = name
+        this.GoodID = goodId;
+    },
+
     setItmeNmae:function(name)
     {
-        this.GoodID = name
+        //this.GoodID = name
         this.ItmeName.string = name;
     },
 
