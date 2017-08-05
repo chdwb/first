@@ -40,6 +40,10 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        ShopView:{
+            default:null,
+            type:cc.Node,
+        },
 
 
 
@@ -57,6 +61,7 @@ cc.Class({
         this.PhoneView.active = (cc.cs.UIMgr.PHONEVIEW == type);
         this.ZoneView.active = (cc.cs.UIMgr.ZONEVIEW == type);
         this.BagView.active = (cc.cs.UIMgr.BAGVIEW == type); 
+        this.ShopView.active = (cc.cs.UIMgr.SHOPVIEW == type); 
 
         if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.PHONEVIEW == type)
         {

@@ -139,7 +139,7 @@ cc.Class({
      goShop: function()
     {
        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
     },
 
      goSetting: function()
@@ -199,7 +199,8 @@ cc.Class({
         this.updateui()
 
         this.shopBtn.on("click", (event) => {
-            cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
+            //cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
+            this.goShop()
             
         }, this.shopBtn)
 

@@ -13,6 +13,7 @@ cc.Class({
         PHONEVIEW:4,
         ZONEVIEW:5,
         BAGVIEW:6,
+        SHOPVIEW:7,
     },
 
    
