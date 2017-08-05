@@ -61,6 +61,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         this.content = this.scrollView.content;
+        this.onLiBao()
 
     },
     
