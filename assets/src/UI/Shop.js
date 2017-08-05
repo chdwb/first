@@ -29,26 +29,30 @@ cc.Class({
         spawnCount: 0, // 总个数
         totalRow: 0, // 行数
         spacing: 0, // space between each item
+        currentShopType:1,
     },
     
     onLiBao:function()
     {
-        
+        this.currentShopType = 3;
+        this.initialize2(cc.cs.gameData.hot_package)
     },
     
     onSuperLiBao:function()
     {
-        
+        this.currentShopType = 4;
+        this.initialize2(cc.cs.gameData.work_package)
     },
     
     onJinBi:function()
     {
-        
+        this.currentShopType = 2;
+        this.initialize2(cc.cs.gameData.buy_gold)
     },
     
     onItem:function()
     {
-        //var goodsCount = cc.cs.gameData.goods["TOTAL_COUNT"]
+        this.currentShopType = 1;
         this.initialize(cc.cs.gameData.goods)
         //cc.log("goods ="+cc.cs.gameData.goods)
     },
@@ -73,6 +77,29 @@ cc.Class({
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
     
+    initialize2: function(itemArray)
+    {
+        this.updateUi()
+        this.content.removeAllChildren(true);
+        this.prefab = cc.loader.getRes("prefab/ItemLibao", cc.Prefab)
+        
+        
+        for(var i in itemArray) { 
+            if(i != "TOTAL_COUNT")
+            {
+                var item = cc.instantiate(this.prefab)
+                var itemCom = item.getComponent("ShopItem2")
+                itemCom.setShopType(this.currentShopType)
+                itemCom.setGood(itemArray[i])
+                
+                cc.cs.UIMgr.addItem_verticalScrollView(this.scrollView, item, 0)
+                
+            }
+            
+        }
+        
+        
+    },
     
     initialize: function (itemArray) {
         this.updateUi()
@@ -98,37 +125,39 @@ cc.Class({
         var count = 0;
         for(var i in itemArray) { // spawn items, we only need to do this once
     		cc.log("i = ",i);
-    		
-            var item = cc.instantiate(this.prefab)
-            
-            cc.log("item height " + item.height)
-            var itemCom = item.getComponent("ShopItem")
-            var gooddata = cc.cs.gameData.goods[i]
-           //cc.log("gooddata = "+gooddata)
-            if(gooddata != undefined)
+    		if(i != "TOTAL_COUNT")
             {
-                //itemCom.setItmeNmae(gooddata["GOODS_NAME"] )
-                cc.log("goodsname = "+gooddata["GOODS_NAME"])
-                itemCom.setGood(gooddata)
+                var item = cc.instantiate(this.prefab)
+                
+                cc.log("item height " + item.height)
+                var itemCom = item.getComponent("ShopItem")
+                var gooddata = cc.cs.gameData.goods[i]
+               //cc.log("gooddata = "+gooddata)
+                if(gooddata != undefined)
+                {
+                    //itemCom.setItmeNmae(gooddata["GOODS_NAME"] )
+                    cc.log("goodsname = "+gooddata["GOODS_NAME"])
+                    itemCom.setGood(gooddata)
+                }
+                this.content.addChild(item);
+        		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
+                let PosY = 0;
+                if((count+1) % 2 == 0)
+                {
+                    PosY =  Math.floor((count+1) / 2);
+                }
+                else
+                {
+                    PosY =Math.floor((count+1) /2) +1;
+                }   
+            
+                // this.scrollView.content.width / 4
+                 
+                 var pos = count % 2
+            
+               item.setPosition(- halfwidth + littlewidth*pos +item.width/2 ,-item.height/2 - PosY * (item.height + this.spacing))
+               count ++;
             }
-            this.content.addChild(item);
-    		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
-            let PosY = 0;
-              if((count+1) % 2 == 0)
-        {
-            PosY =  Math.floor((count+1) / 2);
-        }
-        else
-        {
-            PosY =Math.floor((count+1) /2) +1;
-        }   
-        
-            // this.scrollView.content.width / 4
-             
-             var pos = count % 2
-        
-           item.setPosition(- halfwidth + littlewidth*pos +item.width/2 ,-item.height/2 - PosY * (item.height + this.spacing))
-           count ++;
     	}
     },
 

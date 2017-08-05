@@ -169,9 +169,26 @@ cc.Class({
         var data = {}
         data["api_token"] = token
         data["type"] = type
-        data["goodsid"] = goodsid
-        data["num"] = num
-        this.sendHttp("ID_12", data, handle, obj)
+       if(type ==1)
+       {
+           data["goodsid"] = goodsid
+           data["num"] = num
+       }
+       else if(type == 2)
+       {
+           data["goldid"] = goodsid
+           data["num"] = num
+       }
+       else if(type == 3)
+       {
+           data["hotid"] = goodsid
+       }
+       else if(type == 4)
+       {
+           data["workpkid"] = goodsid
+       }
+        
+         this.sendHttp("ID_12", data, handle, obj)
     }
     
     
