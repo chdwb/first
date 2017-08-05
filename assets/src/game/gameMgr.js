@@ -162,6 +162,16 @@ cc.Class({
         data["goodsid"] = goodsid
         data["num"] = num
         this.sendHttp("ID_17", data, handle, obj)
+    },
+    
+    sendGoodBuy:function(token,type,goodsid,num,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["type"] = type
+        data["goodsid"] = goodsid
+        data["num"] = num
+        this.sendHttp("ID_12", data, handle, obj)
     }
     
     

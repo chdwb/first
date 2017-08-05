@@ -109,7 +109,7 @@ cc.Class({
     },
 
     onLoad: function () {
-       
+       cc.log("背包")
         this.content = this.scrollView.content;
         //this.items = []; // array to store spawned items
     	this.initialize(cc.cs.PlayerInfo.Bag);
