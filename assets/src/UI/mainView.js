@@ -143,7 +143,7 @@ cc.Class({
      goGift: function()
     {
        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.GIFTVIEW)
     },
 
      goShop: function()
@@ -218,6 +218,7 @@ cc.Class({
         }, this.shopBtn)
 
         this.giftBtn.on("click", (event) => {
+            this.goGift()
 
         }, this.giftBtn)
 

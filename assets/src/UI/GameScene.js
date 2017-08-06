@@ -50,6 +50,11 @@ cc.Class({
             type:cc.Node,
         },
 
+         GiftView:{
+            default:null,
+            type:cc.Node,
+        },
+
 
 
         currentLayer:0,
@@ -69,6 +74,7 @@ cc.Class({
         this.BagView.active = (cc.cs.UIMgr.BAGVIEW == type); 
         this.ShopView.active = (cc.cs.UIMgr.SHOPVIEW == type); 
         this.SignRewardView.active = (cc.cs.UIMgr.SIGNREWARDVIEW == type); 
+        this.GiftView.active = (cc.cs.UIMgr.GIFTVIEW == type); 
 
         if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.PHONEVIEW == type)
         {
