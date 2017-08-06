@@ -152,6 +152,7 @@ cc.Class({
             var parent = this.node.parent
             
             cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            this.node.parent.parent.parent.parent.parent.getComponent("Shop").updateUi()
             
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)

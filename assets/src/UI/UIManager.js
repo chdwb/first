@@ -30,6 +30,7 @@ cc.Class({
     {
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
+        this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
     },
     addItem_verticalScrollView : function(scrollView, node, verticalSpace)
     {
@@ -112,6 +113,15 @@ cc.Class({
                 cancelHandle();
             cc.director.getScene().getChildByName("Canvas").removeChild (event.target.parent)
         }, popupNode.getChildByName("cancelBtn"))
+    },
+
+    showNodeUse : function(goodsid,okHandle,max,obj,type){
+
+        var scene = cc.director.getScene();
+        var popupNode =cc.instantiate(this.nodeUsePrefab)
+        scene.getChildByName("Canvas").addChild(popupNode,999)
+        popupNode.setPosition(0,0);
+        popupNode.getComponent("NodeUse").setCallBack(goodsid, okHandle,max,obj,type)
     },
 
 

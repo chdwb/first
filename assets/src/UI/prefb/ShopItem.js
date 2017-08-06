@@ -29,12 +29,19 @@ cc.Class({
        
     },
     
+  sendbuy:function(buynum)
+  {
+      cc.log("buynum = "+ buynum)
+      cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, 1,this.GoodID, buynum, this.GoodBuyHandle, this)
+  },
+
     onBuy:function()
         {
         cc.log("token="+cc.cs.PlayerInfo.ApiToken)
         cc.log("goodid="+this.GoodID)
        // cc.log("itemUseCount="+this.itemUseCount)
-        cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, 1,this.GoodID, 1, this.GoodBuyHandle, this)
+        //cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, 1,this.GoodID, 1, this.GoodBuyHandle, this)
+        cc.cs.UIMgr.showNodeUse(this.GoodID,this.sendbuy,99,this,0)
         },
 
     // use this for initialization
@@ -83,8 +90,10 @@ cc.Class({
                 cc.log["push Bag"]
                 cc.cs.PlayerInfo.Bag.push(newgoods)
             }
+
             
             
+            this.node.parent.parent.parent.parent.parent.getComponent("Shop").updateUi()
             
             
         } else {

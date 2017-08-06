@@ -19,6 +19,11 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+
+        nodeNoItem:{
+            default: null,
+            type: cc.Node
+        },
         itemUseCount:1,
         itemUseCountLabel:{
             default: null,
@@ -133,6 +138,16 @@ cc.Class({
         this.content.removeAllChildren(true);
         
         cc.log( "hehe"+itemArray.length)
+        if(itemArray.length == 0)
+        {
+            this.nodeNoItem.active = true;
+        }
+        else
+        {
+            this.nodeNoItem.active = false;
+        }
+
+        
         if(itemArray.length % 4 == 0)
         {
             this.totalCount = Math.floor(itemArray.length / 4);
