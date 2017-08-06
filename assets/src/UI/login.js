@@ -198,15 +198,9 @@ cc.Class({
        // }
 
     },
-
-    gotoGameScene:function(ret)
+    updatePlayerInfo:function(JasonObject)
     {
-       var JasonObject = JSON.parse(ret);
-        if (JasonObject.success === true) {
-            cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)   
-            //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
-            this.isLogin = true
-            cc.cs.PlayerInfo.ApiToken = JasonObject.content.info.api_token
+        cc.cs.PlayerInfo.ApiToken = JasonObject.content.info.api_token
             //cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
             cc.cs.PlayerInfo.Welcome = JasonObject.content.info.welcome
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
@@ -232,9 +226,9 @@ cc.Class({
             cc.cs.PlayerInfo.Work3LeftTImes = JasonObject.content.info.date_id3
             cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.date_id4
             
-
-
-            var itemcount = JasonObject.content.info.backpacks.length
+            cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
+            
+             var itemcount = JasonObject.content.info.backpacks.length
             for(var i=0;i<JasonObject.content.info.backpacks.length;i++){  
   
                 cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
@@ -263,6 +257,19 @@ cc.Class({
                 cc.log("replies = "+JasonObject.content.info.replies[i].reply_id)
                 cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i].reply_id)
             }
+    },
+    gotoGameScene:function(ret)
+    {
+       var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)   
+            //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
+            this.isLogin = true
+            this.updatePlayerInfo(JasonObject)
+            
+
+
+            
             
              cc.director.loadScene('GameScene');
         } else {
@@ -368,64 +375,7 @@ cc.Class({
             cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)   
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
-            cc.cs.PlayerInfo.ApiToken = JasonObject.content.info.api_token
-            //cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
-            cc.cs.PlayerInfo.Welcome = JasonObject.content.info.welcome
-            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
-            cc.cs.PlayerInfo.Sign = JasonObject.content.info.sign
-            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
-            cc.cs.PlayerInfo.Power = JasonObject.content.info.power
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
-            cc.cs.PlayerInfo.Diamond = JasonObject.content.info.diamond
-            cc.cs.PlayerInfo.Phone_ID = JasonObject.content.info.phone_id
-            cc.cs.PlayerInfo.Wechat_ID = JasonObject.content.info.wechat_id
-            cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.zoneThumbsUp_id
-            cc.cs.PlayerInfo.ZoneReplay_ID = JasonObject.content.info.zoneReplay_id
-            cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.work_id
-            cc.cs.PlayerInfo.Work1LeftTImes = JasonObject.content.info.work_id1
-            cc.cs.PlayerInfo.Work2LeftTImes = JasonObject.content.info.work_id2
-            cc.cs.PlayerInfo.Work3LeftTImes = JasonObject.content.info.work_id3
-            cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.work_id4
-            cc.cs.PlayerInfo.Work5LeftTImes = JasonObject.content.info.work_id5
-
-            cc.cs.PlayerInfo.Love_ID = JasonObject.content.info.date_id
-            cc.cs.PlayerInfo.Work1LeftTImes = JasonObject.content.info.date_id1
-            cc.cs.PlayerInfo.Work2LeftTImes = JasonObject.content.info.date_id2
-            cc.cs.PlayerInfo.Work3LeftTImes = JasonObject.content.info.date_id3
-            cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.date_id4
-
-         
-            
-            for(var i=0;i<JasonObject.content.info.backpacks.length;i++){  
-  
-                cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.Bag.push(JasonObject.content.info.backpacks[i])
-            }
-
-            for(var i=0;i<JasonObject.content.info.phones.length;i++){  
-  
-                cc.log("phoneid = "+JasonObject.content.info.phones[i].phone_id)
-                cc.cs.PlayerInfo.Phone_player_ID.push(JasonObject.content.info.phones[i])
-            }
-
-            for(var i=0;i<JasonObject.content.info.wechats.length;i++){  
-  
-                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.wechat_player_ID.push(JasonObject.content.info.wechats[i])
-            }
-
-            for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
-  
-                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i].zone_id)
-            }
-
-            for(var i=0;i<JasonObject.content.info.replies.length;i++){  
-  
-                //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i].reply_id)
-            }
-
+            this.updatePlayerInfo(JasonObject)
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')

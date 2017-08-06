@@ -14,6 +14,7 @@ cc.Class({
         ZONEVIEW:5,
         BAGVIEW:6,
         SHOPVIEW:7,
+        SIGNREWARDVIEW: 8,
     },
 
    

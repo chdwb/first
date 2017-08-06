@@ -189,7 +189,18 @@ cc.Class({
        }
         
          this.sendHttp("ID_12", data, handle, obj)
-    }
+    },
+
+    sendSign:function(token,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        
+        this.sendHttp("ID_4", data, handle, obj)
+    },
+
+
+    
     
     
 

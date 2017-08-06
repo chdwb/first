@@ -44,6 +44,11 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        
+         SignRewardView:{
+            default:null,
+            type:cc.Node,
+        },
 
 
 
@@ -62,6 +67,7 @@ cc.Class({
         this.ZoneView.active = (cc.cs.UIMgr.ZONEVIEW == type);
         this.BagView.active = (cc.cs.UIMgr.BAGVIEW == type); 
         this.ShopView.active = (cc.cs.UIMgr.SHOPVIEW == type); 
+        this.SignRewardView.active = (cc.cs.UIMgr.SIGNREWARDVIEW == type); 
 
         if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.PHONEVIEW == type)
         {

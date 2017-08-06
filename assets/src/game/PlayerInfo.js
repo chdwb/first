@@ -67,6 +67,9 @@ cc.Class({
         Love_LogID:0,
 
         NPCName:"凤姐",
+        
+        signday:0,
+
 
         Phone_player_ID:[],
         wechat_player_ID:[],

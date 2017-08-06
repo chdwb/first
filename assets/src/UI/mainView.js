@@ -63,6 +63,11 @@ cc.Class({
             type: cc.Node,
             default: null
         },
+        
+         SignRewardBtn: {
+            type: cc.Node,
+            default: null
+        },
     },
 
     setExp: function(currentExp, levlExp) {
@@ -86,7 +91,12 @@ cc.Class({
         //cc.log("set diamond"+diamond)
         this.diamondText.string = diamond+""
     },
-
+    goSignReward:function()
+    {
+        cc.log("heheh"+cc.cs.UIMgr.SIGNREWARDVIEW)
+        var parent = this.node.parent
+       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SIGNREWARDVIEW)
+    },
     goWork: function()
     {
        var parent = this.node.parent

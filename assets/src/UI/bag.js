@@ -111,13 +111,14 @@ cc.Class({
     onLoad: function () {
        cc.log("背包")
         this.content = this.scrollView.content;
+        this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
         //this.items = []; // array to store spawned items
     	this.initialize(cc.cs.PlayerInfo.Bag);
     },
      initialize: function (itemArray) {
         this.Exp.string = ""+cc.cs.PlayerInfo.exp
         this.content.removeAllChildren(true);
-        this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
+        
         cc.log( "hehe"+itemArray.length)
         if(itemArray.length % 4 == 0)
         {
