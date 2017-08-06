@@ -70,6 +70,8 @@ cc.Class({
         
         signday:0,
 
+        day:0,
+
 
         Phone_player_ID:[],
         wechat_player_ID:[],

@@ -227,7 +227,6 @@ cc.Class({
             cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.date_id4
             
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
-            
              var itemcount = JasonObject.content.info.backpacks.length
             for(var i=0;i<JasonObject.content.info.backpacks.length;i++){  
   

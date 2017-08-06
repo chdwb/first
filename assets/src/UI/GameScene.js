@@ -58,6 +58,7 @@ cc.Class({
 
     SetView:function(type)
     {
+        cc.log("now layer "+ type)
         this.currentLayer = type
         this.MainView.active = ( cc.cs.UIMgr.MAINVIEW == type)
         this.MissonView.active = (cc.cs.UIMgr.MISSONVIEW == type);
@@ -73,6 +74,14 @@ cc.Class({
         {
             this.node.getChildByName("mainView").getComponent("mainView").updateui()
         }
+
+
+        if(cc.cs.UIMgr.BAGVIEW == type)
+        {
+            cc.log("refresh bag")
+            this.BagView.getComponent("bag").updateUI()
+        }
+
     },
 
     /*ToLoveView:function()

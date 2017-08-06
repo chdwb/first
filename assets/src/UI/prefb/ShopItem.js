@@ -80,7 +80,7 @@ cc.Class({
                 var newgoods;
                     newgoods.goods_id = JasonObject.content.info.goods_id
                     newgoods.num = JasonObject.content.info.num
-                
+                cc.log["push Bag"]
                 cc.cs.PlayerInfo.Bag.push(newgoods)
             }
             

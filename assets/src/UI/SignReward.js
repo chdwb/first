@@ -57,6 +57,49 @@ cc.Class({
             cc.cs.UIMgr.showTip("签到成功", 1.0)
 
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
+            cc.cs.PlayerInfo.sign = true
+
+            var array = cc.cs.PlayerInfo.Bag
+            var isFind = false
+            for(var i = 0;i < array.length;i++)
+            {
+               if( array[i].goods_id == JasonObject.content.info.goods1_id)
+               {
+                   isFind = true;
+                   array[i].num = JasonObject.content.info.goods1_num
+                   break;
+               }
+            }
+            if(isFind == false)
+            {
+                var newgoods;
+                    newgoods.goods_id = JasonObject.content.info.goods1_id
+                    newgoods.num = JasonObject.content.info.goods1_num
+                
+                cc.cs.PlayerInfo.Bag.push(newgoods)
+            }
+
+            for(var i = 0;i < array.length;i++)
+            {
+               if( array[i].goods_id == JasonObject.content.info.goods2_id)
+               {
+                   isFind = true;
+                   array[i].num = JasonObject.content.info.goods2_num
+                   break;
+               }
+            }
+            if(isFind == false)
+            {
+                var newgoods;
+                    newgoods.goods_id = JasonObject.content.info.goods2_id
+                    newgoods.num = JasonObject.content.info.goods2_num
+                
+                cc.cs.PlayerInfo.Bag.push(newgoods)
+            }
+
+
+
+
 
             this.refreshReward(parseInt(cc.cs.PlayerInfo.signday)+1)
             
@@ -71,7 +114,7 @@ cc.Class({
     {
 
         cc.log("day = "+day)
-        if(cc.cs.PlayerInfo.signday)
+        if(cc.cs.PlayerInfo.Sign)
         {
            this.button1.active = false;
            this.button2.active = true;
@@ -95,6 +138,10 @@ cc.Class({
         var item3 = cc.instantiate(this.prefab)
         var itemCom3 = item3.getComponent("NodeItem")
             cc.log("555"+rewarddata)
+
+            this.node1.removeAllChildren(true)
+            this.node2.removeAllChildren(true)
+            this.node3.removeAllChildren(true)
             if(rewarddata != undefined)
             {
                 cc.log("666")

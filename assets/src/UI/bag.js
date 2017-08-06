@@ -108,15 +108,28 @@ cc.Class({
         this.itemUseCountLabel.string = ""+this.itemUseCount
     },
 
-    onLoad: function () {
+     setExp: function(currentExp, levlExp) {
+        this.Exp.string = currentExp + "/" + levlExp;
+    },
+    updateUI:function()
+    {
        cc.log("背包")
         this.content = this.scrollView.content;
         this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
+        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]
+        this.setExp(cc.cs.PlayerInfo.Exp,leveldata["LEV_EXP"])
+        this.initialize(cc.cs.PlayerInfo.Bag);
+
+        
+    },
+    onLoad: function () {
+       //cc.log("背包")
+        
         //this.items = []; // array to store spawned items
-    	this.initialize(cc.cs.PlayerInfo.Bag);
+    	this.updateUI()
     },
      initialize: function (itemArray) {
-        this.Exp.string = ""+cc.cs.PlayerInfo.exp
+        //this.Exp.string = ""+cc.cs.PlayerInfo.exp
         this.content.removeAllChildren(true);
         
         cc.log( "hehe"+itemArray.length)
@@ -155,7 +168,7 @@ cc.Class({
             this.content.addChild(item);
     		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
             let PosY = 0;
-              if((i+1) % 4 == 0)
+              if((i+1) % 4 == 0 )
         {
             PosY =  Math.floor((i+1) / 4);
         }
@@ -163,6 +176,8 @@ cc.Class({
         {
             PosY =Math.floor((i+1) /4) +1;
         }   
+
+        PosY -- ;
         
             // this.scrollView.content.width / 4
              

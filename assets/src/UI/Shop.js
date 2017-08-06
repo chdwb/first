@@ -153,6 +153,7 @@ cc.Class({
                 }   
             
                 // this.scrollView.content.width / 4
+                PosY -- ;
                  
                  var pos = count % 2
             
