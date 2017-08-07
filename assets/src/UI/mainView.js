@@ -256,11 +256,12 @@ cc.Class({
         }, this.buyGoldBtn)
 
         this.workBtn.on("click", (event) => {
-            self.goLove()
+            self.goWork()
+            
         }, this.workBtn)
 
         this.loveBtn.on("click", (event) => {
-            self.goWork()
+            self.goLove()
 
         }, this.loveBtn)
         

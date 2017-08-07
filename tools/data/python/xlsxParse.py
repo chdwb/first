@@ -48,10 +48,11 @@ class xlsxParse:
 			return "\"" + str(value).encode("utf-8") + "\""
 			
 	def getDefaultValue(self, type):
-		if type == 'float':
-			return -1
-		else:
-			return "\"dummy\""
+		#if type == 'float':
+		#	return -1
+		#else:
+		#	return "\"dummy\""
+		return "\"dummy\""
 	
 	def parseSheet(self, sheet):
 		nrows = sheet.nrows;
@@ -69,7 +70,8 @@ class xlsxParse:
 					
 		for t in tableType:
 			if t == "?":
-				print "error mission type";
+				#print "error mission type";
+				pass
 		
 		self.jsFile.write("\t"+sheet.name + ":{\n")
 		self.phpFile.write("\tpublic $" + sheet.name + " = array\n\t(\n")

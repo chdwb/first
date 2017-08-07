@@ -6,14 +6,6 @@ cc.Class({
             type: cc.ScrollView,
             default: null
         },
-        missionBg: {
-            type: cc.Sprite,
-            default: null
-        },
-        currentMissionBtn: {
-            type: cc.Node,
-            default: null
-        },
         rewardText: {
             type: cc.Label,
             default: null
@@ -26,15 +18,31 @@ cc.Class({
             type: cc.Label,
             default: null
         },
-        diamondText: {
-            type: cc.Label,
-            default: null
-        },
         startBtn: {
             type: cc.Node,
             default: null
         },
         backBtn: {
+            type: cc.Node,
+            default: null
+        },
+        LockImage: {
+            type: cc.Node,
+            default: null
+        },
+        LockText: {
+            type: cc.Label,
+            default: null
+        },
+        mask: {
+            type: cc.Node,
+            default: null
+        },
+        startImage:{
+            type: cc.Node,
+            default: null
+        },
+        upImage:{
             type: cc.Node,
             default: null
         },
@@ -45,14 +53,43 @@ cc.Class({
 
         currentWorkID:"",
 
+        workLogID : "",
+
     },
 
-    startWork: function()
+    refresh : function()
+    {
+        this.goldText.string = cc.cs.PlayerInfo.Money
+    },
+
+    startWork: function(id)
     {
         cc.log("token="+cc.cs.PlayerInfo.ApiToken)
         cc.log("workid="+this.currentWorkID)
         this.node.getTag();
         cc.cs.gameMgr.sendWork(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.startWorkHandle, this)
+    },
+    upgradeWork : function()
+    {
+        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("workid="+this.currentWorkID)
+        cc.cs.gameMgr.sendUpgrade(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.upgradeWorkHandle, this)
+    },
+
+    upgradeWorkHandle(ret)
+    {
+        cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) 
+        {
+            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.work_id
+            this.loadWorkItem(cc.cs.PlayerInfo.Work_ID)
+            this.refresh()
+            cc.cs.UIMgr.showTip("升级成功", 1.0)
+        }else{
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
     },
 
     startWorkHandle(ret)
@@ -64,7 +101,13 @@ cc.Class({
             var parent = this.node.parent
             
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
-            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(JasonObject.content.info.executetime, this.currentWorkID, JasonObject.content.info.worklog_id, this.DoneWork,this)
+            this.workLogID = JasonObject.content.info.worklog_id
+            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(
+                JasonObject.content.info.executetime,
+                 this.currentWorkID, 
+                 true,
+                 this.DoneWork,
+                 this)
             cc.cs.PlayerInfo.Work_LogID = JasonObject.content.info.worklog_id
             cc.log("work_logID"+JasonObject.content.info.worklog_id)
            
@@ -76,8 +119,8 @@ cc.Class({
     DoneWork:function(ret)
     {
         cc.log("done work"+cc.cs.PlayerInfo.ApiToken)
-        cc.log("done work"+cc.cs.PlayerInfo.Work_LogID)
-        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.ApiToken, cc.cs.PlayerInfo.Work_LogID , this.DoneWorkHandle, this)
+        cc.log("done work"+cc.cs.PlayerInfo.Work_ID)
+        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.ApiToken, this.workLogID  , this.DoneWorkHandle, this)
     },
 
     DoneWorkHandle:function(ret)
@@ -86,20 +129,39 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
+            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["work_id" + this.currentWorkID]
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
             cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
 
                 var parent = this.node.parent
-                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
-
+                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
             })
-           
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
         //弹窗
     },
 
-    
+    isLock : function(is){
+        if(is == false)
+        {
+            this.LockImage.active  = false
+            this.mask.active  = false
+            this.rewardText.node.active = true
+            this.needTimeText.node.active = true
+            this.startImage.active = true
+            this.upImage.active = false
+        }else
+        {
+            this.LockImage.active  = true
+            this.mask.active  = true
+            this.rewardText.node.active = false
+            this.needTimeText.node.active = false
+            this.startImage.active = false
+            this.upImage.active = true
+        }
+    },
 
     chooseWork: function(target) {
         for (var j = 0; j < this.list.content.children.length; ++j) {
@@ -107,19 +169,29 @@ cc.Class({
                 this.list.content.children[j].getComponent("missionItemComponent").isChoose(false)
             }
         }
-
-        this.rewardText.string = cc.cs.gameData.work[target.csDataID]["REWARD"]
-        this.needTimeText.string = cc.cs.gameData.work[target.csDataID]["EXECUTE_TIME"]
         this.currentWorkID = target.workID
+        if(target.csDataID == "ID_"+cc.cs.PlayerInfo.Work_ID)
+        {
+            this.isLock(false)
+            this.rewardText.string = "每次获得："+ cc.cs.gameData.work[target.csDataID]["REWARD"]
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
+        }else
+        {
+            this.isLock(true)
+            this.LockText.string = "升级需要 "+ cc.cs.gameData.work[target.csDataID]["NEED_GOLD"] + " 金币" 
+        }
+       
+        
         target.getComponent("missionItemComponent").isChoose(true)
     },
 
     loadWorkItem: function(id) {
+        this.list.content.removeAllChildren(true)
         var self = this
         this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
         var workCount = cc.cs.gameData.work["TOTAL_COUNT"]
-        var index = 1;
-        for (var i = 0; i < workCount; ++i) {
+        var index = id;
+        for (var i = id; i <= workCount; ++i) {
             var itemNode = cc.instantiate(this.missionItemPrefab)
             var itemCom = itemNode.addComponent("missionItemComponent")
 
@@ -130,8 +202,10 @@ cc.Class({
             itemNode.active = true
             if (index == id) {
                 itemCom.isChoose(true)
-                this.rewardText.string = cc.cs.gameData.work["ID_" + index]["REWARD"]
-                this.needTimeText.string = cc.cs.gameData.work["ID_" + index]["EXECUTE_TIME"]
+                this.rewardText.string = "每次获得："+ cc.cs.gameData.work["ID_" + index]["REWARD"]
+                cc.log("-------------c--------- " + id)
+                this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+id+"LeftTImes"]
+                this.isLock(false)
             } else {
                 itemCom.isChoose(false)
             }
@@ -144,16 +218,24 @@ cc.Class({
     },
     // use this for initialization
     onLoad: function() {
-
-        this.loadWorkItem(1)
+        var self = this
+        cc.log("............keng .... " +cc.cs.PlayerInfo.Work_ID)
+        this.loadWorkItem(cc.cs.PlayerInfo.Work_ID)
         this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
-            this.startWork()
+
+            if(self.currentWorkID == cc.cs.PlayerInfo.Work_ID)
+                self.startWork()
+            else 
+                {
+                    self.upgradeWork()
+                }
+            
         }, this.startBtn)
         this.backBtn.on("click", (event) => {
             //添加回退代码
-            var parent = this.node.parent
+            var parent = self.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
    
         }, this.backBtn)

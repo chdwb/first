@@ -57,34 +57,34 @@ cc.Class({
         if(this.replyList.length ==0)
         {
             this.replyList.push(this.replyMsg.node)
-            this.replyMsg.string = "<color=#0000ff>" + cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"] + "</c><color=#000000>:"+cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_TEXT"] +"</color>"
+            this.replyMsg.string = "<color=#ffffff>" + cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"] + "</c><color=#1f6289>:"+cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_TEXT"] +"</color>"
             if(cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"] != "dummy")
             {
                 
-                this.addTextItem("<color=#0000ff>"
+                this.addTextItem("<color=#ffffff>"
                                 + cc.cs.PlayerInfo.NPCName
-                                +"</c><color=#000000>回复"
-                                +"</c><color=#0000ff>"
+                                +"</c><color=#1f6289>回复"
+                                +"</c><color=#ffffff>"
                                 +cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"]
-                                +"</c><color=#000000>:"
+                                +"</c><color=#1f6289>:"
                                 +cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"]
                                 +"</color>")
             }
         }else{
-            this.addTextItem("<color=#0000ff>" 
+            this.addTextItem("<color=#ffffff>" 
             + cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"] 
-            + "</c><color=#000000>:"
+            + "</c><color=#1f6289>:"
             +cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_TEXT"]
             +"</color>")
             if(cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"] != "dummy")
             {
                 
-                this.addTextItem("<color=#0000ff>"
+                this.addTextItem("<color=#ffffff>"
                                 + cc.cs.PlayerInfo.NPCName
-                                +"</c><color=#000000>回复"
-                                +"</c><color=#0000ff>"
+                                +"</c><color=#1f6289>回复"
+                                +"</c><color=#ffffff>"
                                 +cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"]
-                                +"</c><color=#000000>:"
+                                +"</c><color=#1f6289>:"
                                 +cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"]
                                 +"</color>")
             }
@@ -104,34 +104,34 @@ cc.Class({
         if(this.replyList.length ==0)
         {
             this.replyList.push(this.replyMsg.node)
-            this.replyMsg.string = "<color=#0000ff>" + cc.cs.PlayerInfo.PlayerNmae + "</c><color=#000000>:"+cc.cs.gameData.reply["ID_" + id]["REPLY_TEXT"] +"</color>"
+            this.replyMsg.string = "<color=#ffffff>" + cc.cs.PlayerInfo.PlayerNmae + "</c><color=#1f6289>:"+cc.cs.gameData.reply["ID_" + id]["REPLY_TEXT"] +"</color>"
             if(cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"] != "dummy")
             {
                 
-                this.addTextItem("<color=#0000ff>"
+                this.addTextItem("<color=#ffffff>"
                                 + cc.cs.PlayerInfo.NPCName
-                                +"</c><color=#000000>回复"
-                                +"</c><color=#0000ff>"
+                                +"</c><color=#1f6289>回复"
+                                +"</c><color=#ffffff>"
                                 +cc.cs.PlayerInfo.PlayerNmae
-                                +"</c><color=#000000>:"
+                                +"</c><color=#1f6289>:"
                                 +cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"]
                                 +"</color>")
             }
         }else{
-            this.addTextItem("<color=#0000ff>" 
+            this.addTextItem("<color=#ffffff>" 
             + cc.cs.PlayerInfo.PlayerNmae
-            + "</c><color=#000000>:"
+            + "</c><color=#1f6289>:"
             +cc.cs.gameData.reply["ID_" + id]["REPLY_TEXT"]
             +"</color>")
             if(cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"] != "dummy")
             {
                 
-                this.addTextItem("<color=#0000ff>"
+                this.addTextItem("<color=#ffffff>"
                                 + cc.cs.PlayerInfo.NPCName
-                                +"</c><color=#000000>回复"
-                                +"</c><color=#0000ff>"
+                                +"</c><color=#1f6289>回复"
+                                +"</c><color=#ffffff>"
                                 +cc.cs.PlayerInfo.PlayerNmae
-                                +"</c><color=#000000>:"
+                                +"</c><color=#1f6289>:"
                                 +cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"]
                                 +"</color>")
             }
@@ -156,17 +156,11 @@ cc.Class({
         newItem.x = this.replyMsg.node.x
         newItem.y = this.replyList[0].y - this.replyList.length * this.replyMsg.node.getContentSize().height
         r.string = text
+        r.fontSize = this.replyMsg.fontSize
+        r.lineHeight = this.replyMsg.lineHeight
+        r.horizontalAlign = this.replyMsg.horizontalAlign
+        r.font = this.replyMsg.font
         this.replyList.push(newItem)
-    },
-
-    load:function(){
-        this.bg = this.node.getChildByName("bg")
-        this.bghf = this.node.getChildByName("bghf")
-        this.msg = this.bg.getChildByName("msg")
-        this.plBtn = this.bghf.getChildByName("plBtn")
-        this.dzBtn = this.bghf.getChildByName("dzBtn")
-        this.replyMsg = this.bghf.getChildByName("reply").getComponent("cc.RichText")
-        this.dateText = this.bghf.getChildByName("dateText")
     },
 
     onLoad: function () {
@@ -191,11 +185,11 @@ cc.Class({
     },
 
     setZan:function(count){
-        this.dzBtn.getChildByName("Label").getComponent(cc.Label).string = "点赞("+count+")"
+        //this.dzBtn.getChildByName("Label").getComponent(cc.Label).string = "点赞("+count+")"
     },
 
     setPL:function(count){
-        this.plBtn.getChildByName("Label").getComponent(cc.Label).string = "评论("+count+")"
+        //this.plBtn.getChildByName("Label").getComponent(cc.Label).string = "评论("+count+")"
     },
 
     sendReplyHandle:function(ret)

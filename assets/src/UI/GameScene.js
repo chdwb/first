@@ -75,12 +75,20 @@ cc.Class({
         this.ShopView.active = (cc.cs.UIMgr.SHOPVIEW == type); 
         this.SignRewardView.active = (cc.cs.UIMgr.SIGNREWARDVIEW == type); 
         this.GiftView.active = (cc.cs.UIMgr.GIFTVIEW == type); 
+        if(cc.cs.UIMgr.PHONEVIEW == type)
+        {
+            this.node.getChildByName("phoneView").getComponent("phoneView").showNormal()
+        }
 
         if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.PHONEVIEW == type)
         {
             this.node.getChildByName("mainView").getComponent("mainView").updateui()
         }
 
+        if(cc.cs.UIMgr.MISSONVIEW == type)
+        {
+            this.node.getChildByName("missionView").getComponent("workView").refresh()
+        }
 
         if(cc.cs.UIMgr.BAGVIEW == type)
         {

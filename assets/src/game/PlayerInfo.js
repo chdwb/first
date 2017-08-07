@@ -12,7 +12,7 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        PlayerNmae : "西门庆",
+        PlayerNmae : "宅男",
 
         ApiToken : "",
 
@@ -54,6 +54,16 @@ cc.Class({
 
         Work5LeftTImes:0,
 
+        Work6LeftTImes:0,
+
+        Work7LeftTImes:0,
+
+        Work8LeftTImes:0,
+
+        Work9LeftTImes:0,
+
+        Work10LeftTImes:0,
+
         Love1LeftTImes:0,
 
         Love2LeftTImes:0,
@@ -61,12 +71,15 @@ cc.Class({
         Love3LeftTImes:0,
 
         Love4LeftTImes:0,
+        Love5LeftTImes:0,
+        Love6LeftTImes:0,
+        Love7LeftTImes:0,
 
         Love_ID:0,
 
         Love_LogID:0,
 
-        NPCName:"凤姐",
+        NPCName:"许梦田",
         
         signday:0,
 

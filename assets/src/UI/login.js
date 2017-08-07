@@ -209,7 +209,7 @@ cc.Class({
             cc.cs.PlayerInfo.Power = JasonObject.content.info.power
             cc.cs.PlayerInfo.Money = JasonObject.content.info.money
             cc.cs.PlayerInfo.Diamond = JasonObject.content.info.diamond
-            cc.cs.PlayerInfo.Phone_ID = JasonObject.content.info.phone_id
+            cc.cs.PlayerInfo.Phone_ID = parseInt(JasonObject.content.info.phone_id)
             cc.cs.PlayerInfo.Wechat_ID = JasonObject.content.info.wechat_id
             cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.zoneThumbsUp_id
             cc.cs.PlayerInfo.ZoneReplay_ID = JasonObject.content.info.zoneReplay_id
@@ -219,13 +219,21 @@ cc.Class({
             cc.cs.PlayerInfo.Work3LeftTImes = JasonObject.content.info.work_id3
             cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.work_id4
             cc.cs.PlayerInfo.Work5LeftTImes = JasonObject.content.info.work_id5
+            cc.cs.PlayerInfo.Work6LeftTImes = JasonObject.content.info.work_id6
+            cc.cs.PlayerInfo.Work7LeftTImes = JasonObject.content.info.work_id7
+            cc.cs.PlayerInfo.Work8LeftTImes = JasonObject.content.info.work_id8
+            cc.cs.PlayerInfo.Work9LeftTImes = JasonObject.content.info.work_id9
+            cc.cs.PlayerInfo.Work10LeftTImes = JasonObject.content.info.work_id10
 
             cc.cs.PlayerInfo.Love_ID = JasonObject.content.info.date_id
-            cc.cs.PlayerInfo.Work1LeftTImes = JasonObject.content.info.date_id1
-            cc.cs.PlayerInfo.Work2LeftTImes = JasonObject.content.info.date_id2
-            cc.cs.PlayerInfo.Work3LeftTImes = JasonObject.content.info.date_id3
-            cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.date_id4
-            
+            cc.cs.PlayerInfo.Love1LeftTImes = JasonObject.content.info.date_id1
+            cc.cs.PlayerInfo.Love2LeftTImes = JasonObject.content.info.date_id2
+            cc.cs.PlayerInfo.Love3LeftTImes = JasonObject.content.info.date_id3
+            cc.cs.PlayerInfo.Love4LeftTImes = JasonObject.content.info.date_id4
+            cc.cs.PlayerInfo.Love5LeftTImes = JasonObject.content.info.date_id5
+            cc.cs.PlayerInfo.Love6LeftTImes = JasonObject.content.info.date_id6
+            cc.cs.PlayerInfo.Love7LeftTImes = JasonObject.content.info.date_id7
+        
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
              var itemcount = JasonObject.content.info.backpacks.length
             for(var i=0;i<JasonObject.content.info.backpacks.length;i++){  
@@ -236,7 +244,8 @@ cc.Class({
             for(var i=0;i<JasonObject.content.info.phones.length;i++){  
   
                 cc.log("phoneid = "+JasonObject.content.info.phones[i].phone_id)
-                cc.cs.PlayerInfo.Phone_player_ID.push(JasonObject.content.info.phones[i])
+                cc.cs.PlayerInfo.Phone_player_ID[i] = (parseInt( JasonObject.content.info.phones[i].phone_id))
+                cc.log(cc.cs.PlayerInfo.Phone_player_ID + " cc.cs.PlayerInfo.Phone_player_ID " + cc.cs.PlayerInfo.Phone_player_ID[i])
             }
 
             for(var i=0;i<JasonObject.content.info.wechats.length;i++){  
@@ -256,6 +265,8 @@ cc.Class({
                 cc.log("replies = "+JasonObject.content.info.replies[i].reply_id)
                 cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i].reply_id)
             }
+            if(cc.cs.PlayerInfo.Phone_ID == "1" || cc.cs.PlayerInfo.Phone_ID == 1)
+                cc.cs.PlayerInfo.Phone_ID = 0
     },
     gotoGameScene:function(ret)
     {

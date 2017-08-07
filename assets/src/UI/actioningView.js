@@ -14,10 +14,6 @@ cc.Class({
             default: null,
             type: cc.Label
         },
-        DescText: {
-            default: null,
-            type: cc.Label
-        },
         rightNowBtn: {
             default: null,
             type: cc.Node
@@ -26,6 +22,12 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+        backBtn: {
+            default: null,
+            type: cc.Node
+        },
+
+        isWork : false,
         totalTime: 0,
         currentTime: 0,
         isAction: false,
@@ -33,12 +35,10 @@ cc.Class({
         handleobj: null,
     },
 
-    setActionInfo: function(time, desc, image, callback,obj) {
+    setActionInfo: function(time, id, iswork, callback,obj) {
         this.isAction = true
         this.totalTime = time
         this.currentTime = 0
-        this.DescText.string = desc
-        //callback.apply(obj, ["666"]);
         this.handle = callback
         this.handleobj = obj
         
@@ -47,7 +47,7 @@ cc.Class({
     onLoad: function() {
         this.backBtn.on("click", (event) => {
             var parent = this.node.parent
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
         }, this.backBtn)
 
         this.rightNowBtn.on("click", (event) => {

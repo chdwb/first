@@ -99,6 +99,14 @@ cc.Class({
         this.sendHttp("ID_3", data, handle, obj)
     },
 
+    sendUpgrade : function(token, workid,handle, obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["workid"] = workid
+        this.sendHttp("ID_7", data, handle, obj)
+    },
+
     sendWork : function(token, workid, handle, obj)
     {
         var data = {}
@@ -197,6 +205,24 @@ cc.Class({
         data["api_token"] = token
         
         this.sendHttp("ID_4", data, handle, obj)
+    },
+
+    sendWorkRightNode:function(token,workid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["worklogid"] = workid
+        
+        this.sendHttp("ID_19", data, handle, obj)
+    },
+
+    sendDateRightNode:function(token,dateid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["datelogid"] = dateid
+        
+        this.sendHttp("ID_20", data, handle, obj)
     },
 
 

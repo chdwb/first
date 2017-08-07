@@ -37,11 +37,11 @@ cc.Class({
         if(is)
         {
             this.chooseBG.active = true
-            this.itemText.color = cc.Color.WHITE
+            //this.itemText.color = cc.Color.WHITE
         }else
         {
             this.chooseBG.active = false
-            this.itemText.color = cc.Color.BLACK
+            //this.itemText.color = cc.Color.BLACK
         }
     },
 
