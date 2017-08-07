@@ -144,6 +144,13 @@ cc.Class({
         var data = {}
         data["api_token"] = token
         data["phoneid"] = phoneid
+        this.sendHttp("ID_16", data, handle, obj)
+    },
+    sendWechat:function(token,wechatID,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["wechatid"] = wechatID
         this.sendHttp("ID_13", data, handle, obj)
     },
 

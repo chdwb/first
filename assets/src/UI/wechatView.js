@@ -115,6 +115,7 @@ cc.Class({
 
     sendWechat : function(id){
         this.currentPlayerWechatID = id
+        cc.cs.gameMgr.sendWechat(cc.cs.PlayerInfo.ApiToken, id , this.SendWechatHandle, this)
     },
 
     SendWechatHandle:function(ret)
