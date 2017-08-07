@@ -38,7 +38,7 @@ cc.Class({
         currentTime :0,
         totalTime : 0,
         NPCID : 0,
-        isAction = false,
+        isAction : false,
     },
 
     sendDisable : function(){
@@ -118,7 +118,7 @@ cc.Class({
     SendWechatHandle:function(ret)
     {
         var JasonObject = JSON.parse(ret);
-        if (JasonObject.success === true) {
+        if (JasonObject.success == true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
             this.NPCID = JasonObject.content.info.wechat_next
