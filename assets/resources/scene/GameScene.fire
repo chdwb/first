@@ -20283,7 +20283,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "button",
+    "_name": "button1",
     "_objFlags": 0,
     "_parent": {
       "__id__": 504
@@ -20333,8 +20333,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -198.3
+      "x": -200,
+      "y": -196
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -20532,7 +20532,7 @@
     "_left": 0.35320512820512817,
     "_right": 0.35320512820512817,
     "_top": 0,
-    "_bottom": 0.05,
+    "_bottom": 0.05430711610486892,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": false,
@@ -20546,7 +20546,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "button",
+    "_name": "button2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 504
@@ -20596,8 +20596,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -198.3
+      "x": 103,
+      "y": -193
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -20782,7 +20782,7 @@
     "_left": 0.35320512820512817,
     "_right": 0.35320512820512817,
     "_top": 0,
-    "_bottom": 0.05,
+    "_bottom": 0.05992509363295881,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": false,

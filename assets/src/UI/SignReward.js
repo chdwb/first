@@ -114,16 +114,21 @@ cc.Class({
     {
 
         cc.log("day = "+day)
-        if(cc.cs.PlayerInfo.Sign)
+
+        cc.log("day = "+cc.cs.PlayerInfo.Sign)
+        if(cc.cs.PlayerInfo.Sign  == true)
         {
-           this.button1.active = false;
-           this.button2.active = true;
-           this.button2.enabled  = false
-           this.button1.enabled  = false
+           
+          
+           //this.button2.enabled  = false
+           //this.button1.enabled  = false
+            this.button1.active = false;
+           this.button2.active = false;
         }
         else
         {
-            this.button1.active = true;
+            
+            this.button1.active = false;
            this.button2.active = false;
         }
 
@@ -137,14 +142,14 @@ cc.Class({
 
         var item3 = cc.instantiate(this.prefab)
         var itemCom3 = item3.getComponent("NodeItem")
-            cc.log("555"+rewarddata)
+            //cc.log("555"+rewarddata)
 
             this.node1.removeAllChildren(true)
             this.node2.removeAllChildren(true)
             this.node3.removeAllChildren(true)
             if(rewarddata != undefined)
             {
-                cc.log("666")
+                //cc.log("666")
                 itemCom.setItmeNmae("金币")
                 itemCom.setItmeNum(rewarddata["GOLD_NUM"])
 
