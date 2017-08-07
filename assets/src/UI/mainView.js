@@ -170,6 +170,14 @@ cc.Class({
         this.setGold(cc.cs.PlayerInfo.Money)
         this.setDay(leveldata["LEV_DAY"])
 
+        this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
+        this.wechatBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_3"]["FUNCTION_LEVEL"]
+        this.workBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
+        this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
+        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
+       
+
+
     },
     // use this for initialization
 
