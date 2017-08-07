@@ -13726,7 +13726,8 @@
     "nvzhuTalkPrefab": null,
     "nanzhuTalkPrefab": null,
     "inputTablePrefab": null,
-    "tianshuPrefab": null
+    "tianshuPrefab": null,
+    "inputDialog": null
   },
   {
     "__type__": "cc.Node",
