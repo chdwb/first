@@ -125,7 +125,7 @@ cc.Class({
      goWechat: function()
     {
        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.WECHATVIEW)
     },
 
      goWeibo: function()
@@ -240,7 +240,7 @@ cc.Class({
 
         this.wechatBtn.on("click", (event) => {
 
-
+            self.goWechat()
             
         }, this.wechatBtn)
 
