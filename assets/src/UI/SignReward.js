@@ -128,14 +128,14 @@ cc.Class({
           
            this.button2.enabled  = false
            this.button1.enabled  = false
-           this.button1.active = false;
-           this.button2.active = true;
+           this.button1.node.active = false;
+           this.button2.node.active = true;
         }
         else
         {
             
-            this.button1.active = true;
-           this.button2.active = false;
+            this.button1.node.active = true;
+           this.button2.node.active = false;
         }
 
          
