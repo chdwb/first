@@ -32,6 +32,13 @@ cc.Class({
         tianshuPrefab : null,
 
         inputTableBtn : null,
+
+        currentPlayerWechatID : 0,
+
+        currentTime :0,
+        totalTime : 0,
+        NPCID : 0,
+        isAction = false,
     },
 
     sendDisable : function(){
@@ -78,7 +85,7 @@ cc.Class({
         this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
         cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
         "", true)
-        while(id < cc.cs.PlayerInfo.wWechat_ID){
+        while(id < cc.cs.PlayerInfo.Wechat_ID){
             if(showDay)
             {
                 this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
@@ -92,7 +99,7 @@ cc.Class({
         
                 showDay = true
             }
-            if(id < cc.cs.PlayerInfo.wWechat_ID)
+            if(id < cc.cs.PlayerInfo.Wechat_ID)
                 break;
             if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
                 id = cc.cs.PlayerInfo.wechat_player_ID[0]
@@ -105,7 +112,27 @@ cc.Class({
     },
 
     sendWechat : function(id){
+        this.currentPlayerWechatID = id
+    },
 
+    SendWechatHandle:function(ret)
+    {
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            //cc.cs.UIMgr.showTip("工作完成", 1.0)
+            //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
+            this.NPCID = JasonObject.content.info.wechat_next
+            cc.cs.PlayerInfo.wechat_player_ID.push(this.currentPlayerPhoneID)
+            this.isAction = true;
+            this.currentTime = 0
+            this.totalTime = (cc.random0To1() + 0.4) * 8 
+            if(this.totalTime > 8)   this.totalTime = 8
+            
+
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+        //弹窗
     },
 
     showInputTable : function(id){
@@ -226,11 +253,16 @@ cc.Class({
         })
     },
 
-    setViewInputMsg:function(id){
-        if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
-            this.loadCruuentTalk(this.infoviewScroll,false, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName); 
+    setInputMsg:function(id){
+        cc.cs.PlayerInfo.Phone_ID = id
+        if(cc.cs.gameData.wechat["WECHAT_ID"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID"+id]["WECHAT_OPTION"] == -1){
+            this.loadCruuentTalk(this.talkScroll,false, cc.cs.gameData.wechat["WECHAT_ID"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName, false); 
+            if(cc.cs.gameData.wechat["WECHAT_ID"+id]["WECHAT_NEXT"] != "dummy"){
+                this.sendEnable()
+            }
         }else{
-            this.loadCruuentTalk(this.infoviewScroll,true, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae);
+            this.loadCruuentTalk(this.talkScroll,true, cc.cs.gameData.wechat["WECHAT_ID"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae, flae);
+            this.sendDisable()
         }
     },
 
@@ -293,7 +325,19 @@ cc.Class({
         newNode.y = newNode.height * 0.5
     },
     // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
+    update: function (dt) {
+        if (this.isAction) {
+            this.currentTime += dt;
+            if (this.currentTime >= this.totalTime) {
+                this.talkImage.active =true
+                this.linkImage.active  = false
+                this.sendEnable()
+                this.setInputMsg(this.NPCID)
+                //this.isAction = false;
+                this.isAction = false
+                this.currentTime = 0
+                this.totalTime = 0
+            } 
+        }
+    },
 });

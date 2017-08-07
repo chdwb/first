@@ -12991,7 +12991,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 329
@@ -13727,7 +13727,7 @@
     "nanzhuTalkPrefab": null,
     "inputTablePrefab": null,
     "tianshuPrefab": null,
-    "inputDialog": null
+    "inputTableBtn": null
   },
   {
     "__type__": "cc.Node",
