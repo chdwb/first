@@ -37,6 +37,12 @@ cc.Class({
             type:cc.Button
             
         },
+
+         button3:{
+            default:null,
+            type:cc.Button
+            
+        },
     },
     
     onBack:function(){
@@ -120,18 +126,21 @@ cc.Class({
         {
            
           
-           //this.button2.enabled  = false
-           //this.button1.enabled  = false
-            this.button1.active = false;
-           this.button2.active = false;
+           this.button2.enabled  = false
+           this.button1.enabled  = false
+           this.button1.active = false;
+           this.button2.active = true;
         }
         else
         {
             
-            this.button1.active = false;
+            this.button1.active = true;
            this.button2.active = false;
         }
 
+         
+        //this.button3.enabled = false;
+        //this.node2.active = false;
         var rewarddata = cc.cs.gameData.sign_reward["ID_"+day]
 
         var item = cc.instantiate(this.prefab)
