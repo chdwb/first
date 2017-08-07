@@ -104,6 +104,10 @@ cc.Class({
         }
     },
 
+    sendWechat : function(id){
+
+    },
+
     showInputTable : function(id){
         var wechatOption = 0
         id = parseInt(id)
@@ -141,7 +145,7 @@ cc.Class({
             btn1.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
-                self.SendPhone(event.target.WECHAT_ID)
+                self.sendWechat(event.target.WECHAT_ID)
                 self.tonghuakuang.active = true
             },btn1)
             btn2.active = false;
@@ -155,13 +159,13 @@ cc.Class({
             btn1.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
-                self.SendPhone(event.target.WECHAT_ID)
+                self.sendWechat(event.target.WECHAT_ID)
                 self.tonghuakuang.active = true
             },btn1)
             btn2.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
-                self.SendPhone(event.target.WECHAT_ID)
+                self.sendWechat(event.target.WECHAT_ID)
                 self.tonghuakuang.active = true
             },btn2)
             
@@ -178,19 +182,19 @@ cc.Class({
             btn1.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
-                self.SendPhone(event.target.WECHAT_ID)
+                self.sendWechat(event.target.WECHAT_ID)
                 self.tonghuakuang.active = true
             },btn1)
             btn2.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
-                self.SendPhone(event.target.WECHAT_ID)
+                self.sendWechat(event.target.WECHAT_ID)
                 self.tonghuakuang.active = true
             },btn2)
             btn3.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
-                self.SendPhone(event.target.WECHAT_ID)
+                self.sendWechat(event.target.WECHAT_ID)
                 self.tonghuakuang.active = true
             },btn3)
         }
