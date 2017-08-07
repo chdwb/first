@@ -72,15 +72,17 @@ cc.Class({
     {
         var startIndex = 1
         var index = 0
+        if(cc.cs.PlayerInfo.wechat_player_ID.length == 0) return
         if(cc.cs.gameData.wechat["WECHAT_ID_1"]["WECHAT_OPTION"] != "dummy"){
            startIndex =  cc.cs.PlayerInfo.wechat_player_ID[index]
+
            index++
         }
         var id = startIndex
 
         var showDay = false
 
-        cc.log("id = "+id)
+        cc.log("id = "+startIndex)
 
         this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
         cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),

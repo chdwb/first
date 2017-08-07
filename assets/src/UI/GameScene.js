@@ -80,7 +80,7 @@ cc.Class({
         this.ShopView.active = (cc.cs.UIMgr.SHOPVIEW == type); 
         this.SignRewardView.active = (cc.cs.UIMgr.SIGNREWARDVIEW == type); 
         this.GiftView.active = (cc.cs.UIMgr.GIFTVIEW == type); 
-        this.WechattView.active = (cc.cs.UIMgr.WECHATVIEW == type); 
+        this.WechatView.active = (cc.cs.UIMgr.WECHATVIEW == type); 
         if(cc.cs.UIMgr.PHONEVIEW == type)
         {
             this.node.getChildByName("phoneView").getComponent("phoneView").showNormal()

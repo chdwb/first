@@ -13727,7 +13727,12 @@
     "nanzhuTalkPrefab": null,
     "inputTablePrefab": null,
     "tianshuPrefab": null,
-    "inputTableBtn": null
+    "inputTableBtn": null,
+    "currentPlayerWechatID": 0,
+    "currentTime": 0,
+    "totalTime": 0,
+    "NPCID": 0,
+    "isAction": false
   },
   {
     "__type__": "cc.Node",
@@ -22419,6 +22424,9 @@
     },
     "GiftView": {
       "__id__": 534
+    },
+    "WechatView": {
+      "__id__": 313
     },
     "currentLayer": 0
   },
