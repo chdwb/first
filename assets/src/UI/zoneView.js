@@ -54,10 +54,10 @@ cc.Class({
         this.inputTableBtn.active = true
         var replayId = []
         for(var i = 1; i <= cc.cs.gameData.reply["TOTAL_COUNT"]; ++i){
-            cc.log(cc.cs.gameData.reply["ID_"+i]["ZONE_ID"])
+            cc.log(cc.cs.gameData.reply["ID_"+i]["REPLY_GROUP_ID"])
             cc.log(id)
-            cc.log(cc.cs.gameData.reply["ID_"+i]["ZONE_ID"] == id)
-            if(cc.cs.gameData.reply["ID_"+i]["ZONE_ID"] == id)
+            cc.log(cc.cs.gameData.reply["ID_"+i]["REPLY_GROUP_ID"] == id)
+            if(cc.cs.gameData.reply["ID_"+i]["REPLY_GROUP_ID"] == id)
             {
                 replayId.push(cc.cs.gameData.reply["ID_"+i])
             }
@@ -169,7 +169,7 @@ cc.Class({
 
         this.inputTableBtn.active = false
 
-        this.backBtn.once("click", (event)=>{
+        this.backBtn.on("click", (event)=>{
             var parent = self.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
 
