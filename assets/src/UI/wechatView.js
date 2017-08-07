@@ -65,7 +65,7 @@ cc.Class({
     {
         var startIndex = 1
         var index = 0
-        if(cc.cs.gameDate.wechat["WECHAT_ID_1"]["WECHAT_OPTION"] != "dummy"){
+        if(cc.cs.gameData.wechat["WECHAT_ID_1"]["WECHAT_OPTION"] != "dummy"){
            startIndex =  cc.cs.PlayerInfo.wechat_player_ID[index]
            index++
         }
@@ -75,14 +75,14 @@ cc.Class({
 
         
 
-        this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameDate.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
-        cc.cs.gameDate.level["LEV_LEV_" + cc.cs.gameDate.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
+        this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
+        cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
         "", true)
         while(id < cc.cs.PlayerInfo.wWechat_ID){
             if(showDay)
             {
-                this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameDate.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
-                cc.cs.gameDate.level["LEV_LEV_" + cc.cs.gameDate.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
+                this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
+                cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
                 "", true)
             }
 
