@@ -31,7 +31,7 @@ cc.Class({
 
         tianshuPrefab : null,
 
-        inputDialog : null,
+        inputTableBtn : null,
     },
 
     sendDisable : function(){
@@ -87,23 +87,113 @@ cc.Class({
             }
 
             this.setViewInputMsg(id)
-            if(cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_NEXT"] == "dummy")
+            if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"] == "dummy")
             {
         
                 showDay = true
             }
             if(id < cc.cs.PlayerInfo.wWechat_ID)
                 break;
-            if(cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
+            if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
                 id = cc.cs.PlayerInfo.wechat_player_ID[0]
                 index++
             }else
             {
-                id = cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_NEXT"]
+                id = cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"]
             }
         }
+    },
 
+    showInputTable : function(id){
+        var wechatOption = 0
+        id = parseInt(id)
+        if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] != "dummy"){
+            wechatOption = cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"]
+        }else{
+            wechatOption = cc.cs.gameData.wechat["WECHAT_ID_"+(id+1)]["WECHAT_OPTION"]
+        }
 
+        var self = this
+    
+        this.inputTableBtn.active = true
+        var replayId = []
+        var btn1 = this.inputTableBtn.getChildByName("btn1")
+        var btn2 = this.inputTableBtn.getChildByName("btn2")
+        var btn3 = this.inputTableBtn.getChildByName("btn3")
+        btn1.targetOff(btn1)
+        btn2.targetOff(btn2)
+        btn3.targetOff(btn3)
+        btn1.active =true;
+        btn2.active =true;
+        btn3.active =true;
+        for(var i = 1; i <= cc.cs.gameData.wechat["TOTAL_COUNT"]; ++i){
+            if(cc.cs.gameData.wechat["WECHAT_ID_"+i]["WECHAT_OPTION"] ==  wechatOption)
+            {
+                replayId.push(cc.cs.gameData.wechat["WECHAT_ID_"+i])
+            }
+            if(cc.cs.gameData.wechat["WECHAT_ID_" + i]["WECHAT_OPTION"] != "dummy" && cc.cs.gameData.wechat["WECHAT_ID_" + i]["WECHAT_OPTION"] > cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_OPTION"])
+                break;
+        }
+
+        if(replayId.length == 1){
+            btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["WECHAT_CONTENT"]
+            btn1.WECHAT_ID = replayId[0]["WECHAT_ID"]
+            btn1.on("click",(event)=>{
+                cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
+                event.target.parent.active = false
+                self.SendPhone(event.target.WECHAT_ID)
+                self.tonghuakuang.active = true
+            },btn1)
+            btn2.active = false;
+            btn3.active = false;
+        }else
+        if(replayId.length == 2){
+            btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["WECHAT_CONTENT"]
+            btn2.getChildByName("Label").getComponent(cc.Label).string = replayId[1]["WECHAT_CONTENT"]
+            btn1.WECHAT_ID = replayId[0]["WECHAT_ID"]
+            btn2.WECHAT_ID = replayId[1]["WECHAT_ID"]
+            btn1.on("click",(event)=>{
+                cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
+                event.target.parent.active = false
+                self.SendPhone(event.target.WECHAT_ID)
+                self.tonghuakuang.active = true
+            },btn1)
+            btn2.on("click",(event)=>{
+                cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
+                event.target.parent.active = false
+                self.SendPhone(event.target.WECHAT_ID)
+                self.tonghuakuang.active = true
+            },btn2)
+            
+            btn3.active = false;
+        }else
+        {
+            btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["WECHAT_CONTENT"]
+            btn2.getChildByName("Label").getComponent(cc.Label).string = replayId[1]["WECHAT_CONTENT"]
+            btn3.getChildByName("Label").getComponent(cc.Label).string = replayId[2]["WECHAT_CONTENT"]
+            btn1.WECHAT_ID = replayId[0]["WECHAT_ID"]
+            btn2.WECHAT_ID = replayId[1]["WECHAT_ID"]
+            btn3.WECHAT_ID = replayId[2]["WECHAT_ID"]
+
+            btn1.on("click",(event)=>{
+                cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
+                event.target.parent.active = false
+                self.SendPhone(event.target.WECHAT_ID)
+                self.tonghuakuang.active = true
+            },btn1)
+            btn2.on("click",(event)=>{
+                cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
+                event.target.parent.active = false
+                self.SendPhone(event.target.WECHAT_ID)
+                self.tonghuakuang.active = true
+            },btn2)
+            btn3.on("click",(event)=>{
+                cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
+                event.target.parent.active = false
+                self.SendPhone(event.target.WECHAT_ID)
+                self.tonghuakuang.active = true
+            },btn3)
+        }
     },
     // use this for initialization
     onLoad: function () {
@@ -120,21 +210,23 @@ cc.Class({
 
         this.loadFormerInfo()
 
-        this.inputDialog = cc.instantiate(this.inputTablePrefab)
+        this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
 
-        this.inputDialog.y = -120
+        this.inputTableBtn.y = -120
+
+        this.inputTableBtn.active = false;
 
         this.sendBtn.on("click",(event)=>{
-            
+
 
         })
     },
 
     setViewInputMsg:function(id){
-        if(cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
-            this.loadCruuentTalk(this.infoviewScroll,false, cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName); 
+        if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
+            this.loadCruuentTalk(this.infoviewScroll,false, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName); 
         }else{
-            this.loadCruuentTalk(this.infoviewScroll,true, cc.cs.gameData.phone["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae);
+            this.loadCruuentTalk(this.infoviewScroll,true, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae);
         }
     },
 

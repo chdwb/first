@@ -267,6 +267,8 @@ cc.Class({
             }
             if(cc.cs.PlayerInfo.Phone_ID == "1" || cc.cs.PlayerInfo.Phone_ID == 1)
                 cc.cs.PlayerInfo.Phone_ID = 0
+            if(cc.cs.PlayerInfo.Wechat_ID == "0" || cc.cs.PlayerInfo.Wechat_ID == 0)
+                cc.cs.PlayerInfo.Wechat_ID =1
     },
     gotoGameScene:function(ret)
     {
