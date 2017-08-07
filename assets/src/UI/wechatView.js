@@ -147,7 +147,7 @@ cc.Class({
         }
 
         var self = this
-    
+        cc.log("change +++++++++++++++++++++++++++++++++++++")
         this.inputTableBtn.active = true
         var replayId = []
         var btn1 = this.inputTableBtn.getChildByName("btn1")
@@ -175,7 +175,6 @@ cc.Class({
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
                 self.sendWechat(event.target.WECHAT_ID)
-                self.tonghuakuang.active = true
             },btn1)
             btn2.active = false;
             btn3.active = false;
@@ -189,13 +188,11 @@ cc.Class({
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
                 self.sendWechat(event.target.WECHAT_ID)
-                self.tonghuakuang.active = true
             },btn1)
             btn2.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
                 self.sendWechat(event.target.WECHAT_ID)
-                self.tonghuakuang.active = true
             },btn2)
             
             btn3.active = false;
@@ -212,19 +209,16 @@ cc.Class({
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
                 self.sendWechat(event.target.WECHAT_ID)
-                self.tonghuakuang.active = true
             },btn1)
             btn2.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
                 self.sendWechat(event.target.WECHAT_ID)
-                self.tonghuakuang.active = true
             },btn2)
             btn3.on("click",(event)=>{
                 cc.log("WECHAT_ID = "+ event.target.WECHAT_ID)
                 event.target.parent.active = false
                 self.sendWechat(event.target.WECHAT_ID)
-                self.tonghuakuang.active = true
             },btn3)
         }
     },
@@ -248,9 +242,11 @@ cc.Class({
         this.inputTableBtn.y = -120
 
         this.inputTableBtn.active = false;
+        this.node.addChild(this.inputTableBtn)
 
+        this.NPCID = cc.cs.PlayerInfo.Wechat_ID
         this.sendBtn.on("click",(event)=>{
-
+            self.showInputTable(self.NPCID)
 
         })
     },
