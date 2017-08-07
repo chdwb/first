@@ -83,6 +83,8 @@ cc.Class({
 
         nanzhuSize : 0,
 
+        currentPlayerPhoneID:0,
+
         minute :0,
         second : 0,
         timeIng: 0,
@@ -196,7 +198,7 @@ cc.Class({
         {
             
             this.setViewInputMsg(id)
-             if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_AUDIO"] == "dummy")
+            if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_AUDIO"] == "dummy")
             {
         
                 id = -1
@@ -383,6 +385,7 @@ cc.Class({
 
     SendPhone:function(phoneid)
     {
+        this.currentPlayerPhoneID = phoneid;
         cc.log("SendPhone = "+phoneid  + "         " + cc.cs.PlayerInfo.ApiToken  )
         this.setInputMsg(phoneid)
         cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.ApiToken, phoneid , this.SendPhoneHandle, this)
@@ -394,7 +397,7 @@ cc.Class({
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
             this.NPCID = JasonObject.content.info.phone_audio
-            
+            cc.cs.PlayerInfo.Phone_player_ID.push(this.currentPlayerPhoneID)
             this.isAction = true;
             this.currentTime = 0
             this.totalTime = cc.random0To1() * 8
@@ -409,8 +412,6 @@ cc.Class({
 
     loadCruuentTalk : function(scroll, isPlayer, msg, name)
     {   
-
-       
         var height = 0;
         var children = scroll.content.getChildren();
    

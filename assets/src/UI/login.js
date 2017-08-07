@@ -210,7 +210,7 @@ cc.Class({
             cc.cs.PlayerInfo.Money = JasonObject.content.info.money
             cc.cs.PlayerInfo.Diamond = JasonObject.content.info.diamond
             cc.cs.PlayerInfo.Phone_ID = parseInt(JasonObject.content.info.phone_id)
-            cc.cs.PlayerInfo.Wechat_ID = JasonObject.content.info.wechat_id
+            cc.cs.PlayerInfo.Wechat_ID = parseInt(JasonObject.content.info.wechat_id)
             cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.zoneThumbsUp_id
             cc.cs.PlayerInfo.ZoneReplay_ID = JasonObject.content.info.zoneReplay_id
             cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.work_id
@@ -251,7 +251,7 @@ cc.Class({
             for(var i=0;i<JasonObject.content.info.wechats.length;i++){  
   
                 //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.wechat_player_ID.push(JasonObject.content.info.wechats[i])
+                cc.cs.PlayerInfo.wechat_player_ID.push(parseInt(JasonObject.content.info.wechats[i].wechat_id))
             }
 
             for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
