@@ -165,7 +165,7 @@ cc.Class({
 
 
         var leveldata  =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]
-        var leveldata2  =  cc.cs.gameData.level["LEV_LEV_"+parseInt(cc.cs.PlayerInfo.Level) + 1]
+        var leveldata2  =  cc.cs.gameData.level["LEV_LEV_"+(parseInt(cc.cs.PlayerInfo.Level) + 1)]
         this.setExp(cc.cs.PlayerInfo.Exp,leveldata2["LEV_EXP"])
         //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.Money)

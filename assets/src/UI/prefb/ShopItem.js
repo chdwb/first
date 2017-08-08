@@ -75,8 +75,10 @@ cc.Class({
             var isFind = false
             for(var i = 0;i < array.length;i++)
             {
+               
                if( array[i].goods_id == JasonObject.content.info.goods_id)
                {
+                    cc.log("已经有这个道具")
                    isFind = true;
                    array[i].num = JasonObject.content.info.num
                    break;
@@ -84,7 +86,8 @@ cc.Class({
             }
             if(isFind == false)
             {
-                var newgoods;
+                cc.log("还没有这个道具")
+                var newgoods = {}
                     newgoods.goods_id = JasonObject.content.info.goods_id
                     newgoods.num = JasonObject.content.info.num
                 cc.log["push Bag"]
