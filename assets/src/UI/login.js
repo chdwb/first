@@ -257,13 +257,13 @@ cc.Class({
             for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
   
                 cc.log("weibo_thumbs = "+JasonObject.content.info.thumbs[i].zone_id)
-                cc.cs.PlayerInfo.weibo_thumbs.push(JasonObject.content.info.thumbs[i].zone_id)
+                cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(JasonObject.content.info.thumbs[i].zone_id))
             }
 
             for(var i=0;i<JasonObject.content.info.replies.length;i++){  
   
                 cc.log("replies = "+JasonObject.content.info.replies[i].reply_id)
-                cc.cs.PlayerInfo.replies.push(JasonObject.content.info.replies[i].reply_id)
+                cc.cs.PlayerInfo.replies.push(parseInt(JasonObject.content.info.replies[i].reply_id))
             }
             if(cc.cs.PlayerInfo.Phone_ID == "1" || cc.cs.PlayerInfo.Phone_ID == 1)
                 cc.cs.PlayerInfo.Phone_ID = 0

@@ -22,11 +22,6 @@ cc.Class({
             default: null,
             type: cc.Node
         },
-        backBtn: {
-            default: null,
-            type: cc.Node
-        },
-
         isWork : false,
         totalTime: 0,
         currentTime: 0,
@@ -36,18 +31,30 @@ cc.Class({
     },
 
     setActionInfo: function(time, id, iswork, callback,obj) {
+        cc.log("setActionInfosetActionInfosetActionInfosetActionInfo")
         this.isAction = true
-        this.totalTime = time
+        this.totalTime = parseInt(time) * 0.3
+        cc.log(" handle == totalTime " + this.handle + "     "  )
+        this.isWork = iswork
+        cc.log(" handle == iswork " + this.handle + "     "  )
         this.currentTime = 0
+        cc.log(" handle == currentTime " + this.handle + "     "  )
         this.handle = callback
+        cc.log(" handle == callback "+ "     "  )
         this.handleobj = obj
+
+        cc.log(" handle == handleobj " + "     "  + obj.workLogID )
         
     },
     // use this for initialization
     onLoad: function() {
+        var self = this
         this.backBtn.on("click", (event) => {
             var parent = this.node.parent
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
+            if(self.isWork)
+                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
+            else
+                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
         }, this.backBtn)
 
         this.rightNowBtn.on("click", (event) => {
@@ -68,7 +75,7 @@ cc.Class({
        
 
                 //if(this.handle !== null){
-                this.handle.apply(this.handleobj, ["666"]);
+                this.handle(this.handleobj);
                // }    
                 
                 this.isAction = false;

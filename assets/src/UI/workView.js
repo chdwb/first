@@ -102,6 +102,7 @@ cc.Class({
             
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
             this.workLogID = JasonObject.content.info.worklog_id
+
             parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(
                 JasonObject.content.info.executetime,
                  this.currentWorkID, 
@@ -109,7 +110,7 @@ cc.Class({
                  this.DoneWork,
                  this)
             cc.cs.PlayerInfo.Work_LogID = JasonObject.content.info.worklog_id
-            cc.log("work_logID"+JasonObject.content.info.worklog_id)
+            cc.log("work_logID"+this.workLogID)
            
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
@@ -119,8 +120,8 @@ cc.Class({
     DoneWork:function(ret)
     {
         cc.log("done work"+cc.cs.PlayerInfo.ApiToken)
-        cc.log("done work"+cc.cs.PlayerInfo.Work_ID)
-        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.ApiToken, this.workLogID  , this.DoneWorkHandle, this)
+        cc.log("done work"+ret.workLogID)
+        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.ApiToken, ret.workLogID  , ret.DoneWorkHandle, ret)
     },
 
     DoneWorkHandle:function(ret)
@@ -132,7 +133,7 @@ cc.Class({
             cc.cs.PlayerInfo.Money = JasonObject.content.info.money
             cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["work_id" + this.currentWorkID]
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
-            cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
+            cc.cs.UIMgr.showPopupO("工作完成了","工作完成了",()=>{
 
                 var parent = this.node.parent
                 parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)

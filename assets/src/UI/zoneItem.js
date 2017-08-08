@@ -30,6 +30,11 @@ cc.Class({
             type:cc.Label,
             default:null
         },
+        nameText:{
+            type:cc.Label,
+            default:null
+        },
+
         replyList:[],
         zoneID:0,
         zanNum:6,
@@ -37,16 +42,31 @@ cc.Class({
         plID:0,
     },
 
+    getDay:function(d)
+    {
+        if(d == 0)
+            return "今天"
+        if(d == 1)
+            return "昨天"
+        if(d == 2)
+            return "前天"
+      
+         return d+"天前"
+    },
+
     setLength : function(){
         var height =  Math.abs(this.bghf.y) + this.bghf.getContentSize().height + Math.abs(this.replyMsg.node.y*2)
-        cc.log(this.bghf.y)
-        cc.log(this.bghf.getContentSize().height)
         var si = this.node.getContentSize()
         si.height = height + 30
         this.node.setContentSize(si)
     },
     setZoneID:function(id){
         this.zoneID = id
+        this.nameText.string = cc.cs.PlayerInfo.NPCName
+        this.dateText.string = this.getDay(
+            parseInt( cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]["LEV_DAY"])-
+            parseInt(cc.cs.gameData.level["LEV_LEV_"+cc.cs.gameData.zone["ID_"+id]["ZONE_LEVEL"]]["LEV_DAY"])
+        )
     },
     setMsg :function(text){
         this.msg.string = text
@@ -54,6 +74,7 @@ cc.Class({
 
     addText : function(id){
         var  height = Math.abs(this.replyMsg.node.y*2)
+
         if(this.replyList.length ==0)
         {
             this.replyList.push(this.replyMsg.node)
@@ -166,8 +187,9 @@ cc.Class({
     onLoad: function () {
         var self = this;
         this.plBtn.on("click", (event)=>{
-            if(cc.cs.PlayerInfo.canPLZone(self.zoneID))
+            if(cc.cs.PlayerInfo.canPLZone(self.zoneID)){
                 event.target.parent.parent.parent.parent.parent.parent.getComponent("zoneView").showInputTable(self.zoneID ,self)
+            }
             else
                 cc.cs.UIMgr.showTip("已经评论过", 1.0)
         },this.plBtn)
@@ -199,7 +221,15 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
-            cc.cs.PlayerInfo.weibo_thumbs.push(self.zoneID)
+            cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(self.zoneID))
+            cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
+            if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+                cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
+            }else{
+                cc.cs.UIMgr.showTip("点赞完成", 1.0)
+            }
+            cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
+
             this.setZan(this.zanNum+1)
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)

@@ -10,6 +10,14 @@ cc.Class({
             type:cc.Node,
             default:null
         },
+        infoText : {
+            type:cc.Label,
+            default :null
+        },
+        nameText : {
+            type:cc.Label,
+            default:null
+        },
         ZoneIDList:[],
 
         ZoneItemPrefab : null,
@@ -38,9 +46,16 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
-            this.currentItem.addPlayerText(this.currentPLID)
+            this.currentItem.addPlayerText(parseInt(this.currentPLID))
             cc.cs.replies.push(this.currentPLID)
-            this.currentPLID 
+            
+            if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+                cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
+            }else{
+                cc.cs.UIMgr.showTip("评论完成", 1.0)
+            }
+            cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
+            cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
@@ -159,7 +174,7 @@ cc.Class({
         var self = this
         this.inputTablePrefab = cc.loader.getRes("prefab/inputTable", cc.Prefab)
         this.ZoneItemPrefab = cc.loader.getRes("prefab/zoneItem", cc.Prefab)
-        this.addZoneId(1)
+        
         this.inputTableBtn =  cc.instantiate(this.inputTablePrefab)
 
         this.node.addChild(this.inputTableBtn, 88)
@@ -168,6 +183,20 @@ cc.Class({
         this.inputTableBtn.y = 0
 
         this.inputTableBtn.active = false
+
+        this.nameText.string = cc.cs.PlayerInfo.NPCName
+
+        var currentID = parseInt(cc.cs.PlayerInfo.Level) - 2
+        if(currentID >= 1){
+            for(var i = currentID; i >= 1; --i ){
+                this.addZoneId(i)
+            }
+            this.infoText.node.active = true
+            this.infoText.string = "关注"+cc.cs.gameData.zone["ID_"+ currentID]["ZONE_FOLLOW_NUM"]+"|"+"粉丝"+cc.cs.gameData.zone["ID_"+ currentID]["ZONE_FANS_COUNT"]
+        }else{
+            this.infoText.node.active = false
+        }
+        
 
         this.backBtn.on("click", (event)=>{
             var parent = self.node.parent

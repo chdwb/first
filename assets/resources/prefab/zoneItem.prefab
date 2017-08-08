@@ -58,7 +58,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 436
+      "y": 208
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -683,7 +683,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "name",
+    "_name": "aa",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -1546,6 +1546,9 @@
     },
     "dateText": {
       "__id__": 33
+    },
+    "nameText": {
+      "__id__": 19
     },
     "replyList": [],
     "zoneID": 0,

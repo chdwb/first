@@ -10497,7 +10497,7 @@
     "missionBtnList": [],
     "missionItemPrefab": null,
     "currentWorkID": "",
-    "workLogID": ""
+    "dateLogID": ""
   },
   {
     "__type__": "cc.Node",
@@ -13404,7 +13404,7 @@
       "__id__": 319
     },
     "_enabled": true,
-    "transition": 2,
+    "transition": 3,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -14652,6 +14652,12 @@
     },
     "backBtn": {
       "__id__": 334
+    },
+    "infoText": {
+      "__id__": 345
+    },
+    "nameText": {
+      "__id__": 343
     },
     "ZoneIDList": [],
     "ZoneItemPrefab": null,

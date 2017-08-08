@@ -57,7 +57,7 @@ cc.Class({
 
         currentWorkID:"",
 
-        workLogID : "",
+        dateLogID : "",
 
     },
 
@@ -102,14 +102,14 @@ cc.Class({
        
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.showTip("开始工作", 1.0)
+            cc.cs.UIMgr.showTip("开始恋爱", 1.0)
             var parent = this.node.parent
             
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
-            this.workLogID = JasonObject.content.info.datelog_id
-            
+            this.dateLogID = JasonObject.content.info.datelog_id
+            cc.log("lovesetActionInfosetActionInfosetActionInfosetActionInfo")
             parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(
-                JasonObject.content.info.executetime,
+                 JasonObject.content.info.executetime,
                  this.currentWorkID, 
                  false,
                  this.DoneWork,
@@ -122,12 +122,13 @@ cc.Class({
 
     DoneWork:function(ret)
     {
+        cc.log(ret.dateLogID)
         cc.log("done work"+cc.cs.PlayerInfo.ApiToken)
-        cc.log("done work  "+this.workLogID)
-        cc.cs.gameMgr.sendLoveDone(cc.cs.PlayerInfo.ApiToken, this.workLogID  , this.DoneWorkHandle, this)
+        cc.log("done work  "+ret.DoneDateHandle)
+        cc.cs.gameMgr.sendLoveDone(cc.cs.PlayerInfo.ApiToken, ret.dateLogID  , ret.DoneDateHandle, ret)
     },
 
-    DoneWorkHandle:function(ret)
+    DoneDateHandle:function(ret)
     {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
@@ -137,10 +138,10 @@ cc.Class({
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
-            cc.cs.UIMgr.showPopupO("工作完成","工作完成了",()=>{
+            cc.cs.UIMgr.showPopupO("约会完成了","约会完成了",()=>{
 
                 var parent = this.node.parent
-                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
+                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
             })
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
@@ -166,8 +167,8 @@ cc.Class({
             //this.rewardText.node.active = false
             //this.needTimeText.node.active = false
             this.startBtn.active = false
-            this.startImage.active = false
-            this.upImage.active = true
+            this.startImage.active = !false
+            this.upImage.active = !true
             this.goodsText.node.active =false;
         }
     },
@@ -257,7 +258,7 @@ cc.Class({
             //添加开始工作代码
 
              if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0)
-                self.upgradeWork()
+                cc.cs.UIMgr.showTip("约会机会不够")
                 
             else 
                 {

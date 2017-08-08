@@ -107,12 +107,17 @@ cc.Class({
         this.inputTableBtn.active = false
         this.tonghuakuang.active = false
         this.currentScroll.node.active = false;
-        cc.log(parseInt( cc.cs.gameData.phone["PHONE_ID_"+(parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"]) + "  lcccc   " +cc.cs.PlayerInfo.Level + " cccc   " + (cc.cs.PlayerInfo.Phone_ID))
+
         if(parseInt( cc.cs.gameData.phone["PHONE_ID_"+(parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"]) > parseInt(cc.cs.PlayerInfo.Level))
         {
             this.phoneBtn.active = false
         }
-        this.NPCID = cc.cs.PlayerInfo.Phone_ID + 1
+        if(cc.cs.PlayerInfo.Phone_ID == 0 ||
+          cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_AUDIO"] == "dummy")
+            this.NPCID = cc.cs.PlayerInfo.Phone_ID + 1
+        else
+            this.NPCID = cc.cs.PlayerInfo.Phone_ID 
+        this.showCompletePhone()
     },
 
     
@@ -120,6 +125,7 @@ cc.Class({
     showCompletePhone : function(){
 
         var count = [];
+        var index = 0
         for(var i = 2; i <= cc.cs.gameData.level_up["TOTAL_COUNT"]; ++i)
         {
 
@@ -127,26 +133,27 @@ cc.Class({
                 break;
             else if(cc.cs.gameData.level_up["LEVEL_UP_LEV_"+i]["PHONE_END_ID"] != "dummy" && cc.cs.gameData.level_up["LEVEL_UP_LEV_"+i]["PHONE_END_ID"] == parseInt(cc.cs.PlayerInfo.Phone_ID))
             {
-                count[i-2] = i
+                count[index] = i
+                index ++
             }else if(cc.cs.gameData.level_up["LEVEL_UP_LEV_"+i]["PHONE_END_ID"] != "dummy")
             {
-               count[i-2] = i
+               count[index] = i
+                index++
             }
             
         }
         var newNode = null
         var self= this
+        this.everInfoScroll.content.removeAllChildren(true)
         for(var i = 0 ; i < count.length; ++i)
         {
             newNode = cc.instantiate(this.talkSummaryInfoPrefab)
             cc.cs.UIMgr.addItem_verticalScrollView(this.everInfoScroll, newNode, 0)
             newNode.cyEnd = count[i]
-            cc.log(cc.cs.gameData.level_up["LEVEL_UP_LEV_" + count[i]]["PHONE_END_ID"] + "   ccccc   " + i + "   dddd    " + count[i])
             newNode.getChildByName("infoBtn").getChildByName("time").getComponent(cc.Label).string = this.getDay(
                 parseInt( cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]["LEV_DAY"])-
                 parseInt(cc.cs.gameData.level["LEV_LEV_"+cc.cs.gameData.phone["PHONE_ID_"+cc.cs.gameData.level_up["LEVEL_UP_LEV_"+count[i]]["PHONE_END_ID"]]["PHONE_LEV"]]["LEV_DAY"])
             )
-            cc.log(cc.cs.gameData.phone["PHONE_ID_"+cc.cs.gameData.level_up["LEVEL_UP_LEV_"+count[i]]["PHONE_END_ID"]]["PHONE_MSG"])
             newNode.getChildByName("infoBtn").getChildByName("msg").getComponent(cc.Label).string = this.getLimitMsg(cc.cs.gameData.phone["PHONE_ID_"+cc.cs.gameData.level_up["LEVEL_UP_LEV_"+count[i]]["PHONE_END_ID"]]["PHONE_MSG"], 16)
             newNode.getChildByName("infoBtn").getChildByName("dian").getChildByName("index").getComponent(cc.Label).string = ""+(i+1)
             newNode.on("click",(event)=>{
@@ -249,7 +256,57 @@ cc.Class({
         this.everInfoScroll.node.active = false
         this.tonghuakuang.active = true
         this.currentScroll.node.active = true;
-        this.showCompletePhone()
+
+        var count = 0
+        var startIndex = 0
+        
+        if(cc.cs.PlayerInfo.Phone_ID == 0 || cc.cs.PlayerInfo.Phone_ID == 1
+        || (
+            cc.cs.gameData.phone["PHONE_ID_"+ (parseInt(cc.cs.PlayerInfo.Phone_ID )+ 1)]["PHONE_LEV"] 
+            != cc.cs.gameData.phone["PHONE_ID_"+ (parseInt(cc.cs.PlayerInfo.Phone_ID ))]["PHONE_LEV"])
+        ||
+            (cc.cs.gameData.phone["PHONE_ID_"+ (parseInt(cc.cs.PlayerInfo.Phone_ID )- 1)]["PHONE_LEV"] 
+            != cc.cs.gameData.phone["PHONE_ID_"+ (parseInt(cc.cs.PlayerInfo.Phone_ID ))]["PHONE_LEV"])
+        ){
+            this.clearCurrentTalk()
+            return
+        }  
+        else{
+            var currentPhoneLevel = cc.cs.gameData.phone["PHONE_ID_"+cc.cs.PlayerInfo.Phone_ID ]["PHONE_LEV"]
+            if(currentPhoneLevel == 2){
+                startIndex = 1
+            }else{
+                
+                for(var i = cc.cs.PlayerInfo.Phone_ID; i > 1; --i){
+                    if(cc.cs.gameData.phone["PHONE_ID_"+(i - 1)]["PHONE_LEV"] < currentPhoneLevel){
+                        startIndex = i
+                        break
+                    }
+                }
+            } 
+            var id = startIndex
+                var index = 0
+
+                for(var i = 0 ; i < cc.cs.PlayerInfo.Phone_player_ID.length; ++i){
+                    if(cc.cs.PlayerInfo.Phone_player_ID[i] >= startIndex){
+                        index = i
+                        break;
+                    }
+                }
+
+                while(id < cc.cs.PlayerInfo.Phone_ID){
+                    this.setInputMsg1(id)
+                    cc.log(id)
+                    if(id >= cc.cs.PlayerInfo.Phone_ID) break;
+                    if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == "dummy"){
+                        id = cc.cs.PlayerInfo.Phone_player_ID[index]
+                        index++
+                    }else{
+                        id = cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_AUDIO"]
+                    }
+                }
+        }
+        
     },
 
     showPhoneInfoView:function(){
@@ -263,11 +320,20 @@ cc.Class({
         this.playerInfoView.active =false
     },
 
+    setInputMsg1:function(id){
+        
+        if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == -1){
+            this.loadCruuentTalk(this.currentScroll,false, cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_MSG"],  cc.cs.PlayerInfo.NPCName); 
+            
+        }else{
+            this.loadCruuentTalk(this.currentScroll,true, cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_MSG"],  cc.cs.PlayerInfo.PlayerNmae);
+        }
+    },
     
 
 
     setInputMsg:function(id){
-        cc.cs.PlayerInfo.Phone_ID = id
+        
         if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_OPTION"] == -1){
             this.loadCruuentTalk(this.currentScroll,false, cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_MSG"],  cc.cs.PlayerInfo.NPCName); 
             if(cc.cs.gameData.phone["PHONE_ID_"+id]["PHONE_AUDIO"] != "dummy"){
@@ -390,6 +456,16 @@ cc.Class({
         this.setInputMsg(phoneid)
         cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.ApiToken, phoneid , this.SendPhoneHandle, this)
     },
+
+    canPhone : function(){
+        if(cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_LEV"] <= parseInt(cc.cs.PlayerInfo.Level))
+             
+            if(cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_AUDIO"] ==  "dummy"&&
+               cc.cs.gameData.phone["PHONE_ID_" +( cc.cs.PlayerInfo.Phone_ID + 1)]["PHONE_LEV"]  > parseInt(cc.cs.PlayerInfo.Level)) return false
+                else return true
+        return false
+    },
+
     SendPhoneHandle:function(ret)
     {
         var JasonObject = JSON.parse(ret);
@@ -397,19 +473,34 @@ cc.Class({
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
             this.NPCID = JasonObject.content.info.phone_audio
-            cc.cs.PlayerInfo.Phone_player_ID.push(this.currentPlayerPhoneID)
-            this.isAction = true;
-            this.currentTime = 0
-            this.totalTime = cc.random0To1() * 8
 
-            
+            cc.cs.PlayerInfo.Phone_player_ID.push(parseInt(this.currentPlayerPhoneID))
+            cc.cs.PlayerInfo.Phone_ID = parseInt(this.NPCID)
+
+            if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+                cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
+            }
+            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
+            if(this.canPhone()){
+                 this.currentTime = 0
+                this.isAction = true;
+                 this.totalTime = (cc.random0To1() + 0.4) * 8 
+                if(this.totalTime > 8)   this.totalTime = 8
+            }else{
+                 this.setInputMsg(this.NPCID)
+                this.timeIng = false
+            }
+           
 
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
         //弹窗
     },
-
+    clearCurrentTalk : function(){
+        this.currentScroll.content.removeAllChildren(true)
+    },
     loadCruuentTalk : function(scroll, isPlayer, msg, name)
     {   
         var height = 0;
@@ -427,7 +518,7 @@ cc.Class({
         {
             newNode  = cc.instantiate(this.nvzhuTalkPrefab)
             addHeight = this.nvzhuSize.height
-            newNode.cyH = this.nanzhuSize.height
+            newNode.cyH = this.nvzhuSize.height
             newNode.getChildByName("name").getComponent(cc.Label).string = "· " + name
         }
 
@@ -440,7 +531,7 @@ cc.Class({
         }
         height += addHeight;
         if(scroll.content.height < height)
-            scroll.content.height = height + 100; 
+            scroll.content.height = height; 
         scroll.content.addChild(newNode)
         newNode.y = newNode.height * 0.5
     },
@@ -491,6 +582,10 @@ cc.Class({
 
         this.cancelBtn.on("click", (event)=>{
             self.showNormal()
+            self.isAction = false
+            self.currentTime = 0
+            self.totalTime = 0
+            self.clearCurrentTalk()
         })
 
         this.phoneBtn.on("click", (event)=>{

@@ -29,7 +29,7 @@ cc.Class({
         var url = cc.cs.gameData.http[id]["Host"]
         var externUrl = cc.cs.gameData.http[id]["Route"]
         var isPost = cc.cs.gameData.http[id]["Method"] == "POST"
-
+        
         cc.cs.http.sendRequest(url, externUrl, data, handle, isPost, obj)
     },
 
@@ -117,6 +117,7 @@ cc.Class({
 
     sendWorkDone : function(token, worklogid, handle, obj)
     {
+       
         var data = {}
         data["api_token"] = token
         data["worklogid"] = worklogid
@@ -133,6 +134,7 @@ cc.Class({
 
     sendLoveDone : function(token, lovelogid, handle, obj)
     {
+         
         var data = {}
         data["api_token"] = token
         data["datelogid"] = lovelogid
@@ -232,6 +234,14 @@ cc.Class({
         this.sendHttp("ID_20", data, handle, obj)
     },
 
+    sendBuyLoveTimes:function(token,dateid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["datelogid"] = dateid
+        
+        this.sendHttp("ID_21", data, handle, obj)
+    },
 
     
     

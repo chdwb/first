@@ -96,6 +96,11 @@ cc.Class({
             this.node.getChildByName("missionView").getComponent("workView").refresh()
         }
 
+        if(cc.cs.UIMgr.WECHATVIEW == type){
+            cc.log("into wechatView")
+            this.node.getChildByName("WechatView").getComponent("wechatView").refresh()
+        }
+
         if(cc.cs.UIMgr.BAGVIEW == type)
         {
             cc.log("refresh bag")
