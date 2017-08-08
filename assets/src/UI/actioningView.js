@@ -33,7 +33,7 @@ cc.Class({
     setActionInfo: function(time, id, iswork, callback,obj) {
         cc.log("setActionInfosetActionInfosetActionInfosetActionInfo")
         this.isAction = true
-        this.totalTime = parseInt(time) * 0.3
+        this.totalTime = parseInt(time)
         cc.log(" handle == totalTime " + this.handle + "     "  )
         this.isWork = iswork
         cc.log(" handle == iswork " + this.handle + "     "  )

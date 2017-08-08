@@ -256,9 +256,9 @@ cc.Class({
         this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
-
+              cc.log("startbtn")
              if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0)
-                cc.cs.UIMgr.showTip("约会机会不够")
+                cc.cs.UIMgr.showTip("约会机会不够",1.0)
                 
             else 
                 {
