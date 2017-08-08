@@ -86,7 +86,7 @@ cc.Class({
             this.node.getChildByName("phoneView").getComponent("phoneView").showNormal()
         }
 
-        if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.PHONEVIEW == type)
+        if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.MAINVIEW == type)
         {
             this.node.getChildByName("mainView").getComponent("mainView").updateui()
         }

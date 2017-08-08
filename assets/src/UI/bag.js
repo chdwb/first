@@ -121,7 +121,7 @@ cc.Class({
        cc.log("背包")
         this.content = this.scrollView.content;
         this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
-        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]
+        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level + 1]
         this.setExp(cc.cs.PlayerInfo.Exp,leveldata["LEV_EXP"])
         this.initialize(cc.cs.PlayerInfo.Bag);
 

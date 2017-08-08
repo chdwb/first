@@ -164,9 +164,10 @@ cc.Class({
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
 
 
-        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]
-        this.setExp(cc.cs.PlayerInfo.Exp,leveldata["LEV_EXP"])
-        this.setDiamond(cc.cs.PlayerInfo.Diamond)
+        var leveldata  =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]
+        var leveldata2  =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level + 1]
+        this.setExp(cc.cs.PlayerInfo.Exp,leveldata2["LEV_EXP"])
+        //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.Money)
         this.setDay(leveldata["LEV_DAY"])
 
