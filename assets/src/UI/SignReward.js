@@ -64,7 +64,7 @@ cc.Class({
 
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
             cc.cs.PlayerInfo.sign = true
-
+             cc.cs.PlayerInfo.Money = JasonObject.content.info.money
             var array = cc.cs.PlayerInfo.Bag
             var isFind = false
             for(var i = 0;i < array.length;i++)
