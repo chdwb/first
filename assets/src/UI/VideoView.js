@@ -35,6 +35,10 @@ cc.Class({
                     cc.cs.UIMgr.showTip("视频完成", 1.0)
                     cc.cs.PlayerInfo.Level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
+
+                    var parent = this.node.parent
+                    parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+                    
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
                 }

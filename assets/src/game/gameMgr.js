@@ -26,6 +26,9 @@ cc.Class({
     },
 
     sendHttp:function(id, data, handle, obj ){
+
+        cc.log("id"+id);
+
         var url = cc.cs.gameData.http[id]["Host"]
         var externUrl = cc.cs.gameData.http[id]["Route"]
         var isPost = cc.cs.gameData.http[id]["Method"] == "POST"

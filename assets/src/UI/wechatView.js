@@ -137,7 +137,9 @@ cc.Class({
             /*if(parseInt(JasonObject.content.level) >parseInt(cc.cs.PlayerInfo.Level) ){
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
             }*/
+            cc.log("playvideo = "+JasonObject.content.info.playvideo)
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+             cc.log("videoID = "+cc.cs.PlayerInfo.videoID)
             cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
 

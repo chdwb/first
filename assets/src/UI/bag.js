@@ -237,6 +237,7 @@ cc.Class({
             }
             this.nodeItemUse.active = false
             this.initialize(cc.cs.PlayerInfo.Bag)
+            this.updateUI()
             
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
