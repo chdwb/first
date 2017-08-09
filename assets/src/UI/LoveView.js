@@ -138,6 +138,23 @@ cc.Class({
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
+
+            
+            var array = cc.cs.PlayerInfo.Bag
+            for(var i = 0;i < array.length;i++)
+            {
+               if( array[i].goods_id == JasonObject.content.info.goods_id )
+               {
+                   array[i].num = JasonObject.content.info.num
+                   if(JasonObject.content.info.num == 0 )
+                   {
+                       array.splice(i,1);
+                   }
+                   break;
+               }
+            }
+
+
             cc.cs.UIMgr.showPopupO("约会完成了","约会完成了",()=>{
 
                 var parent = this.node.parent
