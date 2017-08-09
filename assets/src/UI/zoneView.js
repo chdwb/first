@@ -47,7 +47,7 @@ cc.Class({
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
-            cc.cs.replies.push(this.currentPLID)
+            cc.cs.PlayerInfo.replies.push(this.currentPLID)
             
             if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)

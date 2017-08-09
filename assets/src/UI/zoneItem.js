@@ -221,7 +221,7 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
-            cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(self.zoneID))
+            cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(this.zoneID))
             cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
             if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
