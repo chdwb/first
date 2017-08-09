@@ -223,11 +223,12 @@ cc.Class({
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(this.zoneID))
             cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
-            if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
-                cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
-            }else{
+            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+           // if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+                //cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
+           // }else{
                 cc.cs.UIMgr.showTip("点赞完成", 1.0)
-            }
+           // }
             cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
 
             this.setZan(this.zanNum+1)

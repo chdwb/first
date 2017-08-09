@@ -233,6 +233,7 @@ cc.Class({
             cc.cs.PlayerInfo.Love5LeftTImes = JasonObject.content.info.date_id5
             cc.cs.PlayerInfo.Love6LeftTImes = JasonObject.content.info.date_id6
             cc.cs.PlayerInfo.Love7LeftTImes = JasonObject.content.info.date_id7
+            cc.cs.PlayerInfo.videoID = JasonObject.content.info.video_id
         
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
              var itemcount = JasonObject.content.info.backpacks.length

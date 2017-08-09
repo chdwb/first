@@ -136,6 +136,7 @@ cc.Class({
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
 
@@ -143,7 +144,7 @@ cc.Class({
             var array = cc.cs.PlayerInfo.Bag
             for(var i = 0;i < array.length;i++)
             {
-               if( array[i].goods_id == JasonObject.content.info.goods_id )
+               if( array[i].goods_id == JasonObject.content.info.goods_id)
                {
                    array[i].num = JasonObject.content.info.num
                    if(JasonObject.content.info.num == 0 )

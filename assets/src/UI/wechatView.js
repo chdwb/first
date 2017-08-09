@@ -134,9 +134,10 @@ cc.Class({
             
             cc.cs.PlayerInfo.Wechat_ID = this.NPCID
 
-            if(parseInt(JasonObject.content.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+            /*if(parseInt(JasonObject.content.level) >parseInt(cc.cs.PlayerInfo.Level) ){
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
-            }
+            }*/
+            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
             cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
 

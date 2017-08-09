@@ -60,6 +60,11 @@ cc.Class({
             type:cc.Node,
         },
 
+         VideoView:{
+            default:null,
+            type:cc.Node,
+        },
+
 
 
         currentLayer:0,
@@ -81,6 +86,7 @@ cc.Class({
         this.SignRewardView.active = (cc.cs.UIMgr.SIGNREWARDVIEW == type); 
         this.GiftView.active = (cc.cs.UIMgr.GIFTVIEW == type); 
         this.WechatView.active = (cc.cs.UIMgr.WECHATVIEW == type); 
+         this.VideoView.active = (cc.cs.UIMgr.VIDEOVIEW == type); 
         if(cc.cs.UIMgr.PHONEVIEW == type)
         {
             this.node.getChildByName("phoneView").getComponent("phoneView").showNormal()

@@ -2825,7 +2825,9 @@ module.exports = {
 		"ID_18":{"ID":18, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/goods/buyright", "Params":"api_token,goodsid,num", "Method":"POST", "Remark":"获取一键完成道具，goodsid只能是6或7。"},
 		"ID_19":{"ID":19, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/work/rightdone", "Params":"api_token,worklogid", "Method":"POST", "Remark":"工作一键完成，会扣除相应道具。"},
 		"ID_20":{"ID":20, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/rightdone", "Params":"api_token,datelogid", "Method":"POST", "Remark":"约会一键完成，会扣除相应道具。"},
-		"TOTAL_COUNT":20
+		"ID_20":{"ID":22, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/donevideo", "Params":"api_token,videoid", "Method":"POST", "Remark":"约会一键完成，会扣除相应道具。"},
+		"ID_20":{"ID":23, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/video/geturl", "Params":"api_token,videoid", "Method":"GET", "Remark":"约会一键完成，会扣除相应道具。"},
+		"TOTAL_COUNT":22
 	},
 	errorcode:{
 		"ID_0":{"ID":0, "DESC":"正确"},

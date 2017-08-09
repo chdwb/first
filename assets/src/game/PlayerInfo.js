@@ -84,6 +84,7 @@ cc.Class({
         signday:0,
 
         day:0,
+        videoID:0,
 
 
         Phone_player_ID:[],

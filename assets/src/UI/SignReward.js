@@ -63,7 +63,7 @@ cc.Class({
             cc.cs.UIMgr.showTip("签到成功", 1.0)
 
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
-            cc.cs.PlayerInfo.sign = true
+            cc.cs.PlayerInfo.Sign = true
              cc.cs.PlayerInfo.Money = JasonObject.content.info.money
             var array = cc.cs.PlayerInfo.Bag
             var isFind = false

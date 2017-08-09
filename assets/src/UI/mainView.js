@@ -176,6 +176,12 @@ cc.Class({
         this.workBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
         this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
         this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
+
+        if(cc.cs.PlayerInfo.videoID != 0)
+        {
+            var parent = this.node.parent
+            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.VIDEOVIEW)
+        }
        
 
 

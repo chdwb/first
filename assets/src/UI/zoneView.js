@@ -48,12 +48,12 @@ cc.Class({
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
             cc.cs.PlayerInfo.replies.push(this.currentPLID)
-            
-            if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
-                cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
-            }else{
+            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+            //if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+            //    cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
+           // }else{
                 cc.cs.UIMgr.showTip("评论完成", 1.0)
-            }
+           // }
             cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
         } else {

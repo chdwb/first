@@ -17,6 +17,7 @@ cc.Class({
         SIGNREWARDVIEW: 8,
         GIFTVIEW:9,
         WECHATVIEW:10,
+        VIDEOVIEW:11,
     },
 
    

@@ -239,9 +239,26 @@ cc.Class({
         var data = {}
         data["api_token"] = token
         data["datelogid"] = dateid
-        
         this.sendHttp("ID_21", data, handle, obj)
     },
+
+    sendVideoDone:function(token,videoid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["videoid"] = videoid
+        this.sendHttp("ID_22", data, handle, obj)
+    },
+
+    getVideoUrl:function(token,videoid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["videoid"] = videoid
+        this.sendHttp("ID_23", data, handle, obj)
+    },
+
+    
 
     
     

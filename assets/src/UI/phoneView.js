@@ -477,9 +477,11 @@ cc.Class({
             cc.cs.PlayerInfo.Phone_player_ID.push(parseInt(this.currentPlayerPhoneID))
             cc.cs.PlayerInfo.Phone_ID = parseInt(this.NPCID)
 
-            if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+            /*if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
-            }
+            }*/
+
+            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
             if(this.canPhone()){
