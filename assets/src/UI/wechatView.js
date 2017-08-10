@@ -109,6 +109,8 @@ cc.Class({
 
                 id = cc.cs.PlayerInfo.wechat_player_ID[index]
                 index++
+                if(index >= cc.cs.PlayerInfo.wechat_player_ID.length )
+                    break;
                 cc.log("id555"+id+"dd"+index)
             }else
             {
