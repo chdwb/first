@@ -20,7 +20,7 @@ cc.Class({
 
     onClick : function()
     {
-       
+       cc.log("play video " + cc.cs.PlayerInfo.videoID)
        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.ApiToken,cc.cs.PlayerInfo.videoID,this.videoDoneHandle,this)
 
     },

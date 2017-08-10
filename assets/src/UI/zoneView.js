@@ -49,6 +49,7 @@ cc.Class({
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
             cc.cs.PlayerInfo.replies.push(this.currentPLID)
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+            cc.log("video id 7= " + cc.cs.PlayerInfo.videoID)
             //if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
             //    cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
            // }else{

@@ -481,7 +481,8 @@ cc.Class({
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
             }*/
 
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+            cc.cs.PlayerInfo.videoID  = JasonObject.content.info.playvideo
+            cc.log("video id 4= " + cc.cs.PlayerInfo.videoID)
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
             if(this.canPhone()){

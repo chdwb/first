@@ -221,7 +221,8 @@ cc.Class({
             
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.video_id
+            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+            cc.log("video id3 = " + cc.cs.PlayerInfo.videoID)
             var array = cc.cs.PlayerInfo.Bag
             for(var i = 0;i < array.length;i++)
             {

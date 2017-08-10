@@ -137,6 +137,7 @@ cc.Class({
             cc.cs.PlayerInfo.Level = JasonObject.content.info.level
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+            cc.log("video id 1= " + cc.cs.PlayerInfo.videoID)
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
 

@@ -224,6 +224,7 @@ cc.Class({
             cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(this.zoneID))
             cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
+            cc.log("video id 6= " + cc.cs.PlayerInfo.videoID)
            // if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
                 //cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
            // }else{

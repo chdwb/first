@@ -139,7 +139,7 @@ cc.Class({
             }*/
             cc.log("playvideo = "+JasonObject.content.info.playvideo)
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-             cc.log("videoID = "+cc.cs.PlayerInfo.videoID)
+             cc.log("videoID 5= "+cc.cs.PlayerInfo.videoID)
             cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
 
