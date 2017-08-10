@@ -261,6 +261,14 @@ cc.Class({
         this.sendHttp("ID_24", data, handle, obj)
     },
 
+    buyLoveTime:function(token,dateid,handle,obj)
+    {
+        var data = {}
+        data["api_token"] = token
+        data["dateid"] = dateid
+        this.sendHttp("ID_22", data, handle, obj)
+    }
+
     
 
     

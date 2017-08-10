@@ -233,6 +233,16 @@ cc.Class({
             cc.cs.PlayerInfo.Love5LeftTImes = JasonObject.content.info.date_id5
             cc.cs.PlayerInfo.Love6LeftTImes = JasonObject.content.info.date_id6
             cc.cs.PlayerInfo.Love7LeftTImes = JasonObject.content.info.date_id7
+
+            cc.cs.PlayerInfo.Love1Price = JasonObject.content.info.Love1Price
+            cc.cs.PlayerInfo.Love2Price = JasonObject.content.info.Love2Price
+            cc.cs.PlayerInfo.Love3Price = JasonObject.content.info.Love3Price
+            cc.cs.PlayerInfo.Love4Price = JasonObject.content.info.Love4Price
+            cc.cs.PlayerInfo.Love5Price = JasonObject.content.info.Love5Price
+            cc.cs.PlayerInfo.Love6Price = JasonObject.content.info.Love6Price
+            cc.cs.PlayerInfo.Love7Price = JasonObject.content.info.Love7Price
+
+
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.video_id
             cc.log("video id 2= " + cc.cs.PlayerInfo.videoID)
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday

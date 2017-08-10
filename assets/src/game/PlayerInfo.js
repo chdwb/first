@@ -75,6 +75,17 @@ cc.Class({
         Love6LeftTImes:0,
         Love7LeftTImes:0,
 
+
+        Love1Price:0,
+        Love2Price:0,
+        Love3Price:0,
+        Love4Price:0,
+        Love5Price:0,
+        Love6Price:0,
+        Love7Price:0,
+
+
+
         Love_ID:0,
 
         Love_LogID:0,

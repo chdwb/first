@@ -138,7 +138,10 @@ cc.Class({
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
             cc.log("video id 1= " + cc.cs.PlayerInfo.videoID)
+             cc.log("currentWorkID = "+this.currentWorkID)
+             
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
+            
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
 
             
@@ -167,6 +170,35 @@ cc.Class({
         }
         //弹窗
     },
+
+
+    buyLoveTime:function()
+    {
+        cc.cs.gameMgr.buyLoveTime(cc.cs.PlayerInfo.ApiToken,this.currentWorkID,this.buyLoveTimehandle,this)
+    },
+
+    buyLoveTimehandle:function(ret)
+    {
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.UIMgr.showTip("购买成功", 1.0)
+             cc.log("loveid = "+this.currentWorkID)
+            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo["Love"+this.currentWorkID+"Price"] = JasonObject.content.info["Love"+this.currentWorkID+"Price"]
+            cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTimes"] = JasonObject.content.info["date_id"+this.currentWorkID]
+            cc.log("lefttime = "+ cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTimes"])
+
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTimes"]
+            this.refresh()
+            
+
+
+           
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+    },
+
 
     isLock : function(is){
         if(is == false)
@@ -276,12 +308,31 @@ cc.Class({
         this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
-              cc.log("startbtn")
+              cc.log("startbtn"+cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"])
               cc.log("self.currentWorkID = "+self.currentWorkID)
-             if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0)
-                cc.cs.UIMgr.showTip("约会机会不够",1.0)
+              cc.log("666"+"Love"+self.currentWorkID+"LeftTimes")
+              cc.log("leftTime = " + parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTimes"]))
 
-                cc.cs.UIMgr.showPopupOC("", "是否花"+6+"金币购买次数", okHandle, cancelHandle){
+                cc.log("leftTime2 = " + cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTimes"])
+
+                cc.log("leftTime3 = " + cc.cs.PlayerInfo["Love1LeftTImes"])
+
+             if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTimes"]) <= 0){
+                //cc.cs.UIMgr.showTip("约会机会不够",1.0)
+               //var array = cc.cs.gameData.date["DATE_ID_"+self.currentWorkID][DATE_BUY_TIMES_NEED].split(",")
+                // cc.cs.PlayerInfo
+                cc.cs.UIMgr.showPopupOC("", "是否花"+cc.cs.PlayerInfo["Love"+self.currentWorkID+"Price"]+"金币购买次数", ()=>{
+            self.buyLoveTime()
+            }, 
+             ()=>{
+
+                var parent = this.node.parent
+                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+            });
+             }
+             else {
+                 this.startWork()
+             }
                
             
         }, this.startBtn)
@@ -291,7 +342,14 @@ cc.Class({
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
    
         }, this.backBtn)
+        this.refresh()
     },
+
+    onEnable:function()
+    {
+        cc.log("onenable")
+        this.refresh()
+    }
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
