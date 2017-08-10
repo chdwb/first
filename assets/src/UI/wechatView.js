@@ -106,6 +106,7 @@ cc.Class({
                  break;
             }
             if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
+
                 id = cc.cs.PlayerInfo.wechat_player_ID[index]
                 index++
                 cc.log("id555"+id+"dd"+index)
