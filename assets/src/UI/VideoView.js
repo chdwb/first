@@ -47,7 +47,13 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 
-       this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.videoID
+       //this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.videoID
+
+    },
+
+    onEnable: function () {
+
+        this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.videoID
 
     },
 
