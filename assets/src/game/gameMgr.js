@@ -250,7 +250,7 @@ cc.Class({
         var data = {}
         data["api_token"] = token
         data["videoid"] = videoid
-        this.sendHttp("ID_22", data, handle, obj)
+        this.sendHttp("ID_23", data, handle, obj)
     },
 
     getVideoUrl:function(token,videoid,handle,obj)
@@ -258,7 +258,7 @@ cc.Class({
         var data = {}
         data["api_token"] = token
         data["videoid"] = videoid
-        this.sendHttp("ID_23", data, handle, obj)
+        this.sendHttp("ID_24", data, handle, obj)
     },
 
     
