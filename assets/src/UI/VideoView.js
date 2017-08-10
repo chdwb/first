@@ -31,7 +31,7 @@ cc.Class({
 
         var JasonObject = JSON.parse(ret);
                 if (JasonObject.success === true) {
-                    cc.cs.PlayerInfo.videoID = 0;
+                    cc.cs.PlayerInfo.videoID = JasonObject.content.info.video_id;
                     cc.cs.UIMgr.showTip("视频完成", 1.0)
                     cc.cs.PlayerInfo.Level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
