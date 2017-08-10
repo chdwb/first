@@ -63,7 +63,19 @@ cc.Class({
 
     refresh : function()
     {
+        cc.log("loveview refresh")
         this.goldText.string = cc.cs.PlayerInfo.Money
+        cc.log("currentWorkID = "+this.currentWorkID)
+                cc.log("lefttime = "+cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"])
+                if(parseInt(cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]) <= 0){
+                    this.startImage.active = false
+                    this.upImage.active = true
+                }
+                else {
+                    this.startImage.active = true
+                    this.upImage.active = false
+                }
+        this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
     },
 
     startWork: function(id)
@@ -185,10 +197,10 @@ cc.Class({
              cc.log("loveid = "+this.currentWorkID)
             cc.cs.PlayerInfo.Money = JasonObject.content.info.money
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"Price"] = JasonObject.content.info["Love"+this.currentWorkID+"Price"]
-            cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTimes"] = JasonObject.content.info["date_id"+this.currentWorkID]
-            cc.log("lefttime = "+ cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTimes"])
+            cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id"+this.currentWorkID]
+            cc.log("lefttime = "+ cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"])
 
-            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTimes"]
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
             this.refresh()
             
 
@@ -286,6 +298,7 @@ cc.Class({
                     this.goodsText.string = "需要道具：" +cc.cs.gameData.goods["GOODS_ID_"+goodsID]["GOODS_NAME"]+"x"+cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]  
                 }
                 cc.log("currentWorkID = "+self.currentWorkID)
+                cc.log("lefttime = "+cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"])
                 if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0){
                     self.startImage.active = false
                     self.upImage.active = true
@@ -308,16 +321,9 @@ cc.Class({
         this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
-              cc.log("startbtn"+cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"])
-              cc.log("self.currentWorkID = "+self.currentWorkID)
-              cc.log("666"+"Love"+self.currentWorkID+"LeftTimes")
-              cc.log("leftTime = " + parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTimes"]))
+             
 
-                cc.log("leftTime2 = " + cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTimes"])
-
-                cc.log("leftTime3 = " + cc.cs.PlayerInfo["Love1LeftTImes"])
-
-             if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTimes"]) <= 0){
+             if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0){
                 //cc.cs.UIMgr.showTip("约会机会不够",1.0)
                //var array = cc.cs.gameData.date["DATE_ID_"+self.currentWorkID][DATE_BUY_TIMES_NEED].split(",")
                 // cc.cs.PlayerInfo

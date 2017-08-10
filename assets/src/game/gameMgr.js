@@ -237,13 +237,13 @@ cc.Class({
         this.sendHttp("ID_20", data, handle, obj)
     },
 
-    sendBuyLoveTimes:function(token,dateid,handle,obj)
+    /*sendBuyLoveTimes:function(token,dateid,handle,obj)
     {
         var data = {}
         data["api_token"] = token
         data["datelogid"] = dateid
         this.sendHttp("ID_21", data, handle, obj)
-    },
+    },*/
 
     sendVideoDone:function(token,videoid,handle,obj)
     {
@@ -267,6 +267,18 @@ cc.Class({
         data["api_token"] = token
         data["dateid"] = dateid
         this.sendHttp("ID_22", data, handle, obj)
+    },
+
+    buyRightNow:function(token,type,handle,obj)
+    {
+
+
+        var data = {}
+        data["api_token"] = token
+        data["type"] = type
+        this.sendHttp("ID_18", data, handle, obj)
+
+
     }
 
     

@@ -242,6 +242,12 @@ cc.Class({
             cc.cs.PlayerInfo.Love6Price = JasonObject.content.info.Love6Price
             cc.cs.PlayerInfo.Love7Price = JasonObject.content.info.Love7Price
 
+            cc.cs.PlayerInfo.wechat_fn = JasonObject.content.info.wechat_fn
+            cc.cs.PlayerInfo.zone_fn = JasonObject.content.info.zone_fn
+            cc.cs.PlayerInfo.date_fn = JasonObject.content.info.date_fn
+            cc.cs.PlayerInfo.work_fn = JasonObject.content.info.work_fn
+
+           
 
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.video_id
             cc.log("video id 2= " + cc.cs.PlayerInfo.videoID)

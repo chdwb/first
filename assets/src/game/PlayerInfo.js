@@ -107,6 +107,12 @@ cc.Class({
 
         Bag:[],
 
+
+        wechat_fn:false,
+        zone_fn:false,
+        date_fn:false,
+        work_fn:false,
+
 },
 
     getZoneReplyID : function(id){
