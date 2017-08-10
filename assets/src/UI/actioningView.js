@@ -35,8 +35,9 @@ cc.Class({
 
     onRightNow:function()
     {
-        if(this.iswork)
+        if(this.isWork)
         {
+            cc.log("this.currentWorkID2 = "+ this.currentWorkID)
             cc.cs.gameMgr.sendWorkRightNode(cc.cs.PlayerInfo.ApiToken, this.currentLogID, this.onRightNowHandle, this)
         }
         else
@@ -57,10 +58,19 @@ cc.Class({
             if(this.iswork == true)
             {
 
+                cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["work_id" + this.currentWorkID]
+            //this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
+            cc.cs.UIMgr.showPopupO("工作完成了","工作完成了",()=>{
+
+                var parent = this.node.parent
+                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
+            })
+
             }
             else 
             {
-                cc.cs.PlayerInfo.Level = JasonObject.content.info.level
+            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
             cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
             cc.log("video id 1= " + cc.cs.PlayerInfo.videoID)
@@ -109,7 +119,7 @@ cc.Class({
 
          
 
-        if(this.iswork)
+        if(this.isWork)
         {
             type = 4
             isRightnow = cc.cs.PlayerInfo.work_fn
@@ -143,7 +153,14 @@ cc.Class({
         if (JasonObject.success == true) 
         {
             cc.cs.UIMgr.showTip("购买成功", 1.0)
-
+           if(this.isWork)
+           {
+            cc.cs.PlayerInfo.work_fn = JasonObject.content.info.work_fn
+           }
+           else
+           {
+            cc.cs.PlayerInfo.date_fn = JasonObject.content.info.date_fn
+           }
            this.onRightNow()
 
 
@@ -168,7 +185,13 @@ cc.Class({
         cc.log(" handle == callback "+ "     "  )
         this.handleobj = obj
         this.currentWorkID = id
-        this.currentLogID = obj.dateLogID;
+        if(this.isWork)
+        {
+            this.currentLogID = obj.workLogID
+        }
+        else{
+            this.currentLogID = obj.dateLogID;
+        }
         cc.log(" handle == handleobj " + "     "  + obj.workLogID )
         
     },

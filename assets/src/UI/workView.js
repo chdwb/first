@@ -60,6 +60,7 @@ cc.Class({
     refresh : function()
     {
         this.goldText.string = cc.cs.PlayerInfo.Money
+         this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
     },
 
     startWork: function(id)
@@ -241,6 +242,12 @@ cc.Class({
    
         }, this.backBtn)
     },
+
+    onEnable:function()
+    {
+        cc.log("refresh")
+        this.refresh()
+    }
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
