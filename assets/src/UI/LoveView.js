@@ -55,7 +55,7 @@ cc.Class({
 
         missionItemPrefab: null,
 
-        currentWorkID:"",
+        currentWorkID:"1",
 
         dateLogID : "",
 
@@ -253,9 +253,10 @@ cc.Class({
                     this.goodsText.node.active =true;
                     this.goodsText.string = "需要道具：" +cc.cs.gameData.goods["GOODS_ID_"+goodsID]["GOODS_NAME"]+"x"+cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]  
                 }
-                if(parseInt(cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]) <= 0){
-                    this.startImage.active = false
-                    this.upImage.active = true
+                cc.log("currentWorkID = "+self.currentWorkID)
+                if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0){
+                    self.startImage.active = false
+                    self.upImage.active = true
                 }
             } else {
                 itemCom.isChoose(false)
@@ -276,13 +277,12 @@ cc.Class({
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
               cc.log("startbtn")
+              cc.log("self.currentWorkID = "+self.currentWorkID)
              if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0)
                 cc.cs.UIMgr.showTip("约会机会不够",1.0)
-                
-            else 
-                {
-                    self.startWork()
-                }
+
+                cc.cs.UIMgr.showPopupOC("", "是否花"+6+"金币购买次数", okHandle, cancelHandle){
+               
             
         }, this.startBtn)
         this.backBtn.on("click", (event) => {
