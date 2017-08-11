@@ -116,7 +116,7 @@ cc.Class({
             this.NPCID = cc.cs.PlayerInfo.Phone_ID + 1
         else
             this.NPCID = cc.cs.PlayerInfo.Phone_ID
-            //this.showCompletePhone()
+        this.showCompletePhone()
     },
 
 
