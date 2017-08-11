@@ -63,8 +63,8 @@ cc.Class({
             type: cc.Node,
             default: null
         },
-        
-         SignRewardBtn: {
+
+        SignRewardBtn: {
             type: cc.Node,
             default: null
         },
@@ -84,90 +84,78 @@ cc.Class({
 
     setGold: function(gold) {
         //cc.log("set gold"+gold)
-        this.goldText.string = gold+""
+        this.goldText.string = gold + ""
     },
 
     setDiamond: function(diamond) {
         //cc.log("set diamond"+diamond)
-        this.diamondText.string = diamond+""
+        this.diamondText.string = diamond + ""
     },
-    goSignReward:function()
-    {
-        cc.log("heheh"+cc.cs.UIMgr.SIGNREWARDVIEW)
+    goSignReward: function() {
+        cc.log("heheh" + cc.cs.UIMgr.SIGNREWARDVIEW)
         var parent = this.node.parent
-       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SIGNREWARDVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SIGNREWARDVIEW)
     },
-    goWork: function()
-    {
-       var parent = this.node.parent
-       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
+    goWork: function() {
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
     },
 
-     goLove: function()
-    {
-       var parent = this.node.parent
+    goLove: function() {
+        var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
     },
 
-    goZone: function()
-    {
-       var parent = this.node.parent
+    goZone: function() {
+        var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ZONEVIEW)
     },
 
-     goPhone: function()
-    {
-       var parent = this.node.parent
+    goPhone: function() {
+        var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
     },
 
 
-     goWechat: function()
-    {
-       var parent = this.node.parent
+    goWechat: function() {
+        var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.WECHATVIEW)
     },
 
-     goWeibo: function()
-    {
-       var parent = this.node.parent
-       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+    goWeibo: function() {
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
-     goBag: function()
-    {
-       var parent = this.node.parent
+    goBag: function() {
+        var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.BAGVIEW)
     },
 
-     goGift: function()
-    {
-       var parent = this.node.parent
+    goGift: function() {
+        var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.GIFTVIEW)
     },
 
-     goShop: function()
-    {
-       var parent = this.node.parent
+    goShop: function() {
+        var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
     },
 
-     goSetting: function()
-    {
-       var parent = this.node.parent
-       parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+    goSetting: function() {
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
 
-    updateui:function()
-    {
+    updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
 
 
-        var leveldata  =  cc.cs.gameData.level["LEV_LEV_"+cc.cs.PlayerInfo.Level]
-        var leveldata2  =  cc.cs.gameData.level["LEV_LEV_"+(parseInt(cc.cs.PlayerInfo.Level) + 1)]
-        this.setExp(cc.cs.PlayerInfo.Exp,leveldata2["LEV_EXP"])
-        //this.setDiamond(cc.cs.PlayerInfo.Diamond)
+        var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.Level) + 1)]
+        this.setExp(cc.cs.PlayerInfo.Exp, leveldata2["LEV_EXP"])
+            //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.Money)
         this.setDay(leveldata["LEV_DAY"])
 
@@ -177,48 +165,62 @@ cc.Class({
         this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
         this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
 
-        if(cc.cs.PlayerInfo.videoID != 0)
-        {
+        if (cc.cs.PlayerInfo.videoID != 0) {
             var parent = this.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.VIDEOVIEW)
         }
-       
+        if (this.phoneBtn.active)
+            if (this.node.parent.getChildByName("phoneView").getComponent("phoneView").canPhone()) {
+                this.phoneBtn.getChildByName("stars").active = true;
+            } else {
+                this.phoneBtn.getChildByName("stars").active = false;
+            }
 
+        if (this.wechatBtn.active)
+            if (this.node.parent.getChildByName("WechatView").getComponent("wechatView").canWeChat()) {
+                this.wechatBtn.getChildByName("stars").active = true;
+            } else {
+                this.wechatBtn.getChildByName("stars").active = false;
+            }
+        if (this.zoneBtn.active)
+            if (this.node.parent.getChildByName("zoneView").getComponent("zoneView").canZone()) {
+                this.zoneBtn.getChildByName("stars").active = true;
+            } else {
+                this.zoneBtn.getChildByName("stars").active = false;
+            }
 
     },
     // use this for initialization
 
-     sendReplyHandle(ret)
-     {
-         cc.log(ret)
+    sendReplyHandle(ret) {
+        cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
-           
-           
+
+
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
         //弹窗
 
-     },
+    },
 
-      sendReplyHandle(ret)
-     {
-         cc.log(ret)
+    sendReplyHandle(ret) {
+        cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
 
-               
-           
+
+
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
         //弹窗
 
-     },
+    },
 
     onLoad: function() {
 
@@ -229,7 +231,7 @@ cc.Class({
         this.shopBtn.on("click", (event) => {
             //cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
             this.goShop()
-            
+
         }, this.shopBtn)
 
         this.giftBtn.on("click", (event) => {
@@ -238,7 +240,7 @@ cc.Class({
         }, this.giftBtn)
 
         this.bagBtn.on("click", (event) => {
-         self.goBag()
+            self.goBag()
         }, this.bagBtn)
 
         this.phoneBtn.on("click", (event) => {
@@ -248,7 +250,7 @@ cc.Class({
         this.wechatBtn.on("click", (event) => {
 
             self.goWechat()
-            
+
         }, this.wechatBtn)
 
         this.zoneBtn.on("click", (event) => {
@@ -258,7 +260,7 @@ cc.Class({
         }, this.zoneBtn)
 
         this.settingBtn.on("click", (event) => {
-             cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
+            cc.log("token = " + cc.cs.PlayerInfo.ApiToken)
 
         }, this.settingBtn)
 
@@ -272,19 +274,19 @@ cc.Class({
 
         this.workBtn.on("click", (event) => {
             self.goWork()
-            
+
         }, this.workBtn)
 
         this.loveBtn.on("click", (event) => {
             self.goLove()
 
         }, this.loveBtn)
-        
-        
+
+
     },
 
     // called every frame, uncomment this function to activate update callback
-     update: function (dt) {
+    update: function(dt) {
 
-     },
+    },
 });

@@ -12,141 +12,148 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        PlayerNmae : "宅男",
+        PlayerNmae: "宅男",
 
-        ApiToken : "",
+        ApiToken: "",
 
-        Welcome : "",
+        Welcome: "",
 
-        Level:1,
+        Level: 1,
 
-        Sign:false,
+        Sign: false,
 
-        Exp:0,
+        Exp: 0,
 
-        Power:0,
+        Power: 0,
 
-        Money:0,
+        Money: 0,
 
-        Diamond:0,
+        Diamond: 0,
 
-        FreeWork:2,
+        FreeWork: 2,
 
-        Phone_ID:0,
+        Phone_ID: 0,
 
-        Wechat_ID:0,
+        Wechat_ID: 0,
 
-        ZoneThumbsUp_ID:0,
+        ZoneThumbsUp_ID: 0,
 
-        ZoneReplay_ID:0,
+        ZoneReplay_ID: 0,
 
-        Work_ID:0,
+        Work_ID: 0,
 
-        Work_LogID:0,
+        Work_LogID: 0,
 
-        Work1LeftTImes:0,
+        Work1LeftTImes: 0,
 
-        Work2LeftTImes:0,
+        Work2LeftTImes: 0,
 
-        Work3LeftTImes:0,
+        Work3LeftTImes: 0,
 
-        Work4LeftTImes:0,
+        Work4LeftTImes: 0,
 
-        Work5LeftTImes:0,
+        Work5LeftTImes: 0,
 
-        Work6LeftTImes:0,
+        Work6LeftTImes: 0,
 
-        Work7LeftTImes:0,
+        Work7LeftTImes: 0,
 
-        Work8LeftTImes:0,
+        Work8LeftTImes: 0,
 
-        Work9LeftTImes:0,
+        Work9LeftTImes: 0,
 
-        Work10LeftTImes:0,
+        Work10LeftTImes: 0,
 
-        Love1LeftTImes:0,
+        Love1LeftTImes: 0,
 
-        Love2LeftTImes:0,
+        Love2LeftTImes: 0,
 
-        Love3LeftTImes:0,
+        Love3LeftTImes: 0,
 
-        Love4LeftTImes:0,
-        Love5LeftTImes:0,
-        Love6LeftTImes:0,
-        Love7LeftTImes:0,
-
-
-        Love1Price:0,
-        Love2Price:0,
-        Love3Price:0,
-        Love4Price:0,
-        Love5Price:0,
-        Love6Price:0,
-        Love7Price:0,
+        Love4LeftTImes: 0,
+        Love5LeftTImes: 0,
+        Love6LeftTImes: 0,
+        Love7LeftTImes: 0,
 
 
-
-        Love_ID:0,
-
-        Love_LogID:0,
-
-        NPCName:"许梦田",
-        
-        signday:0,
-
-        day:0,
-        videoID:0,
-
-
-        Phone_player_ID:[],
-        wechat_player_ID:[],
-        weibo_thumbs:[],
-        replies:[],
+        Love1Price: 0,
+        Love2Price: 0,
+        Love3Price: 0,
+        Love4Price: 0,
+        Love5Price: 0,
+        Love6Price: 0,
+        Love7Price: 0,
 
 
 
-        Bag:[],
+        Love_ID: 0,
+
+        Love_LogID: 0,
+
+        NPCName: "许梦田",
+
+        signday: 0,
+
+        day: 0,
+        videoID: 0,
 
 
-        wechat_fn:false,
-        zone_fn:false,
-        date_fn:false,
-        work_fn:false,
+        Phone_player_ID: [],
+        wechat_player_ID: [],
+        weibo_thumbs: [],
+        replies: [],
 
-},
 
-    getZoneReplyID : function(id){
-        for(var i = 0 ;i < this.replies.length; i++)
-        {
-            if(id == 
-            cc.cs.gameData.reply["ID_"+this.replies[i]]["ZONE_ID"])
-            return this.replies[i]
+
+        Bag: [],
+
+
+        wechat_fn: false,
+        zone_fn: false,
+        date_fn: false,
+        work_fn: false,
+
+    },
+
+    getZoneReplyID: function(id) {
+        for (var i = 0; i < this.replies.length; i++) {
+            if (id ==
+                cc.cs.gameData.reply["ID_" + this.replies[i]]["ZONE_ID"])
+                return this.replies[i]
         }
         return 0
     },
 
-    canZanZone:function(id){
-       
-        for(var i = 0 ;i < this.weibo_thumbs.length; i++)
-        {
-            if(id == this.weibo_thumbs[i])return false;
+    canZanZone: function(id) {
+
+        for (var i = 0; i < this.weibo_thumbs.length; i++) {
+            if (id == this.weibo_thumbs[i]) return false;
         }
         return true;
     },
 
-    canPLZone:function(id){
-        for(var i = 0 ;i < this.replies.length; i++)
-        {
-            if(id == 
-            cc.cs.gameData.reply["ID_"+this.replies[i]]["ZONE_ID"])
+    canADDZone: function(id) {
+        for (var i = 0; i < this.replies.length; i++) {
+            if (id ==
+                cc.cs.gameData.reply["ID_" + this.replies[i]]["ZONE_ID"])
+                return false;
+        }
+        return true;
+    },
+
+    canPLZone: function(id) {
+        for (var i = 0; i < this.replies.length; i++) {
+            cc.log("id = " + id + " i==  " + i + "  " + cc.cs.gameData.zone["ID_" + id]["ZONE_LEVEL"] + "     " + cc.cs.gameData.reply["ID_" + this.replies[i]]["REPLY_LEVEL"])
+            if (cc.cs.gameData.zone["ID_" + id]["ZONE_LEVEL"] ==
+                cc.cs.gameData.reply["ID_" + this.replies[i]]["REPLY_LEVEL"])
                 return false;
         }
         return true;
     },
 
     // use this for initialization
-    onLoad: function () {
-        
+    onLoad: function() {
+
     },
 
     // called every frame, uncomment this function to activate update callback
