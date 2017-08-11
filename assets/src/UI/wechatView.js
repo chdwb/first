@@ -313,6 +313,18 @@ cc.Class({
     refresh : function(){
          cc.log(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.Wechat_ID]["WECHAT_LEVEL"] + "    g       "+cc.cs.PlayerInfo.Wechat_ID+"       f     " + parseInt(cc.cs.PlayerInfo.Level) + "    j ")
         if(this.canWeChat()){
+            cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.Level))
+            if(cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_NEXT"] == "dummy" &&
+               cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] < parseInt(cc.cs.PlayerInfo.Level)){
+                this.NPCID = (parseInt(this.NPCID) + 1)
+                cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.Level)
+                +"                " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_CONTENT"])
+                if(cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_OPTION"] == "dummy"){
+                    this.setInputMsg(this.NPCID)
+                    this.NPCID = this.NPCID + 1
+                    cc.cs.PlayerInfo.Wechat_ID = this.NPCID
+                }
+            }
             this.sendEnable()
             return true
         }else{
