@@ -54,7 +54,10 @@ cc.Class({
     },
 
     // use this for initialization 666
-
+    onShop:function(){
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+    },
     onBack:function(){
         var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)

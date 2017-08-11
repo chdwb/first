@@ -55,7 +55,7 @@ cc.Class({
         {
             //cc.cs.UIMgr.showTip("", 1.0)
 
-            if(this.iswork == true)
+            if(this.isWork == true)
             {
 
                 cc.cs.PlayerInfo.Money = JasonObject.content.info.money
