@@ -45,6 +45,10 @@ cc.Class({
 
         var PlayerInfo = require("PlayerInfo")
         cc.cs.PlayerInfo = new PlayerInfo()
+
+        var DownloadMgr = require("DownloadMgr")
+        cc.cs.DownloadMgr = new DownloadMgr()
+        cc.cs.DownloadMgr.init()
     },
 
     // called every frame, uncomment this function to activate update callback
