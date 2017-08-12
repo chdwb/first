@@ -65,6 +65,37 @@ cc.Class({
             type:cc.Node,
         },
 
+        audioBGM: {
+            url: cc.AudioClip,
+            default: null
+        },
+
+        audioCalling: {
+            url: cc.AudioClip,
+            default: null
+        },
+
+        audioClick: {
+            url: cc.AudioClip,
+            default: null
+        },
+
+        audioFacetime: {
+            url: cc.AudioClip,
+            default: null
+        },
+
+        audioNewMsg: {
+            url: cc.AudioClip,
+            default: null
+        },
+
+        audioReturn: {
+            url: cc.AudioClip,
+            default: null
+        },
+        
+
 
 
         currentLayer:0,
@@ -92,8 +123,9 @@ cc.Class({
             this.node.getChildByName("phoneView").getComponent("phoneView").showNormal()
         }
 
-        if(cc.cs.UIMgr.PHONEVIEW == type || cc.cs.UIMgr.MAINVIEW == type)
+        if(cc.cs.UIMgr.MAINVIEW == type)
         {
+            cc.cs.AudioMgr.playAudio(this.audioReturn,false)
             this.node.getChildByName("mainView").getComponent("mainView").updateui()
         }
 
@@ -146,6 +178,8 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+       
+        cc.cs.AudioMgr.playAudio(this.audioBGM,true)
     },
 
     // called every frame, uncomment this function to activate update callback

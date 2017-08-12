@@ -333,6 +333,8 @@ cc.Class({
         }
     },
 
+    
+
 
     loadCruuentTalk : function(scroll, isPlayer, msg, name, isday)
     {   

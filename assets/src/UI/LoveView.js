@@ -355,7 +355,12 @@ cc.Class({
     {
         cc.log("onenable")
         this.refresh()
-    }
+    },
+    
+    goShop: function() {
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+    },
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
