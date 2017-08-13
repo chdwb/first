@@ -32,15 +32,15 @@ cc.Class({
   sendbuy:function(buynum)
   {
       cc.log("buynum = "+ buynum)
-      cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, 1,this.GoodID, buynum, this.GoodBuyHandle, this)
+      cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, 1,this.GoodID, buynum, this.GoodBuyHandle, this)
   },
 
     onBuy:function()
         {
-        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("token="+cc.cs.PlayerInfo.api_token)
         cc.log("goodid="+this.GoodID)
        // cc.log("itemUseCount="+this.itemUseCount)
-        //cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, 1,this.GoodID, 1, this.GoodBuyHandle, this)
+        //cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, 1,this.GoodID, 1, this.GoodBuyHandle, this)
         cc.cs.UIMgr.showNodeUse(this.GoodID,this.sendbuy,99,this,0)
         },
 
@@ -69,7 +69,7 @@ cc.Class({
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
             
             var array = cc.cs.PlayerInfo.Bag
             var isFind = false

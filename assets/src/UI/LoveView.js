@@ -64,10 +64,8 @@ cc.Class({
     refresh : function()
     {
         cc.log("loveview refresh")
-        this.goldText.string = cc.cs.PlayerInfo.Money
-        cc.log("currentWorkID = "+this.currentWorkID)
-                cc.log("lefttime = "+cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"])
-                if(parseInt(cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]) <= 0){
+        this.goldText.string = cc.cs.PlayerInfo.money
+                if(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID) <= 0){
                     this.startImage.active = false
                     this.upImage.active = true
                 }
@@ -75,22 +73,22 @@ cc.Class({
                     this.startImage.active = true
                     this.upImage.active = false
                 }
-        this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
+        this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
     },
 
     startWork: function(id)
     {
-        cc.log("token= "+cc.cs.PlayerInfo.ApiToken)
+        cc.log("token= "+cc.cs.PlayerInfo.api_token)
         cc.log("workid= "+this.currentWorkID)
         this.node.getTag();
-        cc.cs.gameMgr.sendLove(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.startWorkHandle, this)
+        cc.cs.gameMgr.sendLove(cc.cs.PlayerInfo.api_token, this.currentWorkID, this.startWorkHandle, this)
         
     },
     upgradeWork : function()
     {
-        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("token="+cc.cs.PlayerInfo.api_token)
         cc.log("workid="+this.currentWorkID)
-        cc.cs.gameMgr.sendUpgrade(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.upgradeWorkHandle, this)
+        cc.cs.gameMgr.sendUpgrade(cc.cs.PlayerInfo.api_token, this.currentWorkID, this.upgradeWorkHandle, this)
     },
 
     upgradeWorkHandle(ret)
@@ -99,9 +97,9 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) 
         {
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
-            cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.work_id
-            this.loadWorkItem(cc.cs.PlayerInfo.Work_ID)
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.work_id = JasonObject.content.info.work_id
+            this.loadWorkItem(cc.cs.PlayerInfo.work_id)
             this.refresh()
             cc.cs.UIMgr.showTip("升级成功", 1.0)
         }else{
@@ -119,7 +117,7 @@ cc.Class({
             
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
             this.dateLogID = JasonObject.content.info.datelog_id
-            cc.log("lovesetActionInfosetActionInfosetActionInfosetActionInfo")
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(
                  JasonObject.content.info.executetime,
                  this.currentWorkID, 
@@ -135,9 +133,9 @@ cc.Class({
     DoneWork:function(ret)
     {
         cc.log(ret.dateLogID)
-        cc.log("done work"+cc.cs.PlayerInfo.ApiToken)
+        cc.log("done work"+cc.cs.PlayerInfo.api_token)
         cc.log("done work  "+ret.DoneDateHandle)
-        cc.cs.gameMgr.sendLoveDone(cc.cs.PlayerInfo.ApiToken, ret.dateLogID  , ret.DoneDateHandle, ret)
+        cc.cs.gameMgr.sendLoveDone(cc.cs.PlayerInfo.api_token, ret.dateLogID  , ret.DoneDateHandle, ret)
     },
 
     DoneDateHandle:function(ret)
@@ -146,15 +144,18 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
-            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
-            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-            cc.log("video id 1= " + cc.cs.PlayerInfo.videoID)
+            /*cc.cs.PlayerInfo.level = JasonObject.content.info.level
+            cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo*/
+
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+
+            cc.log("video id 1= " + cc.cs.PlayerInfo.playvideo)
              cc.log("currentWorkID = "+this.currentWorkID)
              
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
             
-            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
 
             
             var array = cc.cs.PlayerInfo.Bag
@@ -186,7 +187,7 @@ cc.Class({
 
     buyLoveTime:function()
     {
-        cc.cs.gameMgr.buyLoveTime(cc.cs.PlayerInfo.ApiToken,this.currentWorkID,this.buyLoveTimehandle,this)
+        cc.cs.gameMgr.buyLoveTime(cc.cs.PlayerInfo.api_token,this.currentWorkID,this.buyLoveTimehandle,this)
     },
 
     buyLoveTimehandle:function(ret)
@@ -195,9 +196,9 @@ cc.Class({
         if (JasonObject.success === true) {
             cc.cs.UIMgr.showTip("购买成功", 1.0)
              cc.log("loveid = "+this.currentWorkID)
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
-            cc.cs.PlayerInfo["Love"+this.currentWorkID+"Price"] = JasonObject.content.info["Love"+this.currentWorkID+"Price"]
-            cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id"+this.currentWorkID]
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.updateLovePrice(this.currentWorkID,JasonObject.content.info["Love"+this.currentWorkID+"Price"])
+            cc.cs.PlayerInfo.updateLoveFreeTimes(this.currentWorkID,JasonObject.content.info["date_id"+this.currentWorkID])
             cc.log("lefttime = "+ cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"])
 
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
@@ -243,8 +244,8 @@ cc.Class({
             }
         }
         this.currentWorkID = target.workID
-        cc.log(cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] + " date "  + cc.cs.PlayerInfo.Level)
-        if(cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] <= cc.cs.PlayerInfo.Level)
+        cc.log(cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] + " date "  + cc.cs.PlayerInfo.level)
+        if(cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] <= cc.cs.PlayerInfo.level)
         {
             this.isLock(false) 
         }else
@@ -253,7 +254,7 @@ cc.Class({
             this.LockText.string = "等级" + cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] + "解锁" 
         }
         this.rewardText.string = "每次获得："+ cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
-            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
         var goodsID = cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_ID"]
         if(goodsID != "dummy")
         {
@@ -261,7 +262,7 @@ cc.Class({
             this.goodsText.string = "需要道具：" +cc.cs.gameData.goods["GOODS_ID_"+goodsID]["GOODS_NAME"]+"x"+cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]  
         }
 
-        if(parseInt(cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]) <= 0){
+        if(parseInt(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)) <= 0){
             this.startImage.active = false
             this.upImage.active = true
         }
@@ -289,7 +290,7 @@ cc.Class({
                 itemCom.isChoose(true)
                 this.rewardText.string = "每次获得："+ cc.cs.gameData.date["DATE_ID_" + index]["DATE_EXP"]
                 cc.log("-------------c--------- " + id)
-                this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+id+"LeftTImes"]
+                this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(id)
                 this.isLock(false)
                 var goodsID = cc.cs.gameData.date["DATE_ID_" + index]["DATE_NEED_GOODS_ID"]
                 if(goodsID != "dummy")
@@ -297,9 +298,7 @@ cc.Class({
                     this.goodsText.node.active =true;
                     this.goodsText.string = "需要道具：" +cc.cs.gameData.goods["GOODS_ID_"+goodsID]["GOODS_NAME"]+"x"+cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]  
                 }
-                cc.log("currentWorkID = "+self.currentWorkID)
-                cc.log("lefttime = "+cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"])
-                if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0){
+                if(parseInt(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)) <= 0){
                     self.startImage.active = false
                     self.upImage.active = true
                 }
@@ -316,14 +315,14 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         var self = this
-        cc.log("............keng .... " +cc.cs.PlayerInfo.Work_ID)
-        this.loadWorkItem(cc.cs.PlayerInfo.Work_ID)
+        cc.log("............keng .... " +cc.cs.PlayerInfo.work_id)
+        this.loadWorkItem(cc.cs.PlayerInfo.work_id)
         this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
              
 
-             if(parseInt(cc.cs.PlayerInfo["Love"+self.currentWorkID+"LeftTImes"]) <= 0){
+             if(cc.cs.PlayerInfo.getLoveFreeTimes(self.currentWorkID) <= 0){
                 //cc.cs.UIMgr.showTip("约会机会不够",1.0)
                //var array = cc.cs.gameData.date["DATE_ID_"+self.currentWorkID][DATE_BUY_TIMES_NEED].split(",")
                 // cc.cs.PlayerInfo

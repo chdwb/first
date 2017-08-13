@@ -14,15 +14,15 @@ cc.Class({
         // ...
         PlayerNmae: "宅男",
 
-        ApiToken: "",
+        api_token: "",
 
-        Welcome: "",
+        welcome: "",
 
-        Level: 1,
+        level: 1,
 
-        Sign: false,
+        sign: false,
 
-        Exp: 0,
+        exp: 0,
 
         Power: 0,
 
@@ -34,17 +34,21 @@ cc.Class({
 
         Phone_ID: 0,
 
-        Wechat_ID: 0,
+        wechat_id: 0,
 
-        ZoneThumbsUp_ID: 0,
+        zoneThumbsUp_id: 0,
 
-        ZoneReplay_ID: 0,
+        zoneReplay_id: 0,
 
-        Work_ID: 0,
+        work_id: 0,
 
-        Work_LogID: 0,
+        worklogid: 0,
 
-        Work1LeftTImes: 0,
+        WorkLeftTimes :[],
+        loveLeftTimes :[],
+        LovePrice : [],
+
+        /*Work1LeftTImes: 0,
 
         Work2LeftTImes: 0,
 
@@ -82,20 +86,20 @@ cc.Class({
         Love4Price: 0,
         Love5Price: 0,
         Love6Price: 0,
-        Love7Price: 0,
+        Love7Price: 0,*/
 
 
 
-        Love_ID: 0,
+        date_id: 0,
 
-        Love_LogID: 0,
+        datelogid: 0,
 
         NPCName: "许梦田",
 
         signday: 0,
 
         day: 0,
-        videoID: 0,
+        playvideo: 0,
 
 
         Phone_player_ID: [],
@@ -103,7 +107,7 @@ cc.Class({
         weibo_thumbs: [],
         replies: [],
 
-
+        playvideo :0,   
 
         Bag: [],
 
@@ -113,39 +117,199 @@ cc.Class({
         date_fn: false,
         work_fn: false,
 
+        executetime:0,
+
     },
 
-    getZoneReplyID: function(id) {
+    updateLovePrice : function(id, value){
+        this.LovePrice[id -1] = parseInt(value)
+    },
+
+    addZoneReplies : function(value){
+        this.replies.push(parseInt(value))
+    },
+
+    addZoneThumbs : function(value){
+        this.weibo_thumbs.push(parseInt(value))
+    },
+
+    addWechatPlayerID : function(value){
+        this.wechat_player_ID.push(parseInt(value))
+    },
+
+    addPhonePlayerID : function(value){
+        this.Phone_player_ID.push(parseInt(value))
+    },
+
+    getWorkFreeTimes : function(id){
+        return this.WorkLeftTimes[id - 1]
+    },
+
+    getLoveFreeTimes : function(id){
+        return this.loveLeftTimes[id - 1]
+    },
+
+    updateLoveFreeTimes : function(id, value){
+        this.loveLeftTimes[id - 1] =  parseInt(value)
+    },
+
+    updateWorkFreeTimes : function(id, value){
+        this.WorkLeftTimes[id - 1] = parseInt(value)
+    },
+
+    updateExp : function(exp) {
+        this.exp = parseInt(exp)
+    },
+
+    updateLevel : function(lev){
+        this.level = parseInt(lev)
+    },
+
+    updatePhoenID : function(phoneID){
+        this.Phone_ID = parseInt(phoneID)
+    },
+
+    updateWechatID : function(phoneID){
+        this.wechat_id = parseInt(phoneID)
+    },
+
+    updateWorkID : function(workID){
+        this.work_id = parseInt(workID) 
+    },
+
+    updateLoveID : function(LoveID){
+        this.date_id = parseInt(LoveID)
+    },
+
+    updateMoney : function (money){
+        this.money = parseInt(money)
+    },
+
+    updateFreeWorkTimes : function(freeWork){
+        this.FreeWork = parseInt(freeWork)
+    },
+
+    refreshInfoData : function (info){
+        for(var item in info){
+            if(this.hasOwnProperty(item)){
+                this[item] = info[item]
+            }
+        }
+    },
+
+    canWechat : function(){
+        var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
+        if(pWechatData != null){
+                if(pWechatData["WECHAT_LEVEL"] <= this.level){
+                    if(pWechatData["WECHAT_NEXT"] != "dummy")
+                    {
+                        return true
+                    }else{
+                        return false
+                    }
+                }else{
+                    return false
+                }
+            }
+        return false
+    },
+
+    canPhone : function(){
+        var pPhoneData = cc.cs.gameData.getphoneData(this.Phone_ID)
+        if(pPhoneData != null){
+            if(pPhoneData["PHONE_LEV"] <= this.level){
+                if(pPhoneData["PHONE_AUDIO"] != "dummy")
+                {
+                    return true
+                }else{
+                    return false
+                }
+            }else{
+                return false
+            }
+        }
+
+        return false
+    },
+
+    /*getZoneReplyID: function(id) {
+        var pReplyData = null
         for (var i = 0; i < this.replies.length; i++) {
+            //pReplyData = getreplyData(this.replies[i])
             if (id ==
-                cc.cs.gameData.reply["ID_" + this.replies[i]]["ZONE_ID"])
+                cc.cs.gameData.reply["ID_" + ]["ZONE_ID"])
                 return this.replies[i]
         }
         return 0
+    },*/
+
+    visibleZoneCount:function(){
+        var count = 0;
+        var pZoneData = null
+        for(var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i){
+            pZoneData = cc.cs.gameData.getzoneData(i);
+            if(pZoneData != null){
+             if(this.level >= pZoneData["ZONE_LEVEL"]){
+                    count++
+                }else{
+                    return count
+                }
+            }
+        }
+        return count
+    },
+
+    addNewZone : function(lastID){
+        var pZoneData = cc.cs.gameData.getzoneData(lastID);
+        if(pZoneData != null){
+            if(this.level > pZoneData["ZONE_LEVEL"]){
+                return lastID +1
+            }
+        }
+        return lastID
+    },
+
+    getDay: function(d) {
+        if (d == 0)
+            return "今天"
+        if (d == 1)
+            return "昨天"
+        if (d == 2)
+            return "前天"
+
+        return d + "天前"
+    },
+
+    getZoneDay : function(id){
+        var pZoneData = cc.cs.gameData.getzoneData(id);
+        var pLevel = cc.cs.gameData.getlevelData(this.level);
+        var pLevelZone = cc.cs.gameData.getlevelData(pZoneData["ZONE_LEVEL"]);
+        return this.getDay(pLevel["LEV_DAY"] - pLevelZone["LEV_DAY"])
+    },
+
+    canZone : function(){
+        var count  = this.visibleZoneCount() +cc.cs.gameData.zone["FIRST"]
+        for(var i = cc.cs.gameData.zone["FIRST"]; i < count; ++i){
+            if(this.canPLZone(i) || this.canZanZone(i))
+                return true
+        }
+        return false;
     },
 
     canZanZone: function(id) {
-
         for (var i = 0; i < this.weibo_thumbs.length; i++) {
             if (id == this.weibo_thumbs[i]) return false;
         }
         return true;
     },
 
-    canADDZone: function(id) {
-        for (var i = 0; i < this.replies.length; i++) {
-            if (id ==
-                cc.cs.gameData.reply["ID_" + this.replies[i]]["ZONE_ID"])
-                return false;
-        }
-        return true;
-    },
-
     canPLZone: function(id) {
+        var pZoneData = cc.cs.gameData.getzoneData(id);
+        var PZoneReply = null
         for (var i = 0; i < this.replies.length; i++) {
-            cc.log("id = " + id + " i==  " + i + "  " + cc.cs.gameData.zone["ID_" + id]["ZONE_LEVEL"] + "     " + cc.cs.gameData.reply["ID_" + this.replies[i]]["REPLY_LEVEL"])
-            if (cc.cs.gameData.zone["ID_" + id]["ZONE_LEVEL"] ==
-                cc.cs.gameData.reply["ID_" + this.replies[i]]["REPLY_LEVEL"])
+            PZoneReply = cc.cs.gameData.getreplyData(this.replies[i]);
+            if (pZoneData["ZONE_LEVEL"] ==
+                PZoneReply["REPLY_LEVEL"])
                 return false;
         }
         return true;

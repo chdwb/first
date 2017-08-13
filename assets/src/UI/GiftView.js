@@ -36,7 +36,7 @@ cc.Class({
     },
     updateUI:function()
     {
-        this.Coin.string =  cc.cs.PlayerInfo.Money
+        this.Coin.string =  cc.cs.PlayerInfo.money
         var itemArray = cc.cs.gameData.goods;
         var count = 0;
         for(var i in itemArray) { // spawn items, we only need to do this once

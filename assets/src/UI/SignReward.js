@@ -52,7 +52,7 @@ cc.Class({
     
     onSign:function()
     {
-        cc.cs.gameMgr.sendSign(cc.cs.PlayerInfo.ApiToken, this.SignHandle, this)
+        cc.cs.gameMgr.sendSign(cc.cs.PlayerInfo.api_token, this.SignHandle, this)
     },
 
      SignHandle:function(ret)
@@ -63,8 +63,8 @@ cc.Class({
             cc.cs.UIMgr.showTip("签到成功", 1.0)
 
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
-            cc.cs.PlayerInfo.Sign = true
-             cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.sign = true
+             cc.cs.PlayerInfo.money = JasonObject.content.info.money
             var array = cc.cs.PlayerInfo.Bag
             var isFind = false
             for(var i = 0;i < array.length;i++)
@@ -121,8 +121,8 @@ cc.Class({
 
         cc.log("day = "+day)
 
-        cc.log("day = "+cc.cs.PlayerInfo.Sign)
-        if(cc.cs.PlayerInfo.Sign  == true)
+        cc.log("day = "+cc.cs.PlayerInfo.sign)
+        if(cc.cs.PlayerInfo.sign  == true)
         {
            
           

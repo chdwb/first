@@ -84,13 +84,13 @@ cc.Class({
         cc.log("id="+id)
         var showDay = false
 
-        this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
+        this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]["LEV_DAY"] -
         cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
         "", true)
-        while(id <= cc.cs.PlayerInfo.Wechat_ID){
+        while(id <= cc.cs.PlayerInfo.wechat_id){
             if(showDay)
             {
-                this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"] -
+                this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]["LEV_DAY"] -
                 cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
                 "", true)
                 showDay = false
@@ -102,7 +102,7 @@ cc.Class({
         
                 showDay = true
             }
-            if(id >= cc.cs.PlayerInfo.Wechat_ID){
+            if(id >= cc.cs.PlayerInfo.wechat_id){
                  break;
             }
             if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
@@ -127,7 +127,7 @@ cc.Class({
 
     sendWechat : function(id){
         this.currentPlayerWechatID = id
-        cc.cs.gameMgr.sendWechat(cc.cs.PlayerInfo.ApiToken, id , this.SendWechatHandle, this)
+        cc.cs.gameMgr.sendWechat(cc.cs.PlayerInfo.api_token, id , this.SendWechatHandle, this)
     },
 
     SendWechatHandle:function(ret)
@@ -141,16 +141,16 @@ cc.Class({
             
             this.setInputMsg(this.currentPlayerWechatID)
             
-            cc.cs.PlayerInfo.Wechat_ID = this.NPCID
+            cc.cs.PlayerInfo.wechat_id = this.NPCID
 
-            /*if(parseInt(JasonObject.content.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+            /*if(parseInt(JasonObject.content.level) >parseInt(cc.cs.PlayerInfo.level) ){
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
             }*/
             cc.log("playvideo = "+JasonObject.content.info.playvideo)
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-             cc.log("videoID 5= "+cc.cs.PlayerInfo.videoID)
-            cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
-            cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
+             cc.log("videoID 5= "+cc.cs.PlayerInfo.playvideo)
+            cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
+            cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
 
             if(this.canWeChat()){
                 this.isAction = true;
@@ -274,7 +274,7 @@ cc.Class({
         this.inputTableBtn.active = false;
         this.node.addChild(this.inputTableBtn)
 
-        this.NPCID = cc.cs.PlayerInfo.Wechat_ID
+        this.NPCID = cc.cs.PlayerInfo.wechat_id
         
         this.backBtn.on("click", (event)=>{
             var parent = self.node.parent
@@ -302,27 +302,27 @@ cc.Class({
     canWeChat : function(){
        
         
-        if(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.Wechat_ID]["WECHAT_LEVEL"] <= parseInt(cc.cs.PlayerInfo.Level))
+        if(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.wechat_id]["WECHAT_LEVEL"] <= parseInt(cc.cs.PlayerInfo.level))
              
-            if(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.Wechat_ID]["WECHAT_NEXT"] ==  "dummy"&&
-               cc.cs.gameData.wechat["WECHAT_ID_" +( cc.cs.PlayerInfo.Wechat_ID + 1)]["WECHAT_LEVEL"]  > parseInt(cc.cs.PlayerInfo.Level)) return false
+            if(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.wechat_id]["WECHAT_NEXT"] ==  "dummy"&&
+               cc.cs.gameData.wechat["WECHAT_ID_" +( cc.cs.PlayerInfo.wechat_id + 1)]["WECHAT_LEVEL"]  > parseInt(cc.cs.PlayerInfo.level)) return false
                 else return true
         return false
     },
 
     refresh : function(){
-         cc.log(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.Wechat_ID]["WECHAT_LEVEL"] + "    g       "+cc.cs.PlayerInfo.Wechat_ID+"       f     " + parseInt(cc.cs.PlayerInfo.Level) + "    j ")
+         cc.log(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.wechat_id]["WECHAT_LEVEL"] + "    g       "+cc.cs.PlayerInfo.wechat_id+"       f     " + parseInt(cc.cs.PlayerInfo.level) + "    j ")
         if(this.canWeChat()){
-            cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.Level))
+            cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.level))
             if(cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_NEXT"] == "dummy" &&
-               cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] < parseInt(cc.cs.PlayerInfo.Level)){
+               cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] < parseInt(cc.cs.PlayerInfo.level)){
                 this.NPCID = (parseInt(this.NPCID) + 1)
-                cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.Level)
+                cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.level)
                 +"                " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_CONTENT"])
                 if(cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_OPTION"] == "dummy"){
                     this.setInputMsg(this.NPCID)
                     this.NPCID = this.NPCID + 1
-                    cc.cs.PlayerInfo.Wechat_ID = this.NPCID
+                    cc.cs.PlayerInfo.wechat_id = this.NPCID
                 }
             }
             this.sendEnable()

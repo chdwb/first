@@ -30,15 +30,15 @@ cc.Class({
         var type = this.ShopType
         if(this.ShopType == 2)
         {
-            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, type,this.GoodID, 1, this.onMoneyhandle, this)
+            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, type,this.GoodID, 1, this.onMoneyhandle, this)
         }
         else if(this.ShopType == 3)
         {
-            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, type,this.GoodID, 1, this.onLibaohandle, this)
+            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, type,this.GoodID, 1, this.onLibaohandle, this)
         }
         else if(this.ShopType == 4)
         {
-            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.ApiToken, type,this.GoodID, 1, this.onLibao2handle, this)
+            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, type,this.GoodID, 1, this.onLibao2handle, this)
         }
     },
 
@@ -75,7 +75,7 @@ cc.Class({
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
             
            /* var array = cc.cs.PlayerInfo.Bag
             var isFind = false
@@ -113,7 +113,7 @@ cc.Class({
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
             
             /*var array = cc.cs.PlayerInfo.Bag
             var isFind = false
@@ -151,7 +151,7 @@ cc.Class({
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
             this.node.parent.parent.parent.parent.parent.getComponent("Shop").updateUi()
             
         } else {

@@ -13,7 +13,14 @@ module.exports = {
 		"GOODS_ID_106":{"GOODS_ID":106, "GOODS_NAME":"珍贵项链", "GOODS_ISSELL":1, "GOODS_PRICE":13500, "GOODS_EFFECT":1, "GOODS_EFFECT_VALUE":500, "GOODS_DESC":"使用后可获得{0}点亲密度"},
 		"GOODS_ID_107":{"GOODS_ID":107, "GOODS_NAME":"钻石戒指", "GOODS_ISSELL":1, "GOODS_PRICE":20400, "GOODS_EFFECT":1, "GOODS_EFFECT_VALUE":800, "GOODS_DESC":"使用后可获得{0}点亲密度"},
 		"GOODS_ID_108":{"GOODS_ID":108, "GOODS_NAME":"豪华游轮", "GOODS_ISSELL":1, "GOODS_PRICE":36000, "GOODS_EFFECT":1, "GOODS_EFFECT_VALUE":1500, "GOODS_DESC":"使用后可获得{0}点亲密度"},
-		"TOTAL_COUNT":13
+		"TOTAL_COUNT":13,
+		"FIRST":1
+	},
+	getgoodsData : function(id){
+		if(this.goods.hasOwnProperty("GOODS_ID_"+ id))
+			return this.goods["GOODS_ID_" + id]
+		cc.error("the goods id is not exist! id = " + id )
+		return null
 	},
 	sign_reward:{
 		"ID_1":{"ID":1, "GOLD_NUM":100, "GOODS_1_ID":1, "GOODS_1_NUM":1, "GOODS_2_ID":101, "GOODS_2_NUM":1},
@@ -23,7 +30,14 @@ module.exports = {
 		"ID_5":{"ID":5, "GOLD_NUM":500, "GOODS_1_ID":1, "GOODS_1_NUM":3, "GOODS_2_ID":101, "GOODS_2_NUM":3},
 		"ID_6":{"ID":6, "GOLD_NUM":700, "GOODS_1_ID":1, "GOODS_1_NUM":3, "GOODS_2_ID":101, "GOODS_2_NUM":3},
 		"ID_7":{"ID":7, "GOLD_NUM":900, "GOODS_1_ID":1, "GOODS_1_NUM":3, "GOODS_2_ID":101, "GOODS_2_NUM":3},
-		"TOTAL_COUNT":7
+		"TOTAL_COUNT":7,
+		"FIRST":1
+	},
+	getsign_rewardData : function(id){
+		if(this.sign_reward.hasOwnProperty("ID_"+ id))
+			return this.sign_reward["ID_" + id]
+		cc.error("the sign_reward id is not exist! id = " + id )
+		return null
 	},
 	buy_gold:{
 		"ID_1":{"ID":1, "BUY_PRICE":6, "BUY_GOLD":1200, "GOLD_EXTRA":"dummy"},
@@ -31,7 +45,14 @@ module.exports = {
 		"ID_3":{"ID":3, "BUY_PRICE":48, "BUY_GOLD":10000, "GOLD_EXTRA":1000},
 		"ID_4":{"ID":4, "BUY_PRICE":98, "BUY_GOLD":20000, "GOLD_EXTRA":2500},
 		"ID_5":{"ID":5, "BUY_PRICE":198, "BUY_GOLD":40000, "GOLD_EXTRA":8000},
-		"TOTAL_COUNT":5
+		"TOTAL_COUNT":5,
+		"FIRST":1
+	},
+	getbuy_goldData : function(id){
+		if(this.buy_gold.hasOwnProperty("ID_"+ id))
+			return this.buy_gold["ID_" + id]
+		cc.error("the buy_gold id is not exist! id = " + id )
+		return null
 	},
 	hot_package:{
 		"ID_1":{"ID":1, "NAME":"秒回礼包", "BUY_PRICE":6, "SHOW_PRICE":15, "OPEN_FUNCTION":"1,2", "GOLD_NUM":600, "GOODS_1_ID":"dummy", "GOODS_1_NUM":"dummy", "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy"},
@@ -40,14 +61,28 @@ module.exports = {
 		"ID_4":{"ID":4, "NAME":"特惠礼包", "BUY_PRICE":98, "SHOW_PRICE":198, "OPEN_FUNCTION":"dummy", "GOLD_NUM":18888, "GOODS_1_ID":103, "GOODS_1_NUM":12, "GOODS_2_ID":2, "GOODS_2_NUM":30},
 		"ID_5":{"ID":5, "NAME":"豪华礼包", "BUY_PRICE":168, "SHOW_PRICE":368, "OPEN_FUNCTION":"dummy", "GOLD_NUM":28888, "GOODS_1_ID":105, "GOODS_1_NUM":5, "GOODS_2_ID":104, "GOODS_2_NUM":5},
 		"ID_6":{"ID":6, "NAME":"任性礼包", "BUY_PRICE":328, "SHOW_PRICE":658, "OPEN_FUNCTION":"dummy", "GOLD_NUM":38888, "GOODS_1_ID":108, "GOODS_1_NUM":1, "GOODS_2_ID":107, "GOODS_2_NUM":2},
-		"TOTAL_COUNT":6
+		"TOTAL_COUNT":6,
+		"FIRST":1
+	},
+	gethot_packageData : function(id){
+		if(this.hot_package.hasOwnProperty("ID_"+ id))
+			return this.hot_package["ID_" + id]
+		cc.error("the hot_package id is not exist! id = " + id )
+		return null
 	},
 	work_package:{
 		"ID_1":{"ID":1, "NAME":"成长礼包", "BUY_PRICE":18, "SHOW_PRICE":48, "OPEN_FUNCTION":3, "GOLD_NUM":1888, "GOODS_1_ID":1, "GOODS_1_NUM":5, "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy"},
 		"ID_2":{"ID":2, "NAME":"升职礼包", "BUY_PRICE":68, "SHOW_PRICE":168, "OPEN_FUNCTION":5, "GOLD_NUM":2888, "GOODS_1_ID":102, "GOODS_1_NUM":5, "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy"},
 		"ID_3":{"ID":3, "NAME":"高管礼包", "BUY_PRICE":198, "SHOW_PRICE":418, "OPEN_FUNCTION":7, "GOLD_NUM":6888, "GOODS_1_ID":104, "GOODS_1_NUM":5, "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy"},
 		"ID_4":{"ID":4, "NAME":"人生赢家礼包", "BUY_PRICE":648, "SHOW_PRICE":1588, "OPEN_FUNCTION":10, "GOLD_NUM":12888, "GOODS_1_ID":106, "GOODS_1_NUM":2, "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy"},
-		"TOTAL_COUNT":4
+		"TOTAL_COUNT":4,
+		"FIRST":1
+	},
+	getwork_packageData : function(id){
+		if(this.work_package.hasOwnProperty("ID_"+ id))
+			return this.work_package["ID_" + id]
+		cc.error("the work_package id is not exist! id = " + id )
+		return null
 	},
 	level:{
 		"LEV_LEV_1":{"LEV_LEV":1, "LEV_EXP":10, "LEV_DAY":1, "LEV_PLAY_VIDEO_EXP":"dummy", "LEV_VIDEO_ID":"dummy", "LEV_STORY_VIDEO_ID":"dummy", "LEV_STORY_VIDEO_FONT":"dummy"},
@@ -101,7 +136,14 @@ module.exports = {
 		"LEV_LEV_49":{"LEV_LEV":49, "LEV_EXP":4175, "LEV_DAY":190, "LEV_PLAY_VIDEO_EXP":1670, "LEV_VIDEO_ID":"dummy", "LEV_STORY_VIDEO_ID":50, "LEV_STORY_VIDEO_FONT":"客厅"},
 		"LEV_LEV_50":{"LEV_LEV":50, "LEV_EXP":4320, "LEV_DAY":195, "LEV_PLAY_VIDEO_EXP":1730, "LEV_VIDEO_ID":"dummy", "LEV_STORY_VIDEO_ID":51, "LEV_STORY_VIDEO_FONT":"客厅"},
 		"LEV_LEV_51":{"LEV_LEV":51, "LEV_EXP":4460, "LEV_DAY":200, "LEV_PLAY_VIDEO_EXP":1785, "LEV_VIDEO_ID":1015, "LEV_STORY_VIDEO_ID":52, "LEV_STORY_VIDEO_FONT":"客厅"},
-		"TOTAL_COUNT":51
+		"TOTAL_COUNT":51,
+		"FIRST":1
+	},
+	getlevelData : function(id){
+		if(this.level.hasOwnProperty("LEV_LEV_"+ id))
+			return this.level["LEV_LEV_" + id]
+		cc.error("the level id is not exist! id = " + id )
+		return null
 	},
 	phone:{
 		"PHONE_ID_1":{"PHONE_ID":1, "PHONE_LEV":2, "PHONE_OPTION":"dummy", "PHONE_EXP":"dummy", "PHONE_AUDIO":1, "PHONE_MSG":"喂？您好！"},
@@ -864,7 +906,14 @@ module.exports = {
 		"PHONE_ID_765":{"PHONE_ID":765, "PHONE_LEV":50, "PHONE_OPTION":183, "PHONE_EXP":6, "PHONE_AUDIO":767, "PHONE_MSG":" 别去！我想多活两年。"},
 		"PHONE_ID_766":{"PHONE_ID":766, "PHONE_LEV":50, "PHONE_OPTION":183, "PHONE_EXP":6, "PHONE_AUDIO":767, "PHONE_MSG":" 晚饭请你先吃。"},
 		"PHONE_ID_767":{"PHONE_ID":767, "PHONE_LEV":50, "PHONE_OPTION":"dummy", "PHONE_EXP":"dummy", "PHONE_AUDIO":"dummy", "PHONE_MSG":"嗯……我要买鸡蛋……西红柿……黄瓜……"},
-		"TOTAL_COUNT":760
+		"TOTAL_COUNT":760,
+		"FIRST":1
+	},
+	getphoneData : function(id){
+		if(this.phone.hasOwnProperty("PHONE_ID_"+ id))
+			return this.phone["PHONE_ID_" + id]
+		cc.error("the phone id is not exist! id = " + id )
+		return null
 	},
 	work:{
 		"ID_1":{"ID":1, "NAME":"实习员工", "TIME":3, "EXECUTE_TIME":30, "REWARD":100, "NEED_GOLD":0},
@@ -877,7 +926,14 @@ module.exports = {
 		"ID_8":{"ID":8, "NAME":"助理总裁", "TIME":2, "EXECUTE_TIME":30, "REWARD":3500, "NEED_GOLD":30000},
 		"ID_9":{"ID":9, "NAME":"副总裁", "TIME":2, "EXECUTE_TIME":30, "REWARD":4000, "NEED_GOLD":56000},
 		"ID_10":{"ID":10, "NAME":"总裁", "TIME":1, "EXECUTE_TIME":30, "REWARD":10000, "NEED_GOLD":120000},
-		"TOTAL_COUNT":10
+		"TOTAL_COUNT":10,
+		"FIRST":1
+	},
+	getworkData : function(id){
+		if(this.work.hasOwnProperty("ID_"+ id))
+			return this.work["ID_" + id]
+		cc.error("the work id is not exist! id = " + id )
+		return null
 	},
 	role:{
 		"ID_1":{"ID":1, "FAMLIY_NAME":"余", "NAME":"邑"},
@@ -1460,7 +1516,14 @@ module.exports = {
 		"ID_578":{"ID":578, "FAMLIY_NAME":"贺兰", "NAME":"飞宇"},
 		"ID_579":{"ID":579, "FAMLIY_NAME":"独孤", "NAME":"飞羽"},
 		"ID_580":{"ID":580, "FAMLIY_NAME":"南郭", "NAME":"飞雨"},
-		"TOTAL_COUNT":580
+		"TOTAL_COUNT":580,
+		"FIRST":1
+	},
+	getroleData : function(id){
+		if(this.role.hasOwnProperty("ID_"+ id))
+			return this.role["ID_" + id]
+		cc.error("the role id is not exist! id = " + id )
+		return null
 	},
 	date:{
 		"DATE_ID_1":{"DATE_ID":1, "DATE_NAME":"做饭", "DATE_NEED_GOODS_ID":"dummy", "DATE_NEED_GOODS_COUNT":"dummy", "DATE_FREE_TIMES":2, "DATE_BUY_TIMES_NEED":"10,20,40,60,90,100,130,140,170,180,200", "DATE_EXECUTE_TIME":15, "DATE_EXP":10, "DATE_NEED_LEVEL":1},
@@ -1470,7 +1533,14 @@ module.exports = {
 		"DATE_ID_5":{"DATE_ID":5, "DATE_NAME":"游乐园", "DATE_NEED_GOODS_ID":3, "DATE_NEED_GOODS_COUNT":1, "DATE_FREE_TIMES":2, "DATE_BUY_TIMES_NEED":"120,240,480,720,1080,1200,1560,1680,2040,2160,2400", "DATE_EXECUTE_TIME":22, "DATE_EXP":120, "DATE_NEED_LEVEL":20},
 		"DATE_ID_6":{"DATE_ID":6, "DATE_NAME":"看演唱会", "DATE_NEED_GOODS_ID":4, "DATE_NEED_GOODS_COUNT":1, "DATE_FREE_TIMES":2, "DATE_BUY_TIMES_NEED":"200,400,800,1200,1800,2000,2600,2800,3400,3600,4000", "DATE_EXECUTE_TIME":28, "DATE_EXP":200, "DATE_NEED_LEVEL":30},
 		"DATE_ID_7":{"DATE_ID":7, "DATE_NAME":"风景区", "DATE_NEED_GOODS_ID":5, "DATE_NEED_GOODS_COUNT":1, "DATE_FREE_TIMES":2, "DATE_BUY_TIMES_NEED":"300,600,1200,1800,2700,3000,3900,4200,5100,5400,6000", "DATE_EXECUTE_TIME":34, "DATE_EXP":300, "DATE_NEED_LEVEL":40},
-		"TOTAL_COUNT":7
+		"TOTAL_COUNT":7,
+		"FIRST":1
+	},
+	getdateData : function(id){
+		if(this.date.hasOwnProperty("DATE_ID_"+ id))
+			return this.date["DATE_ID_" + id]
+		cc.error("the date id is not exist! id = " + id )
+		return null
 	},
 	branchVideo:{
 		"PLOT_VIDEO_ID_1001":{"PLOT_VIDEO_ID":1001, "PLOT_VIDEO_OPTION_1":"送", "PLOT_VIDEO_LINK_VIDEO_1":1101, "PLOT_VIDEO_OPTION_2":"不送", "PLOT_VIDEO_LINK_VIDEO_2":1201},
@@ -1488,7 +1558,14 @@ module.exports = {
 		"PLOT_VIDEO_ID_1013":{"PLOT_VIDEO_ID":1013, "PLOT_VIDEO_OPTION_1":"送", "PLOT_VIDEO_LINK_VIDEO_1":1113, "PLOT_VIDEO_OPTION_2":"不送", "PLOT_VIDEO_LINK_VIDEO_2":1213},
 		"PLOT_VIDEO_ID_1014":{"PLOT_VIDEO_ID":1014, "PLOT_VIDEO_OPTION_1":"要", "PLOT_VIDEO_LINK_VIDEO_1":1114, "PLOT_VIDEO_OPTION_2":"不要", "PLOT_VIDEO_LINK_VIDEO_2":1214},
 		"PLOT_VIDEO_ID_1015":{"PLOT_VIDEO_ID":1015, "PLOT_VIDEO_OPTION_1":"送", "PLOT_VIDEO_LINK_VIDEO_1":1115, "PLOT_VIDEO_OPTION_2":"不送", "PLOT_VIDEO_LINK_VIDEO_2":1215},
-		"TOTAL_COUNT":15
+		"TOTAL_COUNT":15,
+		"FIRST":1001
+	},
+	getbranchVideoData : function(id){
+		if(this.branchVideo.hasOwnProperty("PLOT_VIDEO_ID_"+ id))
+			return this.branchVideo["PLOT_VIDEO_ID_" + id]
+		cc.error("the branchVideo id is not exist! id = " + id )
+		return null
 	},
 	video:{
 		"VIDEO_ID_1":{"VIDEO_ID":1, "VIDEO_NAME":"主线视频01", "VIDEO_NEED_MONEY":50},
@@ -1542,7 +1619,14 @@ module.exports = {
 		"VIDEO_ID_49":{"VIDEO_ID":49, "VIDEO_NAME":"主线视频49", "VIDEO_NEED_MONEY":10000},
 		"VIDEO_ID_50":{"VIDEO_ID":50, "VIDEO_NAME":"主线视频50", "VIDEO_NEED_MONEY":10000},
 		"VIDEO_ID_51":{"VIDEO_ID":51, "VIDEO_NAME":"主线视频51", "VIDEO_NEED_MONEY":10000},
-		"TOTAL_COUNT":51
+		"TOTAL_COUNT":51,
+		"FIRST":1
+	},
+	getvideoData : function(id){
+		if(this.video.hasOwnProperty("VIDEO_ID_"+ id))
+			return this.video["VIDEO_ID_" + id]
+		cc.error("the video id is not exist! id = " + id )
+		return null
 	},
 	wechat:{
 		"WECHAT_ID_1":{"WECHAT_ID":1, "WECHAT_LEVEL":2, "WECHAT_OPTION":1, "WECHAT_EXP":1, "WECHAT_NEXT":4, "WECHAT_CONTENT":"我还没答应让你住进来呢！"},
@@ -2289,7 +2373,14 @@ module.exports = {
 		"WECHAT_ID_742":{"WECHAT_ID":742, "WECHAT_LEVEL":50, "WECHAT_OPTION":188, "WECHAT_EXP":7, "WECHAT_NEXT":744, "WECHAT_CONTENT":" 经历这么多，你应该知道自己想要的究竟是什么了。"},
 		"WECHAT_ID_743":{"WECHAT_ID":743, "WECHAT_LEVEL":50, "WECHAT_OPTION":188, "WECHAT_EXP":6, "WECHAT_NEXT":744, "WECHAT_CONTENT":" 加油吧，我相信你。"},
 		"WECHAT_ID_744":{"WECHAT_ID":744, "WECHAT_LEVEL":50, "WECHAT_OPTION":"dummy", "WECHAT_EXP":"dummy", "WECHAT_NEXT":"dummy", "WECHAT_CONTENT":"你的心意，我收到了"},
-		"TOTAL_COUNT":744
+		"TOTAL_COUNT":744,
+		"FIRST":1
+	},
+	getwechatData : function(id){
+		if(this.wechat.hasOwnProperty("WECHAT_ID_"+ id))
+			return this.wechat["WECHAT_ID_" + id]
+		cc.error("the wechat id is not exist! id = " + id )
+		return null
 	},
 	level_up:{
 		"LEVEL_UP_LEV_2":{"LEVEL_UP_LEV":2, "PHONE_END_ID":21, "WECHAT_END_ID":20},
@@ -2342,7 +2433,14 @@ module.exports = {
 		"LEVEL_UP_LEV_49":{"LEVEL_UP_LEV":49, "PHONE_END_ID":749, "WECHAT_END_ID":728},
 		"LEVEL_UP_LEV_50":{"LEVEL_UP_LEV":50, "PHONE_END_ID":767, "WECHAT_END_ID":744},
 		"LEVEL_UP_LEV_51":{"LEVEL_UP_LEV":51, "PHONE_END_ID":"dummy", "WECHAT_END_ID":"dummy"},
-		"TOTAL_COUNT":50
+		"TOTAL_COUNT":50,
+		"FIRST":2
+	},
+	getlevel_upData : function(id){
+		if(this.level_up.hasOwnProperty("LEVEL_UP_LEV_"+ id))
+			return this.level_up["LEVEL_UP_LEV_" + id]
+		cc.error("the level_up id is not exist! id = " + id )
+		return null
 	},
 	function_conditions:{
 		"FUNCTION_ID_1":{"FUNCTION_ID":1, "FUNCTION_LEVEL":1},
@@ -2354,7 +2452,14 @@ module.exports = {
 		"FUNCTION_ID_7":{"FUNCTION_ID":7, "FUNCTION_LEVEL":1},
 		"FUNCTION_ID_8":{"FUNCTION_ID":8, "FUNCTION_LEVEL":6},
 		"FUNCTION_ID_9":{"FUNCTION_ID":9, "FUNCTION_LEVEL":1},
-		"TOTAL_COUNT":9
+		"TOTAL_COUNT":9,
+		"FIRST":1
+	},
+	getfunction_conditionsData : function(id){
+		if(this.function_conditions.hasOwnProperty("FUNCTION_ID_"+ id))
+			return this.function_conditions["FUNCTION_ID_" + id]
+		cc.error("the function_conditions id is not exist! id = " + id )
+		return null
 	},
 	guide:{
 		"GUIDE_ID_1":{"GUIDE_ID":1, "GUIDE_TEXT":"引导文本1"},
@@ -2362,7 +2467,14 @@ module.exports = {
 		"GUIDE_ID_3":{"GUIDE_ID":3, "GUIDE_TEXT":"引导文本3"},
 		"GUIDE_ID_4":{"GUIDE_ID":4, "GUIDE_TEXT":"引导文本4"},
 		"GUIDE_ID_5":{"GUIDE_ID":5, "GUIDE_TEXT":"引导文本5"},
-		"TOTAL_COUNT":5
+		"TOTAL_COUNT":5,
+		"FIRST":1
+	},
+	getguideData : function(id){
+		if(this.guide.hasOwnProperty("GUIDE_ID_"+ id))
+			return this.guide["GUIDE_ID_" + id]
+		cc.error("the guide id is not exist! id = " + id )
+		return null
 	},
 	zone:{
 		"ID_1":{"ID":1, "ZONE_LEVEL":3, "ZONE_TITLE":"真是的，没想到他是这种人！被偷看了呜呜呜~", "ZONE_IMG_1":1, "ZONE_IMG_2":"dummy", "ZONE_IMG_3":"dummy", "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":10, "ZONE_FANS_COUNT":10, "ZONE_THUMBS_UP":1, "FB_END_ID":3},
@@ -2413,7 +2525,14 @@ module.exports = {
 		"ID_46":{"ID":46, "ZONE_LEVEL":48, "ZONE_TITLE":"讨厌的班长随便进我房间！", "ZONE_IMG_1":46, "ZONE_IMG_2":"dummy", "ZONE_IMG_3":"dummy", "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":1065, "ZONE_FANS_COUNT":338, "ZONE_THUMBS_UP":7, "FB_END_ID":224},
 		"ID_47":{"ID":47, "ZONE_LEVEL":49, "ZONE_TITLE":"班长的话是什么意思呢，真是讨厌啊，说话那么不直接。无论怎样，跟随自己的心就好吧？", "ZONE_IMG_1":47, "ZONE_IMG_2":"dummy", "ZONE_IMG_3":"dummy", "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":1105, "ZONE_FANS_COUNT":348, "ZONE_THUMBS_UP":7, "FB_END_ID":228},
 		"ID_48":{"ID":48, "ZONE_LEVEL":50, "ZONE_TITLE":"神明还是宽容的实现了我的两个愿望。很庆幸，我的世界里从此多了一缕清风。", "ZONE_IMG_1":48, "ZONE_IMG_2":"dummy", "ZONE_IMG_3":"dummy", "ZONE_IMG_4":"dummy", "ZONE_FOLLOW_NUM":1146, "ZONE_FANS_COUNT":359, "ZONE_THUMBS_UP":7, "FB_END_ID":237},
-		"TOTAL_COUNT":48
+		"TOTAL_COUNT":48,
+		"FIRST":1
+	},
+	getzoneData : function(id){
+		if(this.zone.hasOwnProperty("ID_"+ id))
+			return this.zone["ID_" + id]
+		cc.error("the zone id is not exist! id = " + id )
+		return null
 	},
 	zonefeefback:{
 		"ID_1":{"ID":1, "ZONE_FB_LEVEL":3, "ZONE_FB_HAVE_FB":"dummy", "ZONE_FB_FNAME":"爱吃奶糖的兔子", "ZONE_FB_TEXT":"这种男生就要就地正法！", "ZONE_FB_REPLY":"反正我不会被他欺负啦！"},
@@ -2653,7 +2772,14 @@ module.exports = {
 		"ID_235":{"ID":235, "ZONE_FB_LEVEL":50, "ZONE_FB_HAVE_FB":1, "ZONE_FB_FNAME":"二哈", "ZONE_FB_TEXT":"哪哪哪狗粮在哪！", "ZONE_FB_REPLY":"dummy"},
 		"ID_236":{"ID":236, "ZONE_FB_LEVEL":50, "ZONE_FB_HAVE_FB":1, "ZONE_FB_FNAME":"西瓜太娘", "ZONE_FB_TEXT":"胡乱的在脸上拍的你看不见吗！", "ZONE_FB_REPLY":"dummy"},
 		"ID_237":{"ID":237, "ZONE_FB_LEVEL":50, "ZONE_FB_HAVE_FB":1, "ZONE_FB_FNAME":"泰和天", "ZONE_FB_TEXT":"祝幸福！", "ZONE_FB_REPLY":"谢谢大家！么么哒~"},
-		"TOTAL_COUNT":237
+		"TOTAL_COUNT":237,
+		"FIRST":1
+	},
+	getzonefeefbackData : function(id){
+		if(this.zonefeefback.hasOwnProperty("ID_"+ id))
+			return this.zonefeefback["ID_" + id]
+		cc.error("the zonefeefback id is not exist! id = " + id )
+		return null
 	},
 	reply:{
 		"ID_1":{"ID":1, "REPLY_LEVEL":3, "REPLY_GROUP_ID":1, "REPLY_TEXT":"我不是故意的······", "REPLY_REPLY":"反正都怪你！", "REPLY_PLAYER_REPLY":3},
@@ -2800,7 +2926,14 @@ module.exports = {
 		"ID_142":{"ID":142, "REPLY_LEVEL":50, "REPLY_GROUP_ID":54, "REPLY_TEXT":"我会珍惜的。", "REPLY_REPLY":"我做好准备了！", "REPLY_PLAYER_REPLY":8},
 		"ID_143":{"ID":143, "REPLY_LEVEL":50, "REPLY_GROUP_ID":55, "REPLY_TEXT":"你在说什么？", "REPLY_REPLY":"我做好准备了！", "REPLY_PLAYER_REPLY":6},
 		"ID_144":{"ID":144, "REPLY_LEVEL":50, "REPLY_GROUP_ID":56, "REPLY_TEXT":"你在激动什么啊······", "REPLY_REPLY":"我做好准备了！", "REPLY_PLAYER_REPLY":8},
-		"TOTAL_COUNT":144
+		"TOTAL_COUNT":144,
+		"FIRST":1
+	},
+	getreplyData : function(id){
+		if(this.reply.hasOwnProperty("ID_"+ id))
+			return this.reply["ID_" + id]
+		cc.error("the reply id is not exist! id = " + id )
+		return null
 	},
 	http:{
 		"ID_1":{"ID":1, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/register", "Params":"username, password,_deviceid", "Method":"POST", "Remark":"用户账号注册使用。"},
@@ -2827,7 +2960,14 @@ module.exports = {
 		"ID_22":{"ID":22, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/buytimes", "Params":"api_token,dateid,num", "Method":"POST", "Remark":"购买约会次数。"},
 		"ID_23":{"ID":23, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/donevideo", "Params":"api_token,videoid", "Method":"POST", "Remark":"观看视频完成。"},
 		"ID_24":{"ID":24, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/video/geturl", "Params":"api_token,videoid", "Method":"GET", "Remark":"获取视频url。"},
-		"TOTAL_COUNT":24
+		"TOTAL_COUNT":24,
+		"FIRST":1
+	},
+	gethttpData : function(id){
+		if(this.http.hasOwnProperty("ID_"+ id))
+			return this.http["ID_" + id]
+		cc.error("the http id is not exist! id = " + id )
+		return null
 	},
 	errorcode:{
 		"ID_0":{"ID":0, "DESC":"正确"},
@@ -2848,7 +2988,14 @@ module.exports = {
 		"ID_10025":{"ID":10025, "DESC":"所需道具数量不足。"},
 		"ID_10026":{"ID":10026, "DESC":"玩家等级不足。"},
 		"ID_10027":{"ID":10027, "DESC":"相应功能未开启。"},
-		"TOTAL_COUNT":18
+		"TOTAL_COUNT":18,
+		"FIRST":0
+	},
+	geterrorcodeData : function(id){
+		if(this.errorcode.hasOwnProperty("ID_"+ id))
+			return this.errorcode["ID_" + id]
+		cc.error("the errorcode id is not exist! id = " + id )
+		return null
 	},
 
 };

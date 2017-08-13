@@ -108,7 +108,7 @@ cc.Class({
         this.tonghuakuang.active = false
         this.currentScroll.node.active = false;
 
-        if (parseInt(cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"]) > parseInt(cc.cs.PlayerInfo.Level)) {
+        if (parseInt(cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"]) > parseInt(cc.cs.PlayerInfo.level)) {
             this.phoneBtn.active = false
         }
         if (cc.cs.PlayerInfo.Phone_ID == 0 ||
@@ -146,7 +146,7 @@ cc.Class({
             cc.cs.UIMgr.addItem_verticalScrollView(this.everInfoScroll, newNode, 0)
             newNode.cyEnd = count[i]
             newNode.getChildByName("infoBtn").getChildByName("time").getComponent(cc.Label).string = this.getDay(
-                parseInt(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"]) -
+                parseInt(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]["LEV_DAY"]) -
                 parseInt(cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.phone["PHONE_ID_" + cc.cs.gameData.level_up["LEVEL_UP_LEV_" + count[i]]["PHONE_END_ID"]]["PHONE_LEV"]]["LEV_DAY"])
             )
             newNode.getChildByName("infoBtn").getChildByName("msg").getComponent(cc.Label).string = this.getLimitMsg(cc.cs.gameData.phone["PHONE_ID_" + cc.cs.gameData.level_up["LEVEL_UP_LEV_" + count[i]]["PHONE_END_ID"]]["PHONE_MSG"], 16)
@@ -425,16 +425,16 @@ cc.Class({
 
     SendPhone: function(phoneid) {
         this.currentPlayerPhoneID = phoneid;
-        cc.log("SendPhone = " + phoneid + "         " + cc.cs.PlayerInfo.ApiToken)
+        cc.log("SendPhone = " + phoneid + "         " + cc.cs.PlayerInfo.api_token)
         this.setInputMsg(phoneid)
-        cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.ApiToken, phoneid, this.SendPhoneHandle, this)
+        cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.api_token, phoneid, this.SendPhoneHandle, this)
     },
 
     canPhone: function() {
-        if (cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_LEV"] <= parseInt(cc.cs.PlayerInfo.Level))
+        if (cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_LEV"] <= parseInt(cc.cs.PlayerInfo.level))
 
             if (cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_AUDIO"] == "dummy" &&
-                cc.cs.gameData.phone["PHONE_ID_" + (cc.cs.PlayerInfo.Phone_ID + 1)]["PHONE_LEV"] > parseInt(cc.cs.PlayerInfo.Level)) return false
+                cc.cs.gameData.phone["PHONE_ID_" + (cc.cs.PlayerInfo.Phone_ID + 1)]["PHONE_LEV"] > parseInt(cc.cs.PlayerInfo.level)) return false
             else return true
         return false
     },
@@ -449,14 +449,14 @@ cc.Class({
             cc.cs.PlayerInfo.Phone_player_ID.push(parseInt(this.currentPlayerPhoneID))
             cc.cs.PlayerInfo.Phone_ID = parseInt(this.NPCID)
 
-            /*if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+            /*if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.level) ){
                 cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
             }*/
 
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-            cc.log("video id 4= " + cc.cs.PlayerInfo.videoID)
-            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
-            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
+            cc.log("video id 4= " + cc.cs.PlayerInfo.playvideo)
+            cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.level = JasonObject.content.info.level
             if (this.canPhone()) {
                 this.currentTime = 0
                 this.isAction = true;

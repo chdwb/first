@@ -200,21 +200,32 @@ cc.Class({
     },
     updatePlayerInfo:function(JasonObject)
     {
-        cc.cs.PlayerInfo.ApiToken = JasonObject.content.info.api_token
+            cc.cs.PlayerInfo.api_token = JasonObject.content.info.api_token
             //cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
-            cc.cs.PlayerInfo.Welcome = JasonObject.content.info.welcome
-            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
-            cc.cs.PlayerInfo.Sign = JasonObject.content.info.sign
-            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.welcome = JasonObject.content.info.welcome
+            cc.cs.PlayerInfo.updateLevel(JasonObject.content.info.level)
+            cc.cs.PlayerInfo.sign = JasonObject.content.info.sign
+            cc.cs.PlayerInfo.updateExp(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.Power = JasonObject.content.info.power
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.updateMoney(JasonObject.content.info.money)
             cc.cs.PlayerInfo.Diamond = JasonObject.content.info.diamond
-            cc.cs.PlayerInfo.Phone_ID = parseInt(JasonObject.content.info.phone_id)
-            cc.cs.PlayerInfo.Wechat_ID = parseInt(JasonObject.content.info.wechat_id)
-            cc.cs.PlayerInfo.ZoneThumbsUp_ID = JasonObject.content.info.zoneThumbsUp_id
-            cc.cs.PlayerInfo.ZoneReplay_ID = JasonObject.content.info.zoneReplay_id
-            cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.work_id
-            cc.cs.PlayerInfo.Work1LeftTImes = JasonObject.content.info.work_id1
+            cc.cs.PlayerInfo.updatePhoenID(JasonObject.content.info.phone_id)
+            cc.cs.PlayerInfo.updateWechatID(JasonObject.content.info.wechat_id)
+            cc.cs.PlayerInfo.zoneThumbsUp_id = JasonObject.content.info.zoneThumbsUp_id
+            cc.cs.PlayerInfo.zoneReplay_id = JasonObject.content.info.zoneReplay_id
+            cc.cs.PlayerInfo.work_id = JasonObject.content.info.work_id
+
+            cc.cs.PlayerInfo.date_id = JasonObject.content.info.date_id
+            for(var i = 1; i <= cc.cs.gameData.date["TOTAL_COUNT"] ; ++i){
+                cc.cs.PlayerInfo.updateLoveFreeTimes(i, JasonObject.content.info["date_id" + i])
+            }
+
+            for(var i = 1; i < cc.cs.gameData.work["TOTAL_COUNT"]; ++i){
+                cc.cs.PlayerInfo.updateWorkFreeTimes(i, JasonObject.content.info["work_id" + i])
+                cc.cs.PlayerInfo.updateLovePrice(i, JasonObject.content.info["Love" + i + "Price"])
+            }
+
+            /*cc.cs.PlayerInfo.Work1LeftTImes = JasonObject.content.info.work_id1
             cc.cs.PlayerInfo.Work2LeftTImes = JasonObject.content.info.work_id2
             cc.cs.PlayerInfo.Work3LeftTImes = JasonObject.content.info.work_id3
             cc.cs.PlayerInfo.Work4LeftTImes = JasonObject.content.info.work_id4
@@ -223,24 +234,24 @@ cc.Class({
             cc.cs.PlayerInfo.Work7LeftTImes = JasonObject.content.info.work_id7
             cc.cs.PlayerInfo.Work8LeftTImes = JasonObject.content.info.work_id8
             cc.cs.PlayerInfo.Work9LeftTImes = JasonObject.content.info.work_id9
-            cc.cs.PlayerInfo.Work10LeftTImes = JasonObject.content.info.work_id10
+            cc.cs.PlayerInfo.Work10LeftTImes = JasonObject.content.info.work_id10*/
 
-            cc.cs.PlayerInfo.Love_ID = JasonObject.content.info.date_id
-            cc.cs.PlayerInfo.Love1LeftTImes = JasonObject.content.info.date_id1
+            
+            /*cc.cs.PlayerInfo.Love1LeftTImes = JasonObject.content.info.date_id1
             cc.cs.PlayerInfo.Love2LeftTImes = JasonObject.content.info.date_id2
             cc.cs.PlayerInfo.Love3LeftTImes = JasonObject.content.info.date_id3
             cc.cs.PlayerInfo.Love4LeftTImes = JasonObject.content.info.date_id4
             cc.cs.PlayerInfo.Love5LeftTImes = JasonObject.content.info.date_id5
             cc.cs.PlayerInfo.Love6LeftTImes = JasonObject.content.info.date_id6
-            cc.cs.PlayerInfo.Love7LeftTImes = JasonObject.content.info.date_id7
+            cc.cs.PlayerInfo.Love7LeftTImes = JasonObject.content.info.date_id7*/
 
-            cc.cs.PlayerInfo.Love1Price = JasonObject.content.info.Love1Price
+           /* cc.cs.PlayerInfo.Love1Price = JasonObject.content.info.Love1Price
             cc.cs.PlayerInfo.Love2Price = JasonObject.content.info.Love2Price
             cc.cs.PlayerInfo.Love3Price = JasonObject.content.info.Love3Price
             cc.cs.PlayerInfo.Love4Price = JasonObject.content.info.Love4Price
             cc.cs.PlayerInfo.Love5Price = JasonObject.content.info.Love5Price
             cc.cs.PlayerInfo.Love6Price = JasonObject.content.info.Love6Price
-            cc.cs.PlayerInfo.Love7Price = JasonObject.content.info.Love7Price
+            cc.cs.PlayerInfo.Love7Price = JasonObject.content.info.Love7Price*/
 
             cc.cs.PlayerInfo.wechat_fn = JasonObject.content.info.wechat_fn
             cc.cs.PlayerInfo.zone_fn = JasonObject.content.info.zone_fn
@@ -249,10 +260,10 @@ cc.Class({
 
            
 
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.video_id
-            cc.log("video id 2= " + cc.cs.PlayerInfo.videoID)
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.video_id
+        
             cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
-             var itemcount = JasonObject.content.info.backpacks.length
+            var itemcount = JasonObject.content.info.backpacks.length
             for(var i=0;i<JasonObject.content.info.backpacks.length;i++){  
   
                 cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
@@ -261,31 +272,30 @@ cc.Class({
             for(var i=0;i<JasonObject.content.info.phones.length;i++){  
   
                 cc.log("phoneid = "+JasonObject.content.info.phones[i].phone_id)
-                cc.cs.PlayerInfo.Phone_player_ID[i] = (parseInt( JasonObject.content.info.phones[i].phone_id))
-                cc.log(cc.cs.PlayerInfo.Phone_player_ID + " cc.cs.PlayerInfo.Phone_player_ID " + cc.cs.PlayerInfo.Phone_player_ID[i])
+                cc.cs.PlayerInfo.addPhonePlayerID( JasonObject.content.info.phones[i].phone_id)
             }
 
             for(var i=0;i<JasonObject.content.info.wechats.length;i++){  
   
                 //cc.log("goodsid = "+JasonObject.content.info.backpacks[i].goods_id)
-                cc.cs.PlayerInfo.wechat_player_ID.push(parseInt(JasonObject.content.info.wechats[i].wechat_id))
+                cc.cs.PlayerInfo.addWechatPlayerID(JasonObject.content.info.wechats[i].wechat_id)
             }
 
             for(var i=0;i<JasonObject.content.info.thumbs.length;i++){  
   
-                cc.log("weibo_thumbs = "+JasonObject.content.info.thumbs[i].zone_id)
-                cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(JasonObject.content.info.thumbs[i].zone_id))
+                cc.cs.PlayerInfo.addZoneThumbs(JasonObject.content.info.thumbs[i].zone_id)
             }
 
             for(var i=0;i<JasonObject.content.info.replies.length;i++){  
   
                 cc.log("replies = "+JasonObject.content.info.replies[i].reply_id)
-                cc.cs.PlayerInfo.replies.push(parseInt(JasonObject.content.info.replies[i].reply_id))
+                cc.cs.PlayerInfo.addZoneReplies(JasonObject.content.info.replies[i].reply_id)
             }
+
             if(cc.cs.PlayerInfo.Phone_ID == "1" || cc.cs.PlayerInfo.Phone_ID == 1)
                 cc.cs.PlayerInfo.Phone_ID = 0
-            if(cc.cs.PlayerInfo.Wechat_ID == "0" || cc.cs.PlayerInfo.Wechat_ID == 0)
-                cc.cs.PlayerInfo.Wechat_ID =1
+            if(cc.cs.PlayerInfo.wechat_id == "0" || cc.cs.PlayerInfo.wechat_id == 0)
+                cc.cs.PlayerInfo.wechat_id =1
     },
     gotoGameScene:function(ret)
     {
@@ -295,11 +305,7 @@ cc.Class({
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
             this.updatePlayerInfo(JasonObject)
-            
 
-
-            
-            
              cc.director.loadScene('GameScene');
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)

@@ -20,8 +20,8 @@ cc.Class({
 
     onClick : function()
     {
-       cc.log("play video " + cc.cs.PlayerInfo.videoID)
-       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.ApiToken,cc.cs.PlayerInfo.videoID,this.videoDoneHandle,this)
+       cc.log("play video " + cc.cs.PlayerInfo.playvideo)
+       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
 
     },
 
@@ -31,10 +31,10 @@ cc.Class({
 
         var JasonObject = JSON.parse(ret);
                 if (JasonObject.success === true) {
-                    cc.cs.PlayerInfo.videoID = JasonObject.content.info.video_id;
+                    cc.cs.PlayerInfo.playvideo = JasonObject.content.info.video_id;
                     cc.cs.UIMgr.showTip("视频完成", 1.0)
-                    cc.cs.PlayerInfo.Level = JasonObject.content.info.level
-                    cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
+                    cc.cs.PlayerInfo.level = JasonObject.content.info.level
+                    cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
 
                     var parent = this.node.parent
                     parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
@@ -47,16 +47,16 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 
-       //this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.videoID
+       //this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.playvideo
 
     },
 
     onEnable: function () {
 
-        this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.videoID
+        this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.playvideo
        
-          var nextvideoID = parseInt(cc.cs.PlayerInfo.videoID)+1
-          cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.ApiToken,nextvideoID,this.voidoDownloadHandle,this)
+          var nextvideoID = parseInt(cc.cs.PlayerInfo.playvideo)+1
+          cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.api_token,nextvideoID,this.voidoDownloadHandle,this)
 
           if(cc.cs.gameData.branchVideo["PLOT_VIDEO_ID_"+nextvideoID])
           {
@@ -64,8 +64,8 @@ cc.Class({
              var id1 =  cc.cs.gameData.branchVideo["PLOT_VIDEO_ID_"+nextvideoID]["PLOT_VIDEO_LINK_VIDEO_1"]
              var id2 = cc.cs.gameData.branchVideo["PLOT_VIDEO_ID_"+nextvideoID]["PLOT_VIDEO_LINK_VIDEO_1"]
 
-             cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.ApiToken,id1,this.voidoDownloadHandle,this)
-             cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.ApiToken,id2,this.voidoDownloadHandle,this)
+             cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.api_token,id1,this.voidoDownloadHandle,this)
+             cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.api_token,id2,this.voidoDownloadHandle,this)
 
           }
 

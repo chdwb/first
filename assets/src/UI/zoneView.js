@@ -27,13 +27,15 @@ cc.Class({
         inputTableBtn: null,
 
         currentPLID: 0,
-        currentItem: null
+        currentItem: null,
+
+        lastZoneID :0,
     },
 
     SendDJ: function(phoneid) {
-        cc.log("SendPhone = " + phoneid + "         " + cc.cs.PlayerInfo.ApiToken)
+        cc.log("SendPhone = " + phoneid + "         " + cc.cs.PlayerInfo.api_token)
 
-        cc.cs.gameMgr.sendReply(cc.cs.PlayerInfo.ApiToken, phoneid, this.sendReplyHandle, this)
+        cc.cs.gameMgr.sendReply(cc.cs.PlayerInfo.api_token, phoneid, this.sendReplyHandle, this)
 
         this.currentPLID = phoneid
     },
@@ -46,15 +48,15 @@ cc.Class({
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
             cc.cs.PlayerInfo.replies.push(this.currentPLID)
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-            cc.log("video id 7= " + cc.cs.PlayerInfo.videoID)
-                //if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
+            cc.log("video id 7= " + cc.cs.PlayerInfo.playvideo)
+                //if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.level) ){
                 //    cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
             cc.cs.UIMgr.showTip("评论完成", 1.0)
                 // }
-            cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
-            cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
+            cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
+            cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
@@ -141,8 +143,10 @@ cc.Class({
         for (var i = 0; i < this.ZoneIDList.length; i++) {
             if (this.ZoneIDList[i].zoneID == id) return
         }
+        
+        var zoneData = cc.cs.gameData.getzoneData(id)
 
-        if (cc.cs.gameData.zone["ID_" + id] == null || cc.cs.gameData.zone["ID_" + id] == undefined) return
+        if (zoneData == null) return
 
         var zoneItem = cc.instantiate(this.ZoneItemPrefab)
         zoneItem.id = id
@@ -150,22 +154,27 @@ cc.Class({
 
         var jsZoneItem = zoneItem.getComponent("zoneItem")
         jsZoneItem.setZoneID(id)
+        var fdbackData = null
         for (var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i) {
-            if (cc.cs.gameData.zone["ID_" + id]["ZONE_LEVEL"] == cc.cs.gameData.zonefeefback["ID_" + i]["ZONE_FB_LEVEL"]) {
+            fdbackData = cc.cs.gameData.getzonefeefbackData(i)
+            if (zoneData["ZONE_LEVEL"] == fdbackData["ZONE_FB_LEVEL"]) {
                 jsZoneItem.addText(i)
             }
+            if(zoneData["ZONE_LEVEL"]  < fdbackData["ZONE_FB_LEVEL"]){
+                break;
+            }
         }
-        jsZoneItem.setMsg(cc.cs.gameData.zone["ID_" + id]["ZONE_TITLE"])
+        jsZoneItem.setMsg(zoneData["ZONE_TITLE"])
 
-        if (!cc.cs.PlayerInfo.canADDZone(id)) {
-            jsZoneItem.addPlayerText(cc.cs.PlayerInfo.getZoneReplyID(id))
+        if (!cc.cs.PlayerInfo.canPLZone(id)) {
+            jsZoneItem.addPlayerText(id)
         }
 
-        cc.cs.UIMgr.addItem_verticalScrollView(this.scrollView, zoneItem, 0)
+        cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, zoneItem, 0)
     },
 
-    canZone: function() {
-        var currentID = parseInt(cc.cs.PlayerInfo.Level) - 2
+    /*canZone: function() {
+        var currentID = parseInt(cc.cs.PlayerInfo.level) - 2
         if (currentID >= 1) {
             for (var i = currentID; i >= 1; --i) {
                 if (cc.cs.PlayerInfo.canPLZone(i) || cc.cs.PlayerInfo.canZanZone(i))
@@ -173,8 +182,16 @@ cc.Class({
             }
         }
         return false;
-    },
+    },*/
     // use this for initialization
+
+    onEnable : function(){
+        var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
+        if(newID !=  this.lastZoneID){
+            this.addZoneId(ndeID)
+        }
+    },
+
     onLoad: function() {
         var self = this
         this.inputTablePrefab = cc.loader.getRes("prefab/inputTable", cc.Prefab)
@@ -191,13 +208,15 @@ cc.Class({
 
         this.nameText.string = cc.cs.PlayerInfo.NPCName
 
-        var currentID = parseInt(cc.cs.PlayerInfo.Level) - 2
-        if (currentID >= 1) {
-            for (var i = currentID; i >= 1; --i) {
+        var count  = cc.cs.PlayerInfo.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
+        this.lastZoneID = count
+        if (count > 0) {
+            for (var i = cc.cs.gameData.zone["FIRST"] ; i < count; ++i) {
                 this.addZoneId(i)
             }
+            var zoneData = cc.cs.gameData.getzoneData(this.lastZoneID)
             this.infoText.node.active = true
-            this.infoText.string = "关注" + cc.cs.gameData.zone["ID_" + currentID]["ZONE_FOLLOW_NUM"] + "|" + "粉丝" + cc.cs.gameData.zone["ID_" + currentID]["ZONE_FANS_COUNT"]
+            this.infoText.string = "关注" + zoneData["ZONE_FOLLOW_NUM"] + "|" + "粉丝" + zoneData["ZONE_FANS_COUNT"]
         } else {
             this.infoText.node.active = false
         }
@@ -209,6 +228,7 @@ cc.Class({
 
         }, this.backBtn)
     },
+
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {

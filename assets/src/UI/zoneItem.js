@@ -42,17 +42,6 @@ cc.Class({
         plID: 0,
     },
 
-    getDay: function(d) {
-        if (d == 0)
-            return "今天"
-        if (d == 1)
-            return "昨天"
-        if (d == 2)
-            return "前天"
-
-        return d + "天前"
-    },
-
     setLength: function() {
         var height = Math.abs(this.bghf.y) + this.bghf.getContentSize().height + Math.abs(this.replyMsg.node.y * 2)
         var si = this.node.getContentSize()
@@ -62,10 +51,19 @@ cc.Class({
     setZoneID: function(id) {
         this.zoneID = id
         this.nameText.string = cc.cs.PlayerInfo.NPCName
-        this.dateText.string = this.getDay(
-            parseInt(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]["LEV_DAY"]) -
-            parseInt(cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.zone["ID_" + id]["ZONE_LEVEL"]]["LEV_DAY"])
-        )
+        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(id)
+
+         if (cc.cs.PlayerInfo.canPLZone(id)) {
+            this.plBtn.getChildByName("stars").active = true
+         }else{
+            this.plBtn.getChildByName("stars").active = false   
+         }
+
+         if (cc.cs.PlayerInfo.canZanZone(id)){
+            this.dzBtn.getChildByName("stars").active = true
+         }else{
+            this.dzBtn.getChildByName("stars").active = false 
+         }
     },
     setMsg: function(text) {
         this.msg.string = text
@@ -73,36 +71,38 @@ cc.Class({
 
     addText: function(id) {
         var height = Math.abs(this.replyMsg.node.y * 2)
+        var fbData = cc.cs.gameData.getzonefeefbackData(id);
+
 
         if (this.replyList.length == 0) {
             this.replyList.push(this.replyMsg.node)
-            this.replyMsg.string = "<color=#ffffff>" + cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"] + "</c><color=#1f6289>:" + cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_TEXT"] + "</color>"
+            this.replyMsg.string = "<color=#ffffff>" + fbData["ZONE_FB_FNAME"] + "</c><color=#1f6289>:" + fbData["ZONE_FB_TEXT"] + "</color>"
             if (cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"] != "dummy") {
 
                 this.addTextItem("<color=#ffffff>" +
                     cc.cs.PlayerInfo.NPCName +
                     "</c><color=#1f6289>回复" +
                     "</c><color=#ffffff>" +
-                    cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"] +
+                    fbData["ZONE_FB_FNAME"] +
                     "</c><color=#1f6289>:" +
-                    cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"] +
+                    fbData["ZONE_FB_REPLY"] +
                     "</color>")
             }
         } else {
             this.addTextItem("<color=#ffffff>" +
-                cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"] +
+                fbData["ZONE_FB_FNAME"] +
                 "</c><color=#1f6289>:" +
-                cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_TEXT"] +
+                fbData["ZONE_FB_TEXT"] +
                 "</color>")
-            if (cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"] != "dummy") {
+            if (fbData["ZONE_FB_REPLY"] != "dummy") {
 
                 this.addTextItem("<color=#ffffff>" +
                     cc.cs.PlayerInfo.NPCName +
                     "</c><color=#1f6289>回复" +
                     "</c><color=#ffffff>" +
-                    cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_FNAME"] +
+                    fbData["ZONE_FB_FNAME"] +
                     "</c><color=#1f6289>:" +
-                    cc.cs.gameData.zonefeefback["ID_" + id]["ZONE_FB_REPLY"] +
+                    fbData["ZONE_FB_REPLY"] +
                     "</color>")
             }
         }
@@ -118,10 +118,12 @@ cc.Class({
 
     addPlayerText: function(id) {
         var height = Math.abs(this.replyMsg.node.y * 2)
+
+        var fbData = cc.cs.gameData.getreplyData(id);
         if (this.replyList.length == 0) {
             this.replyList.push(this.replyMsg.node)
-            this.replyMsg.string = "<color=#ffffff>" + cc.cs.PlayerInfo.PlayerNmae + "</c><color=#1f6289>:" + cc.cs.gameData.reply["ID_" + id]["REPLY_TEXT"] + "</color>"
-            if (cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"] != "dummy") {
+            this.replyMsg.string = "<color=#ffffff>" + cc.cs.PlayerInfo.PlayerNmae + "</c><color=#1f6289>:" + fbData["REPLY_TEXT"] + "</color>"
+            if (fbData["REPLY_REPLY"] != "dummy") {
 
                 this.addTextItem("<color=#ffffff>" +
                     cc.cs.PlayerInfo.NPCName +
@@ -129,7 +131,7 @@ cc.Class({
                     "</c><color=#ffffff>" +
                     cc.cs.PlayerInfo.PlayerNmae +
                     "</c><color=#1f6289>:" +
-                    cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"] +
+                    fbData["REPLY_REPLY"] +
                     "</color>")
             }
         } else {
@@ -138,9 +140,9 @@ cc.Class({
             this.addTextItem("<color=#ffffff>" +
                 cc.cs.PlayerInfo.PlayerNmae +
                 "</c><color=#1f6289>:" +
-                cc.cs.gameData.reply["ID_" + id]["REPLY_TEXT"] +
+                fbData["REPLY_TEXT"] +
                 "</color>")
-            if (cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"] != "dummy") {
+            if (fbData["REPLY_REPLY"] != "dummy") {
 
                 this.addTextItem("<color=#ffffff>" +
                     cc.cs.PlayerInfo.NPCName +
@@ -148,7 +150,7 @@ cc.Class({
                     "</c><color=#ffffff>" +
                     cc.cs.PlayerInfo.PlayerNmae +
                     "</c><color=#1f6289>:" +
-                    cc.cs.gameData.reply["ID_" + id]["REPLY_REPLY"] +
+                    fbData["REPLY_REPLY"] +
                     "</color>")
             }
         }
@@ -194,7 +196,7 @@ cc.Class({
 
         this.dzBtn.on("click", (event) => {
             if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
-                cc.cs.gameMgr.sendThumb(cc.cs.PlayerInfo.ApiToken, self.zoneID, this.sendReplyHandle, this)
+                cc.cs.gameMgr.sendThumb(cc.cs.PlayerInfo.api_token, self.zoneID, this.sendReplyHandle, this)
                 event.target.getChildByName("stars").active = true
             } else {
                 cc.cs.UIMgr.showTip("已经攒过", 1.0)
@@ -219,15 +221,15 @@ cc.Class({
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(this.zoneID))
-            cc.cs.PlayerInfo.Exp = parseInt(JasonObject.content.info.exp)
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-            cc.log("video id 6= " + cc.cs.PlayerInfo.videoID)
-                // if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.Level) ){
+            cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
+            cc.log("video id 6= " + cc.cs.PlayerInfo.playvideo)
+                // if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.level) ){
                 //cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
             cc.cs.UIMgr.showTip("点赞完成", 1.0)
                 // }
-            cc.cs.PlayerInfo.Level = parseInt(JasonObject.content.info.level)
+            cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
 
             this.setZan(this.zanNum + 1)
         } else {

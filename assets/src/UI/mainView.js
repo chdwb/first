@@ -152,20 +152,20 @@ cc.Class({
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
 
 
-        var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.Level]
-        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.Level) + 1)]
-        this.setExp(cc.cs.PlayerInfo.Exp, leveldata2["LEV_EXP"])
+        var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
+        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
             //this.setDiamond(cc.cs.PlayerInfo.Diamond)
-        this.setGold(cc.cs.PlayerInfo.Money)
+        this.setGold(cc.cs.PlayerInfo.money)
         this.setDay(leveldata["LEV_DAY"])
 
-        this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
-        this.wechatBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_3"]["FUNCTION_LEVEL"]
-        this.workBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
-        this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
-        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.Level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
+        this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
+        this.wechatBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_3"]["FUNCTION_LEVEL"]
+        this.workBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
+        this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
+        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
 
-        if (cc.cs.PlayerInfo.videoID != 0) {
+        if (cc.cs.PlayerInfo.playvideo != 0) {
             var parent = this.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.VIDEOVIEW)
         }
@@ -183,7 +183,7 @@ cc.Class({
                 this.wechatBtn.getChildByName("stars").active = false;
             }
         if (this.zoneBtn.active)
-            if (this.node.parent.getChildByName("zoneView").getComponent("zoneView").canZone()) {
+            if (cc.cs.PlayerInfo.canZone()) {
                 this.zoneBtn.getChildByName("stars").active = true;
             } else {
                 this.zoneBtn.getChildByName("stars").active = false;
@@ -229,7 +229,7 @@ cc.Class({
         this.updateui()
 
         this.shopBtn.on("click", (event) => {
-            //cc.log("token = "+ cc.cs.PlayerInfo.ApiToken)
+            //cc.log("token = "+ cc.cs.PlayerInfo.api_token)
             this.goShop()
 
         }, this.shopBtn)
@@ -260,7 +260,7 @@ cc.Class({
         }, this.zoneBtn)
 
         this.settingBtn.on("click", (event) => {
-            cc.log("token = " + cc.cs.PlayerInfo.ApiToken)
+            cc.log("token = " + cc.cs.PlayerInfo.api_token)
 
         }, this.settingBtn)
 

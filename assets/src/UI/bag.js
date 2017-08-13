@@ -124,8 +124,8 @@ cc.Class({
        cc.log("背包")
         this.content = this.scrollView.content;
         this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
-        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+(parseInt(cc.cs.PlayerInfo.Level) + 1)]
-        this.setExp(cc.cs.PlayerInfo.Exp,leveldata["LEV_EXP"])
+        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+(parseInt(cc.cs.PlayerInfo.level) + 1)]
+        this.setExp(cc.cs.PlayerInfo.exp,leveldata["LEV_EXP"])
         this.initialize(cc.cs.PlayerInfo.Bag);
 
         
@@ -208,10 +208,10 @@ cc.Class({
     
     startGoodsUse: function()
     {
-        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("token="+cc.cs.PlayerInfo.api_token)
         cc.log("goodid="+this.currentgoodsid)
         cc.log("itemUseCount="+this.itemUseCount)
-        cc.cs.gameMgr.sendGoodUse(cc.cs.PlayerInfo.ApiToken, this.currentgoodsid, this.itemUseCount, this.GoodUseHandle, this)
+        cc.cs.gameMgr.sendGoodUse(cc.cs.PlayerInfo.api_token, this.currentgoodsid, this.itemUseCount, this.GoodUseHandle, this)
     },
 
     GoodUseHandle(ret)
@@ -222,10 +222,10 @@ cc.Class({
             cc.cs.UIMgr.showTip("使用成功", 1.0)
             var parent = this.node.parent
             
-            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
-            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-            cc.log("video id3 = " + cc.cs.PlayerInfo.videoID)
+            cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.level = JasonObject.content.info.level
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
+            cc.log("video id3 = " + cc.cs.PlayerInfo.playvideo)
             var array = cc.cs.PlayerInfo.Bag
             for(var i = 0;i < array.length;i++)
             {

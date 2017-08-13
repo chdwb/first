@@ -38,13 +38,13 @@ cc.Class({
         if(this.isWork)
         {
             cc.log("this.currentWorkID2 = "+ this.currentWorkID)
-            cc.cs.gameMgr.sendWorkRightNode(cc.cs.PlayerInfo.ApiToken, this.currentLogID, this.onRightNowHandle, this)
+            cc.cs.gameMgr.sendWorkRightNode(cc.cs.PlayerInfo.api_token, this.currentLogID, this.onRightNowHandle, this)
         }
         else
         {
 
             cc.log("this.currentWorkID = "+ this.currentWorkID)
-            cc.cs.gameMgr.sendDateRightNode(cc.cs.PlayerInfo.ApiToken, this.currentLogID, this.onRightNowHandle, this)
+            cc.cs.gameMgr.sendDateRightNode(cc.cs.PlayerInfo.api_token, this.currentLogID, this.onRightNowHandle, this)
         }
     },
 
@@ -58,7 +58,7 @@ cc.Class({
             if(this.isWork == true)
             {
 
-                cc.cs.PlayerInfo.Money = JasonObject.content.info.money
+                cc.cs.PlayerInfo.money = JasonObject.content.info.money
             cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["work_id" + this.currentWorkID]
             //this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
             cc.cs.UIMgr.showPopupO("工作完成了","工作完成了",()=>{
@@ -70,10 +70,10 @@ cc.Class({
             }
             else 
             {
-            cc.cs.PlayerInfo.Level = JasonObject.content.info.level
-            cc.cs.PlayerInfo.Exp = JasonObject.content.info.exp
-            cc.cs.PlayerInfo.videoID = JasonObject.content.info.playvideo
-            cc.log("video id 1= " + cc.cs.PlayerInfo.videoID)
+            cc.cs.PlayerInfo.level = JasonObject.content.info.level
+            cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
+            cc.log("video id 1= " + cc.cs.PlayerInfo.playvideo)
              cc.log("currentWorkID = "+this.currentWorkID)
              
             cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
@@ -133,7 +133,7 @@ cc.Class({
 
         if(isRightnow == false)
         {
-            cc.cs.gameMgr.buyRightNow(cc.cs.PlayerInfo.ApiToken,type,this.onBuyRightNowhandle,this)
+            cc.cs.gameMgr.buyRightNow(cc.cs.PlayerInfo.api_token,type,this.onBuyRightNowhandle,this)
         }
         else
         {

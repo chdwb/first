@@ -59,22 +59,22 @@ cc.Class({
 
     refresh : function()
     {
-        this.goldText.string = cc.cs.PlayerInfo.Money
-         this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
+        this.goldText.string = cc.cs.PlayerInfo.money
+         this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
     },
 
     startWork: function(id)
     {
-        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("token="+cc.cs.PlayerInfo.api_token)
         cc.log("workid="+this.currentWorkID)
         this.node.getTag();
-        cc.cs.gameMgr.sendWork(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.startWorkHandle, this)
+        cc.cs.gameMgr.sendWork(cc.cs.PlayerInfo.api_token, this.currentWorkID, this.startWorkHandle, this)
     },
     upgradeWork : function()
     {
-        cc.log("token="+cc.cs.PlayerInfo.ApiToken)
+        cc.log("token="+cc.cs.PlayerInfo.api_token)
         cc.log("workid="+this.currentWorkID)
-        cc.cs.gameMgr.sendUpgrade(cc.cs.PlayerInfo.ApiToken, this.currentWorkID, this.upgradeWorkHandle, this)
+        cc.cs.gameMgr.sendUpgrade(cc.cs.PlayerInfo.api_token, this.currentWorkID, this.upgradeWorkHandle, this)
     },
 
     upgradeWorkHandle(ret)
@@ -83,9 +83,9 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) 
         {
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
-            cc.cs.PlayerInfo.Work_ID = JasonObject.content.info.work_id
-            this.loadWorkItem(cc.cs.PlayerInfo.Work_ID)
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.work_id = JasonObject.content.info.work_id
+            this.loadWorkItem(cc.cs.PlayerInfo.work_id)
             this.refresh()
             cc.cs.UIMgr.showTip("升级成功", 1.0)
         }else{
@@ -110,7 +110,7 @@ cc.Class({
                  true,
                  this.DoneWork,
                  this)
-            cc.cs.PlayerInfo.Work_LogID = JasonObject.content.info.worklog_id
+            cc.cs.PlayerInfo.worklogid = JasonObject.content.info.worklog_id
             cc.log("work_logID"+this.workLogID)
            
         } else {
@@ -120,9 +120,9 @@ cc.Class({
 
     DoneWork:function(ret)
     {
-        cc.log("done work"+cc.cs.PlayerInfo.ApiToken)
+        cc.log("done work"+cc.cs.PlayerInfo.api_token)
         cc.log("done work"+ret.workLogID)
-        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.ApiToken, ret.workLogID  , ret.DoneWorkHandle, ret)
+        cc.cs.gameMgr.sendWorkDone(cc.cs.PlayerInfo.api_token, ret.workLogID  , ret.DoneWorkHandle, ret)
     },
 
     DoneWorkHandle:function(ret)
@@ -131,9 +131,9 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
-            cc.cs.PlayerInfo.Money = JasonObject.content.info.money
-            cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["work_id" + this.currentWorkID]
-            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.updateWorkFreeTimes(this.currentWorkID, JasonObject.content.info["work_id" + this.currentWorkID])
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
             cc.cs.UIMgr.showPopupO("工作完成了","工作完成了",()=>{
 
                 var parent = this.node.parent
@@ -172,11 +172,11 @@ cc.Class({
             }
         }
         this.currentWorkID = target.workID
-        if(target.csDataID == "ID_"+cc.cs.PlayerInfo.Work_ID)
+        if(target.csDataID == "ID_"+cc.cs.PlayerInfo.work_id)
         {
             this.isLock(false)
             this.rewardText.string = "每次获得："+ cc.cs.gameData.work[target.csDataID]["REWARD"]
-            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+this.currentWorkID+"LeftTImes"]
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
         }else
         {
             this.isLock(true)
@@ -206,7 +206,7 @@ cc.Class({
                 itemCom.isChoose(true)
                 this.rewardText.string = "每次获得："+ cc.cs.gameData.work["ID_" + index]["REWARD"]
                 cc.log("-------------c--------- " + id)
-                this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Work"+id+"LeftTImes"]
+                this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(id)
                 this.isLock(false)
             } else {
                 itemCom.isChoose(false)
@@ -221,13 +221,13 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         var self = this
-        cc.log("............keng .... " +cc.cs.PlayerInfo.Work_ID)
-        this.loadWorkItem(cc.cs.PlayerInfo.Work_ID)
+        cc.log("............keng .... " +cc.cs.PlayerInfo.work_id)
+        this.loadWorkItem(cc.cs.PlayerInfo.work_id)
         this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
 
-            if(self.currentWorkID == cc.cs.PlayerInfo.Work_ID)
+            if(self.currentWorkID == cc.cs.PlayerInfo.work_id)
                 self.startWork()
             else 
                 {

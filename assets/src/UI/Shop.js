@@ -68,7 +68,7 @@ cc.Class({
     
     updateUi:function()
     {
-        this.Coin.string = ""+cc.cs.PlayerInfo.Money
+        this.Coin.string = ""+cc.cs.PlayerInfo.money
     },
     
     onBack:function()

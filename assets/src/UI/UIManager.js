@@ -58,9 +58,35 @@ cc.Class({
         
         scrollView.content.addChild(node)
         node.setPosition(pos)
-
-        cc.log("x == " + pos.x + "     " + "y== " + pos.y + "    " +  " "+scrollView.content.childrenCount+" " + scrollView.content.height);
     },
+
+    addItem_verticalScrollViewUp : function(scrollView, node, verticalSpace)
+    {
+        if(typeof verticalSpace == 'undefined') 
+            verticalSpace = 0;
+        var pos = cc.v2(0.0,0.0)
+        if(scrollView.content.childrenCount == 0)
+        {
+            scrollView.content.height = node.height
+            pos.y = (1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height
+        }else
+        {
+            scrollView.content.height += verticalSpace + node.height
+            var children = scrollView.content.getChildren()
+            for(var i = 0; i < scrollView.content.childrenCount; ++i){
+                cc.log("children[i].y += (scrollView.content.height + verticalSpace)   =" + i + "   " + children[i].y  + "    " + (node.height + verticalSpace))
+                children[i].y += (1.0 - scrollView.content.anchorY) * scrollView.content.height - (node.height + verticalSpace)
+            }
+            pos.y = ((1.0 - scrollView.content.anchorY )*scrollView.content.height - (1.0 - node.anchorY) * node.height)
+        }
+        var diffWidth = scrollView.content.width - node.width
+        
+        pos.x = (1.0 - scrollView.content.anchorX) * scrollView.content.width - (1.0 - node.anchorX) * node.width - diffWidth * 0.5
+        
+        scrollView.content.addChild(node)
+        node.setPosition(pos)
+    },
+
 
     showTip : function(text, time){
         var scene = cc.director.getScene();
