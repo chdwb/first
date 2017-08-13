@@ -12,6 +12,8 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
+       
+        
     },
     loadComplete: function() {
         cc.find("Canvas/Bg").active = true
@@ -49,6 +51,9 @@ cc.Class({
         var DownloadMgr = require("DownloadMgr")
         cc.cs.DownloadMgr = new DownloadMgr()
         cc.cs.DownloadMgr.init()
+
+        var AudioMgr = require("AudioMgr")
+        cc.cs.AudioMgr = new AudioMgr()
     },
 
     // called every frame, uncomment this function to activate update callback

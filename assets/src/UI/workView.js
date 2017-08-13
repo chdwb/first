@@ -63,6 +63,11 @@ cc.Class({
          this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
     },
 
+    goShop: function() {
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+    },
+
     startWork: function(id)
     {
         cc.log("token="+cc.cs.PlayerInfo.api_token)
