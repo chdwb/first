@@ -23,14 +23,14 @@ cc.Class({
             if(isPost)
             {
                 xmlHttp.open("POST", url+ externURL, true)
+                xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;")
+                xmlHttp.setRequestHeader("cache-control","no-cache")
+                xmlHttp.setRequestHeader("contentType","text/html;charset=uft-8") 
                 xmlHttp.send(param)
             }else
             {
                 xmlHttp.open("GET", url +externURL+ encodeURI(param), true)
             }
-            xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;")
-            xmlHttp.setRequestHeader("cache-control","no-cache")
-            xmlHttp.setRequestHeader("contentType","text/html;charset=uft-8") 
             
             xmlHttp.onreadystatechange = function() {
                 if(xmlHttp.readyState === 4 && (xmlHttp.status >= 200 && xmlHttp.status < 300)){
