@@ -1,4 +1,3 @@
-const i18n = require('i18n');
 cc.Class({
     extends: cc.Component,
 
@@ -154,12 +153,18 @@ cc.Class({
 
     randomName: function() {
         //cc.cs.UIMgr.showTip("这里添加随机用户名功能", 1.0)
-        var index = cc.random0To1() * 2031; // 名字随机
-        var index2 = cc.random0To1() * 580; // 姓随机
-        var string = i18n.t(Math.floor(index2) + "hehe") + i18n.t("" + Math.floor(index));
-        cc.log(string)
+        var firstNameID = parseInt(cc.random0To1() * cc.cs.gameData.role["TOTAL_COUNT"])
+        if(firstNameID < cc.cs.gameData.role["FIRST"]) firstNameID = cc.cs.gameData.role["FIRST"]
+        var firstName = cc.cs.gameData.getroleData(firstNameID)
+
+        var secondNameID = parseInt(cc.random0To1() * cc.cs.gameData.role["TOTAL_COUNT"])
+        if(secondNameID < cc.cs.gameData.role["FIRST"]) secondNameID = cc.cs.gameData.role["FIRST"]
+        var secondName = cc.cs.gameData.getroleData(secondNameID)
+
+        var name = firstName.FAMLIY + secondName.NAME
+        cc.log(name)
             //this.editTip.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
-        this.editplayerName.string = i18n.t(Math.floor(index2) + "hehe") + i18n.t("" + Math.floor(index));
+        this.editplayerName.string = name
     },
 
     startgame: function() {
