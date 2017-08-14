@@ -44,51 +44,9 @@ cc.Class({
 
         worklogid: 0,
 
-        WorkLeftTimes :[],
-        loveLeftTimes :[],
-        LovePrice : [],
-
-        /*Work1LeftTImes: 0,
-
-        Work2LeftTImes: 0,
-
-        Work3LeftTImes: 0,
-
-        Work4LeftTImes: 0,
-
-        Work5LeftTImes: 0,
-
-        Work6LeftTImes: 0,
-
-        Work7LeftTImes: 0,
-
-        Work8LeftTImes: 0,
-
-        Work9LeftTImes: 0,
-
-        Work10LeftTImes: 0,
-
-        Love1LeftTImes: 0,
-
-        Love2LeftTImes: 0,
-
-        Love3LeftTImes: 0,
-
-        Love4LeftTImes: 0,
-        Love5LeftTImes: 0,
-        Love6LeftTImes: 0,
-        Love7LeftTImes: 0,
-
-
-        Love1Price: 0,
-        Love2Price: 0,
-        Love3Price: 0,
-        Love4Price: 0,
-        Love5Price: 0,
-        Love6Price: 0,
-        Love7Price: 0,*/
-
-
+        WorkLeftTimes: [],
+        loveLeftTimes: [],
+        LovePrice: [],
 
         date_id: 0,
 
@@ -107,9 +65,10 @@ cc.Class({
         weibo_thumbs: [],
         replies: [],
 
-        playvideo :0,   
+        playvideo: 0,
 
         Bag: [],
+
 
 
         wechat_fn: false,
@@ -117,114 +76,157 @@ cc.Class({
         date_fn: false,
         work_fn: false,
 
-        executetime:0,
+        executetime: 0,
+
+        regDateID: /date_id\d/,
+        regWorkID: /work_id\d/,
+        regGoodID: /goods\d+_id/,
+        regGoodNum: /goods\d+_num/,
 
     },
 
-    updateLovePrice : function(id, value){
-        this.LovePrice[id -1] = parseInt(value)
+    updateLovePrice: function(id, value) {
+        id = parseInt(id)
+        this.LovePrice[id - 1] = parseInt(value)
     },
 
-    addZoneReplies : function(value){
+    addZoneReplies: function(value) {
         this.replies.push(parseInt(value))
     },
 
-    addZoneThumbs : function(value){
+    addZoneThumbs: function(value) {
         this.weibo_thumbs.push(parseInt(value))
     },
 
-    addWechatPlayerID : function(value){
+    addWechatPlayerID: function(value) {
         this.wechat_player_ID.push(parseInt(value))
     },
 
-    addPhonePlayerID : function(value){
+    addPhonePlayerID: function(value) {
         this.Phone_player_ID.push(parseInt(value))
     },
 
-    getWorkFreeTimes : function(id){
+    getWorkFreeTimes: function(id) {
+        id = parseInt(id)
         return this.WorkLeftTimes[id - 1]
     },
 
-    getLoveFreeTimes : function(id){
+    getLoveFreeTimes: function(id) {
+        id = parseInt(id)
         return this.loveLeftTimes[id - 1]
     },
 
-    updateLoveFreeTimes : function(id, value){
-        this.loveLeftTimes[id - 1] =  parseInt(value)
+    updateLoveFreeTimes: function(id, value) {
+        id = parseInt(id)
+        this.loveLeftTimes[id - 1] = parseInt(value)
     },
 
-    updateWorkFreeTimes : function(id, value){
+    updateWorkFreeTimes: function(id, value) {
+        id = parseInt(id)
         this.WorkLeftTimes[id - 1] = parseInt(value)
     },
 
-    updateExp : function(exp) {
+    updateExp: function(exp) {
         this.exp = parseInt(exp)
     },
 
-    updateLevel : function(lev){
+    updateLevel: function(lev) {
         this.level = parseInt(lev)
     },
 
-    updatePhoenID : function(phoneID){
+    updatePhoenID: function(phoneID) {
         this.Phone_ID = parseInt(phoneID)
     },
 
-    updateWechatID : function(phoneID){
+    updateWechatID: function(phoneID) {
         this.wechat_id = parseInt(phoneID)
     },
 
-    updateWorkID : function(workID){
-        this.work_id = parseInt(workID) 
+    updateWorkID: function(workID) {
+        this.work_id = parseInt(workID)
     },
 
-    updateLoveID : function(LoveID){
+    updateLoveID: function(LoveID) {
         this.date_id = parseInt(LoveID)
     },
 
-    updateMoney : function (money){
+    updateMoney: function(money) {
         this.money = parseInt(money)
     },
 
-    updateFreeWorkTimes : function(freeWork){
+    updateFreeWorkTimes: function(freeWork) {
         this.FreeWork = parseInt(freeWork)
     },
 
-    refreshInfoData : function (info){
-        for(var item in info){
-            if(this.hasOwnProperty(item)){
+    modfiyBag: function(id, n) {
+        id = parseInt(id)
+        for (var i = 0; i < this.Bag.length; i++) {
+            if (this.Bag[i].goods_id == id) {
+                this.Bag[i].num = n
+                return
+            }
+        }
+        var newGood = []
+        newGood.goods_id = id
+        newGood.num = n
+        this.Bag.push(newGood)
+    },
+
+    refreshInfoData: function(info) {
+        for (var item in info) {
+            if (this.hasOwnProperty(item)) {
                 this[item] = info[item]
+            } else {
+                if (item.match(this.regGoodID)) {
+                    var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    this.modfiyBag(info[item], info["goods" + n + "_num"])
+                } else if (item.match(this.regWorkID)) {
+                    var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    this.updateWorkFreeTimes(n, info[item])
+                } else if (item.match(this.regDateID)) {
+                    var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    this.updateLoveFreeTimes(n, info[item])
+                } else if (item == "goods_id") {
+                    this.modfiyBag(info[item], info["num"])
+                } else if (item == "phone_audio") {
+                    this.Phone_ID = info[item]
+                } else if (item == "zone_id") {
+                    this.zoneThumbsUp_id = info[item]
+                } else if (item == "reply_id") {
+                    this.zoneReplay_id = info[item]
+                } else if (item == "wechat_next") {
+                    this.wechat_id = info[item]
+                }
             }
         }
     },
 
-    canWechat : function(){
+    canWechat: function() {
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
-        if(pWechatData != null){
-                if(pWechatData["WECHAT_LEVEL"] <= this.level){
-                    if(pWechatData["WECHAT_NEXT"] != "dummy")
-                    {
-                        return true
-                    }else{
-                        return false
-                    }
-                }else{
+        if (pWechatData != null) {
+            if (pWechatData["WECHAT_LEVEL"] <= this.level) {
+                if (pWechatData["WECHAT_NEXT"] != "dummy") {
+                    return true
+                } else {
                     return false
                 }
+            } else {
+                return false
             }
+        }
         return false
     },
 
-    canPhone : function(){
+    canPhone: function() {
         var pPhoneData = cc.cs.gameData.getphoneData(this.Phone_ID)
-        if(pPhoneData != null){
-            if(pPhoneData["PHONE_LEV"] <= this.level){
-                if(pPhoneData["PHONE_AUDIO"] != "dummy")
-                {
+        if (pPhoneData != null) {
+            if (pPhoneData["PHONE_LEV"] <= this.level) {
+                if (pPhoneData["PHONE_AUDIO"] != "dummy") {
                     return true
-                }else{
+                } else {
                     return false
                 }
-            }else{
+            } else {
                 return false
             }
         }
@@ -243,15 +245,15 @@ cc.Class({
         return 0
     },*/
 
-    visibleZoneCount:function(){
+    visibleZoneCount: function() {
         var count = 0;
         var pZoneData = null
-        for(var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i){
+        for (var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i) {
             pZoneData = cc.cs.gameData.getzoneData(i);
-            if(pZoneData != null){
-             if(this.level >= pZoneData["ZONE_LEVEL"]){
+            if (pZoneData != null) {
+                if (this.level >= pZoneData["ZONE_LEVEL"]) {
                     count++
-                }else{
+                } else {
                     return count
                 }
             }
@@ -259,11 +261,11 @@ cc.Class({
         return count
     },
 
-    addNewZone : function(lastID){
+    addNewZone: function(lastID) {
         var pZoneData = cc.cs.gameData.getzoneData(lastID);
-        if(pZoneData != null){
-            if(this.level > pZoneData["ZONE_LEVEL"]){
-                return lastID +1
+        if (pZoneData != null) {
+            if (this.level > pZoneData["ZONE_LEVEL"]) {
+                return lastID + 1
             }
         }
         return lastID
@@ -280,17 +282,17 @@ cc.Class({
         return d + "天前"
     },
 
-    getZoneDay : function(id){
+    getZoneDay: function(id) {
         var pZoneData = cc.cs.gameData.getzoneData(id);
         var pLevel = cc.cs.gameData.getlevelData(this.level);
         var pLevelZone = cc.cs.gameData.getlevelData(pZoneData["ZONE_LEVEL"]);
         return this.getDay(pLevel["LEV_DAY"] - pLevelZone["LEV_DAY"])
     },
 
-    canZone : function(){
-        var count  = this.visibleZoneCount() +cc.cs.gameData.zone["FIRST"]
-        for(var i = cc.cs.gameData.zone["FIRST"]; i < count; ++i){
-            if(this.canPLZone(i) || this.canZanZone(i))
+    canZone: function() {
+        var count = this.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
+        for (var i = cc.cs.gameData.zone["FIRST"]; i < count; ++i) {
+            if (this.canPLZone(i) || this.canZanZone(i))
                 return true
         }
         return false;
