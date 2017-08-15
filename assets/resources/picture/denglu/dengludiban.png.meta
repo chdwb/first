@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "dd0f4e15-0731-4a3a-b1bd-290b533b6f9f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "dengludiban": {
+      "ver": "1.0.3",
+      "uuid": "a4ccacb2-6e3d-4a2e-95f8-03b93a59ba5a",
+      "rawTextureUuid": "dd0f4e15-0731-4a3a-b1bd-290b533b6f9f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 455,
+      "height": 199,
+      "rawWidth": 455,
+      "rawHeight": 199,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
