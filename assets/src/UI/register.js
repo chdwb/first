@@ -1,4 +1,4 @@
-const i18n = require('i18n');
+//const i18n = require('i18n');
 cc.Class({
     extends: cc.Component,
 
@@ -101,7 +101,7 @@ cc.Class({
 
          var index2 = cc.random0To1() * 580; // 姓随机
         
-        this.label.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
+        //this.label.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
     },
 
     onedit: function()

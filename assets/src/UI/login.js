@@ -23,6 +23,27 @@ cc.Class({
             default: null
         },
 
+        gustIDLabel2: {
+            type: cc.Label,
+            default: null
+        },
+
+        zhucediban:{
+            type: cc.Sprite,
+            default: null
+
+        },
+
+        bangdingdiban: {
+            type: cc.Sprite,
+            default: null
+        },
+
+        intoRegisterBangDingNodeBtn: {
+            type: cc.Node,
+            default: null
+        },
+
         intoRegisterNodeBtn: {
             type: cc.Node,
             default: null
@@ -100,11 +121,45 @@ cc.Class({
     },
 
 
+
+        uuid: function () {
+            var s = [];
+            var hexDigits = "0123456789abcdef";
+            for (var i = 0; i < 36; i++) {
+                s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+            }
+            s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+            s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+            s[8] = s[13] = s[18] = s[23] = "-";
+        
+            var uuid = s.join("");
+            return uuid;
+        },
+
+
+
     setStartGameNode: function() {
         this.startGameNode.active = true;
         this.registerNode.active = false;
         this.loginNode.active = false;
         this.randomNameNode.active = false;
+
+var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
+            var passward = cc.sys.localStorage.getItem('PASSWORD')
+            if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
+                this.intoRegisterBangDingNodeBtn.active = false
+                this.intoRegisterNodeBtn.active = true
+            }
+            else
+            {
+                this.intoRegisterBangDingNodeBtn.active = true
+                this.intoRegisterNodeBtn.active = false
+                var uuid = this.uuid()
+                cc.log("uuid = "+uuid)
+               
+                cc.sys.localStorage.setItem('UUID',uuid)
+            }
+        
     },
 
     setRegisterNode: function() {
@@ -112,6 +167,18 @@ cc.Class({
         this.registerNode.active = true;
         this.loginNode.active = false;
         this.randomNameNode.active = false;
+
+        var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
+            var passward = cc.sys.localStorage.getItem('PASSWORD')
+            if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
+                this.bangdingdiban.active = false
+                this.zhucediban.active = true
+            }
+            else
+            {
+                this.bangdingdiban.active = true
+                this.zhucediban.active = false
+            }
     },
 
     setLoginNode: function() {
@@ -327,8 +394,10 @@ cc.Class({
          if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
             this.gustIDLabel.string = login_id
             
+            
         } else {
              this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
+             this.gustIDLabel2.string = cc.cs.gameMgr.generateGustInfo()
         }
         this.startGameBtn.on("click", (event) => {
             self.startgame()
