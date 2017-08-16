@@ -77,12 +77,8 @@ cc.Class({
         work_fn: false,
 
         executetime: 0,
-
-       
-
     },
 
-  
     updateLovePrice: function(id, value) {
         id = parseInt(id)
         this.LovePrice[id - 1] = parseInt(value)

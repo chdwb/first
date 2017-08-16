@@ -19,49 +19,49 @@ cc.Class({
             type: cc.Node,
             default: null,
             sindex: 8,
-            lev : 1
+            lev: 1
         },
         giftBtn: {
             type: cc.Node,
             default: null,
             sindex: 6,
-            lev:1,
+            lev: 1,
         },
         bagBtn: {
             type: cc.Node,
             default: null,
-            sindex:7,
-            lev:1,
+            sindex: 7,
+            lev: 1,
         },
         phoneBtn: {
             type: cc.Node,
             default: null,
-            sindex:1,
-            lev:2,
+            sindex: 1,
+            lev: 2,
         },
         wechatBtn: {
             type: cc.Node,
             default: null,
-            sindex:2,
-            lev:3,
+            sindex: 2,
+            lev: 3,
         },
         zoneBtn: {
             type: cc.Node,
             default: null,
-            sindex:3,
-            lev:6,
+            sindex: 3,
+            lev: 6,
         },
         workBtn: {
             type: cc.Node,
             default: null,
-            sindex:5,
-            lev:4,
+            sindex: 5,
+            lev: 4,
         },
         loveBtn: {
             type: cc.Node,
             default: null,
-            sindex:4,
-            lev:1,
+            sindex: 4,
+            lev: 1,
         },
         settingBtn: {
             type: cc.Node,
@@ -89,54 +89,54 @@ cc.Class({
             default: null
         },
 
-        iconArray : [],
-        addIconArry : [],
-        addIconTime : 0.2,
-        currentTime : 0,
-        iconWidth : 0,
-        isAddIcon : false,
-        addIcon : null,
-        caiDanWidth : 0,
+        iconArray: [],
+        addIconArry: [],
+        addIconTime: 0.2,
+        currentTime: 0,
+        iconWidth: 0,
+        isAddIcon: false,
+        addIcon: null,
+        caiDanWidth: 0,
     },
 
-    computerDibian : function() {
+    computerDibian: function() {
 
-        for(var i = 0 ; i < this.iconArray.length; ++i){
-            
-            if(cc.cs.PlayerInfo.level >= this.iconArray[i].lev){
+        for (var i = 0; i < this.iconArray.length; ++i) {
+
+            if (cc.cs.PlayerInfo.level >= this.iconArray[i].lev) {
                 this.addIconArry.push(this.iconArray[i])
-                
+
                 this.iconArray[i].active = true
-            }else{
+            } else {
                 this.iconArray[i].active = false
             }
         }
 
         this.iconWidth = this.caidanBG.width / this.iconArray.length
-        this.caidanBG.width  =  this.iconWidth * this.addIconArry.length
-       
-        var interval =  this.iconWidth - this.phoneBtn.width
+        this.caidanBG.width = this.iconWidth * this.addIconArry.length
 
-        for(var i = 0; i < this.addIconArry.length; ++i){
-            this.addIconArry[i].x = (i*2 + 1) * (interval *0.5 + this.phoneBtn.width *0.5)
+        var interval = this.iconWidth - this.phoneBtn.width
+
+        for (var i = 0; i < this.addIconArry.length; ++i) {
+            this.addIconArry[i].x = (i * 2 + 1) * (interval * 0.5 + this.phoneBtn.width * 0.5)
 
         }
     },
 
-    addDiBianBtn : function(icon){
+    addDiBianBtn: function(icon) {
         this.addIcon = icon
         var addIndex = 0
-        for(var i = 0 ; i < this.addIconArry.length; ++i){
-            if(i < this.addIconArry.length - 1){
-                if(this.addIconArry[i].sindex < icon.sindex && 
-                  this.addIconArry[i + 1].sindex > icon.sindex){
-                    addIndex = i +1
+        for (var i = 0; i < this.addIconArry.length; ++i) {
+            if (i < this.addIconArry.length - 1) {
+                if (this.addIconArry[i].sindex < icon.sindex &&
+                    this.addIconArry[i + 1].sindex > icon.sindex) {
+                    addIndex = i + 1
                     break;
                 }
-                if(this.addIconArry[i].sindex  > icon.sindex){
+                if (this.addIconArry[i].sindex > icon.sindex) {
                     break;
                 }
-            }else{
+            } else {
                 addIndex = this.addIconArry.length - 1
                 break
             }
@@ -145,26 +145,26 @@ cc.Class({
         this.currentTime = 0
         this.addIcon.x = this.addIconArry[addIndex].x
         this.addIcon.active = false
-        
+
         this.caiDanWidth = this.caidanBG.width
-        for(var i = addIndex; i < this.addIconArry.length; ++i){
+        for (var i = addIndex; i < this.addIconArry.length; ++i) {
             var action = cc.moveBy(this.addIconTime, this.iconWidth, 0.0)
             this.addIconArry[i].runAction(action)
         }
 
-        this.addIconArry.splice(addIndex, 0 , this.addIcon)
+        this.addIconArry.splice(addIndex, 0, this.addIcon)
 
 
     },
 
-    actionDibianBtn:function(dt){
-        if(this.isAddIcon){
-            this.currentTime +=dt 
+    actionDibianBtn: function(dt) {
+        if (this.isAddIcon) {
+            this.currentTime += dt
             var itemSeize = this.iconWidth
-            if(this.currentTime < this.addIconTime){
+            if (this.currentTime < this.addIconTime) {
                 itemSeize *= this.currentTime / this.addIconTime
                 this.caidanBG.width = this.caiDanWidth + itemSeize
-            }else{
+            } else {
                 this.caidanBG.width = this.caiDanWidth + itemSeize
                 this.isAddIcon = false
                 this.addIcon.active = true
@@ -204,9 +204,9 @@ cc.Class({
     },
 
     goLove: function() {
-        this.addDiBianBtn(this.wechatBtn)
-        //var parent = this.node.parent
-       // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+        this.addDiBianBtn(this.workBtn)
+            //var parent = this.node.parent
+            // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
     },
 
     goZone: function() {
@@ -215,9 +215,9 @@ cc.Class({
     },
 
     goPhone: function() {
-        this.addDiBianBtn(this.wechatBtn)
-        //var parent = this.node.parent
-       // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
+        this.addDiBianBtn(this.workBtn)
+            //var parent = this.node.parent
+            // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
     },
 
 
@@ -326,7 +326,7 @@ cc.Class({
 
     },
 
-    onEnable : function(){
+    onEnable: function() {
         this.updateui();
     },
 
