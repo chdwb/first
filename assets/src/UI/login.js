@@ -193,6 +193,13 @@ cc.Class({
 
     playLogoVideo:function()  // 播放第一次的LOGO视频
     {
+        this.startGameNode.active = false;
+        this.registerNode.active = false;
+        this.loginNode.active = false;
+        this.randomNameNode.active = false;
+        this.LogoNode.active = true;
+        
+        this.LogoVideoNode.active = true
 
 
     },
@@ -278,12 +285,23 @@ cc.Class({
     playerName: function() {
         //cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
         cc.log("setplayername")
-        var api_token = cc.sys.localStorage.getItem('API_TOKEN')
-        cc.cs.gameMgr.sendName(api_token, this.playerNameEdit.sting, this.sendNameHandle, this)
+        //var api_token = cc.sys.localStorage.getItem('API_TOKEN')
+        cc.cs.gameMgr.sendName(this.sendNameHandle, this)
     },
 
     editplayerName: function() {
-        //this.editTip.string = this.playerNameEdit.string;
+        cc.log("AAAAA")
+        this.editTip.node.active = true
+        this.editTip.string = this.playerNameEdit.string;
+        cc.cs.PlayerInfo.PlayerNmae = this.playerNameEdit.string
+        this.playerNameEdit.string = "";
+    },
+
+    
+
+    editplayerNameBegin: function() {
+         cc.log("BBBBB")
+        this.editTip.node.active = false
         //this.playerNameEdit.string = "";
     },
 
@@ -297,26 +315,33 @@ cc.Class({
         if(secondNameID < cc.cs.gameData.role["FIRST"]) secondNameID = cc.cs.gameData.role["FIRST"]
         var secondName = cc.cs.gameData.getroleData(secondNameID)
 
-        var name = firstName.FAMLIY + secondName.NAME
+        var name = firstName.FAMLIY_NAME + secondName.NAME
         cc.log(name)
-            //this.editTip.string =   i18n.t( Math.floor(index2) +"hehe")+ i18n.t(""+ Math.floor(index) );
-        this.editplayerName.string = name
+        this.editTip.string =  name
+        //this.editplayerName.string = name
     },
 
     startgame: function() {
-        //var Name = cc.cs.PlayerInfo.playerName;
-        //cc.log("Name =" + Name)
-        /*if (Name == null) {
-
-        cc.director.loadScene('GameScene');
-        if (Name == null) {
-            cc.log(1111)
-            this.setRandomNameNode();
-        } else*/
-       // {
-        if(this.isLogin)
+        cc.log("isLogin = "+this.isLogin)
+       if(this.isLogin)
         {
-            cc.director.loadScene('GameScene');
+            cc.log("video_id = "+cc.cs.PlayerInfo.playvideo)
+            if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
+            {
+                this.playLogoVideo()
+                this.schedule(function(){
+
+                   
+                    
+                   this.setRandomNameNode();
+                },5,0);
+
+
+            }
+            else
+            {
+                cc.director.loadScene('GameScene');
+            }
         }
         else
         {
@@ -331,15 +356,27 @@ cc.Class({
                 cc.cs.gameMgr.sendLogin("", "", this.gotoGameScene, this)
             }
         }
-
-
-
-
-
-            //cc.director.loadScene('GameScene');
-       // }
-
     },
+    videoDoneHandle:function(ret)
+    {
+        
+
+        var JasonObject = JSON.parse(ret);
+                if (JasonObject.success === true) {
+                    cc.cs.PlayerInfo.playvideo = JasonObject.content.info.video_id;
+                    cc.cs.UIMgr.showTip("视频完成", 1.0)
+                    cc.cs.PlayerInfo.level = JasonObject.content.info.level
+                    cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+
+                    var parent = this.node.parent
+                    parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+                    
+                } else {
+                    cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+                }
+     },
+
+
     updatePlayerInfo:function(JasonObject)
     {
             cc.cs.PlayerInfo.api_token = JasonObject.content.info.api_token
@@ -447,8 +484,23 @@ cc.Class({
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
             this.updatePlayerInfo(JasonObject)
+            cc.log("video_id = "+cc.cs.PlayerInfo.playvideo)
+            if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
+            {
+                this.playLogoVideo()
+                this.schedule(function(){
+                    cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+                   this.setRandomNameNode();
+                },5,0);
 
-             cc.director.loadScene('GameScene');
+
+            }
+            else
+            {
+                cc.director.loadScene('GameScene');
+            }
+
+             
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
@@ -559,7 +611,8 @@ cc.Class({
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')
-            cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
+            //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
+           
             this.setStartGameNode();
             this.gustIDLabel.string = this.loginIDEdit.string;
         } else {
@@ -569,7 +622,16 @@ cc.Class({
     },
 
     sendNameHandle: function(ret) {
-        cc.log(ret)
+       var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            
+            //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
+            cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+            cc.director.loadScene('GameScene');
+            
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
     },
 
 
