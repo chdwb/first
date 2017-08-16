@@ -41,8 +41,8 @@ cc.Class({
         data["username"] = ID
         data["password"] = password
         var uuid = cc.sys.localStorage.getItem('UUID')
-        cc.log("uuid = "+uuid)
-        data["_deviceid"] = uuid
+        cc.log("register with uuid = "+uuid)
+        data["deviceid"] = uuid
         this.sendHttp("ID_1", data, handle, obj)
     },
 
@@ -50,6 +50,10 @@ cc.Class({
         var data = {}
         data["username"] = ID
         data["password"] = password
+
+        var uuid = cc.sys.localStorage.getItem('UUID')
+        cc.log("login with uuid = "+uuid)
+        data["deviceid"] = uuid
         this.sendHttp("ID_2", data, handle, obj)
     },
 

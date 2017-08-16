@@ -80,7 +80,7 @@ cc.Class({
         }
     },
 
-    loadDate: function(result) {
+     loadDate: function(result) {
         var dateData = cc.cs.gameData.getdateData(this.itemID)
         this.titleText.string = "恋爱"
         cc.cs.UIMgr.changeSprite(this.doSprite.node, "work_quest/quest/" + this.itemID)

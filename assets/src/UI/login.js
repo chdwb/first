@@ -29,14 +29,28 @@ cc.Class({
         },
 
         zhucediban:{
-            type: cc.Sprite,
+            type: cc.Node,
             default: null
 
         },
 
         bangdingdiban: {
-            type: cc.Sprite,
+            type: cc.Node,
             default: null
+        },
+
+        LogoNode:{
+
+            type: cc.Node,
+            default: null
+
+        },
+
+        LogoVideoNode:{
+
+            type: cc.Node,
+            default: null
+
         },
 
         intoRegisterBangDingNodeBtn: {
@@ -121,7 +135,19 @@ cc.Class({
         isGuest:false,
     },
 
+    isFirstGame:function(){
 
+        var diviceid =  cc.sys.localStorage.getItem('UUID')
+        if(diviceid != "" && diviceid != null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    },
 
     getDiviceID: function () {
             var s = [];
@@ -137,13 +163,46 @@ cc.Class({
             return uuid;
         },
 
+    setLogoNode: function(){
 
+        this.startGameNode.active = false;
+        this.registerNode.active = false;
+        this.loginNode.active = false;
+        this.randomNameNode.active = false;
+        this.LogoNode.active = true;
+
+        this.schedule(function(){
+           var logovideo =  cc.sys.localStorage.getItem('LOGOVIDEO')
+           if(logovideo == 1)
+           {
+               this.setStartGameNode();
+           }
+           else
+           {
+           
+                this.LogoVideoNode.active = true;
+                this.schedule(function(){
+                    cc.sys.localStorage.setItem('LOGOVIDEO',1)
+                    this.setStartGameNode();
+                },5,0);
+           }
+
+        },3,0);
+
+    },
+
+    playLogoVideo:function()  // 播放第一次的LOGO视频
+    {
+
+
+    },
 
     setStartGameNode: function() {
         this.startGameNode.active = true;
         this.registerNode.active = false;
         this.loginNode.active = false;
         this.randomNameNode.active = false;
+        this.LogoNode.active = false;
 
             var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
             var passward = cc.sys.localStorage.getItem('PASSWORD')
@@ -155,10 +214,12 @@ cc.Class({
             {
                 this.intoRegisterBangDingNodeBtn.active = true
                 this.intoRegisterNodeBtn.active = false
-                var uuid = this.getDiviceID()
-                cc.log("uuid = "+uuid)
-               
-                cc.sys.localStorage.setItem('UUID',uuid)
+                if(this.isFirstGame())
+                {
+                    var uuid = this.getDiviceID()
+                    cc.log("first game uuid = "+uuid)
+                    cc.sys.localStorage.setItem('UUID',uuid)
+                }
             }
         
     },
@@ -168,22 +229,23 @@ cc.Class({
         this.registerNode.active = true;
         this.loginNode.active = false;
         this.randomNameNode.active = false;
+        this.LogoNode.active = false;
            
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
             var passward = cc.sys.localStorage.getItem('PASSWORD')
             if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
                 cc.log("zhu ce")
-                this.bangdingdiban.node.active = false
-                this.zhucediban.node.active = true
+                this.bangdingdiban.active = false
+                this.zhucediban.active = true
             }
             else
             {
                 cc.log("bangding")
 
-                this.bangdingdiban.node.active = true
-                this.zhucediban.node.active = false
+                this.bangdingdiban.active = true
+                this.zhucediban.active = false
             }
-            this.bangdingdiban.active = false
+            
     },
 
     setLoginNode: function() {
@@ -191,6 +253,7 @@ cc.Class({
         this.registerNode.active = false;
         this.loginNode.active = true;
         this.randomNameNode.active = false;
+        this.LogoNode.active = false;
     },
 
     setRandomNameNode: function() {
@@ -198,6 +261,7 @@ cc.Class({
         this.registerNode.active = false;
         this.loginNode.active = false;
         this.randomNameNode.active = true;
+        this.LogoNode.active = false;
     },
 
     loginEvent: function() {
@@ -264,6 +328,7 @@ cc.Class({
             } else {
                 //this.setStartGameNode()
                 //this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
+                cc.cs.gameMgr.sendLogin("", "", this.gotoGameScene, this)
             }
         }
 
@@ -393,7 +458,8 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         var self = this
-        this.setStartGameNode()
+        //this.setStartGameNode()
+        this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         var passward = cc.sys.localStorage.getItem('PASSWORD')
          if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
