@@ -118,6 +118,7 @@ cc.Class({
         },
 
         isLogin:false,
+        isGuest:false,
     },
 
 
@@ -144,7 +145,7 @@ cc.Class({
         this.loginNode.active = false;
         this.randomNameNode.active = false;
 
-var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
+            var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
             var passward = cc.sys.localStorage.getItem('PASSWORD')
             if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
                 this.intoRegisterBangDingNodeBtn.active = false
@@ -167,18 +168,22 @@ var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         this.registerNode.active = true;
         this.loginNode.active = false;
         this.randomNameNode.active = false;
-
+           
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
             var passward = cc.sys.localStorage.getItem('PASSWORD')
             if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
-                this.bangdingdiban.active = false
-                this.zhucediban.active = true
+                cc.log("zhu ce")
+                this.bangdingdiban.node.active = false
+                this.zhucediban.node.active = true
             }
             else
             {
-                this.bangdingdiban.active = true
-                this.zhucediban.active = false
+                cc.log("bangding")
+
+                this.bangdingdiban.node.active = true
+                this.zhucediban.node.active = false
             }
+            this.bangdingdiban.active = false
     },
 
     setLoginNode: function() {

@@ -254,7 +254,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_id": "1c7427QHklM9aCcn3WSuhHz",
@@ -1542,7 +1542,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_id": "fefb59lXcJAQoRW7UTCfnQj",
@@ -1892,7 +1892,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 49
@@ -4684,7 +4684,8 @@
     "editTip": {
       "__id__": 102
     },
-    "isLogin": false
+    "isLogin": false,
+    "isGuest": false
   },
   {
     "__type__": "cc.Widget",
