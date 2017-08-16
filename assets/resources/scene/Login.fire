@@ -127,7 +127,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 114
+        "__id__": 117
       }
     ],
     "_prefab": null,
@@ -188,20 +188,20 @@
         "__id__": 91
       },
       {
-        "__id__": 104
+        "__id__": 106
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 111
+        "__id__": 114
       },
       {
-        "__id__": 112
+        "__id__": 115
       },
       {
-        "__id__": 113
+        "__id__": 116
       }
     ],
     "_prefab": null,
@@ -3884,14 +3884,14 @@
         "__id__": 97
       },
       {
-        "__id__": 99
+        "__id__": 101
       },
       {
-        "__id__": 102
+        "__id__": 104
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_id": "a90ecBStkNMQ7S5aF1EOoYk",
@@ -4097,7 +4097,7 @@
       "__id__": 94
     },
     "_enabled": true,
-    "transition": 2,
+    "transition": 3,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -4208,11 +4208,19 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_string": "请输入名字",
+    "_string": "",
     "_tabIndex": 0,
-    "editingDidBegan": [],
+    "editingDidBegan": [
+      {
+        "__id__": 99
+      }
+    ],
     "textChanged": [],
-    "editingDidEnded": [],
+    "editingDidEnded": [
+      {
+        "__id__": 100
+      }
+    ],
     "editingReturn": [],
     "_N$backgroundImage": null,
     "_N$returnType": 0,
@@ -4240,6 +4248,24 @@
     "_N$stayOnTop": false
   },
   {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 5
+    },
+    "component": "login",
+    "handler": "editplayerNameBegin",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 5
+    },
+    "component": "login",
+    "handler": "editplayerName",
+    "customEventData": ""
+  },
+  {
     "__type__": "cc.Node",
     "_name": "randomBtn",
     "_objFlags": 0,
@@ -4251,10 +4277,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 100
+        "__id__": 102
       },
       {
-        "__id__": 101
+        "__id__": 103
       }
     ],
     "_prefab": null,
@@ -4299,7 +4325,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 99
+      "__id__": 101
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -4325,10 +4351,10 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 99
+      "__id__": 101
     },
     "_enabled": true,
-    "transition": 2,
+    "transition": 3,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -4375,7 +4401,7 @@
       "__uuid__": "29158224-f8dd-4661-a796-1ffab537140e"
     },
     "_N$target": {
-      "__id__": 99
+      "__id__": 101
     }
   },
   {
@@ -4390,7 +4416,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 103
+        "__id__": 105
       }
     ],
     "_prefab": null,
@@ -4398,9 +4424,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 87,
+      "g": 75,
+      "b": 75,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -4411,7 +4437,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 440,
+      "width": 200,
       "height": 40
     },
     "_rotationX": 0,
@@ -4420,8 +4446,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 110
+      "x": -30,
+      "y": 9
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -4435,9 +4461,9 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 102
+      "__id__": 104
     },
-    "_enabled": false,
+    "_enabled": true,
     "_useOriginalSize": false,
     "_actualFontSize": 40,
     "_fontSize": 40,
@@ -4446,7 +4472,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "（点击输入框更改名字）",
+    "_N$string": "请输入名字",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -4461,14 +4487,14 @@
     },
     "_children": [
       {
-        "__id__": 105
+        "__id__": 107
       },
       {
-        "__id__": 107
+        "__id__": 110
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_id": "b766dE/c+NODITWF6IeJ9N6",
@@ -4512,14 +4538,17 @@
     "_name": "gameword48",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 104
+      "__id__": 106
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 106
+        "__id__": 108
+      },
+      {
+        "__id__": 109
       }
     ],
     "_prefab": null,
@@ -4564,7 +4593,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 105
+      "__id__": 107
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -4586,22 +4615,50 @@
     "_atlas": null
   },
   {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 107
+    },
+    "_enabled": true,
+    "isAlignOnce": true,
+    "_target": {
+      "__id__": 5
+    },
+    "_alignFlags": 45,
+    "_left": 0,
+    "_right": 0,
+    "_top": 0,
+    "_bottom": 0,
+    "_verticalCenter": 0,
+    "_horizontalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 1280,
+    "_originalHeight": 960
+  },
+  {
     "__type__": "cc.Node",
     "_name": "sprite",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 104
+      "__id__": 106
     },
     "_children": [
       {
-        "__id__": 108
+        "__id__": 111
       }
     ],
     "_tag": -1,
     "_active": false,
     "_components": [
       {
-        "__id__": 110
+        "__id__": 113
       }
     ],
     "_prefab": null,
@@ -4646,14 +4703,14 @@
     "_name": "label",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 107
+      "__id__": 110
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 109
+        "__id__": 112
       }
     ],
     "_prefab": null,
@@ -4698,7 +4755,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 108
+      "__id__": 111
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -4720,7 +4777,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 107
+      "__id__": 110
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -4800,10 +4857,10 @@
       "__id__": 38
     },
     "LogoNode": {
-      "__id__": 104
+      "__id__": 106
     },
     "LogoVideoNode": {
-      "__id__": 107
+      "__id__": 110
     },
     "intoRegisterBangDingNodeBtn": {
       "__id__": 8
@@ -4854,13 +4911,13 @@
       "__id__": 94
     },
     "randomNameRandomBtn": {
-      "__id__": 99
+      "__id__": 101
     },
     "playerNameEdit": {
       "__id__": 98
     },
     "editTip": {
-      "__id__": 103
+      "__id__": 105
     },
     "isLogin": false,
     "isGuest": false
