@@ -122,7 +122,7 @@ cc.Class({
 
 
 
-        uuid: function () {
+    getDiviceID: function () {
             var s = [];
             var hexDigits = "0123456789abcdef";
             for (var i = 0; i < 36; i++) {
@@ -154,7 +154,7 @@ var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
             {
                 this.intoRegisterBangDingNodeBtn.active = true
                 this.intoRegisterNodeBtn.active = false
-                var uuid = this.uuid()
+                var uuid = this.getDiviceID()
                 cc.log("uuid = "+uuid)
                
                 cc.sys.localStorage.setItem('UUID',uuid)
