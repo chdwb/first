@@ -172,6 +172,8 @@ cc.Class({
         }
     },
 
+
+
     setExp: function(currentExp, levlExp) {
         this.expText.string = currentExp + "/" + levlExp;
     },
@@ -255,19 +257,23 @@ cc.Class({
     updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
 
-
-        var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
-        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
-        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+        var leveldata = cc.cs.gameData.getlevelData(cc.cs.PlayerInfo.level)
+        this.setExp(cc.cs.PlayerInfo.exp, leveldata["LEV_EXP"])
             //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.money)
         this.setDay(leveldata["LEV_DAY"])
 
-        this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
+        /*this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
         this.wechatBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_3"]["FUNCTION_LEVEL"]
         this.workBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
         this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
-        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
+        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]*/
+
+        if (cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]) {
+            this.tipBG.active = true
+        } else {
+            this.tipBG.active = false
+        }
 
         if (cc.cs.PlayerInfo.playvideo != 0) {
             var parent = this.node.parent
@@ -276,16 +282,34 @@ cc.Class({
         if (this.phoneBtn.active)
             if (this.node.parent.getChildByName("phoneView").getComponent("phoneView").canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;
+                if (cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]) {
+                    cc.cs.UIMgr.changeSprite(this.phoneBtn.getChildByName("stars"), "common/prompt_red")
+                    this.tipText.string = "快给" + cc.cs.PlayerInfo.NPCName + "打电话吧"
+                } else {
+                    cc.cs.UIMgr.changeSprite(this.phoneBtn.getChildByName("stars"), "common/prompt_green")
+                }
+                this.wechatBtn.getChildByName("stars").active = false;
             } else {
+                if (cc.cs.PlayerInfo.level >= this.wechatBtn.lev) {
+                    this.addDiBianBtn(this.wechatBtn)
+                }
+
+                if (this.wechatBtn.active)
+                    if (this.node.parent.getChildByName("WechatView").getComponent("wechatView").canWeChat()) {
+                        this.wechatBtn.getChildByName("stars").active = true;
+                        if (cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]) {
+                            cc.cs.UIMgr.changeSprite(this.wechatBtn.getChildByName("stars"), "common/prompt_red")
+                            this.tipText.string = "快给" + cc.cs.PlayerInfo.NPCName + "发微信吧"
+                        } else {
+                            cc.cs.UIMgr.changeSprite(this.wechatBtn.getChildByName("stars"), "common/prompt_green")
+                        }
+                    } else {
+                        this.wechatBtn.getChildByName("stars").active = false;
+                    }
                 this.phoneBtn.getChildByName("stars").active = false;
             }
 
-        if (this.wechatBtn.active)
-            if (this.node.parent.getChildByName("WechatView").getComponent("wechatView").canWeChat()) {
-                this.wechatBtn.getChildByName("stars").active = true;
-            } else {
-                this.wechatBtn.getChildByName("stars").active = false;
-            }
+
         if (this.zoneBtn.active)
             if (cc.cs.PlayerInfo.canZone()) {
                 this.zoneBtn.getChildByName("stars").active = true;
