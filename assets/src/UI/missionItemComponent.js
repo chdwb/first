@@ -68,9 +68,24 @@ cc.Class({
         isWokr: false,
     },
 
+    loadElement : function(){
+        this.titleText = this.node.getChildByName("titleText").getComponent(cc.Label);
+        this.doSprite = this.node.getChildByName("1").getComponent(cc.Sprite);
+        this.getSprite = this.node.getChildByName("bantoumingbeijing").getChildByName("xin").getComponent(cc.Sprite);
+        this.getLabel = this.node.getChildByName("bantoumingbeijing").getChildByName("getText").getComponent(cc.Label);
+        this.doName = this.node.getChildByName("nameText").getComponent(cc.Label);
+        this.timesLabel = this.node.getChildByName("timesText").getComponent(cc.Label);
+        this.goodsLabel = this.node.getChildByName("goodsText").getComponent(cc.Label);
+        this.startTips = this.node.getChildByName("starTips").getComponent(cc.Label);
+        this.startBtn = this.node.getChildByName("starBtn")
+        this.btnLock = this.startBtn.getChildByName("suo")
+        this.btnText = this.startBtn.getChildByName("btnText")
+    },
+
     setItem: function(id, isWork) {
         this.isWokr = isWork
         this.itemID = id
+        this.loadElement()
         if (isWork) {
             var workResult = cc.cs.PlayerInfo.canWork(id)
             this.loadWork(workResult);
@@ -147,7 +162,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function() {
-
+        cc.log("missionitemComponent    onload")
     },
 
     // called every frame, uncomment this function to activate update callback

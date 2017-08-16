@@ -37,7 +37,7 @@ cc.Class({
     },
 
     refresh: function() {
-        cc.log("loveview refresh")
+        /*cc.log("loveview refresh")
         this.goldText.string = cc.cs.PlayerInfo.money
         if (cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID) <= 0) {
             this.startImage.active = false
@@ -46,7 +46,7 @@ cc.Class({
             this.startImage.active = true
             this.upImage.active = false
         }
-        this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
+        this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)*/
     },
 
     startWork: function(id) {
@@ -270,10 +270,19 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         var self = this
-        cc.log("............keng .... " + cc.cs.PlayerInfo.work_id)
-        this.loadWorkItem(cc.cs.PlayerInfo.work_id)
-        this.currentWorkID = "1"
-        this.startBtn.on("click", (event) => {
+        this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
+        for(var i = cc.cs.gameData.date["FIRST"]; i <= cc.cs.gameData.date["LAST"]; ++i){
+            var itemNode = cc.instantiate(this.missionItemPrefab)
+            var itemCom = itemNode.addComponent("missionItemComponent")
+            itemCom.setItem(i, false)
+
+            cc.cs.UIMgr.addItem_horizontalScrollView(this.list, itemNode, 20)
+        }
+
+
+        //this.loadWorkItem(cc.cs.PlayerInfo.work_id)
+        //this.currentWorkID = "1"
+       /* this.startBtn.on("click", (event) => {
             //添加开始工作代码
 
 
@@ -294,19 +303,19 @@ cc.Class({
             }
 
 
-        }, this.startBtn)
+        }, this.startBtn)*/
         this.backBtn.on("click", (event) => {
             //添加回退代码
             var parent = self.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
 
         }, this.backBtn)
-        this.refresh()
+       // this.refresh()
     },
 
     onEnable: function() {
         cc.log("onenable")
-        this.refresh()
+       // this.refresh()
     },
 
     goShop: function() {

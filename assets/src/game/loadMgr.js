@@ -12,7 +12,7 @@ cc.Class({
                 cc.director.preloadScene("GameScene", function() {
                     cc.log("Next scene preloaded");
                     funCall()
-                    self.isLoadComplete = true
+                   // self.isLoadComplete = true
                 });
 
 
@@ -20,7 +20,13 @@ cc.Class({
                 cc.log(err)
             }
         })
-
+        cc.loader.loadResDir("picture/newRes", (err, ass) => {
+            if (!err) {
+                self.isLoadComplete = true
+            } else {
+                cc.log(err)
+            }
+        })
 
     },
     // use this for initialization
