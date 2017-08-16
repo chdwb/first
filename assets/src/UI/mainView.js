@@ -15,41 +15,53 @@ cc.Class({
             type: cc.Label,
             default: null
         },
-        diamondText: {
-            type: cc.Label,
-            default: null
-        },
         shopBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex: 8,
+            lev : 1
         },
         giftBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex: 6,
+            lev:1,
         },
         bagBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex:7,
+            lev:1,
         },
         phoneBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex:1,
+            lev:2,
         },
         wechatBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex:2,
+            lev:3,
         },
         zoneBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex:3,
+            lev:6,
         },
         workBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex:5,
+            lev:4,
         },
         loveBtn: {
             type: cc.Node,
-            default: null
+            default: null,
+            sindex:4,
+            lev:1,
         },
         settingBtn: {
             type: cc.Node,
@@ -59,15 +71,105 @@ cc.Class({
             type: cc.Node,
             default: null
         },
-        buydiamondBtn: {
-            type: cc.Node,
-            default: null
-        },
-
         SignRewardBtn: {
             type: cc.Node,
             default: null
         },
+        caidanBG: {
+            type: cc.Node,
+            default: null
+        },
+        tipBG: {
+            type: cc.Node,
+            default: null
+        },
+
+        tipText: {
+            type: cc.Label,
+            default: null
+        },
+
+        iconArray : [],
+        addIconArry : [],
+        addIconTime : 0.2,
+        currentTime : 0,
+        iconWidth : 0,
+        isAddIcon : false,
+        addIcon : null,
+        caiDanWidth : 0,
+    },
+
+    computerDibian : function() {
+
+        for(var i = 0 ; i < this.iconArray.length; ++i){
+            
+            if(cc.cs.PlayerInfo.level >= this.iconArray[i].lev){
+                this.addIconArry.push(this.iconArray[i])
+                
+                this.iconArray[i].active = true
+            }else{
+                this.iconArray[i].active = false
+            }
+        }
+
+        this.iconWidth = this.caidanBG.width / this.iconArray.length
+        this.caidanBG.width  =  this.iconWidth * this.addIconArry.length
+       
+        var interval =  this.iconWidth - this.phoneBtn.width
+
+        for(var i = 0; i < this.addIconArry.length; ++i){
+            this.addIconArry[i].x = (i*2 + 1) * (interval *0.5 + this.phoneBtn.width *0.5)
+
+        }
+    },
+
+    addDiBianBtn : function(icon){
+        this.addIcon = icon
+        var addIndex = 0
+        for(var i = 0 ; i < this.addIconArry.length; ++i){
+            if(i < this.addIconArry.length - 1){
+                if(this.addIconArry[i].sindex < icon.sindex && 
+                  this.addIconArry[i + 1].sindex > icon.sindex){
+                    addIndex = i +1
+                    break;
+                }
+                if(this.addIconArry[i].sindex  > icon.sindex){
+                    break;
+                }
+            }else{
+                addIndex = this.addIconArry.length - 1
+                break
+            }
+        }
+        this.isAddIcon = true
+        this.currentTime = 0
+        this.addIcon.x = this.addIconArry[addIndex].x
+        this.addIcon.active = false
+        
+        this.caiDanWidth = this.caidanBG.width
+        for(var i = addIndex; i < this.addIconArry.length; ++i){
+            var action = cc.moveBy(this.addIconTime, this.iconWidth, 0.0)
+            this.addIconArry[i].runAction(action)
+        }
+
+        this.addIconArry.splice(addIndex, 0 , this.addIcon)
+
+
+    },
+
+    actionDibianBtn:function(dt){
+        if(this.isAddIcon){
+            this.currentTime +=dt 
+            var itemSeize = this.iconWidth
+            if(this.currentTime < this.addIconTime){
+                itemSeize *= this.currentTime / this.addIconTime
+                this.caidanBG.width = this.caiDanWidth + itemSeize
+            }else{
+                this.caidanBG.width = this.caiDanWidth + itemSeize
+                this.isAddIcon = false
+                this.addIcon.active = true
+            }
+        }
     },
 
     setExp: function(currentExp, levlExp) {
@@ -102,8 +204,9 @@ cc.Class({
     },
 
     goLove: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+        this.addDiBianBtn(this.wechatBtn)
+        //var parent = this.node.parent
+       // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
     },
 
     goZone: function() {
@@ -112,8 +215,9 @@ cc.Class({
     },
 
     goPhone: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
+        this.addDiBianBtn(this.wechatBtn)
+        //var parent = this.node.parent
+       // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
     },
 
 
@@ -222,10 +326,40 @@ cc.Class({
 
     },
 
+    onEnable : function(){
+        this.updateui();
+    },
+
     onLoad: function() {
 
         var self = this
 
+        this.iconArray.push(this.phoneBtn)
+        this.phoneBtn.sindex = 1
+        this.phoneBtn.lev = 2
+        this.iconArray.push(this.wechatBtn)
+        this.wechatBtn.sindex = 2
+        this.wechatBtn.lev = 3
+        this.iconArray.push(this.zoneBtn)
+        this.zoneBtn.sindex = 3
+        this.zoneBtn.lev = 6
+        this.iconArray.push(this.loveBtn)
+        this.loveBtn.sindex = 4
+        this.loveBtn.lev = 1
+        this.iconArray.push(this.workBtn)
+        this.workBtn.sindex = 5
+        this.workBtn.lev = 4
+        this.iconArray.push(this.giftBtn)
+        this.giftBtn.sindex = 6
+        this.giftBtn.lev = 1
+        this.iconArray.push(this.bagBtn)
+        this.bagBtn.sindex = 7
+        this.bagBtn.lev = 1
+        this.iconArray.push(this.shopBtn)
+        this.shopBtn.sindex = 8
+        this.shopBtn.lev = 1
+
+        this.computerDibian()
         this.updateui()
 
         this.shopBtn.on("click", (event) => {
@@ -264,10 +398,6 @@ cc.Class({
 
         }, this.settingBtn)
 
-        this.buydiamondBtn.on("click", (event) => {
-
-        }, this.buydiamondBtn)
-
         this.buyGoldBtn.on("click", (event) => {
 
         }, this.buyGoldBtn)
@@ -287,6 +417,6 @@ cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function(dt) {
-
+        this.actionDibianBtn(dt)
     },
 });

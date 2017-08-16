@@ -78,13 +78,11 @@ cc.Class({
 
         executetime: 0,
 
-        regDateID: /date_id\d/,
-        regWorkID: /work_id\d/,
-        regGoodID: /goods\d+_id/,
-        regGoodNum: /goods\d+_num/,
+       
 
     },
 
+  
     updateLovePrice: function(id, value) {
         id = parseInt(id)
         this.LovePrice[id - 1] = parseInt(value)
@@ -177,13 +175,13 @@ cc.Class({
             if (this.hasOwnProperty(item)) {
                 this[item] = info[item]
             } else {
-                if (item.match(this.regGoodID)) {
+                if (item.match(/goods\d+_id/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
                     this.modfiyBag(info[item], info["goods" + n + "_num"])
-                } else if (item.match(this.regWorkID)) {
+                } else if (item.match(/work_id\d/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
                     this.updateWorkFreeTimes(n, info[item])
-                } else if (item.match(this.regDateID)) {
+                } else if (item.match(/date_id\d/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
                     this.updateLoveFreeTimes(n, info[item])
                 } else if (item == "goods_id") {
