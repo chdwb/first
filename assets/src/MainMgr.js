@@ -47,10 +47,11 @@ cc.Class({
 
         var PlayerInfo = require("PlayerInfo")
         cc.cs.PlayerInfo = new PlayerInfo()
-
+        if (CC_JSB) {
         var DownloadMgr = require("DownloadMgr")
         cc.cs.DownloadMgr = new DownloadMgr()
         cc.cs.DownloadMgr.init()
+        }
 
         var AudioMgr = require("AudioMgr")
         cc.cs.AudioMgr = new AudioMgr()

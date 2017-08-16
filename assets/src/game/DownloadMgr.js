@@ -24,7 +24,7 @@ cc.Class({
     },
     init:function()
     {
-this._downloader = new jsb.Downloader();
+        this._downloader = new jsb.Downloader();
         this._downloader.setOnFileTaskSuccess(this.onSucceed.bind(this));
         this._downloader.setOnTaskProgress(this.onProgress.bind(this));
         this._downloader.setOnTaskError(this.onError.bind(this));

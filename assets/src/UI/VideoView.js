@@ -54,7 +54,7 @@ cc.Class({
     onEnable: function () {
 
         this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.playvideo
-       
+       if (CC_JSB) {
           var nextvideoID = parseInt(cc.cs.PlayerInfo.playvideo)+1
           cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.api_token,nextvideoID,this.voidoDownloadHandle,this)
 
@@ -68,6 +68,7 @@ cc.Class({
              cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.api_token,id2,this.voidoDownloadHandle,this)
 
           }
+       }
 
     },
 
