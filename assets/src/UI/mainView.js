@@ -89,6 +89,16 @@ cc.Class({
             default: null
         },
 
+        heartShow: {
+            type: cc.Node,
+            default: null
+        },
+
+        maxShow: {
+            type: cc.Node,
+            default: null
+        },
+
         iconArray: [],
         addIconArry: [],
         addIconTime: 0.2,
@@ -172,10 +182,16 @@ cc.Class({
         }
     },
 
-
-
     setExp: function(currentExp, levlExp) {
         this.expText.string = currentExp + "/" + levlExp;
+        var fh = currentExp / levlExp
+        if (fh > 1) fh = 1.0
+        this.heartShow.height = this.heartShow.parent.height * fh
+        if (currentExp >= levlExp) {
+            this.maxShow.active = true
+        } else {
+            this.maxShow.active = false
+        }
     },
 
     setDay: function(day) {
@@ -206,9 +222,9 @@ cc.Class({
     },
 
     goLove: function() {
-        this.addDiBianBtn(this.workBtn)
-            //var parent = this.node.parent
-            // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+        //this.addDiBianBtn(this.workBtn)
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
     },
 
     goZone: function() {
@@ -217,9 +233,9 @@ cc.Class({
     },
 
     goPhone: function() {
-        this.addDiBianBtn(this.workBtn)
-            //var parent = this.node.parent
-            // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
+        //this.addDiBianBtn(this.workBtn)
+        var parent = this.node.parent
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
     },
 
 
@@ -280,7 +296,7 @@ cc.Class({
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.VIDEOVIEW)
         }
         if (this.phoneBtn.active)
-            if (this.node.parent.getChildByName("phoneView").getComponent("phoneView").canPhone()) {
+            if (cc.cs.PlayerInfo.canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;
                 if (cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]) {
                     cc.cs.UIMgr.changeSprite(this.phoneBtn.getChildByName("stars"), "common/prompt_red")
@@ -295,7 +311,7 @@ cc.Class({
                 }
 
                 if (this.wechatBtn.active)
-                    if (this.node.parent.getChildByName("WechatView").getComponent("wechatView").canWeChat()) {
+                    if (cc.cs.PlayerInfo.canWechat()) {
                         this.wechatBtn.getChildByName("stars").active = true;
                         if (cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]) {
                             cc.cs.UIMgr.changeSprite(this.wechatBtn.getChildByName("stars"), "common/prompt_red")

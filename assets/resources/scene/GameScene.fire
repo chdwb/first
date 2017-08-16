@@ -5171,6 +5171,12 @@
     "tipText": {
       "__id__": 105
     },
+    "heartShow": {
+      "__id__": 97
+    },
+    "maxShow": {
+      "__id__": 100
+    },
     "iconArray": [],
     "addIconArry": [],
     "addIconTime": 0.8,
