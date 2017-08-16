@@ -25,33 +25,56 @@ cc.Class({
             default:null,
             type: cc.Label,
         },
+
+        button1:{
+            default:null,
+            type: cc.Button,
+        },
+        button2:{
+            default:null,
+            type: cc.Button,
+        },
+        button3:{
+            default:null,
+            type: cc.Button,
+        },
+        button4:{
+            default:null,
+            type: cc.Button,
+        },
         
         spawnCount: 0, // 总个数
         totalRow: 0, // 行数
         spacing: 0, // space between each item
         currentShopType:1,
     },
+
+    
     
     onLiBao:function()
     {
+        cc.log( this.currentShopType)
         this.currentShopType = 3;
         this.initialize2(cc.cs.gameData.hot_package)
     },
     
     onSuperLiBao:function()
     {
+        cc.log( this.currentShopType)
         this.currentShopType = 4;
         this.initialize2(cc.cs.gameData.work_package)
     },
     
     onJinBi:function()
     {
+        cc.log( this.currentShopType)
         this.currentShopType = 2;
         this.initialize2(cc.cs.gameData.buy_gold)
     },
     
     onItem:function()
     {
+        cc.log( this.currentShopType)
         this.currentShopType = 1;
         this.initialize(cc.cs.gameData.goods)
         //cc.log("goods ="+cc.cs.gameData.goods)
@@ -69,6 +92,36 @@ cc.Class({
     updateUi:function()
     {
         this.Coin.string = ""+cc.cs.PlayerInfo.money
+
+        if(this.currentShopType ==1)
+        {
+            this.button1.interactable = false 
+            this.button2.interactable = true 
+            this.button3.interactable = true 
+            this.button4.interactable = true 
+        }
+        if(this.currentShopType ==2)
+        {
+            this.button1.interactable = true 
+            this.button2.interactable = false 
+            this.button3.interactable = true 
+            this.button4.interactable = true 
+        }
+        if(this.currentShopType ==3)
+        {
+            this.button1.interactable = true 
+            this.button2.interactable = true 
+            this.button3.interactable = false 
+            this.button4.interactable = true 
+        }
+        if(this.currentShopType ==4)
+        {
+           this.button1.interactable = true 
+            this.button2.interactable = true 
+            this.button3.interactable = true 
+            this.button4.interactable = false  
+        }
+        
     },
     
     onBack:function()
