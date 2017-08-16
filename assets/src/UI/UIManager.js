@@ -44,6 +44,28 @@ cc.Class({
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
     },
+    addItem_horizontalScrollView: function(scrollView, node, horizontalSpace) {
+        if (typeof horizontalSpace == 'undefined')
+            horizontalSpace = 0;
+        var pos = cc.v2(0.0, 0.0)
+        if (scrollView.content.childrenCount == 0) {
+            scrollView.content.width = node.width
+            pos.x = (1.0 - scrollView.content.anchorX) * scrollView.content.width - (1.0 - node.anchorX) * node.width
+        } else {
+
+            pos.x = ((1.0 - scrollView.content.anchorX) * scrollView.content.width - (1.0 - node.anchorX) * node.width) +
+                ((0 - scrollView.content.anchorX) * (scrollView.content.width + horizontalSpace))
+
+            scrollView.content.width += horizontalSpace + node.width
+        }
+        var diffHeight = scrollView.content.height - node.height
+
+        pos.y = (1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height - diffHeight * 0.5
+
+        scrollView.content.addChild(node)
+        node.setPosition(pos)
+    },
+
     addItem_verticalScrollView: function(scrollView, node, verticalSpace) {
         if (typeof verticalSpace == 'undefined')
             verticalSpace = 0;

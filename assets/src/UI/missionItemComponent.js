@@ -64,12 +64,84 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        itemID: 0,
+        isWokr: false,
     },
 
     setItem: function(id, isWork) {
+        this.isWokr = isWork
+        this.itemID = id
         if (isWork) {
-            var workResoult = cc.cs.PlayerInfo.canWork(id)
+            var workResult = cc.cs.PlayerInfo.canWork(id)
+            this.loadWork(workResult);
+        } else {
+            var dateResult = cc.cs.PlayerInfo.canLove(id)
+            this.loadDate(dateResult)
+        }
+    },
 
+    loadDate: function(result) {
+        var dateData = cc.cs.gameData.getdateData(this.itemID)
+        this.titleText.string = "恋爱"
+        cc.cs.UIMgr.changeSprite(this.doSprite.node, "work_quest/quest/" + this.itemID)
+        this.getLabel.string = dateData["DATE_EXP"]
+        this.doName.string = dateData["DATE_NAME"]
+        if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
+            this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)
+        } else {
+            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)
+        }
+
+        if (dateData["DATE_NEED_GOODS_ID"] == "dummy") {
+            this.goodsLabel.node.active = false
+        } else {
+            this.goodsLabel.node.active = true
+            this.goodsLabel.string = "所需道具：  " + dateData["DATE_NEED_GOODS_ID"] + "x" + dateData["DATE_NEED_GOODS_COUNT"]
+        }
+
+        this.startTips.node.active = false
+        if (result == -1) {
+            this.startBtn.active = true
+            this.btnText = "购买次数"
+        } else if (result == 0) {
+            this.startBtn.active = true
+            this.btnText = "开始"
+        } else {
+            this.startBtn.active = false
+            this.startTips.node.active = true
+            this.startTips.string = "游戏内时间第" + result + "天开放"
+        }
+
+
+    },
+
+    loadWork: function(result) {
+        var workData = cc.cs.gameData.getworkData(this.itemID)
+        this.titleText.string = "工作"
+        cc.cs.UIMgr.changeSprite(this.doSprite.node, "work_quest/work/" + this.itemID)
+        cc.cs.UIMgr.changeSprite(this.getSprite.node, "common/jinbi")
+        this.getLabel.string = workData["REWARD"]
+        this.doName.string = workData["NAME"]
+        if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
+            this.timesLabel.string = "工作次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+        } else {
+            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+        }
+        this.goodsLabel.node.active = false
+        this.startTips.node.active = false
+        this.startBtn.getComponent(cc.Button).interactable = true
+        if (result == 0 || result == 1) {
+            this.btnLock.active = false
+            this.btnText.node.active = true
+            this.btnText = "开始"
+        } else if (result == 2) {
+            this.btnLock.active = false
+            this.btnText.node.active = true
+            this.btnText = "升职"
+        } else {
+            this.btnLock.active = true
+            this.btnText.node.active = false
+            this.startBtn.getComponent(cc.Button).interactable = false
         }
     },
 

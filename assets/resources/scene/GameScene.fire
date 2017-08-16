@@ -232,7 +232,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 123
@@ -8159,7 +8159,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 235
@@ -9647,21 +9647,21 @@
     "list": {
       "__id__": 234
     },
-    "rewardText": null,
-    "needTimeText": null,
+    "expText": {
+      "__id__": 201
+    },
+    "heartShow": {
+      "__id__": 206
+    },
+    "maxShow": {
+      "__id__": 209
+    },
     "goldText": {
       "__id__": 219
     },
-    "startBtn": null,
     "backBtn": {
       "__id__": 224
     },
-    "LockImage": null,
-    "LockText": null,
-    "mask": null,
-    "startImage": null,
-    "upImage": null,
-    "goodsText": null,
     "missionBtnList": [],
     "missionItemPrefab": null,
     "currentWorkID": "1",

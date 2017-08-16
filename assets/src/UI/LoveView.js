@@ -6,140 +6,106 @@ cc.Class({
             type: cc.ScrollView,
             default: null
         },
-        rewardText: {
+        expText: {
             type: cc.Label,
             default: null
         },
-        needTimeText: {
-            type: cc.Label,
+        heartShow: {
+            type: cc.Node,
+            default: null
+        },
+        maxShow: {
+            type: cc.Node,
             default: null
         },
         goldText: {
             type: cc.Label,
             default: null
         },
-        startBtn: {
-            type: cc.Node,
-            default: null
-        },
         backBtn: {
             type: cc.Node,
             default: null
         },
-        LockImage: {
-            type: cc.Node,
-            default: null
-        },
-        LockText: {
-            type: cc.Label,
-            default: null
-        },
-        mask: {
-            type: cc.Node,
-            default: null
-        },
-        startImage:{
-            type: cc.Node,
-            default: null
-        },
-        upImage:{
-            type: cc.Node,
-            default: null
-        },
-        goodsText:{
-            type: cc.Label,
-            default: null
-        },
-
         missionBtnList: [],
 
         missionItemPrefab: null,
 
-        currentWorkID:"1",
+        currentWorkID: "1",
 
-        dateLogID : "",
+        dateLogID: "",
 
     },
 
-    refresh : function()
-    {
+    refresh: function() {
         cc.log("loveview refresh")
         this.goldText.string = cc.cs.PlayerInfo.money
-                if(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID) <= 0){
-                    this.startImage.active = false
-                    this.upImage.active = true
-                }
-                else {
-                    this.startImage.active = true
-                    this.upImage.active = false
-                }
+        if (cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID) <= 0) {
+            this.startImage.active = false
+            this.upImage.active = true
+        } else {
+            this.startImage.active = true
+            this.upImage.active = false
+        }
         this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
     },
 
-    startWork: function(id)
-    {
-        cc.log("token= "+cc.cs.PlayerInfo.api_token)
-        cc.log("workid= "+this.currentWorkID)
+    startWork: function(id) {
+        cc.log("token= " + cc.cs.PlayerInfo.api_token)
+        cc.log("workid= " + this.currentWorkID)
         this.node.getTag();
         cc.cs.gameMgr.sendLove(cc.cs.PlayerInfo.api_token, this.currentWorkID, this.startWorkHandle, this)
-        
+
     },
-    upgradeWork : function()
-    {
-        cc.log("token="+cc.cs.PlayerInfo.api_token)
-        cc.log("workid="+this.currentWorkID)
+    upgradeWork: function() {
+        cc.log("token=" + cc.cs.PlayerInfo.api_token)
+        cc.log("workid=" + this.currentWorkID)
         cc.cs.gameMgr.sendUpgrade(cc.cs.PlayerInfo.api_token, this.currentWorkID, this.upgradeWorkHandle, this)
     },
 
-    upgradeWorkHandle(ret)
-    {
+    upgradeWorkHandle(ret) {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
-        if (JasonObject.success == true) 
-        {
+        if (JasonObject.success == true) {
             cc.cs.PlayerInfo.money = JasonObject.content.info.money
             cc.cs.PlayerInfo.work_id = JasonObject.content.info.work_id
             this.loadWorkItem(cc.cs.PlayerInfo.work_id)
             this.refresh()
             cc.cs.UIMgr.showTip("升级成功", 1.0)
-        }else{
-            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
-        }
-    },
-
-    startWorkHandle(ret)
-    {
-       
-        var JasonObject = JSON.parse(ret);
-        if (JasonObject.success === true) {
-            cc.cs.UIMgr.showTip("开始恋爱", 1.0)
-            var parent = this.node.parent
-            
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
-            this.dateLogID = JasonObject.content.info.datelog_id
-            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
-            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(
-                 JasonObject.content.info.executetime,
-                 this.currentWorkID, 
-                 false,
-                 this.DoneWork,
-                 this)
-           
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
     },
 
-    DoneWork:function(ret)
-    {
-        cc.log(ret.dateLogID)
-        cc.log("done work"+cc.cs.PlayerInfo.api_token)
-        cc.log("done work  "+ret.DoneDateHandle)
-        cc.cs.gameMgr.sendLoveDone(cc.cs.PlayerInfo.api_token, ret.dateLogID  , ret.DoneDateHandle, ret)
+    startWorkHandle(ret) {
+
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.UIMgr.showTip("开始恋爱", 1.0)
+            var parent = this.node.parent
+
+            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ACTIONVIEW)
+            this.dateLogID = JasonObject.content.info.datelog_id
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            parent.getChildByName("actioningView").getComponent("actioningView").setActionInfo(
+                JasonObject.content.info.executetime,
+                this.currentWorkID,
+                false,
+                this.DoneWork,
+                this)
+
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
     },
 
-    DoneDateHandle:function(ret)
-    {
+    DoneWork: function(ret) {
+        cc.log(ret.dateLogID)
+        cc.log("done work" + cc.cs.PlayerInfo.api_token)
+        cc.log("done work  " + ret.DoneDateHandle)
+        cc.cs.gameMgr.sendLoveDone(cc.cs.PlayerInfo.api_token, ret.dateLogID, ret.DoneDateHandle, ret)
+    },
+
+    DoneDateHandle: function(ret) {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
@@ -151,29 +117,26 @@ cc.Class({
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
 
             cc.log("video id 1= " + cc.cs.PlayerInfo.playvideo)
-             cc.log("currentWorkID = "+this.currentWorkID)
-             
-            cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
-            
+            cc.log("currentWorkID = " + this.currentWorkID)
+
+            cc.cs.PlayerInfo["Love" + this.currentWorkID + "LeftTImes"] = JasonObject.content.info["date_id" + this.currentWorkID]
+
             this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
 
-            
+
             var array = cc.cs.PlayerInfo.Bag
-            for(var i = 0;i < array.length;i++)
-            {
-               if( array[i].goods_id == JasonObject.content.info.goods_id)
-               {
-                   array[i].num = JasonObject.content.info.num
-                   if(JasonObject.content.info.num == 0 )
-                   {
-                       array.splice(i,1);
-                   }
-                   break;
-               }
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].goods_id == JasonObject.content.info.goods_id) {
+                    array[i].num = JasonObject.content.info.num
+                    if (JasonObject.content.info.num == 0) {
+                        array.splice(i, 1);
+                    }
+                    break;
+                }
             }
 
 
-            cc.cs.UIMgr.showPopupO("约会完成了","约会完成了",()=>{
+            cc.cs.UIMgr.showPopupO("约会完成了", "约会完成了", () => {
 
                 var parent = this.node.parent
                 parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
@@ -185,55 +148,51 @@ cc.Class({
     },
 
 
-    buyLoveTime:function()
-    {
-        cc.cs.gameMgr.buyLoveTime(cc.cs.PlayerInfo.api_token,this.currentWorkID,this.buyLoveTimehandle,this)
+    buyLoveTime: function() {
+        cc.cs.gameMgr.buyLoveTime(cc.cs.PlayerInfo.api_token, this.currentWorkID, this.buyLoveTimehandle, this)
     },
 
-    buyLoveTimehandle:function(ret)
-    {
+    buyLoveTimehandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             cc.cs.UIMgr.showTip("购买成功", 1.0)
-             cc.log("loveid = "+this.currentWorkID)
+            cc.log("loveid = " + this.currentWorkID)
             cc.cs.PlayerInfo.money = JasonObject.content.info.money
-            cc.cs.PlayerInfo.updateLovePrice(this.currentWorkID,JasonObject.content.info["Love"+this.currentWorkID+"Price"])
-            cc.cs.PlayerInfo.updateLoveFreeTimes(this.currentWorkID,JasonObject.content.info["date_id"+this.currentWorkID])
-            cc.log("lefttime = "+ cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"])
+            cc.cs.PlayerInfo.updateLovePrice(this.currentWorkID, JasonObject.content.info["Love" + this.currentWorkID + "Price"])
+            cc.cs.PlayerInfo.updateLoveFreeTimes(this.currentWorkID, JasonObject.content.info["date_id" + this.currentWorkID])
+            cc.log("lefttime = " + cc.cs.PlayerInfo["Love" + this.currentWorkID + "LeftTImes"])
 
-            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love"+this.currentWorkID+"LeftTImes"]
+            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo["Love" + this.currentWorkID + "LeftTImes"]
             this.refresh()
-            
 
 
-           
+
+
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
     },
 
 
-    isLock : function(is){
-        if(is == false)
-        {
-            this.LockImage.active  = false
-            this.mask.active  = false
-            //this.rewardText.node.active = true
-            //this.needTimeText.node.active = true
-             this.startBtn.active = true
+    isLock: function(is) {
+        if (is == false) {
+            this.LockImage.active = false
+            this.mask.active = false
+                //this.rewardText.node.active = true
+                //this.needTimeText.node.active = true
+            this.startBtn.active = true
             this.startImage.active = true
             this.upImage.active = false
-            this.goodsText.node.active =false;
-        }else
-        {
-            this.LockImage.active  = true
-            this.mask.active  = true
-            //this.rewardText.node.active = false
-            //this.needTimeText.node.active = false
+            this.goodsText.node.active = false;
+        } else {
+            this.LockImage.active = true
+            this.mask.active = true
+                //this.rewardText.node.active = false
+                //this.needTimeText.node.active = false
             this.startBtn.active = false
             this.startImage.active = !false
             this.upImage.active = !true
-            this.goodsText.node.active =false;
+            this.goodsText.node.active = false;
         }
     },
 
@@ -244,34 +203,31 @@ cc.Class({
             }
         }
         this.currentWorkID = target.workID
-        cc.log(cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] + " date "  + cc.cs.PlayerInfo.level)
-        if(cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] <= cc.cs.PlayerInfo.level)
-        {
-            this.isLock(false) 
-        }else
-        {
+        cc.log(cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] + " date " + cc.cs.PlayerInfo.level)
+        if (cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] <= cc.cs.PlayerInfo.level) {
+            this.isLock(false)
+        } else {
             this.isLock(true)
-            this.LockText.string = "等级" + cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] + "解锁" 
+            this.LockText.string = "等级" + cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"] + "解锁"
         }
-        this.rewardText.string = "每次获得："+ cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
-            this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
+        this.rewardText.string = "每次获得：" + cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
+        this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)
         var goodsID = cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_ID"]
-        if(goodsID != "dummy")
-        {
-            this.goodsText.node.active =true;
-            this.goodsText.string = "需要道具：" +cc.cs.gameData.goods["GOODS_ID_"+goodsID]["GOODS_NAME"]+"x"+cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]  
+        if (goodsID != "dummy") {
+            this.goodsText.node.active = true;
+            this.goodsText.string = "需要道具：" + cc.cs.gameData.goods["GOODS_ID_" + goodsID]["GOODS_NAME"] + "x" + cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]
         }
 
-        if(parseInt(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)) <= 0){
+        if (parseInt(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)) <= 0) {
             this.startImage.active = false
             this.upImage.active = true
         }
-    
+
         target.getComponent("missionItemComponent").isChoose(true)
     },
 
     loadWorkItem: function() {
-        var id= 1
+        var id = 1
         this.list.content.removeAllChildren(true)
         var self = this
         this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
@@ -288,17 +244,16 @@ cc.Class({
             itemNode.active = true
             if (index == id) {
                 itemCom.isChoose(true)
-                this.rewardText.string = "每次获得："+ cc.cs.gameData.date["DATE_ID_" + index]["DATE_EXP"]
+                this.rewardText.string = "每次获得：" + cc.cs.gameData.date["DATE_ID_" + index]["DATE_EXP"]
                 cc.log("-------------c--------- " + id)
                 this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getLoveFreeTimes(id)
                 this.isLock(false)
                 var goodsID = cc.cs.gameData.date["DATE_ID_" + index]["DATE_NEED_GOODS_ID"]
-                if(goodsID != "dummy")
-                {
-                    this.goodsText.node.active =true;
-                    this.goodsText.string = "需要道具：" +cc.cs.gameData.goods["GOODS_ID_"+goodsID]["GOODS_NAME"]+"x"+cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]  
+                if (goodsID != "dummy") {
+                    this.goodsText.node.active = true;
+                    this.goodsText.string = "需要道具：" + cc.cs.gameData.goods["GOODS_ID_" + goodsID]["GOODS_NAME"] + "x" + cc.cs.gameData.date[target.csDataID]["DATE_NEED_GOODS_COUNT"]
                 }
-                if(parseInt(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)) <= 0){
+                if (parseInt(cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID)) <= 0) {
                     self.startImage.active = false
                     self.upImage.active = true
                 }
@@ -315,47 +270,45 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         var self = this
-        cc.log("............keng .... " +cc.cs.PlayerInfo.work_id)
+        cc.log("............keng .... " + cc.cs.PlayerInfo.work_id)
         this.loadWorkItem(cc.cs.PlayerInfo.work_id)
         this.currentWorkID = "1"
         this.startBtn.on("click", (event) => {
             //添加开始工作代码
-             
 
-             if(cc.cs.PlayerInfo.getLoveFreeTimes(self.currentWorkID) <= 0){
+
+            if (cc.cs.PlayerInfo.getLoveFreeTimes(self.currentWorkID) <= 0) {
                 //cc.cs.UIMgr.showTip("约会机会不够",1.0)
-               //var array = cc.cs.gameData.date["DATE_ID_"+self.currentWorkID][DATE_BUY_TIMES_NEED].split(",")
+                //var array = cc.cs.gameData.date["DATE_ID_"+self.currentWorkID][DATE_BUY_TIMES_NEED].split(",")
                 // cc.cs.PlayerInfo
-                cc.cs.UIMgr.showPopupOC("", "是否花"+cc.cs.PlayerInfo["Love"+self.currentWorkID+"Price"]+"金币购买次数", ()=>{
-            self.buyLoveTime()
-            }, 
-             ()=>{
+                cc.cs.UIMgr.showPopupOC("", "是否花" + cc.cs.PlayerInfo["Love" + self.currentWorkID + "Price"] + "金币购买次数", () => {
+                        self.buyLoveTime()
+                    },
+                    () => {
 
-                var parent = this.node.parent
-                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
-            });
-             }
-             else {
-                 this.startWork()
-             }
-               
-            
+                        var parent = this.node.parent
+                        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+                    });
+            } else {
+                this.startWork()
+            }
+
+
         }, this.startBtn)
         this.backBtn.on("click", (event) => {
             //添加回退代码
             var parent = self.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
-   
+
         }, this.backBtn)
         this.refresh()
     },
 
-    onEnable:function()
-    {
+    onEnable: function() {
         cc.log("onenable")
         this.refresh()
     },
-    
+
     goShop: function() {
         var parent = this.node.parent
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
