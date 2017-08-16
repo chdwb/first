@@ -12,44 +12,70 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        chooseBG : {
-            default : null,
-            type : cc.Node
+        titleText: {
+            default: null,
+            type: cc.Label
         },
-        itemText : {
-            default : null,
-            type : cc.Label
-        }
+
+        doSprite: {
+            default: null,
+            type: cc.Sprite
+        },
+
+        getSprite: {
+            default: null,
+            type: cc.Sprite
+        },
+
+        getLabel: {
+            default: null,
+            type: cc.Label
+        },
+
+        doName: {
+            default: null,
+            type: cc.Label
+        },
+
+        timesLabel: {
+            default: null,
+            type: cc.Label
+        },
+
+        goodsLabel: {
+            default: null,
+            type: cc.Label
+        },
+
+        startTips: {
+            default: null,
+            type: cc.Label
+        },
+
+        startBtn: {
+            default: null,
+            type: cc.Node
+        },
+        btnLock: {
+            default: null,
+            type: cc.Node
+        },
+        btnText: {
+            default: null,
+            type: cc.Label
+        },
     },
 
-    setNameText : function (item){
-        if(this.itemText == null)
-            this.itemText = this.node.getChildByName("ItemText")
-        
-        this.itemText.getComponent(cc.Label).string = item
-    },
+    setItem: function(id, isWork) {
+        if (isWork) {
+            var workResoult = cc.cs.PlayerInfo.canWork(id)
 
-    isChoose : function (is){
-        if(this.itemText == null)
-            this.itemText = this.node.getChildByName("ItemText")
-        if(this.chooseBG == null)
-            this.chooseBG = this.node.getChildByName("chooseBg")
-        if(is)
-        {
-            this.chooseBG.active = true
-            //this.itemText.color = cc.Color.WHITE
-        }else
-        {
-            this.chooseBG.active = false
-            //this.itemText.color = cc.Color.BLACK
         }
     },
 
     // use this for initialization
-    onLoad: function () {
-        cc.log("add onload for mission compinent")
-        this.chooseBG = this.node.getChildByName("chooseBg")
-        this.itemText = this.node.getChildByName("ItemText")
+    onLoad: function() {
+
     },
 
     // called every frame, uncomment this function to activate update callback

@@ -100,8 +100,10 @@ class xlsxParse:
 			else:
 				self.jsFile.write("},\n")
 				self.phpFile.write("),\n")
+		self.jsFile	.write("\t\t\"LAST\":"+self.processValue(sheet.row_values(nrows -1)[0])+",\n")
 		self.jsFile	.write("\t\t\"TOTAL_COUNT\":"+str(nrows - 2)+",\n")
 		self.jsFile	.write("\t\t\"FIRST\":"+self.processValue(sheet.row_values(2)[0])+"\n")
+		
 		self.jsFile.write("\t},\n")
 		self.phpFile.write("\t);\n")
 		

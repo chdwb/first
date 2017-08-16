@@ -277,7 +277,64 @@ cc.Class({
         return d + "天前"
     },
 
+    /*
+        return 0 is ok
+        return 1 the times is not enough
+        return 2 is level up 
+        return 3 is locked
+    */
 
+    canWork: function(id) {
+        if (this.work_id == id) {
+            if (this.getWorkFreeTimes(id) > 0) {
+                return 0;
+            } else {
+                return 1
+            }
+        } else if (this.work_id == id - 1) {
+            return 2
+        } else {
+            return 3
+        }
+    },
+
+    canAllWork: function() {
+        for (var i = cc.cs.gameData.work["FIRST"]; i <= cc.cs.gameData.work["LAST"]; ++i) {
+            if (this.canWork(i) == 0) {
+                return true
+            }
+        }
+        return false
+    },
+
+    /*
+        return -1 the times is not enough 
+        return 0 is ok
+        return other is lock day
+    */
+
+    canLove: function(id) {
+        var dateData = cc.cs.gameData.getdateData(id)
+        if (this.level >= dateData["DATE_NEED_LEVEL"]) {
+            if (this.getLoveFreeTimes(id) > 0) {
+                return 0
+            } else {
+                return -1
+            }
+        } else {
+            var levelData = cc.cs.gameData.getlevelData(dateData["DATE_NEED_LEVEL"])
+            return levelData["LEV_DAY"]
+        }
+    },
+
+    canAllLove: function() {
+        for (var i = cc.cs.gameData.date["FIRST"]; i <= cc.cs.gameData.date["LAST"]; ++i) {
+            if (this.canLove(i) == 0) {
+                return true
+            }
+        }
+        return false
+    },
 
     getZoneDay: function(id) {
         var pZoneData = cc.cs.gameData.getzoneData(id);
