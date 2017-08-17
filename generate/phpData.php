@@ -2828,7 +2828,8 @@ class PhpData{
 		"ID_21"=>array("ID"=>21, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/gifts", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"提交送礼物。"),
 		"ID_22"=>array("ID"=>22, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/buytimes", "Params"=>"api_token,dateid,num", "Method"=>"POST", "Remark"=>"购买约会次数。"),
 		"ID_23"=>array("ID"=>23, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/donevideo", "Params"=>"api_token,videoid", "Method"=>"POST", "Remark"=>"观看视频完成。"),
-		"ID_24"=>array("ID"=>24, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/video/geturl", "Params"=>"api_token,videoid", "Method"=>"GET", "Remark"=>"获取视频url。")
+		"ID_24"=>array("ID"=>24, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/video/geturl", "Params"=>"api_token,videoid", "Method"=>"GET", "Remark"=>"获取视频url。"),
+		"ID_25"=>array("ID"=>25, "Host"=>"http://112.74.36.182:8888", "Route"=>"/make/fastwechat", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"dummy")
 	);
 	public $errorcode = array
 	(

@@ -304,7 +304,9 @@ cc.Class({
     },
 
     onEnable :function(){
-
+        if(cc.cs.PlayerInfo.canWeChat()){
+            
+        }
     },
 
     onLoad: function () {
