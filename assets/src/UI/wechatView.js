@@ -63,6 +63,7 @@ cc.Class({
 
     sendDisable : function(){
         this.sendBtn.getComponent(cc.Button).interactable = false
+        this.inputBtn.getComponent(cc.Button).interactable = false
        // this.tipText.active = false
     },
     sendEnable : function(){
@@ -70,8 +71,13 @@ cc.Class({
     //this.tipText.active = true
     },
 
-    getDay:function(d)
+    getDay:function(id)
     {
+        var wechatID = cc.cs.gameData.getwechatData(id)
+        
+        var levelData = cc.cs.gameData.getlevelData(wechatID["WECHAT_LEVEL"])
+        var currentlevelData = cc.cs.gameData.getlevelData( cc.cs.PlayerInfo.level)
+        var d =  currentlevelData["LEV_DAY"] - levelData["LEV_DAY"]
         if(d == 0)
             return "今天"
         if(d == 1)
@@ -81,60 +87,38 @@ cc.Class({
       
          return d+"天前"
     },
+    isShowDay : function(id){
+        if(id == cc.cs.gameData.wechat["FIRST"])
+            return true
+        var wechatID = cc.cs.gameData.getwechatData(id-1)
+        if(wechatID["WECHAT_NEXT"] == "dummy")
+            return true
+        return false
+    },
+
     loadFormerInfo : function()
     {
-        var startIndex = 1
-        var index = 0
         if(cc.cs.PlayerInfo.wechat_player_ID.length == 0) return
-        if(cc.cs.gameData.wechat["WECHAT_ID_1"]["WECHAT_OPTION"] != "dummy"){
-           startIndex =  cc.cs.PlayerInfo.wechat_player_ID[index]
-
-           index++
-        }
-
-        cc.log("startIndex="+startIndex)
-        var id = startIndex
-        cc.log("id="+id)
-        var showDay = false
-
-        this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]["LEV_DAY"] -
-        cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
-        "", true)
-        while(id <= cc.cs.PlayerInfo.wechat_id){
-            if(showDay)
-            {
-                this.loadCruuentTalk(this.talkScroll, true,  this.getDay(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]["LEV_DAY"] -
-                cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.wechat["WECHAT_ID_"+ id]["WECHAT_LEVEL"]]["LEV_DAY"]),
-                "", true)
-                showDay = false
-            }
-
-            this.setInputMsg(id)
-            if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"] == "dummy")
-            {
+        var startIndex = cc.cs.gameData.wechat["FIRST"]
+        var index = 0
         
-                showDay = true
-            }
-            if(id >= cc.cs.PlayerInfo.wechat_id){
-                 break;
-            }
-            if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
 
-                id = cc.cs.PlayerInfo.wechat_player_ID[index]
+        while(startIndex <=  cc.cs.PlayerInfo.wechat_id ){
+            if(this.isShowDay(startIndex)){
+                this.loadCruuentTalk(this.talkScroll,true , this.getDay(startIndex), "", true)
+            }
+            var wechatData = cc.cs.gameData.getwechatData(startIndex)
+            if(wechatData["WECHAT_OPTION"] == "dummy"){
+                var wechatData = cc.cs.gameData.getwechatData(startIndex)
+                this.loadCruuentTalk(this.talkScroll,false, wechatData["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName, false); 
+                startIndex += 1
+            }else{
+                startIndex = cc.cs.PlayerInfo.wechat_player_ID[index]
+                wechatData = cc.cs.gameData.getwechatData(startIndex)
+                this.loadCruuentTalk(this.talkScroll,true, wechatData["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae, false); 
                 index++
-                if(index >= cc.cs.PlayerInfo.wechat_player_ID.length )
-                    break;
-                cc.log("id555"+id+"dd"+index)
-            }else
-            {
-                cc.log("id666"+id)
-                id = cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"]
+                startIndex = wechatData["WECHAT_NEXT"]
             }
-        }
-
-        cc.log("id"+id)
-        if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] != "dummy"){
-            this.setInputMsg(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"])
         }
     },
 
@@ -216,7 +200,6 @@ cc.Class({
         btn2.active = true;
         btn3.active = true;
         for (var i = cc.cs.gameData.wechat["FIRST"]; i <= cc.cs.gameData.wechat["TOTAL_COUNT"]; ++i) {
-            cc.log("2   " + i)
             var itemData = cc.cs.gameData.getwechatData(i)
 
             if (itemData["WECHAT_OPTION"] == wechatOption) {
@@ -452,7 +435,7 @@ cc.Class({
             addHeight = newNode.cyH
         } else {
             newNode = cc.instantiate(this.nvzhuTalkPrefab)
-            cc.cs.UIMgr.setNvTalk(newNode, msg,  "· " + name, true)
+            cc.cs.UIMgr.setNvTalk(newNode, msg,  "· " + name, false)
             addHeight = cc.cs.UIMgr.getTalkHeight(newNode)
             newNode.cyH = addHeight
         }

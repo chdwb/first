@@ -478,7 +478,7 @@ cc.Class({
             }
 
             if(cc.cs.PlayerInfo.Phone_ID == "1" || cc.cs.PlayerInfo.Phone_ID == 1)
-                cc.cs.PlayerInfo.Phone_ID = 0
+                cc.cs.PlayerInfo.Phone_ID = 1
             if(cc.cs.PlayerInfo.wechat_id == "0" || cc.cs.PlayerInfo.wechat_id == 0)
                 cc.cs.PlayerInfo.wechat_id =1
     },

@@ -108,14 +108,16 @@ cc.Class({
         this.tonghuakuang.active = false
         this.currentScroll.active = false;
 
-        if (parseInt(cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"]) > parseInt(cc.cs.PlayerInfo.level)) {
+        if(this.inputTableBtn != null)
+            this.inputTableBtn.active = false
+
+        if (cc.cs.PlayerInfo.canPhone()) {
+            this.phoneBtn.active = true
+        }else{
             this.phoneBtn.active = false
         }
-        if (cc.cs.PlayerInfo.Phone_ID == 0 ||
-            cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_AUDIO"] == "dummy")
-            this.NPCID = cc.cs.PlayerInfo.Phone_ID + 1
-        else
-            this.NPCID = cc.cs.PlayerInfo.Phone_ID
+        cc.log("this.NPCID = cc.cs.PlayerInfo.Phone_ID   " + cc.cs.PlayerInfo.Phone_ID)
+        this.NPCID = cc.cs.PlayerInfo.Phone_ID
         this.showCompletePhone()
     },
 
@@ -240,49 +242,7 @@ cc.Class({
         var count = 0
         var startIndex = 0
 
-        if (cc.cs.PlayerInfo.Phone_ID == 0 || cc.cs.PlayerInfo.Phone_ID == 1 ||
-            (
-                cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"] !=
-                cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID))]["PHONE_LEV"]) ||
-            (cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) - 1)]["PHONE_LEV"] !=
-                cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID))]["PHONE_LEV"])
-        ) {
-            return
-        } else {
-            var currentPhoneLevel = cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_LEV"]
-            if (currentPhoneLevel == 2) {
-                startIndex = 1
-            } else {
-
-                for (var i = cc.cs.PlayerInfo.Phone_ID; i > 1; --i) {
-                    if (cc.cs.gameData.phone["PHONE_ID_" + (i - 1)]["PHONE_LEV"] < currentPhoneLevel) {
-                        startIndex = i
-                        break
-                    }
-                }
-            }
-            var id = startIndex
-            var index = 0
-
-            for (var i = 0; i < cc.cs.PlayerInfo.Phone_player_ID.length; ++i) {
-                if (cc.cs.PlayerInfo.Phone_player_ID[i] >= startIndex) {
-                    index = i
-                    break;
-                }
-            }
-
-            while (id < cc.cs.PlayerInfo.Phone_ID) {
-                this.setInputMsg1(id)
-                cc.log(id)
-                if (id >= cc.cs.PlayerInfo.Phone_ID) break;
-                if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy") {
-                    id = cc.cs.PlayerInfo.Phone_player_ID[index]
-                    index++
-                } else {
-                    id = cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"]
-                }
-            }
-        }
+       
 
     },
 
@@ -311,6 +271,7 @@ cc.Class({
 
     setInputMsg: function(id) {
 
+        cc.log("setInputMsg  " + id)
         if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
             this.loadCruuentTalk(this.currentScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
             if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"] != "dummy") {
@@ -542,8 +503,9 @@ cc.Class({
         newNode.y = newNode.height * 0.5
     },
     onEnable : function(){
-        if(this.inputTableBtn != null)
-            this.inputTableBtn.active = false
+        
+        
+        this.showNormal()
     },
     // use this for initialization
     onLoad: function() {
@@ -576,7 +538,6 @@ cc.Class({
 
         this.inputTableBtn.active = false
 
-        this.showNormal()
         this.playerInfoBackBtn.on("click", (event) => {
             self.showPhoneView()
         })

@@ -242,6 +242,7 @@ cc.Class({
 
     canPhone: function() {
         var pPhoneData = cc.cs.gameData.getphoneData(this.Phone_ID)
+        
         if (pPhoneData != null) {
             if (pPhoneData["PHONE_LEV"] <= this.level) {
                 if (pPhoneData["PHONE_AUDIO"] != "dummy") {
