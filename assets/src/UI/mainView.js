@@ -126,6 +126,7 @@ cc.Class({
     },
 
     addDiBianBtn : function(icon){
+        if(cc.cs.utils.contains( this.addIconArry,icon)) return
         this.addIcon = icon
         var addIndex = 0
         for(var i = 0 ; i < this.addIconArry.length; ++i){

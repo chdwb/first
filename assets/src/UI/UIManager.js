@@ -280,6 +280,45 @@ cc.Class({
         popupNode.getComponent("NodeUse").setCallBack(goodsid, okHandle, max, obj, type)
     },
 
+    setNanTalk : function(nanNode,text,name){
+        var nameText = nanNode.getChildByName("name").getComponent(cc.Label)
+        var talkText = nanNode.getChildByName("talk").getComponent(cc.Label)
+        talkText.string = text
+        nameText.string = name
+        if(talkText.node.height < 85){
+            nvNode.height = 85
+        }else{
+            nvNode.height = talkText.node.height + 20
+        }
+        nameText.node.y = nvNode.height * 0.5
+    },
+
+    setNvTalk : function(nvNode,text,name, issound){
+        var nameText = nvNode.getChildByName("name").getComponent(cc.Label)
+        var talkText = nvNode.getChildByName("talk").getComponent(cc.Label)
+        var soundTalk = nvNode.getChildByName("soundBtn")
+        if(soundTalk.issound){
+            soundTalk.active = true
+            nvNode.width = 586
+            talkText.node.width = 536
+            talkText.node.x = 25
+        }else{
+            soundTalk.active = false
+            nvNode.width = 740
+            talkText.node.width = 690
+            talkText.node.x = 25
+        }
+        talkText.string = text
+        nameText.string = name
+
+        if(talkText.node.height < 85){
+            nvNode.height = 85
+        }else{
+            nvNode.height = talkText.node.height + 20
+        }
+        nameText.node.y = nvNode.height * 0.5
+        soundTalk.y = nvNode.height * 0.5 + soundTalk.height * 0.5
+    },
 
 
     // called every frame, uncomment this function to activate update callback
