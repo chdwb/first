@@ -17,7 +17,7 @@ cc.Class({
         },
 
         currentScroll: {
-            type: cc.ScrollView,
+            type: cc.Node,
             default: null
         },
 
@@ -96,7 +96,7 @@ cc.Class({
         this.playerInfoView.active = false
         this.phoneBtn.active = false
         this.everInfoScroll.node.active = false
-        this.currentScroll.node.active = true;
+        this.currentScroll.active = true;
     },
 
     showNormal: function() {
@@ -106,7 +106,7 @@ cc.Class({
         this.everInfoScroll.node.active = true
         this.inputTableBtn.active = false
         this.tonghuakuang.active = false
-        this.currentScroll.node.active = false;
+        this.currentScroll.active = false;
 
         if (parseInt(cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"]) > parseInt(cc.cs.PlayerInfo.level)) {
             this.phoneBtn.active = false
@@ -235,7 +235,7 @@ cc.Class({
         this.phoneBtn.active = false
         this.everInfoScroll.node.active = false
         this.tonghuakuang.active = true
-        this.currentScroll.node.active = true;
+        this.currentScroll.active = true;
 
         var count = 0
         var startIndex = 0
@@ -247,7 +247,6 @@ cc.Class({
             (cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) - 1)]["PHONE_LEV"] !=
                 cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID))]["PHONE_LEV"])
         ) {
-            this.clearCurrentTalk()
             return
         } else {
             var currentPhoneLevel = cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_LEV"]
@@ -326,28 +325,46 @@ cc.Class({
 
     showInputTable: function(id) {
         var self = this
-        if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
+        cc.log("1   " + id)
+        var phoneData = cc.cs.gameData.getphoneData(id)
+        if (phoneData["PHONE_OPTION"] == "dummy" && phoneData["PHONE_AUDIO"] != "dummy") {
             this.inputTableBtn.active = true
             var replayId = []
             var btn1 = this.inputTableBtn.getChildByName("btn1")
             var btn2 = this.inputTableBtn.getChildByName("btn2")
             var btn3 = this.inputTableBtn.getChildByName("btn3")
+
+            var text1 = btn1.getChildByName("Label").getComponent(cc.Label)
+            var text2 = btn2.getChildByName("Label").getComponent(cc.Label)
+            var text3 = btn3.getChildByName("Label").getComponent(cc.Label)
+
+            var zs1 = btn1.getChildByName("xuanxiangkkuangdexian")
+            var zs2 = btn2.getChildByName("xuanxiangkkuangdexian")
+            var zs3 = btn3.getChildByName("xuanxiangkkuangdexian")
+
             btn1.targetOff(btn1)
             btn2.targetOff(btn2)
             btn3.targetOff(btn3)
             btn1.active = true;
             btn2.active = true;
             btn3.active = true;
-            for (var i = 1; i <= cc.cs.gameData.phone["TOTAL_COUNT"]; ++i) {
-                if (cc.cs.gameData.phone["PHONE_ID_" + i]["PHONE_OPTION"] == cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"]) {
-                    replayId.push(cc.cs.gameData.phone["PHONE_ID_" + i])
+            for (var i = cc.cs.gameData.phone["FIRST"]; i <= cc.cs.gameData.phone["TOTAL_COUNT"]; ++i) {
+                cc.log("2   " + i)
+                var itemData = cc.cs.gameData.getphoneData(i)
+
+                if (itemData["PHONE_OPTION"] == phoneData["PHONE_AUDIO"]) {
+                    replayId.push(itemData)
                 }
-                if (cc.cs.gameData.phone["PHONE_ID_" + i]["PHONE_OPTION"] != "dummy" && cc.cs.gameData.phone["PHONE_ID_" + i]["PHONE_OPTION"] > cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"])
+                if (itemData["PHONE_OPTION"] != "dummy" && itemData["PHONE_OPTION"] > phoneData["PHONE_AUDIO"])
                     break;
             }
 
             if (replayId.length == 1) {
-                btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["PHONE_MSG"]
+                text1.string = replayId[0]["PHONE_MSG"]
+                text1.node.y = -6
+                btn1.height = text1.node.height + 12
+                btn1.y = 0
+                zs1.active = false
                 btn1.PHONE_ID = replayId[0]["PHONE_ID"]
                 btn1.on("click", (event) => {
                     cc.log("PHONE_ID = " + event.target.PHONE_ID)
@@ -357,10 +374,20 @@ cc.Class({
                 }, btn1)
                 btn2.active = false;
                 btn3.active = false;
+                this.inputTableBtn.height = btn1.height
             } else
             if (replayId.length == 2) {
-                btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["PHONE_MSG"]
-                btn2.getChildByName("Label").getComponent(cc.Label).string = replayId[1]["PHONE_MSG"]
+                text1.string = replayId[0]["PHONE_MSG"]
+                text2.string = replayId[1]["PHONE_MSG"]
+                text1.node.y = -6
+                text2.node.y = -6
+                btn1.height = text1.node.height + 12
+                btn2.height = text2.node.height + 12
+                btn1.y = 0
+                btn2.y = -btn1.height
+                zs1.active = true
+                zs1.y = - btn1.height
+                zs2.active = false
                 btn1.PHONE_ID = replayId[0]["PHONE_ID"]
                 btn2.PHONE_ID = replayId[1]["PHONE_ID"]
                 btn1.on("click", (event) => {
@@ -377,10 +404,25 @@ cc.Class({
                 }, btn2)
 
                 btn3.active = false;
+                this.inputTableBtn.height = btn1.height + btn2.height
             } else {
-                btn1.getChildByName("Label").getComponent(cc.Label).string = replayId[0]["PHONE_MSG"]
-                btn2.getChildByName("Label").getComponent(cc.Label).string = replayId[1]["PHONE_MSG"]
-                btn3.getChildByName("Label").getComponent(cc.Label).string = replayId[2]["PHONE_MSG"]
+                text1.string = replayId[0]["PHONE_MSG"]
+                text2.string = replayId[1]["PHONE_MSG"]
+                text3.string = replayId[2]["PHONE_MSG"]
+                text1.node.y = -6
+                text2.node.y = -6
+                text3.node.y = -6
+                btn1.height = text1.node.height + 12
+                btn2.height = text2.node.height + 12
+                btn3.height = text3.node.height + 12
+                btn1.y = 0
+                btn2.y = -btn1.height
+                btn3.y = -btn1.height - btn2.height
+                zs1.active = true
+                zs1.y = - btn1.height
+                zs2.active = true
+                zs2.y = - btn2.height
+                zs3.active = false
                 btn1.PHONE_ID = replayId[0]["PHONE_ID"]
                 btn2.PHONE_ID = replayId[1]["PHONE_ID"]
                 btn3.PHONE_ID = replayId[2]["PHONE_ID"]
@@ -403,6 +445,7 @@ cc.Class({
                     self.SendPhone(event.target.PHONE_ID)
                     self.tonghuakuang.active = true
                 }, btn3)
+                this.inputTableBtn.height = btn1.height + btn2.height + btn3.height
             }
         } else {
             return
@@ -425,7 +468,6 @@ cc.Class({
 
     SendPhone: function(phoneid) {
         this.currentPlayerPhoneID = phoneid;
-        cc.log("SendPhone = " + phoneid + "         " + cc.cs.PlayerInfo.api_token)
         this.setInputMsg(phoneid)
         cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.api_token, phoneid, this.SendPhoneHandle, this)
     },
@@ -464,48 +506,23 @@ cc.Class({
         }
         //弹窗
     },
-    clearCurrentTalk: function() {
-        this.currentScroll.content.removeAllChildren(true)
-    },
+
     loadCruuentTalk: function(scroll, isPlayer, msg, name) {
         var height = 0;
-        var children = scroll.content.getChildren();
-
-        var newNode = null;
+        var nanNode = scroll.getChildByName("nan")
+        var nvNode = scroll.getChildByName("nv")
         var addHeight = 0
         if (isPlayer) {
-            newNode = cc.instantiate(this.nanzhuTalkPrefab)
-            newNode.cyH = this.nanzhuSize.height
-            addHeight = this.nanzhuSize.height
-            newNode.getChildByName("name").getComponent(cc.Label).string = name + " ·"
+            cc.cs.UIMgr.setNanTalk(nanNode, msg,  name + " ·")
+            nvNode.active = false
+            nvNode.y = 80 - scroll.height * 0.5 + nvNode.height *0.5
         } else {
-            newNode = cc.instantiate(this.nvzhuTalkPrefab)
-            addHeight = this.nvzhuSize.height
-            newNode.cyH = this.nvzhuSize.height
-            newNode.getChildByName("name").getComponent(cc.Label).string = "· " + name
+            nanNode.active = false
+            cc.cs.UIMgr.setNvTalk(nvNode, msg,  "· " + name)
+            nanNode.y = 80 - scroll.height * 0.5 + nanNode.height *0.5
         }
-
-        newNode.getChildByName("talk").getComponent(cc.Label).string = msg
-
-        for (var i = 0; i < children.length; ++i) {
-            height += children[i].cyH
-            children[i].y += addHeight;
-        }
-        height += addHeight;
-        if (scroll.content.height < height)
-            scroll.content.height = height;
-        scroll.content.addChild(newNode)
-        newNode.y = newNode.height * 0.5
     },
 
-    computerTalkZSize: function() {
-        var y = this.nvzhuTalkPrefab.data.height + this.nvzhuTalkPrefab.data.getChildByName("name").height + (this.nvzhuTalkPrefab.data.getChildByName("name").y - this.nvzhuTalkPrefab.data.height * 0.5 - this.nvzhuTalkPrefab.data.getChildByName("name").height * 0.5)
-        this.nvzhuSize = cc.size(this.nvzhuTalkPrefab.data.width, y)
-        y = this.nanzhuTalkPrefab.data.height + this.nanzhuTalkPrefab.data.getChildByName("name").height + (this.nanzhuTalkPrefab.data.getChildByName("name").y - this.nanzhuTalkPrefab.data.height * 0.5 - this.nanzhuTalkPrefab.data.getChildByName("name").height * 0.5)
-        this.nanzhuSize = cc.size(this.nanzhuTalkPrefab.data.width, y)
-
-
-    },
     // use this for initialization
     onLoad: function() {
 
@@ -518,11 +535,13 @@ cc.Class({
 
         this.nanzhuTalkPrefab = cc.loader.getRes("prefab/nanTalkItem", cc.Prefab)
 
-        this.computerTalkZSize();
+        var nv = cc.instantiate(this.nvzhuTalkPrefab)
+        nv.name = "nv"
+        this.currentScroll.addChild(nv)
 
-
-
-
+        var nan = cc.instantiate(this.nanzhuTalkPrefab)
+        nan.name = "nan"
+        this.currentScroll.addChild(nan)
 
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
 
@@ -546,7 +565,6 @@ cc.Class({
             self.isAction = false
             self.currentTime = 0
             self.totalTime = 0
-            self.clearCurrentTalk()
         })
 
         this.phoneBtn.on("click", (event) => {
