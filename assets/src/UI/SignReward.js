@@ -27,22 +27,14 @@ cc.Class({
             type:cc.Node
             
         },
-         button1:{
+         getbutton:{
             default:null,
             type:cc.Button
             
         },
-        button2:{
-            default:null,
-            type:cc.Button
-            
-        },
+       
 
-         button3:{
-            default:null,
-            type:cc.Button
-            
-        },
+        
     },
     
     onBack:function(){
@@ -62,10 +54,13 @@ cc.Class({
         if (JasonObject.success === true) {
             cc.cs.UIMgr.showTip("签到成功", 1.0)
 
-            cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
+            //cc.cs.PlayerInfo.signday = JasonObject.content.info.signday
             cc.cs.PlayerInfo.sign = true
-             cc.cs.PlayerInfo.money = JasonObject.content.info.money
-            var array = cc.cs.PlayerInfo.Bag
+            // cc.cs.PlayerInfo.money = JasonObject.content.info.money
+
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+
+           /* var array = cc.cs.PlayerInfo.Bag
             var isFind = false
             for(var i = 0;i < array.length;i++)
             {
@@ -101,7 +96,7 @@ cc.Class({
                     newgoods.num = JasonObject.content.info.goods2_num
                 
                 cc.cs.PlayerInfo.Bag.push(newgoods)
-            }
+            }*/
 
 
 
@@ -124,18 +119,13 @@ cc.Class({
         cc.log("day = "+cc.cs.PlayerInfo.sign)
         if(cc.cs.PlayerInfo.sign  == true)
         {
-           
+           this.getbutton.interactable = false
           
-           this.button2.enabled  = false
-           this.button1.enabled  = false
-           this.button1.node.active = false;
-           this.button2.node.active = true;
         }
         else
         {
             
-            this.button1.node.active = true;
-           this.button2.node.active = false;
+           this.getbutton.interactable = true
         }
 
          
