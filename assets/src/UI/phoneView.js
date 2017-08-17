@@ -460,10 +460,7 @@ cc.Class({
     },
 
     onbackBtn: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
-
-
+        cc.cs.UIMgr.closeView()
     },
 
     SendPhone: function(phoneid) {

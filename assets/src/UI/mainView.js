@@ -222,8 +222,7 @@ cc.Class({
 
 
     goWechat: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.WECHATVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.WECHATVIEW)
     },
 
     goWeibo: function() {
