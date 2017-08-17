@@ -8147,7 +8147,8 @@
     "currentTime": 0,
     "isAction": false,
     "handle": null,
-    "handleobj": null
+    "handleobj": null,
+    "doID": 0
   },
   {
     "__type__": "cc.Node",
@@ -9677,7 +9678,8 @@
     "missionBtnList": [],
     "missionItemPrefab": null,
     "currentWorkID": "1",
-    "dateLogID": ""
+    "dateLogID": "",
+    "isLoad": false
   },
   {
     "__type__": "cc.Node",
@@ -22203,12 +22205,12 @@
     ],
     "_prefab": null,
     "_id": "70b4dvdkNlEb6ljgFU6rhtI",
-    "_opacity": 0,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 184,
-      "g": 184,
-      "b": 184,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
