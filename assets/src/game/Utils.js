@@ -2,15 +2,16 @@ cc.Class({
     extends: cc.Component,
 
     statics: {
-        // foo: {
-        //    default: null,      // The default value will be used only when the component attaching
-        //                           to a node for the first time
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
+        contains:function (arr, obj) {  
+            var i = arr.length;  
+            while (i--) {  
+                if (arr[i] === obj) {  
+                    return true;  
+                }  
+            }  
+            return false;  
+        }  
     },
+
+    
 });

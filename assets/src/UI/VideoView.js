@@ -21,13 +21,12 @@ cc.Class({
     onClick : function()
     {
        cc.log("play video " + cc.cs.PlayerInfo.playvideo)
-       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
 
     },
 
     videoDoneHandle:function(ret)
     {
-        
 
         var JasonObject = JSON.parse(ret);
                 if (JasonObject.success === true) {
@@ -35,10 +34,7 @@ cc.Class({
                     cc.cs.UIMgr.showTip("视频完成", 1.0)
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
-
-                    var parent = this.node.parent
-                    parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
-                    
+                    cc.cs.UIMgr.closeView()
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
                 }

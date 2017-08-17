@@ -33,6 +33,8 @@ cc.Class({
         cc.cs.http = require("HTTPMgr")
         cc.cs.gameData = require("JSDATA")
 
+        cc.cs.utils = require("Utils")
+
         var gameMgr = require("gameMgr")
         cc.cs.gameMgr = new gameMgr()
 

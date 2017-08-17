@@ -216,9 +216,7 @@ cc.Class({
     },
 
     goPhone: function() {
-        this.addDiBianBtn(this.wechatBtn)
-        //var parent = this.node.parent
-       // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.PHONEVIEW)
     },
 
 
@@ -252,6 +250,16 @@ cc.Class({
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
+    canAddIcon : function(){
+        for(var i = 0 ; i < this.iconArray.length; ++i){
+            if(cc.cs.PlayerInfo.level >= this.iconArray[i].lev){
+                if(cc.cs.utils.contains(this.addIconArry,  this.iconArray[i]))
+                    return null
+                else
+                    return this.iconArray[i]
+            }
+        }
+    },
 
     updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
@@ -264,16 +272,20 @@ cc.Class({
         this.setGold(cc.cs.PlayerInfo.money)
         this.setDay(leveldata["LEV_DAY"])
 
-        this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
+        /*this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
         this.wechatBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_3"]["FUNCTION_LEVEL"]
         this.workBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
         this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
-        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
+        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]*/
 
-        /*if (cc.cs.PlayerInfo.playvideo != 0) {
-            var parent = this.node.parent
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.VIDEOVIEW)
-        }*/
+        if (cc.cs.PlayerInfo.playvideo != 0) {
+            cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
+        }else{
+            var icon = this.canAddIcon()
+            if(icon != null){
+                this.addDiBianBtn(icon)
+            }
+        }
         if (this.phoneBtn.active)
             if (this.node.parent.getChildByName("phoneView").getComponent("phoneView").canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;

@@ -54,6 +54,7 @@ cc.Class({
         if(this.viewStack.length > 0){
             var view = this.viewStack.pop()
             view.active = false
+            cc.log("closeView name = " + view.name)
             if(this.viewStack.length > 0){
                 this.viewStack[this.viewStack.length - 1].active = true
             }else{

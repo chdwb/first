@@ -291,11 +291,7 @@ cc.Class({
     onLoad: function() {
         var self = this
         this.backBtn.on("click", (event) => {
-            var parent = this.node.parent
-            if(self.isWork)
-                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
-            else
-                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+            cc.cs.UIMgr.closeView()
         }, this.backBtn)
 
         this.rightNowBtn.on("click", (event) => {
