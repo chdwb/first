@@ -605,8 +605,9 @@ cc.Class({
 
         this.backBtn.on("click", (event) => {
             //back
-            var parent = self.node.parent
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            //var parent = self.node.parent
+            //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+			cc.cs.UIMgr.closeView()
         })
         this.showCompletePhone()
     },

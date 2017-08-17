@@ -127,8 +127,9 @@ cc.Class({
     onBack:function()
     {
         cc.log("onback")
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        cc.cs.UIMgr.closeView()
     },
     
     initialize2: function(itemArray)

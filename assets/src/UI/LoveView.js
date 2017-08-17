@@ -301,8 +301,9 @@ cc.Class({
     },
 
     goShop: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
     },
 
     // called every frame, uncomment this function to activate update callback

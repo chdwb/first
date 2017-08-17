@@ -242,8 +242,9 @@ cc.Class({
         }, this.startBtn)
         this.backBtn.on("click", (event) => {
             //添加回退代码
-            var parent = self.node.parent
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            //var parent = self.node.parent
+            //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            cc.cs.UIMgr.closeView()
    
         }, this.backBtn)
     },

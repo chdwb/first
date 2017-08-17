@@ -17,8 +17,8 @@ cc.Class({
             type: cc.Label,
         },
          itemDec:{
-            default:null,
-            type: cc.Label,
+            type: cc.RichText,
+            default: null
         },
          itemPrice:{
             default:null,
@@ -63,7 +63,18 @@ cc.Class({
         this.GoodID = good["GOODS_ID"];
         this.itemName.string = good["GOODS_NAME"]
         this.itemPrice.string = good["GOODS_PRICE"]
-        this.itemDec.string = good["GOODS_DESC"]
+        //this.itemDec.string = good["GOODS_DESC"]
+        var text = good["GOODS_DESC"]
+
+        if(good["GOODS_EFFECT_VALUE"] != "dummy")
+        {
+            this.itemDec.string = text.replace(/0/g, "<color=#D16363>" + good["GOODS_EFFECT_VALUE"]+"</c>" )
+        }
+        else
+        {
+            this.itemDec.string = text
+        }
+
         
         cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.GoodID)
     },
