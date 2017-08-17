@@ -597,9 +597,14 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             cc.cs.UIMgr.showTip("注册成功", 1.0)
-            this.setLoginNode()
+            //this.setLoginNode()
             this.loginIDEdit.string = this.registerIDEdit.string
             this.loginPasswordEdit.string = this.registerPasswordEdit.string
+
+            cc.log("注册账号为："+this.registerIDEdit.string)
+            cc.log("注册账号为："+this.loginIDEdit.string)
+            
+            cc.cs.gameMgr.sendLogin(this.registerIDEdit.string, this.registerPasswordEdit.string, this.loginHandle, this)
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
@@ -614,13 +619,22 @@ cc.Class({
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
             this.updatePlayerInfo(JasonObject)
+            cc.log("账号为"+this.registerIDEdit.string)
+             cc.log("账号为"+this.loginIDEdit.string)
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')
             //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
            
             this.setStartGameNode();
-            this.gustIDLabel.string = this.loginIDEdit.string;
+            if(this.loginIDEdit.string == "" || this.loginIDEdit.string == null)
+            {
+                this.gustIDLabel.string = this.registerIDEdit.string;
+            }
+            else if(this.registerIDEdit.string == "" || this.registerIDEdit.string == null)
+            {
+                this.gustIDLabel.string = this.loginIDEdit.string;
+            }
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
