@@ -406,7 +406,8 @@ cc.Class({
             }
 
             for(var i = 1; i <= 5; ++i){
-                cc.cs.PlayerInfo.updateGoodsTimes(i, asonObject.content.info["leftbuygoods" + i+"times"])
+
+                cc.cs.PlayerInfo.updateGoodsTimes(i, JasonObject.content.info["leftbuygoods" + i+"times"])
             }
 
             /*cc.cs.PlayerInfo.Work1LeftTImes = JasonObject.content.info.work_id1

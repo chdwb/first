@@ -291,11 +291,11 @@ cc.Class({
         talkText.string = text
         nameText.string = name
         if(talkText.node.height < 85){
-            nvNode.height = 85
+            nanNode.height = 85
         }else{
-            nvNode.height = talkText.node.height + 20
+            nanNode.height = talkText.node.height + 20
         }
-        nameText.node.y = nvNode.height * 0.5
+        nameText.node.y = nanNode.height * 0.5
     },
 
     setNvTalk : function(nvNode,text,name, issound){

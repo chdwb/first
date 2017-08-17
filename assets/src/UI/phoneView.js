@@ -509,33 +509,18 @@ cc.Class({
 
     loadCruuentTalk: function(scroll, isPlayer, msg, name) {
         var height = 0;
-        var children = scroll.content.getChildren();
-
-        var newNode = null;
+        var nanNode = scroll.getChildByName("nan")
+        var nvNode = scroll.getChildByName("nv")
         var addHeight = 0
         if (isPlayer) {
-            newNode = cc.instantiate(this.nanzhuTalkPrefab)
-            newNode.cyH = this.nanzhuSize.height
-            addHeight = this.nanzhuSize.height
-            newNode.getChildByName("name").getComponent(cc.Label).string = name + " ·"
+            cc.cs.UIMgr.setNanTalk(nanNode, msg,  name + " ·")
+            nvNode.active = false
+            nvNode.y = 80 - scroll.height * 0.5 + nvNode.height *0.5
         } else {
-            newNode = cc.instantiate(this.nvzhuTalkPrefab)
-            addHeight = this.nvzhuSize.height
-            newNode.cyH = this.nvzhuSize.height
-            newNode.getChildByName("name").getComponent(cc.Label).string = "· " + name
+            nanNode.active = false
+            cc.cs.UIMgr.setNvTalk(nvNode, msg,  "· " + name)
+            nanNode.y = 80 - scroll.height * 0.5 + nanNode.height *0.5
         }
-
-        newNode.getChildByName("talk").getComponent(cc.Label).string = msg
-
-        for (var i = 0; i < children.length; ++i) {
-            height += children[i].cyH
-            children[i].y += addHeight;
-        }
-        height += addHeight;
-        if (scroll.content.height < height)
-            scroll.content.height = height;
-        scroll.content.addChild(newNode)
-        newNode.y = newNode.height * 0.5
     },
 
     // use this for initialization
@@ -555,7 +540,7 @@ cc.Class({
         this.currentScroll.addChild(nv)
 
         var nan = cc.instantiate(this.nanzhuTalkPrefab)
-        nan.name = "nv"
+        nan.name = "nan"
         this.currentScroll.addChild(nan)
 
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
