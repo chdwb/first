@@ -141,7 +141,7 @@ cc.Class({
 
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
-        data["datelogid"] = cc.cs.PlayerInfo.datelogid
+        data["datelogid"] = cc.cs.PlayerInfo.datelog_id
         this.sendHttp("ID_10", data, handle, obj)
     },
 

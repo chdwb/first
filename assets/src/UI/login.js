@@ -397,11 +397,13 @@ cc.Class({
             cc.cs.PlayerInfo.date_id = JasonObject.content.info.date_id
             for(var i = 1; i <= cc.cs.gameData.date["TOTAL_COUNT"] ; ++i){
                 cc.cs.PlayerInfo.updateLoveFreeTimes(i, JasonObject.content.info["date_id" + i])
+                cc.cs.PlayerInfo.updateLovePrice(i, JasonObject.content.info["Love" + i + "Price"])
+                cc.log(JasonObject.content.info["Love" + i + "Price"] + "price")
             }
 
             for(var i = 1; i < cc.cs.gameData.work["TOTAL_COUNT"]; ++i){
                 cc.cs.PlayerInfo.updateWorkFreeTimes(i, JasonObject.content.info["work_id" + i])
-                cc.cs.PlayerInfo.updateLovePrice(i, JasonObject.content.info["Love" + i + "Price"])
+                
             }
 
             /*cc.cs.PlayerInfo.Work1LeftTImes = JasonObject.content.info.work_id1

@@ -33,7 +33,7 @@ cc.Class({
         currentWorkID: "1",
 
         dateLogID: "",
-
+        isLoad : false
     },
 
     refresh: function() {
@@ -267,47 +267,23 @@ cc.Class({
             cc.cs.UIMgr.addItem_verticalScrollView(this.list, itemNode, 0)
         }
     },
+    start:function(){
+    },
     // use this for initialization
     onLoad: function() {
+        cc.log("love view  onload")
         var self = this
         this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
         for(var i = cc.cs.gameData.date["FIRST"]; i <= cc.cs.gameData.date["LAST"]; ++i){
             var itemNode = cc.instantiate(this.missionItemPrefab)
-            var itemCom = itemNode.addComponent("missionItemComponent")
-            itemCom.setItem(i, false)
-
+            var itemCom = itemNode.getComponent("missionItemComponent")
+            itemCom.setItem( i, false)
             cc.cs.UIMgr.addItem_horizontalScrollView(this.list, itemNode, 20)
         }
-
-
-        //this.loadWorkItem(cc.cs.PlayerInfo.work_id)
-        //this.currentWorkID = "1"
-       /* this.startBtn.on("click", (event) => {
-            //添加开始工作代码
-
-
-            if (cc.cs.PlayerInfo.getLoveFreeTimes(self.currentWorkID) <= 0) {
-                //cc.cs.UIMgr.showTip("约会机会不够",1.0)
-                //var array = cc.cs.gameData.date["DATE_ID_"+self.currentWorkID][DATE_BUY_TIMES_NEED].split(",")
-                // cc.cs.PlayerInfo
-                cc.cs.UIMgr.showPopupOC("", "是否花" + cc.cs.PlayerInfo["Love" + self.currentWorkID + "Price"] + "金币购买次数", () => {
-                        self.buyLoveTime()
-                    },
-                    () => {
-
-                        var parent = this.node.parent
-                        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
-                    });
-            } else {
-                this.startWork()
-            }
-
-
-        }, this.startBtn)*/
         this.backBtn.on("click", (event) => {
             //添加回退代码
             var parent = self.node.parent
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            cc.cs.UIMgr.closeView()
 
         }, this.backBtn)
        // this.refresh()
@@ -315,6 +291,13 @@ cc.Class({
 
     onEnable: function() {
         this.list.content.x = -this.list.node.width * 0.5
+        var children = this.list.content.getChildren();
+        var index = cc.cs.gameData.date["FIRST"]
+        for(var i = 0; i < children.length; ++i){
+            var itemCom = children[i].getComponent("missionItemComponent")
+            itemCom.refresh()
+            index++
+        }
     },
 
     goShop: function() {

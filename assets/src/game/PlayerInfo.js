@@ -50,7 +50,7 @@ cc.Class({
 
         date_id: 0,
 
-        datelogid: 0,
+        datelog_id: 0,
 
         NPCName: "许梦田",
 
@@ -82,6 +82,11 @@ cc.Class({
     updateLovePrice: function(id, value) {
         id = parseInt(id)
         this.LovePrice[id - 1] = parseInt(value)
+    },
+
+    getLovePrice: function(id) {
+        id = parseInt(id)
+        return this.LovePrice[id - 1]
     },
 
     addZoneReplies: function(value) {
@@ -170,17 +175,24 @@ cc.Class({
         for (var item in info) {
             if (this.hasOwnProperty(item)) {
                 this[item] = info[item]
+                cc.log("item ==" + item + "  this[item]  == "+  this[item] + "  info[item] == " +info[item] )
             } else {
                 if (item.match(/goods\d+_id/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
                     this.modfiyBag(info[item], info["goods" + n + "_num"])
                 } else if (item.match(/work_id\d/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
                     this.updateWorkFreeTimes(n, info[item])
                 } else if (item.match(/date_id\d/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
                     this.updateLoveFreeTimes(n, info[item])
-                } else if (item == "goods_id") {
+                }else if (item.match(/Love\dPrice/)) {
+                    var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    this.updateLovePrice(n, info[item])
+                }else if (item == "goods_id") {
                     this.modfiyBag(info[item], info["num"])
                 } else if (item == "phone_audio") {
                     this.Phone_ID = info[item]

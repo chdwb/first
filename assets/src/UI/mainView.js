@@ -207,8 +207,7 @@ cc.Class({
 
     goLove: function() {
        // this.addDiBianBtn(this.wechatBtn)
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+       cc.cs.UIMgr.openView(cc.cs.UIMgr.LOVEVIEW)
     },
 
     goZone: function() {
@@ -271,10 +270,10 @@ cc.Class({
         this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
         this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
 
-        if (cc.cs.PlayerInfo.playvideo != 0) {
+        /*if (cc.cs.PlayerInfo.playvideo != 0) {
             var parent = this.node.parent
             parent.getComponent("GameScene").SetView(cc.cs.UIMgr.VIDEOVIEW)
-        }
+        }*/
         if (this.phoneBtn.active)
             if (this.node.parent.getChildByName("phoneView").getComponent("phoneView").canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;

@@ -57,10 +57,10 @@ cc.Class({
             if(this.viewStack.length > 0){
                 this.viewStack[this.viewStack.length - 1].active = true
             }else{
-                this.gameScene.MAINVIEW.active = true;
+                this.gameScene.MainView.active = true;
             }
         }else{
-            this.gameScene.MAINVIEW.active = true;
+            this.gameScene.MainView.active = true;
         }
     },
 
@@ -75,35 +75,52 @@ cc.Class({
             cc.log("error gameScene is null")
         }else{
             if(this.MAINVIEW == id){
-                this.gameScene.MAINVIEW.active = true;
+                this.gameScene.MainView.active = true;
             }else if(this.MISSONVIEW ==id){
                 this.viewStack.push(this.gameScene.MissonView)
+                this.gameScene.MainView.active =false
             }else if(this.LOVEVIEW == id){
                 this.viewStack.push(this.gameScene.LoveView)
+                this.gameScene.MainView.active =false
             }else if(this.ACTIONVIEW == id){
                 this.viewStack.push(this.gameScene.ActionView)
+                this.gameScene.MainView.active =false
             }else if(this.PHONEVIEW == id){
                 this.viewStack.push(this.gameScene.PhoneView)
+                this.gameScene.MainView.active =false
             }else if(this.ZONEVIEW == id){
                 this.viewStack.push(this.gameScene.ZoneView)
+                this.gameScene.MainView.active =false
             }else if(this.BAGVIEW == id){
                 this.viewStack.push(this.gameScene.BagView)
+                this.gameScene.MainView.active =false
             }else if(this.SHOPVIEW == id){
                 this.viewStack.push(this.gameScene.ShopView)
+                this.gameScene.MainView.active =false
             }else if(this.SIGNREWARDVIEW == id){
                 this.viewStack.push(this.gameScene.SignRewardView)
+                this.gameScene.MainView.active =false
             }else if(this.GIFTVIEW == id){
                 this.viewStack.push(this.gameScene.GiftView)
+                this.gameScene.MainView.active =false
             }else if(this.WECHATVIEW == id){
                 this.viewStack.push(this.gameScene.WechatView)
+                this.gameScene.MainView.active =false
             }else if(this.VIDEOVIEW == id){
                 this.viewStack.push(this.gameScene.VideoView)
+                this.gameScene.MainView.active =false
             }
 
             for(var i = 0 ; i < this.viewStack.length -1 ; ++i){
                 this.viewStack[i].active = false
             }
             this.viewStack[this.viewStack.length -1].active = true
+
+            cc.log("openvIew ------------------------------------------------------------------------start")
+            for(var i = 0 ; i < this.viewStack.length ; ++i){
+                cc.log(this.viewStack[i].name + "      =      " +  this.viewStack[i].active)
+            }
+            cc.log("openvIew ------------------------------------------------------------------------end")
         }
     },
 
@@ -142,16 +159,12 @@ cc.Class({
         } else {
             scrollView.content.width += horizontalSpace + node.width
             pos.x = ((1.0 - scrollView.content.anchorX) * scrollView.content.width - (1.0 - node.anchorX) * node.width) +
-                ((0 - scrollView.content.anchorX) * (scrollView.content.width + horizontalSpace))
-
-           
+                ((0 - scrollView.content.anchorX) * (scrollView.content.width + horizontalSpace))  
         }
         var diffHeight = scrollView.content.height - node.height
-
         pos.y = (1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height - diffHeight * 0.5
-
+        node.active = true
         scrollView.content.addChild(node)
-        cc.log(pos.x + "                " + pos.y )
         node.setPosition(pos)
     },
 
