@@ -314,8 +314,7 @@ cc.Class({
     },
 
     onEnable: function() {
-        cc.log("onenable")
-       // this.refresh()
+        this.list.content.x = -this.list.node.width * 0.5
     },
 
     goShop: function() {

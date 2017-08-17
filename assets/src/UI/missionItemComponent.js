@@ -96,6 +96,7 @@ cc.Class({
     },
 
      loadDate: function(result) {
+        var self = this
         var dateData = cc.cs.gameData.getdateData(this.itemID)
         this.titleText.string = "恋爱"
         cc.cs.UIMgr.changeSprite(this.doSprite.node, "work_quest/quest/" + this.itemID)
@@ -126,7 +127,14 @@ cc.Class({
             this.startTips.node.active = true
             this.startTips.string = "游戏内时间第" + result + "天开放"
         }
+        this.startBtn.on("click", (event)=>{
+            cc.cs.gameMgr.sendLove(self.itemID, self.startDateHandle, self)
 
+            cc.cs.UIMgr.openView(cc.cs.UIMgr.ACTIONVIEW)
+        })
+    },
+
+    startDateHandle : function(ret){
 
     },
 

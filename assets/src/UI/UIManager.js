@@ -17,6 +17,65 @@ cc.Class({
         GIFTVIEW: 9,
         WECHATVIEW: 10,
         VIDEOVIEW: 11,
+        viewStack : [],
+        gameScene : null
+    },
+
+    closeView : function(){
+        if(this.viewStack.length > 0){
+            var view = this.viewStack.pop()
+            view.active = false
+            if(this.viewStack.length > 0){
+                this.viewStack[this.viewStack.length - 1].active = true
+            }else{
+                this.gameScene.MAINVIEW.active = true;
+            }
+        }else{
+            this.gameScene.MAINVIEW.active = true;
+        }
+    },
+
+    closeAllView:function(){
+        for(var i =0 ; i < this.viewStack.length; ++i){
+            this.closeView()
+        }
+    },
+
+    openView : function(id){
+        if(this.gameScene == null){
+            cc.log("error gameScene is null")
+        }else{
+            if(this.MAINVIEW == id){
+                this.gameScene.MAINVIEW.active = true;
+            }else if(this.MISSONVIEW ==id){
+                this.viewStack.push(this.gameScene.MissonView)
+            }else if(this.LOVEVIEW == id){
+                this.viewStack.push(this.gameScene.LoveView)
+            }else if(this.ACTIONVIEW == id){
+                this.viewStack.push(this.gameScene.ActionView)
+            }else if(this.PHONEVIEW == id){
+                this.viewStack.push(this.gameScene.PhoneView)
+            }else if(this.ZONEVIEW == id){
+                this.viewStack.push(this.gameScene.ZoneView)
+            }else if(this.BAGVIEW == id){
+                this.viewStack.push(this.gameScene.BagView)
+            }else if(this.SHOPVIEW == id){
+                this.viewStack.push(this.gameScene.ShopView)
+            }else if(this.SIGNREWARDVIEW == id){
+                this.viewStack.push(this.gameScene.SignRewardView)
+            }else if(this.GIFTVIEW == id){
+                this.viewStack.push(this.gameScene.GiftView)
+            }else if(this.WECHATVIEW == id){
+                this.viewStack.push(this.gameScene.WechatView)
+            }else if(this.VIDEOVIEW == id){
+                this.viewStack.push(this.gameScene.VideoView)
+            }
+
+            for(var i = 0 ; i < this.viewStack.length -1 ; ++i){
+                this.viewStack[i].active = false
+            }
+            this.viewStack[this.viewStack.length -1].active = true
+        }
     },
 
     // use this for initialization

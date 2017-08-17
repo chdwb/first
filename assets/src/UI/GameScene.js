@@ -179,6 +179,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
        
+        cc.cs.UIMgr.gameScene = this
         cc.cs.AudioMgr.playAudio(this.audioBGM,true)
     },
 
