@@ -248,9 +248,9 @@ cc.Class({
             if (pPhoneData["PHONE_LEV"] <= this.level) {
 
                 if (pPhoneData["PHONE_LEV"] == this.level &&pPhoneData["PHONE_AUDIO"] != "dummy") {
-                    return true
-                } else {
                     return false
+                } else {
+                    return true
                 }
             } else {
                 return false
