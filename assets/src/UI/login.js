@@ -630,10 +630,17 @@ cc.Class({
             if(this.loginIDEdit.string == "" || this.loginIDEdit.string == null)
             {
                 this.gustIDLabel.string = this.registerIDEdit.string;
+
+
+                cc.sys.localStorage.setItem('LOGIN_ID', this.registerIDEdit.string)
+            cc.sys.localStorage.setItem('PASSWORD', this.registerPasswordEdit.string)
+
             }
             else if(this.registerIDEdit.string == "" || this.registerIDEdit.string == null)
             {
                 this.gustIDLabel.string = this.loginIDEdit.string;
+                cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
+            cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             }
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
