@@ -161,9 +161,9 @@ cc.Class({
 
     setViewInputMsg: function(id) {
         if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
-            this.loadCruuentTalk(this.infoviewScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
+            this.loadInfoTalk(this.infoviewScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
         } else {
-            this.loadCruuentTalk(this.infoviewScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
+            this.loadInfoTalk(this.infoviewScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
         }
     },
 
@@ -510,12 +510,44 @@ cc.Class({
             nanNode.active = true;
         } else {
             nanNode.active = false
-            cc.cs.UIMgr.setNvTalk(nvNode, msg,  "· " + name)
+            cc.cs.UIMgr.setNvTalk(nvNode, msg,  "· " + name, false)
             nanNode.y = 50 - scroll.height * 0.5 + nanNode.height *0.5
             nvNode.active = true;
         }
     },
 
+
+    loadInfoTalk: function(scroll, isPlayer, msg, name) {
+        var height = 0;
+        var children = scroll.content.getChildren();
+        var newNode = null;
+        var addHeight = 0
+        if (isPlayer) {
+            newNode = cc.instantiate(this.nanzhuTalkPrefab)
+            cc.cs.UIMgr.setNanTalk(newNode, msg,  name + " ·")
+            newNode.cyH = cc.cs.UIMgr.getTalkHeight(newNode)
+            addHeight = newNode.cyH
+        } else {
+            newNode = cc.instantiate(this.nvzhuTalkPrefab)
+            cc.cs.UIMgr.setNvTalk(newNode, msg,  "· " + name, true)
+            addHeight = cc.cs.UIMgr.getTalkHeight(newNode)
+            newNode.cyH = addHeight
+        }
+        cc.log("loadInfoTalk   " + addHeight)
+        for (var i = 0; i < children.length; ++i) {
+            height += children[i].cyH
+            children[i].y += addHeight;
+        }
+        height += addHeight;
+        if (scroll.content.height < height)
+            scroll.content.height = height;
+        scroll.content.addChild(newNode)
+        newNode.y = newNode.height * 0.5
+    },
+    onEnable : function(){
+        if(this.inputTableBtn != null)
+            this.inputTableBtn.active = false
+    },
     // use this for initialization
     onLoad: function() {
 

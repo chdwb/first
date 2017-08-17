@@ -282,7 +282,7 @@ cc.Class({
 
     getTalkHeight : function(n){
         var nameText = n.getChildByName("name")
-        return nameText.width + n.width
+        return nameText.height + n.height
     },
 
     setNanTalk : function(nanNode,text,name){
@@ -302,16 +302,18 @@ cc.Class({
         var nameText = nvNode.getChildByName("name").getComponent(cc.Label)
         var talkText = nvNode.getChildByName("talk").getComponent(cc.Label)
         var soundTalk = nvNode.getChildByName("soundBtn")
-        if(soundTalk.issound){
+        if(issound){
             soundTalk.active = true
             nvNode.width = 586
             talkText.node.width = 536
             talkText.node.x = 25
+            soundTalk.x = nvNode.width -50 
         }else{
             soundTalk.active = false
             nvNode.width = 740
             talkText.node.width = 690
             talkText.node.x = 25
+            soundTalk.x = nvNode.width -50 
         }
         talkText.string = text
         nameText.string = name
@@ -322,7 +324,7 @@ cc.Class({
             nvNode.height = talkText.node.height + 20
         }
         nameText.node.y = nvNode.height * 0.5
-        soundTalk.y = nvNode.height * 0.5 + soundTalk.height * 0.5
+        soundTalk.y = nvNode.height * 0.5 + soundTalk.height * 0.5 + 5
     },
 
 
