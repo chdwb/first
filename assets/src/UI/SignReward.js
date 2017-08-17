@@ -151,16 +151,19 @@ cc.Class({
                 //cc.log("666")
                 itemCom.setItmeNmae("金币")
                 itemCom.setItmeNum(rewarddata["GOLD_NUM"])
+                itemCom.setGoodId(100)
 
                 this.node1.addChild(item)
 
                 itemCom2.setItmeNmae( cc.cs.gameData.goods[  "GOODS_ID_" + rewarddata["GOODS_1_ID"] ] ["GOODS_NAME"])
                 itemCom2.setItmeNum(rewarddata["GOODS_1_NUM"])
+                itemCom2.setGoodId(rewarddata["GOODS_1_ID"])
 
                 this.node2.addChild(item2)
 
                 itemCom3.setItmeNmae( cc.cs.gameData.goods[ "GOODS_ID_" +rewarddata["GOODS_2_ID"] ] ["GOODS_NAME"])
                 itemCom3.setItmeNum(rewarddata["GOODS_2_NUM"])
+                itemCom3.setGoodId(rewarddata["GOODS_2_ID"])
 
                 this.node3.addChild(item3)
             }
