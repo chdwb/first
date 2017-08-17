@@ -228,10 +228,10 @@ cc.Class({
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
         if (pWechatData != null) {
             if (pWechatData["WECHAT_LEVEL"] <= this.level) {
-                if (pWechatData["WECHAT_NEXT"] != "dummy") {
-                    return true
-                } else {
+                if (pWechatData["WECHAT_LEVEL"] ==this.level && pWechatData["WECHAT_NEXT"] != "dummy") {
                     return false
+                } else {
+                    return true
                 }
             } else {
                 return false
