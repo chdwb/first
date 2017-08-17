@@ -368,8 +368,7 @@ cc.Class({
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
 
-                    var parent = this.node.parent
-                    parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+                    cc.director.loadScene('GameScene');
                     
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
@@ -629,7 +628,7 @@ cc.Class({
             
             //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
             cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
-            cc.director.loadScene('GameScene');
+            
             
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
