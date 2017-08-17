@@ -287,14 +287,14 @@ cc.Class({
             }
         }
         if (this.phoneBtn.active)
-            if (this.node.parent.getChildByName("phoneView").getComponent("phoneView").canPhone()) {
+            if (cc.cs.PlayerInfo.canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {
                 this.phoneBtn.getChildByName("stars").active = false;
             }
 
         if (this.wechatBtn.active)
-            if (this.node.parent.getChildByName("WechatView").getComponent("wechatView").canWeChat()) {
+            if (tcc.cs.PlayerInfo.canWeChat()) {
                 this.wechatBtn.getChildByName("stars").active = true;
             } else {
                 this.wechatBtn.getChildByName("stars").active = false;

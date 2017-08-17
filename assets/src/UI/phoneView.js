@@ -430,15 +430,6 @@ cc.Class({
         cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.api_token, phoneid, this.SendPhoneHandle, this)
     },
 
-    canPhone: function() {
-        if (cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_LEV"] <= parseInt(cc.cs.PlayerInfo.level))
-
-            if (cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_AUDIO"] == "dummy" &&
-                cc.cs.gameData.phone["PHONE_ID_" + (cc.cs.PlayerInfo.Phone_ID + 1)]["PHONE_LEV"] > parseInt(cc.cs.PlayerInfo.level)) return false
-            else return true
-        return false
-    },
-
     SendPhoneHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
@@ -457,7 +448,7 @@ cc.Class({
             cc.log("video id 4= " + cc.cs.PlayerInfo.playvideo)
             cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.level = JasonObject.content.info.level
-            if (this.canPhone()) {
+            if (cc.cs.PlayerInfo.canPhone()) {
                 this.currentTime = 0
                 this.isAction = true;
                 this.totalTime = (cc.random0To1() + 0.4) * 8
