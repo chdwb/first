@@ -21,7 +21,7 @@ cc.Class({
     onClick : function()
     {
        cc.log("play video " + cc.cs.PlayerInfo.playvideo)
-       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
 
     },
 
