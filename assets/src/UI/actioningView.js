@@ -22,6 +22,30 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+        point1 : {
+            default: null,
+            type: cc.Node
+        },
+        point2 : {
+            default: null,
+            type: cc.Node
+        },
+        point3 : {
+            default: null,
+            type: cc.Node
+        },
+        jinxingText:{
+            default: null,
+            type: cc.Sprite
+        },
+        doName : {
+            default: null,
+            type: cc.Label
+        },
+        tipSprite:{
+            default: null,
+            type: cc.Sprite
+        },
         currentWorkID:0,
         currentLogID:0,
         isWork : false,
@@ -32,6 +56,9 @@ cc.Class({
         handleobj: null,
     },
 
+    setItem:function(id){
+
+    },
 
     onRightNow:function()
     {

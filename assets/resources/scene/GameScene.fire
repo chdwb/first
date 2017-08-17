@@ -5171,12 +5171,6 @@
     "tipText": {
       "__id__": 105
     },
-    "heartShow": {
-      "__id__": 97
-    },
-    "maxShow": {
-      "__id__": 100
-    },
     "iconArray": [],
     "addIconArry": [],
     "addIconTime": 0.8,
@@ -8045,8 +8039,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 30
+      "width": 60,
+      "height": 35
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -8075,7 +8069,7 @@
     "_useOriginalSize": false,
     "_actualFontSize": 30,
     "_fontSize": 30,
-    "_lineHeight": 30,
+    "_lineHeight": 35,
     "_enableWrapText": true,
     "_N$file": {
       "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
@@ -8127,6 +8121,24 @@
     },
     "backBtn": {
       "__id__": 165
+    },
+    "point1": {
+      "__id__": 172
+    },
+    "point2": {
+      "__id__": 174
+    },
+    "point3": {
+      "__id__": 176
+    },
+    "jinxingText": {
+      "__id__": 178
+    },
+    "doName": {
+      "__id__": 195
+    },
+    "tipSprite": {
+      "__id__": 193
     },
     "currentWorkID": 0,
     "currentLogID": 0,

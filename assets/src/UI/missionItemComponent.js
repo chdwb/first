@@ -129,13 +129,14 @@ cc.Class({
         }
         this.startBtn.on("click", (event)=>{
             cc.cs.gameMgr.sendLove(self.itemID, self.startDateHandle, self)
-
-            cc.cs.UIMgr.openView(cc.cs.UIMgr.ACTIONVIEW)
+            
         })
     },
 
     startDateHandle : function(ret){
-
+        var actionView = cc.cs.UIMgr.getView(cc.cs.UIMgr.ACTIONVIEW)
+        actionView.getComponent("actioningView")
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.ACTIONVIEW)
     },
 
     loadWork: function(result) {

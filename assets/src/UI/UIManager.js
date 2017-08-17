@@ -21,6 +21,35 @@ cc.Class({
         gameScene : null
     },
 
+    getView : function(id){
+        if(this.MAINVIEW == id){
+            return this.gameScene.MAINVIEW
+        }else if(this.MISSONVIEW ==id){
+            return this.gameScene.MissonView
+        }else if(this.LOVEVIEW == id){
+            return this.gameScene.LoveView
+        }else if(this.ACTIONVIEW == id){
+            return this.gameScene.ActionView
+        }else if(this.PHONEVIEW == id){
+            return this.gameScene.PhoneView
+        }else if(this.ZONEVIEW == id){
+            return this.gameScene.ZoneView
+        }else if(this.BAGVIEW == id){
+            return this.gameScene.BagView
+        }else if(this.SHOPVIEW == id){
+            return this.gameScene.ShopView
+        }else if(this.SIGNREWARDVIEW == id){
+            return this.gameScene.SignRewardView
+        }else if(this.GIFTVIEW == id){
+            return this.gameScene.GiftView
+        }else if(this.WECHATVIEW == id){
+            return this.gameScene.WechatView
+        }else if(this.VIDEOVIEW == id){
+            return this.gameScene.VideoView
+        }
+        return null
+    },
+
     closeView : function(){
         if(this.viewStack.length > 0){
             var view = this.viewStack.pop()
