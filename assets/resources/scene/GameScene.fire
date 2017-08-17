@@ -15026,7 +15026,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "f19f9e56-2600-4841-8cde-9b43bf611694"
+      "__uuid__": "c754d06e-64b3-40e7-a116-c1f6f83eca27"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -15371,7 +15371,9 @@
     "inputBtn": {
       "__id__": 355
     },
-    "msgText": null,
+    "msgText": {
+      "__id__": 365
+    },
     "nvzhuSize": 0,
     "nanzhuSize": 0,
     "nvzhuTalkPrefab": null,
