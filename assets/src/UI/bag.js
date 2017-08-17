@@ -88,14 +88,26 @@ cc.Class({
     {
         cc.log("goods_id = "+goods_id)
          var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goods_id]
-         if(gooddata["GOODS_EFFECT"] == "1")
-         {
+        
             this.itemUseCount = 1
             this.itemUseCountLabel.string = ""+this.itemUseCount
             this.currentgoodsid = goods_id
             this.nodeItemUse.active = true
             this.itmeCount = num
             this.ItemCount2.string = num
+
+             if(gooddata["GOODS_EFFECT"] == "1") //可以使用
+         {
+             this.nodeCanUse.active = true;
+             this.nodeCantUse.active = false;
+         }
+         else
+         {
+
+             this.nodeCanUse.active = false;
+             this.nodeCantUse.active = true;
+
+         }
         
         
             if(gooddata != undefined)
@@ -108,11 +120,8 @@ cc.Class({
             {
                 this.ItemNmae.string = goods_id
             }
-         }
-         else
-         {
-
-         }
+        
+        
         
 
     },
