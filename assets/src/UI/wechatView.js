@@ -14,11 +14,6 @@ cc.Class({
             type:cc.Node,
             default : null
         },
-        tipText :{
-            type:cc.Node,
-            default : null
-        },
-
         castText :{
             type:cc.Label,
             default : null
@@ -68,11 +63,11 @@ cc.Class({
 
     sendDisable : function(){
         this.sendBtn.getComponent(cc.Button).interactable = false
-        this.tipText.active = false
+       // this.tipText.active = false
     },
     sendEnable : function(){
         this.sendBtn.getComponent(cc.Button).interactable = true
-        this.tipText.active = true
+    //this.tipText.active = true
     },
 
     getDay:function(d)
@@ -155,6 +150,8 @@ cc.Class({
         if (JasonObject.success == true) {
             this.inputTableBtn.WECHAT_ID = 0
             this.msgText.node.active = false
+            this.quikeTip.active = true
+            this.inputBtn.getComponent(cc.Button).interactable = false
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             
             this.NPCID = JasonObject.content.info.wechat_next
@@ -195,13 +192,7 @@ cc.Class({
         this.inputTableBtn.x = -93
         
         this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 ))
-        cc.log("this.inputTableBtn.y  == " + this.inputTableBtn.y + "       " +this.inputTableBtn.height)
-        cc.log("+this.node.height * -0.5   " + this.node.height)
-        cc.log("+this.node.height * -0.5   " +  ((this.node.height * 0.5 - this.inputBtn.parent.y) - this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 ))
-        cc.log("+this.node.height * -0.5   " +  ((this.node.height * 0.5 )))
-        cc.log("+this.node.height * -0.5   " +  (-this.inputBtn.parent.y))
-        cc.log("+this.node.height * -0.5   " +  (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5))
-        cc.log("+this.node.height * -0.5   " +  ((this.inputBtn.parent.height - this.inputBtn.height) *0.5))
+        
         
         this.sendBtn.getComponent(cc.Button).interactable = false
 
@@ -384,7 +375,7 @@ cc.Class({
         
         
         this.backBtn.on("click", (event)=>{
-            cc.cs.PlayerInfo.closeView()
+            cc.cs.UIMgr.closeView()
         })
 
         this.sendBtn.on("click",(event)=>{
@@ -408,6 +399,8 @@ cc.Class({
     setInputMsg:function(id){
         if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
             this.loadCruuentTalk(this.talkScroll,false, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName, false); 
+            this.inputBtn.getComponent(cc.Button).interactable = true
+            this.quikeTip.active = false
             if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"] != "dummy"){
                 this.sendEnable()
             }
@@ -447,7 +440,12 @@ cc.Class({
         var children = scroll.content.getChildren();
         var newNode = null;
         var addHeight = 0
-        if (isPlayer) {
+        if(isday){
+            newNode  = cc.instantiate(this.tianshuPrefab)
+            newNode.cyH = newNode.height
+            addHeight = newNode.height
+            newNode.getChildByName("dayText").getComponent(cc.Label).string = msg
+        }else if (isPlayer) {
             newNode = cc.instantiate(this.nanzhuTalkPrefab)
             cc.cs.UIMgr.setNanTalk(newNode, msg,  name + " ·")
             newNode.cyH = cc.cs.UIMgr.getTalkHeight(newNode)
