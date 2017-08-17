@@ -24,6 +24,13 @@ cc.Class({
             default:null,
             type: cc.Label,
         },
+          Icon:{
+            default:null,
+            type: cc.Sprite,
+        },
+        
+        
+        
         GoodID:0,
         
        
@@ -57,6 +64,8 @@ cc.Class({
         this.itemName.string = good["GOODS_NAME"]
         this.itemPrice.string = good["GOODS_PRICE"]
         this.itemDec.string = good["GOODS_DESC"]
+        
+        cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.GoodID)
     },
     
     

@@ -7,7 +7,7 @@
   "subMetas": {
     "4": {
       "ver": "1.0.3",
-      "uuid": "f299b3f1-2872-4cdf-8bc3-479098fd1991",
+      "uuid": "1e875191-bfd3-4282-ab2a-14ad6318f612",
       "rawTextureUuid": "59fbda63-51f0-43c1-b695-9fe65999c671",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 1162,
-      "height": 191,
-      "rawWidth": 1162,
-      "rawHeight": 191,
+      "width": 353,
+      "height": 249,
+      "rawWidth": 353,
+      "rawHeight": 249,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
