@@ -43,7 +43,7 @@ cc.Class({
         obj:null,
         goodsid:0,
 
-        BUYITEM:0,
+        BUYITEM:0,  //
         USEITEM:1,
         BUYLIBAO:2,
 

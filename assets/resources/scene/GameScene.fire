@@ -5171,12 +5171,6 @@
     "tipText": {
       "__id__": 105
     },
-    "heartShow": {
-      "__id__": 97
-    },
-    "maxShow": {
-      "__id__": 100
-    },
     "iconArray": [],
     "addIconArry": [],
     "addIconTime": 0.8,
@@ -22191,12 +22185,12 @@
     ],
     "_prefab": null,
     "_id": "70b4dvdkNlEb6ljgFU6rhtI",
-    "_opacity": 0,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 184,
-      "g": 184,
-      "b": 184,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -22208,7 +22202,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 738.0000000000002
+      "height": 738.0000000000001
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -22217,7 +22211,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -37
+      "y": -36.99999999999994
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -22276,7 +22270,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -5.684341886080802e-14
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -22469,7 +22463,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0.09113300492610826,
-    "_bottom": -1.1796119636642288e-16,
+    "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": false,
