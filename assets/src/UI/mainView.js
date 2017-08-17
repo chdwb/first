@@ -294,7 +294,7 @@ cc.Class({
             }
 
         if (this.wechatBtn.active)
-            if (tcc.cs.PlayerInfo.canWeChat()) {
+            if (cc.cs.PlayerInfo.canWechat()) {
                 this.wechatBtn.getChildByName("stars").active = true;
             } else {
                 this.wechatBtn.getChildByName("stars").active = false;
