@@ -39,7 +39,7 @@ cc.Class({
   sendbuy:function(buynum)
   {
       cc.log("buynum = "+ buynum)
-      cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, 1,this.GoodID, buynum, this.GoodBuyHandle, this)
+      cc.cs.gameMgr.sendGoodBuy(1,this.GoodID, buynum, this.GoodBuyHandle, this)
   },
 
     onBuy:function()

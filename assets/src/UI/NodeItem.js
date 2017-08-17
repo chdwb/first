@@ -26,6 +26,11 @@ cc.Class({
             default: null,
             type: cc.Label,
         },
+        
+         Icon:{
+            default:null,
+            type: cc.Sprite,
+        },
 
          GoodID:0,
 
@@ -39,6 +44,12 @@ cc.Class({
     {
         //this.GoodID = name
         this.GoodID = goodId;
+        
+        var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goodId]
+            if(gooddata != undefined)
+            {
+                cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.GoodID)
+            }
     },
 
     setItmeNmae:function(name)
