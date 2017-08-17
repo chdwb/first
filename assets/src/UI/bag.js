@@ -45,6 +45,16 @@ cc.Class({
             type: cc.Label
         },
 
+         ItemDes:{
+            default: null,
+            type: cc.Label
+        },
+
+        Icon:{
+            default:null,
+            type: cc.Sprite,
+        },
+
 
 
         itmeCount:0,
@@ -76,6 +86,8 @@ cc.Class({
             if(gooddata != undefined)
             {
                 this.ItemNmae.string = cc.cs.gameData.goods["GOODS_ID_"+goods_id]["GOODS_NAME"]
+                this.ItemDes.strign = gooddata["GOODS_DESC"]
+                cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + goods_id)
             }
             else
             {
