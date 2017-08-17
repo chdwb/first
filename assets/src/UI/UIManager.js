@@ -318,10 +318,11 @@ cc.Class({
         talkText.string = text
         nameText.string = name
 
-        if(talkText.node.height < 85){
+        var lineCount = Math.ceil(text.length * talkText.fontSize / talkText.node.width)
+        if(lineCount * talkText.lineHeight + 20 < 85){
             nvNode.height = 85
         }else{
-            nvNode.height = talkText.node.height + 20
+            nvNode.height = lineCount * talkText.lineHeight + 20
         }
         nameText.node.y = nvNode.height * 0.5
         soundTalk.y = nvNode.height * 0.5 + soundTalk.height * 0.5 + 5
