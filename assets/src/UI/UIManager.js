@@ -280,6 +280,11 @@ cc.Class({
         popupNode.getComponent("NodeUse").setCallBack(goodsid, okHandle, max, obj, type)
     },
 
+    getTalkHeight : function(n){
+        var nameText = n.getChildByName("name")
+        return nameText.width + n.width
+    },
+
     setNanTalk : function(nanNode,text,name){
         var nameText = nanNode.getChildByName("name").getComponent(cc.Label)
         var talkText = nanNode.getChildByName("talk").getComponent(cc.Label)

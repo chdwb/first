@@ -96,7 +96,7 @@ cc.Class({
         this.playerInfoView.active = false
         this.phoneBtn.active = false
         this.everInfoScroll.node.active = false
-        this.currentScroll.node.active = true;
+        this.currentScroll.active = true;
     },
 
     showNormal: function() {
@@ -106,7 +106,7 @@ cc.Class({
         this.everInfoScroll.node.active = true
         this.inputTableBtn.active = false
         this.tonghuakuang.active = false
-        this.currentScroll.node.active = false;
+        this.currentScroll.active = false;
 
         if (parseInt(cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) + 1)]["PHONE_LEV"]) > parseInt(cc.cs.PlayerInfo.level)) {
             this.phoneBtn.active = false
@@ -235,7 +235,7 @@ cc.Class({
         this.phoneBtn.active = false
         this.everInfoScroll.node.active = false
         this.tonghuakuang.active = true
-        this.currentScroll.node.active = true;
+        this.currentScroll.active = true;
 
         var count = 0
         var startIndex = 0
@@ -247,7 +247,6 @@ cc.Class({
             (cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID) - 1)]["PHONE_LEV"] !=
                 cc.cs.gameData.phone["PHONE_ID_" + (parseInt(cc.cs.PlayerInfo.Phone_ID))]["PHONE_LEV"])
         ) {
-            this.clearCurrentTalk()
             return
         } else {
             var currentPhoneLevel = cc.cs.gameData.phone["PHONE_ID_" + cc.cs.PlayerInfo.Phone_ID]["PHONE_LEV"]
@@ -507,9 +506,7 @@ cc.Class({
         }
         //弹窗
     },
-    clearCurrentTalk: function() {
-        this.currentScroll.content.removeAllChildren(true)
-    },
+
     loadCruuentTalk: function(scroll, isPlayer, msg, name) {
         var height = 0;
         var children = scroll.content.getChildren();
@@ -541,12 +538,6 @@ cc.Class({
         newNode.y = newNode.height * 0.5
     },
 
-    computerTalkZSize: function() {
-        var y = this.nvzhuTalkPrefab.data.height + this.nvzhuTalkPrefab.data.getChildByName("name").height + (this.nvzhuTalkPrefab.data.getChildByName("name").y - this.nvzhuTalkPrefab.data.height * 0.5 - this.nvzhuTalkPrefab.data.getChildByName("name").height * 0.5)
-        this.nvzhuSize = cc.size(this.nvzhuTalkPrefab.data.width, y)
-        y = this.nanzhuTalkPrefab.data.height + this.nanzhuTalkPrefab.data.getChildByName("name").height + (this.nanzhuTalkPrefab.data.getChildByName("name").y - this.nanzhuTalkPrefab.data.height * 0.5 - this.nanzhuTalkPrefab.data.getChildByName("name").height * 0.5)
-        this.nanzhuSize = cc.size(this.nanzhuTalkPrefab.data.width, y)
-    },
     // use this for initialization
     onLoad: function() {
 
@@ -559,11 +550,13 @@ cc.Class({
 
         this.nanzhuTalkPrefab = cc.loader.getRes("prefab/nanTalkItem", cc.Prefab)
 
-        this.computerTalkZSize();
+        var nv = cc.instantiate(this.nvzhuTalkPrefab)
+        nv.name = "nv"
+        this.currentScroll.addChild(nv)
 
-
-
-
+        var nan = cc.instantiate(this.nanzhuTalkPrefab)
+        nan.name = "nv"
+        this.currentScroll.addChild(nan)
 
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
 
@@ -587,7 +580,6 @@ cc.Class({
             self.isAction = false
             self.currentTime = 0
             self.totalTime = 0
-            self.clearCurrentTalk()
         })
 
         this.phoneBtn.on("click", (event) => {

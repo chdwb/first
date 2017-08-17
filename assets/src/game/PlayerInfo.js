@@ -46,6 +46,7 @@ cc.Class({
 
         WorkLeftTimes: [],
         loveLeftTimes: [],
+        goodsLeftTimes:[],
         LovePrice: [],
 
         date_id: 0,
@@ -120,6 +121,16 @@ cc.Class({
         this.loveLeftTimes[id - 1] = parseInt(value)
     },
 
+    updateGoodsTimes: function(id, value) {
+        id = parseInt(id)
+        this.goodsLeftTimes[id - 1] = parseInt(value)
+    },
+
+    getGoodsTimes: function(id) {
+        id = parseInt(id)
+        return this.goodsLeftTimes[id - 1]
+    },
+
     updateWorkFreeTimes: function(id, value) {
         id = parseInt(id)
         this.WorkLeftTimes[id - 1] = parseInt(value)
@@ -177,6 +188,7 @@ cc.Class({
                 this[item] = info[item]
                 cc.log("item ==" + item + "  this[item]  == "+  this[item] + "  info[item] == " +info[item] )
             } else {
+                
                 if (item.match(/goods\d+_id/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
                     cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
@@ -192,6 +204,9 @@ cc.Class({
                 }else if (item.match(/Love\dPrice/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
                     this.updateLovePrice(n, info[item])
+                }else if (item.match(/leftbuygoods\dtimes/)) {
+                    var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    this.updateGoodsTimes(n, info[item])
                 }else if (item == "goods_id") {
                     this.modfiyBag(info[item], info["num"])
                 } else if (item == "phone_audio") {
