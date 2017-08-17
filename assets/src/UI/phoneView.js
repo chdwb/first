@@ -469,7 +469,7 @@ cc.Class({
     SendPhone: function(phoneid) {
         this.currentPlayerPhoneID = phoneid;
         this.setInputMsg(phoneid)
-        cc.cs.gameMgr.sendPhone(cc.cs.PlayerInfo.api_token, phoneid, this.SendPhoneHandle, this)
+        cc.cs.gameMgr.sendPhone(phoneid, this.SendPhoneHandle, this)
     },
 
     SendPhoneHandle: function(ret) {
@@ -477,19 +477,10 @@ cc.Class({
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+
             this.NPCID = JasonObject.content.info.phone_audio
 
-            cc.cs.PlayerInfo.Phone_player_ID.push(parseInt(this.currentPlayerPhoneID))
-            cc.cs.PlayerInfo.Phone_ID = parseInt(this.NPCID)
-
-            /*if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.level) ){
-                cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
-            }*/
-
-            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
-            cc.log("video id 4= " + cc.cs.PlayerInfo.playvideo)
-            cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
-            cc.cs.PlayerInfo.level = JasonObject.content.info.level
             if (cc.cs.PlayerInfo.canPhone()) {
                 this.currentTime = 0
                 this.isAction = true;
@@ -515,11 +506,13 @@ cc.Class({
         if (isPlayer) {
             cc.cs.UIMgr.setNanTalk(nanNode, msg,  name + " ·")
             nvNode.active = false
-            nvNode.y = 80 - scroll.height * 0.5 + nvNode.height *0.5
+            nvNode.y = 50 - scroll.height * 0.5 + nvNode.height *0.5
+            nanNode.active = true;
         } else {
             nanNode.active = false
             cc.cs.UIMgr.setNvTalk(nvNode, msg,  "· " + name)
-            nanNode.y = 80 - scroll.height * 0.5 + nanNode.height *0.5
+            nanNode.y = 50 - scroll.height * 0.5 + nanNode.height *0.5
+            nvNode.active = true;
         }
     },
 
@@ -536,10 +529,12 @@ cc.Class({
         this.nanzhuTalkPrefab = cc.loader.getRes("prefab/nanTalkItem", cc.Prefab)
 
         var nv = cc.instantiate(this.nvzhuTalkPrefab)
+        nv.active = false
         nv.name = "nv"
         this.currentScroll.addChild(nv)
 
         var nan = cc.instantiate(this.nanzhuTalkPrefab)
+        nan.active = false
         nan.name = "nan"
         this.currentScroll.addChild(nan)
 
