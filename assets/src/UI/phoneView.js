@@ -116,8 +116,17 @@ cc.Class({
         }else{
             this.phoneBtn.active = false
         }
-        cc.log("this.NPCID = cc.cs.PlayerInfo.Phone_ID   " + cc.cs.PlayerInfo.Phone_ID)
-        this.NPCID = cc.cs.PlayerInfo.Phone_ID
+        var phoneData = cc.cs.gameData.getphoneData(cc.cs.PlayerInfo.Phone_ID)
+        if(cc.cs.PlayerInfo.Phone_ID < cc.cs.gameData.phone["LAST"]){
+            var newxtPhoneData = cc.cs.gameData.getphoneData(cc.cs.PlayerInfo.Phone_ID + 1)
+            if(newxtPhoneData["PHONE_LEV"] > phoneData["PHONE_LEV"]){
+                this.NPCID = cc.cs.PlayerInfo.Phone_ID + 1
+            }else
+            {
+                this.NPCID = cc.cs.PlayerInfo.Phone_ID
+            }
+        }
+        
         this.showCompletePhone()
     },
 
