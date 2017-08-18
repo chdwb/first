@@ -379,7 +379,8 @@ cc.Class({
     updatePlayerInfo:function(JasonObject)
     {
             cc.cs.PlayerInfo.api_token = JasonObject.content.info.api_token
-            //cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
+            cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
+            cc.log("玩家名字"+JasonObject.content.info.name)
             cc.cs.PlayerInfo.welcome = JasonObject.content.info.welcome
             cc.cs.PlayerInfo.updateLevel(JasonObject.content.info.level)
             cc.cs.PlayerInfo.sign = JasonObject.content.info.sign

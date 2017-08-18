@@ -29,6 +29,11 @@ cc.Class({
 
         SoundOff:false
     },
+    onEnable:function()
+    {
+        this.NAME.string = cc.cs.PlayerInfo.PlayerNmae
+
+    },
 
     onback:function()
     {
