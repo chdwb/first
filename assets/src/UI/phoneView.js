@@ -171,6 +171,7 @@ cc.Class({
     },
 
     setViewInputMsg: function(id) {
+        cc.log("setViewInputMsg: function(id) {  " + id)
         if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
             this.loadInfoTalk(this.infoviewScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
         } else {
@@ -179,6 +180,7 @@ cc.Class({
     },
 
     showInfoViewSV: function(endID, count) {
+        cc.log("showInfoViewSV   " + endID + "    " +count)
         this.infoviewScroll.content.removeAllChildren(true)
         var startIndex = 1
 
@@ -193,31 +195,46 @@ cc.Class({
             }
         }
 
+        cc.log("showInfoViewSV   " + startIndex + "    " +count)
         var id = startIndex
-        var Index = 0
+
+        cc.log("showInfoViewSV   " + startIndex + "    " +id)
+        var iiIndex = 0
+        cc.log("cc.cs.PlayerInfo.Phone_player_ID.length   " + cc.cs.PlayerInfo.Phone_player_ID.length)
+        for (var i = 0; i < cc.cs.PlayerInfo.Phone_player_ID.length; ++i) {
+            cc.log("cc.cs.PlayerInfo.Phone_player_ID[i]   " + i + "             "+cc.cs.PlayerInfo.Phone_player_ID[i])
+        }
 
         for (var i = 0; i < cc.cs.PlayerInfo.Phone_player_ID.length; ++i) {
             if (cc.cs.PlayerInfo.Phone_player_ID[i] > id) {
-                Index = i
+                iiIndex = i
                 break;
             }
         }
 
+
         while (id != -1) {
+            cc.log("showInfoViewSV   " + startIndex + "    " +id + "         " + iiIndex)
+            
+            var phoneData = cc.cs.gameData.getphoneData(id)
 
-            this.setViewInputMsg(id)
-            if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"] == "dummy") {
-                id = -1
-                break;
+            if (phoneData["PHONE_OPTION"] == "dummy") {
+                this.setViewInputMsg(id)
+                if(phoneData["PHONE_AUDIO"] != "dummy"){
+                    id +=1
+                }else{
+                    id = -1
+                }
+                
+    
+            }else{
+                id = cc.cs.PlayerInfo.Phone_player_ID[iiIndex]
+                this.setViewInputMsg(id)
+                iiIndex++
+                id = phoneData["PHONE_AUDIO"]
+                if(id == "dummy")
+                    id = -1
             }
-
-            if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
-                id = cc.cs.PlayerInfo.Phone_player_ID[Index]
-                Index++
-            } else {
-                id = cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"]
-            }
-            // id = 
         }
 
     },
@@ -445,7 +462,7 @@ cc.Class({
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
-
+            cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
             this.NPCID = JasonObject.content.info.phone_audio
 
             if (cc.cs.PlayerInfo.canPhone()) {
@@ -512,9 +529,35 @@ cc.Class({
         newNode.y = newNode.height * 0.5
     },
     onEnable : function(){
-        
-        
+        var self = this
         this.showNormal()
+        this.schedule(function(){
+            self.step()
+        },1)
+    },
+
+    step : function(){
+        if (this.isAction) {
+            this.currentTime++;
+            if (this.currentTime >= this.totalTime) {
+                this.talkImage.active = true
+                this.linkImage.active = false
+                this.timeIng = true;
+                this.setInputMsg(this.NPCID)
+                    //this.isAction = false;
+                this.isAction = false
+                this.currentTime = 0
+                this.totalTime = 0
+            }
+        }
+        if (this.timeIng) {
+            this.second ++
+            if (this.second >= 60) {
+                this.minute++;
+            }
+            this.talktime.string = (this.minute >= 10 ? this.minute + "" : "0" + this.minute) + ":" + (this.second >= 10 ? parseInt(this.second) + "" : "0" + parseInt(this.second))
+
+        }
     },
     // use this for initialization
     onLoad: function() {
@@ -584,27 +627,7 @@ cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function(dt) {
-        if (this.isAction) {
-            this.currentTime += dt;
-            if (this.currentTime >= this.totalTime) {
-                this.talkImage.active = true
-                this.linkImage.active = false
-                this.timeIng = true;
-                this.setInputMsg(this.NPCID)
-                    //this.isAction = false;
-                this.isAction = false
-                this.currentTime = 0
-                this.totalTime = 0
-            }
-        }
-        if (this.timeIng) {
-            this.second += dt
-            if (this.second >= 60) {
-                this.minute++;
-            }
-            this.talktime.string = (this.minute >= 10 ? this.minute + "" : "0" + this.minute) + ":" + (this.second >= 10 ? parseInt(this.second) + "" : "0" + parseInt(this.second))
-
-        }
+        
 
     },
 });

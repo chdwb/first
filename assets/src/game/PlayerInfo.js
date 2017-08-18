@@ -228,7 +228,7 @@ cc.Class({
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
         if (pWechatData != null) {
             if (pWechatData["WECHAT_LEVEL"] <= this.level) {
-                if (pWechatData["WECHAT_LEVEL"] ==this.level && pWechatData["WECHAT_NEXT"] != "dummy") {
+                if (pWechatData["WECHAT_LEVEL"] ==this.level && pWechatData["WECHAT_NEXT"] == "dummy") {
                     return false
                 } else {
                     return true
@@ -247,7 +247,7 @@ cc.Class({
             cc.log(" canPhone: function()  " + pPhoneData["PHONE_LEV"] + "    " + this.level)
             if (pPhoneData["PHONE_LEV"] <= this.level) {
 
-                if (pPhoneData["PHONE_LEV"] == this.level &&pPhoneData["PHONE_AUDIO"] != "dummy") {
+                if (pPhoneData["PHONE_LEV"] == this.level &&pPhoneData["PHONE_AUDIO"] == "dummy") {
                     return false
                 } else {
                     return true
