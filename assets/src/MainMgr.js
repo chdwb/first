@@ -57,6 +57,8 @@ cc.Class({
 
         var AudioMgr = require("AudioMgr")
         cc.cs.AudioMgr = new AudioMgr()
+        cc.cs.AudioMgr.init()
+
     },
 
     // called every frame, uncomment this function to activate update callback

@@ -19,9 +19,20 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+     
+     
 
-        
+    
+    },
 
+     init:function()
+    {
+        var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
+     cc.log("声音开关"+hehe)
+     if(hehe == 1)
+     {
+         this.isSondOff = true;
+     }
     },
     playEffect:function(clip)
     {
@@ -31,6 +42,7 @@ cc.Class({
 
     playBGM:function (clip,isLoop)
     {
+        if(this.isSondOff == false)
        this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
        cc.log("背景音乐id"+this.BGMid)
     },
@@ -39,6 +51,8 @@ cc.Class({
     {
         this.isSondOff = true
 
+        cc.sys.localStorage.setItem('ISSOUNDOFF',1)
+
          cc.audioEngine.pause(this.BGMid)
 
     },
@@ -46,6 +60,7 @@ cc.Class({
     startBGM:function()
     {
         this.isSondOff = false
+        cc.sys.localStorage.setItem('ISSOUNDOFF',0)
        cc.audioEngine.resume(this.BGMid)
     },
 
