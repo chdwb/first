@@ -45,7 +45,7 @@ cc.Class({
     
     onSign:function()
     {
-        cc.cs.gameMgr.sendSign(cc.cs.PlayerInfo.api_token, this.SignHandle, this)
+        cc.cs.gameMgr.sendSign( this.SignHandle, this)
     },
 
      SignHandle:function(ret)
