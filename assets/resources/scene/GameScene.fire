@@ -232,7 +232,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 123
@@ -15359,9 +15359,6 @@
     "sendBtn": {
       "__id__": 368
     },
-    "tipText": {
-      "__id__": 356
-    },
     "castText": {
       "__id__": 358
     },
@@ -17000,7 +16997,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 531
@@ -18852,7 +18849,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": {
       "__id__": 530
@@ -20816,8 +20813,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -3,
-      "y": -144.75
+      "x": 0,
+      "y": -157
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -20939,7 +20936,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0,
-    "_bottom": 0.05,
+    "_bottom": 0.020481927710843374,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
