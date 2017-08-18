@@ -14,6 +14,7 @@ cc.Class({
         // ...
         BGMid:-1,
         Backid:-1,
+        isSondOff:false
     },
 
     // use this for initialization
@@ -22,11 +23,33 @@ cc.Class({
         
 
     },
+    playEffect:function(clip)
+    {
+        if(this.isSondOff == false)
+         cc.audioEngine.play(clip, false, 1);
+    },
 
-    playAudio:function (clip,isLoop)
+    playBGM:function (clip,isLoop)
     {
        this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
+       cc.log("背景音乐id"+this.BGMid)
     },
+
+    stopBGM:function()
+    {
+        this.isSondOff = true
+
+         cc.audioEngine.pause(this.BGMid)
+
+    },
+
+    startBGM:function()
+    {
+        this.isSondOff = false
+       cc.audioEngine.resume(this.BGMid)
+    },
+
+   
 
     playBack:function (clip,isLoop)
     {

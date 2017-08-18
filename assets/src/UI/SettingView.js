@@ -13,7 +13,7 @@ cc.Class({
         // },
         // ...
          SettingButton: {
-            type: cc.Node,
+            type: cc.Sprite,
             default: null
         },
 
@@ -39,23 +39,32 @@ cc.Class({
 
     switchSound:function()
     {
+        cc.log("声音关闭 =  "+ this.SoundOff)
         if(this.SoundOff == false)
         {
             this.SoundOff = true;
-        cc.audioEngine.setMusicVolume(0);
-        cc.audioEngine.setEffectsVolume(0);
-    }
-    else
-    {
-        this.SoundOff = false;
-        cc.audioEngine.setMusicVolume(1);
-        cc.audioEngine.setEffectsVolume(1);
-    }
+            cc.cs.AudioMgr.stopBGM();
+            //this.SettingButton.interactable = false
+            cc.cs.UIMgr.changeSprite(this.SettingButton.node, "set/yinyue1")
+        
+        }
+        else
+        {
+            this.SoundOff = false;
+            cc.cs.AudioMgr.startBGM();
+            //this.SettingButton.interactable = true
+            cc.cs.UIMgr.changeSprite(this.SettingButton.node, "set/yinyue")
+            
+        }
+
+     
 
     },
 
     // use this for initialization
     onLoad: function () {
+
+        
 
     },
 

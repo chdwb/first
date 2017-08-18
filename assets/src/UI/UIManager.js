@@ -152,6 +152,21 @@ cc.Class({
         sprite.spriteFrame = spriteFrame
     },
 
+
+
+changeSpriteFrame: function(spriteframeOrigin, res) {
+        if (!cc.cs.loadMgr.isLoadComplete) {
+            cc.log("error the res is not load complete")
+        }
+        var spriteFrame = cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame)
+        if (spriteFrame == null || spriteFrame == 'undefinde') {
+            cc.log("the res is mission = " + "picture/newRes/" + res)
+        }
+        
+        spriteframeOrigin._textureFilenameSetter.set (spriteFrame._textureFilename)
+    },
+
+
     init: function() {
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)

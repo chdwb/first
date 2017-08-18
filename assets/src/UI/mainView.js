@@ -253,8 +253,9 @@ cc.Class({
     },
 
     goSetting: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SETTINGVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SETTINGVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SETTINGVIEW)
     },
 
     canAddIcon : function(){

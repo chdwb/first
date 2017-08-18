@@ -130,7 +130,7 @@ cc.Class({
 
         if(cc.cs.UIMgr.MAINVIEW == type)
         {
-            cc.cs.AudioMgr.playAudio(this.audioReturn,false)
+            //cc.cs.AudioMgr.playAudio(this.audioReturn,false)
             this.node.getChildByName("mainView").getComponent("mainView").updateui()
         }
 
@@ -185,7 +185,7 @@ cc.Class({
     onLoad: function () {
        
         cc.cs.UIMgr.gameScene = this
-        cc.cs.AudioMgr.playAudio(this.audioBGM,true)
+        cc.cs.AudioMgr.playBGM(this.audioBGM,true)
     },
 
     // called every frame, uncomment this function to activate update callback
