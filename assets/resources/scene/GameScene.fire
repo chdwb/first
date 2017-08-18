@@ -63,7 +63,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 677
+        "__id__": 678
       }
     ],
     "_prefab": null,
@@ -158,13 +158,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 674
-      },
-      {
         "__id__": 675
       },
       {
         "__id__": 676
+      },
+      {
+        "__id__": 677
       }
     ],
     "_prefab": null,
@@ -235,7 +235,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 123
@@ -25256,10 +25256,10 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
-        "__id__": 673
+        "__id__": 674
       }
     ],
     "_prefab": null,
@@ -25342,7 +25342,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 672
+        "__id__": 673
       }
     ],
     "_prefab": null,
@@ -26470,7 +26470,7 @@
       "__id__": 669
     },
     "_enabled": true,
-    "transition": 2,
+    "transition": 3,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -26493,7 +26493,11 @@
     "hoverSprite": {
       "__uuid__": "e9ec654c-97a2-4787-9325-e6a10375219a"
     },
-    "clickEvents": [],
+    "clickEvents": [
+      {
+        "__id__": 672
+      }
+    ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
     "_N$normalColor": {
@@ -26519,6 +26523,15 @@
     "_N$target": {
       "__id__": 669
     }
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 642
+    },
+    "component": "SettingView",
+    "handler": "onback",
+    "customEventData": ""
   },
   {
     "__type__": "cc.Sprite",
@@ -26556,6 +26569,12 @@
     "_enabled": true,
     "SettingButton": {
       "__id__": 654
+    },
+    "NAME": {
+      "__id__": 653
+    },
+    "ID": {
+      "__id__": 651
     },
     "SoundOff": false
   },
@@ -26628,6 +26647,9 @@
     },
     "VideoView": {
       "__id__": 630
+    },
+    "SettingView": {
+      "__id__": 642
     },
     "audioBGM": {
       "__uuid__": "0692586b-fa68-4356-8c1a-32fbc5328fef"

@@ -17,6 +17,7 @@ cc.Class({
         GIFTVIEW: 9,
         WECHATVIEW: 10,
         VIDEOVIEW: 11,
+        SETTINGVIEW:12,
         viewStack : [],
         gameScene : null
     },
@@ -46,6 +47,8 @@ cc.Class({
             return this.gameScene.WechatView
         }else if(this.VIDEOVIEW == id){
             return this.gameScene.VideoView
+        }else if(this.SETTINGVIEW == id){
+            return this.gameScene.SettingView
         }
         return null
     },
@@ -109,6 +112,10 @@ cc.Class({
                 this.gameScene.MainView.active =false
             }else if(this.VIDEOVIEW == id){
                 this.viewStack.push(this.gameScene.VideoView)
+                this.gameScene.MainView.active =false
+            }
+            else if(this.SETTINGVIEW == id){
+                this.viewStack.push(this.gameScene.SettingView)
                 this.gameScene.MainView.active =false
             }
 

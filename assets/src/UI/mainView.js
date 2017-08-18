@@ -254,7 +254,7 @@ cc.Class({
 
     goSetting: function() {
         var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SETTINGVIEW)
     },
 
     canAddIcon : function(){
@@ -415,6 +415,7 @@ cc.Class({
 
         this.settingBtn.on("click", (event) => {
             cc.log("token = " + cc.cs.PlayerInfo.api_token)
+            self.goSetting()
 
         }, this.settingBtn)
 

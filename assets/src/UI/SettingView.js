@@ -17,6 +17,16 @@ cc.Class({
             default: null
         },
 
+        NAME: {
+            type: cc.Label,
+            default: null
+        },
+
+        ID: {
+            type: cc.Label,
+            default: null
+        },
+
         SoundOff:false
     },
 

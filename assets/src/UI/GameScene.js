@@ -65,6 +65,11 @@ cc.Class({
             type:cc.Node,
         },
 
+           SettingView:{
+            default:null,
+            type:cc.Node,
+        },
+
         audioBGM: {
             url: cc.AudioClip,
             default: null
