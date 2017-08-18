@@ -17,6 +17,112 @@ cc.Class({
         GIFTVIEW: 9,
         WECHATVIEW: 10,
         VIDEOVIEW: 11,
+        viewStack : [],
+        gameScene : null
+    },
+
+    getView : function(id){
+        if(this.MAINVIEW == id){
+            return this.gameScene.MAINVIEW
+        }else if(this.MISSONVIEW ==id){
+            return this.gameScene.MissonView
+        }else if(this.LOVEVIEW == id){
+            return this.gameScene.LoveView
+        }else if(this.ACTIONVIEW == id){
+            return this.gameScene.ActionView
+        }else if(this.PHONEVIEW == id){
+            return this.gameScene.PhoneView
+        }else if(this.ZONEVIEW == id){
+            return this.gameScene.ZoneView
+        }else if(this.BAGVIEW == id){
+            return this.gameScene.BagView
+        }else if(this.SHOPVIEW == id){
+            return this.gameScene.ShopView
+        }else if(this.SIGNREWARDVIEW == id){
+            return this.gameScene.SignRewardView
+        }else if(this.GIFTVIEW == id){
+            return this.gameScene.GiftView
+        }else if(this.WECHATVIEW == id){
+            return this.gameScene.WechatView
+        }else if(this.VIDEOVIEW == id){
+            return this.gameScene.VideoView
+        }
+        return null
+    },
+
+    closeView : function(){
+        if(this.viewStack.length > 0){
+            var view = this.viewStack.pop()
+            view.active = false
+            cc.log("closeView name = " + view.name)
+            if(this.viewStack.length > 0){
+                this.viewStack[this.viewStack.length - 1].active = true
+            }else{
+                this.gameScene.MainView.active = true;
+            }
+        }else{
+            this.gameScene.MainView.active = true;
+        }
+    },
+
+    closeAllView:function(){
+        for(var i =0 ; i < this.viewStack.length; ++i){
+            this.closeView()
+        }
+    },
+
+    openView : function(id){
+        if(this.gameScene == null){
+            cc.log("error gameScene is null")
+        }else{
+            if(this.MAINVIEW == id){
+                this.gameScene.MainView.active = true;
+            }else if(this.MISSONVIEW ==id){
+                this.viewStack.push(this.gameScene.MissonView)
+                this.gameScene.MainView.active =false
+            }else if(this.LOVEVIEW == id){
+                this.viewStack.push(this.gameScene.LoveView)
+                this.gameScene.MainView.active =false
+            }else if(this.ACTIONVIEW == id){
+                this.viewStack.push(this.gameScene.ActionView)
+                this.gameScene.MainView.active =false
+            }else if(this.PHONEVIEW == id){
+                this.viewStack.push(this.gameScene.PhoneView)
+                this.gameScene.MainView.active =false
+            }else if(this.ZONEVIEW == id){
+                this.viewStack.push(this.gameScene.ZoneView)
+                this.gameScene.MainView.active =false
+            }else if(this.BAGVIEW == id){
+                this.viewStack.push(this.gameScene.BagView)
+                this.gameScene.MainView.active =false
+            }else if(this.SHOPVIEW == id){
+                this.viewStack.push(this.gameScene.ShopView)
+                this.gameScene.MainView.active =false
+            }else if(this.SIGNREWARDVIEW == id){
+                this.viewStack.push(this.gameScene.SignRewardView)
+                this.gameScene.MainView.active =false
+            }else if(this.GIFTVIEW == id){
+                this.viewStack.push(this.gameScene.GiftView)
+                this.gameScene.MainView.active =false
+            }else if(this.WECHATVIEW == id){
+                this.viewStack.push(this.gameScene.WechatView)
+                this.gameScene.MainView.active =false
+            }else if(this.VIDEOVIEW == id){
+                this.viewStack.push(this.gameScene.VideoView)
+                this.gameScene.MainView.active =false
+            }
+
+            for(var i = 0 ; i < this.viewStack.length -1 ; ++i){
+                this.viewStack[i].active = false
+            }
+            this.viewStack[this.viewStack.length -1].active = true
+
+            cc.log("openvIew ------------------------------------------------------------------------start")
+            for(var i = 0 ; i < this.viewStack.length ; ++i){
+                cc.log(this.viewStack[i].name + "      =      " +  this.viewStack[i].active)
+            }
+            cc.log("openvIew ------------------------------------------------------------------------end")
+        }
     },
 
     // use this for initialization
@@ -54,16 +160,12 @@ cc.Class({
         } else {
             scrollView.content.width += horizontalSpace + node.width
             pos.x = ((1.0 - scrollView.content.anchorX) * scrollView.content.width - (1.0 - node.anchorX) * node.width) +
-                ((0 - scrollView.content.anchorX) * (scrollView.content.width + horizontalSpace))
-
-           
+                ((0 - scrollView.content.anchorX) * (scrollView.content.width + horizontalSpace))  
         }
         var diffHeight = scrollView.content.height - node.height
-
         pos.y = (1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height - diffHeight * 0.5
-
+        node.active = true
         scrollView.content.addChild(node)
-        cc.log(pos.x + "                " + pos.y )
         node.setPosition(pos)
     },
 
@@ -178,6 +280,53 @@ cc.Class({
         popupNode.getComponent("NodeUse").setCallBack(goodsid, okHandle, max, obj, type)
     },
 
+    getTalkHeight : function(n){
+        var nameText = n.getChildByName("name")
+        return nameText.height + n.height
+    },
+
+    setNanTalk : function(nanNode,text,name){
+        var nameText = nanNode.getChildByName("name").getComponent(cc.Label)
+        var talkText = nanNode.getChildByName("talk").getComponent(cc.Label)
+        talkText.string = text
+        nameText.string = name
+        if(talkText.node.height < 85){
+            nanNode.height = 85
+        }else{
+            nanNode.height = talkText.node.height + 20
+        }
+        nameText.node.y = nanNode.height * 0.5
+    },
+
+    setNvTalk : function(nvNode,text,name, issound){
+        var nameText = nvNode.getChildByName("name").getComponent(cc.Label)
+        var talkText = nvNode.getChildByName("talk").getComponent(cc.Label)
+        var soundTalk = nvNode.getChildByName("soundBtn")
+        if(issound){
+            soundTalk.active = true
+            nvNode.width = 586
+            talkText.node.width = 536
+            talkText.node.x = 25
+            soundTalk.x = nvNode.width -50 
+        }else{
+            soundTalk.active = false
+            nvNode.width = 740
+            talkText.node.width = 690
+            talkText.node.x = 25
+            soundTalk.x = nvNode.width -50 
+        }
+        talkText.string = text
+        nameText.string = name
+
+        var lineCount = Math.ceil(text.length * talkText.fontSize / talkText.node.width)
+        if(lineCount * talkText.lineHeight + 20 < 85){
+            nvNode.height = 85
+        }else{
+            nvNode.height = lineCount * talkText.lineHeight + 20
+        }
+        nameText.node.y = nvNode.height * 0.5
+        soundTalk.y = nvNode.height * 0.5 + soundTalk.height * 0.5 + 5
+    },
 
 
     // called every frame, uncomment this function to activate update callback

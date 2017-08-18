@@ -126,6 +126,7 @@ cc.Class({
     },
 
     addDiBianBtn : function(icon){
+        if(cc.cs.utils.contains( this.addIconArry,icon)) return
         this.addIcon = icon
         var addIndex = 0
         for(var i = 0 ; i < this.addIconArry.length; ++i){
@@ -197,55 +198,58 @@ cc.Class({
     },
     goSignReward: function() {
         cc.log("heheh" + cc.cs.UIMgr.SIGNREWARDVIEW)
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SIGNREWARDVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SIGNREWARDVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SIGNREWARDVIEW)
     },
     goWork: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
+         cc.cs.UIMgr.openView(cc.cs.UIMgr.MISSONVIEW)
     },
 
     goLove: function() {
        // this.addDiBianBtn(this.wechatBtn)
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+       cc.cs.UIMgr.openView(cc.cs.UIMgr.LOVEVIEW)
     },
 
     goZone: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ZONEVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.ZONEVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.ZONEVIEW)
     },
 
     goPhone: function() {
-        this.addDiBianBtn(this.wechatBtn)
-        //var parent = this.node.parent
-       // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.PHONEVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.PHONEVIEW)
     },
 
 
     goWechat: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.WECHATVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.WECHATVIEW)
     },
 
     goWeibo: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        //cc.cs.UIMgr.openView(cc.cs.UIMgr.WECHATVIEW)
     },
 
     goBag: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.BAGVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.BAGVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.BAGVIEW)
     },
 
     goGift: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.GIFTVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.GIFTVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.GIFTVIEW)
     },
 
     goShop: function() {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
     },
 
     goSetting: function() {
@@ -253,6 +257,16 @@ cc.Class({
         parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
     },
 
+    canAddIcon : function(){
+        for(var i = 0 ; i < this.iconArray.length; ++i){
+            if(cc.cs.PlayerInfo.level >= this.iconArray[i].lev){
+                if(cc.cs.utils.contains(this.addIconArry,  this.iconArray[i]))
+                    return null
+                else
+                    return this.iconArray[i]
+            }
+        }
+    },
 
     updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
@@ -265,25 +279,29 @@ cc.Class({
         this.setGold(cc.cs.PlayerInfo.money)
         this.setDay(leveldata["LEV_DAY"])
 
-        this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
+        /*this.phoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_2"]["FUNCTION_LEVEL"]
         this.wechatBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_3"]["FUNCTION_LEVEL"]
         this.workBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
         this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
-        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]
-
+        this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]*/
+        cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
         if (cc.cs.PlayerInfo.playvideo != 0) {
-            var parent = this.node.parent
-            parent.getComponent("GameScene").SetView(cc.cs.UIMgr.VIDEOVIEW)
+            cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
+        }else{
+            var icon = this.canAddIcon()
+            if(icon != null){
+                this.addDiBianBtn(icon)
+            }
         }
         if (this.phoneBtn.active)
-            if (this.node.parent.getChildByName("phoneView").getComponent("phoneView").canPhone()) {
+            if (cc.cs.PlayerInfo.canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {
                 this.phoneBtn.getChildByName("stars").active = false;
             }
 
         if (this.wechatBtn.active)
-            if (this.node.parent.getChildByName("WechatView").getComponent("wechatView").canWeChat()) {
+            if (cc.cs.PlayerInfo.canWechat()) {
                 this.wechatBtn.getChildByName("stars").active = true;
             } else {
                 this.wechatBtn.getChildByName("stars").active = false;

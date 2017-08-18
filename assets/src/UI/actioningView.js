@@ -22,6 +22,30 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+        point1 : {
+            default: null,
+            type: cc.Node
+        },
+        point2 : {
+            default: null,
+            type: cc.Node
+        },
+        point3 : {
+            default: null,
+            type: cc.Node
+        },
+        jinxingText:{
+            default: null,
+            type: cc.Sprite
+        },
+        doName : {
+            default: null,
+            type: cc.Label
+        },
+        tipSprite:{
+            default: null,
+            type: cc.Sprite
+        },
         currentWorkID:0,
         currentLogID:0,
         isWork : false,
@@ -30,8 +54,76 @@ cc.Class({
         isAction: false,
         handle: null,
         handleobj: null,
+        doID : 0
     },
 
+    setItem:function(id , iswork){
+        this.isWork = iswork
+        this.doID = id
+        if(this.isWork){
+            this.loadWork(id)
+        }else{
+            this.loadDate(id)
+        }   
+        this.isAction = true
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.ActionView)
+    },
+
+    loadWork:function(id){
+        cc.cs.UIMgr.changeSprite(this.jinxingText.node, "work_quest/" + "working")
+        cc.cs.UIMgr.changeSprite(this.tipSprite.node, "work_quest/" + "tuichugongzuo")
+        cc.cs.UIMgr.changeSprite(this.actionBg.node, "work_quest/work/"  + id)
+        var workData = cc.cs.gameData.getworkData(id)
+        this.doName.string = workData["NAME"]
+        this.totalTime = workData["EXECUTE_TIME"]
+        this.currentTime = 0
+    },
+
+    loadDate:function(id){
+        cc.cs.UIMgr.changeSprite(this.jinxingText.node, "work_quest/" + "doing")
+        cc.cs.UIMgr.changeSprite(this.tipSprite.node, "work_quest/" + "tuichulianai")
+        cc.cs.UIMgr.changeSprite(this.actionBg.node, "work_quest/quest/" + id)
+        var dateData = cc.cs.gameData.getdateData(id)
+        this.doName.string = dateData["DATE_NAME"]
+        this.totalTime = dateData["DATE_EXECUTE_TIME"]
+        this.currentTime = 0
+    },
+
+    doneWork : function(ret){
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            var workData = cc.cs.gameData.getworkData(this.doID)
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            cc.cs.UIMgr.showPopupO("达成", "经过辛勤的工作，你获得了" + workData["REWARD"]+"金币。", this.closePopupHandle)
+           
+        }else{
+            cc.log("error " + JasonObject.error)
+        }
+    },
+
+    closePopupHandle : function(){
+        cc.cs.UIMgr.closeView()
+    },
+
+    doneDate:function(ret){
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            var dateData = cc.cs.gameData.getdateData(this.doID)
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            cc.cs.UIMgr.showPopupO("达成", "你获得了" + dateData["DATE_EXP"]+"亲密度。", this.closePopupHandle)
+        }else{
+            cc.log("error " + JasonObject.error)
+        }
+        
+    },
+
+    doEnd:function(){
+        if(this.isWork){
+            cc.cs.gameMgr.sendWorkDone(this.doneWork,this)
+        }else{
+            cc.cs.gameMgr.sendLoveDone(this.doneDate,this)
+        }
+    },
 
     onRightNow:function()
     {
@@ -199,11 +291,7 @@ cc.Class({
     onLoad: function() {
         var self = this
         this.backBtn.on("click", (event) => {
-            var parent = this.node.parent
-            if(self.isWork)
-                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MISSONVIEW)
-            else
-                parent.getComponent("GameScene").SetView(cc.cs.UIMgr.LOVEVIEW)
+            cc.cs.UIMgr.closeView()
         }, this.backBtn)
 
         this.rightNowBtn.on("click", (event) => {
@@ -224,7 +312,7 @@ cc.Class({
        
 
                 //if(this.handle !== null){
-                this.handle(this.handleobj);
+                this.doEnd()
                // }    
                 
                 this.isAction = false;

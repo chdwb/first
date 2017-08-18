@@ -31,8 +31,9 @@ cc.Class({
     // use this for initialization
     onBack:function()
     {
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        cc.cs.UIMgr.closeView()
     },
     updateUI:function()
     {

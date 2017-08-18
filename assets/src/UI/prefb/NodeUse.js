@@ -36,6 +36,19 @@ cc.Class({
             type: cc.Label
         },
 
+        Icon:{
+            default:null,
+            type: cc.Sprite,
+        },
+
+        TotalPrice:{
+            default: null,
+            type: cc.Label
+
+        }
+        ,
+        
+
 
 
         itmeCount:0,
@@ -49,6 +62,7 @@ cc.Class({
 
 
         type:0,
+        price:0,
 
 
 
@@ -56,6 +70,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        
 
     },
 
@@ -70,8 +85,14 @@ cc.Class({
         var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goodsid]
             if(gooddata != undefined)
             {
+                this.price = parseInt(gooddata["GOODS_PRICE"])
+                this.TotalPrice.string = ""+(this.price * 1)
                 this.ItemNmae.string = gooddata["GOODS_NAME"]
                 this.itemDec666.string = gooddata["GOODS_DESC"]
+
+
+                cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.goodsid)
+                
             }
             else
             {
@@ -136,6 +157,8 @@ cc.Class({
             this.itemUseCount = this.itmeCount
         }
         this.itemUseCountLabel.string = ""+this.itemUseCount
+        this.TotalPrice.string = ""+(this.price * this.itemUseCount)
+        
     },
 
     onMinus:function()
@@ -146,5 +169,6 @@ cc.Class({
             this.itemUseCount = 1
         }
         this.itemUseCountLabel.string = ""+this.itemUseCount
+        this.TotalPrice.string = ""+(this.price * this.itemUseCount)
     },
 });

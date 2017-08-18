@@ -21,24 +21,21 @@ cc.Class({
     onClick : function()
     {
        cc.log("play video " + cc.cs.PlayerInfo.playvideo)
-       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+       cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
 
     },
 
     videoDoneHandle:function(ret)
     {
-        
 
         var JasonObject = JSON.parse(ret);
                 if (JasonObject.success === true) {
                     cc.cs.PlayerInfo.playvideo = JasonObject.content.info.video_id;
-                    cc.cs.UIMgr.showTip("视频完成", 1.0)
+                    //cc.cs.UIMgr.showTip("视频完成", 1.0)
+                    cc.log("视频完成")
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
-
-                    var parent = this.node.parent
-                    parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
-                    
+                    cc.cs.UIMgr.closeView()
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
                 }
@@ -64,8 +61,8 @@ cc.Class({
              var id1 =  cc.cs.gameData.branchVideo["PLOT_VIDEO_ID_"+nextvideoID]["PLOT_VIDEO_LINK_VIDEO_1"]
              var id2 = cc.cs.gameData.branchVideo["PLOT_VIDEO_ID_"+nextvideoID]["PLOT_VIDEO_LINK_VIDEO_1"]
 
-             cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.api_token,id1,this.voidoDownloadHandle,this)
-             cc.cs.gameMgr.getVideoUrl(cc.cs.PlayerInfo.api_token,id2,this.voidoDownloadHandle,this)
+             cc.cs.gameMgr.getVideoUrl(id1,this.voidoDownloadHandle,this)
+             cc.cs.gameMgr.getVideoUrl(id2,this.voidoDownloadHandle,this)
 
           }
        }

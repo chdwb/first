@@ -7,14 +7,14 @@ class PhpData{
 		"GOODS_ID_3"=>array("GOODS_ID"=>3, "GOODS_NAME"=>"游乐园门票", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>150, "GOODS_EFFECT"=>2, "GOODS_EFFECT_VALUE"=>"dummy", "GOODS_DESC"=>"约会之【游乐园】必备道具"),
 		"GOODS_ID_4"=>array("GOODS_ID"=>4, "GOODS_NAME"=>"入场券", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>250, "GOODS_EFFECT"=>2, "GOODS_EFFECT_VALUE"=>"dummy", "GOODS_DESC"=>"约会之【看演唱会】必备道具"),
 		"GOODS_ID_5"=>array("GOODS_ID"=>5, "GOODS_NAME"=>"景区门票", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>350, "GOODS_EFFECT"=>2, "GOODS_EFFECT_VALUE"=>"dummy", "GOODS_DESC"=>"约会之【风景区】必备道具"),
-		"GOODS_ID_101"=>array("GOODS_ID"=>101, "GOODS_NAME"=>"巧克力", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>300, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>10, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
-		"GOODS_ID_102"=>array("GOODS_ID"=>102, "GOODS_NAME"=>"玫瑰花", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>580, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>20, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
-		"GOODS_ID_103"=>array("GOODS_ID"=>103, "GOODS_NAME"=>"毛绒公仔", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>1440, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>50, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
-		"GOODS_ID_104"=>array("GOODS_ID"=>104, "GOODS_NAME"=>"名牌包包", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>2800, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>100, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
-		"GOODS_ID_105"=>array("GOODS_ID"=>105, "GOODS_NAME"=>"时尚服装", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>5500, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>200, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
-		"GOODS_ID_106"=>array("GOODS_ID"=>106, "GOODS_NAME"=>"珍贵项链", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>13500, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>500, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
-		"GOODS_ID_107"=>array("GOODS_ID"=>107, "GOODS_NAME"=>"钻石戒指", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>20400, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>800, "GOODS_DESC"=>"使用后可获得{0}点亲密度"),
-		"GOODS_ID_108"=>array("GOODS_ID"=>108, "GOODS_NAME"=>"豪华游轮", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>36000, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>1500, "GOODS_DESC"=>"使用后可获得{0}点亲密度")
+		"GOODS_ID_101"=>array("GOODS_ID"=>101, "GOODS_NAME"=>"巧克力", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>300, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>10, "GOODS_DESC"=>"使用后可获得0点亲密度"),
+		"GOODS_ID_102"=>array("GOODS_ID"=>102, "GOODS_NAME"=>"玫瑰花", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>580, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>20, "GOODS_DESC"=>"使用后可获得0点亲密度"),
+		"GOODS_ID_103"=>array("GOODS_ID"=>103, "GOODS_NAME"=>"毛绒公仔", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>1440, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>50, "GOODS_DESC"=>"使用后可获得0点亲密度"),
+		"GOODS_ID_104"=>array("GOODS_ID"=>104, "GOODS_NAME"=>"名牌包包", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>2800, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>100, "GOODS_DESC"=>"使用后可获得0点亲密度"),
+		"GOODS_ID_105"=>array("GOODS_ID"=>105, "GOODS_NAME"=>"时尚服装", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>5500, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>200, "GOODS_DESC"=>"使用后可获得0点亲密度"),
+		"GOODS_ID_106"=>array("GOODS_ID"=>106, "GOODS_NAME"=>"珍贵项链", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>13500, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>500, "GOODS_DESC"=>"使用后可获得0点亲密度"),
+		"GOODS_ID_107"=>array("GOODS_ID"=>107, "GOODS_NAME"=>"钻石戒指", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>20400, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>800, "GOODS_DESC"=>"使用后可获得0点亲密度"),
+		"GOODS_ID_108"=>array("GOODS_ID"=>108, "GOODS_NAME"=>"豪华游轮", "GOODS_ISSELL"=>1, "GOODS_PRICE"=>36000, "GOODS_EFFECT"=>1, "GOODS_EFFECT_VALUE"=>1500, "GOODS_DESC"=>"使用后可获得0点亲密度")
 	);
 	public $sign_reward = array
 	(
@@ -2828,7 +2828,8 @@ class PhpData{
 		"ID_21"=>array("ID"=>21, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/gifts", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"提交送礼物。"),
 		"ID_22"=>array("ID"=>22, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/buytimes", "Params"=>"api_token,dateid,num", "Method"=>"POST", "Remark"=>"购买约会次数。"),
 		"ID_23"=>array("ID"=>23, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/donevideo", "Params"=>"api_token,videoid", "Method"=>"POST", "Remark"=>"观看视频完成。"),
-		"ID_24"=>array("ID"=>24, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/video/geturl", "Params"=>"api_token,videoid", "Method"=>"GET", "Remark"=>"获取视频url。")
+		"ID_24"=>array("ID"=>24, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/video/geturl", "Params"=>"api_token,videoid", "Method"=>"GET", "Remark"=>"获取视频url。"),
+		"ID_25"=>array("ID"=>25, "Host"=>"http://112.74.36.182:8888", "Route"=>"/make/fastwechat", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"dummy")
 	);
 	public $errorcode = array
 	(

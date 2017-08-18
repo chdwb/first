@@ -46,11 +46,12 @@ cc.Class({
 
         WorkLeftTimes: [],
         loveLeftTimes: [],
+        goodsLeftTimes:[],
         LovePrice: [],
 
         date_id: 0,
 
-        datelogid: 0,
+        datelog_id: 0,
 
         NPCName: "许梦田",
 
@@ -84,6 +85,11 @@ cc.Class({
         this.LovePrice[id - 1] = parseInt(value)
     },
 
+    getLovePrice: function(id) {
+        id = parseInt(id)
+        return this.LovePrice[id - 1]
+    },
+
     addZoneReplies: function(value) {
         this.replies.push(parseInt(value))
     },
@@ -113,6 +119,16 @@ cc.Class({
     updateLoveFreeTimes: function(id, value) {
         id = parseInt(id)
         this.loveLeftTimes[id - 1] = parseInt(value)
+    },
+
+    updateGoodsTimes: function(id, value) {
+        id = parseInt(id)
+        this.goodsLeftTimes[id - 1] = parseInt(value)
+    },
+
+    getGoodsTimes: function(id) {
+        id = parseInt(id)
+        return this.goodsLeftTimes[id - 1]
     },
 
     updateWorkFreeTimes: function(id, value) {
@@ -170,17 +186,28 @@ cc.Class({
         for (var item in info) {
             if (this.hasOwnProperty(item)) {
                 this[item] = info[item]
+                cc.log("item ==" + item + "  this[item]  == "+  this[item] + "  info[item] == " +info[item] )
             } else {
+                
                 if (item.match(/goods\d+_id/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
                     this.modfiyBag(info[item], info["goods" + n + "_num"])
                 } else if (item.match(/work_id\d/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
                     this.updateWorkFreeTimes(n, info[item])
                 } else if (item.match(/date_id\d/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
                     this.updateLoveFreeTimes(n, info[item])
-                } else if (item == "goods_id") {
+                }else if (item.match(/Love\dPrice/)) {
+                    var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    this.updateLovePrice(n, info[item])
+                }else if (item.match(/leftbuygoods\dtimes/)) {
+                    var n = parseInt(item.replace(/[^0-9]+/g, ''))
+                    this.updateGoodsTimes(n, info[item])
+                }else if (item == "goods_id") {
                     this.modfiyBag(info[item], info["num"])
                 } else if (item == "phone_audio") {
                     this.Phone_ID = info[item]
@@ -196,14 +223,15 @@ cc.Class({
     },
 
     canWechat: function() {
-        if (this.canPhone) return false
+        //if (this.canPhone) return false
+        
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
         if (pWechatData != null) {
             if (pWechatData["WECHAT_LEVEL"] <= this.level) {
-                if (pWechatData["WECHAT_NEXT"] != "dummy") {
-                    return true
-                } else {
+                if (pWechatData["WECHAT_LEVEL"] ==this.level && pWechatData["WECHAT_NEXT"] == "dummy") {
                     return false
+                } else {
+                    return true
                 }
             } else {
                 return false
@@ -214,12 +242,15 @@ cc.Class({
 
     canPhone: function() {
         var pPhoneData = cc.cs.gameData.getphoneData(this.Phone_ID)
+        cc.log(" canPhone: function()  " + pPhoneData + "    " + this.Phone_ID)
         if (pPhoneData != null) {
+            cc.log(" canPhone: function()  " + pPhoneData["PHONE_LEV"] + "    " + this.level)
             if (pPhoneData["PHONE_LEV"] <= this.level) {
-                if (pPhoneData["PHONE_AUDIO"] != "dummy") {
-                    return true
-                } else {
+
+                if (pPhoneData["PHONE_LEV"] == this.level &&pPhoneData["PHONE_AUDIO"] == "dummy") {
                     return false
+                } else {
+                    return true
                 }
             } else {
                 return false

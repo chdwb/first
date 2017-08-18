@@ -30,15 +30,15 @@ cc.Class({
         var type = this.ShopType
         if(this.ShopType == 2)
         {
-            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, type,this.GoodID, 1, this.onMoneyhandle, this)
+            cc.cs.gameMgr.sendGoodBuy( type,this.GoodID, 1, this.onMoneyhandle, this)
         }
         else if(this.ShopType == 3)
         {
-            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, type,this.GoodID, 1, this.onLibaohandle, this)
+            cc.cs.gameMgr.sendGoodBuy( type,this.GoodID, 1, this.onLibaohandle, this)
         }
         else if(this.ShopType == 4)
         {
-            cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, type,this.GoodID, 1, this.onLibao2handle, this)
+            cc.cs.gameMgr.sendGoodBuy( type,this.GoodID, 1, this.onLibao2handle, this)
         }
     },
 
@@ -54,10 +54,23 @@ cc.Class({
         if(this.ShopType == 3 || this.ShopType == 4 )
         {
             this.Name.string = goodsdata["NAME"]
+            var url = ""
+            if(this.ShopType == 3)
+            {
+                url = "shop/libao/"
+
+            }
+            else if(this.ShopType == 4)
+            {
+                url = "shop/superlibao/"
+
+            }
+            cc.cs.UIMgr.changeSprite(this.Icon.node, url + this.GoodID)
         }
         else if(this.ShopType == 2)
         {
             this.Name.string = goodsdata["BUY_GOLD"]
+            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/jinbi/" + this.GoodID)
         }
     },
     

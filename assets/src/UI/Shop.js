@@ -127,8 +127,9 @@ cc.Class({
     onBack:function()
     {
         cc.log("onback")
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        cc.cs.UIMgr.closeView()
     },
     
     initialize2: function(itemArray)
@@ -139,7 +140,7 @@ cc.Class({
         
         
         for(var i in itemArray) { 
-            if(i != "TOTAL_COUNT")
+            if(i != "TOTAL_COUNT" && i != "LAST" && i != "FIRST" )
             {
                 var item = cc.instantiate(this.prefab)
                 var itemCom = item.getComponent("ShopItem2")
@@ -179,7 +180,7 @@ cc.Class({
         var count = 0;
         for(var i in itemArray) { // spawn items, we only need to do this once
     		cc.log("i = ",i);
-    		if(i != "TOTAL_COUNT")
+    		if(i != "TOTAL_COUNT" && i != "LAST" && i != "FIRST" )
             {
                 var item = cc.instantiate(this.prefab)
                 

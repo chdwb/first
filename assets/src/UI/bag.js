@@ -45,6 +45,26 @@ cc.Class({
             type: cc.Label
         },
 
+         ItemDes:{
+            default: null,
+            type: cc.Label
+        },
+
+        Icon:{
+            default:null,
+            type: cc.Sprite,
+        },
+
+         nodeCanUse:{
+            default: null,
+            type: cc.Node
+        },
+
+         nodeCantUse:{
+            default: null,
+            type: cc.Node
+        },
+
 
 
         itmeCount:0,
@@ -55,32 +75,55 @@ cc.Class({
 
     // use this for initialization 666
     onShop:function(){
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
     },
     onBack:function(){
         
-        var parent = this.node.parent
-        parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+		cc.cs.UIMgr.closeView()
     },
 
     onItmeChoose:function(goods_id,num)
     {
         cc.log("goods_id = "+goods_id)
-        this.currentgoodsid = goods_id
-        this.nodeItemUse.active = true
-        this.itmeCount = num
-        this.ItemCount2.string = num
+         var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goods_id]
         
-        var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goods_id]
+            this.itemUseCount = 1
+            this.itemUseCountLabel.string = ""+this.itemUseCount
+            this.currentgoodsid = goods_id
+            this.nodeItemUse.active = true
+            this.itmeCount = num
+            this.ItemCount2.string = num
+
+             if(gooddata["GOODS_EFFECT"] == "1") //可以使用
+         {
+             this.nodeCanUse.active = true;
+             this.nodeCantUse.active = false;
+         }
+         else
+         {
+
+             this.nodeCanUse.active = false;
+             this.nodeCantUse.active = true;
+
+         }
+        
+        
             if(gooddata != undefined)
             {
                 this.ItemNmae.string = cc.cs.gameData.goods["GOODS_ID_"+goods_id]["GOODS_NAME"]
+                this.ItemDes.string = gooddata["GOODS_DESC"]
+                cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + goods_id)
             }
             else
             {
                 this.ItemNmae.string = goods_id
             }
+        
+        
         
 
     },
@@ -211,7 +254,7 @@ cc.Class({
         cc.log("token="+cc.cs.PlayerInfo.api_token)
         cc.log("goodid="+this.currentgoodsid)
         cc.log("itemUseCount="+this.itemUseCount)
-        cc.cs.gameMgr.sendGoodUse(cc.cs.PlayerInfo.api_token, this.currentgoodsid, this.itemUseCount, this.GoodUseHandle, this)
+        cc.cs.gameMgr.sendGoodUse( this.currentgoodsid, this.itemUseCount, this.GoodUseHandle, this)
     },
 
     GoodUseHandle(ret)
@@ -222,9 +265,10 @@ cc.Class({
             cc.cs.UIMgr.showTip("使用成功", 1.0)
             var parent = this.node.parent
             
-            cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+            /*cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.level = JasonObject.content.info.level
-            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
+            cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo*/
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.log("video id3 = " + cc.cs.PlayerInfo.playvideo)
             var array = cc.cs.PlayerInfo.Bag
             for(var i = 0;i < array.length;i++)
