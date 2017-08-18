@@ -179,6 +179,12 @@ cc.Class({
         //this.items = []; // array to store spawned items
     	this.updateUI()
     },
+      onEnable: function () {
+       //cc.log("背包")
+        
+        //this.items = []; // array to store spawned items
+    	this.updateUI()
+    },
      initialize: function (itemArray) {
         //this.Exp.string = ""+cc.cs.PlayerInfo.exp
         this.content.removeAllChildren(true);
