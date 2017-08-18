@@ -16,10 +16,31 @@ cc.Class({
             type: cc.Node,
             default: null
         },
+
+        SoundOff:false
+    },
+
+    onback:function()
+    {
+
+        cc.cs.UIMgr.closeView()
+
     },
 
     switchSound:function()
     {
+        if(this.SoundOff == false)
+        {
+            this.SoundOff = true;
+        cc.audioEngine.setMusicVolume(0);
+        cc.audioEngine.setEffectsVolume(0);
+    }
+    else
+    {
+        this.SoundOff = false;
+        cc.audioEngine.setMusicVolume(1);
+        cc.audioEngine.setEffectsVolume(1);
+    }
 
     },
 
