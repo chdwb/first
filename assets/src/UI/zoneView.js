@@ -35,7 +35,7 @@ cc.Class({
     SendDJ: function(phoneid) {
         cc.log("SendPhone = " + phoneid + "         " + cc.cs.PlayerInfo.api_token)
 
-        cc.cs.gameMgr.sendReply(cc.cs.PlayerInfo.api_token, phoneid, this.sendReplyHandle, this)
+        cc.cs.gameMgr.sendReply(phoneid, this.sendReplyHandle, this)
 
         this.currentPLID = phoneid
     },
@@ -157,7 +157,8 @@ cc.Class({
         var fdbackData = null
         for (var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i) {
             fdbackData = cc.cs.gameData.getzonefeefbackData(i)
-            if (zoneData["ZONE_LEVEL"] == fdbackData["ZONE_FB_LEVEL"]) {
+            if (zoneData["ZONE_LEVEL"] == fdbackData["ZONE_FB_LEVEL"] &&
+                fdbackData["ZONE_FB_HAVE_FB"] == "dummy" ) {
                 jsZoneItem.addText(i)
             }
             if(zoneData["ZONE_LEVEL"]  < fdbackData["ZONE_FB_LEVEL"]){
@@ -168,8 +169,9 @@ cc.Class({
 
         if (!cc.cs.PlayerInfo.canPLZone(id)) {
             jsZoneItem.addPlayerText(id)
+            jsZoneItem.addOtherText()
         }
-
+        cc.log("addZoneId    " + zoneItem.height + "      " + id )
         cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, zoneItem, 0)
     },
 
@@ -186,10 +188,8 @@ cc.Class({
     // use this for initialization
 
     onEnable : function(){
-        var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
-        if(newID !=  this.lastZoneID){
-            this.addZoneId(ndeID)
-        }
+        
+        
     },
 
     onLoad: function() {

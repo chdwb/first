@@ -268,8 +268,6 @@ cc.Class({
         var count = 0
         var startIndex = 0
 
-       
-
     },
 
     showPhoneInfoView: function() {
@@ -488,9 +486,11 @@ cc.Class({
                 this.isAction = true;
                 this.totalTime = (cc.random0To1() + 0.4) * 8
                 if (this.totalTime > 8) this.totalTime = 8
+                this.timeIng = true;   
             } else {
                 this.setInputMsg(this.NPCID)
                 this.timeIng = false
+                this.showNormal()
             }
 
 
@@ -562,7 +562,8 @@ cc.Class({
             if (this.currentTime >= this.totalTime) {
                 this.talkImage.active = true
                 this.linkImage.active = false
-                this.timeIng = true;
+                this.currentScroll.active = true
+                this.timeIng = false;
                 this.setInputMsg(this.NPCID)
                     //this.isAction = false;
                 this.isAction = false
@@ -635,6 +636,7 @@ cc.Class({
             self.timeIng = false
             self.talkImage.active = false
             self.linkImage.active = true
+            self.currentScroll.active = false
         })
 
         this.backBtn.on("click", (event) => {

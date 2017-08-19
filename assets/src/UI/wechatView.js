@@ -148,8 +148,8 @@ cc.Class({
                 this.totalTime = (cc.random0To1() + 0.4) * 8 
                 if(this.totalTime > 8)   this.totalTime = 8
 
-                this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step))
-                this.node.runAction(this.talkAction)
+                this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step, this))
+                cc.cs.UIMgr.gameScene.node.runAction(this.talkAction)
             }else
             {
                 this.sendDisable()
@@ -323,31 +323,35 @@ cc.Class({
     },
 
     onEnable :function(){
-        this.inputTableBtn.active = false;
-        this.quikeTip.active = false
-        this.msgText.node.active = false
-        this.castText.string = cc.cs.PlayerInfo.diamond
-        cc.log("wechat onEnable = " +cc.cs.PlayerInfo.canWechat() )
-        if(cc.cs.PlayerInfo.canWechat()){
-            this.sendBtn.getComponent(cc.Button).interactable = true
-            this.inputBtn.getComponent(cc.Button).interactable = true
-        }else{
-            this.sendBtn.getComponent(cc.Button).interactable = false
-            this.inputBtn.getComponent(cc.Button).interactable = false
-        }
-        this.NPCID = cc.cs.PlayerInfo.wechat_id
-        var wechatData = cc.cs.gameData.getwechatData(this.NPCID)
-        if(wechatData["WECHAT_NEXT"] == "dummy"){
-            this.NPCID++
-            if(this.NPCID >= cc.cs.gameData["LAST"]) {
+        if(!this.isAction){
+            this.inputTableBtn.active = false;
+            this.quikeTip.active = false
+            this.msgText.node.active = false
+            this.castText.string = cc.cs.PlayerInfo.diamond
+            cc.log("wechat onEnable = " +cc.cs.PlayerInfo.canWechat() )
+            if(cc.cs.PlayerInfo.canWechat()){
+                this.sendBtn.getComponent(cc.Button).interactable = true
+                this.inputBtn.getComponent(cc.Button).interactable = true
+            }else{
                 this.sendBtn.getComponent(cc.Button).interactable = false
                 this.inputBtn.getComponent(cc.Button).interactable = false
-                return
             }
-            if(wechatData["WECHAT_OPTION"] == "dummy"){
-                this.setInputMsg(this.NPCID)
+            this.NPCID = cc.cs.PlayerInfo.wechat_id
+            var wechatData = cc.cs.gameData.getwechatData(this.NPCID)
+            if(wechatData["WECHAT_NEXT"] == "dummy"){
+                this.NPCID++
+                if(this.NPCID >= cc.cs.gameData["LAST"]) {
+                    this.sendBtn.getComponent(cc.Button).interactable = false
+                    this.inputBtn.getComponent(cc.Button).interactable = false
+                    return
+                }
+                wechatData = cc.cs.gameData.getwechatData(this.NPCID)
+                if(wechatData["WECHAT_OPTION"] == "dummy"){
+                    this.setInputMsg(this.NPCID)
+                }
             }
         }
+        
         cc.log("wechat   =  " + this.NPCID + "             " +cc.cs.PlayerInfo.wechat_id)
         //this.schedule(this.step,1.0)
 
@@ -359,6 +363,7 @@ cc.Class({
     },
 
     step : function(){
+        this.isAction = false
         this.sendEnable()
         this.setInputMsg(this.NPCID)
     },
@@ -427,6 +432,9 @@ cc.Class({
     },
 
     setInputMsg:function(id){
+        if(this.isShowDay(id)){
+            this.loadCruuentTalk(this.talkScroll,true , this.getDay(id), "", true)
+        }
         if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
             this.loadCruuentTalk(this.talkScroll,false, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName, false); 
             this.inputBtn.getComponent(cc.Button).interactable = true
