@@ -65,6 +65,18 @@ cc.Class({
             type: cc.Node
         },
 
+        buttonJia:{
+            default: null,
+            type: cc.Button
+
+        },
+
+        buttonJian:{
+            default: null,
+            type: cc.Button
+
+        },
+
 
 
         itmeCount:0,
@@ -84,6 +96,31 @@ cc.Class({
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
 		cc.cs.UIMgr.closeView()
+    },
+    
+    updateButton:function()
+    {
+        this.buttonJian.interactable = true
+        this.buttonJia.interactable = true
+        if(this.itemUseCount == 1)
+        {
+            this.buttonJian.interactable = false
+        }
+        else
+        {
+            this.buttonJian.interactable = true
+        }
+        
+        if(this.itemUseCount == this.itmeCount)
+        {
+            this.buttonJia.interactable = false
+        }
+        else
+        {
+            this.buttonJia.interactable = true
+        }
+        
+        
     },
 
     onItmeChoose:function(goods_id,num)
@@ -122,6 +159,8 @@ cc.Class({
             {
                 this.ItemNmae.string = goods_id
             }
+            
+            this.updateButton();
         
         
         
@@ -145,8 +184,12 @@ cc.Class({
         if(this.itemUseCount > this.itmeCount)
         {
             this.itemUseCount = this.itmeCount
+            //this.buttonJia.interactable = false
         }
+        //this.buttonJian.interactable = true
         this.itemUseCountLabel.string = ""+this.itemUseCount
+        
+        this.updateButton()
     },
 
     onMinus:function()
@@ -155,8 +198,12 @@ cc.Class({
         if(this.itemUseCount == 0)
         {
             this.itemUseCount = 1
+           // this.buttonJian.interactable = false
         }
+        //this.buttonJia.interactable = true
         this.itemUseCountLabel.string = ""+this.itemUseCount
+        
+        this.updateButton()
     },
 
      setExp: function(currentExp, levlExp) {
@@ -165,6 +212,7 @@ cc.Class({
     updateUI:function()
     {
        cc.log("背包")
+        this.updateButton()
         this.content = this.scrollView.content;
         this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
         var leveldata =  cc.cs.gameData.level["LEV_LEV_"+(parseInt(cc.cs.PlayerInfo.level) + 1)]

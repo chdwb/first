@@ -15385,7 +15385,8 @@
     "currentTime": 0,
     "totalTime": 0,
     "NPCID": 0,
-    "isAction": false
+    "isAction": false,
+    "talkAction": null
   },
   {
     "__type__": "cc.Widget",
@@ -21019,6 +21020,12 @@
     },
     "nodeCantUse": {
       "__id__": 500
+    },
+    "buttonJia": {
+      "__id__": 496
+    },
+    "buttonJian": {
+      "__id__": 491
     },
     "itmeCount": 0,
     "currentgoodsid": 0
