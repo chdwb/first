@@ -59,6 +59,7 @@ cc.Class({
         totalTime : 0,
         NPCID : 0,
         isAction : false,
+        talkAction : null,
     },
 
     sendDisable : function(){
@@ -146,6 +147,9 @@ cc.Class({
                 this.currentTime = 0
                 this.totalTime = (cc.random0To1() + 0.4) * 8 
                 if(this.totalTime > 8)   this.totalTime = 8
+
+                this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step))
+                this.node.runAction(this.talkAction)
             }else
             {
                 this.sendDisable()
@@ -333,14 +337,21 @@ cc.Class({
         }
         this.NPCID = cc.cs.PlayerInfo.wechat_id
         var wechatData = cc.cs.gameData.getwechatData(this.NPCID)
-        if(wechatData["WECHAT_OPTION"] == "dummy" && wechatData["WECHAT_NEXT"] == "dummy"){
+        if(wechatData["WECHAT_NEXT"] == "dummy"){
             this.NPCID++
+            if(this.NPCID >= cc.cs.gameData["LAST"]) {
+                this.sendBtn.getComponent(cc.Button).interactable = false
+                this.inputBtn.getComponent(cc.Button).interactable = false
+                return
+            }
             if(wechatData["WECHAT_OPTION"] == "dummy"){
                 this.setInputMsg(this.NPCID)
             }
         }
         cc.log("wechat   =  " + this.NPCID + "             " +cc.cs.PlayerInfo.wechat_id)
-        this.schedule(this.step,1.0)
+        //this.schedule(this.step,1.0)
+
+       
     },
 
     onDisable : function(){
@@ -348,18 +359,8 @@ cc.Class({
     },
 
     step : function(){
-        cc.log("onDisableonDisableonDisable    step")
-        if (this.isAction) {
-            this.currentTime ++;
-            if (this.currentTime >= this.totalTime) {
-                this.sendEnable()
-                this.setInputMsg(this.NPCID)
-                //this.isAction = false;
-                this.isAction = false
-                this.currentTime = 0
-                this.totalTime = 0
-            } 
-        }
+        this.sendEnable()
+        this.setInputMsg(this.NPCID)
     },
 
     onLoad: function () {
@@ -413,11 +414,13 @@ cc.Class({
         })
     },
 
-    sendBuyFastTalkHandle : function(){
+    sendBuyFastTalkHandle : function(ret){
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) {
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
-            this.currentTime = this.totalTime
+            cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
+            this.castText.string = cc.cs.PlayerInfo.diamond
+            this.step()
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }

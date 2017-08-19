@@ -188,6 +188,10 @@ cc.Class({
         cc.cs.AudioMgr.playBGM(this.audioBGM,true)
     },
 
+
+    update:function(dt){
+        
+    },
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
