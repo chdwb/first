@@ -45,8 +45,20 @@ cc.Class({
             default: null,
             type: cc.Label
 
-        }
-        ,
+        },
+
+        buttonJia:{
+            default: null,
+            type: cc.Button
+
+        },
+
+        buttonJian:{
+            default: null,
+            type: cc.Button
+
+        },
+        
         
 
 
@@ -72,6 +84,10 @@ cc.Class({
     onLoad: function () {
         
 
+    },
+    
+    onEnable:function(){
+      this.updateButton()  
     },
 
     setCallBack:function(goodsid, OKhandle,Max,obj,type)
@@ -122,7 +138,7 @@ cc.Class({
             }
 
 
-
+            this.updateButton()
 
     },
 
@@ -132,6 +148,31 @@ cc.Class({
     // update: function (dt) {
 
     // },
+    
+    updateButton:function()
+    {
+        this.buttonJian.interactable = true
+        this.buttonJia.interactable = true
+        if(this.itemUseCount == 1)
+        {
+            this.buttonJian.interactable = false
+        }
+        else
+        {
+            this.buttonJian.interactable = true
+        }
+        
+        if(this.itemUseCount == this.itmeCount)
+        {
+            this.buttonJia.interactable = false
+        }
+        else
+        {
+            this.buttonJia.interactable = true
+        }
+        
+        
+    },
 
 
     onCancel:function()
@@ -155,9 +196,13 @@ cc.Class({
         if(this.itemUseCount > this.itmeCount)
         {
             this.itemUseCount = this.itmeCount
+            //this.buttonJia.interactable = false
         }
+        //this.buttonJian.interactable = true
+
         this.itemUseCountLabel.string = ""+this.itemUseCount
         this.TotalPrice.string = ""+(this.price * this.itemUseCount)
+        this.updateButton()
         
     },
 
@@ -167,8 +212,11 @@ cc.Class({
         if(this.itemUseCount == 0)
         {
             this.itemUseCount = 1
+            //this.buttonJian.interactable = false
         }
+        //this.buttonJia.interactable = true
         this.itemUseCountLabel.string = ""+this.itemUseCount
         this.TotalPrice.string = ""+(this.price * this.itemUseCount)
+        this.updateButton()
     },
 });
