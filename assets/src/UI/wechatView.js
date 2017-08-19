@@ -63,7 +63,7 @@ cc.Class({
 
     sendDisable : function(){
         this.sendBtn.getComponent(cc.Button).interactable = false
-        this.inputBtn.getComponent(cc.Button).interactable = false
+        //this.inputBtn.getComponent(cc.Button).interactable = false
        // this.tipText.active = false
     },
     sendEnable : function(){
@@ -135,7 +135,7 @@ cc.Class({
             this.inputTableBtn.WECHAT_ID = 0
             this.msgText.node.active = false
             this.quikeTip.active = true
-            this.inputBtn.getComponent(cc.Button).interactable = false
+            this.inputBtn.getComponent(cc.Button).interactable = true
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             
             this.NPCID = JasonObject.content.info.wechat_next
@@ -344,10 +344,11 @@ cc.Class({
     },
 
     onDisable : function(){
-        this.unschedule(this.step)
+        //this.unschedule(this.step)
     },
 
     step : function(){
+        cc.log("onDisableonDisableonDisable    step")
         if (this.isAction) {
             this.currentTime ++;
             if (this.currentTime >= this.totalTime) {
@@ -399,13 +400,27 @@ cc.Class({
         })
 
         this.inputBtn.on("click",(event)=>{
-            self.showInputTable(self.NPCID)
+            if(self.quikeTip.active){
+                cc.cs.gameMgr.sendBuyFastTalk(self.sendBuyFastTalkHandle,self)
+            }else{
+                self.showInputTable(self.NPCID)
+            }
         })
 
         this.sendBtn.on("click",(event)=>{
            
 
         })
+    },
+
+    sendBuyFastTalkHandle : function(){
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) {
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            this.currentTime = this.totalTime
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
     },
 
     setInputMsg:function(id){
@@ -419,6 +434,10 @@ cc.Class({
         }else{
             this.loadCruuentTalk(this.talkScroll,true, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae, false);
             this.sendDisable()
+        }
+        if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"] == "dummy"){
+            this.inputBtn.getComponent(cc.Button).interactable = false
+            this.sendBtn.getComponent(cc.Button).interactable = false
         }
     },
 
