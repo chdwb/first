@@ -556,6 +556,7 @@ cc.Class({
             this.second ++
             if (this.second >= 60) {
                 this.minute++;
+                this.second = 0
             }
             this.talktime.string = (this.minute >= 10 ? this.minute + "" : "0" + this.minute) + ":" + (this.second >= 10 ? parseInt(this.second) + "" : "0" + parseInt(this.second))
 
