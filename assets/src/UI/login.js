@@ -387,7 +387,7 @@ cc.Class({
             cc.cs.PlayerInfo.updateExp(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.Power = JasonObject.content.info.power
             cc.cs.PlayerInfo.updateMoney(JasonObject.content.info.money)
-            cc.cs.PlayerInfo.Diamond = JasonObject.content.info.diamond
+            cc.cs.PlayerInfo.diamond = JasonObject.content.info.diamond
             cc.cs.PlayerInfo.updatePhoenID(JasonObject.content.info.phone_id)
             cc.cs.PlayerInfo.updateWechatID(JasonObject.content.info.wechat_id)
             cc.cs.PlayerInfo.zoneThumbsUp_id = JasonObject.content.info.zoneThumbsUp_id

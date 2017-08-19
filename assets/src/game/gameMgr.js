@@ -260,9 +260,13 @@ cc.Class({
         this.sendHttp("ID_18", data, handle, obj)
 
 
+    },
+
+    sendBuyFastTalk : function(handle, obj){
+        var data = {}
+        data["api_token"] = cc.cs.PlayerInfo.api_token
+        this.sendHttp("ID_25", data, handle, obj)
     }
-
-
 
 
 

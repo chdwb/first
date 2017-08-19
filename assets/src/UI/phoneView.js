@@ -127,6 +127,7 @@ cc.Class({
             }
         }
         
+        cc.log("this.NPCID = cc.cs.PlayerInfo.Phone_ID    " + this.NPCID)
         this.showCompletePhone()
     },
 
@@ -186,12 +187,11 @@ cc.Class({
 
 
         if (endID > 2) {
-            for (var i = 2; i <= count; ++i) {
-
-                if (i + 1 == endID) {
+            for (var i = endID - 1; i >= 2; --i) {
+               if(cc.cs.gameData.level_up["LEVEL_UP_LEV_" + (i)]["PHONE_END_ID"] != "dummy"){
                     startIndex = cc.cs.gameData.level_up["LEVEL_UP_LEV_" + (i)]["PHONE_END_ID"] + 1
                     break
-                }
+               }   
             }
         }
 
@@ -531,9 +531,11 @@ cc.Class({
     onEnable : function(){
         var self = this
         this.showNormal()
-        this.schedule(function(){
-            self.step()
-        },1)
+        this.schedule(this.step,1.0)
+    },
+
+    onDisable : function(){
+        this.unschedule(this.step)
     },
 
     step : function(){

@@ -28,7 +28,7 @@ cc.Class({
 
         Money: 0,
 
-        Diamond: 0,
+        diamond: 0,
 
         FreeWork: 2,
 

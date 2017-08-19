@@ -322,6 +322,7 @@ cc.Class({
         this.inputTableBtn.active = false;
         this.quikeTip.active = false
         this.msgText.node.active = false
+        this.castText.string = cc.cs.PlayerInfo.diamond
         cc.log("wechat onEnable = " +cc.cs.PlayerInfo.canWechat() )
         if(cc.cs.PlayerInfo.canWechat()){
             this.sendBtn.getComponent(cc.Button).interactable = true
