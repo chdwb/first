@@ -22,5 +22,6 @@
   "renderMode": "0",
   "startScene": "27af7385-f2a8-46f9-ba33-95d094a1546c",
   "title": "first",
-  "webOrientation": "auto"
+  "webOrientation": "auto",
+  "includeSDKBox": false
 }
