@@ -331,6 +331,34 @@ cc.Class({
             this.sendBtn.getComponent(cc.Button).interactable = false
             this.inputBtn.getComponent(cc.Button).interactable = false
         }
+        this.NPCID = cc.cs.PlayerInfo.wechat_id
+        var wechatData = cc.cs.gameData.getwechatData(this.NPCID)
+        if(wechatData["WECHAT_OPTION"] == "dummy" && wechatData["WECHAT_NEXT"] == "dummy"){
+            this.NPCID++
+            if(wechatData["WECHAT_OPTION"] == "dummy"){
+                this.setInputMsg(this.NPCID)
+            }
+        }
+        cc.log("wechat   =  " + this.NPCID + "             " +cc.cs.PlayerInfo.wechat_id)
+        this.schedule(this.step,1.0)
+    },
+
+    onDisable : function(){
+        this.unschedule(this.step)
+    },
+
+    step : function(){
+        if (this.isAction) {
+            this.currentTime ++;
+            if (this.currentTime >= this.totalTime) {
+                this.sendEnable()
+                this.setInputMsg(this.NPCID)
+                //this.isAction = false;
+                this.isAction = false
+                this.currentTime = 0
+                this.totalTime = 0
+            } 
+        }
     },
 
     onLoad: function () {
@@ -453,16 +481,6 @@ cc.Class({
     },
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        if (this.isAction) {
-            this.currentTime += dt;
-            if (this.currentTime >= this.totalTime) {
-                this.sendEnable()
-                this.setInputMsg(this.NPCID)
-                //this.isAction = false;
-                this.isAction = false
-                this.currentTime = 0
-                this.totalTime = 0
-            } 
-        }
+        
     },
 });

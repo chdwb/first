@@ -223,11 +223,12 @@ cc.Class({
     },
 
     canWechat: function() {
-        //if (this.canPhone) return false
-        
+        if (this.canPhone()) return false
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
         if (pWechatData != null) {
+            cc.log("canwechat2 = " + pWechatData["WECHAT_LEVEL"] + "   " + this.level + "    " +pWechatData["WECHAT_NEXT"]  +"    " + this.wechat_id )
             if (pWechatData["WECHAT_LEVEL"] <= this.level) {
+                cc.log("canwechat3 = " + pWechatData["WECHAT_LEVEL"] + "   " + this.level + "    " +pWechatData["WECHAT_NEXT"]  +"    " + this.wechat_id )
                 if (pWechatData["WECHAT_LEVEL"] ==this.level && pWechatData["WECHAT_NEXT"] == "dummy") {
                     return false
                 } else {

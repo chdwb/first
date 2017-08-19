@@ -306,7 +306,16 @@ cc.Class({
                 this.showCompletePhone()
             }
         } else {
-            this.loadCruuentTalk(this.currentScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
+            if(id > cc.cs.gameData.phone["FIRST"]){
+                if(cc.cs.gameData.phone["PHONE_ID_" + (id-1)]["PHONE_AUDIO"] == "dummy" ){
+                    this.showInputTable(id)
+                    this.tonghuakuang.active = false
+                }else{
+                    this.loadCruuentTalk(this.currentScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
+                }
+            }else{
+                this.loadCruuentTalk(this.currentScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
+            }
         }
     },
 
@@ -314,7 +323,7 @@ cc.Class({
         var self = this
         cc.log("1   " + id)
         var phoneData = cc.cs.gameData.getphoneData(id)
-        if (phoneData["PHONE_OPTION"] == "dummy" && phoneData["PHONE_AUDIO"] != "dummy") {
+        //if (phoneData["PHONE_OPTION"] == "dummy" && phoneData["PHONE_AUDIO"] != "dummy") {
             this.inputTableBtn.active = true
             var replayId = []
             var btn1 = this.inputTableBtn.getChildByName("btn1")
@@ -338,12 +347,21 @@ cc.Class({
             for (var i = cc.cs.gameData.phone["FIRST"]; i <= cc.cs.gameData.phone["TOTAL_COUNT"]; ++i) {
                 cc.log("2   " + i)
                 var itemData = cc.cs.gameData.getphoneData(i)
-
-                if (itemData["PHONE_OPTION"] == phoneData["PHONE_AUDIO"]) {
-                    replayId.push(itemData)
+                if(itemData == null) 
+                    continue
+                if(phoneData["PHONE_AUDIO"] != "dummy" && phoneData["PHONE_OPTION"] != "dummy"){
+                    if (itemData["PHONE_OPTION"] == phoneData["PHONE_OPTION"]) {
+                        replayId.push(itemData)
+                    }
+                    if (itemData["PHONE_OPTION"] != "dummy" && itemData["PHONE_OPTION"] > phoneData["PHONE_OPTION"])
+                        break;
+                }else{
+                    if (itemData["PHONE_OPTION"] == phoneData["PHONE_AUDIO"]) {
+                        replayId.push(itemData)
+                    }
+                    if (itemData["PHONE_OPTION"] != "dummy" && itemData["PHONE_OPTION"] > phoneData["PHONE_AUDIO"])
+                        break;
                 }
-                if (itemData["PHONE_OPTION"] != "dummy" && itemData["PHONE_OPTION"] > phoneData["PHONE_AUDIO"])
-                    break;
             }
 
             if (replayId.length == 1) {
@@ -434,9 +452,9 @@ cc.Class({
                 }, btn3)
                 this.inputTableBtn.height = btn1.height + btn2.height + btn3.height
             }
-        } else {
-            return
-        }
+       // } else {
+       //     return
+        //}
     },
 
 
