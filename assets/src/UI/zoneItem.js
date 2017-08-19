@@ -44,11 +44,13 @@ cc.Class({
     },
 
     setLength: function() {
-        var height = Math.abs(this.bghf.y) + this.bghf.getContentSize().height + Math.abs(this.replyMsg.node.y * 2)
-        cc.log( Math.abs(this.bghf.y) + "               setLength        " + this.bghf.getContentSize().height +"        " +this.zoneID )
-        var si = this.node.getContentSize()
-        si.height = height + 30
-        this.node.setContentSize(si)
+
+        var height = 0
+        for(var i =0 ; i <  this.replyList.length ; ++i){
+            height += this.replyList[i].height
+        }
+        height = Math.abs(this.bghf.y) + height + 30
+        this.node.height = height
     },
     setZoneID: function(id) {
         this.zoneID = id
@@ -168,12 +170,7 @@ cc.Class({
         }
         this.isAddOther = true
         var si = this.bghf.getContentSize()
-        height = 0
-        for(var i =0 ; i <  this.replyList.length ; ++i){
-            height += this.replyList.length * this.replyList[i].getContentSize().height
-            cc.log("addOtherText   " + this.replyList.length + "   " + this.replyList[i].height + "   " + this.zoneID)
-        }
-        cc.log("addOtherText   " + this.replyList.length)
+        
         this.bghf.height = height
         this.setLength()
     },

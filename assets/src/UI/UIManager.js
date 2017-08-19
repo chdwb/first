@@ -237,6 +237,30 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         node.setPosition(pos)
     },
 
+    refresh_verticalScrollViewUp: function(scrollView, verticalSpace) {
+        if (typeof verticalSpace == 'undefined')
+            verticalSpace = 0;
+        var pos = cc.v2(0.0, 0.0)
+        var children = scrollView.content.getChildren();
+        var height = 0;
+        
+        for(var i = 0 ; i < children.length; ++i){
+            
+            if(i == 0){
+                scrollView.content.height = children[i].height+ verticalSpace
+                children[i].y = 0
+            }else{
+                
+                children[i].y =  -  scrollView.content.height
+                scrollView.content.height +=  + children[i].height +  verticalSpace
+            }
+            cc.log("refresh_verticalScrollViewUp   " + children[i].height + "     " +scrollView.content.height + "      " + children[i].y+ "    "+
+            ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - children[i].anchorY) * children[i].height) + "    " + 
+            ((1.0 - children[i].anchorY) * children[i].height))
+        }
+    },
+
+
 
     showTip: function(text, time) {
         var scene = cc.director.getScene();

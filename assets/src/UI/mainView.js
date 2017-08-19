@@ -110,6 +110,7 @@ cc.Class({
                 
                 this.iconArray[i].active = true
             }else{
+
                 this.iconArray[i].active = false
             }
         }
@@ -156,7 +157,10 @@ cc.Class({
         }
 
         this.addIconArry.splice(addIndex, 0 , this.addIcon)
-
+        for(var i = 0; i< this.addIconArry.length; ++i){
+            cc.log("canAddIcon   addIconArry " +this.addIconArry[i].name)
+            
+        }
 
     },
 
@@ -260,13 +264,29 @@ cc.Class({
 
     canAddIcon : function(){
         for(var i = 0 ; i < this.iconArray.length; ++i){
+            cc.log( this.iconArray[i].name + "       " + i)
             if(cc.cs.PlayerInfo.level >= this.iconArray[i].lev){
+                
+               
                 if(cc.cs.utils.contains(this.addIconArry,  this.iconArray[i]))
-                    return null
-                else
-                    return this.iconArray[i]
+                    continue
+                else{
+                    if(this.iconArray[i] == this.wechatBtn){
+                        cc.log("canAddIcon   contains " + cc.cs.utils.contains(this.addIconArry,  this.iconArray[i] +"      "+ cc.cs.PlayerInfo.canWechat()))
+                        if(cc.cs.PlayerInfo.canWechat()){
+                            return this.iconArray[i]
+                        }else{
+                            continue
+                        }
+                    }else{
+                        return this.iconArray[i]
+                    }
+                    
+                }
+                    
             }
         }
+        return null
     },
 
     updateui: function() {
@@ -288,17 +308,21 @@ cc.Class({
         cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
         if (cc.cs.PlayerInfo.playvideo != 0) {
             cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
-        }else{
-            var icon = this.canAddIcon()
-            if(icon != null){
-                this.addDiBianBtn(icon)
-            }
+            return;
+        }
+        
+        var icon = this.canAddIcon()
+        
+        if(icon != null){
+            cc.log("canAddIcon   " + icon.name)
+            this.addDiBianBtn(icon)
         }
         if (this.phoneBtn.active)
             if (cc.cs.PlayerInfo.canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {
                 this.phoneBtn.getChildByName("stars").active = false;
+
             }
 
         if (this.wechatBtn.active)

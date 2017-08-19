@@ -188,7 +188,17 @@ cc.Class({
     // use this for initialization
 
     onEnable : function(){
-        
+        var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
+        cc.log(newID + "  onEnable zoon   " + this.lastZoneID)
+        if(newID !=  this.lastZoneID){
+            this.addZoneId(ndeID)
+        }
+        var children = this.scrollView.content.getChildren();
+        for(var i = 0 ; i < children.length; ++i){
+            var jsZoneItem = children[i].getComponent("zoneItem")
+            jsZoneItem.addOtherText()
+        }
+        cc.cs.UIMgr.refresh_verticalScrollViewUp(this.scrollView, 0)
         
     },
 
