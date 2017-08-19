@@ -4,6 +4,7 @@ cc.Class({
     properties: {
         tipPrefab: null,
         popupPrefab: null,
+        nodePopBuyPrefab: null,
         removeList: [],
         MAINVIEW: 0,
         MISSONVIEW: 1,
@@ -171,6 +172,15 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
+        this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
+    },
+    showPopBuy: function(okHandle,obj) {
+
+        var scene = cc.director.getScene();
+        var popupNode = cc.instantiate(this.nodePopBuyPrefab)
+        scene.getChildByName("Canvas").addChild(popupNode, 999)
+        popupNode.setPosition(0, 0);
+        popupNode.getComponent("PopBuy").setCallBack(okHandle,obj)
     },
     addItem_horizontalScrollView: function(scrollView, node, horizontalSpace) {
         if (typeof horizontalSpace == 'undefined')

@@ -127,17 +127,21 @@ cc.Class({
 
     onRightNow:function()
     {
-        if(this.isWork)
+        /*if(this.isWork)
         {
             cc.log("this.currentWorkID2 = "+ this.currentWorkID)
-            cc.cs.gameMgr.sendWorkRightNode(cc.cs.PlayerInfo.api_token, this.currentLogID, this.onRightNowHandle, this)
+            cc.cs.gameMgr.sendWorkRightNode(this.currentLogID, this.onRightNowHandle, this)
         }
         else
         {
 
             cc.log("this.currentWorkID = "+ this.currentWorkID)
-            cc.cs.gameMgr.sendDateRightNode(cc.cs.PlayerInfo.api_token, this.currentLogID, this.onRightNowHandle, this)
-        }
+            cc.cs.gameMgr.sendDateRightNode(this.currentLogID, this.onRightNowHandle, this)
+        }*/
+
+
+        cc.cs.gameMgr.sendLoveDone(this.doneDate,this)
+
     },
 
     onRightNowHandle:function(ret)
@@ -206,6 +210,8 @@ cc.Class({
 
     onBuyRightNow:function()
     {
+        
+        cc.log("意见wancheng")
         var type = 0;
         var isRightnow = false;
 
@@ -222,10 +228,14 @@ cc.Class({
 
             isRightnow = cc.cs.PlayerInfo.date_fn
         }
+        
+        cc.log("hehe"+ isRightnow)
 
         if(isRightnow == false)
         {
-            cc.cs.gameMgr.buyRightNow(cc.cs.PlayerInfo.api_token,type,this.onBuyRightNowhandle,this)
+            //cc.cs.gameMgr.buyRightNow(type,this.onBuyRightNowhandle,this)
+            
+            cc.cs.UIMgr.showPopBuy(this.buyLIJI,this)
         }
         else
         {
@@ -235,6 +245,11 @@ cc.Class({
 
 
        
+    },
+    
+    buyLIJI:function()
+    {
+        cc.cs.gameMgr.buyRightNow(3,this.onBuyRightNowhandle,this)
     },
 
      onBuyRightNowhandle:function(ret)
@@ -294,9 +309,9 @@ cc.Class({
             cc.cs.UIMgr.closeView()
         }, this.backBtn)
 
-        this.rightNowBtn.on("click", (event) => {
+        /*this.rightNowBtn.on("click", (event) => {
 
-        }, this.rightNowBtn)
+        }, this.rightNowBtn)*/
 
         //this.setActionInfo(10, "test", "", this.cccc) for test
     },
