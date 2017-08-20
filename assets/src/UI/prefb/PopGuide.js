@@ -15,7 +15,16 @@ cc.Class({
         button : {
             default: null,
             type: cc.Node
+        },
+        
+        positonNode : {
+            
+            default: null,
+            type: cc.Node
+            
         }
+        
+        
     },
 
     // use this for initialization
