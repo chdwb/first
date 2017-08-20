@@ -457,6 +457,8 @@ cc.Class({
             self.goLove()
 
         }, this.loveBtn)
+        
+        //cc.cs.UIMgr.showGuide(this.loveBtn)
 
 
     },
