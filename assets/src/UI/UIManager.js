@@ -173,6 +173,7 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
+        this.nodeGuidePrefab = cc.loader.getRes("prefab/PopGuide", cc.Prefab)
     },
     showPopBuy: function(okHandle,obj) {
 
@@ -182,6 +183,17 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         popupNode.setPosition(0, 0);
         popupNode.getComponent("PopBuy").setCallBack(okHandle,obj)
     },
+    
+    
+      showGuide: function(guideID) {
+
+        var scene = cc.director.getScene();
+        var popupNode = cc.instantiate(this.nodeGuidePrefab)
+        scene.getChildByName("Canvas").addChild(popupNode, 999)
+        popupNode.setPosition(0, 0);
+        popupNode.getComponent("PopGuide").setGuide(guideID)
+    },
+    
     addItem_horizontalScrollView: function(scrollView, node, horizontalSpace) {
         if (typeof horizontalSpace == 'undefined')
             horizontalSpace = 0;

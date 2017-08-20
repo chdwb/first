@@ -226,6 +226,7 @@ cc.Class({
         
         //this.items = []; // array to store spawned items
     	this.updateUI()
+        cc.cs.UIMgr.showGuide(1)
     },
       onEnable: function () {
        //cc.log("背包")
