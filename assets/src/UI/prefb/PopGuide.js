@@ -38,6 +38,29 @@ cc.Class({
     // },
     
     setGuide: function(target){
+        
+        //this.positonNode.setAnchorPoint(1,1)
+        //this.positonNode.setPosition(target.getPosition)
+        var p = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
+        
+        var p2 = this.positonNode.parent.convertToNodeSpace(cc.v2(p.x,p.y))
+        
+        this.positonNode.x = p2.x
+        this.positonNode.y = p2.y 
+        
+        var B1 = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
+        var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))
+        
+        cc.log("btn pos "+ B1.x+" "+B1.y)
+        cc.log("arrow pos "+ B2.x+" "+B2.y)
+        
+      
+
+        
+        
+        
+        
+        
 
         var listener = { 
     event: cc.EventListener.TOUCH_ONE_BY_ONE,

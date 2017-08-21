@@ -373,6 +373,8 @@ cc.Class({
 
     onEnable : function(){
         this.updateui();
+        
+       
     },
 
     onLoad: function() {
@@ -458,7 +460,7 @@ cc.Class({
 
         }, this.loveBtn)
         
-        //cc.cs.UIMgr.showGuide(this.loveBtn)
+        
 
 
     },

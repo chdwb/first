@@ -76,6 +76,11 @@ cc.Class({
             type: cc.Button
 
         },
+        
+        buttonBack:{
+            default:null,
+            type: cc.Button
+        },
 
 
 
@@ -226,6 +231,8 @@ cc.Class({
         
         //this.items = []; // array to store spawned items
     	this.updateUI()
+    	
+    	cc.cs.UIMgr.showGuide(this.buttonBack.node)
         
     },
       onEnable: function () {
