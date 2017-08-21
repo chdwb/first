@@ -40,10 +40,19 @@ cc.Class({
          cc.audioEngine.play(clip, false, 1);
     },
 
-    playBGM:function (clip,isLoop)
+    playBGM:function (name,isLoop)
     {
+         var self = this;
         if(this.isSondOff == false)
-       this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
+        {
+                       
+            cc.loader.loadRes("audio/"+name, function (err, clip) 
+            {
+
+                cc.audioEngine.play(clip, isLoop, 1);
+            });
+        }
+       //this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
        cc.log("背景音乐id"+this.BGMid)
     },
 
@@ -63,6 +72,21 @@ cc.Class({
         cc.sys.localStorage.setItem('ISSOUNDOFF',0)
        cc.audioEngine.resume(this.BGMid)
     },
+
+
+    playAudio:function(name)
+    {
+            var self = this;
+        cc.loader.loadRes("audio/effect/"+name, function (err, clip) {
+
+            cc.audioEngine.play(clip, false, 1);
+
+            //self.node.getComponent(cc.Animation).addClip(clip, "anim");
+
+        });
+
+    }
+    ,
 
    
 

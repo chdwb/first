@@ -185,7 +185,9 @@ cc.Class({
     onLoad: function () {
        
         cc.cs.UIMgr.gameScene = this
-        cc.cs.AudioMgr.playBGM(this.audioBGM,true)
+        cc.cs.AudioMgr.playBGM("1",true)
+
+       cc.cs.AudioMgr.playAudio("calling")
     },
 
 
