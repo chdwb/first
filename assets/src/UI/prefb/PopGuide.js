@@ -22,6 +22,12 @@ cc.Class({
             default: null,
             type: cc.Node
             
+        },
+
+        Des:{
+            default: null,
+            type: cc.Label
+
         }
         
         
@@ -37,22 +43,28 @@ cc.Class({
 
     // },
     
-    setGuide: function(target){
+    setGuide: function(guideID, target){
         
         //this.positonNode.setAnchorPoint(1,1)
         //this.positonNode.setPosition(target.getPosition)
-        var p = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
-        
-        var p2 = this.positonNode.parent.convertToNodeSpace(cc.v2(p.x,p.y))
-        
-        this.positonNode.x = p2.x
-        this.positonNode.y = p2.y 
-        
-        var B1 = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
-        var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))
-        
-        cc.log("btn pos "+ B1.x+" "+B1.y)
-        cc.log("arrow pos "+ B2.x+" "+B2.y)
+     var self = this
+        if(target != null)
+        {
+            var p = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
+            var p2 = this.positonNode.parent.convertToNodeSpace(cc.v2(p.x,p.y))
+            
+            this.positonNode.x = p2.x
+            this.positonNode.y = p2.y 
+            
+            var B1 = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
+            var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))
+            
+            cc.log("btn pos "+ B1.x+" "+B1.y)
+            cc.log("arrow pos "+ B2.x+" "+B2.y)
+        }
+
+
+        self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+guideID]["GUIDE_TEXT"]
         
       
 
@@ -72,6 +84,8 @@ cc.Class({
     //这样后续的 onTouchEnded 和 onTouchMoved 才会触发事件 
     
     // 获取当前触摸点相对于按钮所在的坐标
+     if(target != null)
+     {
             var locationInNode = target.convertToNodeSpace(touch.getLocation());    
             var s = target.getContentSize();
             var rect = cc.rect(0, 0, s.width, s.height);
@@ -79,9 +93,33 @@ cc.Class({
             if (cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
                 cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
                 //target.opacity = 180;
+                 cc.sys.localStorage.setItem('GUIDEPOS',guideID)
+                self.node.removeFromParent(true);
                 return false;
             }
             return true;
+     }
+     else
+     {
+
+        // cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"]
+
+            if(  cc.cs.gameData.guide["GUIDE_ID_"+guideID ]["NEXT"] != "dummy" )
+            {
+
+               // cc.cs.gameData["GUIDE_ID_"+guideID][GUIDE_TEXT]
+
+            cc.sys.localStorage.setItem('GUIDEPOS',guideID)
+            guideID ++;
+            self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+guideID ]["GUIDE_TEXT"]
+            }
+            else
+            {
+                 cc.sys.localStorage.setItem('GUIDEPOS',guideID)
+               self.node.removeFromParent(true);
+            }
+            return true
+     }
     
     
     }, 

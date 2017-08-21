@@ -310,6 +310,8 @@ cc.Class({
             cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
             return;
         }
+
+        
         
         var icon = this.canAddIcon()
         

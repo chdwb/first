@@ -185,13 +185,13 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
     },
     
     
-      showGuide: function(Target) {
+      showGuide: function(guideID,Target) {
 
         var scene = cc.director.getScene();
         var popupNode = cc.instantiate(this.nodeGuidePrefab)
         scene.getChildByName("Canvas").addChild(popupNode, 999)
         popupNode.setPosition(0, 0);
-        popupNode.getComponent("PopGuide").setGuide(Target)
+        popupNode.getComponent("PopGuide").setGuide(guideID,Target)
     },
     
     addItem_horizontalScrollView: function(scrollView, node, horizontalSpace) {
