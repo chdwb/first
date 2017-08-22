@@ -257,11 +257,11 @@ cc.Class({
         this.startBtn.on("click", (event)=>{
             cc.log("startbtn")
             var dateResult = cc.cs.PlayerInfo.canWork(self.itemID)
-            if(dateResult == 0){
+            if(dateResult == 0 || dateResult == 1 ){
                 cc.cs.gameMgr.sendWork(self.itemID, self.startWorkHandle, self)
-            }else if(dateResult == -1){
+            }else if(dateResult == 2){
                // cc.cs.gameMgr.buyLoveTime(self.itemID, self.buyLoveHandle, self)
-               cc.cs.gameMgr.sendUpgrade( self.itemID, self.upgradeWorkHandle, this)
+               cc.cs.gameMgr.sendUpgrade( self.itemID, self.upgradeWorkHandle, self)
             }
             
         })
@@ -281,6 +281,22 @@ cc.Class({
             cc.cs.UIMgr.openView(cc.cs.UIMgr.ACTIONVIEW)
         }else{
             cc.log("error " + JasonObject.error)
+        }
+    },
+
+     upgradeWorkHandle:function(ret)
+    {
+        cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) 
+        {
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            
+            
+            this.refresh()
+            cc.cs.UIMgr.showTip("升级成功", 1.0)
+        }else{
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
     },
 
