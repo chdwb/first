@@ -318,6 +318,10 @@ cc.Class({
         {
             cc.cs.UIMgr.showGuide(1,null)
         }
+        else if(parseInt(guidepos) < 3)
+        {
+            cc.cs.UIMgr.showGuide(guidepos+1,null)
+        }
 
         
         
