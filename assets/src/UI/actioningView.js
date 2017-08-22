@@ -54,7 +54,8 @@ cc.Class({
         isAction: false,
         handle: null,
         handleobj: null,
-        doID : 0
+        doID : 0,
+        AudioID:-1
     },
 
     setItem:function(id , iswork){
@@ -95,6 +96,7 @@ cc.Class({
             var workData = cc.cs.gameData.getworkData(this.doID)
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.showPopupO("达成", "经过辛勤的工作，你获得了" + workData["REWARD"]+"金币。", this.closePopupHandle)
+             cc.cs.AudioMgr.playAudio("success",false)
            
         }else{
             cc.log("error " + JasonObject.error)
@@ -111,6 +113,9 @@ cc.Class({
             var dateData = cc.cs.gameData.getdateData(this.doID)
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.showPopupO("达成", "你获得了" + dateData["DATE_EXP"]+"亲密度。", this.closePopupHandle)
+
+            cc.cs.AudioMgr.playAudio("success",false)
+
         }else{
             cc.log("error " + JasonObject.error)
         }
@@ -138,7 +143,8 @@ cc.Class({
             cc.log("this.currentWorkID = "+ this.currentWorkID)
             cc.cs.gameMgr.sendDateRightNode(this.currentLogID, this.onRightNowHandle, this)
         }*/
-
+        cc.log("stop id "+ this.AudioID)
+        cc.cs.AudioMgr.StopAudio(this.AudioID)
 
         if(this.isWork)
         {
@@ -317,8 +323,9 @@ cc.Class({
         this.backBtn.on("click", (event) => {
             cc.cs.UIMgr.closeView()
         }, this.backBtn)
-
-       this.AudioID = cc.cs.AudioMgr.playAudio("time_click",true)
+        
+    this.AudioID =  cc.cs.AudioMgr.playAudio("time_click",true)
+       cc.log("audio id " + this.AudioID)
 
         /*this.rightNowBtn.on("click", (event) => {
 

@@ -45,14 +45,20 @@ cc.Class({
          var self = this;
         if(this.isSondOff == false)
         {
+
+            var hehe  = cc.loader.getRes("audio/"+name, cc.AudioClip)
+           self.BGMid  = cc.audioEngine.play(hehe, isLoop, 1);
+
                        
-            cc.loader.loadRes("audio/"+name, function (err, clip) 
+            /*cc.loader.loadRes("audio/"+name, function (err, clip) 
             {
 
               self.BGMid = cc.audioEngine.play(clip, isLoop, 0.5);
-            });
+            });*/
         }
        //this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
+
+          
        cc.log("背景音乐id"+this.BGMid)
     },
 
@@ -84,17 +90,30 @@ cc.Class({
 
     playAudio:function(name,isloop)
     {
+        var id = 0;
         if(this.isSondOff == false)
         {
             var self = this;
-        cc.loader.loadRes("audio/effect/"+name, function (err, clip) {
+   
+           var hehe = cc.loader.getRes("audio/effect/"+name, cc.AudioClip)
+            id = cc.audioEngine.play(hehe, isloop, 1);
+           
 
-            var id = cc.audioEngine.play(clip, isloop, 1);
 
-            return id
 
-        });
-        }
+        /*cc.loader.loadRes("audio/effect/"+name, function (err, clip) {
+
+             this.Backid = cc.audioEngine.play(hehe, isloop, 1);
+            cc.log("音效ID"+id)
+
+            
+
+        });*/
+    }
+
+    return id
+    
+    
 
     }
     ,

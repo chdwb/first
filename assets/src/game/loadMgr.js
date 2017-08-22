@@ -26,6 +26,17 @@ cc.Class({
             }
         })
 
+         cc.loader.loadResDir("audio", (err, ass) => {
+            if (!err) {
+                //self.isLoadComplete = true
+            } else {
+                cc.log(err)
+            }
+        })
+
+
+
+
     },
     // use this for initialization
     onLoad: function() {
