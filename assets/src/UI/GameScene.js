@@ -107,6 +107,21 @@ cc.Class({
 
     },
 
+
+
+     BackAudio:function(){
+
+         cc.cs.AudioMgr.playAudio("return")
+
+    },
+
+    ClickAudio:function(){
+
+
+         cc.cs.AudioMgr.playAudio("click")
+
+    },
+
     SetView:function(type)
     {
         cc.log("now layer "+ type)
