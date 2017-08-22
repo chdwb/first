@@ -42,6 +42,12 @@ cc.Class({
     // update: function (dt) {
 
     // },
+
+
+    sendGuideHandle:function()
+    {
+
+    },
     
     setGuide: function(guideID, target){
         
@@ -93,7 +99,8 @@ cc.Class({
             if (cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
                 cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
                 //target.opacity = 180;
-                 cc.sys.localStorage.setItem('GUIDEPOS',guideID)
+                // cc.sys.localStorage.setItem('GUIDEPOS',guideID)
+                cc.cs.gameMgr.sendGuid (guideID,  self.sendGuideHandle, self)
                 self.node.removeFromParent(true);
                 return false;
             }

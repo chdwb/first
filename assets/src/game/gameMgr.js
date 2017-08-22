@@ -271,6 +271,16 @@ cc.Class({
         data["api_token"] = cc.cs.PlayerInfo.api_token
         this.sendHttp("ID_25", data, handle, obj)
     }
+    
+    ，
+    
+    sendGuid:function(guideid,handle,object)
+    {
+        var data = {}
+        data["api_token"] = cc.cs.PlayerInfo.api_token
+        data["guideid"] = guideid
+        this.sendHttp("ID_26", data, handle,object)
+    }
 
 
 
