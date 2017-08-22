@@ -58,9 +58,12 @@ cc.Class({
 
     stopBGM:function(issave = false)
     {
-        this.isSondOff = true
+        
         if(issave)
+        {
+        this.isSondOff = true
         cc.sys.localStorage.setItem('ISSOUNDOFF',1)
+        }
 
          cc.audioEngine.pause(this.BGMid)
 
@@ -68,10 +71,14 @@ cc.Class({
 
     startBGM:function(issave = false)
     {
-        this.isSondOff = false
+        
         if(issave)
-        cc.sys.localStorage.setItem('ISSOUNDOFF',0)
-       cc.audioEngine.resume(this.BGMid)
+        {
+            this.isSondOff = false
+            cc.sys.localStorage.setItem('ISSOUNDOFF',0)
+           
+        }
+         cc.audioEngine.resume(this.BGMid)
     },
 
 

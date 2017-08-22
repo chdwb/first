@@ -318,6 +318,8 @@ cc.Class({
             cc.cs.UIMgr.closeView()
         }, this.backBtn)
 
+       this.AudioID = cc.cs.AudioMgr.playAudio("time_click",true)
+
         /*this.rightNowBtn.on("click", (event) => {
 
         }, this.rightNowBtn)*/
