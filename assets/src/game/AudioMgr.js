@@ -77,6 +77,8 @@ cc.Class({
 
     playAudio:function(name,isloop)
     {
+        if(this.isSondOff == false)
+        {
             var self = this;
         cc.loader.loadRes("audio/effect/"+name, function (err, clip) {
 
@@ -85,6 +87,7 @@ cc.Class({
             return id
 
         });
+        }
 
     }
     ,
