@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "64dcc02c-bb51-4da9-aa1f-2fe16eceb446",
+  "uuid": "24503043-f34a-48ad-8d92-558e4b3cb179",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "loginbg": {
+    "gameword48": {
       "ver": "1.0.3",
-      "uuid": "3004c3c1-d9a9-40ca-8b69-cb24aef27074",
-      "rawTextureUuid": "64dcc02c-bb51-4da9-aa1f-2fe16eceb446",
+      "uuid": "cc7dc670-25b0-4cd3-9c53-94fa8069149b",
+      "rawTextureUuid": "24503043-f34a-48ad-8d92-558e4b3cb179",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -17,9 +17,9 @@
       "trimX": 0,
       "trimY": 0,
       "width": 1280,
-      "height": 720,
+      "height": 960,
       "rawWidth": 1280,
-      "rawHeight": 720,
+      "rawHeight": 960,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
