@@ -49,7 +49,7 @@ cc.Class({
             cc.loader.loadRes("audio/"+name, function (err, clip) 
             {
 
-              self.BGMid = cc.audioEngine.play(clip, isLoop, 1);
+              self.BGMid = cc.audioEngine.play(clip, isLoop, 0.5);
             });
         }
        //this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
@@ -74,14 +74,14 @@ cc.Class({
     },
 
 
-    playAudio:function(name)
+    playAudio:function(name,isloop)
     {
             var self = this;
         cc.loader.loadRes("audio/effect/"+name, function (err, clip) {
 
-            cc.audioEngine.play(clip, false, 1);
+            var id = cc.audioEngine.play(clip, isloop, 1);
 
-            //self.node.getComponent(cc.Animation).addClip(clip, "anim");
+            return id
 
         });
 
