@@ -48,7 +48,7 @@ cc.Class({
         if(this.SoundOff == false)
         {
             this.SoundOff = true;
-            cc.cs.AudioMgr.stopBGM();
+            cc.cs.AudioMgr.stopBGM(true);
             //this.SettingButton.interactable = false
             cc.cs.UIMgr.changeSprite(this.SettingButton.node, "set/yinyue1")
         
@@ -56,7 +56,7 @@ cc.Class({
         else
         {
             this.SoundOff = false;
-            cc.cs.AudioMgr.startBGM();
+            cc.cs.AudioMgr.startBGM(true);
             //this.SettingButton.interactable = true
             cc.cs.UIMgr.changeSprite(this.SettingButton.node, "set/yinyue")
             

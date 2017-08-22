@@ -56,19 +56,20 @@ cc.Class({
        cc.log("背景音乐id"+this.BGMid)
     },
 
-    stopBGM:function()
+    stopBGM:function(issave = false)
     {
         this.isSondOff = true
-
+        if(issave)
         cc.sys.localStorage.setItem('ISSOUNDOFF',1)
 
          cc.audioEngine.pause(this.BGMid)
 
     },
 
-    startBGM:function()
+    startBGM:function(issave = false)
     {
         this.isSondOff = false
+        if(issave)
         cc.sys.localStorage.setItem('ISSOUNDOFF',0)
        cc.audioEngine.resume(this.BGMid)
     },
@@ -87,6 +88,16 @@ cc.Class({
 
     }
     ,
+
+     StopAudio:function(id)
+     {
+
+         cc.audioEngine.stop(id)
+
+     },
+
+
+
 
    
 
