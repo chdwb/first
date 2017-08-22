@@ -16,8 +16,8 @@ cc.Class({
         
     },
     loadComplete: function() {
-        cc.find("Canvas/Bg").active = true
-        cc.cs.UIMgr.init()
+        //cc.find("Canvas/Bg").active = true
+       
     },
 
     // use this for initialization
