@@ -5,7 +5,7 @@ set HOME=%cd%
 set TOOLS=%HOME%\tools
 set DATA_GENERATE=%TOOLS%\data\python
 
-set DATA_XLSX=%DATA_GENERATE%\..\mygameConfig.xls
+set DATA_XLSX=%DATA_GENERATE%\..\mygameConfig.xlsx
 
 set OUTPUT=%HOME%\generate
 
