@@ -2469,8 +2469,7 @@ module.exports = {
 		"GUIDE_ID_2":{"GUIDE_ID":2, "GUIDE_TEXT":"桃心代表着你和美女的亲密程度。", "NEXT":3},
 		"GUIDE_ID_3":{"GUIDE_ID":3, "GUIDE_TEXT":"当亲密程度、电话、微信都符合条件时就能触发剧情视频。", "NEXT":"dummy"},
 		"GUIDE_ID_4":{"GUIDE_ID":4, "GUIDE_TEXT":"恋爱可以提升你和美女的亲密度！", "NEXT":"dummy"},
-		"GUIDE_ID_5":{"GUIDE_ID":5, "GUIDE_TEXT":"做好一顿饭可是提升亲密度最快的方式。
-", "NEXT":"dummy"},
+		"GUIDE_ID_5":{"GUIDE_ID":5, "GUIDE_TEXT":"做好一顿饭可是提升亲密度最快的方式。", "NEXT":"dummy"},
 		"GUIDE_ID_6":{"GUIDE_ID":6, "GUIDE_TEXT":"和美女通话也是可以提升亲密度的方式之一。", "NEXT":"dummy"},
 		"GUIDE_ID_7":{"GUIDE_ID":7, "GUIDE_TEXT":"请注意你的每一次和美女说的话，这可是会影响美女对你的好感哦。", "NEXT":"dummy"},
 		"GUIDE_ID_8":{"GUIDE_ID":8, "GUIDE_TEXT":"微信也是保持和美女联系的最好方式。", "NEXT":"dummy"},
