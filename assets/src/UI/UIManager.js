@@ -185,10 +185,12 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
     },
     
     
-      showGuide: function(guideID,Target) {
+    showGuide: function(guideID,Target) {
 
         var scene = cc.director.getScene();
+        cc.log("scene   = "+ scene + "    " + this.nodeGuidePrefab)
         var popupNode = cc.instantiate(this.nodeGuidePrefab)
+        cc.log("popupNode   = "+ popupNode + "    " )
         scene.getChildByName("Canvas").addChild(popupNode, 999)
         popupNode.setPosition(0, 0);
         popupNode.getComponent("PopGuide").setGuide(guideID,Target)

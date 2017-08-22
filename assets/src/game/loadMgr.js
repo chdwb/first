@@ -8,7 +8,10 @@ cc.Class({
     loadRes: function(funCall) {
         var self = this
         cc.loader.loadResDir("prefab", (err, prefab) => {
+
             if (!err) {
+                cc.cs.UIMgr.init()
+                
                 cc.director.preloadScene("GameScene", function() {
                     cc.log("Next scene preloaded");
                     funCall()
@@ -17,7 +20,7 @@ cc.Class({
 
 
             } else {
-                cc.log(err)
+                cc.log("load error prefab " +err)
             }
         })
         cc.loader.loadResDir("picture/newRes", (err, ass) => {
