@@ -42,7 +42,7 @@ cc.Class({
 
         work_id: 0,
 
-        worklogid: 0,
+        worklog_id: 0,
 
         WorkLeftTimes: [],
         loveLeftTimes: [],
