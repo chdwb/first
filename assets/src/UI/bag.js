@@ -241,12 +241,7 @@ cc.Class({
         //this.items = []; // array to store spawned items
     	this.updateUI()
 
-        var guidepos =  cc.sys.localStorage.getItem('GUIDEPOS')
-        cc.log("guidepos = "+guidepos)
-        if(guidepos == null)
-        {
-            cc.cs.UIMgr.showGuide(1,null)
-        }
+        
     },
      initialize: function (itemArray) {
         //this.Exp.string = ""+cc.cs.PlayerInfo.exp

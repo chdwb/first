@@ -311,6 +311,14 @@ cc.Class({
             return;
         }
 
+
+        var guidepos =  cc.sys.localStorage.getItem('GUIDEPOS')
+        cc.log("guidepos = "+guidepos)
+        if(guidepos == null)
+        {
+            cc.cs.UIMgr.showGuide(1,null)
+        }
+
         
         
         var icon = this.canAddIcon()
