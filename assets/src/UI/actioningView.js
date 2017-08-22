@@ -123,6 +123,10 @@ cc.Class({
     },
 
     doEnd:function(){
+
+          cc.log("stop id "+ this.AudioID)
+        cc.cs.AudioMgr.StopAudio(this.AudioID)
+
         if(this.isWork){
             cc.cs.gameMgr.sendWorkDone(this.doneWork,this)
         }else{
@@ -324,14 +328,21 @@ cc.Class({
             cc.cs.UIMgr.closeView()
         }, this.backBtn)
         
-    this.AudioID =  cc.cs.AudioMgr.playAudio("time_click",true)
-       cc.log("audio id " + this.AudioID)
+    
 
         /*this.rightNowBtn.on("click", (event) => {
 
         }, this.rightNowBtn)*/
 
         //this.setActionInfo(10, "test", "", this.cccc) for test
+    },
+
+    onEnable: function()
+    {
+
+        this.AudioID =  cc.cs.AudioMgr.playAudio("time_click",true)
+       cc.log("audio id " + this.AudioID)
+
     },
 
     update: function(dt) {
