@@ -49,7 +49,7 @@ cc.Class({
             cc.loader.loadRes("audio/"+name, function (err, clip) 
             {
 
-                cc.audioEngine.play(clip, isLoop, 1);
+              this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
             });
         }
        //this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
