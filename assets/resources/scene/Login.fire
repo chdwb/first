@@ -254,7 +254,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_id": "1c7427QHklM9aCcn3WSuhHz",
@@ -1401,7 +1401,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -63,
       "y": 0
     },
     "_skewX": 0,
@@ -1542,7 +1542,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_id": "fefb59lXcJAQoRW7UTCfnQj",
@@ -1668,12 +1668,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 160,
+      "width": 152,
       "height": 40
     },
     "_rotationX": 0,
@@ -1682,8 +1682,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -7,
-      "y": 158
+      "x": -138,
+      "y": 159
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1701,15 +1701,15 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
+    "_actualFontSize": 38,
+    "_fontSize": 38,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "游客账号",
-    "_N$horizontalAlign": 2,
+    "_N$horizontalAlign": 0,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0
@@ -1905,7 +1905,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 50
@@ -2141,12 +2141,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 381,
+      "width": 296.8,
       "height": 60
     },
     "_rotationX": 0,
@@ -2155,8 +2155,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 47,
-      "y": 103
+      "x": -142.3,
+      "y": 95
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2194,7 +2194,7 @@
       "a": 255
     },
     "_N$placeholder": "请输入账号",
-    "_N$placeholderFontSize": 44.50000000000043,
+    "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
       "r": 127,
@@ -2221,8 +2221,8 @@
       }
     ],
     "_prefab": null,
-    "_id": "b5e6eTcOxxGAL0LTG1seZab",
-    "_opacity": 255,
+    "_id": "58tDVboHROCLDL3r8uoqgF",
+    "_opacity": 0,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -2233,12 +2233,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 381,
+      "width": 296.8,
       "height": 60
     },
     "_rotationX": 0,
@@ -2247,8 +2247,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 47,
-      "y": 8
+      "x": -140,
+      "y": 1
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2285,8 +2285,8 @@
       "b": 0,
       "a": 255
     },
-    "_N$placeholder": "请输入密码",
-    "_N$placeholderFontSize": 44.50000000000043,
+    "_N$placeholder": "请输入账号",
+    "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
       "r": 127,
@@ -2294,7 +2294,7 @@
       "b": 127,
       "a": 255
     },
-    "_N$maxLength": 15,
+    "_N$maxLength": 11,
     "_N$stayOnTop": false
   },
   {
@@ -2339,8 +2339,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 46,
-      "y": -83
+      "x": 50,
+      "y": -87.2
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2378,7 +2378,7 @@
       "a": 255
     },
     "_N$placeholder": "请确认密码",
-    "_N$placeholderFontSize": 44.50000000000043,
+    "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
       "r": 127,
@@ -3180,12 +3180,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 381,
+      "width": 306,
       "height": 60
     },
     "_rotationX": 0,
@@ -3194,7 +3194,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 51,
+      "x": -131,
       "y": 41
     },
     "_skewX": 0,
@@ -3233,7 +3233,7 @@
       "a": 255
     },
     "_N$placeholder": "请输入账号",
-    "_N$placeholderFontSize": 44.50000000000043,
+    "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
       "r": 127,
@@ -3260,7 +3260,7 @@
       }
     ],
     "_prefab": null,
-    "_id": "97556yFv9NF3aD5uD7s9WAQ",
+    "_id": "03LCWQnftFr55SA4AbJJ7t",
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -3272,12 +3272,12 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 381,
+      "width": 306,
       "height": 60
     },
     "_rotationX": 0,
@@ -3286,8 +3286,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 53,
-      "y": -47
+      "x": -131,
+      "y": -51.9
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3325,7 +3325,7 @@
       "a": 255
     },
     "_N$placeholder": "请输入密码",
-    "_N$placeholderFontSize": 44.50000000000043,
+    "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
       "r": 127,
@@ -3333,7 +3333,7 @@
       "b": 127,
       "a": 255
     },
-    "_N$maxLength": 15,
+    "_N$maxLength": 11,
     "_N$stayOnTop": false
   },
   {
