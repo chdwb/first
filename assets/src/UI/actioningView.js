@@ -140,7 +140,16 @@ cc.Class({
         }*/
 
 
-        cc.cs.gameMgr.sendLoveDone(this.doneDate,this)
+        if(this.isWork)
+        {
+            cc.cs.gameMgr.sendWorkDone(this.doneDate,this)
+
+        }
+        else
+        {
+
+            cc.cs.gameMgr.sendLoveDone(this.doneDate,this)
+        }
 
     },
 

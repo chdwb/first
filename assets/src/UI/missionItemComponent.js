@@ -69,7 +69,7 @@ cc.Class({
             type: cc.Label
         },
         itemID: 0,
-        isWokr: false,
+        isWork: false,
         isLoad : false,
     },
 
@@ -90,7 +90,7 @@ cc.Class({
 
     setItem: function(id, isWork) {
         cc.log("missionitemComponent    setItem")
-        this.isWokr = isWork
+        this.isWork = isWork
         this.itemID = id
         this.loadElement()
         if (isWork) {
@@ -121,7 +121,7 @@ cc.Class({
             if (workResult == 0 || workResult == 1) {
                 this.btnLock.active = false
                 this.btnText.node.active = true
-                this.btnTex.string = "开始"
+                this.btnText.string = "开始"
             } else if (workResult == 2) {
                 this.btnLock.active = false
                 this.btnText.node.active = true
@@ -192,6 +192,7 @@ cc.Class({
             this.startTips.string = "游戏内时间第" + result + "天开放"
         }
         this.startBtn.on("click", (event)=>{
+            cc.log("startbtn")
             var dateResult = cc.cs.PlayerInfo.canLove(self.itemID)
             if(dateResult == 0){
                 cc.cs.gameMgr.sendLove(self.itemID, self.startDateHandle, self)
@@ -224,6 +225,7 @@ cc.Class({
     },
 
     loadWork: function(result) {
+        var self = this
         var workData = cc.cs.gameData.getworkData(this.itemID)
         this.titleText.string = "工作"
         cc.cs.UIMgr.changeSprite(this.doSprite.node, "work_quest/work/" + this.itemID)
@@ -250,6 +252,35 @@ cc.Class({
             this.btnLock.active = true
             this.btnText.node.active = false
             this.startBtn.getComponent(cc.Button).interactable = false
+        }
+
+        this.startBtn.on("click", (event)=>{
+            cc.log("startbtn")
+            var dateResult = cc.cs.PlayerInfo.canWork(self.itemID)
+            if(dateResult == 0){
+                cc.cs.gameMgr.sendWork(self.itemID, self.startWorkHandle, self)
+            }else if(dateResult == -1){
+               // cc.cs.gameMgr.buyLoveTime(self.itemID, self.buyLoveHandle, self)
+               cc.cs.gameMgr.sendUpgrade( self.itemID, self.upgradeWorkHandle, this)
+            }
+            
+        })
+
+
+
+
+    },
+
+
+      startWorkHandle : function(ret){
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            var actionView = cc.cs.UIMgr.getView(cc.cs.UIMgr.ACTIONVIEW)
+            actionView.getComponent("actioningView").setItem(this.itemID, true)
+            cc.cs.UIMgr.openView(cc.cs.UIMgr.ACTIONVIEW)
+        }else{
+            cc.log("error " + JasonObject.error)
         }
     },
 

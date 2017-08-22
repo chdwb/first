@@ -517,6 +517,11 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         var self = this
+
+       /* cc.director.preloadScene('GameScene',function(){
+            cc.log("AAAAAAAAAAABBBBBBBBBBBBBB")
+
+        }   );*/
         //this.setStartGameNode()
         this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')

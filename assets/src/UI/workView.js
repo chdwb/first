@@ -225,34 +225,33 @@ cc.Class({
     },
     // use this for initialization
     onLoad: function() {
+       cc.log("work view  onload")
         var self = this
-        cc.log("............keng .... " +cc.cs.PlayerInfo.work_id)
-        this.loadWorkItem(cc.cs.PlayerInfo.work_id)
-        this.currentWorkID = "1"
-        this.startBtn.on("click", (event) => {
-            //添加开始工作代码
-
-            if(self.currentWorkID == cc.cs.PlayerInfo.work_id)
-                self.startWork()
-            else 
-                {
-                    self.upgradeWork()
-                }
-            
-        }, this.startBtn)
+        this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
+        for(var i = cc.cs.gameData.work["FIRST"]; i <= cc.cs.gameData.work["LAST"]; ++i){
+            var itemNode = cc.instantiate(this.missionItemPrefab)
+            var itemCom = itemNode.getComponent("missionItemComponent")
+            itemCom.setItem( i, true)
+            cc.cs.UIMgr.addItem_horizontalScrollView(this.list, itemNode, 20)
+        }
         this.backBtn.on("click", (event) => {
             //添加回退代码
-            //var parent = self.node.parent
-            //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            var parent = self.node.parent
             cc.cs.UIMgr.closeView()
-   
+
         }, this.backBtn)
     },
 
     onEnable:function()
     {
-        cc.log("refresh")
-        this.refresh()
+         this.list.content.x = -this.list.node.width * 0.5
+        var children = this.list.content.getChildren();
+        var index = cc.cs.gameData.work["FIRST"]
+        for(var i = 0; i < children.length; ++i){
+            var itemCom = children[i].getComponent("missionItemComponent")
+            itemCom.refresh()
+            index++
+        }
     }
 
     // called every frame, uncomment this function to activate update callback
