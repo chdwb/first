@@ -291,17 +291,17 @@ cc.Class({
 
     editplayerName: function() {
         cc.log("AAAAA")
-        this.editTip.node.active = true
-        this.editTip.string = this.playerNameEdit.string;
+       // this.editTip.node.active = true
+        //this.editTip.string = this.playerNameEdit.string;
         cc.cs.PlayerInfo.PlayerNmae = this.playerNameEdit.string
-        this.playerNameEdit.string = "";
+        //this.playerNameEdit.string = "";
     },
 
     
 
     editplayerNameBegin: function() {
          cc.log("BBBBB")
-        this.editTip.node.active = false
+        //this.editTip.node.active = false
         //this.playerNameEdit.string = "";
     },
 
@@ -317,8 +317,8 @@ cc.Class({
 
         var name = firstName.FAMLIY_NAME + secondName.NAME
         cc.log(name)
-        this.editTip.string =  name
-        //this.editplayerName.string = name
+       // this.editTip.string =  name
+        this.editplayerName.string = name
     },
 
     startgame: function() {
