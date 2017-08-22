@@ -135,6 +135,20 @@ cc.Class({
         isGuest:false,
     },
 
+
+    BackAudio:function(){
+
+         cc.cs.AudioMgr.playAudio("return")
+
+    },
+
+    ClickAudio:function(){
+
+
+         cc.cs.AudioMgr.playAudio("click")
+
+    },
+
     isFirstGame:function(){
 
         var diviceid =  cc.sys.localStorage.getItem('UUID')

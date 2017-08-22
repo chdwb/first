@@ -27,6 +27,19 @@ cc.Class({
         cc.cs.loadMgr.loadRes(this.loadComplete)
 
     },
+    
+    BackAudio:function(){
+
+         cc.cs.AudioMgr.playAudio("return")
+
+    },
+
+    ClickAudio:function(){
+
+
+         cc.cs.AudioMgr.playAudio("click")
+
+    },
 
     initMgr: function() {
         cc.cs = {}
