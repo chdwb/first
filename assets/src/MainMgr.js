@@ -16,7 +16,7 @@ cc.Class({
         
     },
     loadComplete: function() {
-        cc.find("Canvas/Bg").active = true
+        //cc.find("Canvas/Bg").active = true
        
     },
 

@@ -12,12 +12,7 @@ cc.Class({
             if (!err) {
                 cc.cs.UIMgr.init()
                 
-                cc.director.preloadScene("GameScene", function() {
-                    cc.log("Next scene preloaded");
-                    funCall()
-                   // self.isLoadComplete = true
-                });
-
+                
 
             } else {
                 cc.log("load error prefab " +err)
