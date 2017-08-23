@@ -180,6 +180,14 @@ cc.Class({
         this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
         this.refreshReward(parseInt(cc.cs.PlayerInfo.signday)+1)
 
+        this.getbutton
+
+        cc.log("SignRewardView guidepos = "+cc.cs.PlayerInfo.guide_id)
+        if(parseInt(cc.cs.PlayerInfo.guide_id) == 12) // 工作开始按钮
+        {
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.getbutton.node,this)
+        }
+
        
 
     },

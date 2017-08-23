@@ -212,13 +212,13 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
-      "height": 40
+      "width": 200,
+      "height": 30
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -226,8 +226,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -42,
-      "y": 26
+      "x": -102,
+      "y": 31
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -245,18 +245,18 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_lineHeight": 30,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "傻逼",
-    "_N$horizontalAlign": 1,
-    "_N$verticalAlign": 1,
+    "_N$horizontalAlign": 0,
+    "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0
+    "_N$overflow": 3
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -264,7 +264,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "89af3d65-e1c7-4022-9906-e734fafc2e2e"
+      "__uuid__": "d57a3a97-e9ff-4aeb-af68-fb6553344571"
     },
     "fileId": "b7276c+66dEo7AEp4V4wfcl",
     "sync": false
@@ -355,7 +355,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "89af3d65-e1c7-4022-9906-e734fafc2e2e"
+      "__uuid__": "d57a3a97-e9ff-4aeb-af68-fb6553344571"
     },
     "fileId": "5e2700npKRDwbOj/yZO4iOV",
     "sync": false
@@ -392,7 +392,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "89af3d65-e1c7-4022-9906-e734fafc2e2e"
+      "__uuid__": "d57a3a97-e9ff-4aeb-af68-fb6553344571"
     },
     "fileId": "44aa3VPEjBA5K1BQnVtagqm",
     "sync": false
@@ -403,7 +403,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "89af3d65-e1c7-4022-9906-e734fafc2e2e"
+      "__uuid__": "d57a3a97-e9ff-4aeb-af68-fb6553344571"
     },
     "fileId": "9811b0lWgZIbbTMROQ1oIn0",
     "sync": false
@@ -450,7 +450,10 @@
     },
     "Des": {
       "__id__": 5
-    }
+    },
+    "guide_id": 0,
+    "isArrow": true,
+    "obj": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -458,7 +461,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "89af3d65-e1c7-4022-9906-e734fafc2e2e"
+      "__uuid__": "d57a3a97-e9ff-4aeb-af68-fb6553344571"
     },
     "fileId": "aa29fN8BrRA/I91IchtYGyL",
     "sync": false

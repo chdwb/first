@@ -230,9 +230,13 @@ cc.Class({
        //cc.log("背包")
         
         //this.items = []; // array to store spawned items
-    	this.updateUI()
-    	
+    	//this.updateUI()
     	//cc.cs.UIMgr.showGuide(this.buttonBack.node)
+
+         if(cc.cs.PlayerInfo.guide_id == 14)
+        {
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,null,this)
+        }
         
     },
       onEnable: function () {

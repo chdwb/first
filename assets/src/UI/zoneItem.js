@@ -43,6 +43,11 @@ cc.Class({
         isAddOther : false
     },
 
+    getplBtn:function()
+    {
+        return this.plBtn
+    }
+
     setLength: function() {
 
         var height = 0

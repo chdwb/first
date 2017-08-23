@@ -88,6 +88,10 @@ cc.Class({
         this.btnText = this.startBtn.getChildByName("btnText").getComponent(cc.Label)
     },
 
+    getstartBtn : function(){
+        return this.startBtn
+    },
+
     setItem: function(id, isWork) {
         cc.log("missionitemComponent    setItem")
         this.isWork = isWork

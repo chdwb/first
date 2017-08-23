@@ -413,6 +413,14 @@ cc.Class({
             }
         })
 
+
+             if(parseInt(cc.cs.PlayerInfo.guide_id) == 8) // 
+                {
+                    cc.log("微信界面 输入按钮")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.inputBtn,this)
+                }
+
+
         this.sendBtn.on("click",(event)=>{
            
 

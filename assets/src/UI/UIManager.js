@@ -187,7 +187,7 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
     
     showGuide: function(guideID,Target,obj) {
 
-        cc.log("showGuide")
+        cc.log("showGuide"+guideID)
         if(guideID <= parseInt(cc.cs.PlayerInfo.guide_id) )
         {
             return

@@ -639,6 +639,13 @@ cc.Class({
             self.currentScroll.active = false
         })
 
+
+        if(parseInt(cc.cs.PlayerInfo.guide_id) == 6) // 弹出电话按钮引导
+                {
+                    cc.log("电话界面 拨号按钮")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.phoneBtn,this)
+                }
+
         this.backBtn.on("click", (event) => {
             //back
             //var parent = self.node.parent

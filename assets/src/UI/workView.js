@@ -234,6 +234,16 @@ cc.Class({
             itemCom.setItem( i, true)
             cc.cs.UIMgr.addItem_horizontalScrollView(this.list, itemNode, 20)
         }
+
+
+        cc.log("WorkView guidepos = "+cc.cs.PlayerInfo.guide_id)
+        if(parseInt(cc.cs.PlayerInfo.guide_id) == 10) // 工作开始按钮
+        {
+            var children = this.list.content.getChildren();
+            var itemCom = children[0].getComponent("missionItemComponent") // 第一个档位
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,itemCom.getstartBtn(),this)
+        }
+
         this.backBtn.on("click", (event) => {
             //添加回退代码
             var parent = self.node.parent

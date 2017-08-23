@@ -326,6 +326,14 @@ cc.Class({
         {
             cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.loveBtn,this)
         }
+        else if(parseInt(cc.cs.PlayerInfo.guide_id) == 11) // 弹出电话按钮引导
+        {
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.SignRewardBtn ,this)
+        }
+        else if(parseInt(cc.cs.PlayerInfo.guide_id) == 13) // 背包
+        {
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.bagBtn,this)
+        }
 
         
         
@@ -334,8 +342,61 @@ cc.Class({
         if(icon != null){
             cc.log("canAddIcon   " + icon.name)
             this.addDiBianBtn(icon)
+
+            if(icon.name == "phoneBtn")
+            {
+                if(parseInt(cc.cs.PlayerInfo.guide_id) == 5) // 弹出电话按钮引导
+                {
+                    cc.log("电话第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.phoneBtn,this)
+                }
+            }
+            else if(icon.name == "wechatBtn")
+            {
+                if(parseInt(cc.cs.PlayerInfo.guide_id) == 7) // 弹出电话按钮引导
+                {
+                    cc.log("微信第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.wechatBtn,this)
+                }
+            }
+            else if(icon.name == "workBtn")
+            {
+                if(parseInt(cc.cs.PlayerInfo.guide_id) == 9) // 弹出电话按钮引导
+                {
+                    cc.log("工作第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.workBtn,this)
+                }
+            }
+            else if(icon.name == "zoneBtn")
+            {
+                if(parseInt(cc.cs.PlayerInfo.guide_id) == 15) // 弹出电话按钮引导
+                {
+                    cc.log("微博第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.zoneBtn,this)
+                }
+            }
+
+
+
+            /*else if(icon.name == "signrewardBtn")
+            {
+                if(parseInt(cc.cs.PlayerInfo.guide_id) == 11) // 弹出电话按钮引导
+                {
+                    cc.log("签到第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.SignRewardBtn ,this)
+                }
+            }*/
+
+
+
+
+            
+
+
+
         }
         if (this.phoneBtn.active)
+
             if (cc.cs.PlayerInfo.canPhone()) {
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {

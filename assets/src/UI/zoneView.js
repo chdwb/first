@@ -198,6 +198,17 @@ cc.Class({
             var jsZoneItem = children[i].getComponent("zoneItem")
             jsZoneItem.addOtherText()
         }
+
+
+        cc.log("WorkView guidepos = "+cc.cs.PlayerInfo.guide_id)
+        if(parseInt(cc.cs.PlayerInfo.guide_id) == 16) // 工作开始按钮
+        {
+            var children = this.scrollView.content.getChildren();
+            var jsZoneItem = children[0].getComponent("zoneItem") // 第一个档位
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,itemCom.getplBtn(),this)
+        }
+
+
         cc.cs.UIMgr.refresh_verticalScrollViewUp(this.scrollView, 0)
         
     },

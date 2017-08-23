@@ -59,7 +59,7 @@ cc.Class({
         if (JasonObject.success === true) {
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.log("存储新手id成功"+this.guide_id)
-            cc.cs.PlayerInfo.guide_id = this.guide_id
+            cc.cs.PlayerInfo.guide_id = this.guide_id 
             if(this.isArrow === false)
             {
                 if(cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["NEXT"] != "dummy")   // 没有箭头的新手引导 后面有连续的
@@ -114,6 +114,7 @@ cc.Class({
         }
 
         cc.log("guideID = "+this.guide_id)
+        cc.log("target"+target)
         self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+self.guide_id]["GUIDE_TEXT"]
         
       
@@ -144,6 +145,7 @@ cc.Class({
                 cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
                 
                 cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self)
+                cc.cs.PlayerInfo.guide_id = this.guide_id  //提前保存 不然点击进入下一个页面 网速慢 还没更新guide_id 下一个页面就无法弹出新手引导
                 
                 return false;
             }
@@ -152,7 +154,8 @@ cc.Class({
      else
      {
 
-       cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self)
+       cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self) //提前保存 不然点击进入下一个页面 网速慢 还没更新guide_id 下一个页面就无法弹出新手引导
+       cc.cs.PlayerInfo.guide_id = this.guide_id
        return true
      }
     
