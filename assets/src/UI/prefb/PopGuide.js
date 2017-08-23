@@ -96,17 +96,16 @@ cc.Class({
         if(target != null)
         {
             this.isArrow = true
-            var p = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
-            var p2 = this.positonNode.parent.convertToNodeSpace(cc.v2(p.x,p.y))
+            var p = target.convertToWorldSpace(cc.v2(target.x,target.y))
+            var p2 = this.positonNode.convertToNodeSpace(cc.v2(p.x,p.y))
+
+            this.positonNode.x = p.x
+            this.positonNode.y = p.y 
             
-            this.positonNode.x = p2.x
-            this.positonNode.y = p2.y 
             
             var B1 = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
             var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))
             
-            cc.log("btn pos "+ B1.x+" "+B1.y)
-            cc.log("arrow pos "+ B2.x+" "+B2.y)
         }
         else
         {

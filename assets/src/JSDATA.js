@@ -2950,8 +2950,9 @@ module.exports = {
 		"ID_22":{"ID":22, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/buytimes", "Params":"api_token,dateid,num", "Method":"POST", "Remark":"购买约会次数。"},
 		"ID_23":{"ID":23, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/donevideo", "Params":"api_token,videoid", "Method":"POST", "Remark":"观看视频完成。"},
 		"ID_24":{"ID":24, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/video/geturl", "Params":"api_token,videoid", "Method":"GET", "Remark":"获取视频url。"},
-		"LAST":24,
-		"TOTAL_COUNT":24,
+		"ID_26":{"ID":26, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/guide", "Params":"api_token,guideid", "Method":"POST", "Remark":"dummy"},
+		"LAST":26,
+		"TOTAL_COUNT":25,
 		"FIRST":1
 	},
 	gethttpData : function(id){
