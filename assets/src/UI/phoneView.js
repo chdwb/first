@@ -639,7 +639,7 @@ cc.Class({
             self.currentScroll.active = false
         })
 
-
+        cc.log("phoneview guide id = "+ cc.cs.PlayerInfo.guide_id ) 
         if(parseInt(cc.cs.PlayerInfo.guide_id) == 6) // 弹出电话按钮引导
                 {
                     cc.log("电话界面 拨号按钮")

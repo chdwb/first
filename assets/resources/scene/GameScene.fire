@@ -8382,7 +8382,8 @@
     "isAction": false,
     "handle": null,
     "handleobj": null,
-    "doID": 0
+    "doID": 0,
+    "AudioID": -1
   },
   {
     "__type__": "cc.Node",

@@ -17,7 +17,7 @@ cc.Class({
             type: cc.Node
         },
         
-        positonNode : {
+        /*positonNode : {
             
             default: null,
             type: cc.Node
@@ -28,13 +28,83 @@ cc.Class({
             default: null,
             type: cc.Label
 
-        },
+        },*/
 
         guide_id:0,
 
         isArrow: true, // 是否是有箭头的新手引导
 
          obj:null, // 调用新手引导的界面
+
+          button1 : {
+            default: null,
+            type: cc.Node
+        },
+         button2 : {
+            default: null,
+            type: cc.Node
+        },
+         button3 : {
+            default: null,
+            type: cc.Node
+        },
+         button4 : {
+            default: null,
+            type: cc.Node
+        },
+         button5 : {
+            default: null,
+            type: cc.Node
+        },
+         button6 : {
+            default: null,
+            type: cc.Node
+        },
+         button7 : {
+            default: null,
+            type: cc.Node
+        },
+         button8 : {
+            default: null,
+            type: cc.Node
+        },
+         button9 : {
+            default: null,
+            type: cc.Node
+        },
+         button10 : {
+            default: null,
+            type: cc.Node
+        },
+         button11 : {
+            default: null,
+            type: cc.Node
+        },
+         button12 : {
+            default: null,
+            type: cc.Node
+        },
+         button13 : {
+            default: null,
+            type: cc.Node
+        },
+         button14 : {
+            default: null,
+            type: cc.Node
+        },
+         button15 : {
+            default: null,
+            type: cc.Node
+        },
+         button16 : {
+            default: null,
+            type: cc.Node
+        },
+         button17 : {
+            default: null,
+            type: cc.Node
+        },
+
         
         
     },
@@ -66,7 +136,8 @@ cc.Class({
                 {
                     this.guide_id++
                     cc.log("有下一个"+this.guide_id)
-                    self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
+                    //self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
+                    this.refresh(this.guide_id)
                 }
                 else
                 {
@@ -87,6 +158,27 @@ cc.Class({
         }
 
     },
+
+    refresh : function(guideID)
+    {
+        this.button1.active = (1 == guideID)
+        this.button2.active = (2 == guideID)
+        this.button3.active = (3 == guideID)
+        this.button4.active = (4 == guideID)
+        this.button5.active = (5 == guideID)
+        this.button6.active = (6 == guideID)
+        this.button7.active = (7 == guideID)
+        this.button8.active = (8 == guideID)
+        this.button9.active = (9 == guideID)
+        this.button10.active = (10 == guideID)
+        this.button11.active = (11 == guideID)
+        this.button12.active = (12 == guideID)
+        this.button13.active = (13 == guideID)
+        this.button14.active = (14 == guideID)
+        this.button15.active = (15 == guideID)
+        this.button16.active = (16 == guideID)
+        this.button17.active = (17 == guideID)
+    },
     
     setGuide: function(guideID, target,obj){
         
@@ -96,7 +188,7 @@ cc.Class({
         if(target != null)
         {
             this.isArrow = true
-            var p = target.convertToWorldSpace(cc.v2(target.x,target.y))
+            /*var p = target.convertToWorldSpace(cc.v2(target.x,target.y))
             var p2 = this.positonNode.convertToNodeSpace(cc.v2(p.x,p.y))
 
             this.positonNode.x = p.x
@@ -104,7 +196,7 @@ cc.Class({
             
             
             var B1 = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
-            var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))
+            var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))*/
             
         }
         else
@@ -112,9 +204,12 @@ cc.Class({
             this.isArrow = false
         }
 
+        this.refresh(guideID)
+
+        
         cc.log("guideID = "+this.guide_id)
         cc.log("target"+target)
-        self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+self.guide_id]["GUIDE_TEXT"]
+       // self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+self.guide_id]["GUIDE_TEXT"]
         
       
 
