@@ -239,7 +239,8 @@ cc.Class({
                 cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
                 
                 cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self)
-                cc.cs.PlayerInfo.guide_id = this.guide_id  //提前保存 不然点击进入下一个页面 网速慢 还没更新guide_id 下一个页面就无法弹出新手引导
+                cc.cs.PlayerInfo.guide_id = self.guide_id  //提前保存 不然点击进入下一个页面 网速慢 还没更新guide_id 下一个页面就无法弹出新手引导
+                cc.log("set guide_id"+ cc.cs.PlayerInfo.guide_id+ "~~"+self.guide_id)
                 
                 return false;
             }
@@ -249,7 +250,8 @@ cc.Class({
      {
 
        cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self) //提前保存 不然点击进入下一个页面 网速慢 还没更新guide_id 下一个页面就无法弹出新手引导
-       cc.cs.PlayerInfo.guide_id = this.guide_id
+       cc.cs.PlayerInfo.guide_id = self.guide_id
+       cc.log("set guide_id"+ cc.cs.PlayerInfo.guide_id+ "~~"+self.guide_id)
        return true
      }
     
