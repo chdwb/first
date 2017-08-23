@@ -2467,7 +2467,7 @@ module.exports = {
 	guide:{
 		"GUIDE_ID_1":{"GUIDE_ID":1, "GUIDE_TEXT":"欢迎您的到来，现在开始您的恋爱之旅。", "NEXT":2},
 		"GUIDE_ID_2":{"GUIDE_ID":2, "GUIDE_TEXT":"桃心代表着你和美女的亲密程度。", "NEXT":3},
-		"GUIDE_ID_3":{"GUIDE_ID":3, "GUIDE_TEXT":"当亲密程度、电话、微信都符合条件时就能触发剧情视频。", "NEXT":4},
+		"GUIDE_ID_3":{"GUIDE_ID":3, "GUIDE_TEXT":"当亲密程度、电话、微信都符合条件时就能触发剧情视频。", "NEXT":"dummy"},
 		"GUIDE_ID_4":{"GUIDE_ID":4, "GUIDE_TEXT":"恋爱可以提升你和美女的亲密度！", "NEXT":"dummy"},
 		"GUIDE_ID_5":{"GUIDE_ID":5, "GUIDE_TEXT":"做好一顿饭可是提升亲密度最快的方式。", "NEXT":"dummy"},
 		"GUIDE_ID_6":{"GUIDE_ID":6, "GUIDE_TEXT":"和美女通话也是可以提升亲密度的方式之一。", "NEXT":"dummy"},
@@ -2950,9 +2950,9 @@ module.exports = {
 		"ID_22":{"ID":22, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/date/buytimes", "Params":"api_token,dateid,num", "Method":"POST", "Remark":"购买约会次数。"},
 		"ID_23":{"ID":23, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/donevideo", "Params":"api_token,videoid", "Method":"POST", "Remark":"观看视频完成。"},
 		"ID_24":{"ID":24, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/video/geturl", "Params":"api_token,videoid", "Method":"GET", "Remark":"获取视频url。"},
-		"ID_24":{"ID":26, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/guide", "Params":"api_token,videoid", "Method":"POST", "Remark":"获取视频url。"},
+		"ID_26":{"ID":26, "Host":"http://112.74.36.182:8888", "Route":"/cygame/public/user/guide", "Params":"api_token,videoid", "Method":"POST", "Remark":"获取视频url。"},
 		"LAST":25,
-		"TOTAL_COUNT":26,
+		"TOTAL_COUNT":25,
 		"FIRST":1
 	},
 	gethttpData : function(id){

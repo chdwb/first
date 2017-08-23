@@ -28,13 +28,21 @@ cc.Class({
             default: null,
             type: cc.Label
 
-        }
+        },
+
+        guide_id:0,
+
+        isArrow: true, // 是否是有箭头的新手引导
+
+         obj:null, // 调用新手引导的界面
         
         
     },
 
     // use this for initialization
     onLoad: function () {
+
+        cc.log("新手引导创建")
 
     },
 
@@ -44,18 +52,50 @@ cc.Class({
     // },
 
 
-    sendGuideHandle:function()
+    sendGuideHandle:function(ret)
     {
+        var self = this
+         var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            cc.log("存储新手id成功"+this.guide_id)
+            cc.cs.PlayerInfo.guide_id = this.guide_id
+            if(this.isArrow === false)
+            {
+                if(cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["NEXT"] != "dummy")   // 没有箭头的新手引导 后面有连续的
+                {
+                    this.guide_id++
+                    cc.log("有下一个"+this.guide_id)
+                    self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
+                }
+                else
+                {
+                    self.node.removeFromParent(true);
+                    this.obj.updateui()
+
+                }
+            }
+            else
+            {
+                self.node.removeFromParent(true);
+                this.obj.updateui()
+            }
+
+
+        }else{
+            cc.log("error " + JasonObject.error)
+        }
 
     },
     
-    setGuide: function(guideID, target){
+    setGuide: function(guideID, target,obj){
         
-        //this.positonNode.setAnchorPoint(1,1)
-        //this.positonNode.setPosition(target.getPosition)
-     var self = this
+        this.guide_id = guideID
+        this.obj = obj
+        var self = this
         if(target != null)
         {
+            this.isArrow = true
             var p = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
             var p2 = this.positonNode.parent.convertToNodeSpace(cc.v2(p.x,p.y))
             
@@ -68,9 +108,13 @@ cc.Class({
             cc.log("btn pos "+ B1.x+" "+B1.y)
             cc.log("arrow pos "+ B2.x+" "+B2.y)
         }
+        else
+        {
+            this.isArrow = false
+        }
 
-
-        self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+guideID]["GUIDE_TEXT"]
+        cc.log("guideID = "+this.guide_id)
+        self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+self.guide_id]["GUIDE_TEXT"]
         
       
 
@@ -98,10 +142,9 @@ cc.Class({
 
             if (cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
                 cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
-                //target.opacity = 180;
-                // cc.sys.localStorage.setItem('GUIDEPOS',guideID)
-                cc.cs.gameMgr.sendGuid (guideID,  self.sendGuideHandle, self)
-                self.node.removeFromParent(true);
+                
+                cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self)
+                
                 return false;
             }
             return true;
@@ -109,23 +152,8 @@ cc.Class({
      else
      {
 
-        // cc.cs.gameData.date[target.csDataID]["DATE_NEED_LEVEL"]
-
-            if(  cc.cs.gameData.guide["GUIDE_ID_"+guideID ]["NEXT"] != "dummy" )
-            {
-
-               // cc.cs.gameData["GUIDE_ID_"+guideID][GUIDE_TEXT]
-
-            cc.sys.localStorage.setItem('GUIDEPOS',guideID)
-            guideID ++;
-            self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+guideID ]["GUIDE_TEXT"]
-            }
-            else
-            {
-                 cc.sys.localStorage.setItem('GUIDEPOS',guideID)
-               self.node.removeFromParent(true);
-            }
-            return true
+       cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self)
+       return true
      }
     
     

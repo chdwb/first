@@ -291,7 +291,7 @@ cc.Class({
 
     updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
-
+        cc.log("mainview updateui")
 
         var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
         var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
@@ -312,15 +312,19 @@ cc.Class({
         }
 
 
-        var guidepos =  cc.sys.localStorage.getItem('GUIDEPOS')
-        cc.log("guidepos = "+guidepos)
-        if(guidepos == null)
+        
+        cc.log("guidepos = "+cc.cs.PlayerInfo.guide_id)
+        if(cc.cs.PlayerInfo.guide_id == 0)
         {
-            cc.cs.UIMgr.showGuide(1,null)
+            cc.cs.UIMgr.showGuide(1,null,this)
         }
-        else if(parseInt(guidepos) < 3)
+        else if(parseInt(cc.cs.PlayerInfo.guide_id) < 3)
         {
-            cc.cs.UIMgr.showGuide(guidepos+1,null)
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,null,this)
+        }
+        else if(parseInt(cc.cs.PlayerInfo.guide_id) == 3) // 弹出恋爱按钮引导
+        {
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.loveBtn,this)
         }
 
         
@@ -421,7 +425,7 @@ cc.Class({
         this.shopBtn.lev = 1
 
         this.computerDibian()
-        this.updateui()
+        //this.updateui()
 
         this.shopBtn.on("click", (event) => {
             //cc.log("token = "+ cc.cs.PlayerInfo.api_token)

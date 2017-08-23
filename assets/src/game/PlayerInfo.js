@@ -44,6 +44,8 @@ cc.Class({
 
         worklog_id: 0,
 
+        guide_id: 0,
+
         WorkLeftTimes: [],
         loveLeftTimes: [],
         goodsLeftTimes:[],

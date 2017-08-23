@@ -505,6 +505,7 @@ cc.Class({
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
             this.updatePlayerInfo(JasonObject)
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.log("video_id = "+cc.cs.PlayerInfo.playvideo)
             if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
@@ -639,12 +640,13 @@ cc.Class({
             //cc.sys.localStorage.setItem('UserID',this.loginIDEdit.string)
             this.isLogin = true
             this.updatePlayerInfo(JasonObject)
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.log("账号为"+this.registerIDEdit.string)
              cc.log("账号为"+this.loginIDEdit.string)
             cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             var api_token = cc.sys.localStorage.getItem('API_TOKEN')
-            //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
+            cc.log("登陆成功 api_token =" + api_token)
            
             this.setStartGameNode();
             if(this.loginIDEdit.string == "" || this.loginIDEdit.string == null)

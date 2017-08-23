@@ -185,15 +185,24 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
     },
     
     
-    showGuide: function(guideID,Target) {
+    showGuide: function(guideID,Target,obj) {
 
-        var scene = cc.director.getScene();
-        cc.log("scene   = "+ scene + "    " + this.nodeGuidePrefab)
-        var popupNode = cc.instantiate(this.nodeGuidePrefab)
-        cc.log("popupNode   = "+ popupNode + "    " )
-        scene.getChildByName("Canvas").addChild(popupNode, 999)
-        popupNode.setPosition(0, 0);
-        popupNode.getComponent("PopGuide").setGuide(guideID,Target)
+        cc.log("showGuide")
+        if(guideID <= parseInt(cc.cs.PlayerInfo.guide_id) )
+        {
+            return
+        }
+        else
+        {
+ 
+            var scene = cc.director.getScene();
+            cc.log("scene   = "+ scene + "    " + this.nodeGuidePrefab)
+            var popupNode = cc.instantiate(this.nodeGuidePrefab)
+            cc.log("popupNode   = "+ popupNode + "    " )
+            scene.getChildByName("Canvas").addChild(popupNode, 999)
+            popupNode.setPosition(0, 0);
+            popupNode.getComponent("PopGuide").setGuide(guideID,Target,obj)
+        }   
     },
     
     addItem_horizontalScrollView: function(scrollView, node, horizontalSpace) {
