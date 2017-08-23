@@ -127,7 +127,7 @@ cc.Class({
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
 
-        data["worklogid"] = cc.cs.PlayerInfo.worklogid
+        data["worklogid"] = cc.cs.PlayerInfo.worklog_id
 
         cc.log("workdone id = ",cc.cs.PlayerInfo.worklogid);
         this.sendHttp("ID_6", data, handle, obj)

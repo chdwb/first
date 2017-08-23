@@ -143,10 +143,7 @@ cc.Class({
     },
 
     ClickAudio:function(){
-
-
          cc.cs.AudioMgr.playAudio("click")
-
     },
 
     isFirstGame:function(){
