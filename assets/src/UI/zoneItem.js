@@ -46,7 +46,7 @@ cc.Class({
     getplBtn:function()
     {
         return this.plBtn
-    }
+    },
 
     setLength: function() {
 

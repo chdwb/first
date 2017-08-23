@@ -173,7 +173,7 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
-        this.nodeGuidePrefab = cc.loader.getRes("prefab/PopGuide", cc.Prefab)
+        this.nodeGuidePrefab = cc.loader.getRes("prefab/PopGuide5", cc.Prefab)
     },
     showPopBuy: function(okHandle,obj) {
 
