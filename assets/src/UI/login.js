@@ -284,6 +284,9 @@ cc.Class({
 
     loginEvent: function() {
         //cc.cs.UIMgr.showTip("这里添加登陆事件", 1.0)
+
+        
+
         cc.cs.gameMgr.sendLogin(this.loginIDEdit.string, this.loginPasswordEdit.string, this.loginHandle, this)
             //this.setRandomNameNode()
     },
@@ -553,11 +556,11 @@ cc.Class({
             //注册账号按钮点击事件
             if (self.registerPasswordEdit.string != self.registerConfirmPasswordEdit.string) {
                 cc.cs.UIMgr.showTip("输入密码不一致，请重新输入", 1.0)
-                self.registerConfirmPasswordEdit.string = ""
-                self.registerPasswordEdit.string = ""
+                //self.registerConfirmPasswordEdit.string = ""
+                //self.registerPasswordEdit.string = ""
                 return;
             } else if (self.registerIDEdit.string == "" || self.registerIDEdit.string == null) {
-                cc.cs.UIMgr.showTip("请输入手机号", 1.0)
+                cc.cs.UIMgr.showTip("请输入账号", 1.0)
                 return;
             } else if (self.registerPasswordEdit.string == "" || self.registerPasswordEdit.string == null) {
                 cc.cs.UIMgr.showTip("请输入密码", 1.0)
@@ -566,19 +569,45 @@ cc.Class({
                 cc.cs.UIMgr.showTip("请输入密码", 1.0)
                 return;
             } else {
-                self.registerEvent()
+
+
+                if(self.registerIDEdit.string.length < 6)
+                {
+                    cc.cs.UIMgr.showTip("请输入6到12位用户名", 1.0)
+                }
+                else if(self.registerPasswordEdit.string.length < 6)
+                {
+                    cc.cs.UIMgr.showTip("请输入6到12位密码", 1.0)
+                }
+                else{
+                    self.registerEvent()
+                }
+
+
+
+                
             }
         }, this.registerConfirmBtn)
 
         this.LoginBtn.on("click", (event) => {
             if (self.loginIDEdit.string == "" || self.loginIDEdit.string == null) {
-                cc.cs.UIMgr.showTip("请输入ID", 1.0)
+                cc.cs.UIMgr.showTip("请输入账号", 1.0)
                 return;
             } else if (self.loginPasswordEdit.string == "" || self.loginPasswordEdit.string == null) {
                 cc.cs.UIMgr.showTip("请输入密码", 1.0)
                 return;
             } else {
-                self.loginEvent()
+                if(self.loginIDEdit.string.length < 6)
+                {
+                    cc.cs.UIMgr.showTip("请输入6到12位用户名", 1.0)
+                }
+                else if(self.loginPasswordEdit.string.length < 6)
+                {
+                    cc.cs.UIMgr.showTip("请输入6到12位密码", 1.0)
+                }
+                else{
+                    self.loginEvent()
+                }
 
             }
         })
@@ -661,6 +690,19 @@ cc.Class({
                 cc.sys.localStorage.setItem('LOGIN_ID', this.loginIDEdit.string)
             cc.sys.localStorage.setItem('PASSWORD', this.loginPasswordEdit.string)
             }
+
+            this.loginIDEdit.string = ""
+            this.loginPasswordEdit.string = ""
+
+            this.registerIDEdit.string = ""
+            this.registerConfirmPasswordEdit.string = ""
+            this.registerPasswordEdit.string = ""  // 登陆成功后 清空这些输入框
+
+
+
+             
+
+
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }

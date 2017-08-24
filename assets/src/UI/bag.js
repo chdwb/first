@@ -277,9 +277,13 @@ cc.Class({
         cc.log("prefab height " + this.prefab.data.height)
         var littlewidth = this.scrollView.content.width / 4
         var halfwidth = this.scrollView.content.width / 2
+
+
     	for (let i = 0; i < this.spawnCount; ++i) { // spawn items, we only need to do this once
     		
             var item = cc.instantiate(this.prefab)
+
+            var offset =  (this.scrollView.content.width - item.width*4)/8
             
              //cc.log("item height " + item.height)
             var itemCom = item.getComponent("NodeItem")
@@ -312,7 +316,7 @@ cc.Class({
              
              var pos = i % 4
         
-            item.setPosition(- halfwidth + littlewidth*pos +item.width/2 ,-item.height/2 - PosY * (item.height + this.spacing))
+            item.setPosition(- halfwidth + littlewidth*pos +item.width/2 + offset ,-item.height/2 - PosY * (item.height + this.spacing))
             //this.items.push(item);
     	}
     },

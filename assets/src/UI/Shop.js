@@ -183,6 +183,10 @@ cc.Class({
     		if(i != "TOTAL_COUNT" && i != "LAST" && i != "FIRST" )
             {
                 var item = cc.instantiate(this.prefab)
+
+
+
+                var offset =  (this.scrollView.content.width - item.width*2)/4
                 
                 cc.log("item height " + item.height)
                 var itemCom = item.getComponent("ShopItem")
@@ -211,7 +215,7 @@ cc.Class({
                  
                  var pos = count % 2
             
-               item.setPosition(- halfwidth + littlewidth*pos +item.width/2 ,-item.height/2 - PosY * (item.height + this.spacing))
+               item.setPosition(- halfwidth + littlewidth*pos +item.width/2 + offset,-item.height/2 - PosY * (item.height + this.spacing))
                count ++;
             }
     	}
