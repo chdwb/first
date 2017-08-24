@@ -104,17 +104,19 @@ cc.Class({
            
      playVoice:function(name,handle)
     {
-        var id = -1
+       
         var self = this
         cc.loader.loadRes("audio/voice/"+name, function (err, clip) {
 
-             id = cc.audioEngine.play(clip, false, 1);
+            self.Backid  = cc.audioEngine.play(clip, false, 1);
 
-             self.setFinishCallback(id,handle)
+             cc.log("播放语音ID = " + self.Backid)
 
-            cc.log("音效ID"+id)
+             self.setFinishCallback(self.Backid,handle)
+
+            
         });
-    return id;
+    return  self.Backid;
     },
      setFinishCallback:function ( audioID, callback )
     {
@@ -123,10 +125,10 @@ cc.Class({
 
     },
 
-     StopAudio:function(id)
+     StopAudio:function()
      {
 
-         cc.audioEngine.stop(id)
+         cc.audioEngine.stop(this.Backid)
 
      },
 

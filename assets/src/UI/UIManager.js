@@ -395,12 +395,12 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
             talkText.node.width = 536
             talkText.node.x = 25
             soundTalk.x = nvNode.width -50 
-        }else{
-            soundTalk.active = false
-            nvNode.width = 740
-            talkText.node.width = 690
-            talkText.node.x = 25
-            soundTalk.x = nvNode.width -50 
+
+             this.soundTalk.node.on("click", (event) => {
+             
+        })
+        {
+            
         }
         talkText.string = text
         nameText.string = name

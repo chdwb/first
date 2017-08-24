@@ -97,7 +97,9 @@ cc.Class({
         timeIng: 0,
         callingauidoid:0,
         girlvoiceID:0,
+        tempPhoneID:0,
         SoundOn:false,
+        isShowPhoneView:false
     },
 
 
@@ -292,12 +294,14 @@ cc.Class({
     },
 
     showPhoneInfoView: function() {
+        this.isShowPhoneView = true;
         this.node.active = false;
         this.playerInfoView.active = true
 
     },
 
     showPhoneView: function() {
+        this.isShowPhoneView = false;
         this.node.active = true;
         this.playerInfoView.active = false
     },
@@ -315,7 +319,7 @@ cc.Class({
     VoiceDone: function(ret)
     {
              cc.log("aaaabbbb"+ret)
-          this.showInputTable(this.NPCID)
+          this.showInputTable( this.tempPhoneID)
           this.tonghuakuang.active = false
 
            this.currentTime = 0
@@ -334,7 +338,7 @@ cc.Class({
 
          
 
-           this.showInputTable(this.NPCID)
+           this.showInputTable( this.tempPhoneID)
                 this.tonghuakuang.active = false
                 this.showCompletePhone()
 
@@ -348,6 +352,8 @@ cc.Class({
     ,
 
     setInputMsg: function(id) {
+
+        this.tempPhoneID = id
 
         cc.log("setInputMsg  " + id)
         if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) { // 女主
@@ -363,23 +369,24 @@ cc.Class({
                 this.timeIng = true;
                 this.backBtn.active = false
                this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone2.bind(this))
+               cc.log("播放声音ID = "+this.girlvoiceID)
                this.cancelBtn.active = true
 
             }
         } else {
             if(id > cc.cs.gameData.phone["FIRST"]){
                 if(cc.cs.gameData.phone["PHONE_ID_" + (id-1)]["PHONE_AUDIO"] == "dummy" ){
-                    //this.showInputTable(id)
-                    //this.tonghuakuang.active = false
+                    this.showInputTable(id)
+                    this.tonghuakuang.active = false
                 
 
-                this.currentTime = 0
+               /* this.currentTime = 0
                 this.isAction = true;
                 this.totalTime = 20
                 this.timeIng = true;
                 this.backBtn.active = false   
                this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone.bind(this))
-               this.cancelBtn.active = true
+               this.cancelBtn.active = true*/
 
                 }else{
                     this.loadCruuentTalk(this.currentScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
@@ -630,7 +637,7 @@ cc.Class({
 
     onDisable : function(){
         this.unschedule(this.step)
-        if(this.SoundOn)
+        if(this.SoundOn && this.isShowPhoneView == false)
         cc.cs.AudioMgr.startBGM()
     },
 
@@ -704,7 +711,8 @@ cc.Class({
             self.isAction = false
             self.currentTime = 0
             self.totalTime = 0
-            cc.cs.AudioMgr.StopAudio(this.girlvoiceID)
+            cc.cs.AudioMgr.StopAudio()
+            self.backBtn.active = true
         })
 
         this.phoneBtn.on("click", (event) => {
