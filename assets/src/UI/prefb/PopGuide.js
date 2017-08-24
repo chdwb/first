@@ -17,7 +17,7 @@ cc.Class({
             type: cc.Node
         },
         
-        /*positonNode : {
+        positonNode : {
             
             default: null,
             type: cc.Node
@@ -28,7 +28,7 @@ cc.Class({
             default: null,
             type: cc.Label
 
-        },*/
+        },
 
         guide_id:0,
 
@@ -136,8 +136,8 @@ cc.Class({
                 {
                     this.guide_id++
                     cc.log("有下一个"+this.guide_id)
-                    //self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
-                    this.refresh(this.guide_id)
+                    self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
+                    //this.refresh(this.guide_id)
                 }
                 else
                 {
@@ -188,15 +188,17 @@ cc.Class({
         if(target != null)
         {
             this.isArrow = true
-            /*var p = target.convertToWorldSpace(cc.v2(target.x,target.y))
-            var p2 = this.positonNode.convertToNodeSpace(cc.v2(p.x,p.y))
+            var p = target.parent.convertToWorldSpaceAR(cc.v2(target.x,target.y))
+            var p2 = this.positonNode.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
 
-            this.positonNode.x = p.x
-            this.positonNode.y = p.y 
+            this.positonNode.x = p2.x
+            this.positonNode.y = p2.y 
             
             
-            var B1 = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
-            var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))*/
+            //var B1 = target.parent.convertToWorldSpace(cc.v2(target.x,target.y))
+            //var B2 = this.positonNode.parent.convertToWorldSpace(cc.v2(this.positonNode.x,this.positonNode.y))
+            //this.positonNode.removeFromParent()
+            //target.addChild(this.positonNode)
             
         }
         else
@@ -204,12 +206,12 @@ cc.Class({
             this.isArrow = false
         }
 
-        this.refresh(guideID)
+        //this.refresh(guideID)
 
         
         cc.log("guideID = "+this.guide_id)
         cc.log("target"+target)
-       // self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+self.guide_id]["GUIDE_TEXT"]
+        self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+self.guide_id]["GUIDE_TEXT"]
         
       
 
