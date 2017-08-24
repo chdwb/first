@@ -32,11 +32,12 @@ cc.Class({
             this.isSondOff = true;
         }
     },
+    /*
     playEffect:function(clip)
     {
         if(this.isSondOff == false)
          cc.audioEngine.play(clip, false, 1);
-    },
+    },*/
 
     playBGM:function (name,isLoop)
     {
@@ -97,26 +98,30 @@ cc.Class({
    
            var hehe = cc.loader.getRes("audio/effect/"+name, cc.AudioClip)
             id = cc.audioEngine.play(hehe, isloop, 1);
+        }
+        return id;
+    },
            
+     playVoice:function(name,handle)
+    {
+        var id = -1
+        var self = this
+        cc.loader.loadRes("audio/voice/"+name, function (err, clip) {
 
+             id = cc.audioEngine.play(clip, false, 1);
 
+             self.setFinishCallback(id,handle)
 
-        /*cc.loader.loadRes("audio/effect/"+name, function (err, clip) {
-
-             this.Backid = cc.audioEngine.play(hehe, isloop, 1);
             cc.log("音效ID"+id)
+        });
+    return id;
+    },
+     setFinishCallback:function ( audioID, callback )
+    {
 
-            
+        cc.audioEngine.setFinishCallback(audioID, callback);
 
-        });*/
-    }
-
-    return id
-    
-    
-
-    }
-    ,
+    },
 
      StopAudio:function(id)
      {
