@@ -26,6 +26,11 @@ cc.Class({
             type: cc.Node,
             default: null
         },
+        shopBtn:{
+            type: cc.Button,
+            default: null
+
+        },
         missionBtnList: [],
 
         missionItemPrefab: null,
@@ -36,7 +41,16 @@ cc.Class({
         isLoad : false
     },
 
+    goShop: function() {
+        cc.log("goShop LoveView")
+        cc.cs.UIMgr.setShopType(2)
+        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+        
+    },
+
     refresh: function() {
+        this.goldText.string = cc.cs.PlayerInfo.money
         /*cc.log("loveview refresh")
         this.goldText.string = cc.cs.PlayerInfo.money
         if (cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID) <= 0) {
@@ -309,13 +323,14 @@ cc.Class({
             itemCom.refresh()
             index++
         }
+        this.refresh()
     },
 
-    goShop: function() {
+    /*goShop: function() {
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
         cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
-    },
+    },*/
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {

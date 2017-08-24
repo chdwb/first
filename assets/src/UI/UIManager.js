@@ -20,7 +20,8 @@ cc.Class({
         VIDEOVIEW: 11,
         SETTINGVIEW:12,
         viewStack : [],
-        gameScene : null
+        gameScene : null,
+        currentShopType:3 ,
     },
 
     getView : function(id){
@@ -75,6 +76,12 @@ cc.Class({
         }
     },
 
+    setShopType:function(type)
+    {
+        this.currentShopType = type
+        cc.log("setShopType "+ this.currentShopType)
+    },
+
     openView : function(id){
         if(this.gameScene == null){
             cc.log("error gameScene is null")
@@ -100,6 +107,7 @@ cc.Class({
                 this.viewStack.push(this.gameScene.BagView)
                 this.gameScene.MainView.active =false
             }else if(this.SHOPVIEW == id){
+                cc.log("uimgr currentShopType = "+ this.currentShopType)
                 this.viewStack.push(this.gameScene.ShopView)
                 this.gameScene.MainView.active =false
             }else if(this.SIGNREWARDVIEW == id){

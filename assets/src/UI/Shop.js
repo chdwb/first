@@ -53,30 +53,34 @@ cc.Class({
     
     onLiBao:function()
     {
-        cc.log( this.currentShopType)
+        cc.log( "shopCLick"+this.currentShopType)
         this.currentShopType = 3;
-        this.initialize2(cc.cs.gameData.hot_package)
+        this.updateUi()
+        //this.initialize2(cc.cs.gameData.hot_package)
     },
     
     onSuperLiBao:function()
     {
-        cc.log( this.currentShopType)
+        cc.log( "shopCLick"+this.currentShopType)
         this.currentShopType = 4;
-        this.initialize2(cc.cs.gameData.work_package)
+        this.updateUi()
+        //this.initialize2(cc.cs.gameData.work_package)
     },
     
     onJinBi:function()
     {
-        cc.log( this.currentShopType)
+        cc.log( "shopCLick"+this.currentShopType)
         this.currentShopType = 2;
-        this.initialize2(cc.cs.gameData.buy_gold)
+        this.updateUi()
+        //this.initialize2(cc.cs.gameData.buy_gold)
     },
     
     onItem:function()
     {
-        cc.log( this.currentShopType)
+        cc.log("shopCLick"+ this.currentShopType)
         this.currentShopType = 1;
-        this.initialize(cc.cs.gameData.goods)
+        this.updateUi()
+        //this.initialize(cc.cs.gameData.goods)
         //cc.log("goods ="+cc.cs.gameData.goods)
     },
     
@@ -84,28 +88,40 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         this.content = this.scrollView.content;
-        this.onLiBao()
+
+        //this.onLiBao()
 
     },
-    
+    onEnable:function(){
+        cc.log("ShopView UpdateUi")
+        //this.currentShopType = 3
+        this.currentShopType = cc.cs.UIMgr.currentShopType
+        cc.log("currentShopType = "+this.currentShopType)
+        this.updateUi()
+    }
+    ,
     
     updateUi:function()
     {
         this.Coin.string = ""+cc.cs.PlayerInfo.money
+
+        cc.log("updateui"+this.currentShopType)
 
         if(this.currentShopType ==1)
         {
             this.button1.interactable = false 
             this.button2.interactable = true 
             this.button3.interactable = true 
-            this.button4.interactable = true 
+            this.button4.interactable = true
+            this.initialize(cc.cs.gameData.goods) 
         }
         if(this.currentShopType ==2)
         {
             this.button1.interactable = true 
             this.button2.interactable = false 
             this.button3.interactable = true 
-            this.button4.interactable = true 
+            this.button4.interactable = true
+            this.initialize2(cc.cs.gameData.buy_gold)
         }
         if(this.currentShopType ==3)
         {
@@ -113,13 +129,15 @@ cc.Class({
             this.button2.interactable = true 
             this.button3.interactable = false 
             this.button4.interactable = true 
+            this.initialize2(cc.cs.gameData.hot_package)
         }
         if(this.currentShopType ==4)
         {
            this.button1.interactable = true 
             this.button2.interactable = true 
             this.button3.interactable = true 
-            this.button4.interactable = false  
+            this.button4.interactable = false
+            this.initialize2(cc.cs.gameData.work_package)
         }
         
     },
@@ -134,7 +152,7 @@ cc.Class({
     
     initialize2: function(itemArray)
     {
-        this.updateUi()
+        //this.updateUi()
         this.content.removeAllChildren(true);
         this.prefab = cc.loader.getRes("prefab/ItemLibao", cc.Prefab)
         
@@ -157,7 +175,7 @@ cc.Class({
     },
     
     initialize: function (itemArray) {
-        this.updateUi()
+        //this.updateUi()
         this.content.removeAllChildren(true);
         this.prefab = cc.loader.getRes("prefab/ShopItem", cc.Prefab)
         var length = itemArray["TOTAL_COUNT"]

@@ -253,6 +253,13 @@ cc.Class({
     goShop: function() {
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+       // cc.cs.UIMgr.currentShopType = 3
+        //cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+
+
+         cc.log("goShop LoveView")
+        cc.cs.UIMgr.setShopType(3)
+        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
         cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
     },
 
