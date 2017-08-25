@@ -374,7 +374,7 @@ cc.Class({
                     cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.workBtn,this)
                 }
             }
-            else if(icon.name == "zoneBtn")
+            else if(icon.name == "zonetBtn")
             {
                 if(parseInt(cc.cs.PlayerInfo.guide_id) == 15) // 弹出电话按钮引导
                 {

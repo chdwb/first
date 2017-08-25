@@ -404,6 +404,10 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         
             
         }
+        else
+        {
+            soundTalk.active = false
+        }
         talkText.string = text
         nameText.string = name
 

@@ -177,7 +177,13 @@ cc.Class({
 
         this.inputTableBtn.active = true
 
-        this.inputTableBtn.x = -93
+        
+        var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
+        var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+        this.inputTableBtn.x = p2.x
+            
+
+        //this.inputTableBtn.x = -93
         
         this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 ))
         
@@ -231,7 +237,10 @@ cc.Class({
             btn2.active = false;
             btn3.active = false;
             this.inputTableBtn.height = btn1.height
-            this.inputTableBtn.x = -93
+            //this.inputTableBtn.x = -93
+            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
+            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+            this.inputTableBtn.x = p2.x
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 )) + 20
         } else
         if (replayId.length == 2) {
@@ -267,7 +276,10 @@ cc.Class({
 
             btn3.active = false;
             this.inputTableBtn.height = btn1.height + btn2.height
-            this.inputTableBtn.x = -93
+            //this.inputTableBtn.x = -93
+            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
+            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+            this.inputTableBtn.x = p2.x
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 )) + 20
         } else {
             text1.string = replayId[0]["WECHAT_CONTENT"]
@@ -317,7 +329,10 @@ cc.Class({
                 
             }, btn3)
             this.inputTableBtn.height = btn1.height + btn2.height + btn3.height
-            this.inputTableBtn.x = -93
+            //this.inputTableBtn.x = -93
+            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
+            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+            this.inputTableBtn.x = p2.x
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 )) + 20
         }
     },
