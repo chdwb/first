@@ -396,11 +396,11 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
             talkText.node.x = 25
             soundTalk.x = nvNode.width -50 
 
-            this.soundTalk.node.on("click", (event) => {
+            soundTalk.on("click", (event) => {
 
             cc.cs.AudioMgr.playVoice(""+nvNode.getTag(),null)
 
-        }, this.soundTalk.node)
+        }, this.soundTalk)
         
             
         }
