@@ -197,9 +197,9 @@ cc.Class({
     setViewInputMsg: function(id) {
         cc.log("setViewInputMsg: function(id) {  " + id)
         if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
-            this.loadInfoTalk(this.infoviewScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
+            this.loadInfoTalk(this.infoviewScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName,id);
         } else {
-            this.loadInfoTalk(this.infoviewScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
+            this.loadInfoTalk(this.infoviewScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae,id);
         }
     },
 
@@ -599,7 +599,7 @@ cc.Class({
     },
 
 
-    loadInfoTalk: function(scroll, isPlayer, msg, name) {
+    loadInfoTalk: function(scroll, isPlayer, msg, name,id) {
         var height = 0;
         var children = scroll.content.getChildren();
         var newNode = null;
@@ -611,6 +611,7 @@ cc.Class({
             addHeight = newNode.cyH
         } else {
             newNode = cc.instantiate(this.nvzhuTalkPrefab)
+            newNode.setTag(id)
             cc.cs.UIMgr.setNvTalk(newNode, msg,  "· " + name, true)
             addHeight = cc.cs.UIMgr.getTalkHeight(newNode)
             newNode.cyH = addHeight

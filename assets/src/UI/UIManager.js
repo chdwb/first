@@ -398,7 +398,7 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
 
             this.soundTalk.node.on("click", (event) => {
 
-            //this.goZone()
+            cc.cs.AudioMgr.playVoice(""+nvNode.getTag(),null)
 
         }, this.soundTalk.node)
         
