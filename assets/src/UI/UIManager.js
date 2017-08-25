@@ -396,10 +396,12 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
             talkText.node.x = 25
             soundTalk.x = nvNode.width -50 
 
-             this.soundTalk.node.on("click", (event) => {
-             
-        })
-        {
+            this.soundTalk.node.on("click", (event) => {
+
+            //this.goZone()
+
+        }, this.soundTalk.node)
+        
             
         }
         talkText.string = text
