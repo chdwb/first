@@ -452,7 +452,7 @@ cc.Class({
         var isRightnow = cc.cs.PlayerInfo.wechat_fn
                if(isRightnow == true)
                {
-                    this.castText.string.node.active = false
+                    this.castText.node.active = false
                 }
 
         this.inputBtn.on("click",(event)=>{
@@ -462,9 +462,9 @@ cc.Class({
                if(isRightnow == true)
                {
 
-                cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+                //cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
                 cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
-                this.castText.string.node.active = false
+                this.castText.node.active = false
                 this.step()
 
                }
@@ -516,7 +516,7 @@ cc.Class({
 
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
-            this.castText.string.node.active = false
+            this.castText.node.active = false
             this.step()
 
             
