@@ -5302,7 +5302,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 141
@@ -12846,7 +12846,10 @@
     "second": 0,
     "timeIng": 0,
     "callingauidoid": 0,
-    "girlvoiceID": 0
+    "girlvoiceID": 0,
+    "tempPhoneID": 0,
+    "SoundOn": false,
+    "isShowPhoneView": false
   },
   {
     "__type__": "cc.ScrollView",

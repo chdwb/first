@@ -48,9 +48,14 @@ cc.Class({
         cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
         
     },
+    setExp: function(currentExp, levlExp) {
+        this.expText.string = currentExp + "/" + levlExp;
+    },
 
     refresh: function() {
         this.goldText.string = cc.cs.PlayerInfo.money
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
+        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
         /*cc.log("loveview refresh")
         this.goldText.string = cc.cs.PlayerInfo.money
         if (cc.cs.PlayerInfo.getLoveFreeTimes(this.currentWorkID) <= 0) {
