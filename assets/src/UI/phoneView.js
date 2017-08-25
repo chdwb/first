@@ -50,6 +50,11 @@ cc.Class({
             default: null
         },
 
+        noText: {
+            type: cc.Label,
+            default: null
+        },
+
         linkImage: {
             type: cc.Node,
             default: null
@@ -59,6 +64,8 @@ cc.Class({
             type: cc.Node,
             default: null
         },
+
+        
 
 
         talkSummaryInfoPrefab: null,
@@ -88,8 +95,11 @@ cc.Class({
         minute: 0,
         second: 0,
         timeIng: 0,
-
-        didiAuido:0,
+        callingauidoid:0,
+        girlvoiceID:0,
+        tempPhoneID:0,
+        SoundOn:false,
+        isShowPhoneView:false
     },
 
 
@@ -155,6 +165,17 @@ cc.Class({
         var newNode = null
         var self = this
         this.everInfoScroll.content.removeAllChildren(true)
+        cc.log("通话记录数量"+count.length)
+        if(count.length  == 0) // 没有记录
+        {
+
+            this.noText.node.active = true
+
+        }
+        else
+        {
+             this.noText.node.active = false
+        }
         for (var i = 0; i < count.length; ++i) {
             newNode = cc.instantiate(this.talkSummaryInfoPrefab)
             cc.cs.UIMgr.addItem_verticalScrollView(this.everInfoScroll, newNode, 0)
@@ -176,9 +197,9 @@ cc.Class({
     setViewInputMsg: function(id) {
         cc.log("setViewInputMsg: function(id) {  " + id)
         if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
-            this.loadInfoTalk(this.infoviewScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
+            this.loadInfoTalk(this.infoviewScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName,id);
         } else {
-            this.loadInfoTalk(this.infoviewScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
+            this.loadInfoTalk(this.infoviewScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae,id);
         }
     },
 
@@ -273,12 +294,14 @@ cc.Class({
     },
 
     showPhoneInfoView: function() {
+        this.isShowPhoneView = true;
         this.node.active = false;
         this.playerInfoView.active = true
 
     },
 
     showPhoneView: function() {
+        this.isShowPhoneView = false;
         this.node.active = true;
         this.playerInfoView.active = false
     },
@@ -293,23 +316,78 @@ cc.Class({
         }
     },
 
+    VoiceDone: function(ret)
+    {
+             cc.log("aaaabbbb"+ret)
+          this.showInputTable( this.tempPhoneID)
+          this.tonghuakuang.active = false
 
+           this.currentTime = 0
+                this.isAction = false;
+                this.totalTime = 0
+                this.timeIng = false;   
+                this.backBtn.active = true
+
+    }
+    ,
+
+      VoiceDone2: function(ret)
+    {
+
+       cc.log("aaaabbbb"+ret)
+
+         
+
+           this.showInputTable( this.tempPhoneID)
+                this.tonghuakuang.active = false
+                this.showCompletePhone()
+
+           this.currentTime = 0
+                this.isAction = false;
+                this.totalTime = 0
+                this.timeIng = false;   
+                this.backBtn.active = true
+
+    }
+    ,
 
     setInputMsg: function(id) {
 
+        this.tempPhoneID = id
+
         cc.log("setInputMsg  " + id)
-        if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) {
+        if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) { // 女主
             this.loadCruuentTalk(this.currentScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
             if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"] != "dummy") {
-                this.showInputTable(id)
-                this.tonghuakuang.active = false
-                this.showCompletePhone()
+               // this.showInputTable(id)
+               // this.tonghuakuang.active = false
+               // this.showCompletePhone()
+
+                this.currentTime = 0
+                this.isAction = true;
+                this.totalTime = 20
+                this.timeIng = true;
+                this.backBtn.active = false
+               this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone2.bind(this))
+               cc.log("播放声音ID = "+this.girlvoiceID)
+               this.cancelBtn.active = true
+
             }
         } else {
             if(id > cc.cs.gameData.phone["FIRST"]){
                 if(cc.cs.gameData.phone["PHONE_ID_" + (id-1)]["PHONE_AUDIO"] == "dummy" ){
                     this.showInputTable(id)
                     this.tonghuakuang.active = false
+                
+
+               /* this.currentTime = 0
+                this.isAction = true;
+                this.totalTime = 20
+                this.timeIng = true;
+                this.backBtn.active = false   
+               this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone.bind(this))
+               this.cancelBtn.active = true*/
+
                 }else{
                     this.loadCruuentTalk(this.currentScroll, true, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.PlayerNmae);
                 }
@@ -521,7 +599,7 @@ cc.Class({
     },
 
 
-    loadInfoTalk: function(scroll, isPlayer, msg, name) {
+    loadInfoTalk: function(scroll, isPlayer, msg, name,id) {
         var height = 0;
         var children = scroll.content.getChildren();
         var newNode = null;
@@ -533,6 +611,7 @@ cc.Class({
             addHeight = newNode.cyH
         } else {
             newNode = cc.instantiate(this.nvzhuTalkPrefab)
+            newNode.setTag(id)
             cc.cs.UIMgr.setNvTalk(newNode, msg,  "· " + name, true)
             addHeight = cc.cs.UIMgr.getTalkHeight(newNode)
             newNode.cyH = addHeight
@@ -552,11 +631,15 @@ cc.Class({
         var self = this
         this.showNormal()
         this.schedule(this.step,1.0)
-        
+        if(this.SoundOn)
+        cc.cs.AudioMgr.stopBGM()
+       
     },
 
     onDisable : function(){
         this.unschedule(this.step)
+        if(this.SoundOn && this.isShowPhoneView == false)
+        cc.cs.AudioMgr.startBGM()
     },
 
     step : function(){
@@ -565,6 +648,8 @@ cc.Class({
             if (this.currentTime >= this.totalTime) {
                 this.talkImage.active = true
                 this.linkImage.active = false
+                this.backBtn.active = true
+                this.cancelBtn.active = true
                 this.currentScroll.active = true
                 this.timeIng = false;
                 this.setInputMsg(this.NPCID)
@@ -627,6 +712,8 @@ cc.Class({
             self.isAction = false
             self.currentTime = 0
             self.totalTime = 0
+            cc.cs.AudioMgr.StopAudio()
+            self.backBtn.active = true
         })
 
         this.phoneBtn.on("click", (event) => {
@@ -634,13 +721,24 @@ cc.Class({
             self.isAction = true;
             self.currentTime = 0
             self.totalTime = 3
+            cc.cs.AudioMgr.playAudio("calling",false)
             self.second = 0;
             self.minute = 0;
             self.timeIng = false
             self.talkImage.active = false
             self.linkImage.active = true
             self.currentScroll.active = false
+
+            self.backBtn.active = false
+            self.cancelBtn.active = false
         })
+
+        cc.log("phoneview guide id = "+ cc.cs.PlayerInfo.guide_id ) 
+        if(parseInt(cc.cs.PlayerInfo.guide_id) == 6) // 弹出电话按钮引导
+                {
+                    cc.log("电话界面 拨号按钮")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.phoneBtn,this)
+                }
 
         this.backBtn.on("click", (event) => {
             //back
@@ -649,6 +747,17 @@ cc.Class({
 			cc.cs.UIMgr.closeView()
         })
         this.showCompletePhone()
+
+        
+        var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
+        if(hehe == 1)
+        {
+            this.SoundOn = false
+        }
+        else
+        {
+            this.SoundOn = true
+        }
     },
 
     // called every frame, uncomment this function to activate update callback
