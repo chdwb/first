@@ -331,7 +331,7 @@ cc.Class({
         var name = firstName.FAMLIY_NAME + secondName.NAME
         cc.log(name)
        // this.editTip.string =  name
-        this.editplayerName.string = name
+        this.playerNameEdit.string = name
     },
 
     startgame: function() {
