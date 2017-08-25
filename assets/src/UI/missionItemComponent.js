@@ -213,7 +213,8 @@ cc.Class({
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             this.refresh()
         }else{
-            cc.log("error " + JasonObject.error)
+
+            cc.cs.UIMgr.showTip(JasonObject.error,1.0)
         }
     },
     startDateHandle : function(ret){
@@ -224,7 +225,7 @@ cc.Class({
             actionView.getComponent("actioningView").setItem(this.itemID, false)
             cc.cs.UIMgr.openView(cc.cs.UIMgr.ACTIONVIEW)
         }else{
-            cc.log("error " + JasonObject.error)
+            cc.cs.UIMgr.showTip(JasonObject.error,1.0)
         }
     },
 

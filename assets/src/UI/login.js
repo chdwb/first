@@ -299,7 +299,15 @@ cc.Class({
         //cc.cs.UIMgr.showTip("这里添加用户名事件", 1.0)
         cc.log("setplayername")
         //var api_token = cc.sys.localStorage.getItem('API_TOKEN')
-        cc.cs.gameMgr.sendName(this.sendNameHandle, this)
+        if(this.playerNameEdit.string.length == 0)
+        {
+            cc.cs.UIMgr.showTip("名字不能为空",1.0)
+        }
+        else
+        {
+            cc.cs.PlayerInfo.playerName = this.playerNameEdit.string
+            cc.cs.gameMgr.sendName(this.sendNameHandle, this)
+        }
     },
 
     editplayerName: function() {
@@ -392,7 +400,7 @@ cc.Class({
     updatePlayerInfo:function(JasonObject)
     {
             cc.cs.PlayerInfo.api_token = JasonObject.content.info.api_token
-            cc.cs.PlayerInfo.playerName = JasonObject.content.info.name
+            cc.cs.PlayerInfo.PlayerNmae = JasonObject.content.info.name
             cc.log("玩家名字"+JasonObject.content.info.name)
             cc.cs.PlayerInfo.welcome = JasonObject.content.info.welcome
             cc.cs.PlayerInfo.updateLevel(JasonObject.content.info.level)

@@ -149,6 +149,7 @@ cc.Class({
         }*/
         cc.log("stop id "+ this.AudioID)
         cc.cs.AudioMgr.StopAudio(this.AudioID)
+        this.currentTime = this.totalTime
 
         if(this.isWork)
         {

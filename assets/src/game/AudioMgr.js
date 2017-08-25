@@ -108,6 +108,8 @@ cc.Class({
         var self = this
         cc.loader.loadRes("audio/voice/"+name, function (err, clip) {
 
+            cc.log("playVoice name"+name + " erro code "+err)
+
             self.Backid  = cc.audioEngine.play(clip, false, 1);
 
              cc.log("播放语音ID = " + self.Backid)
@@ -125,7 +127,16 @@ cc.Class({
 
     },
 
-     StopAudio:function()
+     StopAudio:function(id)
+     {
+
+         cc.audioEngine.stop(id)
+
+     },
+
+     
+
+       StopVoice:function()
      {
 
          cc.audioEngine.stop(this.Backid)

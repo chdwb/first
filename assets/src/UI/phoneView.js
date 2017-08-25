@@ -326,7 +326,7 @@ cc.Class({
                 this.isAction = false;
                 this.totalTime = 0
                 this.timeIng = false;   
-                this.backBtn.active = true
+                //this.backBtn.active = true
 
     }
     ,
@@ -346,7 +346,7 @@ cc.Class({
                 this.isAction = false;
                 this.totalTime = 0
                 this.timeIng = false;   
-                this.backBtn.active = true
+                //this.backBtn.active = true
 
     }
     ,
@@ -377,7 +377,7 @@ cc.Class({
             if(id > cc.cs.gameData.phone["FIRST"]){
                 if(cc.cs.gameData.phone["PHONE_ID_" + (id-1)]["PHONE_AUDIO"] == "dummy" ){
                     this.showInputTable(id)
-                    this.tonghuakuang.active = false
+                    this.tonghuakuang.active = false  
                 
 
                /* this.currentTime = 0
@@ -712,7 +712,7 @@ cc.Class({
             self.isAction = false
             self.currentTime = 0
             self.totalTime = 0
-            cc.cs.AudioMgr.StopAudio()
+            cc.cs.AudioMgr.StopVoice()
             self.backBtn.active = true
         })
 

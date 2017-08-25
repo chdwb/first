@@ -402,9 +402,13 @@ cc.Class({
 
 
         }
+        this.tipBG.action = false
         if (this.phoneBtn.active)
 
             if (cc.cs.PlayerInfo.canPhone()) {
+                this.tipBG.action = true
+                this.tipText.string = ""
+                
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {
                 this.phoneBtn.getChildByName("stars").active = false;
@@ -413,6 +417,9 @@ cc.Class({
 
         if (this.wechatBtn.active)
             if (cc.cs.PlayerInfo.canWechat()) {
+
+                 this.tipBG.action = true
+                this.tipText.string = "快给"
                 this.wechatBtn.getChildByName("stars").active = true;
             } else {
                 this.wechatBtn.getChildByName("stars").active = false;

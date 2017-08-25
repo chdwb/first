@@ -55,7 +55,7 @@ cc.Class({
 
         datelog_id: 0,
 
-        NPCName: "许梦田",
+        NPCName: "许梦甜",
 
         signday: 0,
 
