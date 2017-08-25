@@ -12821,6 +12821,7 @@
     "talktime": {
       "__id__": 295
     },
+    "noText": null,
     "linkImage": {
       "__id__": 303
     },
@@ -12842,7 +12843,11 @@
     "minute": 0,
     "second": 0,
     "timeIng": 0,
-    "didiAuido": 0
+    "callingauidoid": 0,
+    "girlvoiceID": 0,
+    "tempPhoneID": 0,
+    "SoundOn": false,
+    "isShowPhoneView": false
   },
   {
     "__type__": "cc.ScrollView",
@@ -15985,8 +15990,12 @@
       "__id__": 339
     },
     "_enabled": true,
-    "expText": null,
-    "goldText": null,
+    "expText": {
+      "__id__": 358
+    },
+    "goldText": {
+      "__id__": 351
+    },
     "talkScroll": {
       "__id__": 344
     },
