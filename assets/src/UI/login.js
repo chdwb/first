@@ -263,7 +263,6 @@ cc.Class({
                 this.bangdingdiban.active = true
                 this.zhucediban.active = false
             }
-            
     },
 
     setLoginNode: function() {
@@ -487,8 +486,7 @@ cc.Class({
             }
 
             for(var i=0;i<JasonObject.content.info.replies.length;i++){  
-  
-                cc.log("replies = "+JasonObject.content.info.replies[i].reply_id)
+
                 cc.cs.PlayerInfo.addZoneReplies(JasonObject.content.info.replies[i].reply_id)
             }
 

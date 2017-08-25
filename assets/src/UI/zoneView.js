@@ -47,12 +47,13 @@ cc.Class({
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
-            cc.cs.PlayerInfo.replies.push(this.currentPLID)
+            cc.cs.PlayerInfo.replies_.push(this.currentPLID)
             cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
             cc.log("video id 7= " + cc.cs.PlayerInfo.playvideo)
                 //if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.level) ){
                 //    cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
+            this.currentItem.plCallBack()
             cc.cs.UIMgr.showTip("评论完成", 1.0)
                 // }
             cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)

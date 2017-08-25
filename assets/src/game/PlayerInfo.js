@@ -66,7 +66,7 @@ cc.Class({
         Phone_player_ID: [],
         wechat_player_ID: [],
         weibo_thumbs: [],
-        replies: [],
+        replies_: [],
 
         playvideo: 0,
 
@@ -93,7 +93,8 @@ cc.Class({
     },
 
     addZoneReplies: function(value) {
-        this.replies.push(parseInt(value))
+       
+        this.replies_.push(parseInt(value))
     },
 
     addZoneThumbs: function(value) {
@@ -216,6 +217,7 @@ cc.Class({
                 } else if (item == "zone_id") {
                     this.zoneThumbsUp_id = info[item]
                 } else if (item == "reply_id") {
+                    cc.log("    this.zoneReplay_id = info[item]        " + info[item])
                     this.zoneReplay_id = info[item]
                 } else if (item == "wechat_next") {
                     this.wechat_id = info[item]
@@ -262,17 +264,6 @@ cc.Class({
 
         return false
     },
-
-    /*getZoneReplyID: function(id) {
-        var pReplyData = null
-        for (var i = 0; i < this.replies.length; i++) {
-            //pReplyData = getreplyData(this.replies[i])
-            if (id ==
-                cc.cs.gameData.reply["ID_" + ]["ZONE_ID"])
-                return this.replies[i]
-        }
-        return 0
-    },*/
 
     visibleZoneCount: function() {
         var count = 0;
@@ -395,9 +386,11 @@ cc.Class({
 
     canPLZone: function(id) {
         var pZoneData = cc.cs.gameData.getzoneData(id);
+        if(pZoneData == null) return false
         var PZoneReply = null
-        for (var i = 0; i < this.replies.length; i++) {
-            PZoneReply = cc.cs.gameData.getreplyData(this.replies[i]);
+        for (var i = 0; i < this.replies_.length; i++) {
+            PZoneReply = cc.cs.gameData.getreplyData(this.replies_[i]);
+            if(PZoneReply == null) return false
             if (pZoneData["ZONE_LEVEL"] ==
                 PZoneReply["REPLY_LEVEL"])
                 return false;
