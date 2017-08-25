@@ -94,7 +94,11 @@ cc.Class({
     onShop:function(){
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+        
+        cc.cs.UIMgr.setShopType(3)
+        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
         cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+        
     },
     onBack:function(){
         

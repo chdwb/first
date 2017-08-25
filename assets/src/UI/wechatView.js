@@ -2,6 +2,14 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        expText: {
+            type: cc.Label,
+            default: null
+        },
+        goldText: {
+            type: cc.Label,
+            default: null
+        },
         talkScroll : {
             type:cc.ScrollView,
             default:null
@@ -70,6 +78,18 @@ cc.Class({
     sendEnable : function(){
         this.sendBtn.getComponent(cc.Button).interactable = true
     //this.tipText.active = true
+    },
+
+
+    setExp: function(currentExp, levlExp) {
+        this.expText.string = currentExp + "/" + levlExp;
+    },
+
+    
+
+    setGold: function(gold) {
+        //cc.log("set gold"+gold)
+        this.goldText.string = gold + ""
     },
 
     getDay:function(id)
@@ -338,6 +358,14 @@ cc.Class({
     },
 
     onEnable :function(){
+
+
+
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
+        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+            //this.setDiamond(cc.cs.PlayerInfo.Diamond)
+        this.setGold(cc.cs.PlayerInfo.money)
+
         if(!this.isAction){
             this.inputTableBtn.active = false;
             this.quikeTip.active = false
@@ -420,9 +448,41 @@ cc.Class({
             }
         })
 
+
+        var isRightnow = cc.cs.PlayerInfo.wechat_fn
+               if(isRightnow == true)
+               {
+                    this.castText.string.node.active = false
+                }
+
         this.inputBtn.on("click",(event)=>{
             if(self.quikeTip.active){
+
+               var isRightnow = cc.cs.PlayerInfo.wechat_fn
+               if(isRightnow == true)
+               {
+
+                cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+                cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
+                this.castText.string.node.active = false
+                this.step()
+
+               }
+               else
+               {
+
+               if(cc.cs.PlayerInfo.money < cc.cs.PlayerInfo.diamond)
+               {
+
+                cc.cs.UIMgr.showPopBuy(1,this.buyLIJI,this)
+
+
+               }
+               else
+               {
                 cc.cs.gameMgr.sendBuyFastTalk(self.sendBuyFastTalkHandle,self)
+               }
+           }
             }else{
                 self.showInputTable(self.NPCID)
             }
@@ -440,6 +500,33 @@ cc.Class({
            
 
         })
+    },
+
+     buyLIJI:function()
+    {
+        cc.cs.gameMgr.buyRightNow(1,this.onBuyRightNowhandle,this)
+    },
+
+    onRightNowHandle:function(ret)
+    {
+         var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) 
+        {
+            //cc.cs.UIMgr.showTip("", 1.0)
+
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
+            this.castText.string.node.active = false
+            this.step()
+
+            
+
+
+        }else{
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+
+     
     },
 
     sendBuyFastTalkHandle : function(ret){

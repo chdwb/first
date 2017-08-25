@@ -15992,6 +15992,12 @@
       "__id__": 339
     },
     "_enabled": true,
+    "expText": {
+      "__id__": 358
+    },
+    "goldText": {
+      "__id__": 351
+    },
     "talkScroll": {
       "__id__": 344
     },

@@ -181,15 +181,20 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
-        this.nodeGuidePrefab = cc.loader.getRes("prefab/PopGuide5", cc.Prefab)
+        this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
+        this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab)//没有箭头正中间
+        this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab)//没有箭头左上
+        this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab)//箭头在右边
+        this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab)//箭头在下边
     },
-    showPopBuy: function(okHandle,obj) {
+    showPopBuy: function(id, okHandle,obj) {
+        //id 1 秒回礼包 3 一件完成礼包
 
         var scene = cc.director.getScene();
         var popupNode = cc.instantiate(this.nodePopBuyPrefab)
         scene.getChildByName("Canvas").addChild(popupNode, 999)
         popupNode.setPosition(0, 0);
-        popupNode.getComponent("PopBuy").setCallBack(okHandle,obj)
+        popupNode.getComponent("PopBuy").setCallBack( id, okHandle,obj)
     },
     
     
@@ -202,10 +207,62 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         }
         else
         {
+
+        /*this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
+        this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab)//没有箭头正中间
+        this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab)//没有箭头左上
+        this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab)//箭头在右边
+        this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab)//箭头在下边*/
  
             var scene = cc.director.getScene();
-            cc.log("scene   = "+ scene + "    " + this.nodeGuidePrefab)
-            var popupNode = cc.instantiate(this.nodeGuidePrefab)
+            //cc.log("scene   = "+ scene + "    " + this.nodeGuidePrefab)
+            var popupNode = null
+            switch (guideID)
+            {
+                case 1:
+                case 15:
+                {
+                   popupNode = cc.instantiate(this.nodeGuidePrefabNArrowCenter)
+                }
+                break;
+                case 2:
+                case 3:
+                {
+                   popupNode = cc.instantiate(this.nodeGuidePrefabNArrowLeft)
+                }
+                break;
+                case 4:
+                case 5:
+                case 6:
+                case 8:
+                case 11:
+                case 16:
+                {
+                   popupNode = cc.instantiate(this.nodeGuidePrefabLeft)
+                }
+                break;
+
+                case 7:
+                case 12:
+                case 17:
+                {
+                   popupNode = cc.instantiate(this.nodeGuidePrefabRight)
+                }
+                break;
+
+                case 9:
+                case 10:
+                case 13:
+                case 14:
+                
+                {
+                   popupNode = cc.instantiate(this.nodeGuidePrefabBottom)
+                }
+                break;
+
+                
+            }
+            
             cc.log("popupNode   = "+ popupNode + "    " )
             scene.getChildByName("Canvas").addChild(popupNode, 999)
             popupNode.setPosition(0, 0);

@@ -26,9 +26,9 @@ cc.Class({
 
     },
     
-    setCallBack:function(OKhandle,obj)
+    setCallBack:function(id,OKhandle,obj)
     {
-        
+        cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop/" + id)
         this.doJob = OKhandle
         this.obj = obj
     },
