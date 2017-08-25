@@ -12821,7 +12821,9 @@
     "talktime": {
       "__id__": 295
     },
-    "noText": null,
+    "noText": {
+      "__id__": 259
+    },
     "linkImage": {
       "__id__": 303
     },
