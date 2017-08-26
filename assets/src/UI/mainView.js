@@ -403,11 +403,27 @@ cc.Class({
 
         }
         this.tipBG.action = false
+        var isShowTip = false;
+
+
+
+        if (this.wechatBtn.active)
+            if (cc.cs.PlayerInfo.canWechat()) {
+
+                 this.tipBG.action = true
+                this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
+                isShowTip = true;
+                this.wechatBtn.getChildByName("stars").active = true;
+            } else {
+                this.wechatBtn.getChildByName("stars").active = false;
+            }
+
         if (this.phoneBtn.active)
 
             if (cc.cs.PlayerInfo.canPhone()) {
                 this.tipBG.action = true
                 this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
+                isShowTip = true;
                 
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {
@@ -415,21 +431,27 @@ cc.Class({
 
             }
 
-        if (this.wechatBtn.active)
-            if (cc.cs.PlayerInfo.canWechat()) {
-
-                 this.tipBG.action = true
-                this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
-                this.wechatBtn.getChildByName("stars").active = true;
-            } else {
-                this.wechatBtn.getChildByName("stars").active = false;
-            }
+         this.tipBG.action = isShowTip
         if (this.zoneBtn.active)
             if (cc.cs.PlayerInfo.canZone()) {
                 this.zoneBtn.getChildByName("stars").active = true;
             } else {
                 this.zoneBtn.getChildByName("stars").active = false;
             }
+
+            if (this.loveBtn.active)
+                if (cc.cs.PlayerInfo.canAllLove()) {
+                    this.loveBtn.getChildByName("stars").active = true;
+                } else {
+                    this.loveBtn.getChildByName("stars").active = false;
+                }
+
+                if (this.workBtn.active)
+                    if (cc.cs.PlayerInfo.canAllWork()) {
+                        this.workBtn.getChildByName("stars").active = true;
+                    } else {
+                        this.workBtn.getChildByName("stars").active = false;
+                    }
 
     },
     // use this for initialization

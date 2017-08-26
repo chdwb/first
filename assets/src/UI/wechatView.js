@@ -143,7 +143,19 @@ cc.Class({
 
     sendWechat: function(id) {
         this.currentPlayerWechatID = id
+        
         cc.cs.gameMgr.sendWechat(id, this.SendWechatHandle, this)
+        var wechatData = cc.cs.gameData.getwechatData(id)
+        var exp = wechatData["WECHAT_EXP"]
+        if (parseInt(exp) < 0)
+            {
+                cc.cs.UIMgr.showTip("恋爱值减少"+exp,1.0)
+            }
+            else
+            {
+                cc.cs.UIMgr.showTip("恋爱值增加"+exp,1.0)
+            }
+        
 
     },
 
@@ -375,15 +387,19 @@ cc.Class({
         }
     },
 
-    onEnable: function() {
-
-
+    updateui:function(){
 
         var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
         this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
             //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.money)
 
+    }
+    ,
+
+    onEnable: function() {
+
+        this.updateui()
         if (!this.isAction) {
             this.inputTableBtn.active = false;
             this.quikeTip.active = false
