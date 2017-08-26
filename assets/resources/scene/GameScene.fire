@@ -13449,7 +13449,8 @@
     "girlvoiceID": 0,
     "tempPhoneID": 0,
     "SoundOn": false,
-    "isShowPhoneView": false
+    "isShowPhoneView": false,
+    "currentExp": 0
   },
   {
     "__type__": "cc.ScrollView",
@@ -30165,7 +30166,7 @@
     "_originalHeight": 250
   },
   {
-    "__type__": "c74b8MGSiBEQb/WEjT0jO45",
+    "__type__": "252fdPy7XlCFonXXM82qaen",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -30176,7 +30177,7 @@
       "__id__": 771
     },
     "prefab": {
-      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
+      "__uuid__": "abc4de38-3eea-4dc6-9d2a-128ca2fb3130"
     },
     "scrollView": {
       "__id__": 783
@@ -30452,7 +30453,7 @@
     }
   },
   {
-    "__type__": "acb89OKUKdDfYoS3FsJrKKP",
+    "__type__": "a99e0WCvOJK5411eMuWxSV9",
     "_name": "",
     "_objFlags": 0,
     "node": {

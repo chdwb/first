@@ -128,6 +128,7 @@ cc.Class({
         var self = this
          var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.log("存储新手id成功"+this.guide_id)
             cc.cs.PlayerInfo.guide_id = this.guide_id 
