@@ -373,7 +373,7 @@ cc.Class({
             zf = "-'"
         }
         var expLabel = tip.getChildByName("expText").getComponent(cc.Label).string = zf + exp
-
+        var scene = cc.director.getScene();
         scene.getChildByName("Canvas").addChild(tip, 1000)
 
         var p = target.parent.convertToWorldSpaceAR(cc.v2(targetNode.x, targetNode.y))
