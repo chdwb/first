@@ -10,6 +10,32 @@ cc.Class({
             type: cc.Node,
             default: null
         },
+        inputNode: {
+            type: cc.Node,
+            default: null
+        },
+        inputBtn: {
+            type: cc.Node,
+            default: null
+        },
+
+        sendBtn: {
+            type: cc.Node,
+            default: null
+        },
+
+        msgText: {
+            type: cc.Label,
+            default: null
+        },
+        showBg: {
+            type: cc.Node,
+            default: null
+        },
+        showIcon: {
+            type: cc.Node,
+            default: null
+        },
         infoText: {
             type: cc.Label,
             default: null
@@ -29,7 +55,7 @@ cc.Class({
         currentPLID: 0,
         currentItem: null,
 
-        lastZoneID :0,
+        lastZoneID: 0,
     },
 
     SendDJ: function(phoneid) {
@@ -144,7 +170,7 @@ cc.Class({
         for (var i = 0; i < this.ZoneIDList.length; i++) {
             if (this.ZoneIDList[i].zoneID == id) return
         }
-        
+
         var zoneData = cc.cs.gameData.getzoneData(id)
 
         if (zoneData == null) return
@@ -156,13 +182,14 @@ cc.Class({
         var jsZoneItem = zoneItem.getComponent("zoneItem")
         jsZoneItem.setZoneID(id)
         var fdbackData = null
-        for (var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i) {
+        for (var i = 1; i <= cc.cs.gameData.zonefeefback["TOTAL_COUNT"]; ++i) {
             fdbackData = cc.cs.gameData.getzonefeefbackData(i)
             if (zoneData["ZONE_LEVEL"] == fdbackData["ZONE_FB_LEVEL"] &&
-                fdbackData["ZONE_FB_HAVE_FB"] == "dummy" ) {
+                fdbackData["ZONE_FB_HAVE_FB"] == "dummy") {
+                cc.log("jsZoneItem.addText    =  " + i)
                 jsZoneItem.addText(i)
             }
-            if(zoneData["ZONE_LEVEL"]  < fdbackData["ZONE_FB_LEVEL"]){
+            if (zoneData["ZONE_LEVEL"] < fdbackData["ZONE_FB_LEVEL"]) {
                 break;
             }
         }
@@ -172,7 +199,7 @@ cc.Class({
             jsZoneItem.addPlayerText(id)
             jsZoneItem.addOtherText()
         }
-        cc.log("addZoneId    " + zoneItem.height + "      " + id )
+        cc.log("addZoneId    " + zoneItem.height + "      " + id)
         cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, zoneItem, 0)
     },
 
@@ -188,30 +215,30 @@ cc.Class({
     },*/
     // use this for initialization
 
-    onEnable : function(){
+    onEnable: function() {
         var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
         cc.log(newID + "  onEnable zoon   " + this.lastZoneID)
-        if(newID !=  this.lastZoneID){
+        if (newID != this.lastZoneID) {
             this.addZoneId(ndeID)
         }
         var children = this.scrollView.content.getChildren();
-        for(var i = 0 ; i < children.length; ++i){
+        for (var i = 0; i < children.length; ++i) {
             var jsZoneItem = children[i].getComponent("zoneItem")
             jsZoneItem.addOtherText()
         }
 
 
-        cc.log("WorkView guidepos = "+cc.cs.PlayerInfo.guide_id)
-        if(parseInt(cc.cs.PlayerInfo.guide_id) == 16) // 工作开始按钮
+        cc.log("WorkView guidepos = " + cc.cs.PlayerInfo.guide_id)
+        if (parseInt(cc.cs.PlayerInfo.guide_id) == 16) // 工作开始按钮
         {
             var children = this.scrollView.content.getChildren();
             var jsZoneItem = children[0].getComponent("zoneItem") // 第一个档位
-            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,itemCom.getplBtn(),this)
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, itemCom.getplBtn(), this)
         }
 
 
         cc.cs.UIMgr.refresh_verticalScrollViewUp(this.scrollView, 0)
-        
+
     },
 
     onLoad: function() {
@@ -230,10 +257,10 @@ cc.Class({
 
         this.nameText.string = cc.cs.PlayerInfo.NPCName
 
-        var count  = cc.cs.PlayerInfo.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
+        var count = cc.cs.PlayerInfo.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
         this.lastZoneID = count
         if (count > 0) {
-            for (var i = cc.cs.gameData.zone["FIRST"] ; i < count; ++i) {
+            for (var i = count - 1; i >= cc.cs.gameData.zone["FIRST"]; --i) {
                 this.addZoneId(i)
             }
             var zoneData = cc.cs.gameData.getzoneData(this.lastZoneID)
@@ -245,9 +272,9 @@ cc.Class({
 
 
         this.backBtn.on("click", (event) => {
-           // var parent = self.node.parent
-           // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
-           cc.cs.UIMgr.closeView()
+            // var parent = self.node.parent
+            // parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            cc.cs.UIMgr.closeView()
 
         }, this.backBtn)
     },

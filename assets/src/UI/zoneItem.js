@@ -26,11 +26,11 @@ cc.Class({
             type: cc.Node,
             default: null
         },
-        optionBtn : {
+        optionBtn: {
             type: cc.Node,
             default: null
         },
-        popup : {
+        popup: {
             type: cc.Node,
             default: null
         },
@@ -38,7 +38,7 @@ cc.Class({
             type: cc.Label,
             default: null
         },
-        recordName:{
+        recordName: {
             type: cc.Node,
             default: null
         },
@@ -68,20 +68,19 @@ cc.Class({
         zanNum: 6,
         plNum: 0,
         plID: 0,
-        isShowPopup:false,
-        isAddOther : false,
-        popupWidth : 0,
+        isShowPopup: false,
+        isAddOther: false,
+        popupWidth: 0,
     },
 
-    getplBtn:function()
-    {
+    getplBtn: function() {
         return this.plBtn
     },
 
     setLength: function() {
 
         var height = 0
-        for(var i =0 ; i <  this.replyList.length ; ++i){
+        for (var i = 0; i < this.replyList.length; ++i) {
             height += this.replyList[i].height
         }
         height = Math.abs(this.bghf.y) + height + 60
@@ -91,71 +90,71 @@ cc.Class({
         var self = this
         this.zoneID = id
 
-        this.optionBtn.on("click",(event) => {
-            cc.log(self + "         abc         "  )
-            cc.log(self.isShowPopup  + "         cde         "  + self.zoneID)
-            cc.log(self.isShowPopup + " c " + cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID) + "  d "+
-            cc.cs.PlayerInfo.canPLZone(self.zoneID) + " e  " + cc.cs.PlayerInfo.canZanZone(self.zoneID))
-            if(self.isShowPopup){
-                
-                var action1 = cc.scaleTo(0.2,0.0,1.0)
-                if(cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)){
+        this.optionBtn.on("click", (event) => {
+            cc.log(self + "         abc         ")
+            cc.log(self.isShowPopup + "         cde         " + self.zoneID)
+            cc.log(self.isShowPopup + " c " + cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID) + "  d " +
+                cc.cs.PlayerInfo.canPLZone(self.zoneID) + " e  " + cc.cs.PlayerInfo.canZanZone(self.zoneID))
+            if (self.isShowPopup) {
+
+                var action1 = cc.scaleTo(0.2, 0.0, 1.0)
+                if (cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
                     self.popup.runAction(action1)
-                }else {
-                    if(cc.cs.PlayerInfo.canPLZone(self.zoneID)){
+                } else {
+                    if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
                         self.plBtn.runAction(action1)
-                    }else if(cc.cs.PlayerInfo.canZanZone(self.zoneID)){
+                    } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
                         self.dzBtn.runAction(action1)
                     }
                 }
                 self.isShowPopup = false
-            }else{
-                var action2 = cc.scaleTo(0.2,1.0,1.0)
-                if(cc.cs.PlayerInfo.canZanZone(self.zoneID)&& cc.cs.PlayerInfo.canZanZone(self.zoneID)){
+            } else {
+                var action2 = cc.scaleTo(0.2, 1.0, 1.0)
+                if (cc.cs.PlayerInfo.canZanZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
                     self.popup.runAction(action2)
-                }else {
-                    if(cc.cs.PlayerInfo.canPLZone(self.zoneID)){
+                } else {
+                    if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
                         self.plBtn.runAction(action2)
-                    }else if(cc.cs.PlayerInfo.canZanZone(self.zoneID)){
+                    } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
                         self.dzBtn.runAction(action2)
                     }
                 }
                 self.isShowPopup = true
             }
 
-        },this.optionBtn)
+        }, this.optionBtn)
         this.nameText.string = cc.cs.PlayerInfo.NPCName
         this.dateText.string = cc.cs.PlayerInfo.getZoneDay(id)
 
-         
-         var fbData = cc.cs.gameData.getzonefeefbackData(id);
-         if(fbData["ZONE_IMG_1"] != "dummy"){
-             
+
+        var fbData = cc.cs.gameData.getzonefeefbackData(id);
+        if (fbData["ZONE_IMG_1"] != "dummy") {
+
             var spr = this.getImage("moments/pic/" + fbData["ZONE_IMG_1"]);
-            if(spr == null){
+            if (spr == null) {
                 this.image1.active = (false)
-            }else{
+            } else {
                 this.image1.getComponent(cc.Sprite).spriteFrame = spr
-                this.image1.on("click",(event) => {
-                   
+                this.image1.on("click", (event) => {
+
                 }, this.image1)
             }
-         }else{
+        } else {
             this.image1.active = (false)
-         }
-         this.isShowPopup = false;
-         this.popup.scaleX = 0.0
-        if(cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)){
+        }
+        this.isShowPopup = false;
+        this.popup.scaleX = 0.0
+        if (cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
             this.popup.scaleX = 0.0
-        }else{
-            if(cc.cs.PlayerInfo.canPLZone(self.zoneID)){
+        } else {
+            if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
                 this.popup.x = this.popup.x + this.plBtn.width
-                this.plBtn.active =  (false)
+                this.plBtn.active = (false)
                 this.popup.scaleX = 1.0
                 this.popup.active = (true)
                 this.dzBtn.scaleX = 0.0
                 this.isShowPopup = false;
-            }else if(cc.cs.PlayerInfo.canZanZone(self.zoneID)){
+            } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
                 this.dzBtn.active = (false)
                 this.popup.scaleX = 1.0
                 this.popup.active = (true)
@@ -164,27 +163,27 @@ cc.Class({
             }
         }
 
-        if(!cc.cs.PlayerInfo.canPLZone(self.zoneID) && !cc.cs.PlayerInfo.canZanZone(self.zoneID)){
+        if (!cc.cs.PlayerInfo.canPLZone(self.zoneID) && !cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
             this.optionBtn.active = false
         }
-        
+
         this.popupWidth = this.popup.width;
-        
+
     },
-    scaleIcon : function(target){
+    scaleIcon: function(target) {
         var tex = target.getComponent(cc.Sprite).spriteFrame.getTexture()
         var sx = 0.0
         var sy = 0.0
         var sb = 0.0
         var w = tex.pixelWidth
         var h = tex.pixelHeight
-        if(w > h){
+        if (w > h) {
             sb = cc.visibleRect.width / w
         }
     },
 
-    getImage:function(res){
-        return  cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame);
+    getImage: function(res) {
+        return cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame);
     },
 
     setMsg: function(text) {
@@ -211,7 +210,7 @@ cc.Class({
                     "</color>")
             }
         } else {
-           // this.replyList.push(this.replyMsg.node)
+            // this.replyList.push(this.replyMsg.node)
             this.addTextItem("<color=#ffffff>" +
                 fbData["ZONE_FB_FNAME"] +
                 "</c><color=#1f6289>:" +
@@ -232,8 +231,8 @@ cc.Class({
 
         var si = this.bghf.getContentSize()
         si.height = height;
-        for(var i =0 ; i <  this.replyList.length ; ++i){
-            si.height  += this.replyList.length * this.replyList[i].getContentSize().height
+        for (var i = 0; i < this.replyList.length; ++i) {
+            si.height += this.replyList.length * this.replyList[i].getContentSize().height
         }
 
         this.bghf.setContentSize(si)
@@ -242,66 +241,65 @@ cc.Class({
         this.setPL(this.plNum)
     },
 
-    addOtherText : function(){
-        if(this.isAddOther) return
+    addOtherText: function() {
+        if (this.isAddOther) return
         var id = this.zoneID
+        if (cc.cs.PlayerInfo.canPLZone(id)) return
         var height = Math.abs(this.replyMsg.node.y * 2)
-        cc.log("getreplyData2222222222222222222222   " + id)
         var fbData = cc.cs.gameData.getreplyData(id);
         if (this.replyList.length == 0) {
             this.replyList.push(this.replyMsg.node)
             if (fbData["REPLY_REPLY"] != "dummy") {
-                
-                        this.addTextItem("<color=#ffffff>" +
-                            cc.cs.PlayerInfo.NPCName +
-                            "</c><color=#1f6289>回复" +
-                            "</c><color=#ffffff>" +
-                            cc.cs.PlayerInfo.PlayerNmae +
-                            "</c><color=#1f6289>:" +
-                            fbData["REPLY_REPLY"] +
-                            "</color>")
-                    }
-        }else{
+
+                this.addTextItem("<color=#ffffff>" +
+                    cc.cs.PlayerInfo.NPCName +
+                    "</c><color=#1f6289>回复" +
+                    "</c><color=#ffffff>" +
+                    cc.cs.PlayerInfo.PlayerNmae +
+                    "</c><color=#1f6289>:" +
+                    fbData["REPLY_REPLY"] +
+                    "</color>")
+            }
+        } else {
             //this.replyList.push(this.replyMsg.node)
             if (fbData["REPLY_REPLY"] != "dummy") {
-                
-                                this.addTextItem("<color=#ffffff>" +
-                                    cc.cs.PlayerInfo.NPCName +
-                                    "</c><color=#1f6289>回复" +
-                                    "</c><color=#ffffff>" +
-                                    cc.cs.PlayerInfo.PlayerNmae +
-                                    "</c><color=#1f6289>:" +
-                                    fbData["REPLY_REPLY"] +
-                                    "</color>")
-                            }
+
+                this.addTextItem("<color=#ffffff>" +
+                    cc.cs.PlayerInfo.NPCName +
+                    "</c><color=#1f6289>回复" +
+                    "</c><color=#ffffff>" +
+                    cc.cs.PlayerInfo.PlayerNmae +
+                    "</c><color=#1f6289>:" +
+                    fbData["REPLY_REPLY"] +
+                    "</color>")
+            }
         }
         var zoneData = cc.cs.gameData.getzoneData(id)
         var fdbackData = null
         for (var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i) {
             fdbackData = cc.cs.gameData.getzonefeefbackData(i)
             if (zoneData["ZONE_LEVEL"] == fdbackData["ZONE_FB_LEVEL"] &&
-                fdbackData["ZONE_FB_HAVE_FB"] != "dummy" ) {
+                fdbackData["ZONE_FB_HAVE_FB"] != "dummy") {
                 this.addText(i)
             }
-            if(zoneData["ZONE_LEVEL"]  < fdbackData["ZONE_FB_LEVEL"]){
+            if (zoneData["ZONE_LEVEL"] < fdbackData["ZONE_FB_LEVEL"]) {
                 break;
             }
         }
         this.isAddOther = true
         var si = this.bghf.getContentSize()
-        
+
         this.bghf.height = height
         this.setLength()
     },
 
     addPlayerText: function(id) {
         var height = Math.abs(this.replyMsg.node.y * 2)
-        cc.log("getreplyData111111111111111111      " + id)
         var fbData = cc.cs.gameData.getreplyData(id);
         if (this.replyList.length == 0) {
             this.replyList.push(this.replyMsg.node)
             this.replyMsg.string = "<color=#ffffff>" + cc.cs.PlayerInfo.PlayerNmae + "</c><color=#1f6289>:" + fbData["REPLY_TEXT"] + "</color>"
-            
+
         } else {
             //this.replyList.push(this.replyMsg.node)
             cc.log("zone item id = " +
@@ -311,7 +309,7 @@ cc.Class({
                 "</c><color=#1f6289>:" +
                 fbData["REPLY_TEXT"] +
                 "</color>")
-            
+
         }
 
         var si = this.bghf.getContentSize()
@@ -341,29 +339,29 @@ cc.Class({
         r.font = this.replyMsg.font
         r.maxWidth = this.replyMsg.maxWidth
         this.replyList.push(newItem)
-        cc.log("addTextItem   " +  this.replyList.length + "       " + this.zoneID)
+        cc.log("addTextItem   " + this.replyList.length + "       " + this.zoneID)
     },
 
-    plCallBack : function(){
+    plCallBack: function() {
         this.popup.x = this.popup.x + this.plBtn.width
         this.plBtn.active = (false)
         this.popup.scaleX = 1.0
         this.popup.active = (true)
         this.dzBtn.scaleX = 0.0
         this.isShowPopup = false;
-        if(!cc.cs.PlayerInfo.canZanZone(this.zoneID)){
-            this.optionBtn.active =false
+        if (!cc.cs.PlayerInfo.canZanZone(this.zoneID)) {
+            this.optionBtn.active = false
         }
     },
 
-    dzCallBack:function(){
+    dzCallBack: function() {
         this.dzBtn.active = (false)
         this.popup.scaleX = 1.0
         this.popup.active = (true)
         this.plBtn.scaleX = 0.0
         this.isShowPopup = false;
-        if(!cc.cs.PlayerInfo.canPLZone(this.zoneID)){
-            this.optionBtn.active =false
+        if (!cc.cs.PlayerInfo.canPLZone(this.zoneID)) {
+            this.optionBtn.active = false
         }
     },
 
