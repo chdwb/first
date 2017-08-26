@@ -50,6 +50,8 @@ cc.Class({
 
         inputTablePrefab: null,
 
+        linePrefab:null,
+
         inputTableBtn: null,
         plIndex: 0,
         currentPLID: 0,
@@ -89,10 +91,75 @@ cc.Class({
                 // }
             cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
+            if(this.currentPLID == cc.cs.gameData.zone["FIRST"])
+                this.scrollView.content.height += 40
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
         //弹窗
+
+    },
+
+    scaleIcon: function(target) {
+        var self = this
+        var tex = target.getComponent(cc.Sprite).spriteFrame.getTexture()
+        var sx = 0.0
+        var sy = 0.0
+        var sb = 0.0
+        var w = tex.pixelWidth
+        var h = tex.pixelHeight
+        var sw = 0.0
+        var sh = 0.0
+        if (w > h) {
+            sh = 100
+            sw = sh/h * w;
+            sb = cc.visibleRect.width /sw
+        }else{
+            sw = 100
+            sh = sw/w * h;
+            sb = cc.visibleRect.height /sh
+        }
+        this.showIcon.scaleX = 1.0
+        this.showIcon.scaleY = 1.0
+    
+        target.width = sw
+        target.height = sh
+        var action = cc.sequence(cc.spawn(cc.moveTo(5.0, 0.0,0.0),cc.scaleTo(5.0,sb,sb)), cc.callFunc(function(target) {
+            self.addShowHandle()
+        }, target))
+        target.runAction(action)
+    },
+     
+    addShowHandle : function(){
+        var self = this
+        this.showBg.on("click",(event) => {
+            self.showBg.active = false
+        },this.showBg)
+        this.showIcon.on("click",(event) => {
+            self.showBg.active = false
+        },this.showIcon)
+    },
+
+
+    getImage: function(res) {
+        return cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame);
+    },
+
+    showIconFunc : function(target){
+        var sp = this.getImage("moments/pic/" + target.IMAGE_ID)
+        if(sp == null) return
+        this.showBg.active = true
+        var p = target.parent.convertToWorldSpaceAR(cc.v2(target.x, target.y))
+        var p2 = this.showIcon.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
+        this.showIcon.x = p2.x
+        this.showIcon.y = p2.y
+        this.showBg.targetOff(this.showBg)
+        this.showIcon.targetOff(this.showIcon)
+
+        this.showIcon.getComponent(cc.Sprite).spriteFrame = sp
+        
+
+        this.scaleIcon(this.showIcon)
 
     },
 
@@ -264,6 +331,10 @@ cc.Class({
             jsZoneItem.addOtherText()
         }
         cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, zoneItem, 0)
+        if(id != 1){
+            var line = cc.instantiate(this.linePrefab)
+            cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
+        }
     },
 
     /*canZone: function() {
@@ -287,7 +358,9 @@ cc.Class({
         }
         var children = this.scrollView.content.getChildren();
         for (var i = 0; i < children.length; ++i) {
+            
             var jsZoneItem = children[i].getComponent("zoneItem")
+            if(jsZoneItem == null)continue
             jsZoneItem.addOtherText()
         }
 
@@ -296,6 +369,7 @@ cc.Class({
             var children = this.scrollView.content.getChildren();
             var jsZoneItem = children[0].getComponent("zoneItem") // 第一个档位
         }
+        cc.cs.UIMgr.refresh_verticalScrollViewUp(this.scrollView)
     },
 
     onLoad: function() {
@@ -303,7 +377,7 @@ cc.Class({
         var self = this
         this.inputTablePrefab = cc.loader.getRes("prefab/inputTable", cc.Prefab)
         this.ZoneItemPrefab = cc.loader.getRes("prefab/zoneItem", cc.Prefab)
-
+        this.linePrefab = cc.loader.getRes("prefab/lineprefab", cc.Prefab)
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
         this.inputTableBtn.ZONE_ID = 0
         this.node.addChild(this.inputTableBtn, 88)

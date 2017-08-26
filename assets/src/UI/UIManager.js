@@ -346,9 +346,6 @@ cc.Class({
                 children[i].y = -scrollView.content.height
                 scrollView.content.height += +children[i].height + verticalSpace
             }
-            cc.log("refresh_verticalScrollViewUp   " + children[i].height + "     " + scrollView.content.height + "      " + children[i].y + "    " +
-                ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - children[i].anchorY) * children[i].height) + "    " +
-                ((1.0 - children[i].anchorY) * children[i].height))
         }
     },
 

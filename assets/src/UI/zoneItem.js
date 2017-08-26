@@ -39,7 +39,7 @@ cc.Class({
             default: null
         },
         recordName: {
-            type: cc.Node,
+            type: cc.Label,
             default: null
         },
         nameText: {
@@ -134,21 +134,79 @@ cc.Class({
         this.nameText.string = cc.cs.PlayerInfo.NPCName
         this.dateText.string = cc.cs.PlayerInfo.getZoneDay(id)
 
-
-        var fbData = cc.cs.gameData.getzonefeefbackData(id);
+        cc.log("aaa " + cc.cs.UIMgr)
+        cc.log("aaa " + cc.cs.UIMgr.gameScene)
+        cc.log("aaa " + cc.cs.UIMgr.gameScene.ZoneView)
+        cc.log("aaa " + cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView"))
+        var fbData = cc.cs.gameData.getzoneData(id);
         if (fbData["ZONE_IMG_1"] != "dummy") {
-
-            var spr = this.getImage("moments/pic/" + fbData["ZONE_IMG_1"]);
+            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_1"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_1"]);
             if (spr == null) {
                 this.image1.active = (false)
             } else {
                 this.image1.getComponent(cc.Sprite).spriteFrame = spr
+                this.image1.IMAGE_ID = fbData["ZONE_IMG_1"]
                 this.image1.on("click", (event) => {
-
+                    cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").showIconFunc(event.target)
                 }, this.image1)
             }
         } else {
             this.image1.active = (false)
+        }
+        if (fbData["ZONE_IMG_2"] != "dummy") {
+            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_2"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_2"]);
+            if (spr == null) {
+                this.image2.active = (false)
+            } else {
+                this.image2.getComponent(cc.Sprite).spriteFrame = spr
+                this.image2.IMAGE_ID = fbData["ZONE_IMG_2"]
+                this.image2.on("click", (event) => {
+                    cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").showIconFunc(event.target)
+                }, this.image2)
+            }
+        } else {
+            this.image2.active = (false)
+        }
+        if (fbData["ZONE_IMG_3"] != "dummy") {
+            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_3"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_3"]);
+            if (spr == null) {
+                this.image3.active = (false)
+            } else {
+                this.image3.getComponent(cc.Sprite).spriteFrame = spr
+                this.image3.IMAGE_ID = fbData["ZONE_IMG_3"]
+                this.image3.on("click", (event) => {
+                    cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").showIconFunc(event.target)
+                }, this.image3)
+            }
+        } else {
+            this.image3.active = (false)
+        }
+        if (fbData["ZONE_IMG_4"] != "dummy") {
+            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_4"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_4"]);
+            if (spr == null) {
+                this.image4.active = (false)
+            } else {
+                this.image4.getComponent(cc.Sprite).spriteFrame = spr
+                this.image4.IMAGE_ID = fbData["ZONE_IMG_4"]
+                this.image4.on("click", (event) => {
+                    cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").showIconFunc(event.target)
+                }, this.image4)
+            }
+        } else {
+            this.image4.active = (false)
+        }
+        if (!cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
+            this.recordName.string = fbData["ZONE_THUMBS_NAME"] +","+ cc.cs.PlayerInfo.PlayerNmae
+        }else{
+            this.recordName.string = fbData["ZONE_THUMBS_NAME"]
+        }
+
+        if(this.image1.active == false&&this.image2.active == false&&this.image3.active == false&&this.image4.active == false){
+            this.bghf.y += 110;
         }
         this.isShowPopup = false;
         this.popup.scaleX = 0.0
@@ -169,6 +227,7 @@ cc.Class({
                 this.popup.active = (true)
                 this.dzBtn.scaleX = 0.0
                 this.isShowPopup = false;
+
             }
         }
 
@@ -179,17 +238,7 @@ cc.Class({
         this.popupWidth = this.popup.width;
 
     },
-    scaleIcon: function(target) {
-        var tex = target.getComponent(cc.Sprite).spriteFrame.getTexture()
-        var sx = 0.0
-        var sy = 0.0
-        var sb = 0.0
-        var w = tex.pixelWidth
-        var h = tex.pixelHeight
-        if (w > h) {
-            sb = cc.visibleRect.width / w
-        }
-    },
+    
 
     getImage: function(res) {
         return cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame);
@@ -356,7 +405,6 @@ cc.Class({
         this.popup.active = (true)
         this.dzBtn.scaleX = 0.0
             // this.isShowPopup = false;
-        cc.log("plCallBack    is run run 2" + this.popup.x)
         if (!cc.cs.PlayerInfo.canZanZone(this.zoneID)) {
             this.optionBtn.active = false
         }
@@ -367,7 +415,7 @@ cc.Class({
         this.popup.scaleX = 1.0
         this.popup.active = (true)
         this.plBtn.scaleX = 0.0
-        cc.log("this.plBtn.active this.plBtn.active   +   " + this.plBtn.active)
+        this.recordName.string = this.recordName.string +","+ cc.cs.PlayerInfo.PlayerNmae
             //this.isShowPopup = false;
         if (!cc.cs.PlayerInfo.canPLZone(this.zoneID)) {
             this.optionBtn.active = false
@@ -413,6 +461,7 @@ cc.Class({
                 // if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.level) ){
                 //cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
+
             cc.cs.UIMgr.showTip("点赞完成", 1.0)
             this.dzCallBack()
                 // }

@@ -256,9 +256,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 146,
-      "g": 71,
-      "b": 71,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -400,9 +400,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 33,
-      "g": 33,
-      "b": 184,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -544,9 +544,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 226,
-      "g": 54,
-      "b": 54,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -688,9 +688,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 33,
-      "g": 33,
-      "b": 184,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -1277,7 +1277,7 @@
     "_actualFontSize": 30,
     "_fontSize": 30,
     "_lineHeight": 30,
-    "_enableWrapText": false,
+    "_enableWrapText": true,
     "_N$file": {
       "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
     },
@@ -2349,7 +2349,7 @@
       "__id__": 40
     },
     "recordName": {
-      "__id__": 34
+      "__id__": 35
     },
     "nameText": {
       "__id__": 26
