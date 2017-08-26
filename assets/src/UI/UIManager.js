@@ -364,6 +364,18 @@ cc.Class({
         tipNode.runAction(action);
     },
 
+    setHeart : function(target,currentExp , maxExp){
+        var mask = target.getChildByName("mask")
+        var heart = mask.getChildByName("heart")
+        var max = target.getChildByName("max")
+        if(currentExp >= maxExp){
+            max.active = true
+        }else{
+            max.active = false
+            var p = currentExp / maxExp
+            heart.height = mask.height * p
+        }
+    },
 
 
     showPopupO: function(title, msg, okHandle) {
