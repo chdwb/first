@@ -181,7 +181,7 @@ cc.Class({
         {
              this.noText.node.active = false
         }
-        for (var i = 0; i < count.length; ++i) {
+        for (var i = count.length -1; i >=0; --i) {
             newNode = cc.instantiate(this.talkSummaryInfoPrefab)
             cc.cs.UIMgr.addItem_verticalScrollView(this.everInfoScroll, newNode, 0)
             newNode.cyEnd = count[i]
@@ -189,8 +189,15 @@ cc.Class({
                 parseInt(cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]["LEV_DAY"]) -
                 parseInt(cc.cs.gameData.level["LEV_LEV_" + cc.cs.gameData.phone["PHONE_ID_" + cc.cs.gameData.level_up["LEVEL_UP_LEV_" + count[i]]["PHONE_END_ID"]]["PHONE_LEV"]]["LEV_DAY"])
             )
-            newNode.getChildByName("infoBtn").getChildByName("msg").getComponent(cc.Label).string = this.getLimitMsg(cc.cs.gameData.phone["PHONE_ID_" + cc.cs.gameData.level_up["LEVEL_UP_LEV_" + count[i]]["PHONE_END_ID"]]["PHONE_MSG"], 16)
-            newNode.getChildByName("infoBtn").getChildByName("dian").getChildByName("index").getComponent(cc.Label).string = "" + (i + 1)
+            if(cc.cs.gameData.level_up["LEVEL_UP_LEV_" + count[i]]["LEVEL_UP_LEV"] == cc.cs.gameData.level_up["FIRST"] ){
+                newNode.getChildByName("infoBtn").getChildByName("msg").getComponent(cc.Label).string = this.getLimitMsg(cc.cs.gameData.phone["PHONE_ID_" + cc.cs.gameData.phone["FIRST"]]["PHONE_MSG"], 16)
+            }else{
+                cc.log("cc.cs.gameData.level_up[LEVEL_UP_LEV_ + count[i-1]][PHONE_END_ID]+1     " + i)
+                cc.log("cc.cs.gameData.level_up[LEVEL_UP_LEV_ + count[i-1]][PHONE_END_ID]+1     " + count[i-1])
+                newNode.getChildByName("infoBtn").getChildByName("msg").getComponent(cc.Label).string = this.getLimitMsg(cc.cs.gameData.phone["PHONE_ID_" + (cc.cs.gameData.level_up["LEVEL_UP_LEV_" + count[i-1]]["PHONE_END_ID"]+1)]["PHONE_MSG"], 16)
+            }
+            
+            newNode.getChildByName("infoBtn").getChildByName("dian").getChildByName("index").getComponent(cc.Label).string = "" + (count.length - i)
             newNode.on("click", (event) => {
                 self.showPhoneInfoView();
                 self.showInfoViewSV(event.target.cyEnd, count.length)
@@ -339,7 +346,6 @@ cc.Class({
       VoiceDone2: function(ret)
     {
 
-       cc.log("aaaabbbb"+ret)
         if (cc.cs.gameData.phone["PHONE_ID_" + this.tempPhoneID]["PHONE_AUDIO"] != "dummy")   // 女主不是最后一句
         
          {
@@ -623,12 +629,12 @@ cc.Class({
         if (isPlayer) {
             cc.cs.UIMgr.setNanTalk(nanNode, msg,  name + " ·")
             nvNode.active = false
-            nvNode.y = 50 - scroll.height * 0.5 + nvNode.height *0.5
+            nanNode.y = 150 - scroll.height * 0.5
             nanNode.active = true;
         } else {
             nanNode.active = false
             cc.cs.UIMgr.setNvTalk(nvNode, msg,  "· " + name, false)
-            nanNode.y = 50 - scroll.height * 0.5 + nanNode.height *0.5
+            nvNode.y = 150 - scroll.height * 0.5
             nvNode.active = true;
         }
     },
