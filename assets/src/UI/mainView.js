@@ -407,7 +407,7 @@ cc.Class({
 
             if (cc.cs.PlayerInfo.canPhone()) {
                 this.tipBG.action = true
-                this.tipText.string = ""
+                this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
                 
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {
@@ -419,7 +419,7 @@ cc.Class({
             if (cc.cs.PlayerInfo.canWechat()) {
 
                  this.tipBG.action = true
-                this.tipText.string = "快给"
+                this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
                 this.wechatBtn.getChildByName("stars").active = true;
             } else {
                 this.wechatBtn.getChildByName("stars").active = false;
