@@ -305,7 +305,7 @@ cc.Class({
         }
         else
         {
-            cc.cs.PlayerInfo.playerName = this.playerNameEdit.string
+            cc.cs.PlayerInfo.PlayerName = this.playerNameEdit.string
             cc.cs.gameMgr.sendName(this.sendNameHandle, this)
         }
     },

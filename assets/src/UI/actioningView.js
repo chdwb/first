@@ -153,7 +153,7 @@ cc.Class({
 
         if(this.isWork)
         {
-            cc.cs.gameMgr.sendWorkDone(this.doneDate,this)
+            cc.cs.gameMgr.sendWorkDone(this.doneWork,this)
 
         }
         else
@@ -283,10 +283,12 @@ cc.Class({
            if(this.isWork)
            {
             cc.cs.PlayerInfo.work_fn = JasonObject.content.info.work_fn
+            cc.cs.PlayerInfo.date_fn = JasonObject.content.info.work_fn
            }
            else
            {
             cc.cs.PlayerInfo.date_fn = JasonObject.content.info.date_fn
+             cc.cs.PlayerInfo.work_fn = JasonObject.content.info.date_fn
            }
            this.onRightNow()
 

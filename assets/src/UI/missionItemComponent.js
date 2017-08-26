@@ -285,7 +285,8 @@ cc.Class({
             actionView.getComponent("actioningView").setItem(this.itemID, true)
             cc.cs.UIMgr.openView(cc.cs.UIMgr.ACTIONVIEW)
         }else{
-            cc.log("error " + JasonObject.error)
+            //cc.log("error " + JasonObject.error)
+            cc.cs.UIMgr.showTip(JasonObject.error,1.0)
         }
     },
 
