@@ -65,6 +65,11 @@ cc.Class({
             default: null
         },
 
+        expText: {
+            type: cc.Label,
+            default: null
+        },
+
         
 
 
@@ -569,6 +574,16 @@ cc.Class({
         this.currentPlayerPhoneID = phoneid;
         this.setInputMsg(phoneid)
         cc.cs.gameMgr.sendPhone(phoneid, this.SendPhoneHandle, this)
+        var phoneData = cc.cs.gameData.getphoneData(phoneid)
+        var exp = phoneData["PHONE_EXP"]
+        if (parseInt(exp) < 0)
+            {
+                cc.cs.UIMgr.showTip("恋爱值减少"+exp,1.0)
+            }
+            else
+            {
+                cc.cs.UIMgr.showTip("恋爱值增加"+exp,1.0)
+            }
     },
 
     SendPhoneHandle: function(ret) {
@@ -579,6 +594,7 @@ cc.Class({
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
             this.NPCID = JasonObject.content.info.phone_audio
+            this.refresh()
 
             if (cc.cs.PlayerInfo.canPhone2()) {
                 this.currentTime = 0
@@ -655,6 +671,7 @@ cc.Class({
         this.schedule(this.step,1.0)
         if(this.SoundOn)
         cc.cs.AudioMgr.stopBGM()
+        this.refresh()
        
     },
 
@@ -783,6 +800,18 @@ cc.Class({
         {
             this.SoundOn = true
         }
+    },
+
+    setExp: function(currentExp, levlExp) {
+        this.expText.string = currentExp + "/" + levlExp;
+    },
+
+    refresh:function()
+    {
+
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
+        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+
     },
 
     // called every frame, uncomment this function to activate update callback
