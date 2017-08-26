@@ -54,7 +54,14 @@ cc.Class({
         var count =  Math.floor(cc.cs.PlayerInfo.money / parseInt(price))
 
         cc.log("buy count = "+ count)
-        cc.cs.UIMgr.showNodeUse(this.GoodID,this.sendbuy,count,this,0)
+        if(count != 0)
+        {
+            cc.cs.UIMgr.showNodeUse(this.GoodID,this.sendbuy,count,this,0)
+        }
+        else
+            {
+                cc.cs.UIMgr.showTip("金币数量不够",1.0)
+            }
         },
 
     // use this for initialization

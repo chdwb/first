@@ -425,7 +425,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 14
@@ -554,7 +554,8 @@
       "__id__": 10
     },
     "GoodID": 0,
-    "ShopType": 0
+    "ShopType": 0,
+    "IsHave": false
   },
   {
     "__type__": "cc.PrefabInfo",

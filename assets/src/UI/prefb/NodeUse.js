@@ -75,6 +75,7 @@ cc.Class({
 
         type:0,
         price:0,
+       
 
 
 
@@ -87,7 +88,7 @@ cc.Class({
     },
     
     onEnable:function(){
-      this.updateButton()  
+      //this.updateButton()  
     },
 
     setCallBack:function(goodsid, OKhandle,Max,obj,type)
@@ -95,6 +96,7 @@ cc.Class({
         this.goodsid = goodsid
         this.doJob = OKhandle
         this.itmeCount = Max
+        
         this.obj = obj
         this.type = type;
 
@@ -153,6 +155,16 @@ cc.Class({
     {
         this.buttonJian.interactable = true
         this.buttonJia.interactable = true
+        if(this.itmeCount == 0)
+            {
+
+                this.buttonJian.interactable = false
+                this.buttonJia.interactable = false
+                this.itemUseCount = 0
+                this.itemUseCountLabel.string = ""+this.itemUseCount
+                return
+
+            }
         if(this.itemUseCount == 1)
         {
             this.buttonJian.interactable = false
