@@ -205,6 +205,8 @@ cc.Class({
                 }
             }
 
+            this.updateui()
+
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
