@@ -30199,7 +30199,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 791
@@ -30538,6 +30538,9 @@
     },
     "CollectView": {
       "__id__": 756
+    },
+    "loadingView": {
+      "__id__": 786
     },
     "SettingView": {
       "__id__": 719

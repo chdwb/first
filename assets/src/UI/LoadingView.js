@@ -15,11 +15,15 @@ cc.Class({
         if(!this.node.active){
             return;
         }
+        var self = this
         cc.loadingBg.node.opacity = 102
         this.juhua.active = false
+        this.node.stopAllActions()
+        this.juhua.stopAllActions()
 
-        var act = cc.sequence(cc.delayTime(1.50),cc.callFunc(function(target) {
-            self.showLoadingAction()
+        
+        var act = cc.sequence(cc.repeat(cc.rotateTo(0.5, 360), 3.0),cc.callFunc(function(target) {
+            cc.cs.UIMgr.showPopupO("网络错误","请检查网络", self.closeLoading)
         },this.node))
 
     },
@@ -38,6 +42,8 @@ cc.Class({
 
     closeLoading : function(){
         this.node.active = false
+        this.node.stopAllActions()
+        this.juhua.stopAllActions()
     },
 
     // use this for initialization

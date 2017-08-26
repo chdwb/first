@@ -71,6 +71,10 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        loadingView:{
+            default:null,
+            type:cc.Node,
+        },
 
         
 
