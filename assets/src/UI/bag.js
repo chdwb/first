@@ -82,6 +82,11 @@ cc.Class({
             type: cc.Button
         },
 
+        itemDec:{
+            type: cc.RichText,
+            default: null
+        },
+
 
 
         itmeCount:0,
@@ -167,6 +172,18 @@ cc.Class({
                 this.ItemNmae.string = cc.cs.gameData.goods["GOODS_ID_"+goods_id]["GOODS_NAME"]
                 this.ItemDes.string = gooddata["GOODS_DESC"]
                 cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + goods_id)
+
+
+                var text = gooddata["GOODS_DESC"]
+                
+                        if(gooddata["GOODS_EFFECT_VALUE"] != "dummy")
+                        {
+                            this.itemDec.string = text.replace(/0/g, "<color=#D16363>" + gooddata["GOODS_EFFECT_VALUE"]+"</c>" )
+                        }
+                        else
+                        {
+                            this.itemDec.string = text
+                        }
             }
             else
             {
@@ -221,6 +238,8 @@ cc.Class({
 
      setExp: function(currentExp, levlExp) {
         this.Exp.string = currentExp + "/" + levlExp;
+		 var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
+        cc.cs.UIMgr.setHeart(heartTarget, currentExp,levlExp)
     },
     updateUI:function()
     {
