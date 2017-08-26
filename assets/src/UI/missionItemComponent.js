@@ -71,6 +71,7 @@ cc.Class({
         itemID: 0,
         isWork: false,
         isLoad : false,
+        currentExp:0,
     },
 
     loadElement : function(){
@@ -212,6 +213,8 @@ cc.Class({
         if (JasonObject.success === true) {
             cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+
+            
             this.refresh()
         }else{
 

@@ -376,16 +376,20 @@ cc.Class({
         var scene = cc.director.getScene();
         scene.getChildByName("Canvas").addChild(tip, 1000)
 
-        var p = target.parent.convertToWorldSpaceAR(cc.v2(targetNode.x, targetNode.y))
-        var p2 = this.tip.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
+        var p = targetNode.parent.convertToWorldSpaceAR(cc.v2(targetNode.x, targetNode.y))
+        var p2 = tip.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
 
         tip.setPosition(0, 50);
+        tip.targettt = Handle
 
-        var action = cc.sequence(cc.moveTo(1.5, p2.x, p2.y), cc.callFunc(function(target) {
-            cc.director.getScene().getChildByName("Canvas").removeChild(target)
-            Handle
-        }, tip))
+        var action = cc.sequence(cc.moveTo(1.5, p2.x, p2.y), cc.callFunc(this.showExpHandle, tip))
 
+        tip.runAction(action)
+    },
+
+    showExpHandle : function (target){
+        target.targettt.refresh()
+        cc.director.getScene().getChildByName("Canvas").removeChild(target)
     },
 
     showTip: function(text, time) {

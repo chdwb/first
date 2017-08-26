@@ -412,16 +412,16 @@ cc.Class({
 
         if (this.wechatBtn.active)
             if (cc.cs.PlayerInfo.canWechat()) {
-                /*if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
                     this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
                     var psprite = this.wechatBtn.getChildByName("stars")
-                   // cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
+                    cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
                     this.tipBG.active = true
                 }else{
                     var psprite = this.wechatBtn.getChildByName("stars")
-                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
+                    cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
                     this.tipBG.active = false
-                }*/
+                }
 
                
                 this.wechatBtn.getChildByName("stars").active = true;
@@ -432,16 +432,16 @@ cc.Class({
         if (this.phoneBtn.active)
 
             if (cc.cs.PlayerInfo.canPhone()) {
-                /*if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
                     this.tipBG.action = true
                     this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
                     var psprite = this.phoneBtn.getChildByName("stars")
-                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
+                    cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
                 }else{
                     var psprite = this.phoneBtn.getChildByName("stars")
-                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
+                    cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
                     this.tipBG.active = false
-                }*/
+                }
                 
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {

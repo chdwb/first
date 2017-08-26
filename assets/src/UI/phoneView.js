@@ -603,7 +603,13 @@ cc.Class({
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
             this.NPCID = JasonObject.content.info.phone_audio
+<<<<<<< Updated upstream
            // cc.cs.UIMgr.showExpTip(this.currentExp, this.leveldata2, this.refresh)
+=======
+            var heartTarget = this.node.getChildByName("expBG")
+
+            cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
+>>>>>>> Stashed changes
             
 
             if (cc.cs.PlayerInfo.canPhone2()) {

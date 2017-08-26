@@ -99,6 +99,8 @@ cc.Class({
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.showPopupO("达成", "经过辛勤的工作，你获得了" + workData["REWARD"]+"金币。", this.closePopupHandle)
              cc.cs.AudioMgr.playAudio("success",false)
+
+            
            
         }else{
             cc.log("error " + JasonObject.error)
