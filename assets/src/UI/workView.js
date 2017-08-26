@@ -66,14 +66,37 @@ cc.Class({
     {
         this.goldText.string = cc.cs.PlayerInfo.money
          //this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
+        
+    },
+
+    refreshItem:function()
+    {
+        this.list.content.removeAllChildren(true)
+
+          this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
+        for(var i = parseInt(cc.cs.PlayerInfo.work_id); i <= cc.cs.gameData.work["LAST"]; ++i){
+            var itemNode = cc.instantiate(this.missionItemPrefab)
+            var itemCom = itemNode.getComponent("missionItemComponent")
+            itemCom.setItem( i, true)
+            cc.cs.UIMgr.addItem_horizontalScrollView(this.list, itemNode, 20)
+        }
+
+        this.list.content.x = -this.list.node.width * 0.5
+        var children = this.list.content.getChildren();
+        var index =parseInt(cc.cs.PlayerInfo.work_id)
+        for(var i = 0; i < children.length; ++i){
+            var itemCom = children[i].getComponent("missionItemComponent")
+            itemCom.refresh()
+            index++
+        }
+
     },
 
     goShop: function() {
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
         cc.log("goShop LoveView")
-        cc.cs.UIMgr.setShopType(2)
-        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
+        cc.log("cc.cs. = " + cc.cs.UIMgr.currentShopType)
         cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
 
     },
@@ -237,13 +260,7 @@ cc.Class({
     onLoad: function() {
        cc.log("work view  onload")
         var self = this
-        this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
-        for(var i = cc.cs.gameData.work["FIRST"]; i <= cc.cs.gameData.work["LAST"]; ++i){
-            var itemNode = cc.instantiate(this.missionItemPrefab)
-            var itemCom = itemNode.getComponent("missionItemComponent")
-            itemCom.setItem( i, true)
-            cc.cs.UIMgr.addItem_horizontalScrollView(this.list, itemNode, 20)
-        }
+      
 
 
         cc.log("WorkView guidepos = "+cc.cs.PlayerInfo.guide_id)
@@ -264,19 +281,11 @@ cc.Class({
 
     onEnable:function()
     {
-         this.list.content.x = -this.list.node.width * 0.5
-        var children = this.list.content.getChildren();
-        var index = cc.cs.gameData.work["FIRST"]
-        for(var i = 0; i < children.length; ++i){
-            var itemCom = children[i].getComponent("missionItemComponent")
-            itemCom.refresh()
-            index++
-        }
+        this.refreshItem()
         this.refresh()
     }
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
-    // },
 });

@@ -298,6 +298,9 @@ cc.Class({
         {
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             
+           
+             var actionView = cc.cs.UIMgr.getView(cc.cs.UIMgr.MISSONVIEW)
+            actionView.getComponent("workView").refreshItem()
             
             this.refresh()
             cc.cs.UIMgr.showTip("升级成功", 1.0)

@@ -55,7 +55,8 @@ cc.Class({
         handle: null,
         handleobj: null,
         doID : 0,
-        AudioID:-1
+        AudioID:-1,
+        isRightDone:false // 如果是立即完成的 设为TRUE
     },
 
     setItem:function(id , iswork){
@@ -150,6 +151,7 @@ cc.Class({
         cc.log("stop id "+ this.AudioID)
         cc.cs.AudioMgr.StopAudio(this.AudioID)
         this.currentTime = this.totalTime
+        this.isRightDone = true
 
         if(this.isWork)
         {
@@ -360,7 +362,14 @@ cc.Class({
        
 
                 //if(this.handle !== null){
-                this.doEnd()
+                if(this.isRightDone == true)
+                {
+                    this.isRightDone = false
+                }
+                else
+                {
+                    this.doEnd()
+                }
                // }    
                 
                 this.isAction = false;
