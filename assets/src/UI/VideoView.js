@@ -15,12 +15,25 @@ cc.Class({
         nowVideo:{
             default : null,
             type : cc.Label
+        },
+        Loading:{
+
+            default : null,
+            type : cc.Node
+
+        },
+        video:{
+
+            default : null,
+            type : cc.Node
+
         }
     },
 
     onClick : function()
     {
        cc.log("play video " + cc.cs.PlayerInfo.playvideo)
+       
        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
 
     },
@@ -35,6 +48,8 @@ cc.Class({
                     cc.log("视频完成")
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+                    this.Loading.active = false
+                    this.video.active = true
                     cc.cs.UIMgr.closeView()
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
@@ -45,6 +60,13 @@ cc.Class({
     onLoad: function () {
 
        //this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.playvideo
+
+       this.schedule(function(){
+        
+                           this.Loading.active = false
+                           this.video.active = true
+                           
+                        },5,0);
 
     },
 
