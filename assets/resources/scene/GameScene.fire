@@ -244,7 +244,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 126
@@ -10656,7 +10656,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 349
@@ -13969,6 +13969,9 @@
     },
     "expText": {
       "__id__": 269
+    },
+    "expNode": {
+      "__id__": 267
     },
     "talkSummaryInfoPrefab": null,
     "nvzhuTalkPrefab": null,
