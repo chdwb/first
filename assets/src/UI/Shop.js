@@ -153,9 +153,10 @@ cc.Class({
     initialize2: function(itemArray)
     {
         //this.updateUi()
+        cc.log("initialize2")
         this.content.removeAllChildren(true);
         this.prefab = cc.loader.getRes("prefab/ItemLibao", cc.Prefab)
-        
+        var temparray = [];
         
         for(var i in itemArray) { 
             if(i != "TOTAL_COUNT" && i != "LAST" && i != "FIRST" )
@@ -164,18 +165,35 @@ cc.Class({
                 var itemCom = item.getComponent("ShopItem2")
                 itemCom.setShopType(this.currentShopType)
                 itemCom.setGood(itemArray[i])
+                if(itemCom.IsHave)
+                {
+                    temparray.push(itemArray[i])
+                    continue;
+                }
                 
                 cc.cs.UIMgr.addItem_verticalScrollView(this.scrollView, item, 0)
-                
             }
             
+        }
+
+        for(var i in temparray) { 
+            //cc.cs.UIMgr.addItem_verticalScrollView(this.scrollView, i, 0)
+            var item = cc.instantiate(this.prefab)
+            var itemCom = item.getComponent("ShopItem2")
+            itemCom.setShopType(this.currentShopType)
+            itemCom.setGood(temparray[i])
+            cc.cs.UIMgr.addItem_verticalScrollView(this.scrollView, item, 0)
         }
         
         
     },
-    
-    initialize: function (itemArray) {
-        //this.updateUi()
+
+     initialize: function (itemArray) {
+        cc.log("initialize")
+
+
+        
+
         this.content.removeAllChildren(true);
         this.prefab = cc.loader.getRes("prefab/ShopItem", cc.Prefab)
         var length = itemArray["TOTAL_COUNT"]

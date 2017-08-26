@@ -21,12 +21,27 @@ cc.Class({
             default : null,
             type : cc.Label
         },
+
+        remai:{
+            default : null,
+            type : cc.Node
+        },
+
+        have:{
+            default : null,
+            type : cc.Node
+        },
         GoodID:0,
         ShopType:0,
+        IsHave:false,
     },
     
     onClick : function()
     {
+        if(this.IsHave)
+        {
+            return;
+        }
         var type = this.ShopType
         if(this.ShopType == 2)
         {
@@ -45,12 +60,108 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 
+        
+
     },
     
     setGood:function(goodsdata){
+
+        this.remai.active = false
+        this.have.active = false
         this.GoodID = goodsdata["ID"]
         cc.log("shoptype = ",this.ShopType)
         cc.log("goodid = ",this.GoodID)
+
+        if(this.ShopType == 3) // 热卖礼包
+        {
+            if(this.GoodID == 1)  //秒回礼包
+            {
+                if(cc.cs.PlayerInfo.wechat_fn)
+                {
+                    this.have.active = true
+                    this.IsHave = true
+                }
+                else
+                {
+                    this.remai.active = true
+                }
+            } else if(this.GoodID == 2) //一键礼包
+            {
+                if(cc.cs.PlayerInfo.work_fn)
+                {
+                    this.have.active = true
+                    this.IsHave = true
+                }
+                else
+                {
+                    this.remai.active = true
+                }
+            }else 
+            {
+                this.remai.active = true
+                
+            }
+
+        }
+
+        if(this.ShopType == 4)
+        {
+            if(this.GoodID == 1)  //3
+            {
+                if(cc.cs.PlayerInfo.work_id >= 3)
+                {
+                    this.IsHave = true
+                    this.have.active = true
+                }
+                else
+                    {
+                        this.remai.active = true
+                    }
+
+            }
+            else if(this.GoodID == 2) // 5
+             {
+                if(cc.cs.PlayerInfo.work_id >= 5)
+                    {
+                        this.IsHave = true
+                        this.have.active = true
+                    }
+                    else
+                        {
+                            this.remai.active = true
+                        }
+
+             }
+             else if(this.GoodID == 3) // 7
+            {
+                if(cc.cs.PlayerInfo.work_id >= 7)
+                    {
+                        this.IsHave = true
+                        this.have.active = true
+                    }
+                    else
+                        {
+                            this.remai.active = true
+                        }
+                
+            }
+            else if(this.GoodID == 4) // 10
+            {
+                if(cc.cs.PlayerInfo.work_id >= 10)
+                    {
+                        this.IsHave = true
+                        this.have.active = true
+                    }else
+                    {
+                        this.remai.active = true
+                    }
+                
+            }         
+            
+        }
+
+
+
         if(this.ShopType == 3 || this.ShopType == 4 )
         {
             this.Name.string = goodsdata["NAME"]
