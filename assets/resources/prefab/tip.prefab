@@ -29,12 +29,12 @@
       "__id__": 6
     },
     "_id": "",
-    "_opacity": 255,
+    "_opacity": 178,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -45,8 +45,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1600,
-      "height": 66
+      "width": 753,
+      "height": 46
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -86,9 +86,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -99,8 +99,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 566.78,
-      "height": 40
+      "width": 43.29,
+      "height": 26
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -127,14 +127,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_actualFontSize": 26,
+    "_fontSize": 26,
+    "_lineHeight": 26,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "tip文本........................................",
+    "_N$string": "rrrrr",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -146,7 +146,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "74d0e71e-5b84-4856-8b9d-261f763d8943"
     },
     "fileId": "54bb8fQq0lI7qzPmIJcZzz+",
     "sync": false
@@ -160,7 +160,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "6b01dd66-7dc7-466a-9745-82f3690d078b"
+      "__uuid__": "410fb916-8721-4663-bab8-34397391ace7"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -183,7 +183,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "74d0e71e-5b84-4856-8b9d-261f763d8943"
     },
     "fileId": "37c5eFtAWdBdouU6FWw/jtE",
     "sync": false

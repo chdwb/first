@@ -231,13 +231,16 @@ cc.Class({
         if (this.wechat_id == 0)
             this.wechat_id = 1
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
+        var pNextWechatData = cc.cs.gameData.getwechatData(this.wechat_id + 1)
         if (pWechatData != null) {
             cc.log("canwechat2 = " + pWechatData["WECHAT_LEVEL"] + "   " + this.level + "    " +pWechatData["WECHAT_NEXT"]  +"    " + this.wechat_id )
             if (pWechatData["WECHAT_LEVEL"] <= this.level) {
                 cc.log("canwechat3 = " + pWechatData["WECHAT_LEVEL"] + "   " + this.level + "    " +pWechatData["WECHAT_NEXT"]  +"    " + this.wechat_id )
                 if (pWechatData["WECHAT_LEVEL"] ==this.level && pWechatData["WECHAT_NEXT"] == "dummy") {
                     return false
-                } else {
+                } else if( pWechatData["WECHAT_NEXT"] == "dummy" && pWechatData["WECHAT_LEVEL"] < this.level && pNextWechatData != null&&  pNextWechatData["PHONE_LEV"] > this.level) {
+                    return false
+                }else{
                     return true
                 }
             } else {

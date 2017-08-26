@@ -139,11 +139,9 @@ cc.Class({
             }
             this.viewStack[this.viewStack.length - 1].active = true
 
-            cc.log("openvIew ------------------------------------------------------------------------start")
             for (var i = 0; i < this.viewStack.length; ++i) {
                 cc.log(this.viewStack[i].name + "      =      " + this.viewStack[i].active)
             }
-            cc.log("openvIew ------------------------------------------------------------------------end")
         }
     },
 
@@ -363,8 +361,12 @@ cc.Class({
         var scene = cc.director.getScene();
         var tipNode = cc.instantiate(this.tipPrefab)
         scene.getChildByName("Canvas").addChild(tipNode, 1000)
-        tipNode.setPosition(0, 0);
-        tipNode.getChildByName("tipText").getComponent(cc.Label).string = text
+        tipNode.setPosition(0, 50);
+
+        var textLabel = tipNode.getChildByName("tipText").getComponent(cc.Label)
+        textLabel.string = text
+        
+        tipNode.width = textLabel.fontSize * textLabel.string.length +40
         var action = cc.sequence(cc.moveTo(time, 0.0, 350.0), cc.callFunc(function(target) {
             cc.director.getScene().getChildByName("Canvas").removeChild(target)
         }, tipNode))
@@ -465,12 +467,12 @@ cc.Class({
         var nameText = nvNode.getChildByName("name").getComponent(cc.Label)
         var talkText = nvNode.getChildByName("talk").getComponent(cc.Label)
         var soundTalk = nvNode.getChildByName("soundBtn")
+        nvNode.width = 586
+        talkText.node.width = 536
+        talkText.node.x = 25
+        soundTalk.x = nvNode.width - 50
         if (issound) {
             soundTalk.active = true
-            nvNode.width = 586
-            talkText.node.width = 536
-            talkText.node.x = 25
-            soundTalk.x = nvNode.width - 50
 
             soundTalk.on("click", (event) => {
                 cc.log("nvNode.Tag = " + nvNode.getTag())

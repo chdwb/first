@@ -462,8 +462,8 @@ cc.Class({
                 //cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
 
-            cc.cs.UIMgr.showTip("点赞完成", 1.0)
             this.dzCallBack()
+            cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").updateui()
                 // }
             cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
 

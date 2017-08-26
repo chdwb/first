@@ -92,7 +92,6 @@ cc.Class({
                 this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
                     //this.setDiamond(cc.cs.PlayerInfo.Diamond)
                
-        
             }
             ,
 
@@ -110,6 +109,7 @@ cc.Class({
                 // }else{
             this.currentItem.plCallBack()
             cc.cs.UIMgr.showTip("评论完成", 1.0)
+            this.updateui()
                 // }
             cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
@@ -146,7 +146,7 @@ cc.Class({
     
         target.width = sw
         target.height = sh
-        var action = cc.sequence(cc.spawn(cc.moveTo(5.0, 0.0,0.0),cc.scaleTo(5.0,sb,sb)), cc.callFunc(function(target) {
+        var action = cc.sequence(cc.spawn(cc.moveTo(0.8, 0.0,0.0),cc.scaleTo(0.8,sb,sb)), cc.callFunc(function(target) {
             self.addShowHandle()
         }, target))
         target.runAction(action)
