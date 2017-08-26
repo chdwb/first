@@ -303,6 +303,7 @@ cc.Class({
         cc.log("mainview updateui")
 
         var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
+
         this.setExp(cc.cs.PlayerInfo.exp, leveldata["LEV_EXP"])
             //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.money)
@@ -403,17 +404,24 @@ cc.Class({
 
 
         }
-        this.tipBG.action = false
-        var isShowTip = false;
+        this.tipBG.active = false
 
 
 
         if (this.wechatBtn.active)
             if (cc.cs.PlayerInfo.canWechat()) {
+                /*if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                    this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
+                    var psprite = this.wechatBtn.getChildByName("stars")
+                   // cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
+                    this.tipBG.active = true
+                }else{
+                    var psprite = this.wechatBtn.getChildByName("stars")
+                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
+                    this.tipBG.active = false
+                }*/
 
-                 this.tipBG.action = true
-                this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
-                isShowTip = true;
+               
                 this.wechatBtn.getChildByName("stars").active = true;
             } else {
                 this.wechatBtn.getChildByName("stars").active = false;
@@ -422,9 +430,16 @@ cc.Class({
         if (this.phoneBtn.active)
 
             if (cc.cs.PlayerInfo.canPhone()) {
-                this.tipBG.action = true
-                this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
-                isShowTip = true;
+                /*if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                    this.tipBG.action = true
+                    this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
+                    var psprite = this.phoneBtn.getChildByName("stars")
+                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
+                }else{
+                    var psprite = this.phoneBtn.getChildByName("stars")
+                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
+                    this.tipBG.active = false
+                }*/
                 
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {
@@ -432,7 +447,6 @@ cc.Class({
 
             }
 
-         this.tipBG.action = isShowTip
         if (this.zoneBtn.active)
             if (cc.cs.PlayerInfo.canZone()) {
                 this.zoneBtn.getChildByName("stars").active = true;

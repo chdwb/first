@@ -376,10 +376,10 @@ cc.Class({
             max.active = false
             var p = currentExp / maxExp
             if(p > 1.0){
-                heart.height = mask.height * p
+                heart.height = mask.height
                 
             }else{
-                heart.height = mask.heigh
+                heart.height = mask.height * p
             }
             
         }
