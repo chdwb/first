@@ -12,7 +12,10 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-      
+        itemDec:{
+            type: cc.RichText,
+            default: null
+        },
     
         itemDec666:{
             default: null,
@@ -111,6 +114,18 @@ cc.Class({
                 this.TotalPrice.string = ""+(this.price * 1)
                 this.ItemNmae.string = gooddata["GOODS_NAME"]
                 this.itemDec666.string = gooddata["GOODS_DESC"]
+
+
+                var text = gooddata["GOODS_DESC"]
+                
+                        if(gooddata["GOODS_EFFECT_VALUE"] != "dummy")
+                        {
+                            this.itemDec.string = text.replace(/0/g, "<color=#D16363>" + gooddata["GOODS_EFFECT_VALUE"]+"</c>" )
+                        }
+                        else
+                        {
+                            this.itemDec.string = text
+                        }
 
 
                 cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.goodsid)
