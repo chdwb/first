@@ -69,6 +69,11 @@ cc.Class({
             type: cc.Label,
             default: null
         },
+        
+        expNode: {
+            type: cc.Node,
+            default: null
+        },
 
         
 
@@ -118,6 +123,7 @@ cc.Class({
     },
 
     showNormal: function() {
+        this.expNode.active = false
         this.node.active = true;
         this.playerInfoView.active = false
         this.phoneBtn.active = true
@@ -293,6 +299,7 @@ cc.Class({
     },
 
     showPhone: function() {
+        this.expNode.active = true
         this.node.active = true;
         this.playerInfoView.active = false
         this.cancelBtn.active = true
@@ -603,13 +610,10 @@ cc.Class({
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
             this.NPCID = JasonObject.content.info.phone_audio
-<<<<<<< Updated upstream
-           // cc.cs.UIMgr.showExpTip(this.currentExp, this.leveldata2, this.refresh)
-=======
+
             var heartTarget = this.node.getChildByName("expBG")
 
             cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
->>>>>>> Stashed changes
             
 
             if (cc.cs.PlayerInfo.canPhone2()) {
