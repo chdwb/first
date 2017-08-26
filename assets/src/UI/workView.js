@@ -64,6 +64,7 @@ cc.Class({
 
     refresh : function()
     {
+        cc.log("WORKVIEW UPDATE MONMEY")
         this.goldText.string = cc.cs.PlayerInfo.money
          //this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
         
@@ -71,6 +72,7 @@ cc.Class({
 
     refreshItem:function()
     {
+        this.refresh()
         this.list.content.removeAllChildren(true)
 
           this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)

@@ -263,10 +263,19 @@ cc.Class({
             cc.log("startbtn")
             var dateResult = cc.cs.PlayerInfo.canWork(self.itemID)
             if(dateResult == 0 || dateResult == 1 ){
-                cc.cs.gameMgr.sendWork(self.itemID, self.startWorkHandle, self)
+                if(dateResult == 0)
+
+                {
+                    cc.cs.gameMgr.sendWork(self.itemID, self.startWorkHandle, self)
+                }
+                else if(dateResult == 1)
+                {
+                   cc.cs.UIMgr.showTip("剩余工作次数不足",1.0) 
+                }
             }else if(dateResult == 2){
                // cc.cs.gameMgr.buyLoveTime(self.itemID, self.buyLoveHandle, self)
-               cc.cs.gameMgr.sendUpgrade( self.itemID, self.upgradeWorkHandle, self)
+               
+               self.confirmUpgrade()
             }
             
         })
@@ -275,6 +284,40 @@ cc.Class({
 
 
     },
+
+
+    SendUpgrade:function()
+    {   
+        cc.cs.gameMgr.sendUpgrade( this.itemID, this.upgradeWorkHandle, this)
+    }
+    ,
+
+    goShop:function()
+    {
+       
+        cc.cs.UIMgr.setShopType(2)
+        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+
+    }
+    ,
+
+    confirmUpgrade: function()
+    {
+        var workData = cc.cs.gameData.getworkData(this.itemID)
+        var needgold =  workData["NEED_GOLD"]
+        var job = workData["NAME"]
+
+        if( parseInt(needgold) > cc.cs.PlayerInfo.money)
+        {
+            cc.cs.UIMgr.showPopupOC("提示","没有足够的金币，是否前往购买",this.goShop,null)
+        }
+        else
+        {
+            cc.cs.UIMgr.showPopupOC("提示","升职到"+job+"需要花费"+needgold+"金币，确定升职吗？",this.SendUpgrade.bind(this),null)
+        }
+    }
+    ,
 
 
       startWorkHandle : function(ret){
@@ -301,7 +344,6 @@ cc.Class({
            
              var actionView = cc.cs.UIMgr.getView(cc.cs.UIMgr.MISSONVIEW)
             actionView.getComponent("workView").refreshItem()
-            
             this.refresh()
             cc.cs.UIMgr.showTip("升级成功", 1.0)
         }else{
