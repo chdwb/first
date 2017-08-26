@@ -601,6 +601,7 @@ cc.Class({
             }*/
     },
 
+
     SendPhoneHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
@@ -613,20 +614,21 @@ cc.Class({
 
             var heartTarget = this.node.getChildByName("expBG")
 
-            cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
+          //  cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
             
 
             if (cc.cs.PlayerInfo.canPhone2()) {
                 this.currentTime = 0
                 this.isAction = true;
-                this.totalTime = (cc.random0To1() + 0.4) * 8
-                if (this.totalTime > 8) this.totalTime = 8
+                this.totalTime = (cc.random0To1() + 0.4) * 2
+                if (this.totalTime > 2) this.totalTime = 2
                 this.timeIng = true;   
             } else {
                 this.setInputMsg(this.NPCID)
                 this.timeIng = false
                 this.showNormal()
             }
+
 
 
         } else {

@@ -373,6 +373,8 @@ cc.Class({
     // use this for initialization
 
     onEnable: function() {
+        
+        this.updateui()
         this.inputNode.active = false;
         this.showBg.active = false
         var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)

@@ -97,6 +97,7 @@ cc.Class({
         isAddIcon : false,
         addIcon : null,
         caiDanWidth : 0,
+        SoundOff:false
     },
 
     
@@ -266,11 +267,51 @@ cc.Class({
         cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
         cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
     },
+    
+    goShop2: function() {
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SHOPVIEW)
+       // cc.cs.UIMgr.currentShopType = 3
+        //cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+
+
+         cc.log("goShop LoveView")
+        cc.cs.UIMgr.setShopType(2)
+        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+    },
 
     goSetting: function() {
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SETTINGVIEW)
-        cc.cs.UIMgr.openView(cc.cs.UIMgr.SETTINGVIEW)
+        //cc.cs.UIMgr.openView(cc.cs.UIMgr.SETTINGVIEW)
+        
+        
+         
+    {
+        cc.log("声音关闭 =  "+ this.SoundOff)
+        if(this.SoundOff == false)
+        {
+            this.SoundOff = true;
+            cc.cs.AudioMgr.stopBGM(true);
+            //this.SettingButton.interactable = false
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi_1")
+        
+        }
+        else
+        {
+            this.SoundOff = false;
+            cc.cs.AudioMgr.startBGM(true);
+            //this.SettingButton.interactable = true
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi")
+            
+        }
+
+     
+
+    }
+        
+        
     },
 
     canAddIcon : function(){
@@ -303,6 +344,20 @@ cc.Class({
     updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
         cc.log("mainview updateui")
+        
+        
+         if(this.SoundOff == true)
+        {
+            
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi_1")
+        
+        }
+        else
+        {
+            
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi")
+            
+        }
 
         var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
 
@@ -539,6 +594,8 @@ cc.Class({
         this.iconArray.push(this.shopBtn)
         this.shopBtn.sindex = 8
         this.shopBtn.lev = 1
+        
+        
 
         this.computerDibian()
         //this.updateui()
@@ -594,7 +651,12 @@ cc.Class({
 
         }, this.loveBtn)
         
-        
+        var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
+        cc.log("声音开关"+hehe)
+        if(hehe == 1)
+        {
+            this.isSondOff = true;
+        }
 
 
     },

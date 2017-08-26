@@ -44,6 +44,8 @@ cc.Class({
         var self = this;
         if(this.isSondOff == false)
         {
+            
+              
 
             var hehe  = cc.loader.getRes("audio/"+name, cc.AudioClip)
             self.BGMid  = cc.audioEngine.play(hehe, isLoop, 1);
@@ -83,7 +85,17 @@ cc.Class({
             cc.sys.localStorage.setItem('ISSOUNDOFF',0)
            
         }
+        
+        if(this.BGMid == -1)
+        {
+              var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
+            var music = leveldata2["MUSIC_ID"]
+            cc.cs.AudioMgr.playBGM(music,true)
+        }
+        else
+        {
          cc.audioEngine.resume(this.BGMid)
+        }
     },
 
 
