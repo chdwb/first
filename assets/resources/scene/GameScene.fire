@@ -19042,6 +19042,9 @@
       "__id__": 419
     },
     "_enabled": true,
+    "expText": {
+      "__id__": 424
+    },
     "scrollView": {
       "__id__": 457
     },

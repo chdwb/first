@@ -2,6 +2,12 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+
+
+        expText: {
+            type: cc.Label,
+            default: null
+        },
         scrollView: {
             type: cc.ScrollView,
             default: null
@@ -72,6 +78,12 @@ cc.Class({
         this.msgText.string = replyData["REPLY_TEXT"]
 
 
+    },
+
+    setExp: function(currentExp, levlExp) {
+        this.expText.string = currentExp + "/" + levlExp;
+		 var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
+        cc.cs.UIMgr.setHeart(heartTarget, currentExp,levlExp)
     },
 
     sendReplyHandle: function(ret) {

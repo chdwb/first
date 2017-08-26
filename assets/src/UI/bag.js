@@ -238,6 +238,8 @@ cc.Class({
 
      setExp: function(currentExp, levlExp) {
         this.Exp.string = currentExp + "/" + levlExp;
+		 var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
+        cc.cs.UIMgr.setHeart(heartTarget, currentExp,levlExp)
     },
     updateUI:function()
     {
