@@ -369,6 +369,7 @@ cc.Class({
     {
        //this.startGoodsUse();
        this.doJob.apply(this.obj, [this.itemUseCount]);
+       cc.log("OKOKOKOKOK"+this.itemUseCount)
        this.node.removeFromParent(true);
 
     },
