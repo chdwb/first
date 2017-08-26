@@ -48,7 +48,13 @@ cc.Class({
         cc.log("goodid="+this.GoodID)
        // cc.log("itemUseCount="+this.itemUseCount)
         //cc.cs.gameMgr.sendGoodBuy(cc.cs.PlayerInfo.api_token, 1,this.GoodID, 1, this.GoodBuyHandle, this)
-        cc.cs.UIMgr.showNodeUse(this.GoodID,this.sendbuy,99,this,0)
+
+
+       var price = cc.cs.gameData.goods["GOODS_ID_"+this.GoodID]["GOODS_PRICE"]
+        var count =  Math.floor(cc.cs.PlayerInfo.money / parseInt(price))
+
+        cc.log("buy count = "+ count)
+        cc.cs.UIMgr.showNodeUse(this.GoodID,this.sendbuy,count,this,0)
         },
 
     // use this for initialization
