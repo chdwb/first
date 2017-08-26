@@ -82,13 +82,14 @@ cc.Class({
     
     onLibaohandle(ret)
     {
-        cc.log(ret)
+        cc.log("libao update")
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             
             cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             
            /* var array = cc.cs.PlayerInfo.Bag
             var isFind = false
@@ -120,13 +121,14 @@ cc.Class({
     
     onLibao2handle(ret)
     {
-        cc.log(ret)
+        cc.log("libao2 update")
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             
             cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             
             /*var array = cc.cs.PlayerInfo.Bag
             var isFind = false
