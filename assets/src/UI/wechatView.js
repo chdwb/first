@@ -10,74 +10,74 @@ cc.Class({
             type: cc.Label,
             default: null
         },
-        talkScroll : {
-            type:cc.ScrollView,
-            default:null
+        talkScroll: {
+            type: cc.ScrollView,
+            default: null
         },
-        backBtn : {
-            type:cc.Node,
-            default : null
+        backBtn: {
+            type: cc.Node,
+            default: null
         },
-        sendBtn :{
-            type:cc.Node,
-            default : null
+        sendBtn: {
+            type: cc.Node,
+            default: null
         },
-        castText :{
-            type:cc.Label,
-            default : null
-        },
-
-        quikeTip:{
-            type:cc.Node,
-            default : null
+        castText: {
+            type: cc.Label,
+            default: null
         },
 
-        inputBtn:{
-            type:cc.Node,
-            default : null
+        quikeTip: {
+            type: cc.Node,
+            default: null
         },
 
-        sendBtn:{
-            type:cc.Node,
-            default : null
+        inputBtn: {
+            type: cc.Node,
+            default: null
         },
 
-        msgText:{
-            type:cc.Label,
-            default : null
+        sendBtn: {
+            type: cc.Node,
+            default: null
         },
 
-        nvzhuSize : 0,
+        msgText: {
+            type: cc.Label,
+            default: null
+        },
 
-        nanzhuSize : 0,
+        nvzhuSize: 0,
 
-        nvzhuTalkPrefab : null,
+        nanzhuSize: 0,
 
-        nanzhuTalkPrefab : null,
+        nvzhuTalkPrefab: null,
 
-        inputTablePrefab : null,
+        nanzhuTalkPrefab: null,
 
-        tianshuPrefab : null,
+        inputTablePrefab: null,
 
-        inputTableBtn : null,
+        tianshuPrefab: null,
 
-        currentPlayerWechatID : 0,
+        inputTableBtn: null,
 
-        currentTime :0,
-        totalTime : 0,
-        NPCID : 0,
-        isAction : false,
-        talkAction : null,
+        currentPlayerWechatID: 0,
+
+        currentTime: 0,
+        totalTime: 0,
+        NPCID: 0,
+        isAction: false,
+        talkAction: null,
     },
 
-    sendDisable : function(){
+    sendDisable: function() {
         this.sendBtn.getComponent(cc.Button).interactable = false
-        //this.inputBtn.getComponent(cc.Button).interactable = false
-       // this.tipText.active = false
+            //this.inputBtn.getComponent(cc.Button).interactable = false
+            // this.tipText.active = false
     },
-    sendEnable : function(){
+    sendEnable: function() {
         this.sendBtn.getComponent(cc.Button).interactable = true
-    //this.tipText.active = true
+            //this.tipText.active = true
     },
 
 
@@ -85,96 +85,114 @@ cc.Class({
         this.expText.string = currentExp + "/" + levlExp;
     },
 
-    
+
 
     setGold: function(gold) {
         //cc.log("set gold"+gold)
         this.goldText.string = gold + ""
     },
 
-    getDay:function(id)
-    {
+    getDay: function(id) {
         var wechatID = cc.cs.gameData.getwechatData(id)
-        
+
         var levelData = cc.cs.gameData.getlevelData(wechatID["WECHAT_LEVEL"])
-        var currentlevelData = cc.cs.gameData.getlevelData( cc.cs.PlayerInfo.level)
-        var d =  currentlevelData["LEV_DAY"] - levelData["LEV_DAY"]
-        if(d == 0)
+        var currentlevelData = cc.cs.gameData.getlevelData(cc.cs.PlayerInfo.level)
+        var d = currentlevelData["LEV_DAY"] - levelData["LEV_DAY"]
+        if (d == 0)
             return "今天"
-        if(d == 1)
+        if (d == 1)
             return "昨天"
-        if(d == 2)
+        if (d == 2)
             return "前天"
-      
-         return d+"天前"
+
+        return d + "天前"
     },
-    isShowDay : function(id){
-        if(id == cc.cs.gameData.wechat["FIRST"])
+    isShowDay: function(id) {
+        if (id == cc.cs.gameData.wechat["FIRST"])
             return true
-        var wechatID = cc.cs.gameData.getwechatData(id-1)
-        if(wechatID["WECHAT_NEXT"] == "dummy")
+        var wechatID = cc.cs.gameData.getwechatData(id - 1)
+        if (wechatID["WECHAT_NEXT"] == "dummy")
             return true
         return false
     },
 
-    loadFormerInfo : function()
-    {
-        if(cc.cs.PlayerInfo.wechat_player_ID.length == 0) return
+    loadFormerInfo: function() {
+        if (cc.cs.PlayerInfo.wechat_player_ID.length == 0) return
         var startIndex = cc.cs.gameData.wechat["FIRST"]
         var index = 0
-        
 
-        while(startIndex <=  cc.cs.PlayerInfo.wechat_id ){
-            if(this.isShowDay(startIndex)){
-                this.loadCruuentTalk(this.talkScroll,true , this.getDay(startIndex), "", true)
+
+        while (startIndex <= cc.cs.PlayerInfo.wechat_id) {
+            if (this.isShowDay(startIndex)) {
+                this.loadCruuentTalk(this.talkScroll, true, this.getDay(startIndex), "", true)
             }
             var wechatData = cc.cs.gameData.getwechatData(startIndex)
-            if(wechatData["WECHAT_OPTION"] == "dummy"){
+            if (wechatData["WECHAT_OPTION"] == "dummy") {
                 var wechatData = cc.cs.gameData.getwechatData(startIndex)
-                this.loadCruuentTalk(this.talkScroll,false, wechatData["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName, false); 
+                this.loadCruuentTalk(this.talkScroll, false, wechatData["WECHAT_CONTENT"], cc.cs.PlayerInfo.NPCName, false);
                 startIndex += 1
-            }else{
+            } else {
                 startIndex = cc.cs.PlayerInfo.wechat_player_ID[index]
                 wechatData = cc.cs.gameData.getwechatData(startIndex)
-                this.loadCruuentTalk(this.talkScroll,true, wechatData["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae, false); 
+                this.loadCruuentTalk(this.talkScroll, true, wechatData["WECHAT_CONTENT"], cc.cs.PlayerInfo.PlayerNmae, false);
                 index++
                 startIndex = wechatData["WECHAT_NEXT"]
             }
         }
     },
 
-    sendWechat : function(id){
+    sendWechat: function(id) {
         this.currentPlayerWechatID = id
-        cc.cs.gameMgr.sendWechat(id , this.SendWechatHandle, this)
-        
+        cc.cs.gameMgr.sendWechat(id, this.SendWechatHandle, this)
+
     },
 
-    SendWechatHandle:function(ret)
-    {
+    SendWechatHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) {
-            this.inputTableBtn.WECHAT_ID = 0
-            this.msgText.node.active = false
-            this.quikeTip.active = true
-            this.inputBtn.getComponent(cc.Button).interactable = true
-            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
-            
-            this.NPCID = JasonObject.content.info.wechat_next
-            
-            this.setInputMsg(this.currentPlayerWechatID)
-            if(cc.cs.PlayerInfo.canWechat()){
-                this.isAction = true;
-                this.currentTime = 0
-                this.totalTime = (cc.random0To1() + 0.4) * 8 
-                if(this.totalTime > 8)   this.totalTime = 8
+            if (cc.cs.PlayerInfo.wechat_fn == true) {
+                this.inputTableBtn.WECHAT_ID = 0
+                this.msgText.node.active = false
+                this.quikeTip.active = false
+                this.inputBtn.getComponent(cc.Button).interactable = true
+                cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+                this.NPCID = JasonObject.content.info.wechat_next
+                this.setInputMsg(this.currentPlayerWechatID)
+                if (cc.cs.PlayerInfo.canWechat()) {
+                    this.isAction = true;
+                    this.currentTime = 0
+                    this.totalTime = 0
+                    this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step, this))
+                    cc.cs.UIMgr.gameScene.node.runAction(this.talkAction)
+                } else {
+                    this.sendDisable()
+                    this.setInputMsg(this.NPCID)
+                }
 
-                this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step, this))
-                cc.cs.UIMgr.gameScene.node.runAction(this.talkAction)
-            }else
-            {
-                this.sendDisable()
-                this.setInputMsg(this.NPCID)
+            } else {
+                this.inputTableBtn.WECHAT_ID = 0
+                this.msgText.node.active = false
+                this.quikeTip.active = true
+                this.inputBtn.getComponent(cc.Button).interactable = true
+                cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+
+                this.NPCID = JasonObject.content.info.wechat_next
+
+                this.setInputMsg(this.currentPlayerWechatID)
+                if (cc.cs.PlayerInfo.canWechat()) {
+                    this.isAction = true;
+                    this.currentTime = 0
+                    this.totalTime = (cc.random0To1() + 0.4) * 8
+                    if (this.totalTime > 8) this.totalTime = 8
+
+                    this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step, this))
+                    cc.cs.UIMgr.gameScene.node.runAction(this.talkAction)
+                } else {
+                    this.sendDisable()
+                    this.setInputMsg(this.NPCID)
+                }
             }
+
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
@@ -189,25 +207,25 @@ cc.Class({
         var wecharData = cc.cs.gameData.getwechatData(id)
         var wecharDataNext = cc.cs.gameData.getwechatData(id + 1)
 
-        if(wecharData["WECHAT_OPTION"] != "dummy"){
-            wechatOption =wecharData["WECHAT_OPTION"]
-        }else{
+        if (wecharData["WECHAT_OPTION"] != "dummy") {
+            wechatOption = wecharData["WECHAT_OPTION"]
+        } else {
             wechatOption = wecharDataNext["WECHAT_OPTION"]
         }
 
         this.inputTableBtn.active = true
 
-        
-        var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
-        var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+
+        var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x, this.inputBtn.y))
+        var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
         this.inputTableBtn.x = p2.x
-            
+
 
         //this.inputTableBtn.x = -93
-        
-        this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 ))
-        
-        
+
+        this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5))
+
+
         this.sendBtn.getComponent(cc.Button).interactable = false
 
         var replayId = []
@@ -235,7 +253,7 @@ cc.Class({
             if (itemData["WECHAT_OPTION"] == wechatOption) {
                 replayId.push(itemData)
             }
-            if (itemData["WECHAT_OPTION"] != "dummy" && (itemData["WECHAT_OPTION"] > wecharData["PHONE_AUDIO"] ||itemData["WECHAT_OPTION"] > wecharDataNext["PHONE_AUDIO"]))
+            if (itemData["WECHAT_OPTION"] != "dummy" && (itemData["WECHAT_OPTION"] > wecharData["PHONE_AUDIO"] || itemData["WECHAT_OPTION"] > wecharDataNext["PHONE_AUDIO"]))
                 break;
         }
 
@@ -257,11 +275,11 @@ cc.Class({
             btn2.active = false;
             btn3.active = false;
             this.inputTableBtn.height = btn1.height
-            //this.inputTableBtn.x = -93
-            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
-            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+                //this.inputTableBtn.x = -93
+            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x, this.inputBtn.y))
+            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
             this.inputTableBtn.x = p2.x
-            this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 )) + 20
+            this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
         } else
         if (replayId.length == 2) {
             text1.string = replayId[0]["WECHAT_CONTENT"]
@@ -273,7 +291,7 @@ cc.Class({
             btn1.y = 0
             btn2.y = -btn1.height
             zs1.active = true
-            zs1.y = - btn1.height
+            zs1.y = -btn1.height
             zs2.active = false
             btn1.WECHAT_ID = replayId[0]["WECHAT_ID"]
             btn2.WECHAT_ID = replayId[1]["WECHAT_ID"]
@@ -296,11 +314,11 @@ cc.Class({
 
             btn3.active = false;
             this.inputTableBtn.height = btn1.height + btn2.height
-            //this.inputTableBtn.x = -93
-            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
-            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+                //this.inputTableBtn.x = -93
+            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x, this.inputBtn.y))
+            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
             this.inputTableBtn.x = p2.x
-            this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 )) + 20
+            this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
         } else {
             text1.string = replayId[0]["WECHAT_CONTENT"]
             text2.string = replayId[1]["WECHAT_CONTENT"]
@@ -315,9 +333,9 @@ cc.Class({
             btn2.y = -btn1.height
             btn3.y = -btn1.height - btn2.height
             zs1.active = true
-            zs1.y = - btn1.height
+            zs1.y = -btn1.height
             zs2.active = true
-            zs2.y = - btn2.height
+            zs2.y = -btn2.height
             zs3.active = false
             btn1.WECHAT_ID = replayId[0]["WECHAT_ID"]
             btn2.WECHAT_ID = replayId[1]["WECHAT_ID"]
@@ -346,18 +364,18 @@ cc.Class({
                 self.msgText.node.active = true
                 self.msgText.string = wechatData["WECHAT_CONTENT"]
                 self.inputTableBtn.WECHAT_ID = event.target.WECHAT_ID
-                
+
             }, btn3)
             this.inputTableBtn.height = btn1.height + btn2.height + btn3.height
-            //this.inputTableBtn.x = -93
-            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x,this.inputBtn.y))
-            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x,p.y))
+                //this.inputTableBtn.x = -93
+            var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x, this.inputBtn.y))
+            var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
             this.inputTableBtn.x = p2.x
-            this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 +this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 +(this.inputBtn.parent.height - this.inputBtn.height) *0.5 )) + 20
+            this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
         }
     },
 
-    onEnable :function(){
+    onEnable: function() {
 
 
 
@@ -366,53 +384,57 @@ cc.Class({
             //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.money)
 
-        if(!this.isAction){
+        if (!this.isAction) {
             this.inputTableBtn.active = false;
             this.quikeTip.active = false
             this.msgText.node.active = false
             this.castText.string = cc.cs.PlayerInfo.diamond
-            cc.log("wechat onEnable = " +cc.cs.PlayerInfo.canWechat() )
-            if(cc.cs.PlayerInfo.canWechat()){
+            cc.log("wechat onEnable = " + cc.cs.PlayerInfo.canWechat())
+            if (cc.cs.PlayerInfo.canWechat()) {
                 this.sendBtn.getComponent(cc.Button).interactable = true
                 this.inputBtn.getComponent(cc.Button).interactable = true
-            }else{
+            } else {
                 this.sendBtn.getComponent(cc.Button).interactable = false
                 this.inputBtn.getComponent(cc.Button).interactable = false
             }
             this.NPCID = cc.cs.PlayerInfo.wechat_id
+            if (this.NPCID == 0) {
+                this.NPCID = 1
+            }
+            cc.log("      " + cc.cs.PlayerInfo.wechat_id)
             var wechatData = cc.cs.gameData.getwechatData(this.NPCID)
-            if(wechatData["WECHAT_NEXT"] == "dummy"){
+            if (wechatData["WECHAT_NEXT"] == "dummy") {
                 this.NPCID++
-                if(this.NPCID >= cc.cs.gameData["LAST"]) {
-                    this.sendBtn.getComponent(cc.Button).interactable = false
-                    this.inputBtn.getComponent(cc.Button).interactable = false
-                    return
-                }
+                    if (this.NPCID >= cc.cs.gameData["LAST"]) {
+                        this.sendBtn.getComponent(cc.Button).interactable = false
+                        this.inputBtn.getComponent(cc.Button).interactable = false
+                        return
+                    }
                 wechatData = cc.cs.gameData.getwechatData(this.NPCID)
-                if(wechatData["WECHAT_OPTION"] == "dummy"){
+                if (wechatData["WECHAT_OPTION"] == "dummy") {
                     this.setInputMsg(this.NPCID)
                 }
             }
         }
-        
-        cc.log("wechat   =  " + this.NPCID + "             " +cc.cs.PlayerInfo.wechat_id)
-        //this.schedule(this.step,1.0)
 
-       
+        cc.log("wechat   =  " + this.NPCID + "             " + cc.cs.PlayerInfo.wechat_id)
+            //this.schedule(this.step,1.0)
+
+
     },
 
-    onDisable : function(){
+    onDisable: function() {
         //this.unschedule(this.step)
     },
 
-    step : function(){
+    step: function() {
         this.isAction = false
         this.sendEnable()
         this.setInputMsg(this.NPCID)
     },
 
-    onLoad: function () {
-        var self= this
+    onLoad: function() {
+        var self = this
         this.inputTablePrefab = cc.loader.getRes("prefab/inputTable", cc.Prefab)
 
         this.nvzhuTalkPrefab = cc.loader.getRes("prefab/nvTalkItem", cc.Prefab)
@@ -420,7 +442,7 @@ cc.Class({
         this.nanzhuTalkPrefab = cc.loader.getRes("prefab/nanTalkItem", cc.Prefab)
 
         this.tianshuPrefab = cc.loader.getRes("prefab/tianshu", cc.Prefab)
-    
+
         this.loadFormerInfo()
 
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
@@ -432,86 +454,76 @@ cc.Class({
 
         this.NPCID = cc.cs.PlayerInfo.wechat_id
         this.inputTableBtn.WECHAT_ID = 0
-        //self.sendWechat(self.inputTableBtn.WECHAT_ID)
+            //self.sendWechat(self.inputTableBtn.WECHAT_ID)
 
-        
-        
-        this.backBtn.on("click", (event)=>{
+
+
+        this.backBtn.on("click", (event) => {
             cc.cs.UIMgr.closeView()
         })
 
-        this.sendBtn.on("click",(event)=>{
-            if(self.inputTableBtn.WECHAT_ID == 0){
-                cc.cs.UIMgr.showTip("点击左侧输入框，选择回复内容",1.0)
-            }else{
+        this.sendBtn.on("click", (event) => {
+            if (self.inputTableBtn.WECHAT_ID == 0) {
+                cc.cs.UIMgr.showTip("点击左侧输入框，选择回复内容", 1.0)
+            } else {
                 self.sendWechat(self.inputTableBtn.WECHAT_ID)
             }
         })
 
 
         var isRightnow = cc.cs.PlayerInfo.wechat_fn
-               if(isRightnow == true)
-               {
+        if (isRightnow == true) {
+            this.castText.node.active = false
+        }
+
+        this.inputBtn.on("click", (event) => {
+            if (self.quikeTip.active) {
+
+                var isRightnow = cc.cs.PlayerInfo.wechat_fn
+                if (isRightnow == true) {
+
+                    //cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+                    cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
                     this.castText.node.active = false
+                    this.step()
+
+                } else {
+
+                    if (cc.cs.PlayerInfo.money < cc.cs.PlayerInfo.diamond) {
+
+                        cc.cs.UIMgr.showPopBuy(1, this.buyLIJI, this)
+
+
+                    } else {
+                        cc.cs.gameMgr.sendBuyFastTalk(self.sendBuyFastTalkHandle, self)
+                    }
                 }
-
-        this.inputBtn.on("click",(event)=>{
-            if(self.quikeTip.active){
-
-               var isRightnow = cc.cs.PlayerInfo.wechat_fn
-               if(isRightnow == true)
-               {
-
-                //cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
-                cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
-                this.castText.node.active = false
-                this.step()
-
-               }
-               else
-               {
-
-               if(cc.cs.PlayerInfo.money < cc.cs.PlayerInfo.diamond)
-               {
-
-                cc.cs.UIMgr.showPopBuy(1,this.buyLIJI,this)
-
-
-               }
-               else
-               {
-                cc.cs.gameMgr.sendBuyFastTalk(self.sendBuyFastTalkHandle,self)
-               }
-           }
-            }else{
+            } else {
                 self.showInputTable(self.NPCID)
             }
         })
 
 
-             if(parseInt(cc.cs.PlayerInfo.guide_id) == 8) // 
-                {
-                    cc.log("微信界面 输入按钮")
-                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.inputBtn,this)
-                }
+        if (parseInt(cc.cs.PlayerInfo.guide_id) == 8) // 
+        {
+            cc.log("微信界面 输入按钮")
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, this.inputBtn, this)
+        }
 
 
-        this.sendBtn.on("click",(event)=>{
-           
+        this.sendBtn.on("click", (event) => {
+
 
         })
     },
 
-     buyLIJI:function()
-    {
-        cc.cs.gameMgr.buyRightNow(1,this.onRightNowHandle,this)
+    buyLIJI: function() {
+        cc.cs.gameMgr.buyRightNow(1, this.onRightNowHandle, this)
     },
 
-    onRightNowHandle:function(ret)
-    {
-         var JasonObject = JSON.parse(ret);
-        if (JasonObject.success == true) 
-        {
+    onRightNowHandle: function(ret) {
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) {
             //cc.cs.UIMgr.showTip("", 1.0)
 
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
@@ -519,17 +531,17 @@ cc.Class({
             this.castText.node.active = false
             this.step()
 
-            
 
 
-        }else{
+
+        } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
 
-     
+
     },
 
-    sendBuyFastTalkHandle : function(ret){
+    sendBuyFastTalkHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) {
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
@@ -541,37 +553,37 @@ cc.Class({
         }
     },
 
-    setInputMsg:function(id){
-        if(this.isShowDay(id)){
-            this.loadCruuentTalk(this.talkScroll,true , this.getDay(id), "", true)
+    setInputMsg: function(id) {
+        if (this.isShowDay(id)) {
+            this.loadCruuentTalk(this.talkScroll, true, this.getDay(id), "", true)
         }
-        if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_OPTION"] == -1){
-            this.loadCruuentTalk(this.talkScroll,false, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.NPCName, false); 
+        if (cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_OPTION"] == "dummy" || cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_OPTION"] == -1) {
+            this.loadCruuentTalk(this.talkScroll, false, cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_CONTENT"], cc.cs.PlayerInfo.NPCName, false);
             this.inputBtn.getComponent(cc.Button).interactable = true
             this.quikeTip.active = false
-            if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"] != "dummy"){
+            if (cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_NEXT"] != "dummy") {
                 this.sendEnable()
             }
-        }else{
-            this.loadCruuentTalk(this.talkScroll,true, cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_CONTENT"],  cc.cs.PlayerInfo.PlayerNmae, false);
+        } else {
+            this.loadCruuentTalk(this.talkScroll, true, cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_CONTENT"], cc.cs.PlayerInfo.PlayerNmae, false);
             this.sendDisable()
         }
-        if(cc.cs.gameData.wechat["WECHAT_ID_"+id]["WECHAT_NEXT"] == "dummy"){
+        if (cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_NEXT"] == "dummy") {
             this.inputBtn.getComponent(cc.Button).interactable = false
             this.sendBtn.getComponent(cc.Button).interactable = false
         }
     },
 
-    refresh : function(){
-         cc.log(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.wechat_id]["WECHAT_LEVEL"] + "    g       "+cc.cs.PlayerInfo.wechat_id+"       f     " + parseInt(cc.cs.PlayerInfo.level) + "    j ")
-        if(cc.cs.PlayerInfo.canWechat()){
-            cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.level))
-            if(cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_NEXT"] == "dummy" &&
-               cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] < parseInt(cc.cs.PlayerInfo.level)){
+    refresh: function() {
+        cc.log(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.wechat_id]["WECHAT_LEVEL"] + "    g       " + cc.cs.PlayerInfo.wechat_id + "       f     " + parseInt(cc.cs.PlayerInfo.level) + "    j ")
+        if (cc.cs.PlayerInfo.canWechat()) {
+            cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_" + (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.level))
+            if (cc.cs.gameData.wechat["WECHAT_ID_" + (parseInt(this.NPCID))]["WECHAT_NEXT"] == "dummy" &&
+                cc.cs.gameData.wechat["WECHAT_ID_" + (parseInt(this.NPCID))]["WECHAT_LEVEL"] < parseInt(cc.cs.PlayerInfo.level)) {
                 this.NPCID = (parseInt(this.NPCID) + 1)
-                cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.level)
-                +"                " + cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_CONTENT"])
-                if(cc.cs.gameData.wechat["WECHAT_ID_"+ (parseInt(this.NPCID))]["WECHAT_OPTION"] == "dummy"){
+                cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_" + (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.level) +
+                    "                " + cc.cs.gameData.wechat["WECHAT_ID_" + (parseInt(this.NPCID))]["WECHAT_CONTENT"])
+                if (cc.cs.gameData.wechat["WECHAT_ID_" + (parseInt(this.NPCID))]["WECHAT_OPTION"] == "dummy") {
                     this.setInputMsg(this.NPCID)
                     this.NPCID = this.NPCID + 1
                     cc.cs.PlayerInfo.wechat_id = this.NPCID
@@ -579,32 +591,31 @@ cc.Class({
             }
             this.sendEnable()
             return true
-        }else{
+        } else {
             this.sendDisable()
             return false
         }
     },
 
-    
-    loadCruuentTalk : function(scroll, isPlayer, msg, name, isday)
-    {   
+
+    loadCruuentTalk: function(scroll, isPlayer, msg, name, isday) {
         var height = 0;
         var children = scroll.content.getChildren();
         var newNode = null;
         var addHeight = 0
-        if(isday){
-            newNode  = cc.instantiate(this.tianshuPrefab)
+        if (isday) {
+            newNode = cc.instantiate(this.tianshuPrefab)
             newNode.cyH = newNode.height
             addHeight = newNode.height
             newNode.getChildByName("dayText").getComponent(cc.Label).string = msg
-        }else if (isPlayer) {
+        } else if (isPlayer) {
             newNode = cc.instantiate(this.nanzhuTalkPrefab)
-            cc.cs.UIMgr.setNanTalk(newNode, msg,  name + " ·")
+            cc.cs.UIMgr.setNanTalk(newNode, msg, name + " ·")
             newNode.cyH = cc.cs.UIMgr.getTalkHeight(newNode)
             addHeight = newNode.cyH
         } else {
             newNode = cc.instantiate(this.nvzhuTalkPrefab)
-            cc.cs.UIMgr.setNvTalk(newNode, msg,  "· " + name, false)
+            cc.cs.UIMgr.setNvTalk(newNode, msg, "· " + name, false)
             addHeight = cc.cs.UIMgr.getTalkHeight(newNode)
             newNode.cyH = addHeight
         }
@@ -620,7 +631,7 @@ cc.Class({
         newNode.y = newNode.height * 0.5
     },
     // called every frame, uncomment this function to activate update callback
-    update: function (dt) {
-        
+    update: function(dt) {
+
     },
 });

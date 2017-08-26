@@ -228,6 +228,8 @@ cc.Class({
 
     canWechat: function() {
         if (this.canPhone()) return false
+        if (this.wechat_id == 0)
+            this.wechat_id = 1
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
         if (pWechatData != null) {
             cc.log("canwechat2 = " + pWechatData["WECHAT_LEVEL"] + "   " + this.level + "    " +pWechatData["WECHAT_NEXT"]  +"    " + this.wechat_id )
@@ -247,12 +249,15 @@ cc.Class({
 
     canPhone: function() {
         var pPhoneData = cc.cs.gameData.getphoneData(this.Phone_ID)
+        var pPhoneNextData = cc.cs.gameData.getphoneData(this.Phone_ID + 1)
         cc.log(" canPhone: function()  " + pPhoneData + "    " + this.Phone_ID)
         if (pPhoneData != null) {
             cc.log(" canPhone: function()  " + pPhoneData["PHONE_LEV"] + "    " + this.level)
             if (pPhoneData["PHONE_LEV"] <= this.level) {
 
                 if (pPhoneData["PHONE_LEV"] == this.level &&pPhoneData["PHONE_AUDIO"] == "dummy") {   
+                    return false
+                } else if (pPhoneData["PHONE_AUDIO"] == "dummy" && pPhoneData["PHONE_LEV"] < this.level && pPhoneNextData != null && pPhoneNextData["PHONE_LEV"] > this.level) {
                     return false    
                 } else {
                     return true
@@ -268,6 +273,7 @@ cc.Class({
 
         canPhone2: function() {   //通话中专用
         var pPhoneData = cc.cs.gameData.getphoneData(this.Phone_ID)
+	 var pPhoneNextData = cc.cs.gameData.getphoneData(this.Phone_ID + 1)
         cc.log(" canPhone: function()  " + pPhoneData + "    " + this.Phone_ID)
         if (pPhoneData != null) {
             cc.log(" canPhone: function()  " + pPhoneData["PHONE_LEV"] + "    " + this.level)
@@ -275,7 +281,10 @@ cc.Class({
 
                 if (pPhoneData["PHONE_LEV"] == this.level &&pPhoneData["PHONE_AUDIO"] == "dummy") {   
                     return true       // 通话中 最后一句话也为TRUE 不然就被直接跳过了
-                } else {
+                }else if (pPhoneData["PHONE_AUDIO"] == "dummy" && pPhoneData["PHONE_LEV"] < this.level && pPhoneNextData != null && pPhoneNextData["PHONE_LEV"] > this.level) {
+                    return false 
+		}
+		else {
                     return true
                 }
             } else {
