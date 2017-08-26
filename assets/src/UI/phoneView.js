@@ -630,8 +630,11 @@ cc.Class({
             addHeight = newNode.cyH
         } else {
             newNode = cc.instantiate(this.nvzhuTalkPrefab)
-            newNode.setTag(id)
+            var soundid = cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"]
+            newNode.setTag(parseInt(soundid))
             cc.cs.UIMgr.setNvTalk(newNode, msg,  "· " + name, true)
+            
+            //cc.log("id = "+id+"    msg = "+msg)
             addHeight = cc.cs.UIMgr.getTalkHeight(newNode)
             newNode.cyH = addHeight
         }
@@ -720,6 +723,7 @@ cc.Class({
         this.inputTableBtn.active = false
 
         this.playerInfoBackBtn.on("click", (event) => {
+            cc.cs.AudioMgr.StopVoice()
             self.showPhoneView()
         })
 
@@ -763,6 +767,7 @@ cc.Class({
             //back
             //var parent = self.node.parent
             //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+            cc.cs.AudioMgr.StopVoice()
 			cc.cs.UIMgr.closeView()
         })
         this.showCompletePhone()

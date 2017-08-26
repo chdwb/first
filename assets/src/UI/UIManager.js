@@ -454,7 +454,8 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
             soundTalk.x = nvNode.width -50 
 
             soundTalk.on("click", (event) => {
-
+            cc.log("nvNode.Tag = "+nvNode.getTag())
+            cc.cs.AudioMgr.StopVoice();
             cc.cs.AudioMgr.playVoice(""+nvNode.getTag(),null)
 
         }, this.soundTalk)

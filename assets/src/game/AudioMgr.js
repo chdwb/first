@@ -119,7 +119,9 @@ cc.Class({
             
         });
     return  self.Backid;
-    },
+},
+
+
      setFinishCallback:function ( audioID, callback )
     {
 
