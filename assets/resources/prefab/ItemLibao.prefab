@@ -143,7 +143,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 4
@@ -360,8 +360,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 108,
-      "height": 111
+      "width": 110,
+      "height": 113
     },
     "_rotationX": 0,
     "_rotationY": 0,

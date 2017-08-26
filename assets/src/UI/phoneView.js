@@ -603,7 +603,7 @@ cc.Class({
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
             this.NPCID = JasonObject.content.info.phone_audio
-            cc.cs.UIMgr.showExpTip(this.currentExp, this.leveldata2, this.refresh)
+           // cc.cs.UIMgr.showExpTip(this.currentExp, this.leveldata2, this.refresh)
             
 
             if (cc.cs.PlayerInfo.canPhone2()) {
