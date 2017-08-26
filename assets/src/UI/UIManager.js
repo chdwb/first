@@ -18,124 +18,122 @@ cc.Class({
         GIFTVIEW: 9,
         WECHATVIEW: 10,
         VIDEOVIEW: 11,
-        SETTINGVIEW:12,
-        viewStack : [],
-        gameScene : null,
-        currentShopType:3 ,
+        SETTINGVIEW: 12,
+        viewStack: [],
+        gameScene: null,
+        currentShopType: 3,
     },
 
-    getView : function(id){
-        if(this.MAINVIEW == id){
+    getView: function(id) {
+        if (this.MAINVIEW == id) {
             return this.gameScene.MAINVIEW
-        }else if(this.MISSONVIEW ==id){
+        } else if (this.MISSONVIEW == id) {
             return this.gameScene.MissonView
-        }else if(this.LOVEVIEW == id){
+        } else if (this.LOVEVIEW == id) {
             return this.gameScene.LoveView
-        }else if(this.ACTIONVIEW == id){
+        } else if (this.ACTIONVIEW == id) {
             return this.gameScene.ActionView
-        }else if(this.PHONEVIEW == id){
+        } else if (this.PHONEVIEW == id) {
             return this.gameScene.PhoneView
-        }else if(this.ZONEVIEW == id){
+        } else if (this.ZONEVIEW == id) {
             return this.gameScene.ZoneView
-        }else if(this.BAGVIEW == id){
+        } else if (this.BAGVIEW == id) {
             return this.gameScene.BagView
-        }else if(this.SHOPVIEW == id){
+        } else if (this.SHOPVIEW == id) {
             return this.gameScene.ShopView
-        }else if(this.SIGNREWARDVIEW == id){
+        } else if (this.SIGNREWARDVIEW == id) {
             return this.gameScene.SignRewardView
-        }else if(this.GIFTVIEW == id){
+        } else if (this.GIFTVIEW == id) {
             return this.gameScene.GiftView
-        }else if(this.WECHATVIEW == id){
+        } else if (this.WECHATVIEW == id) {
             return this.gameScene.WechatView
-        }else if(this.VIDEOVIEW == id){
+        } else if (this.VIDEOVIEW == id) {
             return this.gameScene.VideoView
-        }else if(this.SETTINGVIEW == id){
+        } else if (this.SETTINGVIEW == id) {
             return this.gameScene.SettingView
         }
         return null
     },
 
-    closeView : function(){
-        if(this.viewStack.length > 0){
+    closeView: function() {
+        if (this.viewStack.length > 0) {
             var view = this.viewStack.pop()
             view.active = false
             cc.log("closeView name = " + view.name)
-            if(this.viewStack.length > 0){
+            if (this.viewStack.length > 0) {
                 this.viewStack[this.viewStack.length - 1].active = true
-            }else{
+            } else {
                 this.gameScene.MainView.active = true;
             }
-        }else{
+        } else {
             this.gameScene.MainView.active = true;
         }
     },
 
-    closeAllView:function(){
-        for(var i =0 ; i < this.viewStack.length; ++i){
+    closeAllView: function() {
+        for (var i = 0; i < this.viewStack.length; ++i) {
             this.closeView()
         }
     },
 
-    setShopType:function(type)
-    {
+    setShopType: function(type) {
         this.currentShopType = type
-        cc.log("setShopType "+ this.currentShopType)
+        cc.log("setShopType " + this.currentShopType)
     },
 
-    openView : function(id){
-        if(this.gameScene == null){
+    openView: function(id) {
+        if (this.gameScene == null) {
             cc.log("error gameScene is null")
-        }else{
-            if(this.MAINVIEW == id){
+        } else {
+            if (this.MAINVIEW == id) {
                 this.gameScene.MainView.active = true;
-            }else if(this.MISSONVIEW ==id){
+            } else if (this.MISSONVIEW == id) {
                 this.viewStack.push(this.gameScene.MissonView)
-                this.gameScene.MainView.active =false
-            }else if(this.LOVEVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.LOVEVIEW == id) {
                 this.viewStack.push(this.gameScene.LoveView)
-                this.gameScene.MainView.active =false
-            }else if(this.ACTIONVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.ACTIONVIEW == id) {
                 this.viewStack.push(this.gameScene.ActionView)
-                this.gameScene.MainView.active =false
-            }else if(this.PHONEVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.PHONEVIEW == id) {
                 this.viewStack.push(this.gameScene.PhoneView)
-                this.gameScene.MainView.active =false
-            }else if(this.ZONEVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.ZONEVIEW == id) {
                 this.viewStack.push(this.gameScene.ZoneView)
-                this.gameScene.MainView.active =false
-            }else if(this.BAGVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.BAGVIEW == id) {
                 this.viewStack.push(this.gameScene.BagView)
-                this.gameScene.MainView.active =false
-            }else if(this.SHOPVIEW == id){
-                cc.log("uimgr currentShopType = "+ this.currentShopType)
+                this.gameScene.MainView.active = false
+            } else if (this.SHOPVIEW == id) {
+                cc.log("uimgr currentShopType = " + this.currentShopType)
                 this.viewStack.push(this.gameScene.ShopView)
-                this.gameScene.MainView.active =false
-            }else if(this.SIGNREWARDVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.SIGNREWARDVIEW == id) {
                 this.viewStack.push(this.gameScene.SignRewardView)
-                this.gameScene.MainView.active =false
-            }else if(this.GIFTVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.GIFTVIEW == id) {
                 this.viewStack.push(this.gameScene.GiftView)
-                this.gameScene.MainView.active =false
-            }else if(this.WECHATVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.WECHATVIEW == id) {
                 this.viewStack.push(this.gameScene.WechatView)
-                this.gameScene.MainView.active =false
-            }else if(this.VIDEOVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.VIDEOVIEW == id) {
                 this.viewStack.push(this.gameScene.VideoView)
-                this.gameScene.MainView.active =false
-            }
-            else if(this.SETTINGVIEW == id){
+                this.gameScene.MainView.active = false
+            } else if (this.SETTINGVIEW == id) {
                 this.viewStack.push(this.gameScene.SettingView)
-                this.gameScene.MainView.active =false
+                this.gameScene.MainView.active = false
             }
 
-            for(var i = 0 ; i < this.viewStack.length -1 ; ++i){
+            for (var i = 0; i < this.viewStack.length - 1; ++i) {
                 this.viewStack[i].active = false
             }
-            this.viewStack[this.viewStack.length -1].active = true
+            this.viewStack[this.viewStack.length - 1].active = true
 
             cc.log("openvIew ------------------------------------------------------------------------start")
-            for(var i = 0 ; i < this.viewStack.length ; ++i){
-                cc.log(this.viewStack[i].name + "      =      " +  this.viewStack[i].active)
+            for (var i = 0; i < this.viewStack.length; ++i) {
+                cc.log(this.viewStack[i].name + "      =      " + this.viewStack[i].active)
             }
             cc.log("openvIew ------------------------------------------------------------------------end")
         }
@@ -163,7 +161,7 @@ cc.Class({
 
 
 
-changeSpriteFrame: function(spriteframeOrigin, res) {
+    changeSpriteFrame: function(spriteframeOrigin, res) {
         if (!cc.cs.loadMgr.isLoadComplete) {
             cc.log("error the res is not load complete")
         }
@@ -171,8 +169,8 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         if (spriteFrame == null || spriteFrame == 'undefinde') {
             cc.log("the res is mission = " + "picture/newRes/" + res)
         }
-        
-        spriteframeOrigin._textureFilenameSetter.set (spriteFrame._textureFilename)
+
+        spriteframeOrigin._textureFilenameSetter.set(spriteFrame._textureFilename)
     },
 
 
@@ -182,94 +180,90 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
         this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
-        this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab)//没有箭头正中间
-        this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab)//没有箭头左上
-        this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab)//箭头在右边
-        this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab)//箭头在下边
+        this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab) //没有箭头正中间
+        this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab) //没有箭头左上
+        this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab) //箭头在右边
+        this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab) //箭头在下边
     },
-    showPopBuy: function(id, okHandle,obj) {
+    showPopBuy: function(id, okHandle, obj) {
         //id 1 秒回礼包 3 一件完成礼包
 
         var scene = cc.director.getScene();
         var popupNode = cc.instantiate(this.nodePopBuyPrefab)
         scene.getChildByName("Canvas").addChild(popupNode, 999)
         popupNode.setPosition(0, 0);
-        popupNode.getComponent("PopBuy").setCallBack( id, okHandle,obj)
+        popupNode.getComponent("PopBuy").setCallBack(id, okHandle, obj)
     },
-    
-    
-    showGuide: function(guideID,Target,obj) {
 
-        cc.log("showGuide"+guideID)
-        if(guideID <= parseInt(cc.cs.PlayerInfo.guide_id) )
-        {
+
+    showGuide: function(guideID, Target, obj) {
+
+        cc.log("showGuide" + guideID)
+        if (guideID <= parseInt(cc.cs.PlayerInfo.guide_id)) {
             return
-        }
-        else
-        {
+        } else {
 
-        /*this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
-        this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab)//没有箭头正中间
-        this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab)//没有箭头左上
-        this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab)//箭头在右边
-        this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab)//箭头在下边*/
- 
+            /*this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
+            this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab)//没有箭头正中间
+            this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab)//没有箭头左上
+            this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab)//箭头在右边
+            this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab)//箭头在下边*/
+
             var scene = cc.director.getScene();
             //cc.log("scene   = "+ scene + "    " + this.nodeGuidePrefab)
             var popupNode = null
-            switch (guideID)
-            {
+            switch (guideID) {
                 case 1:
                 case 15:
-                {
-                   popupNode = cc.instantiate(this.nodeGuidePrefabNArrowCenter)
-                }
-                break;
+                    {
+                        popupNode = cc.instantiate(this.nodeGuidePrefabNArrowCenter)
+                    }
+                    break;
                 case 2:
                 case 3:
-                {
-                   popupNode = cc.instantiate(this.nodeGuidePrefabNArrowLeft)
-                }
-                break;
+                    {
+                        popupNode = cc.instantiate(this.nodeGuidePrefabNArrowLeft)
+                    }
+                    break;
                 case 4:
                 case 5:
                 case 6:
                 case 8:
                 case 11:
                 case 16:
-                {
-                   popupNode = cc.instantiate(this.nodeGuidePrefabLeft)
-                }
-                break;
+                    {
+                        popupNode = cc.instantiate(this.nodeGuidePrefabLeft)
+                    }
+                    break;
 
                 case 7:
                 case 12:
                 case 17:
-                {
-                   popupNode = cc.instantiate(this.nodeGuidePrefabRight)
-                }
-                break;
+                    {
+                        popupNode = cc.instantiate(this.nodeGuidePrefabRight)
+                    }
+                    break;
 
                 case 9:
                 case 10:
                 case 13:
                 case 14:
-                
-                {
-                   popupNode = cc.instantiate(this.nodeGuidePrefabBottom)
-                }
-                break;
 
-                
+                    {
+                        popupNode = cc.instantiate(this.nodeGuidePrefabBottom)
+                    }
+                    break;
+
+
             }
-            
-            cc.log("popupNode   = "+ popupNode + "    " )
+
+            cc.log("popupNode   = " + popupNode + "    ")
             scene.getChildByName("Canvas").addChild(popupNode, 999)
             popupNode.setPosition(0, 0);
-            popupNode.getComponent("PopGuide").setGuide(guideID,Target,obj)
-        }   
+            popupNode.getComponent("PopGuide").setGuide(guideID, Target, obj)
+        }
     },
-    
+
     addItem_horizontalScrollView: function(scrollView, node, horizontalSpace) {
         if (typeof horizontalSpace == 'undefined')
             horizontalSpace = 0;
@@ -280,7 +274,7 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         } else {
             scrollView.content.width += horizontalSpace + node.width
             pos.x = ((1.0 - scrollView.content.anchorX) * scrollView.content.width - (1.0 - node.anchorX) * node.width) +
-                ((0 - scrollView.content.anchorX) * (scrollView.content.width + horizontalSpace))  
+                ((0 - scrollView.content.anchorX) * (scrollView.content.width + horizontalSpace))
         }
         var diffHeight = scrollView.content.height - node.height
         pos.y = (1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height - diffHeight * 0.5
@@ -322,7 +316,7 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
             scrollView.content.height += verticalSpace + node.height
             var children = scrollView.content.getChildren()
             for (var i = 0; i < scrollView.content.childrenCount; ++i) {
-                cc.log("children[i].y += (scrollView.content.height + verticalSpace)   =" + i + "   " + children[i].y + "    " + (node.height + verticalSpace))
+
                 children[i].y += (1.0 - scrollView.content.anchorY) * scrollView.content.height - (node.height + verticalSpace)
             }
             pos.y = ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height)
@@ -341,20 +335,20 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         var pos = cc.v2(0.0, 0.0)
         var children = scrollView.content.getChildren();
         var height = 0;
-        
-        for(var i = 0 ; i < children.length; ++i){
-            
-            if(i == 0){
-                scrollView.content.height = children[i].height+ verticalSpace
+
+        for (var i = 0; i < children.length; ++i) {
+
+            if (i == 0) {
+                scrollView.content.height = children[i].height + verticalSpace
                 children[i].y = 0
-            }else{
-                
-                children[i].y =  -  scrollView.content.height
-                scrollView.content.height +=  + children[i].height +  verticalSpace
+            } else {
+
+                children[i].y = -scrollView.content.height
+                scrollView.content.height += +children[i].height + verticalSpace
             }
-            cc.log("refresh_verticalScrollViewUp   " + children[i].height + "     " +scrollView.content.height + "      " + children[i].y+ "    "+
-            ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - children[i].anchorY) * children[i].height) + "    " + 
-            ((1.0 - children[i].anchorY) * children[i].height))
+            cc.log("refresh_verticalScrollViewUp   " + children[i].height + "     " + scrollView.content.height + "      " + children[i].y + "    " +
+                ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - children[i].anchorY) * children[i].height) + "    " +
+                ((1.0 - children[i].anchorY) * children[i].height))
         }
     },
 
@@ -424,55 +418,53 @@ changeSpriteFrame: function(spriteframeOrigin, res) {
         popupNode.getComponent("NodeUse").setCallBack(goodsid, okHandle, max, obj, type)
     },
 
-    getTalkHeight : function(n){
+    getTalkHeight: function(n) {
         var nameText = n.getChildByName("name")
         return nameText.height + n.height
     },
 
-    setNanTalk : function(nanNode,text,name){
+    setNanTalk: function(nanNode, text, name) {
         var nameText = nanNode.getChildByName("name").getComponent(cc.Label)
         var talkText = nanNode.getChildByName("talk").getComponent(cc.Label)
         talkText.string = text
         nameText.string = name
-        if(talkText.node.height < 85){
+        if (talkText.node.height < 85) {
             nanNode.height = 85
-        }else{
+        } else {
             nanNode.height = talkText.node.height + 20
         }
         nameText.node.y = nanNode.height * 0.5
     },
 
-    setNvTalk : function(nvNode,text,name, issound){
+    setNvTalk: function(nvNode, text, name, issound) {
         var nameText = nvNode.getChildByName("name").getComponent(cc.Label)
         var talkText = nvNode.getChildByName("talk").getComponent(cc.Label)
         var soundTalk = nvNode.getChildByName("soundBtn")
-        if(issound){
+        if (issound) {
             soundTalk.active = true
             nvNode.width = 586
             talkText.node.width = 536
             talkText.node.x = 25
-            soundTalk.x = nvNode.width -50 
+            soundTalk.x = nvNode.width - 50
 
             soundTalk.on("click", (event) => {
-            cc.log("nvNode.Tag = "+nvNode.getTag())
-            cc.cs.AudioMgr.StopVoice();
-            cc.cs.AudioMgr.playVoice(""+nvNode.getTag(),null)
+                cc.log("nvNode.Tag = " + nvNode.getTag())
+                cc.cs.AudioMgr.StopVoice();
+                cc.cs.AudioMgr.playVoice("" + nvNode.getTag(), null)
 
-        }, this.soundTalk)
-        
-            
-        }
-        else
-        {
+            }, this.soundTalk)
+
+
+        } else {
             soundTalk.active = false
         }
         talkText.string = text
         nameText.string = name
 
         var lineCount = Math.ceil(text.length * talkText.fontSize / talkText.node.width)
-        if(lineCount * talkText.lineHeight + 20 < 85){
+        if (lineCount * talkText.lineHeight + 20 < 85) {
             nvNode.height = 85
-        }else{
+        } else {
             nvNode.height = lineCount * talkText.lineHeight + 20
         }
         nameText.node.y = nvNode.height * 0.5

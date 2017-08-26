@@ -86,40 +86,48 @@ cc.Class({
         height = Math.abs(this.bghf.y) + height + 60
         this.node.height = height
     },
+    closePopup: function() {
+        var self = this
+        var action1 = cc.scaleTo(0.2, 0.0, 1.0)
+        if (cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
+            self.popup.runAction(action1)
+        } else {
+            this.popup.scaleX = 1.0
+            if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
+                self.plBtn.runAction(action1)
+            } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
+                self.dzBtn.runAction(action1)
+            }
+        }
+        self.isShowPopup = false
+    },
+    showPopup: function() {
+        var self = this
+        var action2 = cc.scaleTo(0.2, 1.0, 1.0)
+        if (cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
+            self.popup.runAction(action2)
+        } else {
+            this.popup.scaleX = 1.0
+            if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
+                self.plBtn.runAction(action2)
+            } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
+                self.dzBtn.runAction(action2)
+            }
+        }
+        self.isShowPopup = true
+    },
     setZoneID: function(id) {
         var self = this
         this.zoneID = id
+        this.optionBtn.targetOff(this.optionBtn)
 
         this.optionBtn.on("click", (event) => {
-            cc.log(self + "         abc         ")
-            cc.log(self.isShowPopup + "         cde         " + self.zoneID)
-            cc.log(self.isShowPopup + " c " + cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID) + "  d " +
-                cc.cs.PlayerInfo.canPLZone(self.zoneID) + " e  " + cc.cs.PlayerInfo.canZanZone(self.zoneID))
-            if (self.isShowPopup) {
 
-                var action1 = cc.scaleTo(0.2, 0.0, 1.0)
-                if (cc.cs.PlayerInfo.canPLZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
-                    self.popup.runAction(action1)
-                } else {
-                    if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
-                        self.plBtn.runAction(action1)
-                    } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
-                        self.dzBtn.runAction(action1)
-                    }
-                }
-                self.isShowPopup = false
+            if (self.isShowPopup) {
+                self.closePopup()
+
             } else {
-                var action2 = cc.scaleTo(0.2, 1.0, 1.0)
-                if (cc.cs.PlayerInfo.canZanZone(self.zoneID) && cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
-                    self.popup.runAction(action2)
-                } else {
-                    if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
-                        self.plBtn.runAction(action2)
-                    } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
-                        self.dzBtn.runAction(action2)
-                    }
-                }
-                self.isShowPopup = true
+                self.showPopup()
             }
 
         }, this.optionBtn)
@@ -148,18 +156,19 @@ cc.Class({
             this.popup.scaleX = 0.0
         } else {
             if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
+                this.dzBtn.active = (false)
+                this.popup.scaleX = 1.0
+                this.popup.active = (true)
+                this.plBtn.scaleX = 0.0
+                this.isShowPopup = false
+
+            } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
                 this.popup.x = this.popup.x + this.plBtn.width
                 this.plBtn.active = (false)
                 this.popup.scaleX = 1.0
                 this.popup.active = (true)
                 this.dzBtn.scaleX = 0.0
                 this.isShowPopup = false;
-            } else if (cc.cs.PlayerInfo.canZanZone(self.zoneID)) {
-                this.dzBtn.active = (false)
-                this.popup.scaleX = 1.0
-                this.popup.active = (true)
-                this.plBtn.scaleX = 0.0
-                this.isShowPopup = false
             }
         }
 
@@ -302,8 +311,6 @@ cc.Class({
 
         } else {
             //this.replyList.push(this.replyMsg.node)
-            cc.log("zone item id = " +
-                id)
             this.addTextItem("<color=#ffffff>" +
                 cc.cs.PlayerInfo.PlayerNmae +
                 "</c><color=#1f6289>:" +
@@ -339,16 +346,17 @@ cc.Class({
         r.font = this.replyMsg.font
         r.maxWidth = this.replyMsg.maxWidth
         this.replyList.push(newItem)
-        cc.log("addTextItem   " + this.replyList.length + "       " + this.zoneID)
     },
 
     plCallBack: function() {
+        cc.log("plCallBack    is run run 1" + this.popup.x)
         this.popup.x = this.popup.x + this.plBtn.width
         this.plBtn.active = (false)
         this.popup.scaleX = 1.0
         this.popup.active = (true)
         this.dzBtn.scaleX = 0.0
-        this.isShowPopup = false;
+            // this.isShowPopup = false;
+        cc.log("plCallBack    is run run 2" + this.popup.x)
         if (!cc.cs.PlayerInfo.canZanZone(this.zoneID)) {
             this.optionBtn.active = false
         }
@@ -359,7 +367,8 @@ cc.Class({
         this.popup.scaleX = 1.0
         this.popup.active = (true)
         this.plBtn.scaleX = 0.0
-        this.isShowPopup = false;
+        cc.log("this.plBtn.active this.plBtn.active   +   " + this.plBtn.active)
+            //this.isShowPopup = false;
         if (!cc.cs.PlayerInfo.canPLZone(this.zoneID)) {
             this.optionBtn.active = false
         }
@@ -369,11 +378,11 @@ cc.Class({
         var self = this
         this.plBtn.on("click", (event) => {
             if (cc.cs.PlayerInfo.canPLZone(self.zoneID)) {
-                cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").showInputTable(self.zoneID, self)
+                cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").plClickHandle(self.zoneID, self)
             } else {
                 cc.cs.UIMgr.showTip("已经评论过", 1.0)
             }
-
+            self.closePopup()
         }, this.plBtn)
 
         this.dzBtn.on("click", (event) => {
@@ -382,7 +391,7 @@ cc.Class({
             } else {
                 cc.cs.UIMgr.showTip("已经攒过", 1.0)
             }
-
+            self.closePopup()
         }, this.dzBtn)
     },
 
@@ -395,15 +404,12 @@ cc.Class({
     },
 
     sendReplyHandle: function(ret) {
-
-        cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(this.zoneID))
             cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
-            cc.log("video id 6= " + cc.cs.PlayerInfo.playvideo)
                 // if(parseInt(JasonObject.content.info.level) >parseInt(cc.cs.PlayerInfo.level) ){
                 //cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
