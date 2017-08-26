@@ -326,6 +326,7 @@ cc.Class({
     onLoad: function() {
         var self = this
         this.backBtn.on("click", (event) => {
+            cc.cs.AudioMgr.StopAudio(this.AudioID)
             cc.cs.UIMgr.closeView()
         }, this.backBtn)
         

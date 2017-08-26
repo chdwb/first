@@ -335,17 +335,35 @@ cc.Class({
     {
 
        cc.log("aaaabbbb"+ret)
+        if (cc.cs.gameData.phone["PHONE_ID_" + this.tempPhoneID]["PHONE_AUDIO"] != "dummy")   // 女主不是最后一句
+        
+         {
 
-         
-
-           this.showInputTable( this.tempPhoneID)
+                this.showInputTable( this.tempPhoneID)
                 this.tonghuakuang.active = false
                 this.showCompletePhone()
 
-           this.currentTime = 0
+                this.currentTime = 0
                 this.isAction = false;
                 this.totalTime = 0
                 this.timeIng = false;   
+         }
+
+
+
+                else  //女主最后一句
+                {
+
+                    this.currentTime = 0
+                this.isAction = false;
+                this.totalTime = 0
+                  
+                    
+                    this.timeIng = false
+                    this.backBtn.active = true
+                    this.showNormal()
+
+                }
                 //this.backBtn.active = true
 
     }
@@ -358,7 +376,8 @@ cc.Class({
         cc.log("setInputMsg  " + id)
         if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == "dummy" || cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_OPTION"] == -1) { // 女主
             this.loadCruuentTalk(this.currentScroll, false, cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_MSG"], cc.cs.PlayerInfo.NPCName);
-            if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"] != "dummy") {
+           //if (cc.cs.gameData.phone["PHONE_ID_" + id]["PHONE_AUDIO"] != "dummy")
+             {
                // this.showInputTable(id)
                // this.tonghuakuang.active = false
                // this.showCompletePhone()
@@ -561,7 +580,7 @@ cc.Class({
             cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
             this.NPCID = JasonObject.content.info.phone_audio
 
-            if (cc.cs.PlayerInfo.canPhone()) {
+            if (cc.cs.PlayerInfo.canPhone2()) {
                 this.currentTime = 0
                 this.isAction = true;
                 this.totalTime = (cc.random0To1() + 0.4) * 8
