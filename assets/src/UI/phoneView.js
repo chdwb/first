@@ -104,7 +104,8 @@ cc.Class({
         girlvoiceID:0,
         tempPhoneID:0,
         SoundOn:false,
-        isShowPhoneView:false
+        isShowPhoneView:false,
+        currentExp:0,
     },
 
 
@@ -582,25 +583,28 @@ cc.Class({
         cc.cs.gameMgr.sendPhone(phoneid, this.SendPhoneHandle, this)
         var phoneData = cc.cs.gameData.getphoneData(phoneid)
         var exp = phoneData["PHONE_EXP"]
-        if (parseInt(exp) < 0)
+        this.currentExp = exp
+        /*if (parseInt(exp) < 0)
             {
                 cc.cs.UIMgr.showTip("恋爱值减少"+exp,1.0)
             }
             else
             {
                 cc.cs.UIMgr.showTip("恋爱值增加"+exp,1.0)
-            }
+            }*/
     },
 
     SendPhoneHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
             this.NPCID = JasonObject.content.info.phone_audio
-            this.refresh()
+            cc.cs.UIMgr.showExpTip(this.currentExp, this.leveldata2, this.refresh)
+            
 
             if (cc.cs.PlayerInfo.canPhone2()) {
                 this.currentTime = 0

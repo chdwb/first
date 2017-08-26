@@ -99,6 +99,7 @@ cc.Class({
        cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             

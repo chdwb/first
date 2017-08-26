@@ -247,7 +247,7 @@ cc.Class({
     },*/
 
     sendVideoDone: function(videoid, handle, obj) {
-        cc.cs.UIMgr.showNetView()
+        //cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["videoid"] = videoid

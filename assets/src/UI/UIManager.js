@@ -5,6 +5,7 @@ cc.Class({
         tipPrefab: null,
         popupPrefab: null,
         nodePopBuyPrefab: null,
+        expTip : null,
         removeList: [],
         MAINVIEW: 0,
         MISSONVIEW: 1,
@@ -146,10 +147,6 @@ cc.Class({
                 this.viewStack[i].active = false
             }
             this.viewStack[this.viewStack.length - 1].active = true
-
-            for (var i = 0; i < this.viewStack.length; ++i) {
-                cc.log(this.viewStack[i].name + "      =      " + this.viewStack[i].active)
-            }
         }
     },
 
@@ -157,6 +154,8 @@ cc.Class({
     onLoad: function() {
 
     },
+
+    
 
     changeSprite: function(node, res) {
         if (!cc.cs.loadMgr.isLoadComplete) {
@@ -189,6 +188,7 @@ cc.Class({
 
 
     init: function() {
+        this.expTip = cc.loader.getRes("prefab/expTip", cc.Prefab)
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
@@ -364,6 +364,29 @@ cc.Class({
     },
 
 
+    showExpTip:function(exp, targetNode, Handle){
+        var tip = cc.instantiate(this.expTip)
+        var zf = "+"
+        if(exp < 0){
+
+            this.changeSprite(tip, "common/qinmijian")
+            zf = "-'"
+        }
+        var expLabel = tip.getChildByName("expText").getComponent(cc.Label).string = zf + exp
+        var scene = cc.director.getScene();
+        scene.getChildByName("Canvas").addChild(tip, 1000)
+
+        var p = target.parent.convertToWorldSpaceAR(cc.v2(targetNode.x, targetNode.y))
+        var p2 = this.tip.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
+
+        tip.setPosition(0, 50);
+
+        var action = cc.sequence(cc.moveTo(1.5, p2.x, p2.y), cc.callFunc(function(target) {
+            cc.director.getScene().getChildByName("Canvas").removeChild(target)
+            Handle
+        }, tip))
+
+    },
 
     showTip: function(text, time) {
         var scene = cc.director.getScene();
