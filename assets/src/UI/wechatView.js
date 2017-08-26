@@ -164,6 +164,7 @@ cc.Class({
     SendWechatHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) {
+            cc.cs.UIMgr.closeNetView()
             if (cc.cs.PlayerInfo.wechat_fn == true) {
                 this.inputTableBtn.WECHAT_ID = 0
                 this.msgText.node.active = false
@@ -545,7 +546,7 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) {
             //cc.cs.UIMgr.showTip("", 1.0)
-
+            cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
             this.castText.node.active = false
@@ -564,6 +565,7 @@ cc.Class({
     sendBuyFastTalkHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) {
+            cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
             this.castText.string = cc.cs.PlayerInfo.diamond

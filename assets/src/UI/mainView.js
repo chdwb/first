@@ -477,6 +477,7 @@ cc.Class({
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
 
 
@@ -491,6 +492,7 @@ cc.Class({
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
 

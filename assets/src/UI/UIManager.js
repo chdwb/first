@@ -59,6 +59,14 @@ cc.Class({
         return null
     },
 
+    showNetView:function(){
+        this.gameScene.loadingView.getComponent("LoadingView").openLoading()
+    },
+
+    closeNetView:function(){
+        this.gameScene.loadingView.getComponent("LoadingView").closeLoading()
+    },
+
     closeView: function() {
         if (this.viewStack.length > 0) {
             var view = this.viewStack.pop()

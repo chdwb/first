@@ -210,6 +210,7 @@ cc.Class({
     buyLoveHandle:function(ret){
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             this.refresh()
         }else{
@@ -220,6 +221,7 @@ cc.Class({
     startDateHandle : function(ret){
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             var actionView = cc.cs.UIMgr.getView(cc.cs.UIMgr.ACTIONVIEW)
             actionView.getComponent("actioningView").setItem(this.itemID, false)
@@ -323,6 +325,7 @@ cc.Class({
       startWorkHandle : function(ret){
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             var actionView = cc.cs.UIMgr.getView(cc.cs.UIMgr.ACTIONVIEW)
             actionView.getComponent("actioningView").setItem(this.itemID, true)
@@ -339,6 +342,8 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) 
         {
+            
+            cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             
            

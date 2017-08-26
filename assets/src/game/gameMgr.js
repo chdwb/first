@@ -109,6 +109,7 @@ cc.Class({
     },
 
     sendUpgrade: function(workid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["workid"] = workid
@@ -116,6 +117,7 @@ cc.Class({
     },
 
     sendWork: function(workid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["workid"] = workid
@@ -123,7 +125,7 @@ cc.Class({
     },
 
     sendWorkDone: function(handle, obj) {
-
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
 
@@ -134,6 +136,7 @@ cc.Class({
     },
 
     sendLove: function(loveid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["dateid"] = loveid
@@ -141,7 +144,7 @@ cc.Class({
     },
 
     sendLoveDone: function(handle, obj) {
-
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["datelogid"] = cc.cs.PlayerInfo.datelog_id
@@ -150,12 +153,14 @@ cc.Class({
     },
 
     sendPhone: function(phoneid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["phoneid"] = phoneid
         this.sendHttp("ID_13", data, handle, obj)
     },
     sendWechat: function(wechatID, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["wechatid"] = wechatID
@@ -163,6 +168,7 @@ cc.Class({
     },
 
     sendThumb: function(zoneid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["zoneid"] = zoneid
@@ -170,6 +176,7 @@ cc.Class({
     },
 
     sendReply: function(replyid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["replyid"] = replyid
@@ -177,6 +184,7 @@ cc.Class({
     },
 
     sendGoodUse: function(goodsid, num, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["goodsid"] = goodsid
@@ -185,6 +193,7 @@ cc.Class({
     },
 
     sendGoodBuy: function(type, goodsid, num, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["type"] = type
@@ -204,6 +213,7 @@ cc.Class({
     },
 
     sendSign: function(handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
 
@@ -211,6 +221,7 @@ cc.Class({
     },
 
     sendWorkRightNode: function(workid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["worklogid"] = workid
@@ -219,6 +230,7 @@ cc.Class({
     },
 
     sendDateRightNode: function(dateid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["datelogid"] = dateid
@@ -235,6 +247,7 @@ cc.Class({
     },*/
 
     sendVideoDone: function(videoid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["videoid"] = videoid
@@ -242,6 +255,7 @@ cc.Class({
     },
 
     getVideoUrl: function(videoid, handle, obj) {
+
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["videoid"] = videoid
@@ -249,6 +263,7 @@ cc.Class({
     },
 
     buyLoveTime: function(dateid, handle, obj) {
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["dateid"] = dateid
@@ -256,7 +271,7 @@ cc.Class({
     },
 
     buyRightNow: function(type, handle, obj) {
-
+        cc.cs.UIMgr.showNetView()
 
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
@@ -267,6 +282,7 @@ cc.Class({
     },
 
     sendBuyFastTalk : function(handle, obj){
+        cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         this.sendHttp("ID_25", data, handle, obj)

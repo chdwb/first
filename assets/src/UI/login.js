@@ -649,6 +649,7 @@ cc.Class({
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+            
             cc.cs.UIMgr.showTip("注册成功", 1.0)
             //this.setLoginNode()
             this.loginIDEdit.string = this.registerIDEdit.string
