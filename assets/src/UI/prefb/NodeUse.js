@@ -75,8 +75,11 @@ cc.Class({
 
         type:0,
         price:0,
-       
 
+        jiasudu:0.2,
+        currentSpeed :0.2,
+        currentJishu : 0,
+        addItemCount : 0
 
 
     },
@@ -93,6 +96,7 @@ cc.Class({
 
     setCallBack:function(goodsid, OKhandle,Max,obj,type)
     {
+        var self =  this
         this.goodsid = goodsid
         this.doJob = OKhandle
         this.itmeCount = Max
@@ -142,6 +146,173 @@ cc.Class({
 
             this.updateButton()
 
+
+
+        
+            
+        var listener = { 
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches:true,
+            onTouchBegan: function (touch, event) { 
+            cc.log('Touch Began: ' + event); 
+            //这里必须要写 return true, 
+            //onTouchBegan 回调事件里要 return true，  
+            //这样后续的 onTouchEnded 和 onTouchMoved 才会触发事件 
+            
+            // 获取当前触摸点相对于按钮所在的坐标
+            self.currentSpeed = self.jiasudu
+            self.currentJishu = 0.0
+             {
+                    var locationInNode = self.buttonJia.node.convertToNodeSpace(touch.getLocation());    
+                    var s = self.buttonJia.node.getContentSize();
+                    var rect = cc.rect(0, 0, s.width, s.height);
+        
+                    if (cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
+                        cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+                        self.schedule(self.step,0.0)
+                        
+                       
+                        return true;
+                    }
+                    return false;
+             }
+            
+            
+            
+            }, 
+            onTouchMoved: function (touch, event) { 
+            cc.log('Touch Moved: ' + event); 
+            var locationInNode = self.buttonJia.node.convertToNodeSpace(touch.getLocation());    
+            var s = self.buttonJia.node.getContentSize();
+            var rect = cc.rect(0, 0, s.width, s.height);
+
+            if (!cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
+                cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+                self.unschedule(self.step)
+                
+               
+                
+            }
+            }, 
+            onTouchEnded: function (touch, event) { 
+            cc.log('Touch Ended: ' + event); 
+            self.unschedule(self.step)
+            var locationInNode = self.buttonJia.node.convertToNodeSpace(touch.getLocation());    
+            var s = self.buttonJia.node.getContentSize();
+            var rect = cc.rect(0, 0, s.width, s.height);
+
+            if (cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
+                cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+                self.onPlus()
+            }
+            }, 
+            onTouchCancelled: function (touches, event) { 
+            cc.log('Touch Cancelled: ' + event); 
+            } 
+         } 
+         // 绑定单点触摸事件 
+            cc.eventManager.addListener(listener, self.buttonJia.node)  
+
+
+
+
+            var listener2 = { 
+                event: cc.EventListener.TOUCH_ONE_BY_ONE,
+                swallowTouches:true,
+                onTouchBegan: function (touch, event) { 
+                cc.log('Touch Began: ' + event); 
+                //这里必须要写 return true, 
+                //onTouchBegan 回调事件里要 return true，  
+                //这样后续的 onTouchEnded 和 onTouchMoved 才会触发事件 
+                
+                // 获取当前触摸点相对于按钮所在的坐标
+                self.currentSpeed = self.jiasudu
+                self.currentJishu = 0.0
+                 {
+                        var locationInNode = self.buttonJian.node.convertToNodeSpace(touch.getLocation());    
+                        var s = self.buttonJian.node.getContentSize();
+                        var rect = cc.rect(0, 0, s.width, s.height);
+            
+                        if (cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
+                            cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+                            self.schedule(self.step2,0.0)
+                            
+                           
+                            return true;
+                        }
+                        return false;
+                 }
+                
+                
+                
+                }, 
+                onTouchMoved: function (touch, event) { 
+                cc.log('Touch Moved: ' + event); 
+                var locationInNode = self.buttonJian.node.convertToNodeSpace(touch.getLocation());    
+                var s = self.buttonJia.node.getContentSize();
+                var rect = cc.rect(0, 0, s.width, s.height);
+    
+                if (!cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
+                    cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+                    self.unschedule(self.step2)
+                    
+                   
+                    
+                }
+                }, 
+                onTouchEnded: function (touch, event) { 
+                cc.log('Touch Ended: ' + event); 
+                self.unschedule(self.step2)
+                var locationInNode = self.buttonJian.node.convertToNodeSpace(touch.getLocation());    
+                var s = self.buttonJia.node.getContentSize();
+                var rect = cc.rect(0, 0, s.width, s.height);
+    
+                if (cc.rectContainsPoint(rect, locationInNode)) {        // 判断触摸点是否在按钮范围内
+                    cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+                    self.onMinus()
+                }
+                }, 
+                onTouchCancelled: function (touches, event) { 
+                cc.log('Touch Cancelled: ' + event); 
+                } 
+             } 
+             // 绑定单点触摸事件 
+                cc.eventManager.addListener(listener2, self.buttonJian.node)  
+    
+        
+
+    },
+
+    step : function(dt)
+    {
+
+        //cc.log(dt)
+        this.currentJishu += dt
+        if(this.currentJishu >= this.currentSpeed){
+            this.onPlus()
+            this.currentSpeed -= 0.01
+            if(this.currentSpeed < 0.01)
+                this.currentSpeed = 0.01
+            this.currentJishu = 0.0
+        }
+    },
+
+
+    
+
+
+    step2 : function(dt)
+    {
+
+        //cc.log(dt)
+        this.currentJishu += dt
+        if(this.currentJishu >= this.currentSpeed){
+            this.onMinus()
+            this.currentSpeed -= 0.01
+            if(this.currentSpeed < 0.01)
+                this.currentSpeed = 0.01
+            this.currentJishu = 0.0
+        }
     },
 
     
