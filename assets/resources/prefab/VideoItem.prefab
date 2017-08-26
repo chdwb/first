@@ -275,7 +275,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "d0228Ga8bhN4p4C+l3Ipct8",
     "sync": false
@@ -427,7 +427,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "d557bO/ixFEB6bmJBggR2iE",
     "sync": false
@@ -514,7 +514,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "2f28abCjPxJTJATnjgdlHbw",
     "sync": false
@@ -551,7 +551,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "7986fAUvRNPOLT1CIR6nli3",
     "sync": false
@@ -640,7 +640,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "17b36QrH3JIOLWWDa3K1WJ/",
     "sync": false
@@ -654,7 +654,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "981bbc09-6fa5-40d9-93c6-ae3d6dff2924"
+      "__uuid__": "6b1a00bd-fda1-40c1-8426-2997f4d1f0cf"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -677,7 +677,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "8fa12ZoFBxEsKcpK9grUhIb",
     "sync": false
@@ -781,13 +781,13 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "d9b10BY1L1BeZzuhx/qHSy3",
     "sync": false
   },
   {
-    "__type__": "b53e42qjwVNh6+9waqkXhn8",
+    "__type__": "31806Z6PSpNs6G0gXrTqqhl",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -795,7 +795,7 @@
     },
     "_enabled": true,
     "lock": {
-      "__id__": 7
+      "__id__": 8
     },
     "Icon": {
       "__id__": 19
@@ -819,7 +819,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8ac584a9-786a-4dd9-bd99-88b0d9a5a1e1"
+      "__uuid__": "610b5c65-143f-4328-a8c7-18c229aeee8f"
     },
     "fileId": "123eeNUur5PyKqFTXZgX+On",
     "sync": false
