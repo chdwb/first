@@ -28,14 +28,14 @@ cc.Class({
         },
         spawnCount: 0, // 总个数
         totalRow: 0, // 行数
-        spacing: 0, // space between each item
+        spacing: 60, // space between each item
         
     },
 
     // use this for initialization
 
     setGold: function(gold) {
-        //cc.log("set gold"+gold)
+        cc.log("set gold"+gold)
         this.goldText.string = gold + ""
     },
     updateui:function(){
@@ -55,8 +55,23 @@ cc.Class({
         this.initialize(cc.cs.gameData.video);
 
     },
+    goshop:function(){
+        cc.log("goShop LoveView")
+        cc.cs.UIMgr.setShopType(2)
+        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+    }
+    ,
+
+    onEnable:function()
+    {
+        this.updateui()
+    }
+    ,
 
     initialize: function (itemArray) {
+        cc.log("alkdjflkajdflkajf")
+        
         //this.Exp.string = ""+cc.cs.PlayerInfo.exp
         this.content.removeAllChildren(true);
         this.prefab = cc.loader.getRes("prefab/VideoItem", cc.Prefab)
@@ -86,7 +101,7 @@ cc.Class({
 
 
 
-                var offset =  (this.scrollView.content.width - item.width*2)/4
+                var offset =  (this.scrollView.content.width - item.width*4)/8
                 
                 cc.log("item height " + item.height)
                 var itemCom = item.getComponent("VideoItem")
@@ -101,7 +116,7 @@ cc.Class({
                 this.content.addChild(item);
         		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
                 let PosY = 0;
-                if((count+1) % 2 == 0)
+                if((count+1) % 4 == 0)
                 {
                     PosY =  Math.floor((count+1) / 4);
                 }

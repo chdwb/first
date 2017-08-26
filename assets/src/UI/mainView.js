@@ -249,7 +249,9 @@ cc.Class({
     goGift: function() {
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.GIFTVIEW)
-        cc.cs.UIMgr.openView(cc.cs.UIMgr.GIFTVIEW)
+        //cc.cs.UIMgr.openView(cc.cs.UIMgr.GIFTVIEW)
+        cc.cs.UIMgr.openView(cc.cs.UIMgr.COLLECTVIEW)
+
     },
 
     goShop: function() {

@@ -19,6 +19,7 @@ cc.Class({
         WECHATVIEW: 10,
         VIDEOVIEW: 11,
         SETTINGVIEW: 12,
+        COLLECTVIEW: 13,
         viewStack: [],
         gameScene: null,
         currentShopType: 3,
@@ -51,6 +52,9 @@ cc.Class({
             return this.gameScene.VideoView
         } else if (this.SETTINGVIEW == id) {
             return this.gameScene.SettingView
+        }
+        else if (this.COLLECTVIEW == id) {
+            return this.gameScene.CollectView
         }
         return null
     },
@@ -123,6 +127,10 @@ cc.Class({
                 this.gameScene.MainView.active = false
             } else if (this.SETTINGVIEW == id) {
                 this.viewStack.push(this.gameScene.SettingView)
+                this.gameScene.MainView.active = false
+            }
+            else if (this.COLLECTVIEW == id) {
+                this.viewStack.push(this.gameScene.CollectView)
                 this.gameScene.MainView.active = false
             }
 

@@ -58,11 +58,11 @@ cc.Class({
     setVideo: function( videodata ){
 
         this.videoID = videodata["VIDEO_ID"];
-        this.Name.string = videodata["VIDEO_ID"]
+        this.Name.string = videodata["VIDEO_NAME"]
         this.Price.string = videodata["VIDEO_NEED_MONEY"]
         //this.itemDec.string = good["GOODS_DESC"]
-        var text = good["GOODS_DESC"]
-    cc.cs.UIMgr.changeSprite(this.Icon.node, "video_icon/" + this.videoID)
+        cc.log(this.videoID)
+        cc.cs.UIMgr.changeSprite(this.Icon.node, "video_icon/" + this.videoID)
 
     }
     

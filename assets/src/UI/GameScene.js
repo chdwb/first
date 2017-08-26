@@ -60,10 +60,19 @@ cc.Class({
             type:cc.Node,
         },
 
+        
+
          VideoView:{
             default:null,
             type:cc.Node,
         },
+
+        CollectView:{
+            default:null,
+            type:cc.Node,
+        },
+
+        
 
            SettingView:{
             default:null,
@@ -200,7 +209,12 @@ cc.Class({
     onLoad: function () {
        
         cc.cs.UIMgr.gameScene = this
-        cc.cs.AudioMgr.playBGM("1",true)
+
+        
+
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
+        var music = leveldata2["MUSIC_ID"]
+        cc.cs.AudioMgr.playBGM(music,true)
 
       // cc.cs.AudioMgr.playAudio("calling")
     },
