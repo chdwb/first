@@ -303,7 +303,6 @@ cc.Class({
         cc.log("mainview updateui")
 
         var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
-        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
         this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
             //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.money)
