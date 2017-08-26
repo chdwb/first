@@ -86,6 +86,16 @@ cc.Class({
         cc.cs.UIMgr.setHeart(heartTarget, currentExp,levlExp)
     },
 
+    updateui:function(){
+        
+                var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
+                this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+                    //this.setDiamond(cc.cs.PlayerInfo.Diamond)
+               
+        
+            }
+            ,
+
     sendReplyHandle: function(ret) {
 
         cc.log(ret)

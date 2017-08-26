@@ -56,7 +56,7 @@ cc.Class({
 
     refresh: function() {
         this.goldText.string = cc.cs.PlayerInfo.money
-        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level) + 1)]
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
         this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
         /*cc.log("loveview refresh")
         this.goldText.string = cc.cs.PlayerInfo.money

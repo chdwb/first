@@ -247,7 +247,7 @@ cc.Class({
         this.updateButton()
         this.content = this.scrollView.content;
         this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
-        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+(parseInt(cc.cs.PlayerInfo.level) + 1)]
+        var leveldata =  cc.cs.gameData.level["LEV_LEV_"+(parseInt(cc.cs.PlayerInfo.level))]
         this.setExp(cc.cs.PlayerInfo.exp,leveldata["LEV_EXP"])
         this.initialize(cc.cs.PlayerInfo.Bag);
 
