@@ -106,21 +106,25 @@ cc.Class({
     {
        
         var self = this
+        var volume = 0
         if(this.isSondOff == false)
         {
-        cc.loader.loadRes("audio/voice/"+name, function (err, clip) {
+            volume = 1
+        }
+        else 
+            {
+                volume = 0
+            }
+            cc.loader.loadRes("audio/voice/"+name, function (err, clip) {
 
             cc.log("playVoice name"+name + " erro code "+err)
-
-            self.Backid  = cc.audioEngine.play(clip, false, 1);
-
-             cc.log("播放语音ID = " + self.Backid)
-
-             self.setFinishCallback(self.Backid,handle)
+            self.Backid  = cc.audioEngine.play(clip, false, volume);
+            cc.log("播放语音ID = " + self.Backid)
+            self.setFinishCallback(self.Backid,handle)
 
             
         });
-    }
+    
     return  self.Backid;
 },
 
@@ -145,10 +149,10 @@ cc.Class({
 
        StopVoice:function()
      {
-        if(this.isSondOff == false){
+        
 
          cc.audioEngine.stop(this.Backid)
-        }
+        
 
      },
 
