@@ -106,6 +106,8 @@ cc.Class({
     {
        
         var self = this
+        if(this.isSondOff == false)
+        {
         cc.loader.loadRes("audio/voice/"+name, function (err, clip) {
 
             cc.log("playVoice name"+name + " erro code "+err)
@@ -118,6 +120,7 @@ cc.Class({
 
             
         });
+    }
     return  self.Backid;
 },
 
@@ -131,8 +134,10 @@ cc.Class({
 
      StopAudio:function(id)
      {
+        if(this.isSondOff == false){
 
          cc.audioEngine.stop(id)
+        }
 
      },
 
@@ -140,8 +145,10 @@ cc.Class({
 
        StopVoice:function()
      {
+        if(this.isSondOff == false){
 
          cc.audioEngine.stop(this.Backid)
+        }
 
      },
 

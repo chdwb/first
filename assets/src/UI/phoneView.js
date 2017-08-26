@@ -676,6 +676,7 @@ cc.Class({
                 this.timeIng = false;
                 this.setInputMsg(this.NPCID)
                     //this.isAction = false;
+                cc.cs.AudioMgr.StopAudio(this.callingauidoid)
                 this.isAction = false
                 this.currentTime = 0
                 this.totalTime = 0
@@ -743,8 +744,8 @@ cc.Class({
             self.showPhone()
             self.isAction = true;
             self.currentTime = 0
-            self.totalTime = 3
-            cc.cs.AudioMgr.playAudio("calling",false)
+            self.totalTime = 5.34
+           this.callingauidoid = cc.cs.AudioMgr.playAudio("calling",true)
             self.second = 0;
             self.minute = 0;
             self.timeIng = false
