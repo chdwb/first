@@ -72,6 +72,9 @@ cc.Class({
 
         Bag: [],
 
+        playerbuyvideos:[],
+        playerhotpacks:[],
+
 
 
         wechat_fn: false,
@@ -185,14 +188,44 @@ cc.Class({
         this.Bag.push(newGood)
     },
 
+        modfiyVideo: function(data) {
+        var id = parseInt(data.video_id)
+        for (var i = 0; i < this.playerbuyvideos.length; i++) {
+            if (this.playerbuyvideos[i].video_id == id) {
+                
+                return
+            }
+        }
+        this.playerbuyvideos.push(data)
+    },
+
+        modfiyHotPack: function(data) {
+        var id = parseInt(data.hot_id)
+        for (var i = 0; i < this.playerhotpacks.length; i++) {
+            if (this.playerhotpacks[i].hot_id == id) {
+                //this.Bag[i].num = n
+                return
+            }
+        }
+        
+        this.playerhotpacks.push(data)
+    },
+
     refreshInfoData: function(info) {
         for (var item in info) {
             if (this.hasOwnProperty(item)) {
                 this[item] = info[item]
                 cc.log("item ==" + item + "  this[item]  == "+  this[item] + "  info[item] == " +info[item] )
             } else {
-                
-                if (item.match(/goods\d+_id/)) {
+                 if(item.match(/hotpacks/)){
+                    for(var viewoItem in info[item]){
+                        this.modfiyHotPack(  info[item][viewoItem])
+                    }
+                } else if(item.match(/buyvideos/)){
+                    for(var viewoItem2 in info[item]){
+                        this.modfiyVideo(info[item][viewoItem2])
+                    }
+                }else  if (item.match(/goods\d+_id/)) {
                     var n = parseInt(item.replace(/[^0-9]+/g, ''))
                     cc.log("item ==" + item + "  n  == "+  n + "  info[item] == " +info[item] )
                     this.modfiyBag(info[item], info["goods" + n + "_num"])

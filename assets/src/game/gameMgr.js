@@ -208,6 +208,9 @@ cc.Class({
         } else if (type == 4) {
             data["workpkid"] = goodsid
         }
+        else if (type == 5) {
+            data["videoid"] = goodsid
+        }
 
         this.sendHttp("ID_12", data, handle, obj)
     },
