@@ -261,7 +261,7 @@ cc.Class({
         {
             //cc.cs.gameMgr.buyRightNow(type,this.onBuyRightNowhandle,this)
             
-            cc.cs.UIMgr.showPopBuy(3,this.buyLIJI,this)
+            cc.cs.UIMgr.showPopBuy(2,this.buyLIJI,this)
         }
         else
         {
