@@ -5239,7 +5239,8 @@
     "iconWidth": 0,
     "isAddIcon": false,
     "addIcon": null,
-    "caiDanWidth": 0
+    "caiDanWidth": 0,
+    "SoundOff": false
   },
   {
     "__type__": "cc.Node",

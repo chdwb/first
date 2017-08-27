@@ -98,10 +98,29 @@ cc.Class({
                 }
             }else 
             {
-                this.remai.active = true
+                for (var i = 0; i < cc.cs.PlayerInfo.playerhotpacks.length; i++) 
+                {
+                cc.log("update HOT item "+ cc.cs.PlayerInfo.playerhotpacks[i].video_id)
+                if (cc.cs.PlayerInfo.playerhotpacks[i].hot_id == this.GoodID)
+                 {
+                    this.have.active = true
+                    this.IsHave = true
                 
-            }
+                break;
+                }
+            
+            
+                }
+                if(this.IsHave == false)
+                {
+                        this.remai.active = true
+                    
+                }
 
+            }
+            
+           
+            
         }
 
         if(this.ShopType == 4)
@@ -223,7 +242,7 @@ cc.Class({
                 cc.cs.PlayerInfo.Bag.push(newgoods)
             }*/
             
-            
+            this.node.parent.parent.parent.parent.parent.getComponent("Shop").updateUi()
             
             
         } else {
@@ -263,7 +282,7 @@ cc.Class({
                 cc.cs.PlayerInfo.Bag.push(newgoods)
             }*/
             
-            
+            this.node.parent.parent.parent.parent.parent.getComponent("Shop").updateUi()
             
             
         } else {
