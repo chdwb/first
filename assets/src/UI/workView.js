@@ -60,6 +60,8 @@ cc.Class({
 
         workLogID : "",
 
+        n:0,
+
     },
 
     refresh : function()
@@ -274,6 +276,33 @@ cc.Class({
         }, this.backBtn)
     },
 
+     buyPop:function()
+    {
+
+        cc.cs.gameMgr.sendGoodBuy( 4,this.n - 10, 1, this.onLibaohandle, this)
+
+    },
+
+      onLibaohandle:function(ret)
+    {
+        cc.log("libao update")
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
+            cc.cs.UIMgr.showTip("购买成功", 1.0)
+            var parent = this.node.parent
+            
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            this.refresh()
+           
+            
+            
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+    },
+
     onEnable:function()
     {
         this.refreshItem()
@@ -287,7 +316,32 @@ cc.Class({
         }
         else
         {
-            
+
+            var hehe  = (cc.random0To1() + 0.4) * 2
+            if(hehe < 0.5)
+            {
+                var n = 0;
+                if(cc.cs.PlayerInfo.work_id < 3)
+                {
+                   this.n = 11
+
+                }
+                else if(cc.cs.PlayerInfo.work_id < 5)
+                {
+                    this.n = 12
+                }
+                else if(cc.cs.PlayerInfo.work_id < 7)
+                {
+                    this.n = 13
+                }
+                else if(cc.cs.PlayerInfo.work_id < 10)
+                {
+                    this.n = 14
+                }
+                 if(n!=0)
+                cc.cs.UIMgr.showPopBuy(n, this.buyPop, this)
+            }
+
         }
 
 

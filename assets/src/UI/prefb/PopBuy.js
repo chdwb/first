@@ -28,7 +28,19 @@ cc.Class({
     
     setCallBack:function(id,OKhandle,obj)
     {
-        cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop/" + id)
+        if(id > 10)
+        {
+
+            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop2/" + id - 10)
+
+        }
+        else
+        {
+
+            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop/" + id)
+
+        }
+        
         this.doJob = OKhandle
         this.obj = obj
     },
