@@ -84,6 +84,33 @@ cc.Class({
     }
     ,
 
+    buyPop:function()
+    {
+
+        cc.cs.gameMgr.sendGoodBuy( 3,7, 1, this.onLibaohandle, this)
+
+    },
+
+      onLibaohandle:function(ret)
+    {
+        cc.log("libao update")
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success === true) {
+            cc.cs.UIMgr.closeNetView()
+            cc.cs.UIMgr.showTip("购买成功", 1.0)
+            var parent = this.node.parent
+            
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            this.updateui()
+           
+            
+            
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+    },
+
     
 
     initialize: function (itemArray) {

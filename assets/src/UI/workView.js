@@ -285,6 +285,12 @@ cc.Class({
             var itemCom = children[0].getComponent("missionItemComponent") // 第一个档位
             cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,itemCom.getstartBtn(),this)
         }
+        else
+        {
+            
+        }
+
+
     }
 
     // called every frame, uncomment this function to activate update callback
