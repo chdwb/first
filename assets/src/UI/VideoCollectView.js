@@ -66,8 +66,25 @@ cc.Class({
     onEnable:function()
     {
         this.updateui()
+
+        var isshowpop = true
+         for (var i = 0; i < cc.cs.PlayerInfo.playerhotpacks.length; i++) 
+                {
+                cc.log("update HOT item "+ cc.cs.PlayerInfo.playerhotpacks[i].video_id)
+                if (cc.cs.PlayerInfo.playerhotpacks[i].hot_id == 7)
+                 {
+                    isshowpop = false
+                    break;
+                 }
+                }
+                if(isshowpop)
+                {
+                    cc.cs.UIMgr.showPopBuy(7, this.buyPop, this)
+                }
     }
     ,
+
+    
 
     initialize: function (itemArray) {
         cc.log("alkdjflkajdflkajf")
