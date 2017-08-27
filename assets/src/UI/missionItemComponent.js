@@ -181,7 +181,7 @@ cc.Class({
             this.goodsLabel.node.active = false
         } else {
             this.goodsLabel.node.active = true
-            this.goodsLabel.string = "所需道具：  " + dateData["DATE_NEED_GOODS_ID"] + "x" + dateData["DATE_NEED_GOODS_COUNT"]
+            this.goodsLabel.string = "所需道具：  " +   cc.cs.gameData.getgoodsData(dateData["DATE_NEED_GOODS_ID"])["GOODS_NAME"] 
         }
 
         this.startTips.node.active = false
