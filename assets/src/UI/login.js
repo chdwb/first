@@ -149,6 +149,7 @@ cc.Class({
     isFirstGame:function(){
 
         var diviceid =  cc.sys.localStorage.getItem('UUID')
+        cc.log("isfirstGame diviceid = "+ diviceid)
         if(diviceid != "" && diviceid != null)
         {
             return false;

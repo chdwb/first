@@ -615,6 +615,7 @@ cc.Class({
             var heartTarget = this.node.getChildByName("expBG")
 
           //  cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
+            this.refresh()
             
 
             if (cc.cs.PlayerInfo.canPhone2()) {
