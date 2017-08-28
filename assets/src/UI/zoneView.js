@@ -396,8 +396,8 @@ cc.Class({
 
         if (parseInt(cc.cs.PlayerInfo.guide_id) == 16) // 工作开始按钮
         {
-            var jsZoneItem = children[0].getComponent("zoneItem") // 第一个档位
-             cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,jsZoneItem.getOptiontBtn(),this)
+           // var jsZoneItem = children[0].getComponent("zoneItem") // 第一个档位
+            // cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,jsZoneItem.getOptiontBtn(),this)
         }
         cc.cs.UIMgr.refresh_verticalScrollViewUp(this.scrollView)
     },
