@@ -336,7 +336,49 @@ cc.Class({
             index++
         }
         this.refresh()
+
+          var hehe2  = cc.random0To1() * 10
+            
+            if(hehe2 < 4  && cc.cs.PlayerInfo.date_fn == false )
+            {
+               
+                 cc.cs.UIMgr.showPopBuy(2,this.buyLIJI,this)
+            }
     },
+
+     buyLIJI:function()
+    {
+        cc.cs.gameMgr.buyRightNow(3,this.onBuyRightNowhandle,this)
+    },
+
+     onBuyRightNowhandle:function(ret)
+     {
+
+         cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) 
+        {
+            cc.cs.UIMgr.closeNetView()
+            cc.cs.UIMgr.showTip("购买成功", 1.0)
+           if(this.isWork)
+           {
+            cc.cs.PlayerInfo.work_fn = JasonObject.content.info.work_fn
+            cc.cs.PlayerInfo.date_fn = JasonObject.content.info.work_fn
+           }
+           else
+           {
+            cc.cs.PlayerInfo.date_fn = JasonObject.content.info.date_fn
+             cc.cs.PlayerInfo.work_fn = JasonObject.content.info.date_fn
+           }
+           
+
+
+        }else{
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+
+     },
+
 
     /*goShop: function() {
         //var parent = this.node.parent

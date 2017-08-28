@@ -31,7 +31,7 @@ cc.Class({
         if(id > 10)
         {
 
-            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop2/" + id - 10)
+            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop2/" + (id - 10))
 
         }
         else

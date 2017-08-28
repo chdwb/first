@@ -97,6 +97,7 @@ cc.Class({
         isAddIcon : false,
         addIcon : null,
         caiDanWidth : 0,
+        now:0,
         SoundOff:false
     },
 
@@ -663,8 +664,57 @@ cc.Class({
             this.isSondOff = true;
         }
 
+         for(var j = 3; j <=6; j++)
+         {
+            for (var i = 0; i < cc.cs.PlayerInfo.playerhotpacks.length; i++) 
+                    {
+                    var isbuy = false;
+                    if (cc.cs.PlayerInfo.playerhotpacks[i].hot_id == j )  // 已经买过
+                    {
+                        isbuy = true;
+                    }
+                }
+
+                if(isbuy == false)
+                {
+                    this.now = j
+                    break;
+                }
+         }
+       
+        if(cc.cs.PlayerInfo.level >=1 )
+        {
+           
+             cc.cs.UIMgr.showPopBuy(this.now ,this.buyLIJI,this)
+
+        }
+
 
     },
+
+     buyLIJI:function()
+    {
+         cc.cs.gameMgr.sendGoodBuy( 3,this.now, 1, this.onLibaohandle, this)
+    },
+
+     onLibaohandle:function(ret)
+     {
+
+         cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) 
+        {
+            cc.cs.UIMgr.closeNetView()
+            cc.cs.UIMgr.showTip("购买成功", 1.0)
+           cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+           
+
+
+        }else{
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+
+     },
 
     // called every frame, uncomment this function to activate update callback
     update: function(dt) {

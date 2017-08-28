@@ -276,12 +276,45 @@ cc.Class({
         }, this.backBtn)
     },
 
-     buyPop:function()
+     buyPop:function() // 职位礼包
     {
 
         cc.cs.gameMgr.sendGoodBuy( 4,this.n - 10, 1, this.onLibaohandle, this)
 
     },
+
+    buyLIJI:function()
+    {
+        cc.cs.gameMgr.buyRightNow(3,this.onBuyRightNowhandle,this)
+    },
+
+     onBuyRightNowhandle:function(ret)
+     {
+
+         cc.log(ret)
+        var JasonObject = JSON.parse(ret);
+        if (JasonObject.success == true) 
+        {
+            cc.cs.UIMgr.closeNetView()
+            cc.cs.UIMgr.showTip("购买成功", 1.0)
+           if(this.isWork)
+           {
+            cc.cs.PlayerInfo.work_fn = JasonObject.content.info.work_fn
+            cc.cs.PlayerInfo.date_fn = JasonObject.content.info.work_fn
+           }
+           else
+           {
+            cc.cs.PlayerInfo.date_fn = JasonObject.content.info.date_fn
+             cc.cs.PlayerInfo.work_fn = JasonObject.content.info.date_fn
+           }
+           
+
+
+        }else{
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+
+     },
 
       onLibaohandle:function(ret)
     {
@@ -317,10 +350,11 @@ cc.Class({
         else
         {
 
-            var hehe  = (cc.random0To1() + 0.4) * 2
-            if(hehe < 0.5)
+            var hehe  = cc.random0To1() * 10
+            cc.log("hehe =" + hehe)
+            if(hehe < 4)
             {
-                var n = 0;
+                //var n = 0;
                 if(cc.cs.PlayerInfo.work_id < 3)
                 {
                    this.n = 11
@@ -338,8 +372,17 @@ cc.Class({
                 {
                     this.n = 14
                 }
-                 if(n!=0)
-                cc.cs.UIMgr.showPopBuy(n, this.buyPop, this)
+                 if(this.n!=0)
+                cc.cs.UIMgr.showPopBuy(this.n, this.buyPop, this)
+            }
+
+
+             var hehe2  = cc.random0To1() * 10
+            
+            if(hehe2 < 4 && hehe > 4 && cc.cs.PlayerInfo.work_fn == false)
+            {
+               
+                 cc.cs.UIMgr.showPopBuy(2,this.buyLIJI,this)
             }
 
         }

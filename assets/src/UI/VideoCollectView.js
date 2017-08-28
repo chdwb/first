@@ -41,6 +41,7 @@ cc.Class({
     updateui:function(){
 
         this.setGold(cc.cs.PlayerInfo.money)
+         this.initialize(cc.cs.gameData.video);
     },
 
     onBack:function()
@@ -51,8 +52,8 @@ cc.Class({
 
         this.content = this.scrollView.content;
         this.prefab = cc.loader.getRes("prefab/VideoItem", cc.Prefab)
-        cc.cs.game
-        this.initialize(cc.cs.gameData.video);
+        
+       
 
     },
     goshop:function(){
