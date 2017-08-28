@@ -91,7 +91,6 @@ cc.Class({
                 var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
                 this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
                     //this.setDiamond(cc.cs.PlayerInfo.Diamond)
-               
             },
 
     updateui:function(){
@@ -114,7 +113,7 @@ cc.Class({
             var heartTarget = this.node.getChildByName("expBG")
             this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
             cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
-            
+
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
             cc.cs.PlayerInfo.replies_.push(this.currentPLID)
             cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo

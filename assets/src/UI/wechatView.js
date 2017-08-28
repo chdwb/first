@@ -414,6 +414,7 @@ cc.Class({
     onEnable: function() {
 
         this.updateui()
+        this.refresh()
         if (!this.isAction) {
             this.inputTableBtn.active = false;
             this.quikeTip.active = false
