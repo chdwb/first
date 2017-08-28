@@ -331,7 +331,7 @@ cc.Class({
             var children = scrollView.content.getChildren()
             for (var i = 0; i < scrollView.content.childrenCount; ++i) {
 
-                children[i].y += (1.0 - scrollView.content.anchorY) * scrollView.content.height - (node.height + verticalSpace)
+                children[i].y -=node.height
             }
             pos.y = ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height)
         }
@@ -350,17 +350,12 @@ cc.Class({
         var children = scrollView.content.getChildren();
         var height = 0;
 
-        for (var i = 0; i < children.length; ++i) {
-
-            if (i == 0) {
-                scrollView.content.height = children[i].height + verticalSpace
-                children[i].y = 0
-            } else {
-
-                children[i].y = -scrollView.content.height
-                scrollView.content.height += +children[i].height + verticalSpace
-            }
+        for (var i = children.length - 1; i >= 0; --i) {
+            children[i].y = -height
+            height += children[i].height
         }
+        scrollView.content.height = height
+
     },
 
 

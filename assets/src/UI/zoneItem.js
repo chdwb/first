@@ -452,10 +452,10 @@ cc.Class({
     },
 
     sendReplyHandle: function(ret) {
+        cc.cs.UIMgr.closeNetView()
         var JasonObject = JSON.parse(ret);
-		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            //cc.cs.UIMgr.closeNetView()
+            
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(this.zoneID))
             cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
