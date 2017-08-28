@@ -64,6 +64,7 @@ cc.Class({
         currentItem: null,
 
         lastZoneID: 0,
+        currentExp:0,
     },
 
     SendDJ: function(phoneid, target) {
@@ -85,6 +86,12 @@ cc.Class({
 		 var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
         cc.cs.UIMgr.setHeart(heartTarget, currentExp,levlExp)
     },
+    refresh:function(){
+        
+                var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
+                this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+                    //this.setDiamond(cc.cs.PlayerInfo.Diamond)
+            },
 
     updateui:function(){
         
@@ -103,6 +110,10 @@ cc.Class({
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
+            var heartTarget = this.node.getChildByName("expBG")
+            this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
+            cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
+
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
             cc.cs.PlayerInfo.replies_.push(this.currentPLID)
             cc.cs.PlayerInfo.playvideo = JasonObject.content.info.playvideo
@@ -110,8 +121,8 @@ cc.Class({
                 //    cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
             this.currentItem.plCallBack()
-            cc.cs.UIMgr.showTip("评论完成", 1.0)
-            this.updateui()
+            //cc.cs.UIMgr.showTip("评论完成", 1.0)
+          //  this.updateui()
                 // }
             cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
