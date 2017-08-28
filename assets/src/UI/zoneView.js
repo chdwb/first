@@ -379,7 +379,7 @@ cc.Class({
         this.showBg.active = false
         var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
         if (newID != this.lastZoneID) {
-            this.addZoneId(ndeID)
+            this.addZoneId(newID)
         }
         var children = this.scrollView.content.getChildren();
         for (var i = 0; i < children.length; ++i) {
