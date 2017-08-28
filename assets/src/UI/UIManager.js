@@ -235,6 +235,7 @@ cc.Class({
                     break;
                 case 2:
                 case 3:
+                case 17:
                     {
                         popupNode = cc.instantiate(this.nodeGuidePrefabNArrowLeft)
                     }
@@ -252,7 +253,7 @@ cc.Class({
 
                 case 7:
                 case 12:
-                case 17:
+                //case 17:
                     {
                         popupNode = cc.instantiate(this.nodeGuidePrefabRight)
                     }
