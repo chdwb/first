@@ -158,13 +158,14 @@ cc.Class({
 		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success == true) {
             //cc.cs.UIMgr.closeNetView()
+        
+            var heartTarget = this.node.getChildByName("expBG")
+            this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
+            cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
 
-
-            var wechatData = cc.cs.gameData.getwechatData(this.currentPlayerWechatID )
-        var exp = wechatData["WECHAT_EXP"]
-        var heartTarget = this.node.getChildByName("expBG")
-         cc.cs.UIMgr.showExpTip(exp, heartTarget, this)
-       /* if (parseInt(exp) < 0)
+        var wechatData = cc.cs.gameData.getwechatData(this.currentPlayerWechatID )
+       /* var exp = wechatData["WECHAT_EXP"]
+        if (parseInt(exp) < 0)
             {
                 cc.cs.UIMgr.showTip("恋爱值减少"+exp,1.0)
             }
@@ -201,17 +202,15 @@ cc.Class({
                 this.NPCID = JasonObject.content.info.wechat_next
 
                 this.setInputMsg(this.currentPlayerWechatID)
-                if (cc.cs.PlayerInfo.canWechat()) {
-                    this.isAction = true;
-                    this.currentTime = 0
-                    this.totalTime = (cc.random0To1() + 0.4) * 8
-                    if (this.totalTime > 8) this.totalTime = 8
+                this.isAction = true;
+                this.currentTime = 0
+                this.totalTime = (cc.random0To1() + 0.4) * 8
+                if (this.totalTime > 8) this.totalTime = 8
 
-                    this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step, this))
-                    cc.cs.UIMgr.gameScene.node.runAction(this.talkAction)
-                } else {
+                this.talkAction = cc.sequence(cc.delayTime(this.totalTime), cc.callFunc(this.step, this))
+                cc.cs.UIMgr.gameScene.node.runAction(this.talkAction)
+                if (!cc.cs.PlayerInfo.canWechat()) {
                     this.sendDisable()
-                    this.setInputMsg(this.NPCID)
                 }
             }
 
@@ -399,13 +398,16 @@ cc.Class({
         }
     },
 
+    refresh:function(){
+        
+                var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
+                this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+        
+    }
+    ,
+
     updateui:function(){
-
-        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
-        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
-            //this.setDiamond(cc.cs.PlayerInfo.Diamond)
         this.setGold(cc.cs.PlayerInfo.money)
-
     }
     ,
 
@@ -605,7 +607,7 @@ cc.Class({
         }
     },
 
-    refresh: function() {
+   /* refresh: function() {
         cc.log(cc.cs.gameData.wechat["WECHAT_ID_" + cc.cs.PlayerInfo.wechat_id]["WECHAT_LEVEL"] + "    g       " + cc.cs.PlayerInfo.wechat_id + "       f     " + parseInt(cc.cs.PlayerInfo.level) + "    j ")
         if (cc.cs.PlayerInfo.canWechat()) {
             cc.log("this.NPCID  = " + this.NPCID + "    " + cc.cs.gameData.wechat["WECHAT_ID_" + (parseInt(this.NPCID))]["WECHAT_LEVEL"] + "     " + parseInt(cc.cs.PlayerInfo.level))
@@ -626,7 +628,7 @@ cc.Class({
             this.sendDisable()
             return false
         }
-    },
+    },*/
 
 
     loadCruuentTalk: function(scroll, isPlayer, msg, name, isday) {

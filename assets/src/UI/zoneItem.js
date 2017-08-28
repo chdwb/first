@@ -71,6 +71,7 @@ cc.Class({
         isShowPopup: false,
         isAddOther: false,
         popupWidth: 0,
+        currentExp : 0,
     },
 
     getplBtn: function() {
@@ -460,6 +461,10 @@ cc.Class({
         cc.cs.UIMgr.closeNetView()
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
+
+            this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
+            var heartTarget = cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").node.getChildByName("expBG")
+            cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView"))
             
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             cc.cs.PlayerInfo.weibo_thumbs.push(parseInt(this.zoneID))
@@ -470,7 +475,7 @@ cc.Class({
                 // }else{
 
             this.dzCallBack()
-            cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").updateui()
+           
                 // }
             cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
 
