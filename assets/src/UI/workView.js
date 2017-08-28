@@ -332,6 +332,7 @@ cc.Class({
             
             cc.cs.PlayerInfo.money = JasonObject.content.info.money
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            this.refreshItem()
             this.refresh()
            
             

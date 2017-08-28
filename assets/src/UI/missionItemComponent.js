@@ -317,7 +317,7 @@ cc.Class({
 
         if( parseInt(needgold) > cc.cs.PlayerInfo.money)
         {
-            cc.cs.UIMgr.showPopupOC("提示","没有足够的金币，是否前往购买",this.goShop,null)
+            cc.cs.UIMgr.showPopupOC("提示","需要"+needgold+ "金币，是否前往购买",this.goShop,null)
         }
         else
         {
