@@ -162,14 +162,16 @@ cc.Class({
 
             var wechatData = cc.cs.gameData.getwechatData(this.currentPlayerWechatID )
         var exp = wechatData["WECHAT_EXP"]
-        if (parseInt(exp) < 0)
+        var heartTarget = this.node.getChildByName("expBG")
+         cc.cs.UIMgr.showExpTip(exp, heartTarget, this)
+       /* if (parseInt(exp) < 0)
             {
                 cc.cs.UIMgr.showTip("恋爱值减少"+exp,1.0)
             }
             else
             {
                 cc.cs.UIMgr.showTip("恋爱值增加"+exp,1.0)
-            }
+            }*/
             if (cc.cs.PlayerInfo.wechat_fn == true) {
                 this.inputTableBtn.WECHAT_ID = 0
                 this.msgText.node.active = false
