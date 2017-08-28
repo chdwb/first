@@ -686,9 +686,9 @@ cc.Class({
                 }
          }
        
-        if(cc.cs.PlayerInfo.level >=1 )
+        if(cc.cs.PlayerInfo.level >=6 )
         {
-           
+             if(this.now != 0)
              cc.cs.UIMgr.showPopBuy(this.now ,this.buyLIJI,this)
 
         }
