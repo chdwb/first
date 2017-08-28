@@ -537,6 +537,12 @@ cc.Class({
             
             cc.cs.UIMgr.showTip("使用成功", 1.0)
             var parent = this.node.parent
+
+
+            var heartTarget = this.node.getChildByName("expBG")
+            this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
+            cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
+
             
             /*cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
             cc.cs.PlayerInfo.level = JasonObject.content.info.level
@@ -564,7 +570,10 @@ cc.Class({
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
     },
-    
+    refresh:function()
+    {
+
+    }
     
     
 
