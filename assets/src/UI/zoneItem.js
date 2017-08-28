@@ -443,6 +443,11 @@ cc.Class({
         }, this.dzBtn)
     },
 
+    getOptiontBtn:function()
+    {
+        return this.optionBtn
+    },
+
     setZan: function(count) {
         //this.dzBtn.getChildByName("Label").getComponent(cc.Label).string = "点赞("+count+")"
     },
