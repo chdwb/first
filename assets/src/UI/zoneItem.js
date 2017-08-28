@@ -117,6 +117,11 @@ cc.Class({
         }
         self.isShowPopup = true
     },
+
+    setZoneDay : function(id){
+        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(id)
+    },
+
     setZoneID: function(id) {
         var self = this
         this.zoneID = id
@@ -302,7 +307,9 @@ cc.Class({
 
     addOtherText: function() {
         if (this.isAddOther) return
+            
         var id = this.zoneID
+        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(id)
         if (cc.cs.PlayerInfo.canPLZone(id)) return
         var height = Math.abs(this.replyMsg.node.y * 2)
         var fbData = cc.cs.gameData.getreplyData(id);

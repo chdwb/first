@@ -338,6 +338,11 @@ cc.Class({
             if (this.ZoneIDList[i].zoneID == id) return
         }
 
+        if(id != cc.cs.gameData.zone["FIRST"]){
+            var line = cc.instantiate(this.linePrefab)
+            cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
+        }
+
         var zoneData = cc.cs.gameData.getzoneData(id)
 
         if (zoneData == null) return
@@ -366,10 +371,7 @@ cc.Class({
             jsZoneItem.addOtherText()
         }
         cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, zoneItem, 0)
-        if(id != cc.cs.gameData.zone["FIRST"]){
-            var line = cc.instantiate(this.linePrefab)
-            cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
-        }
+        
     },
 
     /*canZone: function() {
@@ -390,9 +392,16 @@ cc.Class({
         this.inputNode.active = false;
         this.showBg.active = false
         var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
+
+        var zoneData = cc.cs.gameData.getzoneData(this.lastZoneID)
+        this.infoText.node.active = true
+        this.infoText.string = "关注" + zoneData["ZONE_FOLLOW_NUM"] + "|" + "粉丝" + zoneData["ZONE_FANS_COUNT"]
+        
         while(newID != this.lastZoneID){
+      
             this.addZoneId(newID)
             this.lastZoneID = newID
+            newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
         }
     
         var children = this.scrollView.content.getChildren();
@@ -433,7 +442,7 @@ cc.Class({
 
         var count = cc.cs.PlayerInfo.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
         cc.log("azone count = " + count)
-        this.lastZoneID = count
+        this.lastZoneID = count - 1
         if (count > 0) {
             for (var i = cc.cs.gameData.zone["FIRST"]; i < count ; ++i) {
                 this.addZoneId(i)
