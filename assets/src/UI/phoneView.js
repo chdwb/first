@@ -604,8 +604,9 @@ cc.Class({
 
     SendPhoneHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            //cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)

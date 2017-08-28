@@ -99,8 +99,9 @@ cc.Class({
 
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            //cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             this.currentItem.addPlayerText(parseInt(this.currentPLID))
             cc.cs.PlayerInfo.replies_.push(this.currentPLID)

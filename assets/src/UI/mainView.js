@@ -537,8 +537,9 @@ cc.Class({
     sendReplyHandle(ret) {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            //cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
 
 
@@ -552,8 +553,9 @@ cc.Class({
     sendReplyHandle(ret) {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            //cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
 
@@ -666,12 +668,14 @@ cc.Class({
 
          for(var j = 3; j <=6; j++)
          {
+             var isbuy = false;
             for (var i = 0; i < cc.cs.PlayerInfo.playerhotpacks.length; i++) 
                     {
-                    var isbuy = false;
+                    
                     if (cc.cs.PlayerInfo.playerhotpacks[i].hot_id == j )  // 已经买过
                     {
                         isbuy = true;
+                        break;
                     }
                 }
 
@@ -702,9 +706,10 @@ cc.Class({
 
          cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success == true) 
         {
-            cc.cs.UIMgr.closeNetView()
+           // cc.cs.UIMgr.closeNetView()
             cc.cs.UIMgr.showTip("购买成功", 1.0)
            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
            

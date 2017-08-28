@@ -96,8 +96,9 @@ cc.Class({
     {
         cc.log("libao update")
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            //cc.cs.UIMgr.closeNetView()
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             var parent = this.node.parent
             

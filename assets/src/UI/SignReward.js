@@ -52,8 +52,9 @@ cc.Class({
     {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+           // cc.cs.UIMgr.closeNetView()
             cc.cs.UIMgr.showTip("签到成功", 1.0)
 
             //cc.cs.PlayerInfo.signday = JasonObject.content.info.signday

@@ -42,8 +42,9 @@ cc.Class({
     {
 
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
                 if (JasonObject.success === true) {
-                    cc.cs.UIMgr.closeNetView()
+                    //cc.cs.UIMgr.closeNetView()
                     cc.cs.PlayerInfo.playvideo = JasonObject.content.info.video_id;
                     //cc.cs.UIMgr.showTip("视频完成", 1.0)
                     cc.log("视频完成")
@@ -95,8 +96,9 @@ cc.Class({
     voidoDownloadHandle:function(ret)
     {
          var JasonObject = JSON.parse(ret);
+		 cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            //cc.cs.UIMgr.closeNetView()
             var url = JasonObject.content.info.url
             var videoid = JasonObject.content.info.video_id
 

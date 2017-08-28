@@ -93,8 +93,9 @@ cc.Class({
 
     doneWork : function(ret){
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            
             var workData = cc.cs.gameData.getworkData(this.doID)
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.showPopupO("达成", "经过辛勤的工作，你获得了" + workData["REWARD"]+"金币。", this.closePopupHandle)
@@ -113,8 +114,9 @@ cc.Class({
 
     doneDate:function(ret){
         var JasonObject = JSON.parse(ret);
+		 cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+           
             var dateData = cc.cs.gameData.getdateData(this.doID)
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
             cc.cs.UIMgr.showPopupO("达成", "你获得了" + dateData["DATE_EXP"]+"亲密度。", this.closePopupHandle)
@@ -173,10 +175,11 @@ cc.Class({
     onRightNowHandle:function(ret)
     {
          var JasonObject = JSON.parse(ret);
+		 cc.cs.UIMgr.closeNetView()
         if (JasonObject.success == true) 
         {
             //cc.cs.UIMgr.showTip("", 1.0)
-            cc.cs.UIMgr.closeNetView()
+            
             if(this.isWork == true)
             {
 
@@ -283,9 +286,10 @@ cc.Class({
 
          cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success == true) 
         {
-            cc.cs.UIMgr.closeNetView()
+            
             cc.cs.UIMgr.showTip("购买成功", 1.0)
            if(this.isWork)
            {

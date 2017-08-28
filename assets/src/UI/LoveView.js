@@ -85,10 +85,10 @@ cc.Class({
 
     upgradeWorkHandle(ret) {
         cc.log(ret)
+		cc.cs.UIMgr.closeNetView()
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success == true) {
-            cc.cs.UIMgr.closeNetView()
-            cc.cs.UIMgr.closeNetView()
+            
             cc.cs.PlayerInfo.money = JasonObject.content.info.money
             cc.cs.PlayerInfo.work_id = JasonObject.content.info.work_id
             this.loadWorkItem(cc.cs.PlayerInfo.work_id)
@@ -102,8 +102,9 @@ cc.Class({
     startWorkHandle(ret) {
 
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            
             cc.cs.UIMgr.showTip("开始恋爱", 1.0)
             var parent = this.node.parent
 
@@ -132,8 +133,9 @@ cc.Class({
     DoneDateHandle: function(ret) {
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+           
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             /*cc.cs.PlayerInfo.level = JasonObject.content.info.level
             cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
@@ -179,8 +181,9 @@ cc.Class({
 
     buyLoveTimehandle: function(ret) {
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
-            cc.cs.UIMgr.closeNetView()
+            
             cc.cs.UIMgr.showTip("购买成功", 1.0)
             cc.log("loveid = " + this.currentWorkID)
             cc.cs.PlayerInfo.money = JasonObject.content.info.money
@@ -356,9 +359,10 @@ cc.Class({
 
          cc.log(ret)
         var JasonObject = JSON.parse(ret);
+		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success == true) 
         {
-            cc.cs.UIMgr.closeNetView()
+            
             cc.cs.UIMgr.showTip("购买成功", 1.0)
            if(this.isWork)
            {
