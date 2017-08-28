@@ -355,7 +355,7 @@ cc.Class({
             jsZoneItem.addOtherText()
         }
         cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, zoneItem, 0)
-        if(id != 1){
+        if(id != cc.cs.gameData.zone["FIRST"]){
             var line = cc.instantiate(this.linePrefab)
             cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
         }
@@ -379,15 +379,19 @@ cc.Class({
         this.inputNode.active = false;
         this.showBg.active = false
         var newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
-        if (newID != this.lastZoneID) {
+        while(newID != this.lastZoneID){
             this.addZoneId(newID)
+            this.lastZoneID = newID
         }
+    
         var children = this.scrollView.content.getChildren();
+        if(children.length == 0) return
         for (var i = 0; i < children.length; ++i) {
             
             var jsZoneItem = children[i].getComponent("zoneItem")
             if(jsZoneItem == null)continue
             jsZoneItem.addOtherText()
+            cc.log("children.lengthchildren.lengthchildren.length    " + children[i])
         }
 
         if (parseInt(cc.cs.PlayerInfo.guide_id) == 16) // 工作开始按钮
@@ -417,9 +421,10 @@ cc.Class({
         this.nameText.string = cc.cs.PlayerInfo.NPCName
 
         var count = cc.cs.PlayerInfo.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
+        cc.log("azone count = " + count)
         this.lastZoneID = count
         if (count > 0) {
-            for (var i = count - 1; i >= cc.cs.gameData.zone["FIRST"]; --i) {
+            for (var i = cc.cs.gameData.zone["FIRST"]; i < count ; ++i) {
                 this.addZoneId(i)
             }
             var zoneData = cc.cs.gameData.getzoneData(this.lastZoneID)
