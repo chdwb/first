@@ -608,15 +608,15 @@ cc.Class({
             //cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
-            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
-            cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
-            this.NPCID = JasonObject.content.info.phone_audio
+           
 
             var heartTarget = this.node.getChildByName("expBG")
             this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
             cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
             
-            
+            cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+            cc.cs.PlayerInfo.addPhonePlayerID(this.currentPlayerPhoneID)
+            this.NPCID = JasonObject.content.info.phone_audio
 
             if (cc.cs.PlayerInfo.canPhone2()) {
                 this.currentTime = 0
