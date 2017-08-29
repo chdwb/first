@@ -443,13 +443,14 @@ cc.Class({
         var pZoneData = cc.cs.gameData.getzoneData(id);
         var pLevel = cc.cs.gameData.getlevelData(this.level);
         var pLevelZone = cc.cs.gameData.getlevelData(pZoneData["ZONE_LEVEL"]);
+        //cc.log("getZoneDay   " +pLevel["LEV_DAY"] + "    " + pLevelZone["LEV_DAY"] + "    " + id  + "    " + this.level)
         return this.getDay(pLevel["LEV_DAY"] - pLevelZone["LEV_DAY"])
     },
 
     canZone: function() {
         var count = this.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
         for (var i = cc.cs.gameData.zone["FIRST"]; i < count; ++i) {
-            if (this.canPLZone(i) || this.canZanZone(i))
+            if (this.getZoneReplyID(i) == 0 || this.canZanZone(i))
                 return true
         }
         return false;
@@ -460,6 +461,25 @@ cc.Class({
             if (id == this.weibo_thumbs[i]) return false;
         }
         return true;
+    },
+
+    getZoneReplyID : function(id){
+        var pZoneData = cc.cs.gameData.getzoneData(id);
+        if(pZoneData == null){
+            return -1
+        }
+        var PZoneReply = null
+        for (var i = 0; i < this.replies_.length; i++) {
+            PZoneReply = cc.cs.gameData.getreplyData(this.replies_[i]);
+            if(PZoneReply == null) {
+                cc.log("this.replies_ error " + this.replies_[i])
+                continue
+            }
+            if (pZoneData["ZONE_LEVEL"] ==
+                PZoneReply["REPLY_LEVEL"])
+                return this.replies_[i];
+        }
+        return 0
     },
 
     canPLZone: function(id) {

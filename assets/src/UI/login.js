@@ -495,7 +495,7 @@ cc.Class({
             }
 
             for(var i=0;i<JasonObject.content.info.replies.length;i++){  
-
+                cc.log("reply_id = "+JasonObject.content.info.replies[i].reply_id)
                 cc.cs.PlayerInfo.addZoneReplies(JasonObject.content.info.replies[i].reply_id)
             }
 

@@ -309,8 +309,19 @@ cc.Class({
         if (this.isAddOther) return
             
         var id = this.zoneID
-        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(id)
-        if (cc.cs.PlayerInfo.canPLZone(id)) return
+        var zoneData = cc.cs.gameData.getzoneData(id)
+        for(var i = 0; i < cc.cs.PlayerInfo.replies_.length; ++i){
+            var replyData = cc.cs.gameData.getreplyData(cc.cs.PlayerInfo.replies_[i])
+            if(replyData == null)
+                return
+            if(replyData["REPLY_LEVEL"] == zoneData["ZONE_LEVEL"]){
+                id = cc.cs.PlayerInfo.replies_[i]
+                break;
+            }
+        }
+
+        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(this.zoneID)
+        if (cc.cs.PlayerInfo.canPLZone(this.zoneID)) return
         var height = Math.abs(this.replyMsg.node.y * 2)
         var fbData = cc.cs.gameData.getreplyData(id);
         if (this.replyList.length == 0) {
@@ -340,7 +351,7 @@ cc.Class({
                     "</color>")
             }
         }
-        var zoneData = cc.cs.gameData.getzoneData(id)
+        
         var fdbackData = null
         for (var i = 1; i <= cc.cs.gameData.zone["TOTAL_COUNT"]; ++i) {
             fdbackData = cc.cs.gameData.getzonefeefbackData(i)
