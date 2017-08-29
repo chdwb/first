@@ -31,6 +31,8 @@ cc.Class({
         {
             this.isSondOff = true;
         }
+
+        this.getHeHe()
     },
     /*
     playEffect:function(clip)
@@ -99,6 +101,37 @@ cc.Class({
     },
 
 
+
+     getHeHe:function()
+    {
+
+      cc.loader.loadRes('666',function(err,data){
+			if(err){
+				cc.error(err);
+			}else{
+				cc.log('test == ' +data);
+			}
+	});
+        
+   
+           //var hehe = cc.loader.getRes("audio/voice/666", cc.TextAsset )
+           //cc.log("aaaabbbbbbbbbbbccccccccccccc"+hehe)
+            //id = cc.audioEngine.play(hehe, isloop, 1);
+            /* cc.loader.loadRes("audio/voice/666", function (err, clip) {
+                 cc.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                  cc.log(err)
+
+                 cc.log(clip)
+
+            //cc.log("playVoice name"+name + " erro code "+err)
+           // self.Backid  = cc.audioEngine.play(clip, false, volume);
+           })*/
+            //self.setFinishCallback(self.Backid,handle)
+        
+       // return id;
+    },
+
+
     playAudio:function(name,isloop)
     {
         if(arguments.length == 1)
@@ -110,6 +143,8 @@ cc.Class({
    
            var hehe = cc.loader.getRes("audio/effect/"+name, cc.AudioClip)
             id = cc.audioEngine.play(hehe, isloop, 1);
+
+            
         }
         return id;
     },
