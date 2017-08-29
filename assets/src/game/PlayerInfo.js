@@ -178,7 +178,19 @@ cc.Class({
         id = parseInt(id)
         for (var i = 0; i < this.Bag.length; i++) {
             if (this.Bag[i].goods_id == id) {
+
+            if(n>0)
+            {
                 this.Bag[i].num = n
+            }
+            else
+            {
+
+                this.Bag.splice(i,1);
+
+            }
+            
+                
                 return
             }
         }
