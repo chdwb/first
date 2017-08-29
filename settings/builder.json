@@ -3,11 +3,12 @@
   "appSecret": "",
   "excludeScenes": [],
   "includeAnySDK": false,
+  "includeSDKBox": false,
   "includeSdk": [
     "anysdk"
   ],
   "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
+  "inlineSpriteFrames_native": false,
   "mergeStartScene": false,
   "oauthLoginServer": "",
   "optimizeHotUpdate": false,
@@ -22,6 +23,5 @@
   "renderMode": "0",
   "startScene": "27af7385-f2a8-46f9-ba33-95d094a1546c",
   "title": "first",
-  "webOrientation": "auto",
-  "includeSDKBox": false
+  "webOrientation": "auto"
 }
