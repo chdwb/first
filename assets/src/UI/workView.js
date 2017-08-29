@@ -379,7 +379,10 @@ cc.Class({
                     this.n = 14
                 }
                  if(this.n!=0)
-                cc.cs.UIMgr.showPopBuy(this.n, this.buyPop, this)
+                 {
+                     this.n = 0;
+                    cc.cs.UIMgr.showPopBuy(this.n, this.buyPop, this)
+                 }
             }
 
 

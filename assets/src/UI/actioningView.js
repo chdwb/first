@@ -342,6 +342,18 @@ cc.Class({
             cc.cs.AudioMgr.StopAudio(this.AudioID)
             cc.cs.UIMgr.closeView()
         }, this.backBtn)
+
+
+        var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
+        cc.log("声音开关"+hehe)
+        if(hehe == 1)
+        {
+            this.isSondOff = true;
+        }
+        else
+        {
+            this.isSondOff = false
+        }
         
     
 
@@ -357,7 +369,21 @@ cc.Class({
 
         this.AudioID =  cc.cs.AudioMgr.playAudio("time_click",true)
        cc.log("audio id " + this.AudioID)
+       if(this.isSondOff == false)
+       {
+       cc.cs.AudioMgr.stopBGM()
+       }
 
+    },
+
+    onDisable:function()
+    {
+         if(this.isSondOff == false)
+       {
+         cc.cs.AudioMgr.startBGM()
+       }
+        
+        
     },
 
     update: function(dt) {
