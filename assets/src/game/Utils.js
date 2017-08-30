@@ -10,7 +10,34 @@ cc.Class({
                 }  
             }  
             return false;  
-        }  
+        },
+        
+        
+        getStr(strname,array)
+        {
+            
+         cc.loader.loadRes("str/"+strname,function(err,data){
+            cc.log(data)
+            
+            var re = new RegExp(/\d\n/);
+            
+            var hehe = data.split(re)
+            //var index = 1;
+            var id = 1
+            for(var i = 1;i+1<hehe.length;i+=2)
+            {
+               var strdata = []
+               strdata.ID = id
+               strdata.starttime = parseInt(hehe[i].substring(6,8)) * 1000 +  parseInt(hehe[i].substring(3,5))*60*1000 + parseInt(hehe[i].substring(0,2))*3600*1000 + parseInt(hehe[i].substring(9,12))  
+               strdata.endtime = parseInt(hehe[i].substring(23,25)) * 1000 +  parseInt(hehe[i].substring(20,22))*60*1000 + parseInt(hehe[i].substring(17,19))*3600*1000 + parseInt(hehe[i].substring(26,29)) 
+               strdata.text = hehe[i+1].replace(/(^\n*)|(\n*$)/g, "");
+               array.push(strdata)
+               id++;
+            }
+        } )
+        return array
+        }
+        
     },
 
     
