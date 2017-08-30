@@ -380,8 +380,9 @@ cc.Class({
                 }
                  if(this.n!=0)
                  {
-                     this.n = 0;
+                     
                     cc.cs.UIMgr.showPopBuy(this.n, this.buyPop, this)
+                    this.n = 0;
                  }
             }
 
