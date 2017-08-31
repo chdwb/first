@@ -499,8 +499,8 @@ cc.Class({
                         weData = cc.cs.gameData.getwechatData(this.NPCID)
                     }
                     if (this.NPCID >= cc.cs.gameData["LAST"]) {
-                        if(!this.quikeTip.active)
-                        this.sendBtn.parent.active = false
+                        //if(!this.quikeTip.active)
+                        //this.sendBtn.parent.active = false
                         this.sendBtn.getComponent(cc.Button).interactable = false
                         this.inputBtn.getComponent(cc.Button).interactable = false
                         return
