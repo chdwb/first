@@ -172,7 +172,7 @@ cc.Class({
         if (JasonObject.success == true) {
             //cc.cs.UIMgr.closeNetView()
         
-            var heartTarget = this.node.getChildByName("expBG")
+            var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
             this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
             cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
 
@@ -272,6 +272,8 @@ cc.Class({
         var text1 = btn1.getChildByName("Label").getComponent(cc.Label)
         var text2 = btn2.getChildByName("Label").getComponent(cc.Label)
         var text3 = btn3.getChildByName("Label").getComponent(cc.Label)
+
+        var colorOld = text1.node.color
 
 
         btn1.on(cc.Node.EventType.TOUCH_START, function (event) {
