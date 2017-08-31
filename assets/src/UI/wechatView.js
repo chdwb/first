@@ -273,6 +273,46 @@ cc.Class({
         var text2 = btn2.getChildByName("Label").getComponent(cc.Label)
         var text3 = btn3.getChildByName("Label").getComponent(cc.Label)
 
+
+        btn1.on(cc.Node.EventType.TOUCH_START, function (event) {
+                cc.log("This is a callback after the trigger event");
+				text1.node.color = cc.Color.RED;
+            });
+			
+			 btn1.on(cc.Node.EventType.TOUCH_CANCEL, event => {
+                text1.node.color = colorOld;
+            }, this);
+			
+			 btn1.on(cc.Node.EventType.TOUCH_END, event => {
+                text1.node.color = colorOld;
+            }, this);
+			
+			btn2.on(cc.Node.EventType.TOUCH_START, function (event) {
+                cc.log("This is a callback after the trigger event");
+				text2.node.color = cc.Color.RED;
+            });
+			
+			 btn2.on(cc.Node.EventType.TOUCH_CANCEL, event => {
+                text2.node.color = colorOld;
+            }, this);
+			
+			 btn2.on(cc.Node.EventType.TOUCH_END, event => {
+                text2.node.color = colorOld;
+            }, this);
+			
+			btn3.on(cc.Node.EventType.TOUCH_START, function (event) {
+                cc.log("This is a callback after the trigger event");
+				text3.node.color = cc.Color.RED;
+            });
+			
+			 btn3.on(cc.Node.EventType.TOUCH_CANCEL, event => {
+                text3.node.color = colorOld;
+            }, this);
+			
+			 btn3.on(cc.Node.EventType.TOUCH_END, event => {
+                text3.node.color = colorOld;
+            }, this);
+
         var zs1 = btn1.getChildByName("xuanxiangkkuangdexian")
         var zs2 = btn2.getChildByName("xuanxiangkkuangdexian")
         var zs3 = btn3.getChildByName("xuanxiangkkuangdexian")
