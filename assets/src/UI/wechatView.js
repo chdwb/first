@@ -477,9 +477,12 @@ cc.Class({
             this.castText.string = cc.cs.PlayerInfo.diamond
             cc.log("wechat onEnable = " + cc.cs.PlayerInfo.canWechat())
             if (cc.cs.PlayerInfo.canWechat()) {
+                
                 this.sendBtn.getComponent(cc.Button).interactable = true
                 this.inputBtn.getComponent(cc.Button).interactable = true
             } else {
+                if(!this.quikeTip.active)
+                this.sendBtn.parent.active = false
                 this.sendBtn.getComponent(cc.Button).interactable = false
                 this.inputBtn.getComponent(cc.Button).interactable = false
             }
@@ -496,6 +499,8 @@ cc.Class({
                         weData = cc.cs.gameData.getwechatData(this.NPCID)
                     }
                     if (this.NPCID >= cc.cs.gameData["LAST"]) {
+                        if(!this.quikeTip.active)
+                        this.sendBtn.parent.active = false
                         this.sendBtn.getComponent(cc.Button).interactable = false
                         this.inputBtn.getComponent(cc.Button).interactable = false
                         return
@@ -621,15 +626,9 @@ cc.Class({
             cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
             this.castText.node.active = false
             this.step()
-
-
-
-
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
-
-
     },
 
     sendBuyFastTalkHandle: function(ret) {
@@ -662,6 +661,8 @@ cc.Class({
             this.sendDisable()
         }
         if (cc.cs.gameData.wechat["WECHAT_ID_" + id]["WECHAT_NEXT"] == "dummy") {
+            if(!this.quikeTip.active)
+            this.sendBtn.parent.active = false
             this.inputBtn.getComponent(cc.Button).interactable = false
             this.sendBtn.getComponent(cc.Button).interactable = false
         }
