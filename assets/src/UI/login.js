@@ -567,24 +567,24 @@ cc.Class({
                 //self.registerPasswordEdit.string = ""
                 return;
             } else if (self.registerIDEdit.string == "" || self.registerIDEdit.string == null) {
-                cc.cs.UIMgr.showTip("请输入账号", 1.0)
+                cc.cs.UIMgr.showTip("请输入6-12位数字或英文账号", 1.0)
                 return;
             } else if (self.registerPasswordEdit.string == "" || self.registerPasswordEdit.string == null) {
-                cc.cs.UIMgr.showTip("请输入密码", 1.0)
+                cc.cs.UIMgr.showTip("请输入6-12位数字或英文密码", 1.0)
                 return;
             } else if (self.registerConfirmPasswordEdit.string == "" || self.registerConfirmPasswordEdit.string == null) {
-                cc.cs.UIMgr.showTip("请输入密码", 1.0)
+                cc.cs.UIMgr.showTip("请再次输入相同的6-12位数字或英文确认密码", 1.0)
                 return;
             } else {
 
 
                 if(self.registerIDEdit.string.length < 6)
                 {
-                    cc.cs.UIMgr.showTip("请输入6到12位用户名", 1.0)
+                    cc.cs.UIMgr.showTip("请输入6-12位数字或英文账号", 1.0)
                 }
                 else if(self.registerPasswordEdit.string.length < 6)
                 {
-                    cc.cs.UIMgr.showTip("请输入6到12位密码", 1.0)
+                    cc.cs.UIMgr.showTip("请输入6-12位数字或英文密码", 1.0)
                 }
                 else{
                     self.registerEvent()
@@ -598,19 +598,19 @@ cc.Class({
 
         this.LoginBtn.on("click", (event) => {
             if (self.loginIDEdit.string == "" || self.loginIDEdit.string == null) {
-                cc.cs.UIMgr.showTip("请输入账号", 1.0)
+                cc.cs.UIMgr.showTip("请输入6-12位数字或英文账号", 1.0)
                 return;
             } else if (self.loginPasswordEdit.string == "" || self.loginPasswordEdit.string == null) {
-                cc.cs.UIMgr.showTip("请输入密码", 1.0)
+                cc.cs.UIMgr.showTip("请输入6-12位数字或英文密码", 1.0)
                 return;
             } else {
                 if(self.loginIDEdit.string.length < 6)
                 {
-                    cc.cs.UIMgr.showTip("请输入6到12位用户名", 1.0)
+                    cc.cs.UIMgr.showTip("账号请输入6-12位数字或英文", 1.0)
                 }
                 else if(self.loginPasswordEdit.string.length < 6)
                 {
-                    cc.cs.UIMgr.showTip("请输入6到12位密码", 1.0)
+                    cc.cs.UIMgr.showTip("vi.请输入6-12位数字或英文密码", 1.0)
                 }
                 else{
                     self.loginEvent()
