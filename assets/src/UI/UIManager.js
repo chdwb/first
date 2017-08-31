@@ -390,6 +390,7 @@ cc.Class({
 
     showTip: function(text, time) {
          if (CC_JSB) {
+             time = 2.0
         var scene = cc.director.getScene();
         var tipNode = cc.instantiate(this.tipPrefab)
         scene.getChildByName("Canvas").addChild(tipNode, 1000)
@@ -417,7 +418,7 @@ cc.Class({
         var max = target.getChildByName("max")
         if(currentExp >= maxExp){
             max.active = true
-            heart.height = mask.height
+            heart.height = mask.height + 30
         }else{
             max.active = false
             var p = currentExp / maxExp
