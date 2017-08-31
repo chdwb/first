@@ -20093,7 +20093,8 @@
     "currentPLID": 0,
     "currentItem": null,
     "lastZoneID": 0,
-    "currentExp": 0
+    "currentExp": 0,
+    "currentLoadEndID": 0
   },
   {
     "__type__": "cc.Node",

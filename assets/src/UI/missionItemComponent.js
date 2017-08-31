@@ -115,9 +115,9 @@ cc.Class({
             this.goldText.node.active = false
             var workData = cc.cs.gameData.getworkData(this.itemID)
             if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
-                this.timesLabel.string = "工作次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+                this.timesLabel.string = /*"工作次数:   "*/ "" + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
             } else {
-                this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+                this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
             }
             var workResult = cc.cs.PlayerInfo.canWork(this.itemID)
             this.goodsLabel.node.active = false
@@ -141,7 +141,7 @@ cc.Class({
             this.goldText.node.active = false
             var dateData = cc.cs.gameData.getdateData(this.itemID)
             if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
-                this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
+                this.timesLabel.string = /*"恋爱次数:   "*/"" + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
             } else {
                 this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID) + "/"+dateData["DATE_FREE_TIMES"]
             }
@@ -177,7 +177,7 @@ cc.Class({
         this.getLabel.string = dateData["DATE_EXP"]
         this.doName.string = dateData["DATE_NAME"]
         if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
-            this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
+            this.timesLabel.string = /*"恋爱次数:   " */ "" + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
         } else {
             this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
         }
@@ -212,7 +212,18 @@ cc.Class({
             if(dateResult == 0){
                 cc.cs.gameMgr.sendLove(self.itemID, self.startDateHandle, self)
             }else if(dateResult == -1){
-                cc.cs.gameMgr.buyLoveTime(self.itemID, self.buyLoveHandle, self)
+
+                if(cc.cs.PlayerInfo.money < cc.cs.PlayerInfo.getLovePrice(this.itemID))
+                {
+
+                    cc.cs.UIMgr.showPopupOC("金币不足","您的金币不足，是否前往商城购买？",this.goShop,null)
+
+                }
+                else
+                {
+
+                    cc.cs.gameMgr.buyLoveTime(self.itemID, self.buyLoveHandle, self)
+                }
             }
             
         })
@@ -224,6 +235,8 @@ cc.Class({
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+
+            cc.cs.gameMgr.sendLove(this.itemID, this.startDateHandle, this)
 
             
             this.refresh()
@@ -255,9 +268,9 @@ cc.Class({
         this.getLabel.string = workData["REWARD"]
         this.doName.string = workData["NAME"]
         if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
-            this.timesLabel.string = "工作次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+            this.timesLabel.string =/* "工作次数:   " */""+ cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
         } else {
-            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
         }
         this.goodsLabel.node.active = false
         this.startTips.node.active = false
@@ -327,11 +340,12 @@ cc.Class({
 
         if( parseInt(needgold) > cc.cs.PlayerInfo.money)
         {
-            cc.cs.UIMgr.showPopupOC("提示","需要"+needgold+ "金币，是否前往购买",this.goShop,null)
+            cc.cs.UIMgr.showPopupOC("金币不足","您的金币不足，是否前往商城购买？",this.goShop,null)
         }
         else
         {
-            cc.cs.UIMgr.showPopupOC("提示","升职到"+job+"需要花费"+needgold+"金币，确定升职吗？",this.SendUpgrade.bind(this),null)
+                //  cc.cs.UIMgr.showPopupOC("提示","升职到"+job+"需要花费"+needgold+"金币，确定升职吗？",this.SendUpgrade.bind(this),null)
+                this.sendUpgrade()
         }
     }
     ,
@@ -367,7 +381,13 @@ cc.Class({
              var actionView = cc.cs.UIMgr.getView(cc.cs.UIMgr.MISSONVIEW)
             actionView.getComponent("workView").refreshItem()
             this.refresh()
-            cc.cs.UIMgr.showTip("升级成功", 1.0)
+           // cc.cs.UIMgr.showTip("升级成功", 1.0)
+            var workData = cc.cs.gameData.getworkData(this.itemID)
+        var needgold =  workData["NEED_GOLD"]
+        var job = workData["NAME"]
+           
+           cc.cs.UIMgr.showPopupO("恭喜升职","恭喜您升职为"+job+"，将会重置您当前的工作次数。",null)
+           
         }else{
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
