@@ -490,7 +490,11 @@ cc.Class({
             cc.log("      " + cc.cs.PlayerInfo.wechat_id)
             var wechatData = cc.cs.gameData.getwechatData(this.NPCID)
             if (wechatData["WECHAT_NEXT"] == "dummy") {
-                this.NPCID++
+                var weData =  cc.cs.gameData.getwechatData(this.NPCID)
+                    while(weData["WECHAT_NEXT"] == "dummy"){
+                        this.NPCID++
+                        weData = cc.cs.gameData.getwechatData(this.NPCID)
+                    }
                     if (this.NPCID >= cc.cs.gameData["LAST"]) {
                         this.sendBtn.getComponent(cc.Button).interactable = false
                         this.inputBtn.getComponent(cc.Button).interactable = false
