@@ -56,10 +56,8 @@ cc.Class({
         //cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
 
 
-         cc.log("goShop LoveView")
-        cc.cs.UIMgr.setShopType(2)
-        cc.log("cc.cs.UIMgr = " + cc.cs.UIMgr.currentShopType)
-        cc.cs.UIMgr.openView(cc.cs.UIMgr.SHOPVIEW)
+        this.currentShopType = 2
+        this.updateUi()
     },
     
     onLiBao:function()
