@@ -66,6 +66,7 @@ cc.Class({
         currentTime: 0,
         totalTime: 0,
         NPCID: 0,
+        LastID : 0,
         isAction: false,
         talkAction: null,
         selectedid:0,
@@ -525,7 +526,10 @@ cc.Class({
     step: function() {
         this.isAction = false
         this.sendEnable()
+        if(this.LastID == this.NPCID)
+            return;
         this.setInputMsg(this.NPCID)
+        this.LastID = this.NPCID
     },
 
     onLoad: function() {
