@@ -652,7 +652,7 @@ cc.Class({
             //cc.cs.UIMgr.showPopupO("hehe","工作完成了",()=>{
            
 
-            var heartTarget = this.node.getChildByName("expBG")
+            var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
             this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
             cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
             

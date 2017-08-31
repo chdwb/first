@@ -481,7 +481,7 @@ cc.Class({
         if (JasonObject.success === true) {
 
             this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
-            var heartTarget = cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").node.getChildByName("expBG")
+            var heartTarget = cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView").node.getChildByName("expBG").getChildByName("qinmitaoxindi")
             cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView"))
             
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
