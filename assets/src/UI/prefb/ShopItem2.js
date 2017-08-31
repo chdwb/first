@@ -31,9 +31,15 @@ cc.Class({
             default : null,
             type : cc.Node
         },
+
+        lock:{
+            default : null,
+            type : cc.Node
+        },
         GoodID:0,
         ShopType:0,
         IsHave:false,
+        IsLock:false, // 对应功能没有开放
     },
     
     onClick : function()
@@ -49,11 +55,35 @@ cc.Class({
         }
         else if(this.ShopType == 3)
         {
-            cc.cs.gameMgr.sendGoodBuy( type,this.GoodID, 1, this.onLibaohandle, this)
+
+            if(!this.IsLock)
+            {
+                cc.cs.gameMgr.sendGoodBuy( type,this.GoodID, 1, this.onLibaohandle, this)
+            }
+            else
+            {
+                if(this.GoodID == 1)
+                {
+                    cc.cs.UIMgr.showTip("微信功能开放后才能购买。",1.0)
+
+                }
+                else if(this.GoodID == 7)
+                {
+                    cc.cs.UIMgr.showTip("视频功能开放后才能购买。",1.0)
+
+                }
+            }
         }
         else if(this.ShopType == 4)
         {
-            cc.cs.gameMgr.sendGoodBuy( type,this.GoodID, 1, this.onLibao2handle, this)
+             if(this.IsLock)
+            {
+                cc.cs.UIMgr.showTip("工作功能开放后才能购买。",1.0)
+            }
+            else
+            {
+                cc.cs.gameMgr.sendGoodBuy( type,this.GoodID, 1, this.onLibao2handle, this)
+            }
         }
     },
 
@@ -68,6 +98,8 @@ cc.Class({
 
         this.remai.active = false
         this.have.active = false
+        this.lock.active = false
+        
         this.GoodID = goodsdata["ID"]
         cc.log("shoptype = ",this.ShopType)
         cc.log("goodid = ",this.GoodID)
@@ -83,7 +115,15 @@ cc.Class({
                 }
                 else
                 {
-                    this.remai.active = true
+                    if(cc.cs.PlayerInfo.level >=  cc.cs.gameData.getfunction_conditionsData(3)["FUNCTION_LEVEL"])
+                    {
+                        this.remai.active = true
+                    }
+                    else
+                    {
+                        this.lock.active = true
+                        this.IsLock = true
+                    }
                 }
             } else if(this.GoodID == 2) //一键礼包
             {
@@ -113,7 +153,26 @@ cc.Class({
                 }
                 if(this.IsHave == false)
                 {
-                        this.remai.active = true
+                    if(this.GoodID == 7)
+                    {
+                        if(cc.cs.PlayerInfo.level >= cc.cs.gameData.getfunction_conditionsData(7)["FUNCTION_LEVEL"])
+                        {
+                            this.remai.active = true
+
+                        }
+                        else
+                        {
+
+                             this.lock.active = true
+                        this.IsLock = true
+
+                        }
+
+                    }
+                    else
+                    {
+                         this.remai.active = true
+                    }
                     
                 }
 
@@ -125,57 +184,67 @@ cc.Class({
 
         if(this.ShopType == 4)
         {
-            if(this.GoodID == 1)  //3
+            if(cc.cs.PlayerInfo.level < cc.cs.gameData.getfunction_conditionsData(4)["FUNCTION_LEVEL"])
             {
-                if(cc.cs.PlayerInfo.work_id >= 3)
-                {
-                    this.IsHave = true
-                    this.have.active = true
-                }
-                else
-                    {
-                        this.remai.active = true
-                    }
-
+                this.IsLock = true
+                  this.lock.active = true
             }
-            else if(this.GoodID == 2) // 5
-             {
-                if(cc.cs.PlayerInfo.work_id >= 5)
-                    {
-                        this.IsHave = true
-                        this.have.active = true
-                    }
-                    else
-                        {
-                            this.remai.active = true
-                        }
+            else
+            {
 
-             }
-             else if(this.GoodID == 3) // 7
-            {
-                if(cc.cs.PlayerInfo.work_id >= 7)
+
+                    if(this.GoodID == 1)  //3
                     {
-                        this.IsHave = true
-                        this.have.active = true
-                    }
-                    else
+                        if(cc.cs.PlayerInfo.work_id >= 3)
                         {
-                            this.remai.active = true
+                            this.IsHave = true
+                            this.have.active = true
                         }
-                
-            }
-            else if(this.GoodID == 4) // 10
-            {
-                if(cc.cs.PlayerInfo.work_id >= 10)
-                    {
-                        this.IsHave = true
-                        this.have.active = true
-                    }else
-                    {
-                        this.remai.active = true
+                        else
+                            {
+                                this.remai.active = true
+                            }
+
                     }
-                
-            }         
+                    else if(this.GoodID == 2) // 5
+                    {
+                        if(cc.cs.PlayerInfo.work_id >= 5)
+                            {
+                                this.IsHave = true
+                                this.have.active = true
+                            }
+                            else
+                                {
+                                    this.remai.active = true
+                                }
+
+                    }
+                    else if(this.GoodID == 3) // 7
+                    {
+                        if(cc.cs.PlayerInfo.work_id >= 7)
+                            {
+                                this.IsHave = true
+                                this.have.active = true
+                            }
+                            else
+                                {
+                                    this.remai.active = true
+                                }
+                        
+                    }
+                    else if(this.GoodID == 4) // 10
+                    {
+                        if(cc.cs.PlayerInfo.work_id >= 10)
+                            {
+                                this.IsHave = true
+                                this.have.active = true
+                            }else
+                            {
+                                this.remai.active = true
+                            }
+                        
+                    }   
+            }      
             
         }
 

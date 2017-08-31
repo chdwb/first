@@ -465,6 +465,9 @@ cc.Class({
         this.tipBG.active = false
 
 
+        this.SignRewardBtn.action = cc.cs.PlayerInfo.level >= cc.cs.gameData.getfunction_conditionsData(6)["FUNCTION_LEVEL"]
+
+
 
         if (this.wechatBtn.active)
             if (cc.cs.PlayerInfo.canWechat()) {
@@ -595,13 +598,15 @@ cc.Class({
         this.workBtn.lev = 4
         this.iconArray.push(this.giftBtn)
         this.giftBtn.sindex = 6
-        this.giftBtn.lev = 1
+        this.giftBtn.lev = 7
         this.iconArray.push(this.bagBtn)
         this.bagBtn.sindex = 7
         this.bagBtn.lev = 1
         this.iconArray.push(this.shopBtn)
         this.shopBtn.sindex = 8
         this.shopBtn.lev = 1
+
+        
         
         
 
