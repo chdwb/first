@@ -491,6 +491,11 @@ cc.Class({
         cc.cs.UIMgr.refresh_verticalScrollViewUp(this.scrollView)
     },
 
+    onDisable : function(){
+        this.inputTableBtn.active = false
+        this.inputNode.active = false;
+    },
+
     onLoad: function() {
 
         var self = this
@@ -500,6 +505,13 @@ cc.Class({
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
         this.inputTableBtn.ZONE_ID = 0
         this.node.addChild(this.inputTableBtn, 88)
+
+        var anyBtn = this.inputNode.getChildByName("anyBtn")
+
+        anyBtn.on("click", (event) => {
+            self.inputTableBtn.active = false
+            self.inputNode.active = false;
+        }, anyBtn)
 
         this.inputTableBtn.x = 0;
         this.inputTableBtn.y = 0
