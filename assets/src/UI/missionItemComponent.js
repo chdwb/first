@@ -141,18 +141,23 @@ cc.Class({
             this.goldText.node.active = false
             var dateData = cc.cs.gameData.getdateData(this.itemID)
             if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
-                this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)
+                this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
             } else {
-                this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)
+                this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID) + "/"+dateData["DATE_FREE_TIMES"]
+            }
+
+            if(cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID) == 0 )
+            {
+                this.timesLabel.string = "每日0点重置次数"
             }
             var dateResult = cc.cs.PlayerInfo.canLove(this.itemID)
             cc.log("dateResult    " + dateResult)
             this.startTips.node.active = false
             if (dateResult == -1) {
                 this.startBtn.active = true
-                this.btnText.string = "购买次数"
+                this.btnText.string = ""
                 this.goldText.node.active = true
-                this.goldText.string = "所需金币： " + cc.cs.PlayerInfo.getLovePrice(this.itemID)
+                this.goldText.string = "" + cc.cs.PlayerInfo.getLovePrice(this.itemID)
             } else if (dateResult == 0) {
                 this.startBtn.active = true
                 this.btnText.string = "开始"
@@ -172,10 +177,15 @@ cc.Class({
         this.getLabel.string = dateData["DATE_EXP"]
         this.doName.string = dateData["DATE_NAME"]
         if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
-            this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)
+            this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
         } else {
-            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)
+            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
         }
+
+        if(cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID) == 0 )
+            {
+                this.timesLabel.string = "每日0点重置次数"
+            }
 
         if (dateData["DATE_NEED_GOODS_ID"] == "dummy") {
             this.goodsLabel.node.active = false
