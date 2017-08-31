@@ -389,6 +389,7 @@ cc.Class({
     },
 
     showTip: function(text, time) {
+         if (CC_JSB) {
         var scene = cc.director.getScene();
         var tipNode = cc.instantiate(this.tipPrefab)
         scene.getChildByName("Canvas").addChild(tipNode, 1000)
@@ -403,6 +404,10 @@ cc.Class({
         }, tipNode))
 
         tipNode.runAction(action);
+         }
+         else{
+             cc.log(text)
+         }
     },
 
     setHeart : function(target,currentExp , maxExp){
