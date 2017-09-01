@@ -663,8 +663,18 @@ cc.Class({
             if (cc.cs.PlayerInfo.canPhone2()) {
                 this.currentTime = 0
                 this.isAction = true;
-                this.totalTime = (cc.random0To1() + 0.4) * 2
-                if (this.totalTime > 2) this.totalTime = 2
+
+                
+                var num =   Math.ceil( cc.cs.gameData.phone["PHONE_ID_" + this.currentPlayerPhoneID]["PHONE_MSG"].length /6)
+                if(num >5)
+                {
+                    num = 5
+                }
+
+                cc.log("num = "+ num)
+
+                this.totalTime = /*(cc.random0To1() + 0.4) * 2*/  num
+                //if (this.totalTime > 2) this.totalTime = 2
                 this.timeIng = true;   
             } else {
                 this.setInputMsg(this.NPCID)
