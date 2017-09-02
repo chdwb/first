@@ -256,12 +256,12 @@ cc.Class({
             var url = ""
             if(this.ShopType == 3)
             {
-                url = "shop/libao/"
+                url = "shop/hotgift/"
 
             }
             else if(this.ShopType == 4)
             {
-                url = "shop/superlibao/"
+                url = "shop/jobgift/"
 
             }
             cc.cs.UIMgr.changeSprite(this.Icon.node, url + this.GoodID)
@@ -269,7 +269,7 @@ cc.Class({
         else if(this.ShopType == 2)
         {
             this.Name.string = goodsdata["BUY_GOLD"]
-            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/jinbi/" + this.GoodID)
+            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goldgift/" + this.GoodID)
         }
     },
     

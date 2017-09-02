@@ -89,7 +89,7 @@ cc.Class({
         }
 
         
-        cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.GoodID)
+        cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/shop_item/" + this.GoodID)
     },
     
     

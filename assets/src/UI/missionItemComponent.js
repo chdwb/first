@@ -21,6 +21,11 @@ cc.Class({
             default: null,
             type: cc.Sprite
         },
+		
+		JobSprite: {
+            default: null,
+            type: cc.Sprite
+        },
 
         getSprite: {
             default: null,
@@ -104,11 +109,18 @@ cc.Class({
         this.itemID = id
         this.loadElement()
         if (isWork) {
+			
+			this.doSprite.node.active = false
+			this.JobSprite.node.active = true
+			
+			cc.cs.UIMgr.changeSprite(this.IconBg.node, "love_job/job_bg")
             var workResult = cc.cs.PlayerInfo.canWork(id)
             this.loadWork(workResult);
         } else {
+			this.doSprite.node.active = true
+			this.JobSprite.node.active = false
+			
             var dateResult = cc.cs.PlayerInfo.canLove(id)
-            cc.cs.UIMgr.changeSprite(this.IconBg.node, "love_job/love_bg")
             this.loadDate(dateResult)
         }
         this.isLoad = true
@@ -179,7 +191,7 @@ cc.Class({
         var self = this
         var dateData = cc.cs.gameData.getdateData(this.itemID)
         this.titleText.string = "恋爱"
-        cc.cs.UIMgr.changeSprite(this.doSprite.node, "work_quest/quest/" + this.itemID)
+        cc.cs.UIMgr.changeSprite(this.doSprite.node, "love_job/love/" + this.itemID)
         this.getLabel.string = dateData["DATE_EXP"]
         this.doName.string = dateData["DATE_NAME"]
         if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
@@ -269,8 +281,8 @@ cc.Class({
         var self = this
         var workData = cc.cs.gameData.getworkData(this.itemID)
         this.titleText.string = "工作"
-        cc.cs.UIMgr.changeSprite(this.doSprite.node, "work_quest/work/" + this.itemID)
-        cc.cs.UIMgr.changeSprite(this.getSprite.node, "common/jinbi")
+        cc.cs.UIMgr.changeSprite(this.JobSprite.node, "love_job/job/" + this.itemID)
+        cc.cs.UIMgr.changeSprite(this.getSprite.node, "common/gold")
         this.getLabel.string = workData["REWARD"]
         this.doName.string = workData["NAME"]
         if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
