@@ -68,6 +68,11 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        
+        IconBg:{
+            default: null,
+            type: cc.Sprite
+        },
         itemID: 0,
         isWork: false,
         isLoad : false,
@@ -103,6 +108,7 @@ cc.Class({
             this.loadWork(workResult);
         } else {
             var dateResult = cc.cs.PlayerInfo.canLove(id)
+            cc.cs.UIMgr.changeSprite(this.IconBg.node, "love_job/love_bg")
             this.loadDate(dateResult)
         }
         this.isLoad = true

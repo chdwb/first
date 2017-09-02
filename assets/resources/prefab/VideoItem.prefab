@@ -224,8 +224,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 67,
-      "height": 75
+      "width": 138,
+      "height": 141
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -252,7 +252,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "036a3fad-18df-4093-9192-cb9defbe3c82"
+      "__uuid__": "18f61691-f92b-4a82-813c-4466533a64c0"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -404,7 +404,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "5d8bd65c-c035-4636-8944-2451145df9b6"
+      "__uuid__": "5b8086b4-4c36-4e21-be6c-028af5efeba6"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -528,7 +528,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "9c86f904-0fc4-4413-87f6-9703c56d3046"
+      "__uuid__": "41a749fe-edbc-4698-8c6f-e4dffbe3e576"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -591,8 +591,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 110,
-      "height": 20
+      "width": 111.12,
+      "height": 25
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -621,12 +621,10 @@
     "_useOriginalSize": false,
     "_actualFontSize": 20,
     "_fontSize": 20,
-    "_lineHeight": 20,
+    "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "道具名6个字",
     "_N$horizontalAlign": 2,

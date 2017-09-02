@@ -161,9 +161,9 @@ cc.Class({
         if (!cc.cs.loadMgr.isLoadComplete) {
             cc.log("error the res is not load complete")
         }
-        var spriteFrame = cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame)
+        var spriteFrame = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
         if (spriteFrame == null || spriteFrame == 'undefinde') {
-            cc.log("the res is mission = " + "picture/newRes/" + res)
+            cc.log("the res is mission = " + "picture/newRes831/" + res)
         }
         var sprite = node.getComponent(cc.Sprite)
         if (sprite == null || sprite == 'undefinde') {
@@ -178,9 +178,9 @@ cc.Class({
         if (!cc.cs.loadMgr.isLoadComplete) {
             cc.log("error the res is not load complete")
         }
-        var spriteFrame = cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame)
+        var spriteFrame = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
         if (spriteFrame == null || spriteFrame == 'undefinde') {
-            cc.log("the res is mission = " + "picture/newRes/" + res)
+            cc.log("the res is mission = " + "picture/newRes831/" + res)
         }
 
         spriteframeOrigin._textureFilenameSetter.set(spriteFrame._textureFilename)

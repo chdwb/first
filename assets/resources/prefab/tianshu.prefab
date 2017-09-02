@@ -131,10 +131,8 @@
     "_fontSize": 30,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "第五天",
     "_N$horizontalAlign": 1,
@@ -148,7 +146,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "65f5c6c1-d49a-45df-9bbe-b6b59f01726c"
     },
     "fileId": "57e63jqi4lLTr4Q1m/m3IIo",
     "sync": false
@@ -185,7 +183,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "65f5c6c1-d49a-45df-9bbe-b6b59f01726c"
     },
     "fileId": "996deiuZLBGzZA+B4ZdxQHv",
     "sync": false

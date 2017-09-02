@@ -49,7 +49,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 960
+      "height": 720
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -58,7 +58,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 640,
-      "y": 480
+      "y": 360
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -167,8 +167,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 245,
-      "height": 148
+      "width": 491,
+      "height": 433
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -176,8 +176,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -330,
-      "y": -206
+      "x": -378,
+      "y": -225
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -221,8 +221,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 198,
-      "height": 124
+      "width": 362,
+      "height": 251
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -230,8 +230,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -1,
-      "y": -3
+      "x": -5,
+      "y": -19
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -249,14 +249,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 16,
-    "_fontSize": 20,
+    "_actualFontSize": 28,
+    "_fontSize": 28,
     "_lineHeight": 30,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "啊的风口浪尖啊的肌肤啊了解对方啊就地方啊了解对方啊就地方阿里的风景阿里的风景阿里的风景看啊的理解阿里的",
+    "_N$string": "垃圾筐的反馈了空间啊阿来得及看反馈来看奥克兰的会计法奥里吉的看法垃圾袋发卡了贷款纠纷拉快递费垃圾的发了看见的法拉第讲课费凉快阿拉丁讲课费垃圾袋f",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
@@ -282,7 +282,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
+      "__uuid__": "df5c8adc-7b25-4e50-9aa9-91a42532302b"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -443,7 +443,7 @@
     "node": {
       "__id__": 1
     },
-    "_enabled": true,
+    "_enabled": false,
     "isAlignOnce": true,
     "_target": null,
     "_alignFlags": 45,

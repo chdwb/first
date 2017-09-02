@@ -179,7 +179,7 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 47,
-      "g": 127,
+      "g": 96,
       "b": 150,
       "a": 255
     },
@@ -223,12 +223,10 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "",
+    "_N$string": "撒大声地",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
@@ -254,7 +252,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "7c334055-7d00-4dad-a585-cd24f9715e97"
+      "__uuid__": "d0b261ee-46a4-47cc-ade2-a75809e7b681"
     },
     "_type": 1,
     "_sizeMode": 0,

@@ -18,7 +18,7 @@ cc.Class({
                 cc.log("load error prefab " +err)
             }
         })
-        cc.loader.loadResDir("picture/newRes", (err, ass) => {
+        cc.loader.loadResDir("picture/newRes831831", (err, ass) => {
             if (!err) {
                 self.isLoadComplete = true
             } else {

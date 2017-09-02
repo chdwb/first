@@ -985,8 +985,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 245,
-      "height": 148
+      "width": 491,
+      "height": 433
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1039,8 +1039,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
-      "height": 60
+      "width": 383,
+      "height": 80
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1067,9 +1067,9 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
-    "_lineHeight": 30,
+    "_actualFontSize": 28,
+    "_fontSize": 28,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -1282,7 +1282,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
+      "__uuid__": "df5c8adc-7b25-4e50-9aa9-91a42532302b"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -6037,6 +6037,8 @@
     "button": {
       "__id__": 1
     },
+    "positonNode": null,
+    "Des": null,
     "guide_id": 0,
     "isArrow": true,
     "obj": null,

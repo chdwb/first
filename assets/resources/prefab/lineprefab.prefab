@@ -123,7 +123,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "375f88d8-235e-4548-8aa8-bd83a2a51dd5"
+      "__uuid__": "e43ecfaa-3354-4878-9ee2-7409edce1db9"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -146,7 +146,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "c86e146e-9011-483d-afe1-7a7f76c55001"
+      "__uuid__": "349f4c69-e094-4daa-89d4-5443e1131ca1"
     },
     "fileId": "f1f60s1RKZHHaVYzMsBQMx/",
     "sync": false
@@ -157,7 +157,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "c86e146e-9011-483d-afe1-7a7f76c55001"
+      "__uuid__": "349f4c69-e094-4daa-89d4-5443e1131ca1"
     },
     "fileId": "1ed9bTr4cpL6poe18MEWW5d",
     "sync": false

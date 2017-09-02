@@ -171,8 +171,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 304,
-      "y": -21.8
+      "x": -202,
+      "y": -43.8
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -194,10 +194,8 @@
     "_fontSize": 18,
     "_lineHeight": 20,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "一天前",
     "_N$horizontalAlign": 2,
@@ -238,9 +236,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 102,
-      "g": 102,
-      "b": 102,
+      "r": 80,
+      "g": 80,
+      "b": 80,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -283,10 +281,8 @@
     "_fontSize": 20,
     "_lineHeight": 20,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "微博发表的文字内容，根据内容自动改变......",
     "_N$horizontalAlign": 0,
@@ -314,7 +310,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 10
@@ -368,7 +364,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "db985379-becf-49b3-9010-2f268172f64d"
+      "__uuid__": "e43ecfaa-3354-4878-9ee2-7409edce1db9"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -409,7 +405,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 16
@@ -435,8 +431,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 34,
-      "height": 34
+      "width": 33,
+      "height": 33
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -476,9 +472,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 250,
+      "g": 250,
+      "b": 250,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -489,8 +485,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 29.3,
-      "height": 35
+      "width": 16,
+      "height": 20
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -498,8 +494,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": -2.2,
+      "y": 0.9
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -517,14 +513,12 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 30,
-    "_fontSize": 30,
-    "_lineHeight": 35,
+    "_actualFontSize": 15,
+    "_fontSize": 15,
+    "_lineHeight": 20,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "10",
     "_N$horizontalAlign": 1,
@@ -552,7 +546,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "715b9929-de85-4527-b50e-847fe1758b1c"
+      "__uuid__": "97e5959d-bf2b-48d0-b68c-c55ffd14929a"
     },
     "_type": 0,
     "_sizeMode": 1,

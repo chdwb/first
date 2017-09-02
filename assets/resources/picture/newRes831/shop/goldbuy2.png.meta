@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "bfff8421-811e-4ff1-a51e-0ddf262ac880",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "goldbuy2": {
+      "ver": "1.0.3",
+      "uuid": "2719be0d-026c-48c0-bad5-7169b39382a2",
+      "rawTextureUuid": "bfff8421-811e-4ff1-a51e-0ddf262ac880",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 256,
+      "height": 73,
+      "rawWidth": 256,
+      "rawHeight": 73,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

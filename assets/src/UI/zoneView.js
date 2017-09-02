@@ -178,7 +178,7 @@ cc.Class({
 
 
     getImage: function(res) {
-        return cc.loader.getRes("picture/newRes/" + res, cc.SpriteFrame);
+        return cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame);
     },
 
     showIconFunc : function(target){

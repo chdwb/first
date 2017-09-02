@@ -610,7 +610,7 @@ cc.Class({
         
         
 
-        this.computerDibian()
+       // this.computerDibian()
         //this.updateui()
 
         this.shopBtn.on("click", (event) => {
@@ -728,6 +728,6 @@ cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function(dt) {
-        this.actionDibianBtn(dt)
+        //this.actionDibianBtn(dt)
     },
 });
