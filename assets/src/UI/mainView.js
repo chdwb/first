@@ -445,7 +445,7 @@ cc.Class({
         
         if(icon != null){
             cc.log("canAddIcon   " + icon.name)
-            //this.addDiBianBtn(icon)
+            this.addDiBianBtn(icon)
             icon.active = true
 
             if(icon.name == "phoneBtn")
