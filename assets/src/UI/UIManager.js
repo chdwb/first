@@ -361,6 +361,7 @@ cc.Class({
 
 
     showExpTip:function(exp, targetNode, Handle){
+        var scene = cc.director.getScene();
         var tip = null
         if(typeof(scene.getChildByName("Canvas").tipExp) == "undefined"){
             var etip = cc.instantiate(this.expTip)

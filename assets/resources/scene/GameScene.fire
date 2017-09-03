@@ -18022,7 +18022,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 466
@@ -18829,8 +18829,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 142,
-      "height": 141
+      "width": 68,
+      "height": 67
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -18856,7 +18856,9 @@
       "__id__": 480
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "9ad34994-f9f4-48f6-89c2-25abc7c58533"
+    },
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -19437,8 +19439,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 15
+      "width": 9,
+      "height": 9
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -19464,7 +19466,9 @@
       "__id__": 495
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "ca6b2f94-5135-478e-87be-0dc56a829ba1"
+    },
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -19513,8 +19517,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 15
+      "width": 9,
+      "height": 9
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -19540,7 +19544,9 @@
       "__id__": 497
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "ca6b2f94-5135-478e-87be-0dc56a829ba1"
+    },
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -19589,8 +19595,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 15
+      "width": 9,
+      "height": 9
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -19616,7 +19622,9 @@
       "__id__": 499
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "ca6b2f94-5135-478e-87be-0dc56a829ba1"
+    },
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -19640,7 +19648,9 @@
       "__id__": 494
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "3512078e-4e0b-4e7d-a0a9-de9d2c670856"
+    },
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
