@@ -70,7 +70,7 @@ cc.Class({
         var videoID =this.getVideoType(id + "")
 
         if( videoID != 0){
-          //  this.backBtn.active = true
+            this.backBtn.active = true
             this.videoType = videoID
             cc.log("self.videoType  setPlayVideoID " + this.videoType)
             this.isPlayStart = false
