@@ -72,6 +72,7 @@ cc.Class({
         if( videoID != 0){
             this.backBtn.active = true
             this.videoType = videoID
+            cc.log("self.videoType  setPlayVideoID " + this.videoType)
             this.isPlayStart = false
             if(videoID == 1){
                 this.videoLoadingNode.active = false
@@ -273,6 +274,7 @@ cc.Class({
                 if(self.branchData != null){
                     self.showBranchVideo()
                 }else{
+                    cc.log("self.videoType  videoPlayerNode " + self.videoType)
                     if(self.videoType == 1 ||self.videoType == 2 ){
                         cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
                     }else{
@@ -308,6 +310,7 @@ cc.Class({
                 if(self.branchData != null){
                     self.showBranchVideo()
                 }else{
+                    cc.log("self.videoType  backBtn " + self.videoType)
                     if(self.videoType == 1 ||self.videoType == 2 ){
                         cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
                     }else{
