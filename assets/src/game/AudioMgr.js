@@ -186,7 +186,7 @@ cc.Class({
      setFinishCallback:function ( audioID, callback )
     {
 
-        cc.audioEngine.setFinishCallback(self.Backid, callback);
+        cc.audioEngine.setFinishCallback(this.Backid, callback);
 
     },
 

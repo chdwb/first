@@ -833,6 +833,7 @@ cc.Class({
             self.currentTime = 0
             self.totalTime = 0
             cc.cs.AudioMgr.StopVoice()
+            cc.cs.AudioMgr.setFinishCallback(0,null)
             self.backBtn.active = true
             this.timeIng = false
         })
