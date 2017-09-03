@@ -128,7 +128,7 @@ cc.Class({
                         }
 
 
-                cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.goodsid)
+                cc.cs.UIMgr.changeSprite(this.Icon.node, "bag/pop_item/" + this.goodsid)
                 
             }
             else

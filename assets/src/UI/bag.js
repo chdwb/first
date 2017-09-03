@@ -171,7 +171,7 @@ cc.Class({
             {
                 this.ItemNmae.string = cc.cs.gameData.goods["GOODS_ID_"+goods_id]["GOODS_NAME"]
                 this.ItemDes.string = gooddata["GOODS_DESC"]
-                cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + goods_id)
+                cc.cs.UIMgr.changeSprite(this.Icon.node, "bag/pop_item/" + goods_id)
 
 
                 var text = gooddata["GOODS_DESC"]

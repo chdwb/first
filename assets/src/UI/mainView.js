@@ -188,7 +188,21 @@ cc.Class({
     },
 
     setDay: function(day) {
-        this.dayText.string = "第  " + day + "  天"
+        var str = ""
+        if(day < 10)
+        {
+            str = "0 0 "+day
+        }
+        else if(day >=10 && day <100)
+        {
+            str = "0 "+parseInt(day/10)+" "+parseInt(day%10)
+        }
+        else if(day >100)
+        {
+            str = ""+parseInt(day/100)+" "+parseInt((day - parseInt(day/100) * 100)/10)+" "+parseInt(day%10)
+        }
+
+        this.dayText.string = str
     },
 
     setLev: function(lev) {
@@ -296,7 +310,7 @@ cc.Class({
             this.SoundOff = true;
             cc.cs.AudioMgr.stopBGM(true);
             //this.SettingButton.interactable = false
-            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi_1")
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/unvoice")
         
         }
         else
@@ -304,7 +318,7 @@ cc.Class({
             this.SoundOff = false;
             cc.cs.AudioMgr.startBGM(true);
             //this.SettingButton.interactable = true
-            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi")
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/voice")
             
         }
 
@@ -350,13 +364,13 @@ cc.Class({
          if(this.SoundOff == true)
         {
             
-            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi_1")
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/unvoice")
         
         }
         else
         {
             
-            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/shezhi")
+            cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/voice")
             
         }
 

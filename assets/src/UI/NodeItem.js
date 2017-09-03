@@ -48,7 +48,7 @@ cc.Class({
         var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goodId]
             if(gooddata != undefined || goodId == 100)
             {
-                cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/goods/" + this.GoodID)
+                cc.cs.UIMgr.changeSprite(this.Icon.node, "bag/bag_item/" + this.GoodID)
             }
     },
 

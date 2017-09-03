@@ -5127,7 +5127,7 @@
     "node": {
       "__id__": 4
     },
-    "_enabled": true,
+    "_enabled": false,
     "expText": {
       "__id__": 94
     },
@@ -9532,7 +9532,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 11.02,
+      "width": 111.9,
       "height": 30
     },
     "_rotationX": 0,
@@ -9541,8 +9541,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -478,
-      "y": 308
+      "x": -525.3,
+      "y": 310.9
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -9569,11 +9569,11 @@
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "1",
+    "_N$string": "0 5 2",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0
+    "_N$overflow": 1
   },
   {
     "__type__": "cc.Node",
@@ -10824,7 +10824,7 @@
     "node": {
       "__id__": 128
     },
-    "_enabled": false,
+    "_enabled": true,
     "expText": {
       "__id__": 217
     },
@@ -13961,7 +13961,9 @@
       "__id__": 353
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "70f7b316-2a19-4085-9a45-c0a93e5a31f2"
+    },
     "_type": 1,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -14061,7 +14063,9 @@
       "__id__": 352
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "ba04bab8-d69f-46dd-bf24-085979c11f91"
+    },
     "_type": 1,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -20979,7 +20983,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 702
+      "height": 510
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -21027,7 +21031,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 702
+      "height": 510
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -21036,7 +21040,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -351
+      "y": -263
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -21351,8 +21355,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 112.66,
-      "height": 24.49
+      "width": 69.52,
+      "height": 25
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -21620,8 +21624,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 59.48,
-      "height": 25.86
+      "width": 30.58,
+      "height": 30
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -26836,8 +26840,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 59.48,
-      "height": 25.86
+      "width": 30.58,
+      "height": 30
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -28271,7 +28275,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": {
       "__id__": 801
@@ -31493,8 +31497,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 112.66,
-      "height": 24.49
+      "width": 69.52,
+      "height": 25
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -32428,10 +32432,10 @@
     "duration": 0.1,
     "zoomScale": 1.2,
     "pressedSprite": {
-      "__uuid__": "3e08d72a-7db9-4b0f-abcb-3a1ff5c48057"
+      "__uuid__": "c3c2bbcc-c99c-420e-bf5a-7a74f493e19f"
     },
     "hoverSprite": {
-      "__uuid__": "3e08d72a-7db9-4b0f-abcb-3a1ff5c48057"
+      "__uuid__": "c3c2bbcc-c99c-420e-bf5a-7a74f493e19f"
     },
     "clickEvents": [
       {
@@ -32461,7 +32465,7 @@
       "__uuid__": "09fa2434-fe8d-418a-96e2-168d57adced6"
     },
     "_N$disabledSprite": {
-      "__uuid__": "3e08d72a-7db9-4b0f-abcb-3a1ff5c48057"
+      "__uuid__": "c3c2bbcc-c99c-420e-bf5a-7a74f493e19f"
     },
     "_N$target": {
       "__id__": 845
@@ -38895,10 +38899,10 @@
   {
     "__type__": "cc.ClickEvent",
     "target": {
-      "__id__": 803
+      "__id__": 997
     },
-    "component": "Shop",
-    "handler": "onBack",
+    "component": "VideoView",
+    "handler": "onClick",
     "customEventData": ""
   },
   {

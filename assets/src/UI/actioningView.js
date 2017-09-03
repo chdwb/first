@@ -72,9 +72,9 @@ cc.Class({
     },
 
     loadWork:function(id){
-        cc.cs.UIMgr.changeSprite(this.jinxingText.node, "work_quest/" + "working")
-        cc.cs.UIMgr.changeSprite(this.tipSprite.node, "work_quest/" + "tuichugongzuo")
-        cc.cs.UIMgr.changeSprite(this.actionBg.node, "work_quest/work/"  + id)
+        cc.cs.UIMgr.changeSprite(this.jinxingText.node, "love_job/" + "jobing")
+        cc.cs.UIMgr.changeSprite(this.tipSprite.node, "love_job/" + "job_tips")
+        cc.cs.UIMgr.changeSprite(this.actionBg.node, "love_job/job_main/"  + id)
         var workData = cc.cs.gameData.getworkData(id)
         this.doName.string = workData["NAME"]
         this.totalTime = workData["EXECUTE_TIME"]
@@ -82,9 +82,9 @@ cc.Class({
     },
 
     loadDate:function(id){
-        cc.cs.UIMgr.changeSprite(this.jinxingText.node, "work_quest/" + "doing")
-        cc.cs.UIMgr.changeSprite(this.tipSprite.node, "work_quest/" + "tuichulianai")
-        cc.cs.UIMgr.changeSprite(this.actionBg.node, "work_quest/quest/" + id)
+        cc.cs.UIMgr.changeSprite(this.jinxingText.node, "love_job/" + "loveing")
+        cc.cs.UIMgr.changeSprite(this.tipSprite.node, "love_job/" + "love_tips")
+        cc.cs.UIMgr.changeSprite(this.actionBg.node, "love_job/love_main/" + id)
         var dateData = cc.cs.gameData.getdateData(id)
         this.doName.string = dateData["DATE_NAME"]
         this.totalTime = dateData["DATE_EXECUTE_TIME"]

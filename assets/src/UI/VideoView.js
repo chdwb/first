@@ -88,6 +88,8 @@ cc.Class({
     onLoad: function() {
 
         //this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.playvideo
+        if(CC_JSB)
+        {
         this.videoPlayer = cc.LiveVideo.creator()
         this.video._sgNode.setLocalZOrder(0)
         this.node._sgNode.addChild(this.videoPlayer, 2, 888)
@@ -95,6 +97,11 @@ cc.Class({
         this.pauseNode._sgNode.setLocalZOrder(3)
         this.Loading._sgNode.setLocalZOrder(4)
         this.faceNode._sgNode.setLocalZOrder(5)
+    }
+    else
+    {
+        this.nowVideo.string = "正在播放视频ID "+  cc.cs.PlayerInfo.playvideo
+        }
 
 
         this.schedule(function() {
@@ -235,7 +242,14 @@ cc.Class({
             cc.log("get video url error" + JasonObject.error)
         }
 
-    }
+    },
+
+       onBack:function(){
+        
+        //var parent = this.node.parent
+        //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.MAINVIEW)
+		cc.cs.UIMgr.closeView()
+    },
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {

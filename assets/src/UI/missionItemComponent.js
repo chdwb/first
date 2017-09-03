@@ -119,7 +119,7 @@ cc.Class({
         } else {
 			this.doSprite.node.active = true
 			this.JobSprite.node.active = false
-			
+			cc.cs.UIMgr.changeSprite(this.IconBg.node, "love_job/love_bg")
             var dateResult = cc.cs.PlayerInfo.canLove(id)
             this.loadDate(dateResult)
         }
