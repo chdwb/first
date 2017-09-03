@@ -117,15 +117,15 @@ cc.Class({
             }
         }
 
-        this.iconWidth = this.caidanBG.width / this.iconArray.length
-        this.caidanBG.width  =  this.iconWidth * this.addIconArry.length
+        //this.iconWidth = this.caidanBG.width / this.iconArray.length
+        //this.caidanBG.width  =  this.iconWidth * this.addIconArry.length
        
-        var interval =  this.iconWidth - this.phoneBtn.width
+       // var interval =  this.iconWidth - this.phoneBtn.width
 
-        for(var i = 0; i < this.addIconArry.length; ++i){
-            this.addIconArry[i].x = (i*2 + 1) * (interval *0.5 + this.phoneBtn.width *0.5)
+       //for(var i = 0; i < this.addIconArry.length; ++i){
+        //    this.addIconArry[i].x = (i*2 + 1) * (interval *0.5 + this.phoneBtn.width *0.5)
 
-        }
+       // }
     },
 
     addDiBianBtn : function(icon){
@@ -610,7 +610,7 @@ cc.Class({
         
         
 
-       // this.computerDibian()
+        this.computerDibian()
         //this.updateui()
 
         this.shopBtn.on("click", (event) => {
