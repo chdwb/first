@@ -41900,6 +41900,12 @@
     "scrollView": {
       "__id__": 1094
     },
+    "BgNode": {
+      "__id__": 3
+    },
+    "VideoNode": {
+      "__id__": 274
+    },
     "spawnCount": 0,
     "totalRow": 0,
     "spacing": 60

@@ -81,6 +81,9 @@ cc.Class({
                 this.faceTimeNode.active = false
                 this.branchNode.node.active = false
                 this.branchData = cc.cs.gameData.getbranchVideoData(id)
+                if(this.branchData != null){
+                    cc.cs.UIMgr.changeSprite(this.branchNode.node, "commonbg/"+id)
+                }
             }else if(videoID == 2){
                 //facetime
                 this.videoLoadingNode.active = false

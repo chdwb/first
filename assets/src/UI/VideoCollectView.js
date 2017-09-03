@@ -26,6 +26,14 @@ cc.Class({
         	default: null,
         	type: cc.ScrollView
         },
+        BgNode:{
+            type: cc.Node,
+            default: null
+        },
+        VideoNode:{
+            type: cc.Node,
+            default: null
+        },
         spawnCount: 0, // 总个数
         totalRow: 0, // 行数
         spacing: 60, // space between each item
@@ -157,7 +165,7 @@ cc.Class({
                 {
                     //itemCom.setItmeNmae(gooddata["GOODS_NAME"] )
                     //cc.log("goodsname = "+videodata["GOODS_NAME"])
-                    itemCom.setVideo(videodata)
+                    itemCom.setVideo(videodata, this.BgNode, this.VideoNode)
                 }
                 this.content.addChild(item);
         		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));

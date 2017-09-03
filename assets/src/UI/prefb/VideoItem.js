@@ -48,8 +48,9 @@ cc.Class({
         },
         videoData:null,
         videoID:0,
-        isBuy:false
-
+        isBuy:false,
+        bgNode:null,
+        videoNode:null,
     },
 
     // use this for initialization
@@ -133,12 +134,14 @@ cc.Class({
         else
         {
              //cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
-             cc.cs.UIMgr.showTip("播放视频",1.0)
+             this.bgNode.active = false
+             this.videoNode.getComponent("jsVideo").setPlayVideoID(this.videoID)
+             this.videNode.active = true
         }
 
     },
 
-    setVideo: function( videodata ){
+    setVideo: function( videodata ,bgNode, videNode){
         this.videoData = videodata
         this.videoID = videodata["VIDEO_ID"];
         this.Name.string = videodata["VIDEO_NAME"]
@@ -147,7 +150,8 @@ cc.Class({
         cc.log(this.videoID)
         cc.cs.UIMgr.changeSprite(this.Icon.node, "video_icon/" + this.videoID)
         this.updateui()
-
+        this.bgNode = bgNode
+        this.videNode = videNode
     }
     
     
