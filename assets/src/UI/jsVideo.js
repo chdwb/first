@@ -330,8 +330,8 @@ cc.Class({
                     cc.log("视频完成")
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
-                    self.node.active = false
-                    self.bgNode.active = true
+                    this.node.active = false
+                    this.bgNode.active = true
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
                 }
