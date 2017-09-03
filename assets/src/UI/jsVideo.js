@@ -271,9 +271,11 @@ cc.Class({
                 }else{
                     if(self.videoType == 1 ||self.videoType == 2 ){
                         cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
+                    }else{
+                        self.node.active = false
+                        self.bgNode.active = true
                     }
-                    self.node.active = false
-                    self.bgNode.active = true
+                    
                 }
             })
             this.videoPauseNode.on("click", (event) => {
@@ -310,6 +312,8 @@ cc.Class({
                     cc.log("视频完成")
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
+                    self.node.active = false
+                    self.bgNode.active = true
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
                 }
