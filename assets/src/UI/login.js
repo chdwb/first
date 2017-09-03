@@ -246,7 +246,7 @@ cc.Class({
         this.videoPlayerNode.node.active = true
         this.videoPauseNode.active = true
         this.videoPauseTip.active = false
-        if(cc.cs.PlayerInfo.video_id == 1){
+        if(cc.cs.PlayerInfo.video_id != 2){
             this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
         }else if(cc.cs.PlayerInfo.video_id == 2){
             this.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + ".mp4"

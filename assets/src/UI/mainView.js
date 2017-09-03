@@ -88,6 +88,14 @@ cc.Class({
             type: cc.Label,
             default: null
         },
+        bgNode: {
+            type: cc.Node,
+            default: null
+        },
+        videoNode: {
+            type: cc.Node,
+            default: null
+        },
 
         iconArray : [],
         addIconArry : [],
@@ -356,6 +364,14 @@ cc.Class({
         return null
     },
 
+    onAnimationFinished : function(){
+        //cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
+        this.bgNode.active = false
+        this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
+        this.node.getChildByName("shengjidonghua").active = false
+        this.videoNode.active = true
+    },
+
     updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
         cc.log("mainview updateui")
@@ -363,15 +379,11 @@ cc.Class({
         
          if(this.SoundOff == true)
         {
-            
             cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/unvoice")
-        
         }
         else
         {
-            
             cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/voice")
-            
         }
 
         var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
@@ -386,9 +398,16 @@ cc.Class({
         this.workBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_4"]["FUNCTION_LEVEL"]
         this.SignRewardBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_5"]["FUNCTION_LEVEL"]
         this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]*/
+        var animation = this.node.getChildByName("shengjidonghua").getComponent("cc.Animation")
+
+        animation.on('finished',  this.onAnimationFinished,    this);
+
         cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
         if (cc.cs.PlayerInfo.playvideo != 0) {
-            cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
+            
+            animation.node.active = true
+            animation.play()
+            
             return;
         }
 
