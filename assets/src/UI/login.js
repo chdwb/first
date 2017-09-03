@@ -246,7 +246,12 @@ cc.Class({
         this.videoPlayerNode.node.active = true
         this.videoPauseNode.active = true
         this.videoPauseTip.active = false
-        this.videoPlayerNode.clip =  this.videoPlayerNode.clip.replace(/1.mp4/, "1102.mp4")
+        if(cc.cs.PlayerInfo.video_id == 1){
+            this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
+        }else if(cc.cs.PlayerInfo.video_id == 2){
+            this.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + ".mp4"
+        }
+            
         this.isPlayStart = false
         this.videoPlayerNode.play()
         
@@ -404,14 +409,7 @@ cc.Class({
             if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
                 this.playLogoVideo()
-                this.schedule(function(){
-
-                   
-                    
-                   this.setRandomNameNode();
-                },5,0);
-
-
+                this.setRandomNameNode();
             }
             else
             {
@@ -577,12 +575,8 @@ cc.Class({
             if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
                 this.playLogoVideo()
-                this.schedule(function(){
-                    cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
-                   this.setRandomNameNode();
-                },5,0);
-
-
+                cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+                this.setRandomNameNode();
             }
             else
             {
@@ -601,7 +595,6 @@ cc.Class({
         var self = this
         this.videoLoadOver1 = !false
         this.videoLoadOver2 = !false
-        cc.log(this.videoPlayerNode.clip)
 
         if(!CC_JSB){
             this.videoPlayerNode.node.on("ready-to-play", (event) =>{
