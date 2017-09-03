@@ -361,7 +361,22 @@ cc.Class({
 
 
     showExpTip:function(exp, targetNode, Handle){
-        var tip = cc.instantiate(this.expTip)
+        var tip = null
+        if(typeof(scene.getChildByName("Canvas").tipExp) == "undefined"){
+            var etip = cc.instantiate(this.expTip)
+            scene.getChildByName("Canvas").addChild(etip, 1000)
+            scene.getChildByName("Canvas").tipExp = etip
+            etip.active = false
+            tip = etip
+        }else{
+            tip = scene.getChildByName("Canvas").tipExp
+        }
+        if(tip.active){
+            cc.log("tip.actibe == true")
+            //return
+        }else{
+            tip.active = true
+        }
         var zf = "+"
         if(exp < 0){
 
@@ -370,7 +385,7 @@ cc.Class({
         }
         var expLabel = tip.getChildByName("expText").getComponent(cc.Label).string = zf + exp
         var scene = cc.director.getScene();
-        scene.getChildByName("Canvas").addChild(tip, 1000)
+        
 
         var p = targetNode.parent.convertToWorldSpaceAR(cc.v2(targetNode.x, targetNode.y))
         var p2 = tip.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
@@ -385,30 +400,65 @@ cc.Class({
 
     showExpHandle : function (target){
         target.targettt.refresh()
-        cc.director.getScene().getChildByName("Canvas").removeChild(target)
+        target.active = false
+        //cc.director.getScene().getChildByName("Canvas").removeChild(target)
     },
 
     showTip: function(text, time) {
-         if (CC_JSB) {
+         //if (CC_JSB) {
              time = 2.0
         var scene = cc.director.getScene();
-        var tipNode = cc.instantiate(this.tipPrefab)
-        scene.getChildByName("Canvas").addChild(tipNode, 1000)
-        tipNode.setPosition(0, 50);
+        if(typeof(scene.getChildByName("Canvas").tipNode) == "undefined"){
+            scene.getChildByName("Canvas").tipNode = []
+            for(var i =0 ;i < 3; ++i){
+                var tipNode = cc.instantiate(this.tipPrefab)
+                tipNode.active = false
+                scene.getChildByName("Canvas").tipNode.push(tipNode)
+                scene.getChildByName("Canvas").addChild(tipNode, 1000)
+            }
+        }
+        var currentTipNode = null;
+        var minHeight = 800;
+        for(var i = 0 ; i < 3; ++i){
+            if(scene.getChildByName("Canvas").tipNode[i].active == false){
+                if(currentTipNode == null){
+                    currentTipNode = scene.getChildByName("Canvas").tipNode[i]
+                    currentTipNode.active = true
+                }
+            }else{
+                if(minHeight > scene.getChildByName("Canvas").tipNode[i].y){
+                    minHeight = scene.getChildByName("Canvas").tipNode[i].y
+                }
+            }
+        }
+        if(minHeight < 150.0 ){
+            if(currentTipNode != null){
+                currentTipNode.active = false
+            }
+            return
+        }
+        if (currentTipNode == null ){
+            return
+        }
+            
+        cc.log(scene.getChildByName("Canvas").parent.name )
 
-        var textLabel = tipNode.getChildByName("tipText").getComponent(cc.Label)
+        currentTipNode.x = 0
+        currentTipNode.y = 50
+
+        var textLabel = currentTipNode.getChildByName("tipText").getComponent(cc.Label)
         textLabel.string = text
         
-        tipNode.width = textLabel.fontSize * textLabel.string.length +40
+        currentTipNode.width = textLabel.fontSize * textLabel.string.length +40
         var action = cc.sequence(cc.moveTo(time, 0.0, 350.0), cc.callFunc(function(target) {
-            cc.director.getScene().getChildByName("Canvas").removeChild(target)
-        }, tipNode))
+            target.active = false
+        }, currentTipNode))
 
-        tipNode.runAction(action);
-         }
-         else{
-             cc.log(text)
-         }
+        currentTipNode.runAction(action);
+        // }
+        // else{
+        //     cc.log(text)
+        // }
     },
 
     setHeart : function(target,currentExp , maxExp){
