@@ -68,7 +68,9 @@ cc.Class({
     setPlayVideoID : function(id){
         this.playVideoID = id;
         var videoID =this.getVideoType(id + "")
+
         if( videoID != 0){
+            this.backBtn.active = true
             this.videoType = videoID
             this.isPlayStart = false
             if(videoID == 1){
@@ -103,6 +105,7 @@ cc.Class({
                 this.videoPlayerNode.play()
                 this.faceTimeNode.active = false
                 this.branchNode.node.active = false
+                this.backBtn.active = true
             }
         }else{
             this.node.active = false
@@ -299,6 +302,20 @@ cc.Class({
                 self.videoPlayerNode.play()
                 self.faceTimeNode.active = false
                 self.branchNode.node.active = false
+            })
+            this.backBtn.on("click", (event) => {
+                self.videoPlayerNode.stop()
+                if(self.branchData != null){
+                    self.showBranchVideo()
+                }else{
+                    if(self.videoType == 1 ||self.videoType == 2 ){
+                        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
+                    }else{
+                        self.node.active = false
+                        self.bgNode.active = true
+                    }
+                    
+                }
             })
         }
     },
