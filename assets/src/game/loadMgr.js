@@ -19,6 +19,17 @@ cc.Class({
                     cc.log("load error prefab " +err)
                 }
             })
+
+             cc.loader.loadResDir("audio/effect", (err, ass) => {
+                if (!err) {
+                    //self.isLoadComplete = true
+                } else {
+                    cc.log(err)
+                }
+            })
+
+
+            
         if(CC_JSB)
         {
            

@@ -137,23 +137,23 @@ cc.Class({
     {
         if(arguments.length == 1)
             isloop =false;
-       // var id = 0;
+        var id = 0;
         if(this.isSondOff == false)
         {
             var self = this;
              var id = 0;
-           //var hehe = cc.loader.getRes("audio/effect/"+name, cc.AudioClip)
-           // id = cc.audioEngine.play(hehe, isloop, 1);
+           var hehe = cc.loader.getRes("audio/effect/"+name, cc.AudioClip)
+            id = cc.audioEngine.play(hehe, isloop, 1);
 			
-			 cc.loader.loadRes("audio/effect/"+name, function (err, clip) 
+			/* cc.loader.loadRes("audio/effect/"+name, function (err, clip) 
             {
 
-              this.Audioid = cc.audioEngine.play(clip, isloop, 1);
-            });
+              self.Audioid = cc.audioEngine.play(clip, isloop, 1);
+            });*/
 
             
         }
-        //return id;
+        return id;
     },
            
      playVoice:function(name,handle)
@@ -186,7 +186,7 @@ cc.Class({
      setFinishCallback:function ( audioID, callback )
     {
 
-        cc.audioEngine.setFinishCallback(audioID, callback);
+        cc.audioEngine.setFinishCallback(self.Backid, callback);
 
     },
 
@@ -194,7 +194,7 @@ cc.Class({
      {
         if(this.isSondOff == false){
 
-         cc.audioEngine.stop(this.Audioid)
+         cc.audioEngine.stop(id)
         }
 
      },

@@ -406,7 +406,7 @@ cc.Class({
             cc.log("video_id = "+cc.cs.PlayerInfo.playvideo)
             if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
-                
+                this.playLogoVideo("1101")   
                 this.setRandomNameNode();
             }
             else
