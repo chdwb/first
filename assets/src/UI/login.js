@@ -45,7 +45,6 @@ cc.Class({
             default: null
 
         },
-
         LogoVideoNode:{
 
             type: cc.Node,
@@ -130,9 +129,32 @@ cc.Class({
             type: cc.Label,
             default: null
         },
+        videoNode: {
+            type: cc.Node,
+            default: null
+        },
+        videoLoadingNode: {
+            type: cc.Node,
+            default: null
+        },
+        videoPauseNode: {
+            type: cc.Node,
+            default: null
+        },
+        videoPauseTip: {
+            type: cc.Node,
+            default: null
+        },
+        videoPlayerNode: {
+            type: cc.VideoPlayer,
+            default: null
+        },
 
         isLogin:false,
         isGuest:false,
+        videoLoadOver1:false,
+        videoLoadOver2:false,
+        isPlayStart : false,
     },
 
 
@@ -211,15 +233,23 @@ cc.Class({
 
     playLogoVideo:function()  // 播放第一次的LOGO视频
     {
-        this.startGameNode.active = false;
+        /*this.startGameNode.active = false;
         this.registerNode.active = false;
         this.loginNode.active = false;
         this.randomNameNode.active = false;
         this.LogoNode.active = true;
         
-        this.LogoVideoNode.active = true
-
-
+        this.LogoVideoNode.active = true*/
+        this.node.active = false
+        this.videoNode.active = true
+        this.videoLoadingNode.active = false
+        this.videoPlayerNode.node.active = true
+        this.videoPauseNode.active = true
+        this.videoPauseTip.active = false
+        this.videoPlayerNode.clip =  this.videoPlayerNode.clip.replace(/1.mp4/, "1102.mp4")
+        this.isPlayStart = false
+        this.videoPlayerNode.play()
+        
     },
 
     setStartGameNode: function() {
@@ -569,6 +599,59 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
         var self = this
+        this.videoLoadOver1 = !false
+        this.videoLoadOver2 = !false
+        cc.log(this.videoPlayerNode.clip)
+
+        if(!CC_JSB){
+            this.videoPlayerNode.node.on("ready-to-play", (event) =>{
+                self.videoLoadingNode.active = false
+                self.isPlayStart = true
+                cc.log("ready")
+                
+            })
+            this.videoPlayerNode.node.on("meta-loaded", (event) =>{
+                self.videoLoadingNode.active = true
+                cc.log("meta")
+            })
+            this.videoPlayerNode.node.on("playing", (event) =>{
+
+                cc.log("playing")
+            })
+            this.videoPlayerNode.node.on("stopped", (event) =>{
+                cc.log("stopped")
+            })
+            this.videoPlayerNode.node.on("completed", (event) =>{
+                self.videoNode.active = false
+                self.node.active = true
+                self.isPlayStart = false
+            })
+            this.videoPauseNode.on("click", (event) => {
+                if(self.isPlayStart){
+                    if(self.videoPlayerNode.isPlaying()){
+                        self.videoPlayerNode.pause()
+                        self.videoPauseTip.active = true
+                    }else{
+                        self.videoPlayerNode.play()
+                        self.videoPauseTip.active = false
+                    }
+                }
+            })
+           /* cc.loader.loadResDir("video/1101", (err, ass) => {
+                if(!err){
+                    cc.log("ass  = success"+ "  " +typeof(ass))
+                    self.videoLoadOver1 = true
+                }else{
+                    cc.log(err)
+                }
+            })
+
+            cc.loader.loadResDir("video/1102", (err, ass) => {
+                if(!err){
+                    self.videoLoadOver2 = true
+                }
+            })*/
+        }
 
        /* cc.director.preloadScene('GameScene',function(){
             cc.log("AAAAAAAAAAABBBBBBBBBBBBBB")
