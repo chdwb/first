@@ -187,7 +187,13 @@ cc.Class({
            var logovideo =  cc.sys.localStorage.getItem('LOGOVIDEO')
            if(logovideo == 1)
            {
-               this.setStartGameNode();
+                //if (CC_JSB) {
+                    this.setStartGameNode();
+                //}
+                //else
+               // {
+               //     this.setLoginNode();
+               // }
            }
            else
            {
@@ -225,14 +231,23 @@ cc.Class({
 
             var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
             var passward = cc.sys.localStorage.getItem('PASSWORD')
+            
             if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
                 this.intoRegisterBangDingNodeBtn.active = false
                 this.intoRegisterNodeBtn.active = true
             }
             else
             {
-                this.intoRegisterBangDingNodeBtn.active = true
-                this.intoRegisterNodeBtn.active = false
+                if(CC_JSB)
+                {
+                    this.intoRegisterBangDingNodeBtn.active = true
+                    this.intoRegisterNodeBtn.active = false
+                }
+                else
+                {
+                    this.intoRegisterBangDingNodeBtn.active = false
+                    this.intoRegisterNodeBtn.active = true
+                }
                 if(this.isFirstGame())
                 {
                     var uuid = this.getDiviceID()
@@ -260,9 +275,17 @@ cc.Class({
             else
             {
                 cc.log("bangding")
-
-                this.bangdingdiban.active = true
-                this.zhucediban.active = false
+                if(CC_JSB)
+                {
+                    this.bangdingdiban.active = true
+                    this.zhucediban.active = false
+                }
+                else
+                {
+                    this.bangdingdiban.active = false
+                    this.zhucediban.active = true
+                }
+            
             }
     },
 
@@ -375,7 +398,14 @@ cc.Class({
             } else {
                 //this.setStartGameNode()
                 //this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
-                cc.cs.gameMgr.sendLogin("", "", this.gotoGameScene, this)
+                if(CC_JSB)
+                {
+                    cc.cs.gameMgr.sendLogin("", "", this.gotoGameScene, this)
+                }
+                else
+                {
+                    cc.cs.UIMgr.showTip("请注册账号",2.0)
+                }
             }
         }
     },
@@ -553,8 +583,16 @@ cc.Class({
             
             
         } else {
+            if(CC_JSB)
+            {
              this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
-             this.gustIDLabel2.string = cc.cs.gameMgr.generateGustInfo()
+             this.gustIDLabel2.string =  this.gustIDLabel.string
+            }
+            else
+            {
+                this.gustIDLabel.string = "请注册账号"
+            }
+             
         }
         this.startGameBtn.on("click", (event) => {
             self.startgame()
