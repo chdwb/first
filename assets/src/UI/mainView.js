@@ -458,27 +458,27 @@ cc.Class({
             }
             else if(icon.name == "wechatBtn")
             {
-                if(parseInt(cc.cs.PlayerInfo.guide_id) == 7) // 弹出电话按钮引导
+                /*if(parseInt(cc.cs.PlayerInfo.guide_id) == 7) // 弹出电话按钮引导
                 {
                     cc.log("微信第一次激活")
                     cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.wechatBtn,this)
-                }
+                }*/
             }
             else if(icon.name == "workBtn")
             {
-                if(parseInt(cc.cs.PlayerInfo.guide_id) == 9) // 弹出电话按钮引导
+                /*if(parseInt(cc.cs.PlayerInfo.guide_id) == 9) // 弹出电话按钮引导
                 {
                     cc.log("工作第一次激活")
                     cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.workBtn,this)
-                }
+                }*/
             }
             else if(icon.name == "zonetBtn")
             {
-                if(parseInt(cc.cs.PlayerInfo.guide_id) == 15) // 弹出电话按钮引导
+               /* if(parseInt(cc.cs.PlayerInfo.guide_id) == 15) // 弹出电话按钮引导
                 {
                     cc.log("微博第一次激活")
                     cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.zoneBtn,this)
-                }
+                }*/
             }
 
 
@@ -508,6 +508,12 @@ cc.Class({
 
 
         if (this.wechatBtn.active)
+        {
+            if(parseInt(cc.cs.PlayerInfo.guide_id) == 7) // 弹出电话按钮引导
+                {
+                    cc.log("微信第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.wechatBtn,this)
+                }
             if (cc.cs.PlayerInfo.canWechat()) {
 
 
@@ -528,8 +534,10 @@ cc.Class({
             } else {
                 this.wechatBtn.getChildByName("stars").active = false;
             }
+        }
 
         if (this.phoneBtn.active)
+        {
 
             if (cc.cs.PlayerInfo.canPhone()) {
 
@@ -550,27 +558,44 @@ cc.Class({
                 this.phoneBtn.getChildByName("stars").active = false;
 
             }
+        }
 
         if (this.zoneBtn.active)
+        {
+            if(parseInt(cc.cs.PlayerInfo.guide_id) == 15) // 弹出电话按钮引导
+                {
+                    cc.log("微博第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.zoneBtn,this)
+                }
             if (cc.cs.PlayerInfo.canZone()) {
                 this.zoneBtn.getChildByName("stars").active = true;
             } else {
                 this.zoneBtn.getChildByName("stars").active = false;
             }
+        }
 
             if (this.loveBtn.active)
+            {
                 if (cc.cs.PlayerInfo.canAllLove()) {
                     this.loveBtn.getChildByName("stars").active = true;
                 } else {
                     this.loveBtn.getChildByName("stars").active = false;
                 }
+            }
 
                 if (this.workBtn.active)
+                {
+                    if(parseInt(cc.cs.PlayerInfo.guide_id) == 9) // 弹出电话按钮引导
+                {
+                    cc.log("工作第一次激活")
+                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.workBtn,this)
+                }
                     if (cc.cs.PlayerInfo.canAllWork()) {
                         this.workBtn.getChildByName("stars").active = true;
                     } else {
                         this.workBtn.getChildByName("stars").active = false;
                     }
+                }
 
     },
     // use this for initialization

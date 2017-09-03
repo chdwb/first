@@ -223,6 +223,8 @@ cc.Class({
         this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab) //没有箭头左上
         this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab) //箭头在右边
         this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab) //箭头在下边
+
+        this.nodeGuide6 = cc.loader.getRes("prefab/PopGuide6", cc.Prefab) //箭头向上
     },
     showPopBuy: function(id, okHandle, obj) {
         //id 1 秒回礼包 3 一件完成礼包
@@ -265,9 +267,9 @@ cc.Class({
                         popupNode = cc.instantiate(this.nodeGuidePrefabNArrowLeft)
                     }
                     break;
-                case 4:
+                //case 4:
                 case 5:
-                case 6:
+                
                 case 8:
                 case 11:
                 case 16:
@@ -278,6 +280,8 @@ cc.Class({
 
                 case 7:
                 case 12:
+                case 4:
+                case 10:
                 //case 17:
                     {
                         popupNode = cc.instantiate(this.nodeGuidePrefabRight)
@@ -285,7 +289,7 @@ cc.Class({
                     break;
 
                 case 9:
-                case 10:
+               // case 10:
                 case 13:
                 case 14:
 
@@ -293,6 +297,13 @@ cc.Class({
                         popupNode = cc.instantiate(this.nodeGuidePrefabBottom)
                     }
                     break;
+                    case 6:
+                    {
+
+                        popupNode = cc.instantiate(this.nodeGuide6)
+
+                    }
+                    break
 
 
             }

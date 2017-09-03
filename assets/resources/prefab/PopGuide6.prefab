@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PopGuide2",
+    "_name": "PopGuide6",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -179,8 +179,8 @@
     "_scaleY": 0.7,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -375,
-      "y": -7
+      "x": 5,
+      "y": -275
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -224,8 +224,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 362,
-      "height": 251
+      "width": 360,
+      "height": 272
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -233,8 +233,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": -6,
+      "y": -26
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -259,7 +259,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "垃圾筐的反馈了空间啊阿来得及看反馈来看奥克兰的会计法奥里吉的看法垃圾袋发卡了贷款纠纷拉快递费垃圾的发了看见的法拉第讲课费凉快阿拉丁讲课费垃圾袋f",
+    "_N$string": "啊的风口浪尖啊的肌肤啊了解对方啊就地方啊了解对方啊就地方阿里的风景阿里的风景阿里的风景看啊的理解阿里的",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
@@ -271,9 +271,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "83d08662-9b5b-4ac7-a1a5-8ee68b9816af"
+      "__id__": 0
     },
-    "fileId": "c14eeR0kk5ARrM8CJ7WdjdY",
+    "fileId": "320c1tmwthPfYCyHnvX0URO",
     "sync": false
   },
   {
@@ -308,100 +308,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "83d08662-9b5b-4ac7-a1a5-8ee68b9816af"
+      "__id__": 0
     },
-    "fileId": "dccd02LfgBAVJU5il4jAeJM",
-    "sync": false
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "guide_down",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 2
-    },
-    "_children": [],
-    "_tag": -1,
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 10
-      }
-    ],
-    "_prefab": {
-      "__id__": 11
-    },
-    "_id": "",
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_cascadeOpacityEnabled": true,
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 187,
-      "height": 141
-    },
-    "_rotationX": -5,
-    "_rotationY": -5,
-    "_scaleX": 0.7,
-    "_scaleY": 0.7,
-    "_position": {
-      "__type__": "cc.Vec2",
-      "x": -91,
-      "y": -16
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_localZOrder": 0,
-    "_globalZOrder": 0,
-    "_opacityModifyRGB": false,
-    "groupIndex": 0
-  },
-  {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 9
-    },
-    "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "9900ff36-5cca-4358-a7c7-46affcba1b5a"
-    },
-    "_type": 0,
-    "_sizeMode": 1,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_atlas": null
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 1
-    },
-    "asset": {
-      "__uuid__": "83d08662-9b5b-4ac7-a1a5-8ee68b9816af"
-    },
-    "fileId": "8a286WwCntAYaH6N4vEgBZ9",
+    "fileId": "6995c5x6NtLzJkhgyJwRiIS",
     "sync": false
   },
   {
@@ -416,11 +325,11 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 13
+        "__id__": 10
       }
     ],
     "_prefab": {
-      "__id__": 14
+      "__id__": 11
     },
     "_id": "",
     "_opacity": 255,
@@ -463,7 +372,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 12
+      "__id__": 9
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -490,9 +399,100 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "83d08662-9b5b-4ac7-a1a5-8ee68b9816af"
+      "__id__": 0
     },
-    "fileId": "17060TomI1MhYVkd0qZgSGM",
+    "fileId": "6f2f4BvKqFEa6R4e0ZwKTC5",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "guide_down",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 2
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 13
+      }
+    ],
+    "_prefab": {
+      "__id__": 14
+    },
+    "_id": "",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 187,
+      "height": 141
+    },
+    "_rotationX": 274,
+    "_rotationY": 274,
+    "_scaleX": 0.7,
+    "_scaleY": 0.7,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 2,
+      "y": -84
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 12
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "9900ff36-5cca-4358-a7c7-46affcba1b5a"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "cbf784aY3lPPoxV7ewc7VSs",
     "sync": false
   },
   {
@@ -525,9 +525,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "83d08662-9b5b-4ac7-a1a5-8ee68b9816af"
+      "__id__": 0
     },
-    "fileId": "f19e0cpfWVMlY5oz9WttwVN",
+    "fileId": "770faLB9pBLvZxzB6Pkjr0w",
     "sync": false
   },
   {
@@ -600,9 +600,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "83d08662-9b5b-4ac7-a1a5-8ee68b9816af"
+      "__id__": 0
     },
-    "fileId": "d85ccdXNOpLXprtqExh+DAt",
+    "fileId": "dfdb5s7pYREYKBDGOiB4UxM",
     "sync": false
   }
 ]
