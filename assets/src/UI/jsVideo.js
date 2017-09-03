@@ -89,7 +89,6 @@ cc.Class({
                 this.videoLoadingNode.active = false
                 this.videoPlayerNode.node.active = false
                 this.videoPauseNode.active = false
-                this.videoPauseNode.active = true
                 this.faceTimeNode.active = true
                 this.branchNode.node.active = false
 
