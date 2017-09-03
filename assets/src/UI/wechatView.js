@@ -478,7 +478,7 @@ cc.Class({
             this.castText.string = cc.cs.PlayerInfo.diamond
             cc.log("wechat onEnable = " + cc.cs.PlayerInfo.canWechat())
             if (cc.cs.PlayerInfo.canWechat()) {
-                
+                this.sendBtn.parent.active = true
                 this.sendBtn.getComponent(cc.Button).interactable = true
                 this.inputBtn.getComponent(cc.Button).interactable = true
             } else {
@@ -499,9 +499,12 @@ cc.Class({
                         this.NPCID++
                         weData = cc.cs.gameData.getwechatData(this.NPCID)
                     }
+                    cc.log(cc.cs.gameData.wechat["LAST"] + "      " + cc.cs.PlayerInfo.wechat_id)
                     if (this.NPCID >= cc.cs.gameData.wechat["LAST"]) {
                         //if(!this.quikeTip.active)
                         //this.sendBtn.parent.active = false
+                        cc.log("this.NPCID >= cc.cs.gameData.wechat[]")
+                        this.sendBtn.parent.active = false
                         this.sendBtn.getComponent(cc.Button).interactable = false
                         this.inputBtn.getComponent(cc.Button).interactable = false
                         return

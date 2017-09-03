@@ -136,7 +136,7 @@ cc.Class({
              //cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
              this.bgNode.active = false
              this.videoNode.getComponent("jsVideo").setPlayVideoID(this.videoID)
-             this.videNode.active = true
+             this.videoNode.active = true
         }
 
     },
@@ -151,7 +151,7 @@ cc.Class({
         cc.cs.UIMgr.changeSprite(this.Icon.node, "video_icon/" + this.videoID)
         this.updateui()
         this.bgNode = bgNode
-        this.videNode = videNode
+        this.videoNode = videNode
     }
     
     
