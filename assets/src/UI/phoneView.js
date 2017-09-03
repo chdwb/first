@@ -353,6 +353,10 @@ cc.Class({
 
       VoiceDone2: function(ret)
     {
+        if(this.timeIng == false)  //已经点了取消 不需要处理了
+        {
+            return
+        }
 
         if (cc.cs.gameData.phone["PHONE_ID_" + this.tempPhoneID]["PHONE_AUDIO"] != "dummy")   // 女主不是最后一句
         
@@ -403,7 +407,7 @@ cc.Class({
 
                 this.currentTime = 0
                 this.isAction = true;
-                this.totalTime = 20
+                this.totalTime = 40
                 this.timeIng = true;
                 this.backBtn.active = false
                this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone2.bind(this))
@@ -830,6 +834,7 @@ cc.Class({
             self.totalTime = 0
             cc.cs.AudioMgr.StopVoice()
             self.backBtn.active = true
+            this.timeIng = false
         })
 
         this.phoneBtn.on("click", (event) => {

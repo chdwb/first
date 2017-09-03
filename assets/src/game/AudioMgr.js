@@ -14,6 +14,7 @@ cc.Class({
         // ...
         BGMid:-1,
         Backid:-1,
+        Audioid:-1,
         isSondOff:false
     },
 
@@ -49,15 +50,15 @@ cc.Class({
             
               
 
-            var hehe  = cc.loader.getRes("audio/"+name, cc.AudioClip)
-            self.BGMid  = cc.audioEngine.play(hehe, isLoop, 1);
+           // var hehe  = cc.loader.getRes("audio/"+name, cc.AudioClip)
+           // self.BGMid  = cc.audioEngine.play(hehe, isLoop, 1);
 
                        
-            /*cc.loader.loadRes("audio/"+name, function (err, clip) 
+            cc.loader.loadRes("audio/"+name, function (err, clip) 
             {
 
-              self.BGMid = cc.audioEngine.play(clip, isLoop, 0.5);
-            });*/
+              self.BGMid = cc.audioEngine.play(clip, isLoop, 1);
+            });
         }
        //this.BGMid = cc.audioEngine.play(clip, isLoop, 1);
 
@@ -105,13 +106,13 @@ cc.Class({
      getHeHe:function()
     {
 
-      cc.loader.loadRes('666',function(err,data){
+     /* cc.loader.loadRes('666',function(err,data){
 			if(err){
 				cc.error(err);
 			}else{
 				cc.log('test == ' +data);
 			}
-	});
+	});*/
         
    
            //var hehe = cc.loader.getRes("audio/voice/666", cc.TextAsset )
@@ -136,17 +137,23 @@ cc.Class({
     {
         if(arguments.length == 1)
             isloop =false;
-        var id = 0;
+       // var id = 0;
         if(this.isSondOff == false)
         {
             var self = this;
-   
-           var hehe = cc.loader.getRes("audio/effect/"+name, cc.AudioClip)
-            id = cc.audioEngine.play(hehe, isloop, 1);
+             var id = 0;
+           //var hehe = cc.loader.getRes("audio/effect/"+name, cc.AudioClip)
+           // id = cc.audioEngine.play(hehe, isloop, 1);
+			
+			 cc.loader.loadRes("audio/effect/"+name, function (err, clip) 
+            {
+
+              this.Audioid = cc.audioEngine.play(clip, isloop, 1);
+            });
 
             
         }
-        return id;
+        //return id;
     },
            
      playVoice:function(name,handle)
@@ -187,7 +194,7 @@ cc.Class({
      {
         if(this.isSondOff == false){
 
-         cc.audioEngine.stop(id)
+         cc.audioEngine.stop(this.Audioid)
         }
 
      },

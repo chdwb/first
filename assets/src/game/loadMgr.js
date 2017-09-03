@@ -7,32 +7,37 @@ cc.Class({
 
     loadRes: function(funCall) {
         var self = this
-        cc.loader.loadResDir("prefab", (err, prefab) => {
 
-            if (!err) {
-                cc.cs.UIMgr.init()
-                
-                
+         cc.loader.loadResDir("prefab", (err, prefab) => {
 
-            } else {
-                cc.log("load error prefab " +err)
-            }
-        })
-        cc.loader.loadResDir("picture/newRes831", (err, ass) => {
-            if (!err) {
-                self.isLoadComplete = true
-            } else {
-                cc.log(err)
-            }
-        })
+                if (!err) {
+                    cc.cs.UIMgr.init()
+                    
+                    
 
-         cc.loader.loadResDir("audio", (err, ass) => {
-            if (!err) {
-                //self.isLoadComplete = true
-            } else {
-                cc.log(err)
-            }
-        })
+                } else {
+                    cc.log("load error prefab " +err)
+                }
+            })
+        if(CC_JSB)
+        {
+           
+            cc.loader.loadResDir("picture/newRes831", (err, ass) => {
+                if (!err) {
+                    self.isLoadComplete = true
+                } else {
+                    cc.log(err)
+                }
+            })
+
+            cc.loader.loadResDir("audio", (err, ass) => {
+                if (!err) {
+                    //self.isLoadComplete = true
+                } else {
+                    cc.log(err)
+                }
+            })
+        }
 
 
 

@@ -179,7 +179,20 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
+		var self = this
+		if(true)
+		{
+			
+			this.prefab = cc.loader.getRes("prefab/NodeItem", cc.Prefab)
+		}
+		else
+		{
+			cc.loader.loadRes("prefab/NodeItem", function (err, prefab) {
+			self.prefab = prefab;});
+			
+		}
+		
+        
         this.refreshReward(parseInt(cc.cs.PlayerInfo.signday)+1)
 
         this.getbutton

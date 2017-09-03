@@ -247,7 +247,21 @@ cc.Class({
     
 
     getImage: function(res) {
-        return cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame);
+		
+		
+		var self = this
+		var hehe = null
+		if(CC_JSB)
+		{
+
+          hehe = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
+		}
+		else
+		{
+			cc.loader.loadRes("picture/newRes831/" + res, function (err, prefab) {
+			hehe = prefab;});
+		}
+        return hehe
     },
 
     setMsg: function(text) {

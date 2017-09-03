@@ -161,15 +161,40 @@ cc.Class({
         if (!cc.cs.loadMgr.isLoadComplete) {
             cc.log("error the res is not load complete")
         }
-        var spriteFrame = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
-        if (spriteFrame == null || spriteFrame == 'undefinde') {
-            cc.log("the res is mission = " + "picture/newRes831/" + res)
-        }
-        var sprite = node.getComponent(cc.Sprite)
-        if (sprite == null || sprite == 'undefinde') {
-            cc.log("the sprite is mission = " + node.name)
-        }
-        sprite.spriteFrame = spriteFrame
+		var spriteFrame = null
+		if(CC_JSB)
+		{
+          spriteFrame = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
+
+           if (spriteFrame == null || spriteFrame == 'undefinde') {
+                    cc.log("the res is mission = " + "picture/newRes831/" + res)
+                }
+                var sprite = node.getComponent(cc.Sprite)
+                if (sprite == null || sprite == 'undefinde') {
+                    cc.log("the sprite is mission = " + node.name)
+                }
+                sprite.spriteFrame = spriteFrame
+		}
+		else
+		{
+			cc.loader.loadRes("picture/newRes831/" + res,cc.SpriteFrame, function (err, prefab) {
+			spriteFrame = prefab;
+
+
+
+                    if (spriteFrame == null || spriteFrame == 'undefinde') {
+                    cc.log("the res is mission = " + "picture/newRes831/" + res)
+                }
+                var sprite = node.getComponent(cc.Sprite)
+                if (sprite == null || sprite == 'undefinde') {
+                    cc.log("the sprite is mission = " + node.name)
+                }
+                sprite.spriteFrame = spriteFrame
+			
+			});
+			
+		}
+        
     },
 
 
