@@ -239,6 +239,7 @@ cc.Class({
     showBranchVideo:function(){
         this.branchNode.node.active = true
         this.showInputTable()
+        this.videoType = 3
     },
     // use this for initialization
     onLoad: function () {
