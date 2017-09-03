@@ -368,7 +368,11 @@ cc.Class({
         //cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
         this.bgNode.active = false
         this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
+        var animation = this.node.getChildByName("shengjidonghua").getComponent("cc.Animation")
+        animation.stop()
+        animation.node.active = false
         this.node.getChildByName("shengjidonghua").active = false
+
         this.videoNode.active = true
     },
 

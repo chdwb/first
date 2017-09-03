@@ -155,6 +155,7 @@ cc.Class({
         videoLoadOver1:false,
         videoLoadOver2:false,
         isPlayStart : false,
+        playVideoID :""
     },
 
 
@@ -231,7 +232,7 @@ cc.Class({
 
     },
 
-    playLogoVideo:function()  // 播放第一次的LOGO视频
+    playLogoVideo:function(id)  // 播放第一次的LOGO视频
     {
         /*this.startGameNode.active = false;
         this.registerNode.active = false;
@@ -240,17 +241,14 @@ cc.Class({
         this.LogoNode.active = true;
         
         this.LogoVideoNode.active = true*/
+        this.playVideoID = id
         this.node.active = false
         this.videoNode.active = true
         this.videoLoadingNode.active = false
         this.videoPlayerNode.node.active = true
         this.videoPauseNode.active = true
         this.videoPauseTip.active = false
-        if(cc.cs.PlayerInfo.video_id != 2){
-            this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
-        }else if(cc.cs.PlayerInfo.video_id == 2){
-            this.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + ".mp4"
-        }
+        this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
             
         this.isPlayStart = false
         this.videoPlayerNode.play()
@@ -408,7 +406,7 @@ cc.Class({
             cc.log("video_id = "+cc.cs.PlayerInfo.playvideo)
             if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
-                this.playLogoVideo()
+                
                 this.setRandomNameNode();
             }
             else
@@ -574,8 +572,8 @@ cc.Class({
             cc.log("video_id = "+cc.cs.PlayerInfo.playvideo)
             if(cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
-                this.playLogoVideo()
-                cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.api_token,cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+                this.playLogoVideo("1101")
+                
                 this.setRandomNameNode();
             }
             else
@@ -615,6 +613,12 @@ cc.Class({
                 cc.log("stopped")
             })
             this.videoPlayerNode.node.on("completed", (event) =>{
+                if(self.playVideoID == "1101"){
+                   // cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
+                   //第一段播完回调
+                }else if(self.playVideoID == "1102"){
+                    cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
+                }
                 self.videoNode.active = false
                 self.node.active = true
                 self.isPlayStart = false
@@ -834,9 +838,9 @@ cc.Class({
     sendNameHandle: function(ret) {
        var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
-            
+            this.playLogoVideo("1102")
             //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
-            cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,this.videoDoneHandle,this)
+            
             
             
         } else {
