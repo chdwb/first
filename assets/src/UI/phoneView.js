@@ -703,12 +703,12 @@ cc.Class({
         if (isPlayer) {
             cc.cs.UIMgr.setNanTalk(nanNode, msg,  name + " ·")
             nvNode.active = false
-            nanNode.y = 150 - scroll.height * 0.5
+            nanNode.y = 100 - scroll.height * 0.5
             nanNode.active = true;
         } else {
             nanNode.active = false
             cc.cs.UIMgr.setNvTalk(nvNode, msg,  "· " + name, false)
-            nvNode.y = 150 - scroll.height * 0.5
+            nvNode.y = 100 - scroll.height * 0.5
             nvNode.active = true;
         }
     },

@@ -7,7 +7,15 @@ cc.Class({
             type: cc.Label,
             default: null
         },
-        dayText: {
+        dayText1: {
+            type: cc.Label,
+            default: null
+        },
+        dayText2: {
+            type: cc.Label,
+            default: null
+        },
+        dayText3: {
             type: cc.Label,
             default: null
         },
@@ -196,21 +204,31 @@ cc.Class({
     },
 
     setDay: function(day) {
-        var str = ""
+        var str1 = ""
+        var str2 = ""
+        var str3 = ""
         if(day < 10)
         {
-            str = "0 0 "+day
+            str1 = "0"
+            str2 = "0"
+            str3 = ""+day
         }
         else if(day >=10 && day <100)
         {
-            str = "0 "+parseInt(day/10)+" "+parseInt(day%10)
+            str1 = "0"
+            str2 = "" + parseInt(day/10)
+            str3 = ""+parseInt(day%10)
         }
         else if(day >100)
         {
-            str = ""+parseInt(day/100)+" "+parseInt((day - parseInt(day/100) * 100)/10)+" "+parseInt(day%10)
+            str1 = ""+parseInt(day/100)
+            str2 = "" + parseInt((day - parseInt(day/100) * 100)/10)
+            str3 = ""+parseInt(day%10)
         }
 
-        this.dayText.string = str
+        this.dayText1.string = str1
+        this.dayText2.string = str2
+        this.dayText3.string = str3
     },
 
     setLev: function(lev) {
