@@ -204,7 +204,7 @@ cc.Class({
        StopVoice:function()
      {
         
-
+        this.setFinishCallback(this.Backid,function(){})
          cc.audioEngine.stop(this.Backid)
         
 
