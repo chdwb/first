@@ -363,7 +363,7 @@ cc.Class({
         else
         {
                 //  cc.cs.UIMgr.showPopupOC("提示","升职到"+job+"需要花费"+needgold+"金币，确定升职吗？",this.SendUpgrade.bind(this),null)
-                this.sendUpgrade()
+                this.SendUpgrade()
         }
     }
     ,

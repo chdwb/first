@@ -68,6 +68,7 @@ cc.Class({
     {
         cc.log("WORKVIEW UPDATE MONMEY")
         this.goldText.string = cc.cs.PlayerInfo.money
+        
          //this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
         
     },
