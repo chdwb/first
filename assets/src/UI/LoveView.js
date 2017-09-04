@@ -302,7 +302,7 @@ cc.Class({
     onLoad: function() {
         cc.log("love view  onload")
         var self = this
-        this.missionItemPrefab = cc.loader.getRes("prefab/missionItem", cc.Prefab)
+        this.missionItemPrefab = cc.loader.getRes("prefab/loveItem", cc.Prefab)
         for(var i = cc.cs.gameData.date["FIRST"]; i <= cc.cs.gameData.date["LAST"]; ++i){
             var itemNode = cc.instantiate(this.missionItemPrefab)
             var itemCom = itemNode.getComponent("missionItemComponent")
