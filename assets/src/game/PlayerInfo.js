@@ -449,6 +449,10 @@ cc.Class({
 
     canZone: function() {
         var count = this.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
+        if(count == 3){
+            if (this.canWechat() || this.canPhone())
+                count = 2
+        }
         for (var i = cc.cs.gameData.zone["FIRST"]; i < count; ++i) {
             if (this.getZoneReplyID(i) == 0 || this.canZanZone(i))
                 return true
