@@ -50,6 +50,9 @@ cc.Class({
         playVideoID : 0,
         branchData : null,
         videoType : 0,
+        videoloadingEnd:true,
+        videoIsReadToPlay:false,
+        videoLoadingAnimation : null
     },
 
     getVideoType: function(videoName) {
@@ -79,8 +82,13 @@ cc.Class({
                 this.videoPlayerNode.node.active = true
                 this.videoPauseNode.active = true
                 this.videoPauseTip.active = false
+                this.videoloadingEnd = false
+                this.videoIsReadToPlay = false
                 this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
-                
+                //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
+                //this.node.runAction(act)
+                //this.videoLoadingAnimation.play()
+                this.videoLoadingNode.active = true
                 this.faceTimeNode.active = false
                 this.branchNode.node.active = false
                 this.branchData = cc.cs.gameData.getbranchVideoData(id)
@@ -103,7 +111,13 @@ cc.Class({
                 this.videoPlayerNode.node.active = true
                 this.videoPauseNode.active = true
                 this.videoPauseTip.active = false
+                this.videoloadingEnd = false
+                this.videoIsReadToPlay = false
                 this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+                //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
+                //this.node.runAction(act)
+                //this.videoLoadingAnimation.play()
+                this.videoLoadingNode.active = true
                 
                 this.faceTimeNode.active = false
                 this.branchNode.node.active = false
@@ -229,12 +243,27 @@ cc.Class({
        //     return
         //}
     },
+    loadEndFunc : function(){
+        if(this.videoIsReadToPlay){
+            this.videoLoadingNode.active = false
+            this.isPlayStart = true
+            this.videoPlayerNode.play()
+            //this.videoLoadingAnimation.stop()
+        }
+    },
     playBranchVideo:function(id){
         this.videoLoadingNode.active = false
         this.videoPlayerNode.node.active = true
         this.videoPauseNode.active = true
         this.videoPauseTip.active = false
+        
         this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+        this.videoloadingEnd = false
+        this.videoIsReadToPlay = false
+        //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
+        //this.node.runAction(act)
+       // this.videoLoadingAnimation.play()
+        this.videoLoadingNode.active = true
         this.isPlayStart = false
        // this.videoPlayerNode.play()
         this.faceTimeNode.active = false
@@ -254,15 +283,24 @@ cc.Class({
         this.inputTableBtn.x = 0
         this.inputTableBtn.y = 0
         var self = this
+        this.videoLoadingAnimation = this.videoLoadingNode.getChildByName("New Node").getComponent("cc.Animation")
+        //this.videoLoadingAnimation.stop()
+        this.videoLoadingAnimation.on('lastframe',  this.loadEndFunc,    this);
+
         if(!CC_JSB){
             this.videoPlayerNode.node.on("ready-to-play", (event) =>{
-                self.videoLoadingNode.active = false
-                self.isPlayStart = true
-                cc.log("ready-to-play")
-                self.videoPlayerNode.play()
+                /*if(self.videoloadingEnd){
+                    self.videoLoadingNode.active = false
+                    self.isPlayStart = true
+                    cc.log("ready-to-play")
+                    self.videoPlayerNode.play()
+                }else*/{
+                    self.videoIsReadToPlay = true
+                }
             })
+
             this.videoPlayerNode.node.on("meta-loaded", (event) =>{
-                self.videoLoadingNode.active = true
+                
                 cc.log("meta")
             })
             this.videoPlayerNode.node.on("playing", (event) =>{
@@ -306,6 +344,11 @@ cc.Class({
                 self.videoPauseNode.active = true
                 self.videoPauseTip.active = false
                 self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + ".mp4"
+                self.videoloadingEnd = false
+                self.videoIsReadToPlay = false
+                //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(self.loadEndFunc, self))
+                //self.node.runAction(act)
+                //self.videoLoadingAnimation.play()
                // self.videoPlayerNode.play()
                 self.faceTimeNode.active = false
                 self.branchNode.node.active = false

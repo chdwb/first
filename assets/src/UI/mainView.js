@@ -404,7 +404,7 @@ cc.Class({
         this.zoneBtn.active = parseInt(cc.cs.PlayerInfo.level) >= cc.cs.gameData.function_conditions["FUNCTION_ID_8"]["FUNCTION_LEVEL"]*/
         var animation = this.node.getChildByName("shengjidonghua").getComponent("cc.Animation")
 
-        animation.on('finished',  this.onAnimationFinished,    this);
+       // animation.on('finished',  this.onAnimationFinished,    this);
 
         cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
         if (cc.cs.PlayerInfo.playvideo != 0) {
@@ -672,7 +672,9 @@ cc.Class({
 
         
         
+        var animation = this.node.getChildByName("shengjidonghua").getComponent("cc.Animation")
         
+        animation.on('finished',  this.onAnimationFinished,    this);
 
         this.computerDibian()
         //this.updateui()
