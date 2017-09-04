@@ -445,6 +445,7 @@ cc.Class({
         
         if(icon != null){
             cc.log("canAddIcon   " + icon.name)
+            this.computerDibian()
             this.addDiBianBtn(icon)
             icon.active = true
 
