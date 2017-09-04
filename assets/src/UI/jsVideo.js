@@ -272,6 +272,9 @@ cc.Class({
             })
             this.videoPlayerNode.node.on("completed", (event) =>{
                 if(self.branchData != null){
+                    if(self.videoType == 1 ||self.videoType == 2 ){
+                        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
+                    }
                     self.showBranchVideo()
                 }else{
                     cc.log("self.videoType  videoPlayerNode " + self.videoType)
@@ -308,6 +311,9 @@ cc.Class({
             this.backBtn.on("click", (event) => {
                 self.videoPlayerNode.stop()
                 if(self.branchData != null){
+                    if(self.videoType == 1 ||self.videoType == 2 ){
+                        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
+                    }
                     self.showBranchVideo()
                 }else{
                     cc.log("self.videoType  backBtn " + self.videoType)
