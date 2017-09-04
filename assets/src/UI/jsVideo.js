@@ -329,6 +329,14 @@ cc.Class({
         }
     },
 
+    onEnable : function(){
+        cc.cs.AudioMgr.stopBGM()
+    },
+
+    onDisable : function(){
+        cc.cs.AudioMgr.startBGM()
+    },
+
     videoDoneHandle: function(ret) {
         cc.cs.UIMgr.closeNetView()
                 var JasonObject = JSON.parse(ret);
