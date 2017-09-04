@@ -99,7 +99,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 90,
+      "width": 75,
       "height": 30
     },
     "_rotationX": 0,
@@ -127,12 +127,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 30,
-    "_fontSize": 30,
+    "_actualFontSize": 25,
+    "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "第五天",
     "_N$horizontalAlign": 1,

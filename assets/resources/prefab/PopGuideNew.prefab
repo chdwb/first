@@ -322,9 +322,7 @@
       "__id__": 6
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -359,9 +357,7 @@
       "__id__": 2
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -598,9 +594,7 @@
       "__id__": 15
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -635,9 +629,7 @@
       "__id__": 11
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -874,9 +866,7 @@
       "__id__": 24
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -911,9 +901,7 @@
       "__id__": 20
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1026,9 +1014,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 224,
+      "g": 111,
+      "b": 170,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -1071,8 +1059,10 @@
     "_fontSize": 28,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "恋爱可以提升你和美女的亲密度！",
     "_N$horizontalAlign": 0,
@@ -1153,9 +1143,7 @@
       "__id__": 33
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1244,9 +1232,7 @@
       "__id__": 36
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1523,9 +1509,7 @@
       "__id__": 45
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1614,9 +1598,7 @@
       "__id__": 48
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1651,9 +1633,7 @@
       "__id__": 41
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1893,9 +1873,7 @@
       "__id__": 57
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1984,9 +1962,7 @@
       "__id__": 60
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -2021,9 +1997,7 @@
       "__id__": 53
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -2263,9 +2237,7 @@
       "__id__": 69
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -2354,9 +2326,7 @@
       "__id__": 72
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -2391,9 +2361,7 @@
       "__id__": 65
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -2633,9 +2601,7 @@
       "__id__": 81
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -2724,9 +2690,7 @@
       "__id__": 84
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -2761,9 +2725,7 @@
       "__id__": 77
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3003,9 +2965,7 @@
       "__id__": 93
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3094,9 +3054,7 @@
       "__id__": 96
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3131,9 +3089,7 @@
       "__id__": 89
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3373,9 +3329,7 @@
       "__id__": 105
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3464,9 +3418,7 @@
       "__id__": 108
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3501,9 +3453,7 @@
       "__id__": 101
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3743,9 +3693,7 @@
       "__id__": 117
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3834,9 +3782,7 @@
       "__id__": 120
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -3871,9 +3817,7 @@
       "__id__": 113
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4113,9 +4057,7 @@
       "__id__": 129
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4204,9 +4146,7 @@
       "__id__": 132
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4241,9 +4181,7 @@
       "__id__": 125
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4483,9 +4421,7 @@
       "__id__": 141
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4574,9 +4510,7 @@
       "__id__": 144
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4611,9 +4545,7 @@
       "__id__": 137
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4853,9 +4785,7 @@
       "__id__": 153
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4944,9 +4874,7 @@
       "__id__": 156
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -4981,9 +4909,7 @@
       "__id__": 149
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5220,9 +5146,7 @@
       "__id__": 165
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5257,9 +5181,7 @@
       "__id__": 161
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5499,9 +5421,7 @@
       "__id__": 174
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5590,9 +5510,7 @@
       "__id__": 177
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5627,9 +5545,7 @@
       "__id__": 170
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5869,9 +5785,7 @@
       "__id__": 186
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6db7cfe6-c4ea-47aa-b647-b3226c0680cf"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5960,9 +5874,7 @@
       "__id__": 189
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "20e72ce1-39f4-431c-bda3-e91a36d19436"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -5997,9 +5909,7 @@
       "__id__": 182
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "ee389c7a-bd5b-4413-9d5f-9d6508b4cc84"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,

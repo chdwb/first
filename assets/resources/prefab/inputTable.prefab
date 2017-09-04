@@ -153,9 +153,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 40,
-      "g": 70,
-      "b": 124,
+      "r": 112,
+      "g": 112,
+      "b": 112,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -198,8 +198,10 @@
     "_fontSize": 25,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "你好",
     "_N$horizontalAlign": 1,
@@ -461,9 +463,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 40,
-      "g": 70,
-      "b": 124,
+      "r": 112,
+      "g": 112,
+      "b": 112,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -506,8 +508,10 @@
     "_fontSize": 25,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "button",
     "_N$horizontalAlign": 1,
@@ -769,9 +773,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 40,
-      "g": 70,
-      "b": 124,
+      "r": 112,
+      "g": 112,
+      "b": 112,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -814,8 +818,10 @@
     "_fontSize": 25,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "button",
     "_N$horizontalAlign": 1,

@@ -117,8 +117,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 66.74,
-      "height": 40
+      "width": 71.56,
+      "height": 50
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -127,7 +127,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 170,
-      "y": -18
+      "y": -23
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -147,10 +147,12 @@
     "_useOriginalSize": false,
     "_actualFontSize": 40,
     "_fontSize": 40,
-    "_lineHeight": 40,
+    "_lineHeight": 50,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "300",
     "_N$horizontalAlign": 1,
@@ -205,7 +207,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 84,
-      "height": 30
+      "height": 35
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -214,7 +216,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 82,
-      "y": 86
+      "y": 77
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -234,10 +236,12 @@
     "_useOriginalSize": false,
     "_actualFontSize": 28,
     "_fontSize": 28,
-    "_lineHeight": 30,
+    "_lineHeight": 35,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "按摩棒",
     "_N$horizontalAlign": 0,
@@ -566,8 +570,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
-      "height": 40
+      "width": 60,
+      "height": 50
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -594,12 +598,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_actualFontSize": 30,
+    "_fontSize": 30,
+    "_lineHeight": 50,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "购买",
     "_N$horizontalAlign": 1,
@@ -696,9 +702,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "a525a219-4d99-44cf-b9c3-ccf76715b4e7"
-    },
+    "_N$normalSprite": null,
     "_N$disabledSprite": {
       "__uuid__": "29158224-f8dd-4661-a796-1ffab537140e"
     },
@@ -790,7 +794,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 170,
-      "height": 20
+      "height": 30
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -820,10 +824,10 @@
     "_N$horizontalAlign": 0,
     "_N$fontSize": 20,
     "_N$font": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
     },
     "_N$maxWidth": 170,
-    "_N$lineHeight": 20,
+    "_N$lineHeight": 30,
     "_N$imageAtlas": null
   },
   {

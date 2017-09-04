@@ -46,7 +46,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 58,
-      "height": 52
+      "height": 49
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -99,8 +99,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 35.57,
-      "height": 40
+      "width": 38.59,
+      "height": 50
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -129,10 +129,12 @@
     "_useOriginalSize": false,
     "_actualFontSize": 40,
     "_fontSize": 40,
-    "_lineHeight": 40,
+    "_lineHeight": 50,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "-1",
     "_N$horizontalAlign": 1,

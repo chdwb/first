@@ -211,9 +211,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 224,
+      "g": 111,
+      "b": 170,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -256,8 +256,10 @@
     "_fontSize": 28,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "啊的风口浪尖啊的肌肤啊了解对方啊就地方啊了解对方啊就地方阿里的风景阿里的风景阿里的风景看啊的理解阿里的",
     "_N$horizontalAlign": 0,
@@ -271,7 +273,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "df30baf4-c749-4540-95fe-020472780634"
     },
     "fileId": "320c1tmwthPfYCyHnvX0URO",
     "sync": false
@@ -308,7 +310,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "df30baf4-c749-4540-95fe-020472780634"
     },
     "fileId": "6995c5x6NtLzJkhgyJwRiIS",
     "sync": false
@@ -399,7 +401,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "df30baf4-c749-4540-95fe-020472780634"
     },
     "fileId": "6f2f4BvKqFEa6R4e0ZwKTC5",
     "sync": false
@@ -490,7 +492,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "df30baf4-c749-4540-95fe-020472780634"
     },
     "fileId": "cbf784aY3lPPoxV7ewc7VSs",
     "sync": false
@@ -525,7 +527,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "df30baf4-c749-4540-95fe-020472780634"
     },
     "fileId": "770faLB9pBLvZxzB6Pkjr0w",
     "sync": false
@@ -600,7 +602,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "df30baf4-c749-4540-95fe-020472780634"
     },
     "fileId": "dfdb5s7pYREYKBDGOiB4UxM",
     "sync": false

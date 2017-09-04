@@ -181,9 +181,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 219,
-      "g": 81,
-      "b": 87,
+      "r": 202,
+      "g": 63,
+      "b": 69,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -227,7 +227,7 @@
     "_lineHeight": 30,
     "_enableWrapText": true,
     "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -377,9 +377,7 @@
       "__id__": 9
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "6479eb8f-ce82-46a6-845a-ccfe09530fba"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -468,9 +466,7 @@
       "__id__": 12
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "4aa8ae9a-262c-4903-a6ca-274e4bb4d5d6"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -594,9 +590,7 @@
       "__id__": 8
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "363b13bb-54a1-45f5-93d2-c0ed273893f1"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,

@@ -149,9 +149,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 102,
-      "g": 102,
-      "b": 102,
+      "r": 221,
+      "g": 220,
+      "b": 220,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -172,7 +172,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -202,
-      "y": -43.8
+      "y": -54
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -194,8 +194,10 @@
     "_fontSize": 18,
     "_lineHeight": 20,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "一天前",
     "_N$horizontalAlign": 2,
@@ -236,9 +238,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 80,
-      "g": 80,
-      "b": 80,
+      "r": 221,
+      "g": 220,
+      "b": 220,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -281,8 +283,10 @@
     "_fontSize": 20,
     "_lineHeight": 20,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "微博发表的文字内容，根据内容自动改变......",
     "_N$horizontalAlign": 0,
@@ -431,8 +435,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 33,
-      "height": 33
+      "width": 32,
+      "height": 31
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -494,8 +498,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -2.2,
-      "y": 0.9
+      "x": 0,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
