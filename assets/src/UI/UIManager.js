@@ -431,7 +431,7 @@ cc.Class({
         tip.setPosition(0, 50);
         tip.targettt = Handle
 
-        var action = cc.sequence(cc.moveTo(1.5, p2.x, p2.y), cc.callFunc(this.showExpHandle, tip))
+        var action = cc.sequence(cc.moveTo(0.8, p2.x, p2.y), cc.callFunc(this.showExpHandle, tip))
 
         tip.runAction(action)
     },

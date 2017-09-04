@@ -539,7 +539,8 @@ cc.Class({
             var parent = this.node.parent
 
 
-            var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
+            //var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
+            var heartTarget = this.node.getChildByName("expBG")
             this.currentExp = parseInt(JasonObject.content.info.exp) - parseInt(cc.cs.PlayerInfo.exp)
             cc.cs.UIMgr.showExpTip(this.currentExp, heartTarget, this)
 
