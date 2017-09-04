@@ -70,7 +70,7 @@ cc.Class({
         var videoID =this.getVideoType(id + "")
 
         if( videoID != 0){
-            this.backBtn.active = true
+           // this.backBtn.active = true
             this.videoType = videoID
             cc.log("self.videoType  setPlayVideoID " + this.videoType)
             this.isPlayStart = false
@@ -80,13 +80,14 @@ cc.Class({
                 this.videoPauseNode.active = true
                 this.videoPauseTip.active = false
                 this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
-                this.videoPlayerNode.play()
+                
                 this.faceTimeNode.active = false
                 this.branchNode.node.active = false
                 this.branchData = cc.cs.gameData.getbranchVideoData(id)
                 if(this.branchData != null){
                     cc.cs.UIMgr.changeSprite(this.branchNode.node, "commonbg/"+id)
                 }
+               // this.videoPlayerNode.play()
             }else if(videoID == 2){
                 //facetime
                 this.videoLoadingNode.active = false
@@ -103,7 +104,7 @@ cc.Class({
                 this.videoPauseNode.active = true
                 this.videoPauseTip.active = false
                 this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
-                this.videoPlayerNode.play()
+                
                 this.faceTimeNode.active = false
                 this.branchNode.node.active = false
                 this.backBtn.active = true
@@ -235,7 +236,7 @@ cc.Class({
         this.videoPauseTip.active = false
         this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
         this.isPlayStart = false
-        this.videoPlayerNode.play()
+       // this.videoPlayerNode.play()
         this.faceTimeNode.active = false
         this.branchNode.node.active = false
         this.branchData = null
@@ -257,7 +258,8 @@ cc.Class({
             this.videoPlayerNode.node.on("ready-to-play", (event) =>{
                 self.videoLoadingNode.active = false
                 self.isPlayStart = true
-                
+                cc.log("ready-to-play")
+                self.videoPlayerNode.play()
             })
             this.videoPlayerNode.node.on("meta-loaded", (event) =>{
                 self.videoLoadingNode.active = true
@@ -304,7 +306,7 @@ cc.Class({
                 self.videoPauseNode.active = true
                 self.videoPauseTip.active = false
                 self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + ".mp4"
-                self.videoPlayerNode.play()
+               // self.videoPlayerNode.play()
                 self.faceTimeNode.active = false
                 self.branchNode.node.active = false
             })

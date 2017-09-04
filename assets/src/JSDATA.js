@@ -1549,7 +1549,7 @@ module.exports = {
 	getbranchVideoData : function(id){
 		if(this.branchVideo.hasOwnProperty("PLOT_VIDEO_ID_"+ id))
 			return this.branchVideo["PLOT_VIDEO_ID_" + id]
-		cc.error("the branchVideo id is not exist! id = " + id )
+		//cc.error("the branchVideo id is not exist! id = " + id )
 		return null
 	},
 	video:{
