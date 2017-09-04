@@ -155,7 +155,7 @@ cc.Class({
                 break
             }
         }
-        this.isAddIcon = true
+       /* this.isAddIcon = true
         this.currentTime = 0
         this.addIcon.x = this.addIconArry[addIndex].x
         this.addIcon.active = false
@@ -170,7 +170,7 @@ cc.Class({
         for(var i = 0; i< this.addIconArry.length; ++i){
             cc.log("canAddIcon   addIconArry " +this.addIconArry[i].name)
             
-        }
+        }*/
 
     },
 
