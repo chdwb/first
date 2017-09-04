@@ -68,6 +68,7 @@ cc.Class({
     {
         cc.log("WORKVIEW UPDATE MONMEY")
         this.goldText.string = cc.cs.PlayerInfo.money
+        
          //this.needTimeText.string = "剩余次数:" + cc.cs.PlayerInfo.getWorkFreeTimes(this.currentWorkID)
         
     },
@@ -378,11 +379,15 @@ cc.Class({
                 {
                     this.n = 14
                 }
+                else
+                {
+                    this.n = 0
+                }
                  if(this.n!=0)
                  {
                      
                     cc.cs.UIMgr.showPopBuy(this.n, this.buyPop, this)
-                    this.n = 0;
+                    
                  }
             }
 
