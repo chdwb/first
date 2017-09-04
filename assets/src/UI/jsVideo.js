@@ -339,13 +339,13 @@ cc.Class({
                 }
             })
             this.faceTimeNode.getChildByName("phoneBtn").on("click", (event) => {
-                self.videoLoadingNode.active = false
                 self.videoPlayerNode.node.active = true
                 self.videoPauseNode.active = true
                 self.videoPauseTip.active = false
                 self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + ".mp4"
                 self.videoloadingEnd = false
                 self.videoIsReadToPlay = false
+                self.videoLoadingNode.active = true
                 //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(self.loadEndFunc, self))
                 //self.node.runAction(act)
                 //self.videoLoadingAnimation.play()

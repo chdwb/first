@@ -248,7 +248,7 @@ cc.Class({
         this.videoPlayerNode.node.active = true
         this.videoPauseNode.active = true
         this.videoPauseTip.active = false
-        this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+        
             
         this.isPlayStart = false
         this.videoPlayerNode.play()
@@ -602,7 +602,7 @@ cc.Class({
                 
             })
             this.videoPlayerNode.node.on("meta-loaded", (event) =>{
-                self.videoLoadingNode.active = true
+                //self.videoLoadingNode.active = true
                 cc.log("meta")
             })
             this.videoPlayerNode.node.on("playing", (event) =>{
@@ -616,6 +616,7 @@ cc.Class({
                 if(self.playVideoID == "1101"){
                    // cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
                    //第一段播完回调
+                   self.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + ".mp4"
                 }else if(self.playVideoID == "1102"){
                     cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
                 }
@@ -655,6 +656,7 @@ cc.Class({
 
         }   );*/
         //this.setStartGameNode()
+        this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
         this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         var passward = cc.sys.localStorage.getItem('PASSWORD')
