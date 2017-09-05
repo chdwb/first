@@ -19,30 +19,39 @@ cc.Class({
         },
         doJob:null,
         obj:null,
+		popnode:null
     },
 
     // use this for initialization
     onLoad: function () {
 
     },
+	
+	show()
+	{
+		var scene = cc.director.getScene();
+        scene.getChildByName("Canvas").addChild(this.popnode, 999)
+	},
     
-    setCallBack:function(id,OKhandle,obj)
+    setCallBack:function(node,id,OKhandle,obj)
     {
+		this.popnode = node
         if(id > 10)
         {
 
-            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop2/" + (id - 10))
+            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop2/" + (id - 10),this.show.bind(this))
 
         }
         else
         {
 
-            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop/" + id)
+            cc.cs.UIMgr.changeSprite(this.Icon.node, "shop/pop/" + id,this.show.bind(this))
 
         }
         
         this.doJob = OKhandle
         this.obj = obj
+		
     },
     
     onBuy:function ()

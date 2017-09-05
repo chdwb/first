@@ -157,7 +157,7 @@ cc.Class({
 
     
 
-    changeSprite: function(node, res) {
+    changeSprite: function(node, res,handle = null) {
         if (!cc.cs.loadMgr.isLoadComplete) {
             cc.log("error the res is not load complete")
         }
@@ -190,6 +190,8 @@ cc.Class({
                     cc.log("the sprite is mission = " + node.name)
                 }
                 sprite.spriteFrame = spriteFrame
+				if(handle)
+				handle()
 			
 			});
 			
@@ -229,11 +231,11 @@ cc.Class({
     showPopBuy: function(id, okHandle, obj) {
         //id 1 秒回礼包 3 一件完成礼包
 
-        var scene = cc.director.getScene();
+        
         var popupNode = cc.instantiate(this.nodePopBuyPrefab)
-        scene.getChildByName("Canvas").addChild(popupNode, 999)
+		
         popupNode.setPosition(0, 0);
-        popupNode.getComponent("PopBuy").setCallBack(id, okHandle, obj)
+        popupNode.getComponent("PopBuy").setCallBack(popupNode, id, okHandle, obj)
     },
 
 
