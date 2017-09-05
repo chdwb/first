@@ -208,7 +208,7 @@ cc.Class({
 
         this.schedule(function(){
            var logovideo =  cc.sys.localStorage.getItem('LOGOVIDEO')
-           if(logovideo == 1)
+           //if(logovideo == 1)
            {
                 //if (CC_JSB) {
                     this.setStartGameNode();
@@ -218,7 +218,7 @@ cc.Class({
                //     this.setLoginNode();
                // }
            }
-           else
+          /* else
            {
            
                 this.LogoVideoNode.active = true;
@@ -226,7 +226,7 @@ cc.Class({
                     cc.sys.localStorage.setItem('LOGOVIDEO',1)
                     this.setStartGameNode();
                 },5,0);
-           }
+           }*/
 
         },3,0);
 
@@ -442,7 +442,7 @@ cc.Class({
         var JasonObject = JSON.parse(ret);
                 if (JasonObject.success === true) {
                     cc.cs.PlayerInfo.playvideo = JasonObject.content.info.video_id;
-                    cc.cs.UIMgr.showTip("视频完成", 1.0)
+                    //cc.cs.UIMgr.showTip("视频完成", 1.0)
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
 
