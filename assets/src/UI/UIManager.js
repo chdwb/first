@@ -418,8 +418,8 @@ cc.Class({
         var zf = "+"
         if(exp < 0){
 
-            this.changeSprite(tip, "common/qinmijian")
-            zf = "-'"
+            //this.changeSprite(tip, "common/qinmijian")
+            zf = ""
         }
         var expLabel = tip.getChildByName("expText").getComponent(cc.Label).string = zf + exp
         var scene = cc.director.getScene();
