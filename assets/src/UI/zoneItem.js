@@ -319,11 +319,16 @@ cc.Class({
         this.setPL(this.plNum)
     },
 
+    setDay:function(){
+        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(this.zoneID)
+    },
+
     addOtherText: function() {
         if (this.isAddOther) return
             
         var id = this.zoneID
         var zoneData = cc.cs.gameData.getzoneData(id)
+        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(this.zoneID)
         for(var i = 0; i < cc.cs.PlayerInfo.replies_.length; ++i){
             var replyData = cc.cs.gameData.getreplyData(cc.cs.PlayerInfo.replies_[i])
             if(replyData == null)
@@ -334,7 +339,7 @@ cc.Class({
             }
         }
 
-        this.dateText.string = cc.cs.PlayerInfo.getZoneDay(this.zoneID)
+        
         if (cc.cs.PlayerInfo.canPLZone(this.zoneID)) return
         var height = Math.abs(this.replyMsg.node.y * 2)
         var fbData = cc.cs.gameData.getreplyData(id);
