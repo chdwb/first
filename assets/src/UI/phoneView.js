@@ -284,7 +284,7 @@ cc.Class({
     getLimitMsg: function(msg, id) {
         cc.log(msg.length)
         if (msg.length <= id) return msg
-        return msg.substring(id)
+        return msg.substring(0,id)
     },
 
     getDay: function(d) {
