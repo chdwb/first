@@ -555,9 +555,9 @@ class PhpData{
 		"PHONE_ID_447"=>array("PHONE_ID"=>447, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>106, "PHONE_EXP"=>59, "PHONE_AUDIO"=>449, "PHONE_MSG"=>"公司聚餐而已啦，我没办法推掉。"),
 		"PHONE_ID_448"=>array("PHONE_ID"=>448, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>106, "PHONE_EXP"=>20, "PHONE_AUDIO"=>449, "PHONE_MSG"=>"你是在担心我么？"),
 		"PHONE_ID_449"=>array("PHONE_ID"=>449, "PHONE_LEV"=>30, "SOUND_ID"=>132, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>107, "PHONE_MSG"=>"我不是想干涉你的生活，我只是以为我们已经是好朋友了。"),
-		"PHONE_ID_450"=>array("PHONE_ID"=>450, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>108, "PHONE_EXP"=>20, "PHONE_AUDIO"=>453, "PHONE_MSG"=>"我们是好朋友啊。"),
-		"PHONE_ID_451"=>array("PHONE_ID"=>451, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>108, "PHONE_EXP"=>39, "PHONE_AUDIO"=>453, "PHONE_MSG"=>" 我不想和你做朋友。"),
-		"PHONE_ID_452"=>array("PHONE_ID"=>452, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>108, "PHONE_EXP"=>59, "PHONE_AUDIO"=>453, "PHONE_MSG"=>" 对不起，是我考虑不周了。"),
+		"PHONE_ID_450"=>array("PHONE_ID"=>450, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>107, "PHONE_EXP"=>20, "PHONE_AUDIO"=>453, "PHONE_MSG"=>"我们是好朋友啊。"),
+		"PHONE_ID_451"=>array("PHONE_ID"=>451, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>107, "PHONE_EXP"=>39, "PHONE_AUDIO"=>453, "PHONE_MSG"=>" 我不想和你做朋友。"),
+		"PHONE_ID_452"=>array("PHONE_ID"=>452, "PHONE_LEV"=>30, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>107, "PHONE_EXP"=>59, "PHONE_AUDIO"=>453, "PHONE_MSG"=>" 对不起，是我考虑不周了。"),
 		"PHONE_ID_453"=>array("PHONE_ID"=>453, "PHONE_LEV"=>30, "SOUND_ID"=>133, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>"dummy", "PHONE_MSG"=>"没关系，也许是我自作多情了。"),
 		"PHONE_ID_454"=>array("PHONE_ID"=>454, "PHONE_LEV"=>31, "SOUND_ID"=>134, "PHONE_OPTION"=>"dummy", "PHONE_EXP"=>"dummy", "PHONE_AUDIO"=>108, "PHONE_MSG"=>"喂？班长？你现在忙么？"),
 		"PHONE_ID_455"=>array("PHONE_ID"=>455, "PHONE_LEV"=>31, "SOUND_ID"=>"dummy", "PHONE_OPTION"=>108, "PHONE_EXP"=>39, "PHONE_AUDIO"=>458, "PHONE_MSG"=>"还好，你有什么事么？"),
@@ -1467,15 +1467,15 @@ class PhpData{
 	);
 	public $video = array
 	(
-		"VIDEO_ID_1501"=>array("VIDEO_ID"=>1501, "VIDEO_NAME"=>"写真视频01", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1502"=>array("VIDEO_ID"=>1502, "VIDEO_NAME"=>"写真视频02", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1503"=>array("VIDEO_ID"=>1503, "VIDEO_NAME"=>"写真视频03", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1504"=>array("VIDEO_ID"=>1504, "VIDEO_NAME"=>"写真视频04", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1505"=>array("VIDEO_ID"=>1505, "VIDEO_NAME"=>"写真视频05", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1506"=>array("VIDEO_ID"=>1506, "VIDEO_NAME"=>"写真视频06", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1507"=>array("VIDEO_ID"=>1507, "VIDEO_NAME"=>"写真视频07", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1508"=>array("VIDEO_ID"=>1508, "VIDEO_NAME"=>"写真视频08", "VIDEO_NEED_MONEY"=>50000),
-		"VIDEO_ID_1509"=>array("VIDEO_ID"=>1509, "VIDEO_NAME"=>"写真视频09", "VIDEO_NEED_MONEY"=>50000)
+		"VIDEO_ID_1501"=>array("VIDEO_ID"=>1501, "VIDEO_NAME"=>"学生装", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1502"=>array("VIDEO_ID"=>1502, "VIDEO_NAME"=>"擦玻璃", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1503"=>array("VIDEO_ID"=>1503, "VIDEO_NAME"=>"休闲时光", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1504"=>array("VIDEO_ID"=>1504, "VIDEO_NAME"=>"吃早餐", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1505"=>array("VIDEO_ID"=>1505, "VIDEO_NAME"=>"护肤", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1506"=>array("VIDEO_ID"=>1506, "VIDEO_NAME"=>"看夕阳", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1507"=>array("VIDEO_ID"=>1507, "VIDEO_NAME"=>"听音乐", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1508"=>array("VIDEO_ID"=>1508, "VIDEO_NAME"=>"游泳", "VIDEO_NEED_MONEY"=>50000),
+		"VIDEO_ID_1509"=>array("VIDEO_ID"=>1509, "VIDEO_NAME"=>"瑜伽", "VIDEO_NEED_MONEY"=>50000)
 	);
 	public $wechat = array
 	(

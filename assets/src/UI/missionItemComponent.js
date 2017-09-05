@@ -133,7 +133,7 @@ cc.Class({
             this.goldText.node.active = false
             var workData = cc.cs.gameData.getworkData(this.itemID)
             if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
-                this.timesLabel.string = /*"工作次数:   "*/ "" + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+                this.timesLabel.string = "工作次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
             } else {
                 this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
             }
@@ -159,7 +159,7 @@ cc.Class({
             this.goldText.node.active = false
             var dateData = cc.cs.gameData.getdateData(this.itemID)
             if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
-                this.timesLabel.string = /*"恋爱次数:   "*/"" + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
+                this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
             } else {
                 this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID) + "/"+dateData["DATE_FREE_TIMES"]
             }
@@ -195,7 +195,7 @@ cc.Class({
         this.getLabel.string = dateData["DATE_EXP"]
         this.doName.string = dateData["DATE_NAME"]
         if (dateData["DATE_FREE_TIMES"] == cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)) {
-            this.timesLabel.string = /*"恋爱次数:   " */ "" + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
+            this.timesLabel.string = "恋爱次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
         } else {
             this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getLoveFreeTimes(this.itemID)+ "/"+dateData["DATE_FREE_TIMES"]
         }
@@ -286,7 +286,7 @@ cc.Class({
         this.getLabel.string = workData["REWARD"]
         this.doName.string = workData["NAME"]
         if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
-            this.timesLabel.string =/* "工作次数:   " */""+ cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+            this.timesLabel.string ="工作次数:   "+ cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
         } else {
             this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
         }
