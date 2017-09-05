@@ -778,6 +778,7 @@ cc.Class({
 
             cc.log("注册账号为："+this.registerIDEdit.string)
             cc.log("注册账号为："+this.loginIDEdit.string)
+            this.gustIDLabel.string = this.loginIDEdit.string
             
             cc.cs.gameMgr.sendLogin(this.registerIDEdit.string, this.registerPasswordEdit.string, this.loginHandle, this)
         } else {
