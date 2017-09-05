@@ -232,7 +232,7 @@ cc.Class({
             var videoid = JasonObject.content.info.video_id
 
             cc.log("获得下载地址" + url + " " + videoid)
-            cc.cs.DownloadMgr.startDownload(url, videoid + ".mp4")
+            cc.cs.DownloadMgr.startDownload(url, videoid + "_batch.mp4")
 
 
 

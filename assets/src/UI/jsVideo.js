@@ -84,7 +84,7 @@ cc.Class({
                 this.videoPauseTip.active = false
                 this.videoloadingEnd = false
                 this.videoIsReadToPlay = false
-                this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+                this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + "_batch.mp4"
                 //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
                 //this.node.runAction(act)
                 //this.videoLoadingAnimation.play()
@@ -113,7 +113,7 @@ cc.Class({
                 this.videoPauseTip.active = false
                 this.videoloadingEnd = false
                 this.videoIsReadToPlay = false
-                this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+                this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + "_batch.mp4"
                 //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
                 //this.node.runAction(act)
                 //this.videoLoadingAnimation.play()
@@ -257,7 +257,7 @@ cc.Class({
         this.videoPauseNode.active = true
         this.videoPauseTip.active = false
         
-        this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+        this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + "_batch.mp4"
         this.videoloadingEnd = false
         this.videoIsReadToPlay = false
         //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
@@ -342,7 +342,7 @@ cc.Class({
                 self.videoPlayerNode.node.active = true
                 self.videoPauseNode.active = true
                 self.videoPauseTip.active = false
-                self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + ".mp4"
+                self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + "_batch.mp4"
                 self.videoloadingEnd = false
                 self.videoIsReadToPlay = false
                 self.videoLoadingNode.active = true
