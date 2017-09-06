@@ -592,7 +592,7 @@ cc.Class({
 
                 } else {
 
-                    if (cc.cs.PlayerInfo.money < cc.cs.PlayerInfo.diamond) {
+                    if ( parseInt(cc.cs.PlayerInfo.money) <  parseInt(cc.cs.PlayerInfo.diamond)) {
 
                         cc.cs.UIMgr.showPopBuy(1, this.buyLIJI, this)
 
@@ -631,6 +631,7 @@ cc.Class({
             //cc.cs.UIMgr.showTip("", 1.0)
             //cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+			this.updateui()
             cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
             this.castText.node.active = false
             this.step()
@@ -638,13 +639,14 @@ cc.Class({
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
         }
     },
-
+//
     sendBuyFastTalkHandle: function(ret) {
         var JasonObject = JSON.parse(ret);
 		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success == true) {
            // cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
+			this.updateui()
             cc.cs.UIMgr.gameScene.node.stopAction(this.talkAction)
             this.castText.string = cc.cs.PlayerInfo.diamond
             this.step()

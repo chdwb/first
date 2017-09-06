@@ -113,7 +113,7 @@ cc.Class({
     updateUi:function()
     {
         this.Coin.string = ""+cc.cs.PlayerInfo.money
-
+        this.scrollView.scrollToTop(0,true)
         cc.log("updateui"+this.currentShopType)
 
         if(this.currentShopType ==1)

@@ -535,18 +535,18 @@ cc.Class({
                 }
             if (cc.cs.PlayerInfo.canWechat()) {
 
-
+                 this.tipBG.active = true
                 this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
-                /*if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
                     
-                    //var psprite = this.wechatBtn.getChildByName("stars")
-                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
-                    this.tipBG.active = true
+                    var psprite = this.wechatBtn.getChildByName("stars")
+					cc.cs.UIMgr.changeSprite(psprite, "common/notice_2")
+                    //this.tipBG.active = true
                 }else{
-                    //var psprite = this.wechatBtn.getChildByName("stars")
-                    //cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
-                    this.tipBG.active = false
-                }*/
+                    var psprite = this.wechatBtn.getChildByName("stars")
+                    cc.cs.UIMgr.changeSprite(psprite, "common/notice_1")
+                    //this.tipBG.active = false
+                }
 
                
                 this.wechatBtn.getChildByName("stars").active = true;
@@ -559,18 +559,20 @@ cc.Class({
         {
 
             if (cc.cs.PlayerInfo.canPhone()) {
+				
+				this.tipBG.active = true
 
                 this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
-               /* if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
-                    this.tipBG.action = true
+                if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                    //this.tipBG.action = true
                     
                     var psprite = this.phoneBtn.getChildByName("stars")
-                    cc.cs.UIMgr.changeSprite(psprite, "common/prompt_red")
+                    cc.cs.UIMgr.changeSprite(psprite, "common/notice_2")
                 }else{
                     var psprite = this.phoneBtn.getChildByName("stars")
-                    cc.cs.UIMgr.changeSprite(psprite, "common/prompt_green")
-                    this.tipBG.active = false
-                }*/
+                    cc.cs.UIMgr.changeSprite(psprite, "common/notice_1")
+                    //this.tipBG.active = false
+                }
                 
                 this.phoneBtn.getChildByName("stars").active = true;
             } else {

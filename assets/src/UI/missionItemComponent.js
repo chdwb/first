@@ -133,9 +133,9 @@ cc.Class({
             this.goldText.node.active = false
             var workData = cc.cs.gameData.getworkData(this.itemID)
             if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
-                this.timesLabel.string = "工作次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+                this.timesLabel.string = "工作次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+ workData["TIME"]
             } else {
-                this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+                this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID) + "/"+workData["TIME"]
             }
             var workResult = cc.cs.PlayerInfo.canWork(this.itemID)
             this.goodsLabel.node.active = false
@@ -286,9 +286,9 @@ cc.Class({
         this.getLabel.string = workData["REWARD"]
         this.doName.string = workData["NAME"]
         if (workData["TIME"] == cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)) {
-            this.timesLabel.string ="工作次数:   "+ cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+            this.timesLabel.string ="工作次数:   "+ cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+workData["TIME"]
         } else {
-            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)
+            this.timesLabel.string = "剩余次数:   " + cc.cs.PlayerInfo.getWorkFreeTimes(this.itemID)  + "/"+workData["TIME"]
         }
         this.goodsLabel.node.active = false
         this.startTips.node.active = false
@@ -358,7 +358,7 @@ cc.Class({
 
         if( parseInt(needgold) > cc.cs.PlayerInfo.money)
         {
-            cc.cs.UIMgr.showPopupOC("金币不足","您的金币不足，是否前往商城购买？",this.goShop,null)
+            cc.cs.UIMgr.showPopupOC("金币不足","升职到"+job+"需要花费"+needgold+"金币,您的金币不足，是否前往商城购买？",this.goShop,null)
         }
         else
         {

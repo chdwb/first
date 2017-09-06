@@ -1771,8 +1771,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 150.6,
-      "y": 97.2
+      "x": 152.1,
+      "y": 91
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1800,8 +1800,8 @@
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "1",
-    "_N$horizontalAlign": 1,
-    "_N$verticalAlign": 1,
+    "_N$horizontalAlign": 0,
+    "_N$verticalAlign": 2,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0
   },
@@ -2061,7 +2061,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 170,
-      "height": 30
+      "height": 60
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -2069,8 +2069,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 38.3,
-      "y": 44.2
+      "x": 36.8,
+      "y": 29.5
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2087,14 +2087,14 @@
       "__id__": 62
     },
     "_enabled": true,
-    "_N$string": "<color=#000000>Rich的</c><color=#ff5c61>hehe</color>",
+    "_N$string": "<color=#000000>Rich的</c><color=#ff5c61>heheadfadfadfadfadfaadfadf</color>",
     "_N$horizontalAlign": 0,
-    "_N$fontSize": 20,
+    "_N$fontSize": 15,
     "_N$font": {
       "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
     },
     "_N$maxWidth": 170,
-    "_N$lineHeight": 30,
+    "_N$lineHeight": 20,
     "_N$imageAtlas": null
   },
   {
