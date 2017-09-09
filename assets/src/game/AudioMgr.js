@@ -35,6 +35,16 @@ cc.Class({
 
         this.getHeHe()
     },
+	SetSoundOff(isoff)
+	{
+		this.isSondOff = isoff
+	},
+	
+	GetSoundOff()
+	{
+		return this.isSondOff
+	},
+	
     /*
     playEffect:function(clip)
     {
@@ -81,8 +91,7 @@ cc.Class({
 
     startBGM:function(issave = false)
     {
-         if(this.isSondOff == false)
-        {
+        
         if(issave)
         {
             this.isSondOff = false
@@ -100,7 +109,7 @@ cc.Class({
         {
          cc.audioEngine.resume(this.BGMid)
         }
-		}
+		
     },
 
 
