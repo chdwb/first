@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "ce1ccf58-d7b0-4b32-888e-2f8c5ec43fe0",
+  "uuid": "078ad074-0d58-4df3-99f2-2bfe90234267",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "phonebg": {
+    "16": {
       "ver": "1.0.3",
-      "uuid": "f919be1e-ce76-4e9c-9431-f0c446325b2f",
-      "rawTextureUuid": "ce1ccf58-d7b0-4b32-888e-2f8c5ec43fe0",
+      "uuid": "c53524d0-2865-4030-aeef-08fbed2d5641",
+      "rawTextureUuid": "078ad074-0d58-4df3-99f2-2bfe90234267",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 1280,
-      "height": 720,
-      "rawWidth": 1280,
-      "rawHeight": 720,
+      "width": 960,
+      "height": 1440,
+      "rawWidth": 960,
+      "rawHeight": 1440,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
