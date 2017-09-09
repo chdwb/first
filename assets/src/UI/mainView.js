@@ -390,7 +390,7 @@ cc.Class({
         animation.stop()
         animation.node.active = false
         this.node.getChildByName("shengjidonghua").active = false
-
+        cc.cs.AudioMgr.StopAudio(this.AudioID)
         this.videoNode.active = true
     },
 
@@ -429,6 +429,7 @@ cc.Class({
             
             animation.node.active = true
             animation.play()
+			this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
             
             return;
         }
