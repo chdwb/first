@@ -124,9 +124,25 @@ cc.Class({
         for(var i = 0 ; i < this.iconArray.length; ++i){
             
             if(cc.cs.PlayerInfo.level >= this.iconArray[i].lev){
-                this.addIconArry.push(this.iconArray[i])
+                if(cc.cs.PlayerInfo.level == this.wechatBtn.lev && this.iconArray[i] == this.wechatBtn){
+                    if(cc.cs.PlayerInfo.canWechat()){
+                        this.addIconArry.push(this.iconArray[i])
+                        
+                        this.iconArray[i].active = true
+                        cc.log(this.iconArray[i].name)
+                    }
+                }else if (cc.cs.PlayerInfo.level > this.wechatBtn.lev && this.iconArray[i] == this.wechatBtn){
+                    this.addIconArry.push(this.iconArray[i])
+                    
+                    this.iconArray[i].active = true
+                    cc.log(this.iconArray[i].name)
+                }else{
+                    this.addIconArry.push(this.iconArray[i])
+                    
+                    this.iconArray[i].active = true
+                    cc.log(this.iconArray[i].name)
+                }
                 
-                this.iconArray[i].active = true
             }else{
 
                 this.iconArray[i].active = false
@@ -425,15 +441,15 @@ cc.Class({
 
        // animation.on('finished',  this.onAnimationFinished,    this);
 
-        cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
-        if (cc.cs.PlayerInfo.playvideo != 0) {
-            
-            animation.node.active = true
-            animation.play()
-			this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
-            cc.cs.AudioMgr.stopBGM()
-            return;
-        }
+       cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
+       if (cc.cs.PlayerInfo.playvideo != 0) {
+           
+           animation.node.active = true
+           animation.play()
+           this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
+           cc.cs.AudioMgr.stopBGM()
+           return;
+       }
 
 
         
@@ -466,7 +482,7 @@ cc.Class({
         if(icon != null){
             cc.log("canAddIcon   " + icon.name)
             this.computerDibian()
-            this.addDiBianBtn(icon)
+            //this.addDiBianBtn(icon)
             icon.active = true
 
             if(icon.name == "phoneBtn")
@@ -538,16 +554,16 @@ cc.Class({
             if (cc.cs.PlayerInfo.canWechat()) {
 
                  this.tipBG.active = true
-                this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
+                 this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
                 if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
                     
                     var psprite = this.wechatBtn.getChildByName("stars")
 					cc.cs.UIMgr.changeSprite(psprite, "common/notice_2")
-                    //this.tipBG.active = true
+                    this.tipBG.active = true
                 }else{
                     var psprite = this.wechatBtn.getChildByName("stars")
                     cc.cs.UIMgr.changeSprite(psprite, "common/notice_1")
-                    //this.tipBG.active = false
+                    this.tipBG.active = false
                 }
 
                
@@ -566,14 +582,14 @@ cc.Class({
 
                 this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
                 if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
-                    //this.tipBG.action = true
+                    this.tipBG.action = true
                     
                     var psprite = this.phoneBtn.getChildByName("stars")
                     cc.cs.UIMgr.changeSprite(psprite, "common/notice_2")
                 }else{
                     var psprite = this.phoneBtn.getChildByName("stars")
                     cc.cs.UIMgr.changeSprite(psprite, "common/notice_1")
-                    //this.tipBG.active = false
+                    this.tipBG.active = false
                 }
                 
                 this.phoneBtn.getChildByName("stars").active = true;
@@ -670,27 +686,35 @@ cc.Class({
         this.iconArray.push(this.phoneBtn)
         this.phoneBtn.sindex = 1
         this.phoneBtn.lev = 2
+        this.phoneBtn.active = false
         this.iconArray.push(this.wechatBtn)
         this.wechatBtn.sindex = 2
         this.wechatBtn.lev = 3
+        this.wechatBtn.active = false
         this.iconArray.push(this.zoneBtn)
         this.zoneBtn.sindex = 3
         this.zoneBtn.lev = 6
+        this.zoneBtn.active = false
         this.iconArray.push(this.loveBtn)
         this.loveBtn.sindex = 4
         this.loveBtn.lev = 1
+        this.loveBtn.active = false
         this.iconArray.push(this.workBtn)
         this.workBtn.sindex = 5
         this.workBtn.lev = 4
+        this.workBtn.active = false
         this.iconArray.push(this.giftBtn)
         this.giftBtn.sindex = 6
         this.giftBtn.lev = 7
+        this.giftBtn.active = false
         this.iconArray.push(this.bagBtn)
         this.bagBtn.sindex = 7
         this.bagBtn.lev = 1
+        this.bagBtn.active = false
         this.iconArray.push(this.shopBtn)
         this.shopBtn.sindex = 8
         this.shopBtn.lev = 1
+        this.shopBtn.active = false
 
         
         

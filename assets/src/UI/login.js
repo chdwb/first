@@ -630,7 +630,7 @@ cc.Class({
                 if(self.playVideoID == "1101"){
                     // cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
                     //第一段播完回调
-                    self.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + "_batch.mp4"
+                    self.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + ".mp4"
                  }else if(self.playVideoID == "1102"){
                      cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
                  }
@@ -674,7 +674,7 @@ cc.Class({
 
         }   );*/
         //this.setStartGameNode()
-        this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + "_batch.mp4"
+        this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
         this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         var passward = cc.sys.localStorage.getItem('PASSWORD')
@@ -894,7 +894,7 @@ cc.Class({
         this.loadScenePer = 0
         this.loadProcessPer = 0
 
-        cc.loader.loadResDir("picture/newRes831", (current, total, item)=>{
+        cc.loader.loadResDir("picture/newRes831/moment", (current, total, item)=>{
             if(total == 0) return
                 self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 90.0)
                 cc.log("(this.loadPress  + this.loadPress)  = " + (self.loadProcessPer  + self.loadScenePer))

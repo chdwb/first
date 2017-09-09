@@ -147,14 +147,14 @@ cc.Class({
         var h = tex.pixelHeight
         var sw = 0.0
         var sh = 0.0
-        if (w > h && h < cc.visibleRect.height ) {
+        if (w > h && h < cc.director.getWinSizeInPixels().height ) {
             sh = 100
             sw = sh/h * w;
-            sb = cc.visibleRect.width /sw
+            sb = cc.director.getWinSizeInPixels().width /sw
         }else{
             sw = 100
             sh = sw/w * h;
-            sb = cc.visibleRect.height /sh
+            sb = cc.director.getWinSizeInPixels() /sh
         }
         this.showIcon.scaleX = 1.0
         this.showIcon.scaleY = 1.0

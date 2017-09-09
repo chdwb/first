@@ -4446,9 +4446,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "快给许梦tian发微信吧",
@@ -9441,9 +9439,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "快给许梦甜发微信吧",
@@ -18126,9 +18122,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "快给许梦tian发微信吧",
@@ -19983,9 +19977,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "快给许梦tian发微信吧",
@@ -20371,9 +20363,7 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "许梦甜",
@@ -21246,9 +21236,7 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "许梦甜",
@@ -25042,9 +25030,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "快给许梦tian发微信吧",
@@ -25899,9 +25885,7 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "",
@@ -27407,9 +27391,7 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "",
@@ -28443,9 +28425,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "快给许梦tian发微信吧",
@@ -29329,7 +29309,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 724
+      "height": 480
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -29338,7 +29318,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -240
+      "y": -120
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -30294,9 +30274,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "快给许梦tian发微信吧",
@@ -33509,9 +33487,7 @@
     "_fontSize": 25,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "送给女主可获得{0}点亲密度",
@@ -34158,7 +34134,7 @@
     "node": {
       "__id__": 884
     },
-    "_enabled": true,
+    "_enabled": false,
     "isAlignOnce": true,
     "_target": {
       "__id__": 2
@@ -34571,7 +34547,7 @@
     "node": {
       "__id__": 892
     },
-    "_enabled": true,
+    "_enabled": false,
     "isAlignOnce": true,
     "_target": {
       "__id__": 2
@@ -38802,9 +38778,7 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "9be0d693-7d2e-45f8-9451-cf854beba884"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "设置",
@@ -43265,21 +43239,6 @@
     },
     "SettingView": {
       "__id__": 1009
-    },
-    "audioCalling": {
-      "__uuid__": "ea233d93-ec31-45f1-8b06-27cb29e11379"
-    },
-    "audioClick": {
-      "__uuid__": "714e141e-f9d5-452e-a3b8-0a9e046e68f7"
-    },
-    "audioFacetime": {
-      "__uuid__": "7b3d981b-73cb-43f2-b4ca-2ec80d694105"
-    },
-    "audioNewMsg": {
-      "__uuid__": "4933be29-d5ca-4682-9e81-fbe9454f1b2e"
-    },
-    "audioReturn": {
-      "__uuid__": "fa52233a-5406-47c3-a056-4a74d8370dc5"
     },
     "currentLayer": 0
   },
