@@ -218,6 +218,7 @@ cc.Class({
         this.expTip = cc.loader.getRes("prefab/expTip", cc.Prefab)
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
+        this.popupPrefab2 = cc.loader.getRes("prefab/popup2", cc.Prefab)
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
         this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
@@ -550,6 +551,28 @@ cc.Class({
         popupNode.setPosition(0, 0);
         popupNode.getChildByName("title").getComponent(cc.Label).string = title
         popupNode.getChildByName("msg").getComponent(cc.Label).string = msg
+        popupNode.getChildByName("okBtn").on("click", (event) => {
+            if (okHandle != null)
+                okHandle();
+            cc.director.getScene().getChildByName("Canvas").removeChild(event.target.parent)
+        }, popupNode.getChildByName("okBtn"))
+
+        popupNode.getChildByName("cancelBtn").on("click", (event) => {
+            if (cancelHandle != null)
+                cancelHandle();
+            cc.director.getScene().getChildByName("Canvas").removeChild(event.target.parent)
+        }, popupNode.getChildByName("cancelBtn"))
+    },
+    
+    showPopupOC2: function(title, msg2,msg, okHandle, cancelHandle) {
+
+        var scene = cc.director.getScene();
+        var popupNode = cc.instantiate(this.popupPrefab2)
+        scene.getChildByName("Canvas").addChild(popupNode, 999)
+        popupNode.setPosition(0, 0);
+        popupNode.getChildByName("title").getComponent(cc.Label).string = title
+        popupNode.getChildByName("msg").getComponent(cc.Label).string = msg
+        popupNode.getChildByName("msg2").getComponent(cc.Label).string = msg2
         popupNode.getChildByName("okBtn").on("click", (event) => {
             if (okHandle != null)
                 okHandle();

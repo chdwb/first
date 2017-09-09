@@ -358,7 +358,7 @@ cc.Class({
 
         if( parseInt(needgold) > cc.cs.PlayerInfo.money)
         {
-            cc.cs.UIMgr.showPopupOC("金币不足","升职到"+job+"需要花费"+needgold+"金币,您的金币不足，是否前往商城购买？",this.goShop,null)
+            cc.cs.UIMgr.showPopupOC2("金币不足","升职到"+job+"需要花费"+needgold+"金币,您的金币不足","是否前往商城购买？",this.goShop,null)
         }
         else
         {
