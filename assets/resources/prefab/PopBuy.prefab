@@ -524,8 +524,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 400,
-      "y": 184
+      "x": 533,
+      "y": 300
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -648,7 +648,9 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "c745efa8-9524-450f-9e02-daf4812725f0"
+    },
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
