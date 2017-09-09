@@ -146,8 +146,8 @@ cc.Class({
         cc.log("aaa " + cc.cs.UIMgr.gameScene.ZoneView.getComponent("zoneView"))
         var fbData = cc.cs.gameData.getzoneData(id);
         if (fbData["ZONE_IMG_1"] != "dummy") {
-            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_1"]) + "      " + fbData + "         " + id)
-            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_1"]);
+            cc.log("moment/pic/" + ("" + fbData["ZONE_IMG_1"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moment/picb/" + fbData["ZONE_IMG_1"]);
             if (spr == null) {
                 this.image1.active = (false)
             } else {
@@ -161,8 +161,8 @@ cc.Class({
             this.image1.active = (false)
         }
         if (fbData["ZONE_IMG_2"] != "dummy") {
-            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_2"]) + "      " + fbData + "         " + id)
-            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_2"]);
+            cc.log("moment/pic/" + ("" + fbData["ZONE_IMG_2"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moment/picb/" + fbData["ZONE_IMG_2"]);
             if (spr == null) {
                 this.image2.active = (false)
             } else {
@@ -176,8 +176,8 @@ cc.Class({
             this.image2.active = (false)
         }
         if (fbData["ZONE_IMG_3"] != "dummy") {
-            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_3"]) + "      " + fbData + "         " + id)
-            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_3"]);
+            cc.log("moment/pic/" + ("" + fbData["ZONE_IMG_3"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moment/picb/" + fbData["ZONE_IMG_3"]);
             if (spr == null) {
                 this.image3.active = (false)
             } else {
@@ -191,8 +191,8 @@ cc.Class({
             this.image3.active = (false)
         }
         if (fbData["ZONE_IMG_4"] != "dummy") {
-            cc.log("moments/pic/" + ("" + fbData["ZONE_IMG_4"]) + "      " + fbData + "         " + id)
-            var spr = this.getImage("moments/picb/" + fbData["ZONE_IMG_4"]);
+            cc.log("moment/pic/" + ("" + fbData["ZONE_IMG_4"]) + "      " + fbData + "         " + id)
+            var spr = this.getImage("moment/picb/" + fbData["ZONE_IMG_4"]);
             if (spr == null) {
                 this.image4.active = (false)
             } else {
@@ -251,16 +251,7 @@ cc.Class({
 		
 		var self = this
 		var hehe = null
-		if(CC_JSB)
-		{
-
-          hehe = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
-		}
-		else
-		{
-			cc.loader.loadRes("picture/newRes831/" + res, function (err, prefab) {
-			hehe = prefab;});
-		}
+		hehe = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
         return hehe
     },
 

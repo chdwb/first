@@ -137,6 +137,7 @@ cc.Class({
     },
 
     scaleIcon: function(target) {
+        cc.log(cc.visibleRect.width + "    "+  cc.visibleRect.height)
         var self = this
         var tex = target.getComponent(cc.Sprite).spriteFrame.getTexture()
         var sx = 0.0
@@ -146,7 +147,7 @@ cc.Class({
         var h = tex.pixelHeight
         var sw = 0.0
         var sh = 0.0
-        if (w > h) {
+        if (w > h && h < cc.visibleRect.height ) {
             sh = 100
             sw = sh/h * w;
             sb = cc.visibleRect.width /sw
@@ -178,22 +179,13 @@ cc.Class({
 
 
     getImage: function(res) {
-		var hehe = null
-		if(CC_JSB)
-		{
-
-          hehe = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
-		}
-		else
-		{
-			cc.loader.loadRes("picture/newRes831/" + res, function (err, prefab) {
-			hehe = prefab;});
-		}
+        var hehe = null
+        hehe = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
 		return hehe
     },
 
     showIconFunc : function(target){
-        var sp = this.getImage("moments/pic/" + target.IMAGE_ID)
+        var sp = this.getImage("moment/pic/" + target.IMAGE_ID)
         if(sp == null) return
         this.showBg.active = true
         var p = target.parent.convertToWorldSpaceAR(cc.v2(target.x, target.y))
