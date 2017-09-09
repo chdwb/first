@@ -257,7 +257,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_id": "1c7427QHklM9aCcn3WSuhHz",
@@ -1172,7 +1172,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 31
@@ -2022,9 +2022,9 @@
     "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
-      "r": 127,
-      "g": 127,
-      "b": 127,
+      "r": 197,
+      "g": 197,
+      "b": 197,
       "a": 255
     },
     "_N$maxLength": 12,
@@ -2114,9 +2114,9 @@
     "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
-      "r": 127,
-      "g": 127,
-      "b": 127,
+      "r": 197,
+      "g": 197,
+      "b": 197,
       "a": 255
     },
     "_N$maxLength": 11,
@@ -2206,9 +2206,9 @@
     "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
-      "r": 127,
-      "g": 127,
-      "b": 127,
+      "r": 197,
+      "g": 197,
+      "b": 197,
       "a": 255
     },
     "_N$maxLength": 15,
@@ -3092,9 +3092,9 @@
     "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
-      "r": 127,
-      "g": 127,
-      "b": 127,
+      "r": 197,
+      "g": 197,
+      "b": 197,
       "a": 255
     },
     "_N$maxLength": 12,
@@ -3184,9 +3184,9 @@
     "_N$placeholderFontSize": 38,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
-      "r": 127,
-      "g": 127,
-      "b": 127,
+      "r": 197,
+      "g": 197,
+      "b": 197,
       "a": 255
     },
     "_N$maxLength": 12,
@@ -3271,7 +3271,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 531.5,
-      "y": 387
+      "y": 279
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -4123,9 +4123,9 @@
     "_N$placeholderFontSize": 45,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
-      "r": 127,
-      "g": 127,
-      "b": 127,
+      "r": 197,
+      "g": 197,
+      "b": 197,
       "a": 255
     },
     "_N$maxLength": 14,
