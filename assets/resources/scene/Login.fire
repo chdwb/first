@@ -4760,7 +4760,8 @@
     "videoLoadOver2": false,
     "isPlayStart": false,
     "playVideoID": "",
-    "loadProcessPer": 0
+    "loadProcessPer": 0,
+    "loadScenePer": 0
   },
   {
     "__type__": "cc.Node",
@@ -4950,7 +4951,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "80%",
+    "_N$string": "0%",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",

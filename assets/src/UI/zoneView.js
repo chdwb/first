@@ -138,6 +138,11 @@ cc.Class({
 
     scaleIcon: function(target) {
         cc.log(cc.visibleRect.width + "    "+  cc.visibleRect.height)
+
+        var ss = target.parent.getComponent(cc.Sprite).spriteFrame
+        var re = ss.getRect()
+        cc.log(re.width + "   " + re.height +"   " + ss.insetTop + "   " + ss.insetBottom + "   " + ss.insetLeft + "   " + ss. insetRight + "    " + re.xMax)
+
         var self = this
         var tex = target.getComponent(cc.Sprite).spriteFrame.getTexture()
         var sx = 0.0
@@ -154,7 +159,7 @@ cc.Class({
         }else{
             sw = 100
             sh = sw/w * h;
-            sb = cc.director.getWinSizeInPixels() /sh
+            sb = cc.director.getWinSizeInPixels().height /sh
         }
         this.showIcon.scaleX = 1.0
         this.showIcon.scaleY = 1.0

@@ -45,6 +45,19 @@ cc.Class({
             type: cc.Node,
             default: null
         },
+
+        loadingBG1:{
+            type: cc.Node,
+            default: null
+        },
+        loadingBG2:{
+            type: cc.Node,
+            default: null
+        },
+        loadingBG3:{
+            type: cc.Node,
+            default: null
+        },
         inputTablePrefab: null,
         inputTableBtn:null,
         playVideoID : 0,
@@ -72,8 +85,20 @@ cc.Class({
         this.playVideoID = id;
         var videoID =this.getVideoType(id + "")
 
+        this.loadingBG1.active = false
+        this.loadingBG2.active = false
+        this.loadingBG3.active = false
+
+        var bgindex = (parseInt( cc.random0To1() * 10 ) )%3
+        if(bgindex == 0)
+            this.loadingBG1.active = true
+        else if(bgindex == 1)
+            this.loadingBG2.active = true
+        else if(bgindex == 2)
+            this.loadingBG3.active = true
+
         if( videoID != 0){
-            this.backBtn.active = true
+            //this.backBtn.active = true
             this.videoType = videoID
             cc.log("self.videoType  setPlayVideoID " + this.videoType)
             this.isPlayStart = false
@@ -263,6 +288,18 @@ cc.Class({
         //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
         //this.node.runAction(act)
        // this.videoLoadingAnimation.play()
+       this.loadingBG1.active = false
+       this.loadingBG2.active = false
+       this.loadingBG3.active = false
+
+       var bgindex = (parseInt( cc.random0To1() * 10 ) )%3
+       if(bgindex == 0)
+           this.loadingBG1.active = true
+       else if(bgindex == 1)
+           this.loadingBG2.active = true
+       else if(bgindex == 2)
+           this.loadingBG3.active = true
+
         this.videoLoadingNode.active = true
         this.isPlayStart = false
        // this.videoPlayerNode.play()

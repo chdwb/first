@@ -511,7 +511,7 @@ cc.Class({
                         return
                     }
                 wechatData = cc.cs.gameData.getwechatData(this.NPCID)
-                if (wechatData["WECHAT_OPTION"] == "dummy") {
+                if (wechatData["WECHAT_OPTION"] == "dummy" && cc.cs.PlayerInfo.canWechat()) {
                     this.setInputMsg(this.NPCID)
                 }
             }
@@ -530,10 +530,9 @@ cc.Class({
     step: function() {
         this.isAction = false
         this.sendEnable()
-        if(this.LastID == this.NPCID)
-            return;
+        
         this.setInputMsg(this.NPCID)
-        this.LastID = this.NPCID
+        //this.LastID = this.NPCID
     },
 
     onLoad: function() {
@@ -656,6 +655,8 @@ cc.Class({
     },
 
     setInputMsg: function(id) {
+        if(this.LastID == id)
+            return;
         if (this.isShowDay(id)) {
             this.loadCruuentTalk(this.talkScroll, true, this.getDay(id), "", true)
         }
@@ -676,6 +677,7 @@ cc.Class({
             this.inputBtn.getComponent(cc.Button).interactable = false
             this.sendBtn.getComponent(cc.Button).interactable = false
         }
+        this.LastID = id
     },
 
    /* refresh: function() {
