@@ -150,12 +150,20 @@ cc.Class({
             default: null
         },
 
+        perLaber: {
+            type: cc.Label,
+            default: null
+        },
+
         isLogin:false,
         isGuest:false,
         videoLoadOver1:false,
         videoLoadOver2:false,
         isPlayStart : false,
-        playVideoID :""
+        playVideoID :"",
+
+        loadProcessPer : 0,
+        loadScenePer : 0,
     },
 
 
@@ -411,7 +419,8 @@ cc.Class({
             }
             else
             {
-                cc.director.loadScene('GameScene');
+                //cc.director.loadScene('GameScene');
+                this.loadGame()
             }
         }
         else
@@ -446,8 +455,8 @@ cc.Class({
                     cc.cs.PlayerInfo.level = JasonObject.content.info.level
                     cc.cs.PlayerInfo.exp = JasonObject.content.info.exp
 
-                    cc.director.loadScene('GameScene');
-                    
+                    //cc.director.loadScene('GameScene');
+                    this.loadGame()
                 } else {
                     cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
                 }
@@ -578,7 +587,8 @@ cc.Class({
             }
             else
             {
-                cc.director.loadScene('GameScene');
+                //cc.director.loadScene('GameScene');
+                this.loadGame()
             }
 
              
@@ -596,12 +606,19 @@ cc.Class({
 
         if(!CC_JSB){
             this.videoPlayerNode.node.on("ready-to-play", (event) =>{
-                self.videoLoadingNode.active = false
-                self.isPlayStart = true
+                if(cc.sys.browserType != "qq" &&cc.sys.browserType != cc.sys.BROWSER_TYPE_QQ && cc.sys.browserType != cc.sys.BROWSER_TYPE_MOBILE_QQ &&  cc.sys.browserType != cc.sys.BROWSER_TYPE_WECHAT ){
+                        self.videoLoadingNode.active = false
+                        self.isPlayStart = true
+                }
+                
                 cc.log("ready")
                 
             })
             this.videoPlayerNode.node.on("meta-loaded", (event) =>{
+                if(cc.sys.browserType == "qq" || cc.sys.browserType == cc.sys.BROWSER_TYPE_QQ || cc.sys.browserType == cc.sys.BROWSER_TYPE_MOBILE_QQ || cc.sys.browserType == cc.sys.BROWSER_TYPE_WECHAT ){
+                    self.videoLoadingNode.active = false
+                    self.isPlayStart = true
+                }
                 //self.videoLoadingNode.active = true
                 cc.log("meta")
             })
@@ -610,19 +627,20 @@ cc.Class({
                 cc.log("playing")
             })
             this.videoPlayerNode.node.on("stopped", (event) =>{
+                if(self.playVideoID == "1101"){
+                    // cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
+                    //第一段播完回调
+                    self.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + ".mp4"
+                 }else if(self.playVideoID == "1102"){
+                     cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
+                 }
+                 self.videoNode.active = false
+                 self.node.active = true
+                 self.isPlayStart = false
                 cc.log("stopped")
             })
             this.videoPlayerNode.node.on("completed", (event) =>{
-                if(self.playVideoID == "1101"){
-                   // cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
-                   //第一段播完回调
-                   self.videoPlayerNode.clip =  cc.url.raw("resources/video/1102") + "_batch.mp4"
-                }else if(self.playVideoID == "1102"){
-                    cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
-                }
-                self.videoNode.active = false
-                self.node.active = true
-                self.isPlayStart = false
+                this.videoPlayerNode.stop()
             })
             this.videoPauseNode.on("click", (event) => {
                 if(self.isPlayStart){
@@ -656,7 +674,7 @@ cc.Class({
 
         }   );*/
         //this.setStartGameNode()
-        this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + "_batch.mp4"
+        this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
         this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         var passward = cc.sys.localStorage.getItem('PASSWORD')
@@ -676,6 +694,9 @@ cc.Class({
             }
              
         }
+
+
+
         this.startGameBtn.on("click", (event) => {
             self.startgame()
         }, this.startGameBtn)
@@ -838,13 +859,75 @@ cc.Class({
         cc.cs.PlayerInfo.zoneReplay_id = 1
     },
 
+    loadPress:function(current, total, item){
+        if(total == 0) return
+        this.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 90.0)
+        cc.log("(this.loadPress  + this.loadPress)  = " + (this.loadProcessPer  + this.loadScenePer))
+        this.perLaber.text = (this.loadProcessPer  + this.loadScenePer)+ "%"
+        if(this.loadProcessPer  + this.loadScenePer >= 100){
+            cc.director.loadScene('GameScene');
+        }
+    },
+
+    preLoadScene : function(){
+        this.loadScenePer = 10;
+        cc.log("(this.preLoadScene  + this.preLoadScene)  = " + (this.loadProcessPer  + this.loadScenePer))
+        this.perLaber.text = (this.loadProcessPer  + this.loadScenePer)+ "%"
+
+        if(this.loadProcessPer  + this.loadScenePer >= 100){
+            cc.director.loadScene('GameScene');
+        }
+    },
+
+    loadGame : function(){
+       var self = this
+        this.node.active = false
+        this.videoNode.active = true
+    
+        this.videoLoadingNode.active = true
+
+        this.videoPauseNode.active = false
+
+        this.videoPlayerNode.node.active = false
+
+        this.perLaber.node.active = true
+        this.loadScenePer = 0
+        this.loadProcessPer = 0
+
+        cc.loader.loadResDir("picture/newRes831", (current, total, item)=>{
+            if(total == 0) return
+                self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 90.0)
+                cc.log("(this.loadPress  + this.loadPress)  = " + (self.loadProcessPer  + self.loadScenePer))
+                self.perLaber.string = (self.loadProcessPer  + self.loadScenePer)+ "%"
+                if(self.loadProcessPer  + self.loadScenePer >= 100){
+                    cc.director.loadScene('GameScene');
+                }
+
+        }, (err, ass) => {
+            
+        })
+        cc.director.preloadScene("GameScene", ()=>{
+            self.loadScenePer = 10;
+            cc.log("(this.preLoadScene  + this.preLoadScene)  = " + (self.loadProcessPer  + self.loadScenePer))
+            self.perLaber.string = (self.loadProcessPer  + self.loadScenePer)+ "%"
+
+            if(self.loadProcessPer  + self.loadScenePer >= 100){
+                cc.director.loadScene('GameScene');
+            }
+
+        })
+
+
+        cc.loader.pre
+    },
+
     sendNameHandle: function(ret) {
        var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             this.playLogoVideo("1102")
             //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
             
-            
+       
             
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)

@@ -34,13 +34,13 @@ cc.Class({
             
             xmlHttp.onreadystatechange = function() {
                 if(xmlHttp.readyState === 4 && (xmlHttp.status >= 200 && xmlHttp.status < 300)){
-                    console.log("http res("+ xmlHttp.responseText.length + "):" + xmlHttp.responseText);
+                    cc.log("http res("+ xmlHttp.responseText.length + "):" + xmlHttp.responseText);
                     try {
                         if(handler !== null){
                             handler.apply(obj, [xmlHttp.responseText]);
                         }                        /* code */
                     } catch (e) {
-                        console.log("err:" + e);
+                        //console.log("err:" + e);
                         
                     }
                     finally{
