@@ -397,18 +397,27 @@ cc.Class({
         }
         return null
     },
+	
+	onVideoClick:function()
+	{
+		
+		this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
+        this.videoNode.active = true
+		
+	},
 
     onAnimationFinished : function(){
         //cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
         this.bgNode.active = false
-        this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
+        
         var animation = this.node.getChildByName("shengjidonghua").getComponent("cc.Animation")
         animation.stop()
         animation.node.active = false
         this.node.getChildByName("shengjidonghua").active = false
         cc.cs.AudioMgr.StopAudio(this.AudioID)
-		cc.cs.AudioMgr.startBGM()
-        this.videoNode.active = true
+		cc.cs.UIMgr.showPopupO2("心动时刻","快去看看许梦甜在干什么吧！",this.onVideoClick.bind(this))
+		//cc.cs.AudioMgr.startBGM()
+		
     },
 
     updateui: function() {
@@ -444,10 +453,15 @@ cc.Class({
        cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
        if (cc.cs.PlayerInfo.playvideo != 0) {
            
-           animation.node.active = true
-           animation.play()
-           this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
-           cc.cs.AudioMgr.stopBGM()
+		   
+		    this.schedule(function(){
+                     animation.node.active = true
+						animation.play()
+						this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
+						cc.cs.AudioMgr.stopBGM()
+                },1,0);
+		   
+          
            return;
        }
 
