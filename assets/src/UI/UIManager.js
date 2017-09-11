@@ -220,6 +220,9 @@ cc.Class({
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.popupPrefab2 = cc.loader.getRes("prefab/popup2", cc.Prefab)
 		this.popupPrefab3 = cc.loader.getRes("prefab/popup3", cc.Prefab)
+		this.TouchDisableLayer = cc.loader.getRes("prefab/TouchDisableLayer", cc.Prefab)
+		
+		
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
         this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
@@ -523,7 +526,20 @@ cc.Class({
             
         }
     },
-
+    showTouchDisableLayer:function()
+	{
+		var scene = cc.director.getScene();
+        var popupNode = cc.instantiate(this.TouchDisableLayer)
+        scene.getChildByName("Canvas").addChild(popupNode, 999)
+        popupNode.setPosition(0, 0);
+		this.disabletouchlayer = popupNode
+    }
+	,
+	removeTouchDisableLayer:function(){
+		
+		 cc.director.getScene().getChildByName("Canvas").removeChild(this.disabletouchlayer)
+	}
+	,
 
     showPopupO: function(title, msg, okHandle) {
 

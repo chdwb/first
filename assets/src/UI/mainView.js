@@ -453,8 +453,9 @@ cc.Class({
        cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
        if (cc.cs.PlayerInfo.playvideo != 0) {
            
-		   
+			cc.cs.UIMgr.showTouchDisableLayer()
 		    this.schedule(function(){
+				cc.cs.UIMgr.removeTouchDisableLayer()
                      animation.node.active = true
 						animation.play()
 						this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
