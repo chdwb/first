@@ -892,7 +892,7 @@ cc.Class({
 
         this.videoPlayerNode.node.active = false
 
-        this.perLaber.node.active = true
+        this.perLaber.node.active = false
         this.loadScenePer = 0
         this.loadProcessPer = 0
     },
@@ -908,7 +908,7 @@ cc.Class({
 
         this.videoPlayerNode.node.active = false
 
-        this.perLaber.node.active = true
+        this.perLaber.node.active = false
         this.loadScenePer = 0
         this.loadProcessPer = 0
 
