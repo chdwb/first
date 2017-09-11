@@ -484,6 +484,19 @@ cc.Class({
 		
     },
 
+    getVideoType: function(videoName) {
+        if (videoName.match(/12\d\d\d/)) {
+            return 3
+        } else if (videoName.match(/15\d\d/)) {//
+            return 4
+        } else if (videoName.match(/11\d\d/)) {
+            return 1
+        } else if (videoName.match(/14\d\d/)) {//facetime
+            return 2
+        }
+        return 0
+    },
+
     updateui: function() {
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
         
@@ -517,18 +530,25 @@ cc.Class({
 
        cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
        if (cc.cs.PlayerInfo.playvideo != 0) {
-           
-			cc.cs.UIMgr.showTouchDisableLayer()
-		    this.schedule(function(){
-				cc.cs.UIMgr.removeTouchDisableLayer()
-                     animation.node.active = true
-						animation.play()
-						this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
-						cc.cs.AudioMgr.stopBGM()
-                },1,0);
-		   
-          
-           return;
+
+            var type = this.getVideoType(cc.cs.PlayerInfo.playvideo)
+            if(type == 2){
+                if(!cc.cs.PlayerInfo.canPhone() && !cc.cs.PlayerInfo.canWechat()){
+                    this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
+                    return;
+                }
+                
+            }else{
+                cc.cs.UIMgr.showTouchDisableLayer()
+                this.schedule(function(){
+                    cc.cs.UIMgr.removeTouchDisableLayer()
+                         animation.node.active = true
+                            animation.play()
+                            this.AudioID =  cc.cs.AudioMgr.playAudio("shengji",true)
+                            cc.cs.AudioMgr.stopBGM()
+                    },1,0);
+                    return;
+            }
        }
 
 
