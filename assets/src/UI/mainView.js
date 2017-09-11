@@ -464,9 +464,10 @@ cc.Class({
 	
 	onVideoClick:function()
 	{
-		
+		this.videoNode.active = true
+        
 		this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
-        this.videoNode.active = true
+        
 		
 	},
 
@@ -531,9 +532,13 @@ cc.Class({
        cc.log("主菜单检测VIDEO ID = "+cc.cs.PlayerInfo.playvideo)
        if (cc.cs.PlayerInfo.playvideo != 0) {
 
-            var type = this.getVideoType(cc.cs.PlayerInfo.playvideo)
+            var type = this.getVideoType(cc.cs.PlayerInfo.playvideo + "")
             if(type == 2){
                 if(!cc.cs.PlayerInfo.canPhone() && !cc.cs.PlayerInfo.canWechat()){
+                    this.videoNode.active = true
+                    this.bgNode.active = false
+
+                    
                     this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
                     return;
                 }
