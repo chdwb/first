@@ -33,7 +33,7 @@ cc.Class({
             this.isSondOff = true;
         }
 
-        this.getHeHe()
+        //this.getHeHe()
     },
 	SetSoundOff(isoff)
 	{
@@ -112,39 +112,7 @@ cc.Class({
 		
     },
 
-
-
-     getHeHe:function()
-    {
-
-     /* cc.loader.loadRes('666',function(err,data){
-			if(err){
-				cc.error(err);
-			}else{
-				cc.log('test == ' +data);
-			}
-	});*/
-        
-   
-           //var hehe = cc.loader.getRes("audio/voice/666", cc.TextAsset )
-           //cc.log("aaaabbbbbbbbbbbccccccccccccc"+hehe)
-            //id = cc.audioEngine.play(hehe, isloop, 1);
-            /* cc.loader.loadRes("audio/voice/666", function (err, clip) {
-                 cc.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-                  cc.log(err)
-
-                 cc.log(clip)
-
-            //cc.log("playVoice name"+name + " erro code "+err)
-           // self.Backid  = cc.audioEngine.play(clip, false, volume);
-           })*/
-            //self.setFinishCallback(self.Backid,handle)
-        
-       // return id;
-    },
-
-
-    playAudio:function(name,isloop)
+	playAudio:function(name,isloop)
     {
         if(arguments.length == 1)
             isloop =false;
@@ -226,23 +194,5 @@ cc.Class({
 
    
 
-    playBack:function (clip,isLoop)
-    {
-        cc.log("backid ="+this.Backid)
-        /*if(this.Backid == -1)
-        {
-            this.Backid = cc.audioEngine.play(clip, isLoop,1);
-             //cc.log("backid ="+cc.audioEngine.play(clip, isLoop,1))
-        }
-        else 
-        {
-            cc.audioEngine.setCurrentTime(this.Backid,0)
-            cc.audioEngine.resume(this.Backid)
-        }*/
-    }
-
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
+   
 });

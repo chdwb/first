@@ -776,9 +776,9 @@ cc.Class({
 
         }, this.loveBtn)
         
-        var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
-        cc.log("声音开关"+hehe)
-        if(hehe == 1)
+       // var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
+       // cc.log("声音开关"+hehe)
+        if(cc.cs.AudioMgr.GetSoundOff())
         {
             this.isSondOff = true;
         }

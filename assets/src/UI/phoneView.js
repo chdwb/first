@@ -410,8 +410,15 @@ cc.Class({
                 this.totalTime = 40
                 this.timeIng = true;
                 this.backBtn.active = false
-               this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone2.bind(this))
-               cc.log("播放声音ID = "+this.girlvoiceID)
+				if(cc,cs.AudioMgr.GetSoundOff())
+				{
+					this.totalTime = 4
+				}
+				else
+				{
+					this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone2.bind(this))
+					cc.log("播放声音ID = "+this.girlvoiceID)
+				}
                this.cancelBtn.active = true
 
             }
