@@ -817,21 +817,21 @@ cc.Class({
         this.shopBtn.lev = 1
         this.shopBtn.active = false
 
-        this.phoneBtn1.on("click", (event) => {
+        /*this.phoneBtn1.on("click", (event) => {
             cc.cs.UIMgr.showTip("第" + cc.cs.gameData.getlevelData(event.target.lev)["LEV_DAY"] + "天解锁")
         }, this.phoneBtn1)
         this.wechatBtn1.on("click", (event) => {
             cc.cs.UIMgr.showTip("第" + cc.cs.gameData.getlevelData(event.target.lev)["LEV_DAY"] + "天解锁")
         }, this.wechatBtn1)
-        this.wechatBtn1.on("click", (event) => {
+        this.workBtn1.on("click", (event) => {
             cc.cs.UIMgr.showTip("第" + cc.cs.gameData.getlevelData(event.target.lev)["LEV_DAY"] + "天解锁")
-        }, this.wechatBtn1)
+        }, this.workBtn1)
         this.zoneBtn1.on("click", (event) => {
             cc.cs.UIMgr.showTip("第" + cc.cs.gameData.getlevelData(event.target.lev)["LEV_DAY"] + "天解锁")
         }, this.zoneBtn1)
         this.giftBtn1.on("click", (event) => {
             cc.cs.UIMgr.showTip("第" + cc.cs.gameData.getlevelData(event.target.lev)["LEV_DAY"] + "天解锁")
-        }, this.giftBtn1)
+        }, this.giftBtn1)*/
 
         
         
