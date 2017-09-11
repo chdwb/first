@@ -344,16 +344,16 @@ cc.Class({
         }, this.backBtn)
 
 
-        var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
-        cc.log("声音开关"+hehe)
-        if(hehe == 1)
+       // var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
+       // cc.log("声音开关"+hehe)
+       /* if(cc.cs.AudioMgr.GetSoundOff())
         {
             this.isSondOff = true;
         }
         else
         {
             this.isSondOff = false
-        }
+        }*/
         
     
 
@@ -369,7 +369,7 @@ cc.Class({
 
         this.AudioID =  cc.cs.AudioMgr.playAudio("time_click",true)
        cc.log("audio id " + this.AudioID)
-       if(this.isSondOff == false)
+       if(cc.cs.AudioMgr.GetSoundOff() == false)
        {
        cc.cs.AudioMgr.stopBGM()
        }
@@ -378,7 +378,7 @@ cc.Class({
 
     onDisable:function()
     {
-         if(this.isSondOff == false)
+         if(cc.cs.AudioMgr.GetSoundOff() == false)
        {
          cc.cs.AudioMgr.startBGM()
        }

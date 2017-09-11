@@ -780,7 +780,7 @@ cc.Class({
        // cc.log("声音开关"+hehe)
         if(cc.cs.AudioMgr.GetSoundOff())
         {
-            this.isSondOff = true;
+            this.SoundOff = true;
         }
 
          for(var j = 3; j <=6; j++)

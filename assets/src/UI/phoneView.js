@@ -407,15 +407,19 @@ cc.Class({
 
                 this.currentTime = 0
                 this.isAction = true;
-                this.totalTime = 40
+                
                 this.timeIng = true;
                 this.backBtn.active = false
-				if(cc,cs.AudioMgr.GetSoundOff())
+				if(cc.cs.AudioMgr.GetSoundOff())
 				{
-					this.totalTime = 4
+					 this.schedule(
+                    this.VoiceDone2
+                ,5,0);
+					
 				}
 				else
 				{
+					this.totalTime = 40
 					this.girlvoiceID =  cc.cs.AudioMgr.playVoice(cc.cs.gameData.phone["PHONE_ID_" + id]["SOUND_ID"],this.VoiceDone2.bind(this))
 					cc.log("播放声音ID = "+this.girlvoiceID)
 				}
