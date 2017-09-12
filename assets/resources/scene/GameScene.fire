@@ -5198,7 +5198,8 @@
     "addIcon": null,
     "caiDanWidth": 0,
     "now": 0,
-    "SoundOff": false
+    "SoundOff": false,
+    "currentUnlockIcon": null
   },
   {
     "__type__": "cc.Node",
@@ -12135,7 +12136,7 @@
         "__uuid__": "f2e664a9-11da-44a8-85e1-8abc8a950723"
       }
     ],
-    "playOnLoad": false
+    "playOnLoad": true
   },
   {
     "__type__": "cc.Sprite",
@@ -14093,7 +14094,8 @@
     "addIcon": null,
     "caiDanWidth": 0,
     "now": 0,
-    "SoundOff": false
+    "SoundOff": false,
+    "currentUnlockIcon": null
   },
   {
     "__type__": "cc.Node",
