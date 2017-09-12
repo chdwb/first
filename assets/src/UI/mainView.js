@@ -156,7 +156,8 @@ cc.Class({
         addIcon : null,
         caiDanWidth : 0,
         now:0,
-        SoundOff:false
+        SoundOff:false,
+        currentUnlockIcon :null
     },
 
     setDisableIcon : function(obj){
@@ -175,6 +176,25 @@ cc.Class({
         }else if(obj == this.bagBtn){
             this.bagBtn1.active = false
         }
+    },
+
+    getDisableIcon : function(obj){
+        if(obj == this.loveBtn){
+            return this.loveBtn1
+        }else if(obj == this.giftBtn){
+            return this.giftBtn1
+        }else if(obj == this.zoneBtn){
+            return this.zoneBtn1
+        }else if(obj == this.wechatBtn){
+            return this.wechatBtn1
+        }else if(obj == this.phoneBtn){
+            return this.phoneBtn1
+        }else if(obj == this.workBtn){
+            return this.workBtn1
+        }else if(obj == this.bagBtn){
+            return this.bagBtn1
+        }
+        return null
     },
     
 
@@ -485,6 +505,23 @@ cc.Class({
 		
     },
 
+    onLockFinished : function(){
+        cc.log("canAddIcon   " + this.currentUnlockIcon.name)
+        this.computerDibian()
+        //this.addDiBianBtn(icon)
+        this.currentUnlockIcon.active = true
+        this.setDisableIcon(this.currentUnlockIcon)
+        if(this.currentUnlockIcon.name == "phoneBtn")
+        {
+            if(parseInt(cc.cs.PlayerInfo.guide_id) == 5) // 弹出电话按钮引导
+            {
+                cc.log("电话第一次激活")
+                cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.phoneBtn,this)
+            }
+        }
+		this.updateui()
+    },
+
     getVideoType: function(videoName) {
         if (videoName.match(/12\d\d\d/)) {
             return 3
@@ -585,62 +622,15 @@ cc.Class({
         var icon = this.canAddIcon()
         
         if(icon != null){
-            cc.log("canAddIcon   " + icon.name)
-            this.computerDibian()
-            //this.addDiBianBtn(icon)
-            icon.active = true
-            this.setDisableIcon(icon)
-            if(icon.name == "phoneBtn")
-            {
-                if(parseInt(cc.cs.PlayerInfo.guide_id) == 5) // 弹出电话按钮引导
-                {
-                    cc.log("电话第一次激活")
-                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.phoneBtn,this)
-                }
-            }
-            else if(icon.name == "wechatBtn")
-            {
-                /*if(parseInt(cc.cs.PlayerInfo.guide_id) == 7) // 弹出电话按钮引导
-                {
-                    cc.log("微信第一次激活")
-                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.wechatBtn,this)
-                }*/
-            }
-            else if(icon.name == "workBtn")
-            {
-                /*if(parseInt(cc.cs.PlayerInfo.guide_id) == 9) // 弹出电话按钮引导
-                {
-                    cc.log("工作第一次激活")
-                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.workBtn,this)
-                }*/
-            }
-            else if(icon.name == "zonetBtn")
-            {
-               /* if(parseInt(cc.cs.PlayerInfo.guide_id) == 15) // 弹出电话按钮引导
-                {
-                    cc.log("微博第一次激活")
-                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.zoneBtn,this)
-                }*/
+            var disableIcon = this.getDisableIcon(icon)
+            this.currentUnlockIcon = icon
+            if(disableIcon != null){
+                var lockAni = disableIcon.getChildByName("lockanim").getComponent("cc.Animation")
+                lockAni.on('finished',  this.onLockFinished,    this);
+                lockAni.play()
             }
 
-
-
-            /*else if(icon.name == "signrewardBtn")
-            {
-                if(parseInt(cc.cs.PlayerInfo.guide_id) == 11) // 弹出电话按钮引导
-                {
-                    cc.log("签到第一次激活")
-                    cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.SignRewardBtn ,this)
-                }
-            }*/
-
-
-
-
-            
-
-
-
+            return
         }
         this.tipBG.active = false
 
@@ -859,6 +849,7 @@ cc.Class({
         }, this.giftBtn1)*/
 
         
+        var leveldata = cc.cs.gameData.level["LEV_LEV_" + cc.cs.PlayerInfo.level]
         
         var animation = this.node.getChildByName("shengjidonghua").getComponent("cc.Animation")
         
@@ -917,7 +908,66 @@ cc.Class({
             self.goLove()
 
         }, this.loveBtn)
-        
+
+
+        if (this.wechatBtn.active)
+            {
+                if(parseInt(cc.cs.PlayerInfo.guide_id) == 7) // 弹出电话按钮引导
+                    {
+                        cc.log("微信第一次激活")
+                        cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,this.wechatBtn,this)
+                    }
+                if (cc.cs.PlayerInfo.canWechat()) {
+    
+                     this.tipBG.active = true
+                     this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"发微信吧"
+                    if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                        
+                        var psprite = this.wechatBtn.getChildByName("stars")
+                        cc.cs.UIMgr.changeSprite(psprite, "common/notice_2")
+                        this.tipBG.active = true
+                    }else{
+                        var psprite = this.wechatBtn.getChildByName("stars")
+                        cc.cs.UIMgr.changeSprite(psprite, "common/notice_1")
+                        this.tipBG.active = false
+                    }
+    
+                   
+                    this.wechatBtn.getChildByName("stars").active = true;
+                } else {
+                    this.wechatBtn.getChildByName("stars").active = false;
+                }
+            }
+    
+            if (this.phoneBtn.active)
+            {
+    
+                if (cc.cs.PlayerInfo.canPhone()) {
+                    
+                    this.tipBG.active = true
+    
+                    this.tipText.string = "快给"+cc.cs.PlayerInfo.NPCName+"打电话吧"
+                    if(cc.cs.PlayerInfo.exp >= leveldata["LEV_EXP"]){
+                        this.tipBG.action = true
+                        
+                        var psprite = this.phoneBtn.getChildByName("stars")
+                        cc.cs.UIMgr.changeSprite(psprite, "common/notice_2")
+                    }else{
+                        var psprite = this.phoneBtn.getChildByName("stars")
+                        cc.cs.UIMgr.changeSprite(psprite, "common/notice_1")
+                        this.tipBG.active = false
+                    }
+                    
+                    this.phoneBtn.getChildByName("stars").active = true;
+                } else {
+                    this.phoneBtn.getChildByName("stars").active = false;
+    
+                }
+            }
+            this.setExp(cc.cs.PlayerInfo.exp, leveldata["LEV_EXP"])
+            //this.setDiamond(cc.cs.PlayerInfo.Diamond)
+        this.setGold(cc.cs.PlayerInfo.money)
+        this.setDay(leveldata["LEV_DAY"])
        // var hehe = cc.sys.localStorage.getItem('ISSOUNDOFF')
        // cc.log("声音开关"+hehe)
         if(cc.cs.AudioMgr.GetSoundOff())
