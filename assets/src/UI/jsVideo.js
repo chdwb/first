@@ -410,10 +410,12 @@ cc.Class({
     },
 
     onEnable : function(){
+		if(!cc.cs.AudioMgr.GetSoundOff())
         cc.cs.AudioMgr.stopBGM()
     },
 
     onDisable : function(){
+		if(!cc.cs.AudioMgr.GetSoundOff())
         cc.cs.AudioMgr.startBGM()
     },
 
