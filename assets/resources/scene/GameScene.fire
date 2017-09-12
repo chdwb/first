@@ -12041,7 +12041,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 57.08,
+      "width": 54.17,
       "height": 45
     },
     "_rotationX": 0,
@@ -18499,9 +18499,7 @@
       "__id__": 464
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "1bcda854-3564-45e8-912a-48ab293f078a"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -19693,7 +19691,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 53.13,
+      "width": 57.81,
       "height": 60
     },
     "_rotationX": 0,
@@ -29840,7 +29838,7 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file":null,
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "关注5 | 粉丝4564646",
@@ -35967,7 +35965,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.03,
+      "width": 33.37,
       "height": 70
     },
     "_rotationX": 0,
@@ -36141,7 +36139,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 107.62,
+      "width": 106.95,
       "height": 30
     },
     "_rotationX": 0,
@@ -36228,7 +36226,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12.85,
+      "width": 19.47,
       "height": 40
     },
     "_rotationX": 0,
@@ -36345,9 +36343,7 @@
       "__id__": 943
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "e3f5755f-b133-41e5-a1cf-be1d422d08ad"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
