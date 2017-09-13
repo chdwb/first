@@ -153,6 +153,9 @@ cc.Class({
                 wechatData = cc.cs.gameData.getwechatData(startIndex)
                 this.loadCruuentTalk(this.talkScroll, true, wechatData["WECHAT_CONTENT"], cc.cs.PlayerInfo.PlayerNmae, false);
                 index++
+                while(wechatData["WECHAT_NEXT"] == "dummy"){
+                    wechatData = cc.cs.gameData.getwechatData(startIndex ++ )
+                }
                 startIndex = wechatData["WECHAT_NEXT"]
             }
         }
