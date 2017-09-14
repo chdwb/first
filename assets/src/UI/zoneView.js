@@ -566,7 +566,10 @@ cc.Class({
             for (var i = self.addNodeStartIndex - 1; i >= startIndex; --i) {
                 self.addZoneIdDown(i)
             }
-            self.addNodeStartIndex = startIndex
+            if(startIndex != 1)
+                self.addNodeStartIndex = startIndex
+            else
+                self.addNodeStartIndex = -1
         }
 
         cc.cs.UIMgr.refresh_verticalScrollViewUp_array(this.scrollView, this.addNewNode)
