@@ -611,7 +611,7 @@ cc.Class({
             count = 2
         }
         this.addTotalCount = count
-        this.addNodeStartIndex = count - 3;
+        this.addNodeStartIndex = count - 2;
         if (this.addNodeStartIndex <= cc.cs.gameData.zone["FIRST"]) {
             this.addNodeStartIndex = cc.cs.gameData.zone["FIRST"]
         }
