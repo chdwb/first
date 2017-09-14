@@ -194,9 +194,7 @@
     "_fontSize": 18,
     "_lineHeight": 20,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "一天前",
@@ -283,9 +281,7 @@
     "_fontSize": 20,
     "_lineHeight": 20,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "微博发表的文字内容，根据内容自动改变......",

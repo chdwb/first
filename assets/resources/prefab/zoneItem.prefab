@@ -209,9 +209,7 @@
     "_fontSize": 30,
     "_lineHeight": 35,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "看看豆豆的小别墅",
@@ -965,9 +963,7 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "名字",
@@ -1054,9 +1050,7 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "来自iphone7",
@@ -1278,9 +1272,7 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "没有数据，",
@@ -1404,9 +1396,7 @@
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "今天",
@@ -2280,9 +2270,7 @@
     "_N$string": "<color=#ffffff>Rich</c><color=#14802A>Text</color>",
     "_N$horizontalAlign": 0,
     "_N$fontSize": 25,
-    "_N$font": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$font": null,
     "_N$maxWidth": 950,
     "_N$lineHeight": 37,
     "_N$imageAtlas": null
