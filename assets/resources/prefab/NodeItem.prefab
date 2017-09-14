@@ -535,7 +535,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 57.03,
+      "width": 55.62,
       "height": 30
     },
     "_rotationX": 0,
@@ -567,10 +567,8 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "9999",
     "_N$horizontalAlign": 0,
@@ -624,7 +622,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 111.99,
+      "width": 111.12,
       "height": 30
     },
     "_rotationX": 0,
@@ -656,10 +654,8 @@
     "_fontSize": 20,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "道具名6个字",
     "_N$horizontalAlign": 2,

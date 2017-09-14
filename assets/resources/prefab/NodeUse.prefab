@@ -599,7 +599,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.03,
+      "width": 33.37,
       "height": 701
     },
     "_rotationX": 0,
@@ -631,9 +631,7 @@
     "_fontSize": 60,
     "_lineHeight": 701,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "1",
@@ -784,10 +782,8 @@
     "_fontSize": 40,
     "_lineHeight": 60,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "取消",
     "_N$horizontalAlign": 1,
@@ -1071,10 +1067,8 @@
     "_fontSize": 40,
     "_lineHeight": 60,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "确定",
     "_N$horizontalAlign": 1,
@@ -1616,10 +1610,8 @@
     "_fontSize": 40,
     "_lineHeight": 50,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "玫瑰花",
     "_N$horizontalAlign": 1,
@@ -1673,7 +1665,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 107.62,
+      "width": 106.95,
       "height": 30
     },
     "_rotationX": 0,
@@ -1705,10 +1697,8 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "拥有数量:",
     "_N$horizontalAlign": 1,
@@ -1762,7 +1752,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12.85,
+      "width": 19.47,
       "height": 40
     },
     "_rotationX": 0,
@@ -1794,10 +1784,8 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "1",
     "_N$horizontalAlign": 0,
@@ -2088,9 +2076,7 @@
     "_N$string": "<color=#000000>Rich的</c><color=#ff5c61>heheadfadfadfadfadfaadfadf</color>",
     "_N$horizontalAlign": 0,
     "_N$fontSize": 15,
-    "_N$font": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$font": null,
     "_N$maxWidth": 170,
     "_N$lineHeight": 20,
     "_N$imageAtlas": null
@@ -2232,7 +2218,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 51.33,
+      "width": 50.05,
       "height": 40
     },
     "_rotationX": 0,
@@ -2264,10 +2250,8 @@
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
-    "_isSystemFontUsed": false,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "999",
     "_N$horizontalAlign": 0,
