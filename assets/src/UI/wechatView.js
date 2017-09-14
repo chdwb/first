@@ -655,7 +655,7 @@ cc.Class({
         this.talkScroll.node.on("scroll-to-top", (event) => {
             self.newLoadFormerInfo()
 
-        })
+        }, this.talkScroll.node)
 
         this.backBtn.on("click", (event) => {
             cc.cs.UIMgr.closeView()

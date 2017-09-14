@@ -56,7 +56,7 @@ cc.Class({
 
         inputTablePrefab: null,
 
-        linePrefab:null,
+        linePrefab: null,
 
         inputTableBtn: null,
         plIndex: 0,
@@ -64,8 +64,11 @@ cc.Class({
         currentItem: null,
 
         lastZoneID: 0,
-        currentExp:0,
-        currentLoadEndID:0,
+        currentExp: 0,
+        currentLoadEndID: 0,
+        addNewNode: [],
+        addNodeStartIndex: 0,
+        addTotalCount: 0,
     },
 
     SendDJ: function(phoneid, target) {
@@ -84,30 +87,29 @@ cc.Class({
 
     setExp: function(currentExp, levlExp) {
         this.expText.string = currentExp + "/" + levlExp;
-		 var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
-        cc.cs.UIMgr.setHeart(heartTarget, currentExp,levlExp)
+        var heartTarget = this.node.getChildByName("expBG").getChildByName("qinmitaoxindi")
+        cc.cs.UIMgr.setHeart(heartTarget, currentExp, levlExp)
     },
-    refresh:function(){
-        
-                var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
-                this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
-                    //this.setDiamond(cc.cs.PlayerInfo.Diamond)
-            },
+    refresh: function() {
 
-    updateui:function(){
-        
-                var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
-                this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
-                    //this.setDiamond(cc.cs.PlayerInfo.Diamond)
-               
-            }
-            ,
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
+        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+            //this.setDiamond(cc.cs.PlayerInfo.Diamond)
+    },
+
+    updateui: function() {
+
+        var leveldata2 = cc.cs.gameData.level["LEV_LEV_" + (parseInt(cc.cs.PlayerInfo.level))]
+        this.setExp(cc.cs.PlayerInfo.exp, leveldata2["LEV_EXP"])
+            //this.setDiamond(cc.cs.PlayerInfo.Diamond)
+
+    },
 
     sendReplyHandle: function(ret) {
 
         cc.log(ret)
         var JasonObject = JSON.parse(ret);
-		cc.cs.UIMgr.closeNetView()
+        cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.closeNetView()
             //cc.cs.UIMgr.showTip("工作完成", 1.0)
@@ -122,12 +124,12 @@ cc.Class({
                 //    cc.cs.UIMgr.showTip("等级提升！！！！", 1.0)
                 // }else{
             this.currentItem.plCallBack()
-            //cc.cs.UIMgr.showTip("评论完成", 1.0)
-          //  this.updateui()
+                //cc.cs.UIMgr.showTip("评论完成", 1.0)
+                //  this.updateui()
                 // }
             cc.cs.PlayerInfo.exp = parseInt(JasonObject.content.info.exp)
             cc.cs.PlayerInfo.level = parseInt(JasonObject.content.info.level)
-            if(this.currentPLID == cc.cs.gameData.zone["FIRST"])
+            if (this.currentPLID == cc.cs.gameData.zone["FIRST"])
                 this.scrollView.content.height += 40
         } else {
             cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
@@ -137,11 +139,11 @@ cc.Class({
     },
 
     scaleIcon: function(target) {
-        cc.log(cc.visibleRect.width + "    "+  cc.visibleRect.height)
+        cc.log(cc.visibleRect.width + "    " + cc.visibleRect.height)
 
         var ss = target.parent.getComponent(cc.Sprite).spriteFrame
         var re = ss.getRect()
-        cc.log(re.width + "   " + re.height +"   " + ss.insetTop + "   " + ss.insetBottom + "   " + ss.insetLeft + "   " + ss. insetRight + "    " + re.xMax)
+        cc.log(re.width + "   " + re.height + "   " + ss.insetTop + "   " + ss.insetBottom + "   " + ss.insetLeft + "   " + ss.insetRight + "    " + re.xMax)
 
         var self = this
         var tex = target.getComponent(cc.Sprite).spriteFrame.getTexture()
@@ -152,46 +154,46 @@ cc.Class({
         var h = tex.pixelHeight
         var sw = 0.0
         var sh = 0.0
-        if (w > h && h < cc.director.getWinSizeInPixels().height ) {
+        if (w > h && h < cc.director.getWinSizeInPixels().height) {
             sh = 100
-            sw = sh/h * w;
-            sb = cc.director.getWinSizeInPixels().width /sw
-        }else{
+            sw = sh / h * w;
+            sb = cc.director.getWinSizeInPixels().width / sw
+        } else {
             sw = 100
-            sh = sw/w * h;
-            sb = cc.director.getWinSizeInPixels().height /sh
+            sh = sw / w * h;
+            sb = cc.director.getWinSizeInPixels().height / sh
         }
         this.showIcon.scaleX = 1.0
         this.showIcon.scaleY = 1.0
-    
+
         target.width = sw
         target.height = sh
-        var action = cc.sequence(cc.spawn(cc.moveTo(0.8, 0.0,0.0),cc.scaleTo(0.8,sb,sb)), cc.callFunc(function(target) {
+        var action = cc.sequence(cc.spawn(cc.moveTo(0.8, 0.0, 0.0), cc.scaleTo(0.8, sb, sb)), cc.callFunc(function(target) {
             self.addShowHandle()
         }, target))
         target.runAction(action)
     },
-     
-    addShowHandle : function(){
+
+    addShowHandle: function() {
         var self = this
-        this.showBg.on("click",(event) => {
+        this.showBg.on("click", (event) => {
             self.showBg.active = false
-        },this.showBg)
-        this.showIcon.on("click",(event) => {
+        }, this.showBg)
+        this.showIcon.on("click", (event) => {
             self.showBg.active = false
-        },this.showIcon)
+        }, this.showIcon)
     },
 
 
     getImage: function(res) {
         var hehe = null
         hehe = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
-		return hehe
+        return hehe
     },
 
-    showIconFunc : function(target){
+    showIconFunc: function(target) {
         var sp = this.getImage("moment/pic/" + target.IMAGE_ID)
-        if(sp == null) return
+        if (sp == null) return
         this.showBg.active = true
         var p = target.parent.convertToWorldSpaceAR(cc.v2(target.x, target.y))
         var p2 = this.showIcon.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
@@ -201,7 +203,7 @@ cc.Class({
         this.showIcon.targetOff(this.showIcon)
 
         this.showIcon.getComponent(cc.Sprite).spriteFrame = sp
-        
+
 
         this.scaleIcon(this.showIcon)
 
@@ -235,44 +237,44 @@ cc.Class({
         var text3 = btn3.getChildByName("Label").getComponent(cc.Label)
 
         var colorOld = text1.node.color
-			btn1.on(cc.Node.EventType.TOUCH_START, function (event) {
-                cc.log("This is a callback after the trigger event");
-				text1.node.color = cc.Color.RED;
-            });
-			
-			 btn1.on(cc.Node.EventType.TOUCH_CANCEL, event => {
-                text1.node.color = colorOld;
-            }, this);
-			
-			 btn1.on(cc.Node.EventType.TOUCH_END, event => {
-                text1.node.color = colorOld;
-            }, this);
-			
-			btn2.on(cc.Node.EventType.TOUCH_START, function (event) {
-                cc.log("This is a callback after the trigger event");
-				text2.node.color = cc.Color.RED;
-            });
-			
-			 btn2.on(cc.Node.EventType.TOUCH_CANCEL, event => {
-                text2.node.color = colorOld;
-            }, this);
-			
-			 btn2.on(cc.Node.EventType.TOUCH_END, event => {
-                text2.node.color = colorOld;
-            }, this);
-			
-			btn3.on(cc.Node.EventType.TOUCH_START, function (event) {
-                cc.log("This is a callback after the trigger event");
-				text3.node.color = cc.Color.RED;
-            });
-			
-			 btn3.on(cc.Node.EventType.TOUCH_CANCEL, event => {
-                text3.node.color = colorOld;
-            }, this);
-			
-			 btn3.on(cc.Node.EventType.TOUCH_END, event => {
-                text3.node.color = colorOld;
-            }, this);
+        btn1.on(cc.Node.EventType.TOUCH_START, function(event) {
+            cc.log("This is a callback after the trigger event");
+            text1.node.color = cc.Color.RED;
+        });
+
+        btn1.on(cc.Node.EventType.TOUCH_CANCEL, event => {
+            text1.node.color = colorOld;
+        }, this);
+
+        btn1.on(cc.Node.EventType.TOUCH_END, event => {
+            text1.node.color = colorOld;
+        }, this);
+
+        btn2.on(cc.Node.EventType.TOUCH_START, function(event) {
+            cc.log("This is a callback after the trigger event");
+            text2.node.color = cc.Color.RED;
+        });
+
+        btn2.on(cc.Node.EventType.TOUCH_CANCEL, event => {
+            text2.node.color = colorOld;
+        }, this);
+
+        btn2.on(cc.Node.EventType.TOUCH_END, event => {
+            text2.node.color = colorOld;
+        }, this);
+
+        btn3.on(cc.Node.EventType.TOUCH_START, function(event) {
+            cc.log("This is a callback after the trigger event");
+            text3.node.color = cc.Color.RED;
+        });
+
+        btn3.on(cc.Node.EventType.TOUCH_CANCEL, event => {
+            text3.node.color = colorOld;
+        }, this);
+
+        btn3.on(cc.Node.EventType.TOUCH_END, event => {
+            text3.node.color = colorOld;
+        }, this);
         var zs1 = btn1.getChildByName("xuanxiangkkuangdexian")
         var zs2 = btn2.getChildByName("xuanxiangkkuangdexian")
         var zs3 = btn3.getChildByName("xuanxiangkkuangdexian")
@@ -387,7 +389,7 @@ cc.Class({
             if (this.ZoneIDList[i].zoneID == id) return
         }
 
-        if(id != cc.cs.gameData.zone["FIRST"]){
+        if (id != cc.cs.gameData.zone["FIRST"]) {
             var line = cc.instantiate(this.linePrefab)
             cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
         }
@@ -420,7 +422,7 @@ cc.Class({
             jsZoneItem.addOtherText()
         }
         cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, zoneItem, 0)
-        
+        this.addNewNode.push(zoneItem)
     },
 
     addZoneIdDown: function(id) {
@@ -428,7 +430,7 @@ cc.Class({
             if (this.ZoneIDList[i].zoneID == id) return
         }
 
-        if(id != cc.cs.gameData.zone["FIRST"]){
+        if (id != cc.cs.gameData.zone["FIRST"]) {
             var line = cc.instantiate(this.linePrefab)
             cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
         }
@@ -461,8 +463,11 @@ cc.Class({
             jsZoneItem.addPlayerText(replyID)
             jsZoneItem.addOtherText()
         }
-        cc.cs.UIMgr.addItem_verticalScrollView(this.scrollView, zoneItem, 0)
-        
+        this.addNewNode.unshift(zoneItem)
+        this.scrollView.content.addChild(zoneItem)
+
+
+
     },
 
     /*canZone: function() {
@@ -478,7 +483,7 @@ cc.Class({
     // use this for initialization
 
     onEnable: function() {
-        
+
         this.updateui()
         this.inputNode.active = false;
         this.showBg.active = false
@@ -487,45 +492,45 @@ cc.Class({
         var zoneData = cc.cs.gameData.getzoneData(this.lastZoneID)
         this.infoText.node.active = true
         this.infoText.string = "关注" + zoneData["ZONE_FOLLOW_NUM"] + "|" + "粉丝" + zoneData["ZONE_FANS_COUNT"]
-        
-        if(this.lastZoneID == 1){
-            if(cc.cs.PlayerInfo.level == 6){
+
+        if (this.lastZoneID == 1) {
+            if (cc.cs.PlayerInfo.level == 6) {
                 cc.log("zone vide onEnable " + this.lastZoneID + "    " + cc.cs.PlayerInfo.canWechat())
-                if(!cc.cs.PlayerInfo.canWechat() && !cc.cs.PlayerInfo.canPhone()){
-                   
-                    while(newID != this.lastZoneID){
-                        
-                              this.addZoneId(newID)
-                              this.lastZoneID = newID
-                              newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
+                if (!cc.cs.PlayerInfo.canWechat() && !cc.cs.PlayerInfo.canPhone()) {
+
+                    while (newID != this.lastZoneID) {
+
+                        this.addZoneId(newID)
+                        this.lastZoneID = newID
+                        newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
                     }
                 }
-            }else{
+            } else {
 
-                while(newID != this.lastZoneID){
-                    
-                          this.addZoneId(newID)
-                          this.lastZoneID = newID
-                          newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
+                while (newID != this.lastZoneID) {
+
+                    this.addZoneId(newID)
+                    this.lastZoneID = newID
+                    newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
                 }
             }
 
-        }else{
-            while(newID != this.lastZoneID){
-                
-                      this.addZoneId(newID)
-                      this.lastZoneID = newID
-                      newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
+        } else {
+            while (newID != this.lastZoneID) {
+
+                this.addZoneId(newID)
+                this.lastZoneID = newID
+                newID = cc.cs.PlayerInfo.addNewZone(this.lastZoneID)
             }
         }
-        
-    
+
+
         var children = this.scrollView.content.getChildren();
-        if(children.length == 0) return
+        if (children.length == 0) return
         for (var i = 0; i < children.length; ++i) {
-            
+
             var jsZoneItem = children[i].getComponent("zoneItem")
-            if(jsZoneItem == null)continue
+            if (jsZoneItem == null) continue
             jsZoneItem.addOtherText()
             cc.log("children.lengthchildren.lengthchildren.length    " + children[i])
         }
@@ -533,15 +538,39 @@ cc.Class({
         if (parseInt(cc.cs.PlayerInfo.guide_id) == 16) // 工作开始按钮
         {
             var children = this.scrollView.content.getChildren();
-            var jsZoneItem = children[ children.length -1].getComponent("zoneItem") // 第一个档位
-             cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,/*jsZoneItem.getOptiontBtn()*/null,this)
+            var jsZoneItem = children[children.length - 1].getComponent("zoneItem") // 第一个档位
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, /*jsZoneItem.getOptiontBtn()*/ null, this)
         }
-        cc.cs.UIMgr.refresh_verticalScrollViewUp(this.scrollView)
+        cc.cs.UIMgr.refresh_verticalScrollViewUp_array(this.scrollView, this.addNewNode)
     },
 
-    onDisable : function(){
+    onDisable: function() {
         this.inputTableBtn.active = false
         this.inputNode.active = false;
+    },
+
+    addPreNewNode: function() {
+        var self = this
+        if (self.addNodeStartIndex == cc.cs.gameData.zone["FIRST"] + 1) {
+            self.addZoneIdDown(cc.cs.gameData.zone["FIRST"] + 1)
+            self.addZoneIdDown(cc.cs.gameData.zone["FIRST"])
+            self.addNodeStartIndex = -1
+        } else if (self.addNodeStartIndex == cc.cs.gameData.zone["FIRST"]) {
+            self.addZoneIdDown(cc.cs.gameData.zone["FIRST"])
+            self.addNodeStartIndex = -1
+        } else if (self.addNodeStartIndex == -1) {
+            return
+        } else {
+            var startIndex = self.addNodeStartIndex - 2
+            cc.log("startIndex   =  " + startIndex + "    " + " self.addNodeStartIndex   " + self.addNodeStartIndex)
+            for (var i = self.addNodeStartIndex - 1; i >= startIndex; --i) {
+                self.addZoneIdDown(i)
+            }
+            self.addNodeStartIndex = startIndex
+        }
+
+        cc.cs.UIMgr.refresh_verticalScrollViewUp_array(this.scrollView, this.addNewNode)
+
     },
 
     onLoad: function() {
@@ -553,6 +582,12 @@ cc.Class({
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
         this.inputTableBtn.ZONE_ID = 0
         this.node.addChild(this.inputTableBtn, 88)
+
+
+        this.scrollView.node.on("scroll-to-bottom", (event) => {
+            cc.log("ccccccccccccccccccccscroll-to-bottomscroll-to-bottomscroll-to-bottomscroll-to-bottomscroll-to-bottom")
+            self.addPreNewNode()
+        })
 
         var anyBtn = this.inputNode.getChildByName("anyBtn")
 
@@ -569,14 +604,23 @@ cc.Class({
         this.nameText.string = cc.cs.PlayerInfo.NPCName
 
         var count = cc.cs.PlayerInfo.visibleZoneCount() + cc.cs.gameData.zone["FIRST"]
+
         this.lastZoneID = count - 1
-        if(this.lastZoneID == 2){
+        if (this.lastZoneID == 2) {
             this.lastZoneID = 1
             count = 2
         }
+        this.addTotalCount = count
+        this.addNodeStartIndex = count - 3;
+        if (this.addNodeStartIndex <= cc.cs.gameData.zone["FIRST"]) {
+            this.addNodeStartIndex = cc.cs.gameData.zone["FIRST"]
+        }
         if (count > 0) {
-            for (var i = cc.cs.gameData.zone["FIRST"]; i < count ; ++i) {
+            for (var i = this.addNodeStartIndex; i < count; ++i) {
                 this.addZoneId(i)
+            }
+            if (this.addNodeStartIndex == cc.cs.gameData.zone["FIRST"]) {
+                this.addNodeStartIndex = -1
             }
             var zoneData = cc.cs.gameData.getzoneData(this.lastZoneID)
             this.infoText.node.active = true

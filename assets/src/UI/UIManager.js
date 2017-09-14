@@ -5,7 +5,7 @@ cc.Class({
         tipPrefab: null,
         popupPrefab: null,
         nodePopBuyPrefab: null,
-        expTip : null,
+        expTip: null,
         removeList: [],
         MAINVIEW: 0,
         MISSONVIEW: 1,
@@ -53,18 +53,17 @@ cc.Class({
             return this.gameScene.VideoView
         } else if (this.SETTINGVIEW == id) {
             return this.gameScene.SettingView
-        }
-        else if (this.COLLECTVIEW == id) {
+        } else if (this.COLLECTVIEW == id) {
             return this.gameScene.CollectView
         }
         return null
     },
 
-    showNetView:function(){
+    showNetView: function() {
         this.gameScene.loadingView.getComponent("LoadingView").openLoading()
     },
 
-    closeNetView:function(){
+    closeNetView: function() {
         this.gameScene.loadingView.getComponent("LoadingView").closeLoading()
     },
 
@@ -137,8 +136,7 @@ cc.Class({
             } else if (this.SETTINGVIEW == id) {
                 this.viewStack.push(this.gameScene.SettingView)
                 this.gameScene.MainView.active = false
-            }
-            else if (this.COLLECTVIEW == id) {
+            } else if (this.COLLECTVIEW == id) {
                 this.viewStack.push(this.gameScene.CollectView)
                 this.gameScene.MainView.active = false
             }
@@ -155,18 +153,31 @@ cc.Class({
 
     },
 
-    
 
-    changeSprite: function(node, res,handle = null) {
+
+    changeSprite: function(node, res, handle = null) {
         if (!cc.cs.loadMgr.isLoadComplete) {
             cc.log("error the res is not load complete")
         }
-		var spriteFrame = null
-		if(CC_JSB)
-		{
-          spriteFrame = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
+        var spriteFrame = null
+        if (CC_JSB) {
+            spriteFrame = cc.loader.getRes("picture/newRes831/" + res, cc.SpriteFrame)
 
-           if (spriteFrame == null || spriteFrame == 'undefinde') {
+            if (spriteFrame == null || spriteFrame == 'undefinde') {
+                cc.log("the res is mission = " + "picture/newRes831/" + res)
+            }
+            var sprite = node.getComponent(cc.Sprite)
+            if (sprite == null || sprite == 'undefinde') {
+                cc.log("the sprite is mission = " + node.name)
+            }
+            sprite.spriteFrame = spriteFrame
+        } else {
+            cc.loader.loadRes("picture/newRes831/" + res, cc.SpriteFrame, function(err, prefab) {
+                spriteFrame = prefab;
+
+
+
+                if (spriteFrame == null || spriteFrame == 'undefinde') {
                     cc.log("the res is mission = " + "picture/newRes831/" + res)
                 }
                 var sprite = node.getComponent(cc.Sprite)
@@ -174,29 +185,13 @@ cc.Class({
                     cc.log("the sprite is mission = " + node.name)
                 }
                 sprite.spriteFrame = spriteFrame
-		}
-		else
-		{
-			cc.loader.loadRes("picture/newRes831/" + res,cc.SpriteFrame, function (err, prefab) {
-			spriteFrame = prefab;
+                if (handle)
+                    handle()
 
+            });
 
+        }
 
-                    if (spriteFrame == null || spriteFrame == 'undefinde') {
-                    cc.log("the res is mission = " + "picture/newRes831/" + res)
-                }
-                var sprite = node.getComponent(cc.Sprite)
-                if (sprite == null || sprite == 'undefinde') {
-                    cc.log("the sprite is mission = " + node.name)
-                }
-                sprite.spriteFrame = spriteFrame
-				if(handle)
-				handle()
-			
-			});
-			
-		}
-        
     },
 
 
@@ -219,10 +214,10 @@ cc.Class({
         this.tipPrefab = cc.loader.getRes("prefab/tip", cc.Prefab)
         this.popupPrefab = cc.loader.getRes("prefab/popup", cc.Prefab)
         this.popupPrefab2 = cc.loader.getRes("prefab/popup2", cc.Prefab)
-		this.popupPrefab3 = cc.loader.getRes("prefab/popup3", cc.Prefab)
-		this.TouchDisableLayer = cc.loader.getRes("prefab/TouchDisableLayer", cc.Prefab)
-		
-		
+        this.popupPrefab3 = cc.loader.getRes("prefab/popup3", cc.Prefab)
+        this.TouchDisableLayer = cc.loader.getRes("prefab/TouchDisableLayer", cc.Prefab)
+
+
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
         this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
@@ -236,9 +231,9 @@ cc.Class({
     showPopBuy: function(id, okHandle, obj) {
         //id 1 秒回礼包 3 一件完成礼包
 
-        
+
         var popupNode = cc.instantiate(this.nodePopBuyPrefab)
-		
+
         popupNode.setPosition(0, 0);
         popupNode.getComponent("PopBuy").setCallBack(popupNode, id, okHandle, obj)
     },
@@ -274,7 +269,7 @@ cc.Class({
                         popupNode = cc.instantiate(this.nodeGuidePrefabNArrowLeft)
                     }
                     break;
-                //case 4:
+                    //case 4:
                 case 5:
                 case 6:
                 case 8:
@@ -286,10 +281,10 @@ cc.Class({
                     break;
 
                 case 7:
-                //case 12:
+                    //case 12:
                 case 4:
                 case 10:
-                //case 17:
+                    //case 17:
                 case 14:
                     {
                         popupNode = cc.instantiate(this.nodeGuidePrefabRight)
@@ -297,15 +292,15 @@ cc.Class({
                     break;
 
                 case 9:
-               // case 10:
+                    // case 10:
                 case 13:
-               // case 14:
+                    // case 14:
 
                     {
                         popupNode = cc.instantiate(this.nodeGuidePrefabBottom)
                     }
                     break;
-                    case 12:
+                case 12:
                     {
 
                         popupNode = cc.instantiate(this.nodeGuide6)
@@ -376,7 +371,7 @@ cc.Class({
             var children = scrollView.content.getChildren()
             for (var i = 0; i < scrollView.content.childrenCount; ++i) {
 
-                children[i].y -=node.height
+                children[i].y -= node.height
             }
             pos.y = ((1.0 - scrollView.content.anchorY) * scrollView.content.height - (1.0 - node.anchorY) * node.height)
         }
@@ -403,34 +398,50 @@ cc.Class({
 
     },
 
+    refresh_verticalScrollViewUp_array: function(scrollView, array, verticalSpace) {
+        if (typeof verticalSpace == 'undefined')
+            verticalSpace = 0;
+        var pos = cc.v2(0.0, 0.0)
+        var children = array;
+        var height = 0;
 
-    showExpTip:function(exp, targetNode, Handle){
+        for (var i = children.length - 1; i >= 0; --i) {
+            children[i].x = 0
+            children[i].y = -height
+            height += children[i].height
+        }
+        scrollView.content.height = height
+
+    },
+
+
+    showExpTip: function(exp, targetNode, Handle) {
         var scene = cc.director.getScene();
         var tip = null
-        if(typeof(scene.getChildByName("Canvas").tipExp) == "undefined"){
+        if (typeof(scene.getChildByName("Canvas").tipExp) == "undefined") {
             var etip = cc.instantiate(this.expTip)
             scene.getChildByName("Canvas").addChild(etip, 1000)
             scene.getChildByName("Canvas").tipExp = etip
             etip.active = false
             tip = etip
-        }else{
+        } else {
             tip = scene.getChildByName("Canvas").tipExp
         }
-        if(tip.active){
+        if (tip.active) {
             cc.log("tip.actibe == true")
-            //return
-        }else{
+                //return
+        } else {
             tip.active = true
         }
         var zf = "+"
-        if(exp < 0){
+        if (exp < 0) {
 
             //this.changeSprite(tip, "common/qinmijian")
             zf = ""
         }
         var expLabel = tip.getChildByName("expText").getComponent(cc.Label).string = zf + exp
         var scene = cc.director.getScene();
-        
+
 
         var p = targetNode.parent.convertToWorldSpaceAR(cc.v2(targetNode.x, targetNode.y))
         var p2 = tip.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
@@ -443,19 +454,19 @@ cc.Class({
         tip.runAction(action)
     },
 
-    showExpHandle : function (target){
+    showExpHandle: function(target) {
         target.targettt.refresh()
         target.active = false
-        //cc.director.getScene().getChildByName("Canvas").removeChild(target)
+            //cc.director.getScene().getChildByName("Canvas").removeChild(target)
     },
 
     showTip: function(text, time) {
-         //if (CC_JSB) {
-             time = 2.0
+        //if (CC_JSB) {
+        time = 2.0
         var scene = cc.director.getScene();
-        if(typeof(scene.getChildByName("Canvas").tipNode) == "undefined"){
+        if (typeof(scene.getChildByName("Canvas").tipNode) == "undefined") {
             scene.getChildByName("Canvas").tipNode = []
-            for(var i =0 ;i < 3; ++i){
+            for (var i = 0; i < 3; ++i) {
                 var tipNode = cc.instantiate(this.tipPrefab)
                 tipNode.active = false
                 scene.getChildByName("Canvas").tipNode.push(tipNode)
@@ -464,37 +475,37 @@ cc.Class({
         }
         var currentTipNode = null;
         var minHeight = 800;
-        for(var i = 0 ; i < 3; ++i){
-            if(scene.getChildByName("Canvas").tipNode[i].active == false){
-                if(currentTipNode == null){
+        for (var i = 0; i < 3; ++i) {
+            if (scene.getChildByName("Canvas").tipNode[i].active == false) {
+                if (currentTipNode == null) {
                     currentTipNode = scene.getChildByName("Canvas").tipNode[i]
                     currentTipNode.active = true
                 }
-            }else{
-                if(minHeight > scene.getChildByName("Canvas").tipNode[i].y){
+            } else {
+                if (minHeight > scene.getChildByName("Canvas").tipNode[i].y) {
                     minHeight = scene.getChildByName("Canvas").tipNode[i].y
                 }
             }
         }
-        if(minHeight < 150.0 ){
-            if(currentTipNode != null){
+        if (minHeight < 150.0) {
+            if (currentTipNode != null) {
                 currentTipNode.active = false
             }
             return
         }
-        if (currentTipNode == null ){
+        if (currentTipNode == null) {
             return
         }
-            
-        cc.log(scene.getChildByName("Canvas").parent.name )
+
+        cc.log(scene.getChildByName("Canvas").parent.name)
 
         currentTipNode.x = 0
         currentTipNode.y = 50
 
         var textLabel = currentTipNode.getChildByName("tipText").getComponent(cc.Label)
         textLabel.string = text
-        
-        currentTipNode.width = textLabel.fontSize * textLabel.string.length +40
+
+        currentTipNode.width = textLabel.fontSize * textLabel.string.length + 40
         var action = cc.sequence(cc.moveTo(time, 0.0, 350.0), cc.callFunc(function(target) {
             target.active = false
         }, currentTipNode))
@@ -506,40 +517,37 @@ cc.Class({
         // }
     },
 
-    setHeart : function(target,currentExp , maxExp){
-       
+    setHeart: function(target, currentExp, maxExp) {
+
         var mask = target.getChildByName("mask")
         var heart = mask.getChildByName("heart")
         var max = target.getChildByName("max")
-        if(currentExp >= maxExp){
+        if (currentExp >= maxExp) {
             max.active = true
             heart.height = mask.height + 30
-        }else{
+        } else {
             max.active = false
             var p = currentExp / maxExp
-            if(p > 1.0){
+            if (p > 1.0) {
                 heart.height = mask.height
-                
-            }else{
+
+            } else {
                 heart.height = mask.height * p
             }
-            
+
         }
     },
-    showTouchDisableLayer:function()
-	{
-		var scene = cc.director.getScene();
+    showTouchDisableLayer: function() {
+        var scene = cc.director.getScene();
         var popupNode = cc.instantiate(this.TouchDisableLayer)
         scene.getChildByName("Canvas").addChild(popupNode, 999)
         popupNode.setPosition(0, 0);
-		this.disabletouchlayer = popupNode
-    }
-	,
-	removeTouchDisableLayer:function(){
-		
-		 cc.director.getScene().getChildByName("Canvas").removeChild(this.disabletouchlayer)
-	}
-	,
+        this.disabletouchlayer = popupNode
+    },
+    removeTouchDisableLayer: function() {
+
+        cc.director.getScene().getChildByName("Canvas").removeChild(this.disabletouchlayer)
+    },
 
     showPopupO: function(title, msg, okHandle) {
 
@@ -558,8 +566,8 @@ cc.Class({
         }, popupNode.getChildByName("okBtn"))
 
     },
-	
-	 showPopupO2: function(title, msg, okHandle) {
+
+    showPopupO2: function(title, msg, okHandle) {
 
         var scene = cc.director.getScene();
         var popupNode = cc.instantiate(this.popupPrefab3)
@@ -598,8 +606,8 @@ cc.Class({
             cc.director.getScene().getChildByName("Canvas").removeChild(event.target.parent)
         }, popupNode.getChildByName("cancelBtn"))
     },
-    
-    showPopupOC2: function(title, msg2,msg, okHandle, cancelHandle) {
+
+    showPopupOC2: function(title, msg2, msg, okHandle, cancelHandle) {
 
         var scene = cc.director.getScene();
         var popupNode = cc.instantiate(this.popupPrefab2)
