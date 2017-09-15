@@ -476,7 +476,7 @@ cc.Class({
 
     onVideoClick: function() {
         this.videoNode.active = true
-
+        this.bgNode.active = false
         this.videoNode.getComponent("jsVideo").setPlayVideoID(cc.cs.PlayerInfo.playvideo)
 
 
@@ -484,7 +484,7 @@ cc.Class({
 
     onAnimationFinished: function() {
         //cc.cs.UIMgr.openView(cc.cs.UIMgr.VIDEOVIEW)
-        this.bgNode.active = false
+        
 
         var animation = this.node.getChildByName("shengjidonghua").getComponent("cc.Animation")
         animation.stop()
