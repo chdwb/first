@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PopGuide4",
+    "_name": "PopGuide8",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -185,8 +185,8 @@
     "_scaleY": 0.7,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 10,
-      "y": 369
+      "x": -414,
+      "y": -2
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -230,8 +230,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 370,
-      "height": 239
+      "width": 362,
+      "height": 251
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -239,8 +239,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 1,
-      "y": -20
+      "x": 0,
+      "y": -25
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -265,7 +265,7 @@
     "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "啊的风口浪尖啊的肌肤啊了解对方啊就地方啊了解对方啊就地方阿里的风景阿里的风景阿里的风景看啊的理解阿里的",
+    "_N$string": "垃圾筐的反馈了空间啊阿来得及看反馈来看奥克兰的会计法奥里吉的看法垃圾袋发卡了贷款纠纷拉快递费垃圾的发了看见的法拉第讲课费凉快阿拉丁讲课费垃圾袋f",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
@@ -277,9 +277,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d63af784-3630-4786-8c3a-daf22f803510"
+      "__uuid__": "383c789f-03f2-4c73-bd4a-4da31edeb92f"
     },
-    "fileId": "0b125wPzRlH9Km5TYHwo5+k",
+    "fileId": "06617WP5I5GdbHfDGyUm5OC",
     "sync": false
   },
   {
@@ -314,9 +314,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d63af784-3630-4786-8c3a-daf22f803510"
+      "__uuid__": "383c789f-03f2-4c73-bd4a-4da31edeb92f"
     },
-    "fileId": "767e7/AXP5Em49Q95RqOVTJ",
+    "fileId": "201bdzOIBVPcbuvqy+7KJVS",
     "sync": false
   },
   {
@@ -357,14 +357,14 @@
       "width": 187,
       "height": 141
     },
-    "_rotationX": 90,
-    "_rotationY": 90,
+    "_rotationX": -5,
+    "_rotationY": -5,
     "_scaleX": 0.7,
     "_scaleY": 0.7,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -3,
-      "y": 148
+      "x": -151,
+      "y": -13
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -405,9 +405,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d63af784-3630-4786-8c3a-daf22f803510"
+      "__uuid__": "383c789f-03f2-4c73-bd4a-4da31edeb92f"
     },
-    "fileId": "81f14xCZNRPIo80yDWks/6M",
+    "fileId": "39a89QO611NYLsZQGCPgR1T",
     "sync": false
   },
   {
@@ -496,9 +496,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d63af784-3630-4786-8c3a-daf22f803510"
+      "__uuid__": "383c789f-03f2-4c73-bd4a-4da31edeb92f"
     },
-    "fileId": "3cce1Sb3UZJ4q5zUmZkk3yK",
+    "fileId": "ffc2eKhvDROvompOYtgzQyZ",
     "sync": false
   },
   {
@@ -587,9 +587,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d63af784-3630-4786-8c3a-daf22f803510"
+      "__uuid__": "383c789f-03f2-4c73-bd4a-4da31edeb92f"
     },
-    "fileId": "71b99ULLBJGZYN/g5k3j0k0",
+    "fileId": "c2acekagm9DcLFCWOrkyz1W",
     "sync": false
   },
   {
@@ -622,9 +622,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d63af784-3630-4786-8c3a-daf22f803510"
+      "__uuid__": "383c789f-03f2-4c73-bd4a-4da31edeb92f"
     },
-    "fileId": "248d6jt5K5H4oNKRdzu8KIS",
+    "fileId": "21bf4HrritCQKlWKM1qyHIF",
     "sync": false
   },
   {
@@ -700,11 +700,11 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "2d51a995-2ade-459f-849c-7e01c6f4e9e7"
+      "__uuid__": "e833bde9-fc2c-4305-a685-a5bbf852c601"
     },
     "_clips": [
       {
-        "__uuid__": "2d51a995-2ade-459f-849c-7e01c6f4e9e7"
+        "__uuid__": "e833bde9-fc2c-4305-a685-a5bbf852c601"
       }
     ],
     "playOnLoad": true
@@ -715,9 +715,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d63af784-3630-4786-8c3a-daf22f803510"
+      "__uuid__": "383c789f-03f2-4c73-bd4a-4da31edeb92f"
     },
-    "fileId": "d30c6JwAiVML7gxZXIgh9rj",
+    "fileId": "1ec02x5tNRHsJVJRMScd5Wy",
     "sync": false
   }
 ]

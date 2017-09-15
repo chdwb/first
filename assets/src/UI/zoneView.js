@@ -539,7 +539,7 @@ cc.Class({
         {
             var children = this.scrollView.content.getChildren();
             var jsZoneItem = children[children.length - 1].getComponent("zoneItem") // 第一个档位
-            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, /*jsZoneItem.getOptiontBtn()*/ null, this)
+            cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, jsZoneItem.getOptiontBtn(), this)
         }
         cc.cs.UIMgr.refresh_verticalScrollViewUp_array(this.scrollView, this.addNewNode)
     },

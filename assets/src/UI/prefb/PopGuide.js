@@ -138,12 +138,16 @@ cc.Class({
                 {
                     this.guide_id++
                     cc.log("有下一个"+this.guide_id)
-                    self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
+                    //self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
                     //this.refresh(this.guide_id)
+					self.node.removeFromParent(true);
+					if(this.obj.updateui != null)
+                    this.obj.updateui()
                 }
                 else
                 {
                     self.node.removeFromParent(true);
+					if(this.obj.updateui != null)
                     this.obj.updateui()
 
                 }
@@ -151,7 +155,8 @@ cc.Class({
             else
             {
                 self.node.removeFromParent(true);
-                this.obj.updateui()
+                if(this.obj.updateui != null)
+                    this.obj.updateui()
             }
 
 

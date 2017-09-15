@@ -225,8 +225,27 @@ cc.Class({
         this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab) //没有箭头左上
         this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab) //箭头在右边
         this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab) //箭头在下边
+		
+		
 
-        this.nodeGuide6 = cc.loader.getRes("prefab/PopGuide6", cc.Prefab) //箭头向上
+        this.nodeGuide1 = cc.loader.getRes("prefab/PopGuide", cc.Prefab)
+		this.nodeGuide2 = cc.loader.getRes("prefab/PopGuide2", cc.Prefab) //箭头向上
+		this.nodeGuide3 = cc.loader.getRes("prefab/PopGuide2", cc.Prefab) //箭头向上
+		this.nodeGuide4 = cc.loader.getRes("prefab/PopGuide4", cc.Prefab) //箭头向上
+		this.nodeGuide5 = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头向上
+		this.nodeGuide6 = cc.loader.getRes("prefab/PopGuide6", cc.Prefab) //箭头向上
+		this.nodeGuide7 = cc.loader.getRes("prefab/PopGuide7", cc.Prefab) //箭头向上
+		this.nodeGuide8 = cc.loader.getRes("prefab/PopGuide8", cc.Prefab) //箭头向上
+		this.nodeGuide9 = cc.loader.getRes("prefab/PopGuide9", cc.Prefab) //箭头向上
+		this.nodeGuide10 = cc.loader.getRes("prefab/PopGuide10", cc.Prefab) //箭头向上
+		this.nodeGuide11 = cc.loader.getRes("prefab/PopGuide11", cc.Prefab) //箭头向上
+		this.nodeGuide12 = cc.loader.getRes("prefab/PopGuide12", cc.Prefab) //箭头向上
+		this.nodeGuide13 = cc.loader.getRes("prefab/PopGuide13", cc.Prefab) //箭头向上
+		this.nodeGuide14 = cc.loader.getRes("prefab/PopGuide14", cc.Prefab) //箭头向上
+		this.nodeGuide15 = cc.loader.getRes("prefab/PopGuide15", cc.Prefab) //箭头向上
+		this.nodeGuide16 = cc.loader.getRes("prefab/PopGuide16", cc.Prefab) //箭头向上
+		this.nodeGuide17 = cc.loader.getRes("prefab/PopGuide17", cc.Prefab) //箭头向上
+		
     },
     showPopBuy: function(id, okHandle, obj) {
         //id 1 秒回礼包 3 一件完成礼包
@@ -246,67 +265,64 @@ cc.Class({
             return
         } else {
 
-            /*this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
-            this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab)//没有箭头正中间
-            this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab)//没有箭头左上
-            this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab)//箭头在右边
-            this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab)//箭头在下边*/
+           
 
             var scene = cc.director.getScene();
             //cc.log("scene   = "+ scene + "    " + this.nodeGuidePrefab)
             var popupNode = null
             switch (guideID) {
                 case 1:
-                case 15:
-                    {
-                        popupNode = cc.instantiate(this.nodeGuidePrefabNArrowCenter)
-                    }
-                    break;
-                case 2:
-                case 3:
-                case 17:
-                    {
-                        popupNode = cc.instantiate(this.nodeGuidePrefabNArrowLeft)
-                    }
-                    break;
-                    //case 4:
-                case 5:
-                case 6:
-                case 8:
-                case 11:
-                case 16:
-                    {
-                        popupNode = cc.instantiate(this.nodeGuidePrefabLeft)
-                    }
-                    break;
-
-                case 7:
-                    //case 12:
-                case 4:
-                case 10:
-                    //case 17:
-                case 14:
-                    {
-                        popupNode = cc.instantiate(this.nodeGuidePrefabRight)
-                    }
-                    break;
-
-                case 9:
-                    // case 10:
-                case 13:
-                    // case 14:
-
-                    {
-                        popupNode = cc.instantiate(this.nodeGuidePrefabBottom)
-                    }
-                    break;
-                case 12:
-                    {
-
-                        popupNode = cc.instantiate(this.nodeGuide6)
-
-                    }
-                    break
+					popupNode = cc.instantiate(this.nodeGuide1)
+					break
+					 case 2:
+					popupNode = cc.instantiate(this.nodeGuide2)
+					break
+					 case 3:
+					popupNode = cc.instantiate(this.nodeGuide3)
+					break
+					 case 4:
+					popupNode = cc.instantiate(this.nodeGuide4)
+					break
+					 case 5:
+					popupNode = cc.instantiate(this.nodeGuide5)
+					break
+					 case 6:
+					popupNode = cc.instantiate(this.nodeGuide6)
+					break
+					 case 7:
+					popupNode = cc.instantiate(this.nodeGuide7)
+					break
+					 case 8:
+					popupNode = cc.instantiate(this.nodeGuide8)
+					break
+					 case 9:
+					popupNode = cc.instantiate(this.nodeGuide9)
+					break
+					 case 10:
+					popupNode = cc.instantiate(this.nodeGuide10)
+					break
+					 case 11:
+					popupNode = cc.instantiate(this.nodeGuide11)
+					break
+					 case 12:
+					popupNode = cc.instantiate(this.nodeGuide12)
+					break
+					 case 13:
+					popupNode = cc.instantiate(this.nodeGuide13)
+					break
+					 case 14:
+					popupNode = cc.instantiate(this.nodeGuide14)
+					break
+					 case 15:
+					popupNode = cc.instantiate(this.nodeGuide15)
+					break
+					 case 16:
+					popupNode = cc.instantiate(this.nodeGuide16)
+					break
+					 case 17:
+					popupNode = cc.instantiate(this.nodeGuide17)
+					break
+               
 
 
             }
