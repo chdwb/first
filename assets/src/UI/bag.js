@@ -147,7 +147,7 @@ cc.Class({
          var gooddata = cc.cs.gameData.goods["GOODS_ID_" +goods_id]
         
             this.itemUseCount = 1
-            this.itemUseCountLabel.string = ""+this.itemUseCount
+           
             this.currentgoodsid = goods_id
             this.nodeItemUse.active = true
             this.itmeCount = num
@@ -166,6 +166,8 @@ cc.Class({
              this.nodeCantUse.active = true;
 
          }
+		 
+		  this.itemUseCountLabel.string = ""+this.itemUseCount
         
         
             if(gooddata != undefined)
