@@ -220,11 +220,7 @@ cc.Class({
 
         this.nodeUsePrefab = cc.loader.getRes("prefab/NodeUse", cc.Prefab)
         this.nodePopBuyPrefab = cc.loader.getRes("prefab/PopBuy", cc.Prefab)
-        this.nodeGuidePrefabLeft = cc.loader.getRes("prefab/PopGuide5", cc.Prefab) //箭头在左边
-        this.nodeGuidePrefabNArrowCenter = cc.loader.getRes("prefab/PopGuide", cc.Prefab) //没有箭头正中间
-        this.nodeGuidePrefabNArrowLeft = cc.loader.getRes("prefab/PopGuide3", cc.Prefab) //没有箭头左上
-        this.nodeGuidePrefabRight = cc.loader.getRes("prefab/PopGuide2", cc.Prefab) //箭头在右边
-        this.nodeGuidePrefabBottom = cc.loader.getRes("prefab/PopGuide4", cc.Prefab) //箭头在下边
+       
 		
 		
 

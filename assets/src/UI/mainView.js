@@ -491,7 +491,7 @@ cc.Class({
         animation.node.active = false
         this.node.getChildByName("shengjidonghua").active = false
         cc.cs.AudioMgr.StopAudio(this.AudioID)
-        cc.cs.UIMgr.showPopupO2("心动时刻", "快去看看许梦甜在干什么吧！", this.onVideoClick.bind(this))
+        cc.cs.UIMgr.showPopupO("心动时刻", "快去看看许梦甜在干什么吧！", this.onVideoClick.bind(this))
             //cc.cs.AudioMgr.startBGM()
 
     },

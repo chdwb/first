@@ -160,6 +160,7 @@ cc.Class({
          }
          else
          {
+			 this.itemUseCount = num
 
              this.nodeCanUse.active = false;
              this.nodeCantUse.active = true;

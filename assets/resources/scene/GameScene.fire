@@ -21,7 +21,7 @@
     "_active": true,
     "_components": [],
     "_prefab": null,
-    "_id": "70a07585-0b76-44d4-9251-98b467909d41",
+    "_id": "cd051088-e274-4bbf-8dbe-01e545149b9b",
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -24601,7 +24601,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 163.95,
+      "width": 150.15,
       "height": 60
     },
     "_rotationX": 0,
@@ -24674,8 +24674,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 82,
-      "y": 81
+      "x": 79,
+      "y": 64
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -25141,8 +25141,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 204,
-      "y": 2
+      "x": 193,
+      "y": -22
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -29354,7 +29354,9 @@
     "LastID": 0,
     "isAction": false,
     "talkAction": null,
-    "selectedid": 0
+    "selectedid": 0,
+    "addFormerNode": [],
+    "addNodeStartIndex": 0
   },
   {
     "__type__": "cc.Widget",
@@ -32090,7 +32092,10 @@
     "currentItem": null,
     "lastZoneID": 0,
     "currentExp": 0,
-    "currentLoadEndID": 0
+    "currentLoadEndID": 0,
+    "addNewNode": [],
+    "addNodeStartIndex": 0,
+    "addTotalCount": 0
   },
   {
     "__type__": "cc.Widget",
