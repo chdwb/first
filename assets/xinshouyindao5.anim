@@ -3,7 +3,7 @@
   "_name": "xinshouyindao5",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 1,
+  "_duration": 0.8333333333333334,
   "sample": 60,
   "speed": 1,
   "wrapMode": 2,
@@ -17,11 +17,11 @@
               "value": 0
             },
             {
-              "frame": 0.5,
+              "frame": 0.4166666666666667,
               "value": 255
             },
             {
-              "frame": 1,
+              "frame": 0.8333333333333334,
               "value": 0
             }
           ]
@@ -33,22 +33,22 @@
             {
               "frame": 0,
               "value": [
-                180.3,
-                66.8
+                168,
+                61
               ]
             },
             {
-              "frame": 0.5,
+              "frame": 0.4166666666666667,
               "value": [
-                160.8,
-                60.3
+                131,
+                50
               ]
             },
             {
-              "frame": 1,
+              "frame": 0.8333333333333334,
               "value": [
-                180.3,
-                66.8
+                168,
+                61
               ]
             }
           ]

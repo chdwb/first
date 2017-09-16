@@ -1,0 +1,42 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "xinshouyindao11",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.83,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "singleColor/guide_down": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                168,
+                61
+              ]
+            },
+            {
+              "frame": 0.4166666666666667,
+              "value": [
+                199,
+                72
+              ]
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": [
+                168,
+                61
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

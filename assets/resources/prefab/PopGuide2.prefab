@@ -22,14 +22,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 14
+        "__id__": 15
       },
       {
-        "__id__": 15
+        "__id__": 16
       }
     ],
     "_prefab": {
-      "__id__": 16
+      "__id__": 17
     },
     "_id": "",
     "_opacity": 255,
@@ -79,18 +79,18 @@
         "__id__": 3
       },
       {
-        "__id__": 9
+        "__id__": 10
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 12
+        "__id__": 13
       }
     ],
     "_prefab": {
-      "__id__": 13
+      "__id__": 14
     },
     "_id": "",
     "_opacity": 255,
@@ -144,11 +144,11 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 7
+        "__id__": 8
       }
     ],
     "_prefab": {
-      "__id__": 8
+      "__id__": 9
     },
     "_id": "",
     "_opacity": 255,
@@ -167,8 +167,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 491,
-      "height": 433
+      "width": 412,
+      "height": 326
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -199,18 +199,21 @@
     "_components": [
       {
         "__id__": 5
+      },
+      {
+        "__id__": 6
       }
     ],
     "_prefab": {
-      "__id__": 6
+      "__id__": 7
     },
     "_id": "",
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 224,
-      "g": 111,
-      "b": 170,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -221,7 +224,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 351,
+      "width": 322.4,
       "height": 231
     },
     "_rotationX": 0,
@@ -230,8 +233,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -4,
-      "y": -20
+      "x": 10,
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -256,11 +259,28 @@
     "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "啊的风口浪尖啊的肌肤啊了解对方啊就地方啊了解对方啊就地方阿里的风景阿里的风景阿里的风景看啊的理解阿里的",
+    "_N$string": "啊的风口浪尖啊的肌肤啊了解对方啊就地方啊了解对方啊就地",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
     "_N$overflow": 2
+  },
+  {
+    "__type__": "cc.LabelOutline",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 4
+    },
+    "_enabled": true,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 199,
+      "g": 84,
+      "b": 144,
+      "a": 255
+    },
+    "_width": 2
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -322,11 +342,11 @@
     "_active": false,
     "_components": [
       {
-        "__id__": 10
+        "__id__": 11
       }
     ],
     "_prefab": {
-      "__id__": 11
+      "__id__": 12
     },
     "_id": "",
     "_opacity": 255,
@@ -369,7 +389,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 9
+      "__id__": 10
     },
     "_enabled": true,
     "_spriteFrame": null,
