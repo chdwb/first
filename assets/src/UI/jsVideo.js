@@ -98,7 +98,7 @@ cc.Class({
             this.loadingBG3.active = true
         this.backBtn.active = true
         if( videoID != 0){
-            this.backBtn.active = true
+            this.backBtn.active = false
             this.videoType = videoID
             cc.log("self.videoType  setPlayVideoID " + this.videoType)
             this.isPlayStart = false
