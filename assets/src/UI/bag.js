@@ -86,8 +86,10 @@ cc.Class({
             type: cc.RichText,
             default: null
         },
-
-
+        itemUnUseNum:{
+            default: null,
+            type: cc.Label
+        },
 
         itmeCount:0,
         currentgoodsid:0,
@@ -95,6 +97,7 @@ cc.Class({
         jiasudu:0.2,
         currentSpeed :0.2,
         currentJishu : 0,
+
    
         
     },
@@ -152,6 +155,7 @@ cc.Class({
             this.nodeItemUse.active = true
             this.itmeCount = num
             this.ItemCount2.string = num
+            this.itemUnUseNum.string = num
 
              if(gooddata["GOODS_EFFECT"] == "1") //可以使用
          {
@@ -182,10 +186,16 @@ cc.Class({
                         if(gooddata["GOODS_EFFECT_VALUE"] != "dummy")
                         {
                             this.itemDec.string = text.replace(/0/g, "<color=#D16363>" + gooddata["GOODS_EFFECT_VALUE"]+"</c>" )
+                            this.itemUnUseNum.node.parent.active = false
+                            this.ItemCount2.node.parent.active = true
+                            this.itemUseCountLabel.node.active = true
                         }
                         else
                         {
                             this.itemDec.string = text
+                            this.itemUnUseNum.node.parent.active = true
+                            this.ItemCount2.node.parent.active = false
+                            this.itemUseCountLabel.node.active = false
                         }
             }
             else

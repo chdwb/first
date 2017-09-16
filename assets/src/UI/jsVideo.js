@@ -33,6 +33,14 @@ cc.Class({
             type: cc.VideoPlayer,
             default: null
         },
+        videoPlayerNode1: {
+            type: cc.VideoPlayer,
+            default: null
+        },
+        videoPlayerNode2: {
+            type: cc.VideoPlayer,
+            default: null
+        },
         branchNode:{
             type: cc.Sprite,
             default: null
@@ -65,7 +73,10 @@ cc.Class({
         videoType : 0,
         videoloadingEnd:true,
         videoIsReadToPlay:false,
-        videoLoadingAnimation : null
+        videoLoadingAnimation : null,
+        branchVideo1Ready : false,
+        branchVideo2Ready : false,
+        startBranchVideo : false,
     },
 
     getVideoType: function(videoName) {
@@ -88,7 +99,10 @@ cc.Class({
         this.loadingBG1.active = false
         this.loadingBG2.active = false
         this.loadingBG3.active = false
-
+        this.videoPlayerNode.node.active = false
+        this.videoPlayerNode1.node.active = false
+        this.videoPlayerNode2.node.active = false
+        this.startBranchVideo = false
         var bgindex = (parseInt( cc.random0To1() * 10 ) )%3
         if(bgindex == 0)
             this.loadingBG1.active = true
@@ -98,7 +112,7 @@ cc.Class({
             this.loadingBG3.active = true
         this.backBtn.active = true
         if( videoID != 0){
-            this.backBtn.active = false
+            this.backBtn.active = !false
             this.videoType = videoID
             cc.log("self.videoType  setPlayVideoID " + this.videoType)
             this.isPlayStart = false
@@ -118,6 +132,11 @@ cc.Class({
                 this.branchNode.node.active = false
                 this.branchData = cc.cs.gameData.getbranchVideoData(id)
                 if(this.branchData != null){
+                    this.branchVideo1Ready = false
+                    this.branchVideo2Ready = false
+                    this.videoPlayerNode1.clip = cc.url.raw("resources/video/"+this.branchData["PLOT_VIDEO_LINK_VIDEO_1"]) + ".mp4"
+                    this.videoPlayerNode2.clip = cc.url.raw("resources/video/"+this.branchData["PLOT_VIDEO_LINK_VIDEO_2"]) + ".mp4"
+
                     cc.cs.UIMgr.changeSprite(this.branchNode.node, "commonbg/"+id)
                 }
                // this.videoPlayerNode.play()
@@ -248,8 +267,8 @@ cc.Class({
                 zs1.active = true
                 zs1.y = - btn1.height
                 zs2.active = false
-                btn1.VIDEO_ID = replayId[0]["PLOT_VIDEO_LINK_VIDEO_1"]
-                btn2.VIDEO_ID = replayId[1]["PLOT_VIDEO_LINK_VIDEO_2"]
+                btn1.VIDEO_ID = 1
+                btn2.VIDEO_ID = 2
                 btn1.on("click", (event) => {
                     cc.log("VIDEO_ID = " + event.target.VIDEO_ID)
                     event.target.parent.active = false
@@ -278,17 +297,17 @@ cc.Class({
     },
     playBranchVideo:function(id){
         this.videoLoadingNode.active = false
-        this.videoPlayerNode.node.active = true
+        this.videoPlayerNode.node.active = false
         this.videoPauseNode.active = true
         this.videoPauseTip.active = false
         
-        this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+        //this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
         this.videoloadingEnd = false
         this.videoIsReadToPlay = false
         //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
         //this.node.runAction(act)
        // this.videoLoadingAnimation.play()
-       this.loadingBG1.active = false
+       /*this.loadingBG1.active = false
        this.loadingBG2.active = false
        this.loadingBG3.active = false
 
@@ -300,12 +319,28 @@ cc.Class({
        else if(bgindex == 2)
            this.loadingBG3.active = true
 
-        this.videoLoadingNode.active = true
+        this.videoLoadingNode.active = true*/
+        if(id == 1){
+            this.videoPlayerNode.node.active = false
+            this.videoPlayerNode1.node.active = true
+            this.videoPlayerNode2.node.active = false
+            if(this.branchVideo1Ready){
+                this.videoPlayerNode1.play()
+            }
+        }else if(id == 2){
+            this.videoPlayerNode.node.active = false
+            this.videoPlayerNode1.node.active = false
+            this.videoPlayerNode2.node.active = true
+            if(this.branchVideo2Ready){
+                this.videoPlayerNode2.play()
+            }
+        }
         this.isPlayStart = false
        // this.videoPlayerNode.play()
         this.faceTimeNode.active = false
         this.branchNode.node.active = false
         this.branchData = null
+        this.startBranchVideo = true
     },
     showBranchVideo:function(){
         this.branchNode.node.active = true
@@ -362,6 +397,67 @@ cc.Class({
             this.videoPlayerNode.node.on("completed", (event) =>{
                 self.videoPlayerNode.stop()
             })
+
+            this.videoPlayerNode1.node.on("ready-to-play", (event) =>{
+                cc.log("ready-to-play")
+                if(cc.sys.browserType != "qq" &&cc.sys.browserType != cc.sys.BROWSER_TYPE_QQ && cc.sys.browserType != cc.sys.BROWSER_TYPE_MOBILE_QQ &&  cc.sys.browserType != cc.sys.BROWSER_TYPE_WECHAT ){
+                    if(self.startBranchVideo){
+                        self.videoPlayerNode1.play()
+                    }
+                    self.branchVideo1Ready = true
+                }
+            })
+
+            this.videoPlayerNode1.node.on("meta-loaded", (event) =>{
+                cc.log("cc.sys.browserType   =   " + cc.sys.browserType + "  " + cc.sys.BROWSER_TYPE_QQ + "   " + cc.sys.BROWSER_TYPE_MOBILE_QQ)
+                if(cc.sys.browserType == "qq" || cc.sys.browserType == cc.sys.BROWSER_TYPE_QQ || cc.sys.browserType == cc.sys.BROWSER_TYPE_MOBILE_QQ || cc.sys.browserType == cc.sys.BROWSER_TYPE_WECHAT ){
+                    if(self.startBranchVideo){
+                        self.videoPlayerNode1.play()
+                    }
+                    self.branchVideo1Ready = true
+                }
+                    
+                cc.log("meta")
+            })
+            this.videoPlayerNode1.node.on("stopped", (event) =>{
+                self.node.active = false
+                self.bgNode.active = true
+            })
+            this.videoPlayerNode1.node.on("completed", (event) =>{
+                self.videoPlayerNode.stop()
+            })
+
+
+            this.videoPlayerNode2.node.on("ready-to-play", (event) =>{
+                cc.log("ready-to-play")
+                if(cc.sys.browserType != "qq" &&cc.sys.browserType != cc.sys.BROWSER_TYPE_QQ && cc.sys.browserType != cc.sys.BROWSER_TYPE_MOBILE_QQ &&  cc.sys.browserType != cc.sys.BROWSER_TYPE_WECHAT ){
+                    if(self.startBranchVideo){
+                        self.videoPlayerNode2.play()
+                    }
+                    self.branchVideo2Ready = true
+                }
+            })
+
+            this.videoPlayerNode2.node.on("meta-loaded", (event) =>{
+                cc.log("cc.sys.browserType   =   " + cc.sys.browserType + "  " + cc.sys.BROWSER_TYPE_QQ + "   " + cc.sys.BROWSER_TYPE_MOBILE_QQ)
+                if(cc.sys.browserType == "qq" || cc.sys.browserType == cc.sys.BROWSER_TYPE_QQ || cc.sys.browserType == cc.sys.BROWSER_TYPE_MOBILE_QQ || cc.sys.browserType == cc.sys.BROWSER_TYPE_WECHAT ){
+                    if(self.startBranchVideo){
+                        self.videoPlayerNode2.play()
+                    }
+                    self.branchVideo2Ready = true
+                }
+                    
+                cc.log("meta")
+            })
+            this.videoPlayerNode2.node.on("stopped", (event) =>{
+                self.node.active = false
+                self.bgNode.active = true
+            })
+            this.videoPlayerNode2.node.on("completed", (event) =>{
+                self.videoPlayerNode.stop()
+            })
+
+
             this.videoPauseNode.on("click", (event) => {
                 if(self.isPlayStart){
                     if(self.videoPlayerNode.isPlaying()){
