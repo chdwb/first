@@ -1458,8 +1458,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 46,
-      "height": 32
+      "width": 69,
+      "height": 48
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1516,7 +1516,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 170,
-      "height": 38
+      "height": 48
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1524,8 +1524,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -36,
-      "y": -1
+      "x": -35.4,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1577,7 +1577,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 85,
-      "height": 38
+      "height": 48
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1630,8 +1630,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 25,
-      "height": 24
+      "width": 50,
+      "height": 48
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1661,7 +1661,7 @@
       "__uuid__": "4966f905-be0d-4d40-80c5-cde7b3e2e1eb"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -1814,7 +1814,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 85,
-      "height": 38
+      "height": 48
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1867,8 +1867,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 27,
-      "height": 25
+      "width": 50,
+      "height": 48
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1898,7 +1898,7 @@
       "__uuid__": "31d94cc2-600a-49a3-9e51-c01d7ceab00d"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -2089,7 +2089,7 @@
       "__uuid__": "afb734ab-c08e-4fce-8d08-0866df4c3793"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
