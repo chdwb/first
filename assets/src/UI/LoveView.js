@@ -317,6 +317,12 @@ cc.Class({
             var itemCom = children[0].getComponent("missionItemComponent") // 第一个档位
             cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id)+1,itemCom.getstartBtn(),this)
         }
+		
+		
+		 this.node.on('EVENT_LOVEVIEW_UPDATE', function (event) {
+      cc.log("heiheihie")
+	  self.refresh()
+    });
 
 
 

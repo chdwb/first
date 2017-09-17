@@ -420,9 +420,10 @@ cc.Class({
         var dateData = cc.cs.gameData.getdateData(id)
         if (this.level >= dateData["DATE_NEED_LEVEL"]) {
             if (this.getLoveFreeTimes(id) > 0) {
-                return 0
+					return 0
+				
             } else {
-                return -1
+                return -1 // 剩余次数不足
             }
         } else {
             var levelData = cc.cs.gameData.getlevelData(dateData["DATE_NEED_LEVEL"])

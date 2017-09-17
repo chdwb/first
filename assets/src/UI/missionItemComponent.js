@@ -82,6 +82,7 @@ cc.Class({
         isWork: false,
         isLoad : false,
         currentExp:0,
+		CheckDateItemresult:0
     },
 
     loadElement : function(){
@@ -228,35 +229,145 @@ cc.Class({
             cc.log("startbtn")
             var dateResult = cc.cs.PlayerInfo.canLove(self.itemID)
             if(dateResult == 0){
-                cc.cs.gameMgr.sendLove(self.itemID, self.startDateHandle, self)
+				
+				
+				self.CheckDateItemresult = self.checkDateItem()
+				if(self.CheckDateItemresult == 0)
+				{
+					cc.cs.gameMgr.sendLove(self.itemID, self.startDateHandle, self)
+				}
+				else
+				{
+					var goodData = cc.cs.gameData.getgoodsData(self.CheckDateItemresult)
+					
+					 if(cc.cs.PlayerInfo.money < goodData["GOODS_PRICE"])
+					 {
+						cc.cs.UIMgr.showPopupOC("金币不足","您的"+goodData["GOODS_NAME"]+"不足且购买所需的金币不足，是否前往商城购买？",self.goShop,null)
+					 }
+					 else
+					 {
+						cc.cs.UIMgr.showPopupOC("道具不足","您的"+goodData["GOODS_NAME"]+"不足，是否花费"+ goodData["GOODS_PRICE"] +"金币购买？",self.buyDateItem.bind(this),null)
+					 }
+				}
             }else if(dateResult == -1){
 
-                if(cc.cs.PlayerInfo.money < cc.cs.PlayerInfo.getLovePrice(this.itemID))
+                if(cc.cs.PlayerInfo.money < cc.cs.PlayerInfo.getLovePrice(self.itemID))
                 {
-
-                    cc.cs.UIMgr.showPopupOC("金币不足","您的金币不足，是否前往商城购买？",this.goShop,null)
-
-                }
+					cc.cs.UIMgr.showPopupOC("金币不足","您的金币不足，是否前往商城购买？",self.goShop,null)
+				}
                 else
                 {
-
-                    cc.cs.gameMgr.buyLoveTime(self.itemID, self.buyLoveHandle, self)
+					cc.cs.gameMgr.buyLoveTime(self.itemID, self.buyLoveHandle, self)
                 }
             }
             
         })
     },
+	buyDateItem:function()
+	{
+		cc.cs.gameMgr.sendGoodBuy(1,this.CheckDateItemresult, 1, this.GoodBuyHandle, this)
+	},
+	
+	GoodBuyHandle(ret)
+    {
+       
+        var JasonObject = JSON.parse(ret);
+        cc.cs.UIMgr.closeNetView()
+        if (JasonObject.success === true) {
+            
+            //cc.cs.UIMgr.showTip("购买成功", 1.0)
+            var parent = this.node.parent
+            
+            cc.cs.PlayerInfo.money = JasonObject.content.info.money
+            
+            var array = cc.cs.PlayerInfo.Bag
+            var isFind = false
+            for(var i = 0;i < array.length;i++)
+            {
+               
+               if( array[i].goods_id == JasonObject.content.info.goods_id)
+               {
+                    cc.log("已经有这个道具")
+                   isFind = true;
+                   array[i].num = JasonObject.content.info.num
+                   break;
+               }
+            }
+            if(isFind == false)
+            {
+                cc.log("还没有这个道具")
+                var newgoods = {}
+                    newgoods.goods_id = JasonObject.content.info.goods_id
+                    newgoods.num = JasonObject.content.info.num
+                cc.log["push Bag"]
+                cc.cs.PlayerInfo.Bag.push(newgoods)
+            }
+
+            
+            cc.cs.gameMgr.sendLove(this.itemID, this.startDateHandle, this)
+            
+            
+            
+        } else {
+            cc.cs.UIMgr.showTip(JasonObject.error, 1.0)
+        }
+    },
+	checkDateItem:function()
+	{
+		var dateData = cc.cs.gameData.getdateData(this.itemID)
+		var dateitemid = parseInt(dateData["DATE_NEED_GOODS_ID"])
+				if(dateData["DATE_NEED_GOODS_ID"] != "dummy")
+				{   
+					
+					for (var i = 0; i < cc.cs.PlayerInfo.Bag.length; i++) {
+						if (cc.cs.PlayerInfo.Bag[i].goods_id == dateitemid ) {
+							return 0
+						}
+						
+					}
+
+				}
+				else
+				{
+					return 0
+				}
+				
+				
+				return dateitemid   //所需道具不足
+						
+	},
 
     buyLoveHandle:function(ret){
+		var self  = this
         var JasonObject = JSON.parse(ret);
 		cc.cs.UIMgr.closeNetView()
         if (JasonObject.success === true) {
             //cc.cs.UIMgr.closeNetView()
             cc.cs.PlayerInfo.refreshInfoData(JasonObject.content.info)
 
-            cc.cs.gameMgr.sendLove(this.itemID, this.startDateHandle, this)
+			
+			
+			self.CheckDateItemresult = self.checkDateItem()
+				if(self.CheckDateItemresult == 0)
+				{
+					cc.cs.gameMgr.sendLove(self.itemID, self.startDateHandle, self)
+				}
+				else
+				{
+					var goodData = cc.cs.gameData.getgoodsData(self.CheckDateItemresult)
+					
+					 if(cc.cs.PlayerInfo.money < goodData["GOODS_PRICE"])
+					 {
+						cc.cs.UIMgr.showPopupOC("金币不足","您的"+goodData["GOODS_NAME"]+"不足且购买所需的金币不足，是否前往商城购买？",self.goShop,null)
+					 }
+					 else
+					 {
+						cc.cs.UIMgr.showPopupOC("道具不足","您的"+goodData["GOODS_NAME"]+"不足，是否花费"+ goodData["GOODS_PRICE"] +"金币购买？",self.buyDateItem.bind(this),null)
+					 }
+				}
+            //cc.cs.gameMgr.sendLove(this.itemID, this.startDateHandle, this)
 
-            
+           this.node.dispatchEvent( new cc.Event.EventCustom('EVENT_LOVEVIEW_UPDATE', true) );
             this.refresh()
         }else{
 

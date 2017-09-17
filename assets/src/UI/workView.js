@@ -278,6 +278,8 @@ cc.Class({
             cc.cs.UIMgr.closeView()
 
         }, this.backBtn)
+		
+		
     },
 
      buyPop:function() // 职位礼包
