@@ -60,11 +60,11 @@ cc.Class({
     },
 
     showNetView: function() {
-        this.gameScene.loadingView.getComponent("LoadingView").openLoading()
+        //this.gameScene.loadingView.getComponent("LoadingView").openLoading()
     },
 
     closeNetView: function() {
-        this.gameScene.loadingView.getComponent("LoadingView").closeLoading()
+        //this.gameScene.loadingView.getComponent("LoadingView").closeLoading()
     },
 
     closeView: function() {

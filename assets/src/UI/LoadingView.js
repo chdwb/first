@@ -23,9 +23,9 @@ cc.Class({
 
         cc.log("dasdddddddddddddddddddddddddddddddshowLoadingAction")
         
-        var act = cc.sequence(cc.repeat(cc.rotateBy(0.5, 360), 3.0),cc.callFunc(this.showEnd, this))
+       // var act = cc.sequence(cc.repeat(cc.rotateBy(0.5, 360), 3.0),cc.callFunc(this.showEnd, this))
 
-        this.juhua.runAction(act)
+       // this.juhua.runAction(act)
     },
 
     showEnd:function(){
@@ -37,7 +37,7 @@ cc.Class({
         this.node.active = true
         this.juhua.active = false
         this.loadingBg.node.opacity = 0
-        var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.showLoadingAction, this))
+        var act = cc.sequence(cc.delayTime(3.0), cc.callFunc(this.showLoadingAction, this))
 
         this.node.runAction(act)
         
