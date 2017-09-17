@@ -943,6 +943,8 @@ cc.Class({
        var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             this.playLogoVideo("1102")
+			
+			this.randomNameNode.active = false;
             //cc.cs.UIMgr.showTip("登陆成功 api_token =" + api_token, 1.0)
             
        
