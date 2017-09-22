@@ -669,6 +669,7 @@ cc.Class({
                     self.videoLoadOver2 = true
                 }
             })*/
+            this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
         }
 
        /* cc.director.preloadScene('GameScene',function(){
@@ -676,7 +677,7 @@ cc.Class({
 
         }   );*/
         //this.setStartGameNode()
-        this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
+       
         this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         var passward = cc.sys.localStorage.getItem('PASSWORD')
