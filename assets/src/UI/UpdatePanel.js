@@ -15,7 +15,7 @@ module.exports = cc.Class({
     
     onLoad () {
         this.close.on(cc.Node.EventType.TOUCH_END, function () {
-            this.node.parent.active = false;
+            this.node.active = false;
         }, this);
     }
 });
