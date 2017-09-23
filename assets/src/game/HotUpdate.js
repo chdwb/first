@@ -395,20 +395,23 @@ cc.Class({
         switch (event.getEventCode())
         {
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
-                this.panel.info.string = "No local manifest file found, hot update skipped.";
+                this.panel.info.string = "版本检测失败，跳过更新";
                 break;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
-                this.panel.info.string = "Fail to download manifest file, hot update skipped.";
+                //this.panel.info.string = "Fail to download manifest file, hot update skipped.";
+                this.panel.info.string = "版本检测失败";
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
-                this.panel.info.string = "Already up to date with the latest remote version.";
+                this.panel.info.string = "已经是最新版";
                 break;
             case jsb.EventAssetsManager.NEW_VERSION_FOUND:
-                this.panel.info.string = 'New version found, please try to update.';
+                this.panel.active = true
+                this.panel.info.string = '发现新版本，请更新';
                 this.panel.checkBtn.active = false;
                 this.panel.fileProgress.progress = 0;
                 this.panel.byteProgress.progress = 0;
+                this.hotUpdate()
                 break;
             default:
                 return;
@@ -437,7 +440,7 @@ cc.Class({
 
                 var msg = event.getMessage();
                 if (msg) {
-                    this.panel.info.string = 'Updated file: ' + msg;
+                    this.panel.info.string = '更新文件: ' + msg;
                     // cc.log(event.getPercent()/100 + '% : ' + msg);
                 }
                 break;
@@ -447,21 +450,21 @@ cc.Class({
                 failed = true;
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
-                this.panel.info.string = 'Already up to date with the latest remote version.';
+                this.panel.info.string = '已经是最新版.';
                 failed = true;
                 break;
             case jsb.EventAssetsManager.UPDATE_FINISHED:
-                this.panel.info.string = 'Update finished. ' + event.getMessage();
+                this.panel.info.string = '更新完毕. ' + event.getMessage();
                 needRestart = true;
                 break;
             case jsb.EventAssetsManager.UPDATE_FAILED:
-                this.panel.info.string = 'Update failed. ' + event.getMessage();
+                this.panel.info.string = '更新失败. ' + event.getMessage();
                 this.panel.retryBtn.active = true;
                 this._updating = false;
                 this._canRetry = true;
                 break;
             case jsb.EventAssetsManager.ERROR_UPDATING:
-                this.panel.info.string = 'Asset update error: ' + event.getAssetId() + ', ' + event.getMessage();
+                this.panel.info.string = '资源更新错误: ' + event.getAssetId() + ', ' + event.getMessage();
                 break;
             case jsb.EventAssetsManager.ERROR_DECOMPRESS:
                 this.panel.info.string = event.getMessage();
@@ -515,7 +518,7 @@ cc.Class({
     
     checkUpdate: function () {
         if (this._updating) {
-            this.panel.info.string = 'Checking or updating ...';
+            this.panel.info.string = '检查更新中 ...';
             return;
         }
         if (this._am.getState() === jsb.AssetsManager.State.UNINITED) {
@@ -608,26 +611,28 @@ cc.Class({
             // The size of asset file, but this value could be absent.
             var size = asset.size;
             if (compressed) {
-                panel.info.string = "Verification passed : " + relativePath;
+                panel.info.string = "验证文件 : " + relativePath;
                 return true;
             }
             else {
-                panel.info.string = "Verification passed : " + relativePath + ' (' + expectedMD5 + ')';
+                panel.info.string = "验证文件 : " + relativePath;
                 return true;
             }
         });
 
-        this.panel.info.string = 'Hot update is ready, please check or directly update.';
+        //this.panel.info.string = 'Hot update is ready, please check or directly update.';
 
         if (cc.sys.os === cc.sys.OS_ANDROID) {
             // Some Android device may slow down the download process when concurrent tasks is too much.
             // The value may not be accurate, please do more test and find what's most suitable for your game.
             this._am.setMaxConcurrentTask(2);
-            this.panel.info.string = "Max concurrent tasks count have been limited to 2";
+           // this.panel.info.string = "Max concurrent tasks count have been limited to 2";
         }
         
         this.panel.fileProgress.progress = 0;
         this.panel.byteProgress.progress = 0;
+        
+        this.checkUpdate()
     },
 
     onDestroy: function () {
