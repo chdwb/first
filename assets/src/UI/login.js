@@ -210,6 +210,7 @@ cc.Class({
 
                 return ret
             }
+            
         },
 
     setLogoNode: function(){
