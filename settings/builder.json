@@ -4,9 +4,6 @@
   "excludeScenes": [],
   "includeAnySDK": false,
   "includeSDKBox": false,
-  "includeSdk": [
-    "anysdk"
-  ],
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": false,
   "mergeStartScene": false,
@@ -23,5 +20,9 @@
   "renderMode": "0",
   "startScene": "572563c5-7c69-4ed8-80a5-9e5008f1f7ae",
   "title": "first",
-  "webOrientation": "auto"
+  "webOrientation": "auto",
+  "md5Cache": false,
+  "includeSdk": [
+    "anysdk"
+  ]
 }
