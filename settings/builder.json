@@ -21,12 +21,8 @@
   "startScene": "572563c5-7c69-4ed8-80a5-9e5008f1f7ae",
   "title": "first",
   "webOrientation": "auto",
-<<<<<<< HEAD
-  "md5Cache": false
-=======
   "md5Cache": false,
   "includeSdk": [
     "anysdk"
   ]
->>>>>>> 369604c4e2eff672bb3f59f362cf882beb68b258
 }
