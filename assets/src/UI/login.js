@@ -198,7 +198,7 @@ cc.Class({
     },
 
     getDiviceID: function () {
-            var s = [];
+           /* var s = [];
             var hexDigits = "0123456789abcdef";
             for (var i = 0; i < 36; i++) {
                 s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
@@ -208,7 +208,14 @@ cc.Class({
             s[8] = s[13] = s[18] = s[23] = "-";
         
             var uuid = s.join("");
-            return uuid;
+            return uuid;*/
+            if (cc.sys.isNative&&cc.sys.os==cc.sys.OS_IOS) {
+                let ret = jsb.reflection.callStaticMethod("RootViewController","getUUID");
+                cc.log("objc uuid = "+ ret)
+
+                return ret
+            }
+            
         },
 
     setLogoNode: function(){
@@ -338,6 +345,8 @@ cc.Class({
                     var uuid = this.getDiviceID()
                     cc.log("first game uuid = "+uuid)
                     cc.sys.localStorage.setItem('UUID',uuid)
+                    this.gustIDLabel.string = "游客"+uuid.substring(0,6)
+                    this.gustIDLabel2.string =  this.gustIDLabel.string
                 }
             }
         
@@ -752,8 +761,12 @@ cc.Class({
         } else {
             if(CC_JSB)
             {
-             this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
-             this.gustIDLabel2.string =  this.gustIDLabel.string
+             //this.gustIDLabel.string = cc.cs.gameMgr.generateGustInfo()
+             var uuid = this.getDiviceID()
+                    //cc.log("first game uuid = "+uuid)
+                    cc.sys.localStorage.setItem('UUID',uuid)
+                    this.gustIDLabel.string = "游客"+uuid.substring(0,6)
+                    this.gustIDLabel2.string =  this.gustIDLabel.string
             }
             else
             {
