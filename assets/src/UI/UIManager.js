@@ -171,6 +171,8 @@ cc.Class({
                 cc.log("the sprite is mission = " + node.name)
             }
             sprite.spriteFrame = spriteFrame
+            if (handle)
+                handle()
         } else {
             cc.loader.loadRes("picture/newRes831/" + res, cc.SpriteFrame, function(err, prefab) {
                 spriteFrame = prefab;

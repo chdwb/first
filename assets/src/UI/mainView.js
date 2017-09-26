@@ -750,6 +750,8 @@ cc.Class({
 
     },
 
+
+
     onLoad: function() {
 
         var self = this

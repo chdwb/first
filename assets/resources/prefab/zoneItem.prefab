@@ -2270,7 +2270,9 @@
     "_N$string": "<color=#ffffff>Rich</c><color=#14802A>Text</color>",
     "_N$horizontalAlign": 0,
     "_N$fontSize": 25,
-    "_N$font": null,
+    "_N$font": {
+      "__uuid__": "64844efb-3b92-476f-bf1a-f20c78c34e1d"
+    },
     "_N$maxWidth": 950,
     "_N$lineHeight": 37,
     "_N$imageAtlas": null

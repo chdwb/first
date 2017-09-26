@@ -33,7 +33,7 @@ cc.Class({
         if(CC_JSB)
         {
            
-            cc.loader.loadResDir("picture/newRes831", (err, ass) => {
+            /*cc.loader.loadResDir("picture/newRes831", (err, ass) => {
                 if (!err) {
                     self.isLoadComplete = true
                 } else {
@@ -47,7 +47,7 @@ cc.Class({
                 } else {
                     cc.log(err)
                 }
-            })
+            })*/
         }
 
 

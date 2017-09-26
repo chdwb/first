@@ -105,7 +105,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 112.5,
+      "width": 87.26,
       "height": 35
     },
     "_rotationX": 0,
@@ -137,7 +137,9 @@
     "_fontSize": 25,
     "_lineHeight": 35,
     "_enableWrapText": true,
-    "_N$file": null,
+    "_N$file": {
+      "__uuid__": "64844efb-3b92-476f-bf1a-f20c78c34e1d"
+    },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "· 许梦田",
@@ -224,7 +226,9 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": null,
+    "_N$file": {
+      "__uuid__": "64844efb-3b92-476f-bf1a-f20c78c34e1d"
+    },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "大大大",

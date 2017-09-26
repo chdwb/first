@@ -155,15 +155,20 @@ cc.Class({
             default: null
         },
 
+        nativeVideoNode:{
+            type: cc.Node,
+            default: null
+        },
         isLogin:false,
         isGuest:false,
         videoLoadOver1:false,
         videoLoadOver2:false,
         isPlayStart : false,
         playVideoID :"",
-
+        nativeVideo:null,
         loadProcessPer : 0,
         loadScenePer : 0,
+        isNativeVideoEnd : false,
     },
 
 
@@ -249,18 +254,57 @@ cc.Class({
         this.LogoNode.active = true;
         
         this.LogoVideoNode.active = true*/
-        this.playVideoID = id
-        this.node.active = false
-        this.videoNode.active = true
-        this.videoLoadingNode.active = false
-        this.videoPlayerNode.node.active = true
-        this.videoPauseNode.active = true
-        this.videoPauseTip.active = false
-        
+        if(!CC_JSB){
+            this.playVideoID = id
+            this.node.active = false
+            this.videoNode.active = true
+            this.videoLoadingNode.active = false
+            this.videoPlayerNode.node.active = true
+            this.videoPauseNode.active = true
+            this.videoPauseTip.active = false
             
-        this.isPlayStart = false
-        this.videoPlayerNode.play()
+                
+            this.isPlayStart = false
+            this.videoPlayerNode.play()
+        }else{
+            this.playVideoID = id
+            this.node.active = false
+            this.videoNode.active = false
+            this.nativeVideoNode.active = true
+            this.nativeVideo.videoPlay()
+            this.nativeVideoNode.runAction(cc.repeatForever(cc.callFunc(this.runNativePlayer, this)))
+            this.isNativeVideoEnd = false
+        }
+    },
+
+    runNativePlayer : function(){
+        var self = this
+        if(!this.isNativeVideoEnd){
+            if(this.nativeVideo.getVideoCurrentFrame() == this.nativeVideo.getVideoFrameCount()){
+                this.isNativeVideoEnd = true
+                this.nativeVideoNode.active = false
+                this.node.active = true
+                this.videoNode.active = false
+                if(this.playVideoID == 1101){
+                    cc.loader.loadResDir("video/" + 1102,  function(err, id) {
+                        if (!err) {
+                            self.nativeVideo.preLoad(id + "")
+                        } else {
+                            cc.log("native video load err id = " + id)
+                        }
+                    })
+                }else if(this.playVideoID == 1102){
+                    self.preLoadGame();
+                    cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo,self.videoDoneHandle,self)
+                    self.videoNode.active = false
+                    self.node.active = true
+                    self.isPlayStart = false
+                }
+                this.nativeVideoNode.stopAllActions()
+            }
+        }
         
+        cc.log(this.nativeVideo.getVideoCurrentFrame() + "   /  " + this.nativeVideo.getVideoFrameCount())
     },
 
     setStartGameNode: function() {
@@ -599,11 +643,20 @@ cc.Class({
         cc.cs.PlayerInfo.zoneReplay_id = 1
     },
 
+    loadNativeVideo: function(err, id) {
+        if (!err) {
+            this.nativeVideo.preLoad(id + "")
+        } else {
+            cc.log("native video load err id = " + id)
+        }
+    },
+
     // use this for initialization
     onLoad: function() {
         var self = this
         this.videoLoadOver1 = !false
         this.videoLoadOver2 = !false
+        this.nativeVideoNode.active = false
 
         if(!CC_JSB){
             this.videoPlayerNode.node.on("ready-to-play", (event) =>{
@@ -670,6 +723,17 @@ cc.Class({
                 }
             })*/
             this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
+        }else{
+            this.nativeVideo = cc.LiveVideo.create()
+            this.nativeVideoNode._sgNode.addChild(this.nativeVideo)
+            cc.loader.loadResDir("video/" + 1101,  function(err, id) {
+                if (!err) {
+                    self.nativeVideo.preLoad(id + "")
+                } else {
+                    cc.log("native video load err id = " + id)
+                }
+            })
+            
         }
 
        /* cc.director.preloadScene('GameScene',function(){
@@ -912,19 +976,34 @@ cc.Class({
         this.perLaber.node.active = false
         this.loadScenePer = 0
         this.loadProcessPer = 0
-
-        cc.loader.loadResDir("picture/newRes831/moment", (current, total, item)=>{
-            if(total == 0) return
-                self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 90.0)
-                cc.log("(this.loadPress  + this.loadPress)  = " + (self.loadProcessPer  + self.loadScenePer))
-                self.perLaber.string = (self.loadProcessPer  + self.loadScenePer)+ "%"
-                if(self.loadProcessPer  + self.loadScenePer >= 100){
-                    cc.director.loadScene('GameScene');
-                }
-
-        }, (err, ass) => {
-            
-        })
+        if(CC_JSB){
+            cc.loader.loadResDir("picture/newRes831", (current, total, item)=>{
+                if(total == 0) return
+                    self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 90.0)
+                    cc.log("(this.loadPress  + this.loadPress)  = " + (self.loadProcessPer  + self.loadScenePer))
+                    self.perLaber.string = (self.loadProcessPer  + self.loadScenePer)+ "%"
+                    if(self.loadProcessPer  + self.loadScenePer >= 100){
+                        cc.director.loadScene('GameScene');
+                    }
+    
+            }, (err, ass) => {
+                
+            })
+        }else{
+            cc.loader.loadResDir("picture/newRes831/moment", (current, total, item)=>{
+                if(total == 0) return
+                    self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 90.0)
+                    cc.log("(this.loadPress  + this.loadPress)  = " + (self.loadProcessPer  + self.loadScenePer))
+                    self.perLaber.string = (self.loadProcessPer  + self.loadScenePer)+ "%"
+                    if(self.loadProcessPer  + self.loadScenePer >= 100){
+                        cc.director.loadScene('GameScene');
+                    }
+    
+            }, (err, ass) => {
+                
+            })
+        }
+        
         cc.director.preloadScene("GameScene", ()=>{
             self.loadScenePer = 10;
             cc.log("(this.preLoadScene  + this.preLoadScene)  = " + (self.loadProcessPer  + self.loadScenePer))
@@ -937,7 +1016,7 @@ cc.Class({
         })
 
 
-        cc.loader.pre
+        //cc.loader.pre
     },
 
     sendNameHandle: function(ret) {

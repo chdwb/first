@@ -41,6 +41,22 @@ cc.Class({
             type: cc.VideoPlayer,
             default: null
         },
+        videoPlayerNativeNode: {
+            type: cc.Node,
+            default: null
+        },
+        videoPlayerNativeNode1: {
+            type: cc.Node,
+            default: null
+        },
+        videoPlayerNativeNode2: {
+            type: cc.Node,
+            default: null
+        },
+
+        videoPlayerNative:null,
+        videoPlayerNative1:null,
+        videoPlayerNative2:null,
         branchNode:{
             type: cc.Sprite,
             default: null
@@ -77,6 +93,11 @@ cc.Class({
         branchVideo1Ready : false,
         branchVideo2Ready : false,
         startBranchVideo : false,
+        videoList:[],
+        _downloader:null,
+        _storagePath:"",
+        currentDownLoadID : 0,
+        isNativeVideoEnd:false,
     },
 
     getVideoType: function(videoName) {
@@ -92,9 +113,47 @@ cc.Class({
         return 0
     },
 
+    startDownload : function(url,filename)
+    {
+        this._downloader.createDownloadFileTask(url, this._storagePath + filename);
+        cc.log("开始下载 dir = "+this._storagePath)
+    },
+
+    getIndexOf : function (a, v){
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] == v) return i;
+            }
+            return -1;
+    },
+
+    removeIndex : function(a, val){
+        var index = this.getIndexOf(a,val);
+        if (index > -1) {
+            a.splice(index, 1);
+        }
+    },
+
     setPlayVideoID : function(id){
         this.playVideoID = id;
         var videoID =this.getVideoType(id + "")
+        
+        if(CC_JSB){
+            this.videoList = []
+            this.videoList.push(id)
+            var bData =cc.cs.gameData.getbranchVideoData(id)
+            this.videoPlayerNativeNode.videoID = id
+            if(bData != null){
+                
+                this.videoPlayerNativeNode1.videoID = bData["PLOT_VIDEO_LINK_VIDEO_1"]
+                this.videoPlayerNativeNode2.videoID = bData["PLOT_VIDEO_LINK_VIDEO_2"]
+                this.videoList.push( bData["PLOT_VIDEO_LINK_VIDEO_1"])
+                this.videoList.push( bData["PLOT_VIDEO_LINK_VIDEO_2"])
+                this.startDownload("http://112.74.36.182:8888/newvideo6/"+this.videoPlayerNativeNode1.videoID+".mp4",this.videoPlayerNativeNode1.videoID+".mp4")
+                this.startDownload("http://112.74.36.182:8888/newvideo6/"+this.videoPlayerNativeNode2.videoID+".mp4",this.videoPlayerNativeNode2.videoID+".mp4")
+            }
+            this.currentDownLoadID = id
+            this.startDownload("http://112.74.36.182:8888/newvideo6/"+id+".mp4",id+".mp4")
+        }
 
         this.loadingBG1.active = false
         this.loadingBG2.active = false
@@ -102,6 +161,13 @@ cc.Class({
         this.videoPlayerNode.node.active = false
         this.videoPlayerNode1.node.active = false
         this.videoPlayerNode2.node.active = false
+        this.videoPlayerNativeNode.active = false
+        this.videoPlayerNativeNode1.active = false
+        this.videoPlayerNativeNode2.active = false
+
+
+
+
         this.startBranchVideo = false
         var bgindex = (parseInt( cc.random0To1() * 10 ) )%3
         if(bgindex == 0)
@@ -118,12 +184,17 @@ cc.Class({
             this.isPlayStart = false
             if(videoID == 1){
                 this.videoLoadingNode.active = false
-                this.videoPlayerNode.node.active = true
+                
                 this.videoPauseNode.active = true
                 this.videoPauseTip.active = false
                 this.videoloadingEnd = false
-                this.videoIsReadToPlay = false
-                this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+                
+                if(!CC_JSB){
+                    this.videoIsReadToPlay = false
+                    this.videoPlayerNode.node.active = true
+                    this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+                }
+                
                 //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
                 //this.node.runAction(act)
                 //this.videoLoadingAnimation.play()
@@ -134,8 +205,10 @@ cc.Class({
                 if(this.branchData != null){
                     this.branchVideo1Ready = false
                     this.branchVideo2Ready = false
-                    this.videoPlayerNode1.clip = cc.url.raw("resources/video/"+this.branchData["PLOT_VIDEO_LINK_VIDEO_1"]) + ".mp4"
-                    this.videoPlayerNode2.clip = cc.url.raw("resources/video/"+this.branchData["PLOT_VIDEO_LINK_VIDEO_2"]) + ".mp4"
+                    if(!CC_JSB){
+                        this.videoPlayerNode1.clip = cc.url.raw("resources/video/"+this.branchData["PLOT_VIDEO_LINK_VIDEO_1"]) + ".mp4"
+                        this.videoPlayerNode2.clip = cc.url.raw("resources/video/"+this.branchData["PLOT_VIDEO_LINK_VIDEO_2"]) + ".mp4"
+                    }
 
                     cc.cs.UIMgr.changeSprite(this.branchNode.node, "commonbg/"+id)
                 }
@@ -147,17 +220,22 @@ cc.Class({
                 this.videoPauseNode.active = false
                 this.faceTimeNode.active = true
                 this.branchNode.node.active = false
-
+                if(CC_JSB){
+                    this.videoIsReadToPlay = false
+                }
             }else if(videoID == 3){
                 //brach
             }else if(videoID == 4){
                 this.videoLoadingNode.active = false
-                this.videoPlayerNode.node.active = true
                 this.videoPauseNode.active = true
                 this.videoPauseTip.active = false
                 this.videoloadingEnd = false
                 this.videoIsReadToPlay = false
-                this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+                if(!CC_JSB){
+                    this.videoPlayerNode.node.active = true
+                    this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
+                }
+               
                 //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(this.loadEndFunc, this))
                 //this.node.runAction(act)
                 //this.videoLoadingAnimation.play()
@@ -287,11 +365,73 @@ cc.Class({
        //     return
         //}
     },
+    playNativeVideo : function(){
+        this.videoPlayerNative.videoPlay()
+        this.videoPlayerNativeNode.active = true
+        this.videoPlayerNativeNode.runAction(cc.repeatForever(cc.callFunc(this.runNativePlayer, this)))
+        this.isNativeVideoEnd = false;
+    },
+
+    runNativeBranchVideo1Player : function(){
+        var self = this
+        if(!this.isNativeVideoEnd){
+            if(this.videoPlayerNative1.getVideoCurrentFrame() == this.videoPlayerNative1.getVideoFrameCount()){
+                this.isNativeVideoEnd = true
+                jsb.fileUtils.removeFile(this._storagePath + this.videoPlayerNative1.videoID+".mp4" )
+            }
+        }
+    },
+
+    runNativeBranchVideo2Player : function(){
+        var self = this
+        if(!this.isNativeVideoEnd){
+            if(this.videoPlayerNative2.getVideoCurrentFrame() == this.videoPlayerNative2.getVideoFrameCount()){
+                this.isNativeVideoEnd = true
+                self.node.active = false
+                self.bgNode.active = true
+                jsb.fileUtils.removeFile(this._storagePath + this.videoPlayerNative2.videoID+".mp4" )
+            }
+        }
+    },
+
+    runNativePlayer : function(){
+        var self = this
+        if(!this.isNativeVideoEnd){
+            if(this.videoPlayerNative.getVideoCurrentFrame() == this.videoPlayerNative.getVideoFrameCount()){
+                jsb.fileUtils.removeFile(this._storagePath + this.videoPlayerNative.videoID+".mp4" )
+
+                this.isNativeVideoEnd = true
+                if(self.branchData != null){
+                    if(self.videoType == 1 ||self.videoType == 2 ){
+                        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
+                    }
+                    self.showBranchVideo()
+                }else{
+                    cc.log("self.videoType  videoPlayerNode " + self.videoType)
+                    if(self.videoType == 1 ||self.videoType == 2 ){
+                        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
+                    }else{
+                        self.node.active = false
+                        self.bgNode.active = true
+                    }
+                    
+                }
+            }
+        }
+        
+        cc.log(this.videoPlayerNative.getVideoCurrentFrame() + "   /  " + this.videoPlayerNative.getVideoFrameCount())
+    },
+
     loadEndFunc : function(){
         if(this.videoIsReadToPlay){
             this.videoLoadingNode.active = false
             this.isPlayStart = true
-            this.videoPlayerNode.play()
+            if(CC_JSB){
+                this.playNativeVideo()
+            }else{
+                this.videoPlayerNode.play()
+            }
+            
             //this.videoLoadingAnimation.stop()
         }
     },
@@ -324,15 +464,39 @@ cc.Class({
             this.videoPlayerNode.node.active = false
             this.videoPlayerNode1.node.active = true
             this.videoPlayerNode2.node.active = false
+            this.videoPlayerNativeNode.active = false
+            this.videoPlayerNativeNode1.active = true
+            this.videoPlayerNativeNode2.active = false
+
+
             if(this.branchVideo1Ready){
-                this.videoPlayerNode1.play()
+                if(!CC_JSB){
+                    this.videoPlayerNode1.play()
+                }else{
+                    this.videoPlayerNative1.videoPlay()
+                    this.isNativeVideoEnd = false;
+                    this.videoPlayerNativeNode1.active = true
+                    this.videoPlayerNativeNode1.runAction(cc.repeatForever(cc.callFunc(this.runNativeBranchVideo1Player, this)))
+                }
             }
         }else if(id == 2){
             this.videoPlayerNode.node.active = false
             this.videoPlayerNode1.node.active = false
             this.videoPlayerNode2.node.active = true
+
+            this.videoPlayerNativeNode.active = false
+            this.videoPlayerNativeNode1.active = false
+            this.videoPlayerNativeNode2.active = true
             if(this.branchVideo2Ready){
-                this.videoPlayerNode2.play()
+                if(!CC_JSB){
+                    this.videoPlayerNode2.play()
+                }else{
+                    this.videoPlayerNative2.videoPlay()
+                    this.videoPlayerNativeNode2.active = true
+                    this.videoPlayerNativeNode2.runAction(cc.repeatForever(cc.callFunc(this.runNativeBranchVideo2Player, this)))
+                    this.isNativeVideoEnd = false;
+                }
+                
             }
         }
         this.isPlayStart = false
@@ -347,8 +511,40 @@ cc.Class({
         this.showInputTable()
         this.videoType = 3
     },
+
+    onDownLoadSuccess : function(task){
+        var s = task.requestURL + ""
+        s=s.replace(/\?.*$/,'')
+        s=s.replace(/^.*\//,'')
+        s=s.replace(/.mp4/,'')
+        
+        this.currentDownLoadID = parseInt(s)
+       // this.removeIndex(this.videoList,this.currentDownLoadID)
+        if(this.videoPlayerNativeNode.videoID == this.currentDownLoadID){
+            this.videoPlayerNative.preLoad(this._storagePath +this.currentDownLoadID + ".mp4")
+            this.videoIsReadToPlay = true
+        }
+        if(this.videoPlayerNativeNode1.videoID == this.currentDownLoadID){
+            this.videoPlayerNative1.preLoad(this._storagePath +this.currentDownLoadID + ".mp4")
+            
+            this.branchVideo1Ready = true
+        }
+        if(this.videoPlayerNativeNode2.videoID == this.currentDownLoadID){
+            this.videoPlayerNative2.preLoad(this._storagePath +this.currentDownLoadID + ".mp4")
+            this.branchVideo2Ready = true
+        }
+        
+
+    },
+    onDownLoadProgress : function(task, bytesReceived, totalBytesReceived, totalBytesExpected){
+        
+    },
+    onDownLoadError:function(task, errorCode, errorCodeInternal, errorStr){
+        this.startDownload("http://112.74.36.182:8888/newvideo6/"+this.currentDownLoadID+".mp4",this.currentDownLoadID+".mp4")
+    },
     // use this for initialization
     onLoad: function () {
+        
         this.inputTablePrefab = cc.loader.getRes("prefab/inputTable", cc.Prefab)
         this.inputTableBtn = cc.instantiate(this.inputTablePrefab)
         this.branchNode.node.addChild(this.inputTableBtn)
@@ -358,7 +554,23 @@ cc.Class({
         this.videoLoadingAnimation = this.videoLoadingNode.getChildByName("New Node").getComponent("cc.Animation")
         //this.videoLoadingAnimation.stop()
         this.videoLoadingAnimation.on('lastframe',  this.loadEndFunc,    this);
-
+        if(CC_JSB){
+            this._downloader = new jsb.Downloader();
+            this._downloader.setOnFileTaskSuccess(this.onDownLoadSuccess.bind(this));
+            this._downloader.setOnTaskProgress(this.onDownLoadProgress.bind(this));
+            this._downloader.setOnTaskError(this.onDownLoadError.bind(this));
+            this._storagePath = jsb.fileUtils.getWritablePath() + '/video-cases/downloader/'
+            this._inited = jsb.fileUtils.createDirectory(this._storagePath);
+            if (!this._inited) {
+                cc.log('Failed to create storage path, downloader won\'t work correctly')
+            }
+            this.videoPlayerNative = cc.LiveVideo.create()
+            this.videoPlayerNativeNode._sgNode.addChild(this.videoPlayerNative)
+            this.videoPlayerNative1 = cc.LiveVideo.create()
+            this.videoPlayerNativeNode1._sgNode.addChild(this.videoPlayerNative1)
+            this.videoPlayerNative2 = cc.LiveVideo.create()
+            this.videoPlayerNativeNode2._sgNode.addChild(this.videoPlayerNative2)
+        }
         if(!CC_JSB){
             this.videoPlayerNode.node.on("ready-to-play", (event) =>{
                 cc.log("ready-to-play")
@@ -458,7 +670,21 @@ cc.Class({
             })
 
 
-            this.videoPauseNode.on("click", (event) => {
+            
+            
+        }
+        this.videoPauseNode.on("click", (event) => {
+            if(CC_JSB){
+                if(self.isPlayStart){
+                    if (!self.videoPlayerNative.isVideoPause()) {
+                        self.videoPlayerNative.videoPause()
+                        self.videoPauseTip.active = true
+                    }else{
+                        self.videoPlayerNative.videoResume()
+                        self.videoPauseTip.active = false
+                    }
+                }
+            }else{
                 if(self.isPlayStart){
                     if(self.videoPlayerNode.isPlaying()){
                         self.videoPlayerNode.pause()
@@ -468,41 +694,53 @@ cc.Class({
                         self.videoPauseTip.active = false
                     }
                 }
-            })
-            this.faceTimeNode.getChildByName("phoneBtn").on("click", (event) => {
+            }
+            
+        })
+        this.faceTimeNode.getChildByName("phoneBtn").on("click", (event) => {
+            
+            self.videoPauseNode.active = true
+            self.videoPauseTip.active = false
+            if(CC_JSB){
+                self.videoPlayerNode.node.active = false
+                self.videoPlayerNativeNode.active = true
+            }else{
                 self.videoPlayerNode.node.active = true
-                self.videoPauseNode.active = true
-                self.videoPauseTip.active = false
                 self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + ".mp4"
-                self.videoloadingEnd = false
-                self.videoIsReadToPlay = false
-                self.videoLoadingNode.active = true
-                //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(self.loadEndFunc, self))
-                //self.node.runAction(act)
-                //self.videoLoadingAnimation.play()
-               // self.videoPlayerNode.play()
-                self.faceTimeNode.active = false
-                self.branchNode.node.active = false
-            })
-            this.backBtn.on("click", (event) => {
+            }
+            self.videoloadingEnd = false
+            self.videoIsReadToPlay = false
+            self.videoLoadingNode.active = true
+            //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(self.loadEndFunc, self))
+            //self.node.runAction(act)
+            //self.videoLoadingAnimation.play()
+           // self.videoPlayerNode.play()
+            self.faceTimeNode.active = false
+            self.branchNode.node.active = false
+        })
+        this.backBtn.on("click", (event) => {
+            if(CC_JSB){
+                self.videoPlayerNative.videoStop()
+            }else{
                 self.videoPlayerNode.stop()
-                if(self.branchData != null){
-                    if(self.videoType == 1 ||self.videoType == 2 ){
-                        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
-                    }
-                    self.showBranchVideo()
-                }else{
-                    cc.log("self.videoType  backBtn " + self.videoType)
-                    if(self.videoType == 1 ||self.videoType == 2 ){
-                        cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
-                    }else{
-                        self.node.active = false
-                        self.bgNode.active = true
-                    }
-                    
+            }
+            
+            if(self.branchData != null){
+                if(self.videoType == 1 ||self.videoType == 2 ){
+                    cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
                 }
-            })
-        }
+                self.showBranchVideo()
+            }else{
+                cc.log("self.videoType  backBtn " + self.videoType)
+                if(self.videoType == 1 ||self.videoType == 2 ){
+                    cc.cs.gameMgr.sendVideoDone(cc.cs.PlayerInfo.playvideo, self.videoDoneHandle, self)
+                }else{
+                    self.node.active = false
+                    self.bgNode.active = true
+                }
+                
+            }
+        })
     },
 
     onEnable : function(){

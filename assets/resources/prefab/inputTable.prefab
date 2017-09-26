@@ -198,7 +198,9 @@
     "_fontSize": 25,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
+    "_N$file": {
+      "__uuid__": "64844efb-3b92-476f-bf1a-f20c78c34e1d"
+    },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "你好",
@@ -506,10 +508,12 @@
     "_fontSize": 25,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
+    "_N$file": {
+      "__uuid__": "64844efb-3b92-476f-bf1a-f20c78c34e1d"
+    },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "button",
+    "_N$string": "cccc",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -814,10 +818,12 @@
     "_fontSize": 25,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
+    "_N$file": {
+      "__uuid__": "64844efb-3b92-476f-bf1a-f20c78c34e1d"
+    },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "button",
+    "_N$string": "dddd",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
