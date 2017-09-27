@@ -115,6 +115,14 @@ cc.Class({
 
     startDownload : function(url,filename)
     {
+        if(this._downloader == null){
+            this._downloader = new jsb.Downloader();
+            this._downloader.setOnFileTaskSuccess(this.onDownLoadSuccess.bind(this));
+            this._downloader.setOnTaskProgress(this.onDownLoadProgress.bind(this));
+            this._downloader.setOnTaskError(this.onDownLoadError.bind(this));
+            this._storagePath = jsb.fileUtils.getWritablePath() + '/video-cases/downloader/'
+            this._inited = jsb.fileUtils.createDirectory(this._storagePath);
+        }
         this._downloader.createDownloadFileTask(url, this._storagePath + filename);
         cc.log("开始下载 dir = "+this._storagePath)
     },
@@ -138,6 +146,7 @@ cc.Class({
         var videoID =this.getVideoType(id + "")
         
         if(CC_JSB){
+            this.videoIsReadToPlay = false
             this.videoList = []
             this.videoList.push(id)
             var bData =cc.cs.gameData.getbranchVideoData(id)
@@ -377,6 +386,8 @@ cc.Class({
         if(!this.isNativeVideoEnd){
             if(this.videoPlayerNative1.getVideoCurrentFrame() == this.videoPlayerNative1.getVideoFrameCount()){
                 this.isNativeVideoEnd = true
+                self.node.active = false
+                self.bgNode.active = true
                 jsb.fileUtils.removeFile(this._storagePath + this.videoPlayerNative1.videoID+".mp4" )
             }
         }
@@ -555,12 +566,15 @@ cc.Class({
         //this.videoLoadingAnimation.stop()
         this.videoLoadingAnimation.on('lastframe',  this.loadEndFunc,    this);
         if(CC_JSB){
-            this._downloader = new jsb.Downloader();
-            this._downloader.setOnFileTaskSuccess(this.onDownLoadSuccess.bind(this));
-            this._downloader.setOnTaskProgress(this.onDownLoadProgress.bind(this));
-            this._downloader.setOnTaskError(this.onDownLoadError.bind(this));
-            this._storagePath = jsb.fileUtils.getWritablePath() + '/video-cases/downloader/'
-            this._inited = jsb.fileUtils.createDirectory(this._storagePath);
+            if(this._downloader == null){
+                this._downloader = new jsb.Downloader();
+                this._downloader.setOnFileTaskSuccess(this.onDownLoadSuccess.bind(this));
+                this._downloader.setOnTaskProgress(this.onDownLoadProgress.bind(this));
+                this._downloader.setOnTaskError(this.onDownLoadError.bind(this));
+                this._storagePath = jsb.fileUtils.getWritablePath() + '/video-cases/downloader/'
+                this._inited = jsb.fileUtils.createDirectory(this._storagePath);
+            }
+            
             if (!this._inited) {
                 cc.log('Failed to create storage path, downloader won\'t work correctly')
             }
