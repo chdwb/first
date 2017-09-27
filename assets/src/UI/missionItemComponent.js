@@ -82,7 +82,8 @@ cc.Class({
         isWork: false,
         isLoad : false,
         currentExp:0,
-		CheckDateItemresult:0
+		CheckDateItemresult:0,
+        canclick : true,
     },
 
     loadElement : function(){
@@ -226,6 +227,16 @@ cc.Class({
             this.startTips.string = "游戏内时间第" + result + "天开放"
         }
         this.startBtn.on("click", (event)=>{
+            if (!self.canclick)
+            {
+                return;
+            }
+            self.canclick = false
+
+            this.schedule(function(){
+                    self.canclick = true
+                },0.5,0);
+
             cc.log("startbtn")
             var dateResult = cc.cs.PlayerInfo.canLove(self.itemID)
             if(dateResult == 0){
@@ -420,6 +431,16 @@ cc.Class({
 
         this.startBtn.on("click", (event)=>{
             cc.log("startbtn")
+
+             if (!self.canclick)
+            {
+                return;
+            }
+            self.canclick = false
+
+            this.schedule(function(){
+                    self.canclick = true
+                },0.5,0);
             var dateResult = cc.cs.PlayerInfo.canWork(self.itemID)
             if(dateResult == 0 || dateResult == 1 ){
                 if(dateResult == 0)
