@@ -140,13 +140,13 @@ cc.Class({
                     cc.log("有下一个"+this.guide_id)
                     //self.Des.string = cc.cs.gameData.guide["GUIDE_ID_"+this.guide_id ]["GUIDE_TEXT"]
                     //this.refresh(this.guide_id)
-					self.node.removeFromParent(true);
+					//self.node.removeFromParent(true);
 					if(this.obj.updateui != null)
                     this.obj.updateui()
                 }
                 else
                 {
-                    self.node.removeFromParent(true);
+                    //self.node.removeFromParent(true);
 					if(this.obj.updateui != null)
                     this.obj.updateui()
 
@@ -154,7 +154,7 @@ cc.Class({
             }
             else
             {
-                self.node.removeFromParent(true);
+                //self.node.removeFromParent(true);
                 if(this.obj.updateui != null)
                     this.obj.updateui()
             }
@@ -248,6 +248,7 @@ cc.Class({
                 cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
                 
                 cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self)
+				self.node.removeFromParent(true);
                 cc.cs.PlayerInfo.guide_id = self.guide_id  //提前保存 不然点击进入下一个页面 网速慢 还没更新guide_id 下一个页面就无法弹出新手引导
                 cc.log("set guide_id"+ cc.cs.PlayerInfo.guide_id+ "~~"+self.guide_id)
                 
@@ -260,6 +261,7 @@ cc.Class({
 
        cc.cs.gameMgr.sendGuide(self.guide_id,  self.sendGuideHandle, self) //提前保存 不然点击进入下一个页面 网速慢 还没更新guide_id 下一个页面就无法弹出新手引导
        cc.cs.PlayerInfo.guide_id = self.guide_id
+	   self.node.removeFromParent(true);
        cc.log("set guide_id"+ cc.cs.PlayerInfo.guide_id+ "~~"+self.guide_id)
        return true
      }
