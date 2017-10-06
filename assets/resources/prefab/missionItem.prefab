@@ -84,7 +84,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 463,
       "y": 0
     },
     "_skewX": 0,
@@ -376,7 +376,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 107.31,
+      "width": 106.67,
       "height": 30
     },
     "_rotationX": 0,
@@ -408,9 +408,7 @@
     "_fontSize": 24,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "每次获得:",
@@ -576,7 +574,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 71.31,
+      "width": 70.74,
       "height": 30
     },
     "_rotationX": 0,
@@ -608,9 +606,7 @@
     "_fontSize": 24,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "10000",
@@ -752,9 +748,7 @@
     "_fontSize": 35,
     "_lineHeight": 50,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "总裁助理",
@@ -826,8 +820,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
-      "height": 25
+      "width": 133.35,
+      "height": 24
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -835,8 +829,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -116.4,
-      "y": -119.8
+      "x": -109.1,
+      "y": -120
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -857,17 +851,15 @@
     "_actualFontSize": 24,
     "_fontSize": 24,
     "_lineHeight": 24,
-    "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_enableWrapText": false,
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "每日0点重置",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 2
+    "_N$overflow": 0
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -915,7 +907,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 133.69,
+      "width": 133.35,
       "height": 24
     },
     "_rotationX": 0,
@@ -947,9 +939,7 @@
     "_fontSize": 24,
     "_lineHeight": 24,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "剩余次数：5",
@@ -1036,9 +1026,7 @@
     "_fontSize": 25,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "游戏内时间第20天开放",
@@ -1192,9 +1180,7 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "开始",
@@ -1452,7 +1438,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 42.94,
+      "width": 40.04,
       "height": 30
     },
     "_rotationX": 0,
@@ -1575,9 +1561,7 @@
     "_fontSize": 24,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "200",
@@ -1664,9 +1648,7 @@
     "_fontSize": 24,
     "_lineHeight": 25,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "恋爱",
@@ -1737,7 +1719,9 @@
     "itemID": 0,
     "isWork": false,
     "isLoad": false,
-    "currentExp": 0
+    "currentExp": 0,
+    "CheckDateItemresult": 0,
+    "canclick": true
   },
   {
     "__type__": "cc.Sprite",
