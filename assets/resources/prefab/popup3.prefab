@@ -201,8 +201,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 66,
-      "height": 40
+      "width": 88,
+      "height": 45
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -229,9 +229,9 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 30,
-    "_fontSize": 30,
-    "_lineHeight": 40,
+    "_actualFontSize": 40,
+    "_fontSize": 40,
+    "_lineHeight": 45,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": false,
@@ -252,12 +252,12 @@
     "_enabled": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 55,
-      "g": 160,
-      "b": 79,
+      "r": 209,
+      "g": 102,
+      "b": 153,
       "a": 255
     },
-    "_width": 3
+    "_width": 4
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -409,7 +409,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -149,
-      "y": -121
+      "y": -114
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -646,7 +646,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 134,
-      "y": -121
+      "y": -114
     },
     "_skewX": 0,
     "_skewY": 0,

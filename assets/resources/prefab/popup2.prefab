@@ -255,8 +255,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 750,
-      "height": 469
+      "width": 543,
+      "height": 340
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -349,7 +349,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 126,
+      "width": 128,
       "height": 65
     },
     "_rotationX": 0,
@@ -359,7 +359,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 182
+      "y": 127
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -381,9 +381,7 @@
     "_fontSize": 60,
     "_lineHeight": 65,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "达成",
@@ -402,12 +400,12 @@
     "_enabled": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 55,
-      "g": 160,
-      "b": 79,
+      "r": 177,
+      "g": 88,
+      "b": 130,
       "a": 255
     },
-    "_width": 3
+    "_width": 4
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -456,7 +454,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 494.97,
-      "height": 80
+      "height": 90
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -465,7 +463,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -1,
-      "y": -10
+      "y": 5
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -483,13 +481,11 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_actualFontSize": 30,
+    "_fontSize": 30,
+    "_lineHeight": 45,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "经过辛勤的工作，你获得了200金币。",
@@ -545,7 +541,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 494.97,
-      "height": 80
+      "height": 90
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -572,13 +568,11 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 35,
-    "_fontSize": 35,
-    "_lineHeight": 40,
+    "_actualFontSize": 30,
+    "_fontSize": 30,
+    "_lineHeight": 45,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "经过辛勤的工作，你获得了200金币。",
@@ -649,8 +643,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -183,
-      "y": -173
+      "x": -146,
+      "y": -114
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -726,9 +720,7 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "确定",
@@ -888,8 +880,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 180,
-      "y": -173
+      "x": 146,
+      "y": -114
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -965,9 +957,7 @@
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "f9912d8b-370d-4b2b-9e74-56a8b7a95dd7"
-    },
+    "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_N$string": "取消",
