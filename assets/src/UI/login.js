@@ -304,7 +304,7 @@ cc.Class({
         var self = this
         if(!this.isNativeVideoEnd){
 			
-            if(this.nativeVideo.getVideoCurrentFrame() == this.nativeVideo.getVideoFrameCount()){
+            if(this.nativeVideo.getVideoCurrentFrame() == this.nativeVideo.getVideoFrameCount() && this.nativeVideo.getVideoFrameCount() != 0){
                 this.isNativeVideoEnd = true
                 this.nativeVideoNode.active = false
                 this.node.active = true
@@ -391,6 +391,7 @@ cc.Class({
         this.loginNode.active = false;
         this.randomNameNode.active = false;
         this.LogoNode.active = false;
+        this.node.active = true
 
             var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
             var passward = cc.sys.localStorage.getItem('PASSWORD')
@@ -816,6 +817,7 @@ cc.Class({
             cc.loader.loadResDir("video/" + 1100,  function(err, id) {
                 if (!err) {
                     self.nativeVideo.preLoad(id + "")
+                    this.playLogoVideo(1100)
                 } else {
                     cc.log("native video load err id = " + id)
                 }
@@ -828,7 +830,19 @@ cc.Class({
 
         }   );*/
         //this.setStartGameNode()
-       
+        if(CC_JSB){
+            this.nativeVideoBtn.on("click", (event) =>{
+                self.nativeVideo.videoStop()
+                self.loadVideo1101()
+                self.nativeVideoText = []
+                cc.cs.utils.getStr("1101", self.nativeVideoText);
+                self.setStartGameNode();
+                self.nativeVideoBtn.active = false
+                self.nativeVideoNode.stopAllActions()
+                self.node.active = true
+            }, this.nativeVideoBtn)
+            
+        }
         //this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         var passward = cc.sys.localStorage.getItem('PASSWORD')
@@ -945,18 +959,7 @@ cc.Class({
 
         
 
-        if(CC_JSB){
-            this.nativeVideoBtn.on("click", (event) =>{
-                self.nativeVideo.videoStop()
-                self.loadVideo1101()
-                self.nativeVideoText = []
-                cc.cs.utils.getStr("1101", self.nativeVideoText);
-                self.setStartGameNode();
-                self.nativeVideoBtn.active = false
-                self.nativeVideoNode.stopAllActions()
-            }, this.nativeVideoBtn)
-            this.playLogoVideo(1100)
-        }
+        
     },
 
     loadVideo1101:function(){
