@@ -4868,7 +4868,8 @@
     "isNativeVideoEnd": false,
     "nativeVideoText": [],
     "nativeNanNode": null,
-    "nativeNvNode": null
+    "nativeNvNode": null,
+    "nativeVideoBtn": null
   },
   {
     "__type__": "cc.Node",
@@ -8132,8 +8133,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 561,
+      "y": 293
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -8254,7 +8255,7 @@
       "__id__": 205
     },
     "_enabled": true,
-    "transition": 2,
+    "transition": 0,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 255,

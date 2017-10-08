@@ -325,6 +325,7 @@ cc.Class({
                     this.setStartGameNode();
                     this.nativeVideoBtn.active = false
                     cc.sys.localStorage.setItem("1100", 1);
+                    self.node.active = true
                 }else
                 if(this.playVideoID == 1101){
 					this.nativeVideoText = []
@@ -942,17 +943,18 @@ cc.Class({
             self.randomName()
         }, this.randomNameRandomBtn)
 
-        this.nativeVideoBtn.on("click", (event) =>{
-            self.nativeVideo.videoStop()
-            self.loadVideo1101()
-            self.nativeVideoText = []
-            cc.cs.utils.getStr("1101", self.nativeVideoText);
-            self.setStartGameNode();
-            self.nativeVideoBtn.active = false
-            self.nativeVideoNode.stopAllActions()
-        }, this.nativeVideoBtn)
+        
 
         if(CC_JSB){
+            this.nativeVideoBtn.on("click", (event) =>{
+                self.nativeVideo.videoStop()
+                self.loadVideo1101()
+                self.nativeVideoText = []
+                cc.cs.utils.getStr("1101", self.nativeVideoText);
+                self.setStartGameNode();
+                self.nativeVideoBtn.active = false
+                self.nativeVideoNode.stopAllActions()
+            }, this.nativeVideoBtn)
             this.playLogoVideo(1100)
         }
     },
