@@ -68,6 +68,7 @@ cc.Class({
     },
 
     closeView: function() {
+         this.isOpen = false
         if (this.viewStack.length > 0) {
             var view = this.viewStack.pop()
             view.active = false
@@ -83,6 +84,7 @@ cc.Class({
     },
 
     closeAllView: function() {
+        this.isOpen = false
         for (var i = 0; i < this.viewStack.length; ++i) {
             this.closeView()
         }
@@ -94,6 +96,7 @@ cc.Class({
     },
 
     openView: function(id) {
+        this.isOpen = true
         if (this.gameScene == null) {
             cc.log("error gameScene is null")
         } else {
@@ -247,12 +250,12 @@ cc.Class({
     },
     showPopBuy: function(id, okHandle, obj) {
         //id 1 秒回礼包 3 一件完成礼包
-
-
-        var popupNode = cc.instantiate(this.nodePopBuyPrefab)
-
-        popupNode.setPosition(0, 0);
-        popupNode.getComponent("PopBuy").setCallBack(popupNode, id, okHandle, obj)
+        if(this.isOpen == true)
+        {
+            var popupNode = cc.instantiate(this.nodePopBuyPrefab)
+            popupNode.setPosition(0, 0);
+            popupNode.getComponent("PopBuy").setCallBack(popupNode, id, okHandle, obj)
+        }
     },
 
 
