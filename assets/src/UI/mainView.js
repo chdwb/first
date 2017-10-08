@@ -421,9 +421,6 @@ cc.Class({
         //var parent = this.node.parent
         //parent.getComponent("GameScene").SetView(cc.cs.UIMgr.SETTINGVIEW)
         //cc.cs.UIMgr.openView(cc.cs.UIMgr.SETTINGVIEW)
-
-
-
         {
             cc.log("声音关闭 =  " + this.SoundOff)
             if (this.SoundOff == false) {
@@ -437,14 +434,8 @@ cc.Class({
                 cc.cs.AudioMgr.startBGM(true);
                 //this.SettingButton.interactable = true
                 cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/voice")
-
             }
-
-
-
         }
-
-
     },
 
     canAddIcon: function() {
@@ -529,7 +520,9 @@ cc.Class({
         //cc.cs.gameData.date[target.csDataID]["DATE_EXP"]
 
         cc.log("mainview updateui  " + cc.sys.os)
-
+        this.phoneBtn.getChildByName("stars").active = false;
+        this.wechatBtn.getChildByName("stars").active = false;
+        this.tipBG.active = false
 
         if (this.SoundOff == true) {
             cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/unvoice")
@@ -889,11 +882,6 @@ cc.Class({
 
 
         if (this.wechatBtn.active) {
-            if (parseInt(cc.cs.PlayerInfo.guide_id) == 7) // 弹出电话按钮引导
-            {
-                cc.log("微信第一次激活")
-                cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, this.wechatBtn, this)
-            }
             if (cc.cs.PlayerInfo.canWechat()) {
 
                 this.tipBG.active = true
