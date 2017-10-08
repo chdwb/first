@@ -172,6 +172,7 @@ cc.Class({
         nativeVideoText:[],
         nativeNanNode : null,
         nativeNvNode : null,
+        nativeVideoBtn : null,
     },
 
 
@@ -278,6 +279,16 @@ cc.Class({
             this.videoPlayerNode.play()
         }else{
             this.playVideoID = id
+            if(this.playVideoID == 1100){
+                var ll = cc.sys.localStorage.getItem("1100")
+                if(ll != null && ll == 1){
+                    this.nativeVideoBtn.active = true
+                }else{
+                    this.nativeVideoBtn.active = false
+                }
+            }else{
+                this.nativeVideoBtn.active = false
+            }
             this.node.active = false
             this.videoNode.active = false
             this.nativeVideoNode.active = true
@@ -299,7 +310,22 @@ cc.Class({
                 this.node.active = true
                 this.videoNode.active = false
 				self.nativeNvNode.active = false
-				self.nativeNanNode.active = false
+                self.nativeNanNode.active = false
+                if(this.playVideoID == 1100){
+                    
+                    cc.loader.loadResDir("video/" + 1101,  function(err, id) {
+                        if (!err) {
+                            self.nativeVideo.preLoad(id + "")
+                        } else {
+                            cc.log("native video load err id = " + id)
+                        }
+                    })
+                    this.nativeVideoText = []
+                    cc.cs.utils.getStr("1101", this.nativeVideoText);
+                    this.setStartGameNode();
+                    this.nativeVideoBtn.active = false
+                    cc.sys.localStorage.setItem("1100", 1);
+                }else
                 if(this.playVideoID == 1101){
 					this.nativeVideoText = []
 					cc.cs.utils.getStr("1102", this.nativeVideoText);
@@ -782,18 +808,18 @@ cc.Class({
 
             this.nativeNanNode = this.node.parent.getChildByName("nanText")
             this.nativeNvNode = this.node.parent.getChildByName("nvText")
+            this.nativeVideoBtn = this.node.parent.getChildByName("nativeVideoBackBtn")
             this.nativeNvNode.active = false
             this.nativeNanNode.active = false
 
-            cc.loader.loadResDir("video/" + 1101,  function(err, id) {
+            cc.loader.loadResDir("video/" + 1100,  function(err, id) {
                 if (!err) {
                     self.nativeVideo.preLoad(id + "")
                 } else {
                     cc.log("native video load err id = " + id)
                 }
             })
-            this.nativeVideoText = []
-            cc.cs.utils.getStr("1101", this.nativeVideoText);
+            
         }
 
        /* cc.director.preloadScene('GameScene',function(){
@@ -802,7 +828,7 @@ cc.Class({
         }   );*/
         //this.setStartGameNode()
        
-        this.setLogoNode()
+        //this.setLogoNode()
         var login_id = cc.sys.localStorage.getItem('LOGIN_ID')
         var passward = cc.sys.localStorage.getItem('PASSWORD')
          if ((login_id != null && login_id != "") && (passward != null && passward != "")) {
@@ -915,6 +941,31 @@ cc.Class({
         this.randomNameRandomBtn.on("click", (event) => {
             self.randomName()
         }, this.randomNameRandomBtn)
+
+        this.nativeVideoBtn.on("click", (event) =>{
+            self.nativeVideo.videoStop()
+            self.loadVideo1101()
+            self.nativeVideoText = []
+            cc.cs.utils.getStr("1101", self.nativeVideoText);
+            self.setStartGameNode();
+            self.nativeVideoBtn.active = false
+            self.nativeVideoNode.stopAllActions()
+        }, this.nativeVideoBtn)
+
+        if(CC_JSB){
+            this.playLogoVideo(1100)
+        }
+    },
+
+    loadVideo1101:function(){
+        var self = this
+        cc.loader.loadResDir("video/" + 1101,  function(err, id) {
+            if (!err) {
+                self.nativeVideo.preLoad(id + "")
+            } else {
+                cc.log("native video load err id = " + id)
+            }
+        })
     },
 
     registerHandle: function(ret) {
