@@ -734,6 +734,8 @@ cc.Class({
 
     // use this for initialization
     onLoad: function() {
+       
+        
         var self = this
         this.videoLoadOver1 = !false
         this.videoLoadOver2 = !false
