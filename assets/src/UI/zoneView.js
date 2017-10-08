@@ -301,7 +301,7 @@ cc.Class({
             this.inputTableBtn.height = btn1.height
             var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x, this.inputBtn.y))
             var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
-            this.inputTableBtn.x = p2.x
+            this.inputTableBtn.x = p2.x - 50
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
         } else
         if (replayId.length == 2) {
@@ -333,7 +333,7 @@ cc.Class({
                 //this.inputTableBtn.x = -93
             var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x, this.inputBtn.y))
             var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
-            this.inputTableBtn.x = p2.x
+            this.inputTableBtn.x = p2.x - 50
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
         } else {
             text1.string = replayId[0]["REPLY_TEXT"]
@@ -378,7 +378,7 @@ cc.Class({
                 //this.inputTableBtn.x = -93
             var p = this.inputBtn.parent.convertToWorldSpaceAR(cc.v2(this.inputBtn.x, this.inputBtn.y))
             var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
-            this.inputTableBtn.x = p2.x
+            this.inputTableBtn.x = p2.x - 50
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
         }
         cc.log(" this.inputTableBtn.x =  " + this.inputTableBtn.x + "    this.inputTableBtn.y   =  " + this.inputTableBtn.y + " this.inputTableBtn.active   " + this.inputTableBtn.active)
