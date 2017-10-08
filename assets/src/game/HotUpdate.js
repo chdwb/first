@@ -396,14 +396,21 @@ cc.Class({
         {
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
                 this.panel.info.string = "版本检测失败，跳过更新";
+
+                this.updateUI.active = false
+                this.node.getChildByName("BG").active = true
                 break;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
                 //this.panel.info.string = "Fail to download manifest file, hot update skipped.";
                 this.panel.info.string = "版本检测失败";
+                this.updateUI.active = false
+                this.node.getChildByName("BG").active = true
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
                 this.panel.info.string = "已经是最新版";
+                this.updateUI.active = false
+                this.node.getChildByName("BG").active = true
                 break;
             case jsb.EventAssetsManager.NEW_VERSION_FOUND:
                 this.panel.active = true
@@ -462,12 +469,14 @@ cc.Class({
                 this.panel.retryBtn.active = true;
                 this._updating = false;
                 this._canRetry = true;
+                failed = true
                 break;
             case jsb.EventAssetsManager.ERROR_UPDATING:
                 this.panel.info.string = '资源更新错误: ' + event.getAssetId() + ', ' + event.getMessage();
                 break;
             case jsb.EventAssetsManager.ERROR_DECOMPRESS:
                 this.panel.info.string = event.getMessage();
+                failed = true
                 break;
             default:
                 break;
@@ -477,6 +486,11 @@ cc.Class({
             cc.eventManager.removeListener(this._updateListener);
             this._updateListener = null;
             this._updating = false;
+
+            this.updateUI.active = false
+                this.node.getChildByName("BG").active = true
+
+
         }
 
         if (needRestart) {
