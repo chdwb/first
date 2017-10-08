@@ -385,9 +385,13 @@ cc.Class({
         panel: UpdatePanel,
         manifestUrl: cc.RawAsset,
         updateUI: cc.Node,
+        loginNode: cc.Node,
         _updating: false,
         _canRetry: false,
-        _storagePath: ''
+        _storagePath: '',
+        totalTime: 0,
+        currentTime: 0,
+        isAction: false,
     },
 
     checkCb: function (event) {
@@ -574,7 +578,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         // Hot update is only available in Native build
-        if (!cc.sys.isNative) {
+       /* if (!cc.sys.isNative) {
             return;
         }
         this._storagePath = ((jsb.fileUtils ? jsb.fileUtils.getWritablePath() : '/') + 'blackjack-remote-asset');
@@ -646,7 +650,11 @@ cc.Class({
         this.panel.fileProgress.progress = 0;
         this.panel.byteProgress.progress = 0;
         
-        this.checkUpdate()
+        this.checkUpdate()*/
+
+        this.totalTime = 1
+        this.currentTime = 0
+        this.isAction = true
     },
 
     onDestroy: function () {
@@ -657,5 +665,31 @@ cc.Class({
         if (this._am && !cc.sys.ENABLE_GC_FOR_NATIVE_OBJECTS) {
             this._am.release();
         }
-    }
+    },
+
+
+
+     update: function(dt) {
+        if (this.isAction) {
+            this.currentTime += dt;
+            if (this.currentTime >= this.totalTime) {
+                this.panel.fileProgress.progress = 1.0
+              
+                this.isAction = false;
+                this.currentTime = 0
+                this.totalTime = 0
+
+                this.updateUI.active = false
+                this.loginNode.active = true
+                
+
+                
+
+            } else {
+                this.panel.fileProgress.progress = this.currentTime / this.totalTime
+                //this.processText.string = parseInt(this.process.progress * 100.0) + "%"
+            }
+        }
+
+    },
 });

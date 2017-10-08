@@ -6240,7 +6240,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
+      "width": 800,
       "height": 50
     },
     "_rotationX": 0,
@@ -6249,8 +6249,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -35,
-      "y": -92
+      "x": -9,
+      "y": -243
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -6296,7 +6296,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
+      "width": 800,
       "height": 50
     },
     "_rotationX": 0,
@@ -6305,7 +6305,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -150,
+      "x": -400,
       "y": 0
     },
     "_skewX": 0,
@@ -6324,7 +6324,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 158
@@ -6470,7 +6470,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 167
@@ -6749,7 +6749,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 171
@@ -6827,7 +6827,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 175
@@ -7057,7 +7057,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 181
@@ -7287,7 +7287,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 187
@@ -7513,7 +7513,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 191
@@ -8097,7 +8097,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 208
@@ -8133,8 +8133,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 561,
-      "y": 293
+      "x": 529,
+      "y": 276
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -8255,7 +8255,7 @@
       "__id__": 205
     },
     "_enabled": true,
-    "transition": 0,
+    "transition": 3,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -8335,8 +8335,14 @@
     "updateUI": {
       "__id__": 153
     },
+    "loginNode": {
+      "__id__": 5
+    },
     "_updating": false,
     "_canRetry": false,
-    "_storagePath": ""
+    "_storagePath": "",
+    "totalTime": 0,
+    "currentTime": 0,
+    "isAction": false
   }
 ]
