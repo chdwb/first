@@ -169,6 +169,9 @@ cc.Class({
         loadProcessPer : 0,
         loadScenePer : 0,
         isNativeVideoEnd : false,
+        nativeVideoText:[],
+        nativeNanNode : null,
+        nativeNvNode : null,
     },
 
 
@@ -281,18 +284,25 @@ cc.Class({
             this.nativeVideo.videoPlay()
             this.nativeVideoNode.runAction(cc.repeatForever(cc.callFunc(this.runNativePlayer, this)))
             this.isNativeVideoEnd = false
+            this.nativeNvNode.active = false
+            this.nativeNanNode.active = false
         }
     },
 
     runNativePlayer : function(){
         var self = this
         if(!this.isNativeVideoEnd){
+			
             if(this.nativeVideo.getVideoCurrentFrame() == this.nativeVideo.getVideoFrameCount()){
                 this.isNativeVideoEnd = true
                 this.nativeVideoNode.active = false
                 this.node.active = true
                 this.videoNode.active = false
+				self.nativeNvNode.active = false
+				self.nativeNanNode.active = false
                 if(this.playVideoID == 1101){
+					this.nativeVideoText = []
+					cc.cs.utils.getStr("1102", this.nativeVideoText);
                     cc.loader.loadResDir("video/" + 1102,  function(err, id) {
                         if (!err) {
                             self.nativeVideo.preLoad(id + "")
@@ -309,9 +319,39 @@ cc.Class({
                 }
                 this.nativeVideoNode.stopAllActions()
             }
-        }
+        }else{
+			var currentTime = self.nativeVideo.getVideoCurrentFrame()* (self.nativeVideo.getVideoFrameRate() * 1000)
+			var text = "";
+			//cc.log("self.nativeVideoText " + self.nativeVideoText.length)
+			
+			for(var i = 0 ; i < self.nativeVideoText.length; ++i){
+				//cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText[i].starttime + "     " + self.nativeVideoText[i].endtime + "     " + i)
+				if(currentTime >= self.nativeVideoText[i].starttime && currentTime <= self.nativeVideoText[i].endtime){
+					text = self.nativeVideoText[i].text
+					break;
+				}
+			}
+			if(text != ""){
+				cc.log(self.nativeNvNode + "     " + self.nativeNanNode)
+				if(text[0] == "0"){
+					
+					self.nativeNvNode.active = true
+					self.nativeNanNode.active = false
+					self.nativeNvNode.getChildByName("name").getComponent(cc.Label).string = "许梦甜"
+					self.nativeNvNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/\d/g, "")
+				}else{
+					self.nativeNvNode.active = false
+					self.nativeNanNode.active = true
+					self.nativeNanNode.getChildByName("name").getComponent(cc.Label).string = cc.cs.PlayerInfo.PlayerNmae
+					self.nativeNanNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/\d/g, "")
+				}
+			}else{
+				self.nativeNvNode.active = false
+				self.nativeNanNode.active = false
+			}
+		}
         
-        cc.log(this.nativeVideo.getVideoCurrentFrame() + "   /  " + this.nativeVideo.getVideoFrameCount())
+        //cc.log(this.nativeVideo.getVideoCurrentFrame() + "   /  " + this.nativeVideo.getVideoFrameCount())
     },
 
     setStartGameNode: function() {
@@ -735,6 +775,12 @@ cc.Class({
         }else{
             this.nativeVideo = cc.LiveVideo.create()
             this.nativeVideoNode._sgNode.addChild(this.nativeVideo)
+
+            this.nativeNanNode = this.node.parent.getChildByName("nanText")
+            this.nativeNvNode = this.node.parent.getChildByName("nvText")
+            this.nativeNvNode.active = false
+            this.nativeNanNode.active = false
+
             cc.loader.loadResDir("video/" + 1101,  function(err, id) {
                 if (!err) {
                     self.nativeVideo.preLoad(id + "")
@@ -742,7 +788,8 @@ cc.Class({
                     cc.log("native video load err id = " + id)
                 }
             })
-            
+            this.nativeVideoText = []
+            cc.cs.utils.getStr("1101", this.nativeVideoText);
         }
 
        /* cc.director.preloadScene('GameScene',function(){

@@ -98,6 +98,11 @@ cc.Class({
         _storagePath:"",
         currentDownLoadID : 0,
         isNativeVideoEnd:false,
+        nativeVideoText1:[],
+        nativeVideoText2:[],
+        nativeVideoText3:[],
+        nativeNanNode : null,
+        nativeNvNode : null,
     },
 
     getVideoType: function(videoName) {
@@ -151,12 +156,18 @@ cc.Class({
             this.videoList.push(id)
             var bData =cc.cs.gameData.getbranchVideoData(id)
             this.videoPlayerNativeNode.videoID = id
+            this.nativeVideoText1 = []
+            cc.cs.utils.getStr(id+"", this.nativeVideoText1);
             if(bData != null){
                 
                 this.videoPlayerNativeNode1.videoID = bData["PLOT_VIDEO_LINK_VIDEO_1"]
                 this.videoPlayerNativeNode2.videoID = bData["PLOT_VIDEO_LINK_VIDEO_2"]
                 this.videoList.push( bData["PLOT_VIDEO_LINK_VIDEO_1"])
                 this.videoList.push( bData["PLOT_VIDEO_LINK_VIDEO_2"])
+                this.nativeVideoText2 = []
+                cc.cs.utils.getStr(bData["PLOT_VIDEO_LINK_VIDEO_1"]+"", this.nativeVideoText2);
+                this.nativeVideoText3 = []
+                cc.cs.utils.getStr(bData["PLOT_VIDEO_LINK_VIDEO_2"]+"", this.nativeVideoText3);
                 this.startDownload("http://112.74.36.182:8888/newvideo6/"+this.videoPlayerNativeNode1.videoID+".mp4",this.videoPlayerNativeNode1.videoID+".mp4")
                 this.startDownload("http://112.74.36.182:8888/newvideo6/"+this.videoPlayerNativeNode2.videoID+".mp4",this.videoPlayerNativeNode2.videoID+".mp4")
             }
@@ -385,11 +396,42 @@ cc.Class({
         var self = this
         if(!this.isNativeVideoEnd){
             if(this.videoPlayerNative1.getVideoCurrentFrame() == this.videoPlayerNative1.getVideoFrameCount()){
+                self.nativeNvNode.active = false
+				self.nativeNanNode.active = false
                 this.isNativeVideoEnd = true
                 self.node.active = false
                 self.bgNode.active = true
                 jsb.fileUtils.removeFile(this._storagePath + this.videoPlayerNative1.videoID+".mp4" )
             }
+        }else{
+            var currentTime = self.videoPlayerNative1.getVideoCurrentFrame()* (self.videoPlayerNative1.getVideoFrameRate() * 1000)
+			var text = "";
+			//cc.log("self.nativeVideoText2 " + self.nativeVideoText2.length)
+			
+			for(var i = 0 ; i < self.nativeVideoText2.length; ++i){
+				//cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText2[i].starttime + "     " + self.nativeVideoText2[i].endtime + "     " + i)
+				if(currentTime >= self.nativeVideoText2[i].starttime && currentTime <= self.nativeVideoText2[i].endtime){
+					text = self.nativeVideoText2[i].text
+					break;
+				}
+			}
+			if(text != ""){
+				if(text[0] == "0"){
+					
+					self.nativeNvNode.active = true
+					self.nativeNanNode.active = false
+					self.nativeNvNode.getChildByName("name").getComponent(cc.Label).string = "许梦甜"
+					self.nativeNvNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/^\d/, "")
+				}else{
+					self.nativeNvNode.active = false
+					self.nativeNanNode.active = true
+					self.nativeNanNode.getChildByName("name").getComponent(cc.Label).string = cc.cs.PlayerInfo.PlayerNmae
+					self.nativeNanNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/^\d/, "")
+				}
+			}else{
+				self.nativeNvNode.active = false
+				self.nativeNanNode.active = false
+			}
         }
     },
 
@@ -397,11 +439,42 @@ cc.Class({
         var self = this
         if(!this.isNativeVideoEnd){
             if(this.videoPlayerNative2.getVideoCurrentFrame() == this.videoPlayerNative2.getVideoFrameCount()){
+                self.nativeNvNode.active = false
+				self.nativeNanNode.active = false
                 this.isNativeVideoEnd = true
                 self.node.active = false
                 self.bgNode.active = true
                 jsb.fileUtils.removeFile(this._storagePath + this.videoPlayerNative2.videoID+".mp4" )
             }
+        }else{
+            var currentTime = self.videoPlayerNative2.getVideoCurrentFrame()* (self.videoPlayerNative2.getVideoFrameRate() * 1000)
+			var text = "";
+			//cc.log("self.nativeVideoText3 " + self.nativeVideoText3.length)
+			
+			for(var i = 0 ; i < self.nativeVideoText3.length; ++i){
+				//cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText3[i].starttime + "     " + self.nativeVideoText3[i].endtime + "     " + i)
+				if(currentTime >= self.nativeVideoText3[i].starttime && currentTime <= self.nativeVideoText3[i].endtime){
+					text = self.nativeVideoText3[i].text
+					break;
+				}
+			}
+			if(text != ""){
+				if(text[0] == "0"){
+					
+					self.nativeNvNode.active = true
+					self.nativeNanNode.active = false
+					self.nativeNvNode.getChildByName("name").getComponent(cc.Label).string = "许梦甜"
+					self.nativeNvNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/^\d/, "")
+				}else{
+					self.nativeNvNode.active = false
+					self.nativeNanNode.active = true
+					self.nativeNanNode.getChildByName("name").getComponent(cc.Label).string = cc.cs.PlayerInfo.PlayerNmae
+					self.nativeNanNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/^\d/, "")
+				}
+			}else{
+				self.nativeNvNode.active = false
+				self.nativeNanNode.active = false
+			}
         }
     },
 
@@ -409,6 +482,8 @@ cc.Class({
         var self = this
         if(!this.isNativeVideoEnd){
             if(this.videoPlayerNative.getVideoCurrentFrame() == this.videoPlayerNative.getVideoFrameCount()){
+                self.nativeNvNode.active = false
+				self.nativeNanNode.active = false
                 jsb.fileUtils.removeFile(this._storagePath + this.videoPlayerNative.videoID+".mp4" )
 
                 this.isNativeVideoEnd = true
@@ -426,6 +501,35 @@ cc.Class({
                         self.bgNode.active = true
                     }
                     
+                }
+            }else{
+                var currentTime = self.videoPlayerNative.getVideoCurrentFrame()* (self.videoPlayerNative.getVideoFrameRate() * 1000)
+                var text = "";
+                //cc.log("self.nativeVideoText1 " + self.nativeVideoText1.length)
+                
+                for(var i = 0 ; i < self.nativeVideoText1.length; ++i){
+                    //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText1[i].starttime + "     " + self.nativeVideoText1[i].endtime + "     " + i)
+                    if(currentTime >= self.nativeVideoText1[i].starttime && currentTime <= self.nativeVideoText1[i].endtime){
+                        text = self.nativeVideoText1[i].text
+                        break;
+                    }
+                }
+                if(text != ""){
+                    if(text[0] == "0"){
+                        
+                        self.nativeNvNode.active = true
+                        self.nativeNanNode.active = false
+                        self.nativeNvNode.getChildByName("name").getComponent(cc.Label).string = "许梦甜"
+                        self.nativeNvNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/^\d/, "")
+                    }else{
+                        self.nativeNvNode.active = false
+                        self.nativeNanNode.active = true
+                        self.nativeNanNode.getChildByName("name").getComponent(cc.Label).string = cc.cs.PlayerInfo.PlayerNmae
+                        self.nativeNanNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/^\d/, "")
+                    }
+                }else{
+                    self.nativeNvNode.active = false
+                    self.nativeNanNode.active = false
                 }
             }
         }
@@ -562,10 +666,15 @@ cc.Class({
         this.inputTableBtn.x = 0
         this.inputTableBtn.y = 0
         var self = this
+        this.nativeNanNode = this.node.getChildByName("nanText")
+        this.nativeNvNode = this.node.getChildByName("nvText")
+
         this.videoLoadingAnimation = this.videoLoadingNode.getChildByName("New Node").getComponent("cc.Animation")
         //this.videoLoadingAnimation.stop()
         this.videoLoadingAnimation.on('lastframe',  this.loadEndFunc,    this);
         if(CC_JSB){
+            this.nativeNanNode.active = false
+            this.nativeNvNode.active = false
             if(this._downloader == null){
                 this._downloader = new jsb.Downloader();
                 this._downloader.setOnFileTaskSuccess(this.onDownLoadSuccess.bind(this));
@@ -586,6 +695,8 @@ cc.Class({
             this.videoPlayerNativeNode2._sgNode.addChild(this.videoPlayerNative2)
         }
         if(!CC_JSB){
+            this.nativeNanNode.active = false
+            this.nativeNvNode.active = false
             this.videoPlayerNode.node.on("ready-to-play", (event) =>{
                 cc.log("ready-to-play")
                 if(cc.sys.browserType != "qq" &&cc.sys.browserType != cc.sys.BROWSER_TYPE_QQ && cc.sys.browserType != cc.sys.BROWSER_TYPE_MOBILE_QQ &&  cc.sys.browserType != cc.sys.BROWSER_TYPE_WECHAT )
@@ -689,6 +800,7 @@ cc.Class({
         }
         this.videoPauseNode.on("click", (event) => {
             if(CC_JSB){
+                return;
                 if(self.isPlayStart){
                     if (!self.videoPlayerNative.isVideoPause()) {
                         self.videoPlayerNative.videoPause()

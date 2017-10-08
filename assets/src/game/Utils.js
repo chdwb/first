@@ -16,11 +16,14 @@ cc.Class({
         getStr(strname,array)
         {
             
-         cc.loader.loadRes("str/"+strname,function(err,data){
+         cc.loader.loadRes("video/text/"+strname,function(err,data){
             cc.log(data)
             
-            var re = new RegExp(/\d\n/);
-            
+            var ttt = ""
+			var re = new RegExp(/\r\n/);
+			ttt = data.replace(/^\d+\r\n/gm, "")
+			ttt = ttt.replace(/^\r\n/gm, "")
+			data = ttt
             var hehe = data.split(re)
             //var index = 1;
             var id = 1
@@ -35,7 +38,7 @@ cc.Class({
                id++;
             }
         } )
-        return array
+        //return array
         }
         
     },
