@@ -817,7 +817,7 @@ cc.Class({
             cc.loader.loadResDir("video/" + 1100,  function(err, id) {
                 if (!err) {
                     self.nativeVideo.preLoad(id + "")
-                    this.playLogoVideo(1100)
+                    self.playLogoVideo(1100)
                 } else {
                     cc.log("native video load err id = " + id)
                 }

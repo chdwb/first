@@ -625,6 +625,8 @@ cc.Class({
                 }, btn3)
                 this.inputTableBtn.height = btn1.height + btn2.height + btn3.height
             }
+
+            this.inputTableBtn.y = this.inputTableBtn.height * 0.5
        // } else {
        //     return
         //}

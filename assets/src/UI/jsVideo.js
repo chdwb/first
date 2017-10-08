@@ -168,6 +168,7 @@ cc.Class({
         }
     },
     setPlayVideoID : function(id){
+        var self = this
         this.playVideoID = id;
         var videoID =this.getVideoType(id + "")
         
