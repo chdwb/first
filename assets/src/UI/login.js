@@ -318,38 +318,42 @@ cc.Class({
                     self.isPlayStart = false
                 }
                 this.nativeVideoNode.stopAllActions()
+            }else{
+                var currentTime = self.nativeVideo.getVideoCurrentFrame()* (self.nativeVideo.getVideoFrameRate() * 1000)
+                var text = "";
+                //cc.log("self.nativeVideoText " + self.nativeVideoText.length)
+                
+                for(var i = 0 ; i < self.nativeVideoText.length; ++i){
+                    //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText[i].starttime + "     " + self.nativeVideoText[i].endtime + "     " + i)
+                    if(currentTime >= self.nativeVideoText[i].starttime && currentTime <= self.nativeVideoText[i].endtime){
+                        text = self.nativeVideoText[i].text
+                        break;
+                    }
+                }
+                if(text != ""){
+                    cc.log(self.nativeNvNode + "     " + self.nativeNanNode)
+                    if(text[0] == "0"){
+                        
+                        self.nativeNvNode.active = true
+                        self.nativeNanNode.active = false
+                        self.nativeNvNode.getChildByName("name").getComponent(cc.Label).string = "许梦甜"
+                        self.nativeNvNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/\d/g, "")
+                    }else{
+                        self.nativeNvNode.active = false
+                        self.nativeNanNode.active = true
+                        self.nativeNanNode.getChildByName("name").getComponent(cc.Label).string = cc.cs.PlayerInfo.PlayerNmae
+                        self.nativeNanNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/\d/g, "")
+                    }
+                }else{
+                    self.nativeNvNode.active = false
+                    self.nativeNanNode.active = false
+                }
             }
         }else{
-			var currentTime = self.nativeVideo.getVideoCurrentFrame()* (self.nativeVideo.getVideoFrameRate() * 1000)
-			var text = "";
-			//cc.log("self.nativeVideoText " + self.nativeVideoText.length)
-			
-			for(var i = 0 ; i < self.nativeVideoText.length; ++i){
-				//cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText[i].starttime + "     " + self.nativeVideoText[i].endtime + "     " + i)
-				if(currentTime >= self.nativeVideoText[i].starttime && currentTime <= self.nativeVideoText[i].endtime){
-					text = self.nativeVideoText[i].text
-					break;
-				}
-			}
-			if(text != ""){
-				cc.log(self.nativeNvNode + "     " + self.nativeNanNode)
-				if(text[0] == "0"){
-					
-					self.nativeNvNode.active = true
-					self.nativeNanNode.active = false
-					self.nativeNvNode.getChildByName("name").getComponent(cc.Label).string = "许梦甜"
-					self.nativeNvNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/\d/g, "")
-				}else{
-					self.nativeNvNode.active = false
-					self.nativeNanNode.active = true
-					self.nativeNanNode.getChildByName("name").getComponent(cc.Label).string = cc.cs.PlayerInfo.PlayerNmae
-					self.nativeNanNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/\d/g, "")
-				}
-			}else{
-				self.nativeNvNode.active = false
-				self.nativeNanNode.active = false
-			}
-		}
+            self.nativeNvNode.active = false
+            self.nativeNanNode.active = false
+        }
+        
         
         //cc.log(this.nativeVideo.getVideoCurrentFrame() + "   /  " + this.nativeVideo.getVideoFrameCount())
     },
