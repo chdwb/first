@@ -805,6 +805,7 @@ cc.Class({
             })*/
             this.videoPlayerNode.clip =  cc.url.raw("resources/video/1101") + ".mp4"
         }else{
+            this.parent.getChildByName("update").active = false
             this.nativeVideo = cc.LiveVideo.create()
             this.nativeVideoNode._sgNode.addChild(this.nativeVideo)
 

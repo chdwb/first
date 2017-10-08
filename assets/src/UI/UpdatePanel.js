@@ -11,11 +11,14 @@ module.exports = cc.Class({
         checkBtn: cc.Node,
         retryBtn: cc.Node,
         updateBtn: cc.Node
+
     },
     
     onLoad () {
+        var self = this
         this.close.on(cc.Node.EventType.TOUCH_END, function () {
-            this.node.active = false;
+            self.node.active = false;
+            self.node.parent.getChildByName("Bg").active = true
         }, this);
     }
 });
