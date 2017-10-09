@@ -651,7 +651,8 @@ cc.Class({
         this.panel.byteProgress.progress = 0;
         
         this.checkUpdate()*/
-
+        this.panel.fileProgress.progress = 0;
+        this.panel.byteProgress.progress = 0;
         this.totalTime = 1
         this.currentTime = 0
         this.isAction = true
