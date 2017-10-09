@@ -3689,7 +3689,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 131.02,
+      "width": 110.02,
       "height": 30
     },
     "_rotationX": 0,
@@ -4394,7 +4394,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 241.8,
+      "width": 240.31,
       "height": 25
     },
     "_rotationX": 0,
@@ -14167,7 +14167,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 380
@@ -15103,7 +15103,7 @@
       }
     ],
     "_tag": -1,
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_id": "c07e63GSBxM/bSnWkl9HFoh",
@@ -17407,7 +17407,12 @@
     "_downloader": null,
     "_storagePath": "",
     "currentDownLoadID": 0,
-    "isNativeVideoEnd": false
+    "isNativeVideoEnd": false,
+    "nativeVideoText1": [],
+    "nativeVideoText2": [],
+    "nativeVideoText3": [],
+    "nativeNanNode": null,
+    "nativeNvNode": null
   },
   {
     "__type__": "cc.Node",
@@ -25515,7 +25520,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 125.12,
+      "width": 133.12,
       "height": 60
     },
     "_rotationX": 0,
@@ -30484,7 +30489,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 243
+      "height": 240
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -33223,7 +33228,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 243
+      "height": 240
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -33232,7 +33237,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 240
+      "y": 240.7
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -33250,7 +33255,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "7d964995-8fce-4dac-8a35-870c551dbae0"
+      "__uuid__": "04f725a9-8835-4619-b66a-5b690cc3e151"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -46389,7 +46394,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 109,
+      "width": 105,
       "height": 40
     },
     "_rotationX": 0,
