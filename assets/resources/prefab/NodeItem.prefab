@@ -815,6 +815,10 @@
     "Icon": {
       "__id__": 8
     },
+    "NewItmeLabel": {
+      "__id__": 22
+    },
+    "textTemple": "<color=#000000>name</c><color=#ff0000>x9999</color>",
     "GoodID": 0,
     "Num": 0
   },

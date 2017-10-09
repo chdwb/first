@@ -61,6 +61,7 @@ cc.Class({
                     itemCom.setGoodId(gooddata["GOODS_ID"])
 
                     itemCom.setItmeNum(gooddata["GOODS_PRICE"])
+                    itemCom.setItemInfo(gooddata["GOODS_NAME"], gooddata["GOODS_PRICE"])
                   
                 }
                 this.content.addChild(item);

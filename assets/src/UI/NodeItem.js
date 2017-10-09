@@ -31,7 +31,11 @@ cc.Class({
             default:null,
             type: cc.Sprite,
         },
-
+        NewItmeLabel :{
+            default: null,
+            type: cc.RichText,
+        },
+        textTemple : "<color=#000000>name</c><color=#ff0000>x9999</color>",
          GoodID:0,
 
         Num:0,
@@ -56,12 +60,21 @@ cc.Class({
     {
         //this.GoodID = name
         this.ItmeName.string = name;
+
     },
 
     setItmeNum:function(num)
     {
         this.Num = num,
         this.ItmeNum.string = ""+num;
+
+        //this.textTemple.replace(/9999/, num+"");
+        
+        
+    },
+
+    setItemInfo : function(name, num){
+        this.NewItmeLabel.string = "<color=#000000>"+name+"</c><color=#ff0000>x"+num+"</color>"
     },
 
      setItmeIcon:function(name)

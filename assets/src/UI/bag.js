@@ -500,15 +500,19 @@ cc.Class({
              //cc.log("item height " + item.height)
             var itemCom = item.getComponent("NodeItem")
             var gooddata = cc.cs.gameData.goods["GOODS_ID_" +itemArray[i].goods_id]
+            var name = ""
             if(gooddata != undefined)
             {
                 itemCom.setItmeNmae(cc.cs.gameData.goods["GOODS_ID_"+itemArray[i].goods_id]["GOODS_NAME"] )
+                name = cc.cs.gameData.goods["GOODS_ID_"+itemArray[i].goods_id]["GOODS_NAME"] 
             }
             else
             {
                 itemCom.setItmeNmae(itemArray[i].goods_id)
+                name = itemArray[i].goods_id
             }
             itemCom.setItmeNum(itemArray[i].num)
+            itemCom.setItemInfo(name, itemArray[i].num)
             itemCom.setGoodId(itemArray[i].goods_id)
             this.content.addChild(item);
     		//item.setPosition(0, -item.height * (0.5 + i) - this.spacing * (i + 1));
