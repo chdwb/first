@@ -103,6 +103,7 @@ cc.Class({
         nativeVideoText3:[],
         nativeNanNode : null,
         nativeNvNode : null,
+        facetimeAudioID : 0,
     },
 
     getVideoType: function(videoName) {
@@ -295,6 +296,7 @@ cc.Class({
                 this.videoPlayerNode.node.active = false
                 this.videoPauseNode.active = false
                 this.faceTimeNode.active = true
+                this.facetimeAudioID = cc.cs.AudioMgr.playAudio("facetime",true)
                 this.branchNode.node.active = false
                 if(CC_JSB){
                     //this.videoIsReadToPlay = false
@@ -936,6 +938,8 @@ cc.Class({
                 self.videoPlayerNode.node.active = true
                 self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + ".mp4"
             }
+            cc.cs.AudioMgr.StopAudio(self.facetimeAudioID)
+            
             self.videoloadingEnd = false
             //self.videoIsReadToPlay = false
             self.videoLoadingNode.active = true
