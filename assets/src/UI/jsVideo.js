@@ -297,7 +297,7 @@ cc.Class({
                 this.faceTimeNode.active = true
                 this.branchNode.node.active = false
                 if(CC_JSB){
-                    this.videoIsReadToPlay = false
+                    //this.videoIsReadToPlay = false
                 }
             }else if(videoID == 3){
                 //brach
@@ -306,7 +306,7 @@ cc.Class({
                 this.videoPauseNode.active = true
                 this.videoPauseTip.active = false
                 this.videoloadingEnd = false
-                this.videoIsReadToPlay = false
+               // this.videoIsReadToPlay = false
                 if(!CC_JSB){
                     this.videoPlayerNode.node.active = true
                     this.videoPlayerNode.clip =  cc.url.raw("resources/video/"+id) + ".mp4"
@@ -937,7 +937,7 @@ cc.Class({
                 self.videoPlayerNode.clip =  cc.url.raw("resources/video/"+self.playVideoID) + ".mp4"
             }
             self.videoloadingEnd = false
-            self.videoIsReadToPlay = false
+            //self.videoIsReadToPlay = false
             self.videoLoadingNode.active = true
             //var act = cc.sequence(cc.delayTime(2.0), cc.callFunc(self.loadEndFunc, self))
             //self.node.runAction(act)
