@@ -22,14 +22,16 @@ cc.Class({
         this.juhua.stopAllActions()
 
         cc.log("dasdddddddddddddddddddddddddddddddshowLoadingAction")
-        
-       // var act = cc.sequence(cc.repeat(cc.rotateBy(0.5, 360), 3.0),cc.callFunc(this.showEnd, this))
-
-       // this.juhua.runAction(act)
+        if(CC_JSB){
+            var act = cc.sequence(cc.repeat(cc.rotateBy(0.5, 360), 3.0),cc.callFunc(this.showEnd, this))
+            
+            this.juhua.runAction(act)
+        }
+       
     },
 
     showEnd:function(){
-        cc.cs.UIMgr.showPopupO("网络错误","请检查网络",this.closeLoading())
+        cc.cs.UIMgr.showPopupO("网络错误","请检查网络",this.closeLoading1())
     },
 
     openLoading : function(){
@@ -47,7 +49,16 @@ cc.Class({
         this.node.active = false
         this.node.stopAllActions()
         this.juhua.stopAllActions()
+        
     },
+
+    closeLoading1: function() {
+        this.node.active = false;
+        this.node.stopAllActions();
+        this.juhua.stopAllActions();
+        cc.cs.UIMgr.closeAllView()
+        
+        },
 
     // use this for initialization
     onLoad: function () {
