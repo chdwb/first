@@ -452,8 +452,8 @@ cc.Class({
                 this.panel.byteProgress.progress = event.getPercent();
                 this.panel.fileProgress.progress = event.getPercentByFile();
 
-                this.panel.fileLabel.string = event.getDownloadedFiles() + ' / ' + event.getTotalFiles();
-                this.panel.byteLabel.string = event.getDownloadedBytes() + ' / ' + event.getTotalBytes();
+                //this.panel.fileLabel.string = event.getDownloadedFiles() + ' / ' + event.getTotalFiles();
+                //this.panel.byteLabel.string = event.getDownloadedBytes() + ' / ' + event.getTotalBytes();
 
                 var msg = event.getMessage();
                 if (msg) {
