@@ -17341,6 +17341,9 @@
     },
     "_enabled": true,
     "isPlayStart": false,
+    "videoAnimationNode": {
+      "__id__": 388
+    },
     "bgNode": {
       "__id__": 3
     },

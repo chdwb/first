@@ -13,6 +13,10 @@ cc.Class({
         // },
         // ...
         isPlayStart : false,
+        videoAnimationNode:{
+            type: cc.Node,
+            default: null
+        },
         bgNode: {
             type: cc.Node,
             default: null
@@ -53,7 +57,7 @@ cc.Class({
             type: cc.Node,
             default: null
         },
-
+        
         videoPlayerNative:null,
         videoPlayerNative1:null,
         videoPlayerNative2:null,
@@ -172,7 +176,7 @@ cc.Class({
         var self = this
         this.playVideoID = id;
         var videoID =this.getVideoType(id + "")
-        
+        this.videoAnimationNode.getComponent(cc.Animation).setCurrentTime(0)
         if(CC_JSB){
             this.getVideoLev(id)
             if (1103 == id || "1103" == id) {
