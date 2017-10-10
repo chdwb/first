@@ -401,20 +401,20 @@ cc.Class({
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
                 this.panel.info.string = "版本检测失败，跳过更新";
 
-                this.updateUI.active = false
-                this.node.getChildByName("BG").active = true
+                 this.updateUI.active = false
+                this.loginNode.active = true
                 break;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
                 //this.panel.info.string = "Fail to download manifest file, hot update skipped.";
-                this.panel.info.string = "版本检测失败";
-                this.updateUI.active = false
-                this.node.getChildByName("BG").active = true
+                this.panel.info.string = "发生网络错误";
+                 this.updateUI.active = false
+                this.loginNode.active = true
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
                 this.panel.info.string = "已经是最新版";
-                this.updateUI.active = false
-                this.node.getChildByName("BG").active = true
+                 this.updateUI.active = false
+                this.loginNode.active = true
                 break;
             case jsb.EventAssetsManager.NEW_VERSION_FOUND:
                 this.panel.active = true
@@ -422,7 +422,13 @@ cc.Class({
                 this.panel.checkBtn.active = false;
                 this.panel.fileProgress.progress = 0;
                 this.panel.byteProgress.progress = 0;
+                
+                 this.schedule(function(){
+                    cc.log("更新")
                 this.hotUpdate()
+
+        },0.2,0);
+               
                 break;
             default:
                 return;
@@ -439,7 +445,7 @@ cc.Class({
         switch (event.getEventCode())
         {
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
-                this.panel.info.string = 'No local manifest file found, hot update skipped.';
+                this.panel.info.string = '更新失败.';
                 failed = true;
                 break;
             case jsb.EventAssetsManager.UPDATE_PROGRESSION:
@@ -451,13 +457,13 @@ cc.Class({
 
                 var msg = event.getMessage();
                 if (msg) {
-                    this.panel.info.string = '更新文件: ' + msg;
+                    //this.panel.info.string = '更新文件: ' + msg;
                     // cc.log(event.getPercent()/100 + '% : ' + msg);
                 }
                 break;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
-                this.panel.info.string = 'Fail to download manifest file, hot update skipped.';
+                this.panel.info.string = '更新失败';
                 failed = true;
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
@@ -491,8 +497,8 @@ cc.Class({
             this._updateListener = null;
             this._updating = false;
 
-            this.updateUI.active = false
-                this.node.getChildByName("BG").active = true
+             this.updateUI.active = false
+             this.loginNode.active = true
 
 
         }
@@ -555,6 +561,9 @@ cc.Class({
 
     hotUpdate: function () {
         if (this._am && !this._updating) {
+
+            
+            cc.log("gengxin 666")
             this._updateListener = new jsb.EventListenerAssetsManager(this._am, this.updateCb.bind(this));
             cc.eventManager.addListener(this._updateListener, 1);
 
@@ -578,7 +587,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         // Hot update is only available in Native build
-       /* if (!cc.sys.isNative) {
+        if (!cc.sys.isNative) {
             return;
         }
         this._storagePath = ((jsb.fileUtils ? jsb.fileUtils.getWritablePath() : '/') + 'blackjack-remote-asset');
@@ -650,12 +659,12 @@ cc.Class({
         this.panel.fileProgress.progress = 0;
         this.panel.byteProgress.progress = 0;
         
-        this.checkUpdate()*/
-        this.panel.fileProgress.progress = 0;
+        this.checkUpdate()
+        /*this.panel.fileProgress.progress = 0;
         this.panel.byteProgress.progress = 0;
         this.totalTime = 1
         this.currentTime = 0
-        this.isAction = true
+        this.isAction = true*/
     },
 
     onDestroy: function () {
