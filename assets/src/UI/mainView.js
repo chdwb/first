@@ -524,6 +524,8 @@ cc.Class({
         this.wechatBtn.getChildByName("stars").active = false;
         this.tipBG.active = false
 
+        this.SignRewardBtn.active = cc.cs.PlayerInfo.level >= cc.cs.gameData.getfunction_conditionsData(5)["FUNCTION_LEVEL"]
+
         if (this.SoundOff == true) {
             cc.cs.UIMgr.changeSprite(this.settingBtn, "mainMenu/unvoice")
         } else {
@@ -583,7 +585,7 @@ cc.Class({
         } else if (parseInt(cc.cs.PlayerInfo.guide_id) == 3) // 弹出恋爱按钮引导
         {
             cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, this.loveBtn, this)
-        } else if (parseInt(cc.cs.PlayerInfo.guide_id) == 11) // 弹出电话按钮引导
+        } else if (parseInt(cc.cs.PlayerInfo.guide_id) == 11 && cc.cs.PlayerInfo.level >= cc.cs.gameData.getfunction_conditionsData(5)["FUNCTION_LEVEL"]) // 弹出电话按钮引导
         {
             cc.cs.UIMgr.showGuide(parseInt(cc.cs.PlayerInfo.guide_id) + 1, this.SignRewardBtn, this)
         } else if (parseInt(cc.cs.PlayerInfo.guide_id) == 13) // 背包
@@ -609,7 +611,7 @@ cc.Class({
         this.tipBG.active = false
 
 
-        this.SignRewardBtn.action = cc.cs.PlayerInfo.level >= cc.cs.gameData.getfunction_conditionsData(6)["FUNCTION_LEVEL"]
+        
 
 
 
@@ -802,6 +804,9 @@ cc.Class({
         this.shopBtn.sindex = 8
         this.shopBtn.lev = 1
         this.shopBtn.active = false
+
+        this.SignRewardBtn.active = cc.cs.PlayerInfo.level >= cc.cs.gameData.getfunction_conditionsData(5)["FUNCTION_LEVEL"]
+        
 
         /*this.phoneBtn1.on("click", (event) => {
             cc.cs.UIMgr.showTip("第" + cc.cs.gameData.getlevelData(event.target.lev)["LEV_DAY"] + "天解锁")

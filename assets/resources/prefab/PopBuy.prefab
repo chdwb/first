@@ -112,12 +112,12 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1280,
-      "height": 960
+      "height": 720
     },
     "_rotationX": 0,
     "_rotationY": 0,
     "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleY": 0.9,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -138,7 +138,9 @@
       "__id__": 2
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "a5fd38cd-8aa2-433b-af31-d0317dc007bd"
+    },
     "_type": 1,
     "_sizeMode": 0,
     "_fillType": 0,
