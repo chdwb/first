@@ -451,6 +451,7 @@ cc.Class({
     playNativeVideo: function() {
         this.videoPlayerNative.videoPlay()
         this.videoPlayerNativeNode.active = true
+        this.nativeNvTextFlag = false
         this.videoPlayerNativeNode.runAction(cc.repeatForever(cc.callFunc(this.runNativePlayer, this)))
         this.isNativeVideoEnd = false;
     },
@@ -470,14 +471,14 @@ cc.Class({
                 var currentTime = self.videoPlayerNative1.getVideoCurrentFrame() * (self.videoPlayerNative1.getVideoFrameRate() * 1000)
                 var text = "";
                 //cc.log("self.nativeVideoText2 " + self.nativeVideoText2.length)
-                self.nativeNvTextFlag = false
+                //self.nativeNvTextFlag = false
                 for (var i = 0; i < self.nativeVideoText2.length; ++i) {
                     //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText2[i].starttime + "     " + self.nativeVideoText2[i].endtime + "     " + i)
                     if (currentTime >= self.nativeVideoText2[i].starttime && currentTime <= self.nativeVideoText2[i].endtime) {
                         text = self.nativeVideoText2[i].text
                         if (text[0] == "0") {
-                            if (i < self.nativeVideoText2.length) {
-                                if (self.nativeVideoText2[i + 1].text == "0") {
+                            if (i < self.nativeVideoText2.length - 1) {
+                                if (self.nativeVideoText2[i + 1].text[0] == "0") {
                                     if (self.nativeVideoText2[i + 1].starttime - self.nativeVideoText2[i].endtime < 1000) {
                                         self.nativeNvTextFlag = true
                                     } else {
@@ -540,7 +541,7 @@ cc.Class({
             } else {
                 var currentTime = self.videoPlayerNative2.getVideoCurrentFrame() * (self.videoPlayerNative2.getVideoFrameRate() * 1000)
                 var text = "";
-                self.nativeNvTextFlag = false
+                //self.nativeNvTextFlag = false
                     //cc.log("self.nativeVideoText3 " + self.nativeVideoText3.length)
 
                 for (var i = 0; i < self.nativeVideoText3.length; ++i) {
@@ -548,8 +549,8 @@ cc.Class({
                     if (currentTime >= self.nativeVideoText3[i].starttime && currentTime <= self.nativeVideoText3[i].endtime) {
                         text = self.nativeVideoText3[i].text
                         if (text[0] == "0") {
-                            if (i < self.nativeVideoText3.length) {
-                                if (self.nativeVideoText3[i + 1].text == "0") {
+                            if (i < self.nativeVideoText3.length - 1) {
+                                if (self.nativeVideoText3[i + 1].text[0] == "0") {
                                     if (self.nativeVideoText3[i + 1].starttime - self.nativeVideoText3[i].endtime < 1000) {
                                         self.nativeNvTextFlag = true
                                     } else {
@@ -656,7 +657,7 @@ cc.Class({
                 if (this.videoType != 2) {
                     var currentTime = self.videoPlayerNative.getVideoCurrentFrame() * (self.videoPlayerNative.getVideoFrameRate() * 1000)
                     var text = "";
-                    self.nativeNvTextFlag = false
+                    //self.nativeNvTextFlag = false
                         //cc.log("self.nativeVideoText1 " + self.nativeVideoText1.length)
 
                     for (var i = 0; i < self.nativeVideoText1.length; ++i) {
@@ -664,8 +665,8 @@ cc.Class({
                         if (currentTime >= self.nativeVideoText1[i].starttime && currentTime <= self.nativeVideoText1[i].endtime) {
                             text = self.nativeVideoText1[i].text
                             if (text[0] == "0") {
-                                if (i < self.nativeVideoText1.length) {
-                                    if (self.nativeVideoText1[i + 1].text == "0") {
+                                if (i < self.nativeVideoText1.length - 1) {
+                                    if (self.nativeVideoText1[i + 1].text[0] == "0") {
                                         if (self.nativeVideoText1[i + 1].starttime - self.nativeVideoText1[i].endtime < 1000) {
                                             self.nativeNvTextFlag = true
                                         } else {
@@ -770,6 +771,7 @@ cc.Class({
                     this.videoPlayerNative1.videoPlay()
                     this.isNativeVideoEnd = false;
                     this.videoPlayerNativeNode1.active = true
+                    this.nativeNvTextFlag = false
                     this.videoPlayerNativeNode1.runAction(cc.repeatForever(cc.callFunc(this.runNativeBranchVideo1Player, this)))
                 }
             }
@@ -787,6 +789,7 @@ cc.Class({
                 } else {
                     this.videoPlayerNative2.videoPlay()
                     this.videoPlayerNativeNode2.active = true
+                    this.nativeNvTextFlag = false
                     this.videoPlayerNativeNode2.runAction(cc.repeatForever(cc.callFunc(this.runNativeBranchVideo2Player, this)))
                     this.isNativeVideoEnd = false;
                 }

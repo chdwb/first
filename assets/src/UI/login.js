@@ -173,6 +173,7 @@ cc.Class({
         nativeNanNode: null,
         nativeNvNode: null,
         nativeVideoBtn: null,
+        nativeNvTextFlag:false,
     },
 
 
@@ -290,6 +291,7 @@ cc.Class({
                 this.videoNode.active = false
                 this.nativeVideoNode.active = true
                 this.nativeVideo.videoPlay()
+                this.nativeNvTextFlag = false
                 this.nativeVideoNode.runAction(cc.repeatForever(cc.callFunc(this.runNativePlayer, this)))
                 this.isNativeVideoEnd = false
                 this.nativeNvNode.active = false
@@ -346,33 +348,32 @@ cc.Class({
                 var currentTime = self.nativeVideo.getVideoCurrentFrame() * (self.nativeVideo.getVideoFrameRate() * 1000)
                 var text = "";
                 //cc.log("self.nativeVideoText " + self.nativeVideoText.length)
-                var nativeNvTextFlag = false
+                //var nativeNvTextFlag = false
                 for (var i = 0; i < self.nativeVideoText.length; ++i) {
                     //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText[i].starttime + "     " + self.nativeVideoText[i].endtime + "     " + i)
                     if (currentTime >= self.nativeVideoText[i].starttime && currentTime <= self.nativeVideoText[i].endtime) {
                         text = self.nativeVideoText[i].text
                         if (text[0] == "0") {
-                            if (i < self.nativeVideoText.length) {
+                            if (i < self.nativeVideoText.length - 1) {
                                 if (self.nativeVideoText[i + 1].text[0] == "0") {
                                     if (self.nativeVideoText[i + 1].starttime - self.nativeVideoText[i].endtime < 1000) {
-                                        nativeNvTextFlag = true
+                                        self.nativeNvTextFlag = true
                                     } else {
-                                        nativeNvTextFlag = false
+                                        self.nativeNvTextFlag = false
                                     }
                                 } else {
-                                    nativeNvTextFlag = false
+                                    self.nativeNvTextFlag = false
                                 }
                             } else {
-                                nativeNvTextFlag = false
+                                self.nativeNvTextFlag = false
                             }
                         } else {
-                            nativeNvTextFlag = false
+                            self.nativeNvTextFlag = false
                         }
                         break;
                     }
                 }
                 if (text != "") {
-                    cc.log(self.nativeNvNode + "     " + self.nativeNanNode)
                     if (text[0] == "0") {
 
                         self.nativeNvNode.active = true
@@ -386,8 +387,8 @@ cc.Class({
                         self.nativeNanNode.getChildByName("text").getComponent(cc.Label).string = text.replace(/\d/g, "")
                     }
                 } else {
-                    if (nativeNvTextFlag) {
-                        self.nativeNvNode.active = nativeNvTextFlag
+                    if (self.nativeNvTextFlag) {
+                        self.nativeNvNode.active = self.nativeNvTextFlag
                         self.nativeNvNode.getChildByName("text").getComponent(cc.Label).string = text;
                     } else {
                         self.nativeNvNode.active = false

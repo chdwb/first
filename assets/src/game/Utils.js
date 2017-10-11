@@ -21,16 +21,10 @@ cc.Class({
                 cc.log(data)
                 
                 var ttt = ""
-				var re = new RegExp(/\r\n/);
-				if (cc.sys.os==cc.sys.OS_IOS){
-					re = new RegExp(/\n/);
-					ttt = data.replace(/^\d+\n/gm, "")
-					ttt = ttt.replace(/^\n/gm, "")
-				}else{
-					ttt = data.replace(/^\d+\r\n/gm, "")
-					ttt = ttt.replace(/^\r\n/gm, "")
-				}
-               
+				var re = new RegExp(/\n/);
+                ttt = data.replace(/^\d+\n/gm, "")
+                ttt = ttt.replace(/^\n/gm, "")
+				
                 data = ttt
                 var hehe = data.split(re)
                 //var index = 1;
