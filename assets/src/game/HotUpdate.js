@@ -588,6 +588,9 @@ cc.Class({
     onLoad: function () {
         // Hot update is only available in Native build
         if (!cc.sys.isNative) {
+			
+			this.updateUI.active = false
+            this.loginNode.active = true
             return;
         }
         this._storagePath = ((jsb.fileUtils ? jsb.fileUtils.getWritablePath() : '/') + 'blackjack-remote-asset');
