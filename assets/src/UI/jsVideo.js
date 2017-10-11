@@ -475,9 +475,17 @@ cc.Class({
                     //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText2[i].starttime + "     " + self.nativeVideoText2[i].endtime + "     " + i)
                     if (currentTime >= self.nativeVideoText2[i].starttime && currentTime <= self.nativeVideoText2[i].endtime) {
                         text = self.nativeVideoText2[i].text
-                        if (i < self.nativeVideoText2.length) {
-                            if (self.nativeVideoText2[i + 1].starttime - self.nativeVideoText2[i].endtime < 1000) {
-                                self.nativeNvTextFlag = true
+                        if (text[0] == "0") {
+                            if (i < self.nativeVideoText2.length) {
+                                if (self.nativeVideoText2[i + 1].text == "0") {
+                                    if (self.nativeVideoText2[i + 1].starttime - self.nativeVideoText2[i].endtime < 1000) {
+                                        self.nativeNvTextFlag = true
+                                    } else {
+                                        self.nativeNvTextFlag = false
+                                    }
+                                } else {
+                                    self.nativeNvTextFlag = false
+                                }
                             } else {
                                 self.nativeNvTextFlag = false
                             }
@@ -539,9 +547,17 @@ cc.Class({
                     //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText3[i].starttime + "     " + self.nativeVideoText3[i].endtime + "     " + i)
                     if (currentTime >= self.nativeVideoText3[i].starttime && currentTime <= self.nativeVideoText3[i].endtime) {
                         text = self.nativeVideoText3[i].text
-                        if (i < self.nativeVideoText3.length) {
-                            if (self.nativeVideoText3[i + 1].starttime - self.nativeVideoText3[i].endtime < 1000) {
-                                self.nativeNvTextFlag = true
+                        if (text[0] == "0") {
+                            if (i < self.nativeVideoText3.length) {
+                                if (self.nativeVideoText3[i + 1].text == "0") {
+                                    if (self.nativeVideoText3[i + 1].starttime - self.nativeVideoText3[i].endtime < 1000) {
+                                        self.nativeNvTextFlag = true
+                                    } else {
+                                        self.nativeNvTextFlag = false
+                                    }
+                                } else {
+                                    self.nativeNvTextFlag = false
+                                }
                             } else {
                                 self.nativeNvTextFlag = false
                             }
@@ -647,9 +663,17 @@ cc.Class({
                         //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText1[i].starttime + "     " + self.nativeVideoText1[i].endtime + "     " + i)
                         if (currentTime >= self.nativeVideoText1[i].starttime && currentTime <= self.nativeVideoText1[i].endtime) {
                             text = self.nativeVideoText1[i].text
-                            if (i < self.nativeVideoText1.length) {
-                                if (self.nativeVideoText1[i + 1].starttime - self.nativeVideoText1[i].endtime < 1000) {
-                                    self.nativeNvTextFlag = true
+                            if (text[0] == "0") {
+                                if (i < self.nativeVideoText1.length) {
+                                    if (self.nativeVideoText1[i + 1].text == "0") {
+                                        if (self.nativeVideoText1[i + 1].starttime - self.nativeVideoText1[i].endtime < 1000) {
+                                            self.nativeNvTextFlag = true
+                                        } else {
+                                            self.nativeNvTextFlag = false
+                                        }
+                                    } else {
+                                        self.nativeNvTextFlag = false
+                                    }
                                 } else {
                                     self.nativeNvTextFlag = false
                                 }

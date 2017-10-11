@@ -351,9 +351,17 @@ cc.Class({
                     //cc.log("currentTime = " +currentTime  +  "     " + self.nativeVideoText[i].starttime + "     " + self.nativeVideoText[i].endtime + "     " + i)
                     if (currentTime >= self.nativeVideoText[i].starttime && currentTime <= self.nativeVideoText[i].endtime) {
                         text = self.nativeVideoText[i].text
-                        if (i < self.nativeVideoText.length) {
-                            if (self.nativeVideoText[i + 1].starttime - self.nativeVideoText[i].endtime < 1000) {
-                                nativeNvTextFlag = true
+                        if (text[0] == "0") {
+                            if (i < self.nativeVideoText.length) {
+                                if (self.nativeVideoText[i + 1].text[0] == "0") {
+                                    if (self.nativeVideoText[i + 1].starttime - self.nativeVideoText[i].endtime < 1000) {
+                                        nativeNvTextFlag = true
+                                    } else {
+                                        nativeNvTextFlag = false
+                                    }
+                                } else {
+                                    nativeNvTextFlag = false
+                                }
                             } else {
                                 nativeNvTextFlag = false
                             }
