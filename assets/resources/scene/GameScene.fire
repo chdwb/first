@@ -15103,7 +15103,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_id": "c07e63GSBxM/bSnWkl9HFoh",
@@ -16237,9 +16237,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 57,
+      "g": 57,
+      "b": 57,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -16259,8 +16259,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 506,
-      "y": 60
+      "x": 501,
+      "y": 57
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -16311,9 +16311,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 57,
+      "g": 57,
+      "b": 57,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -16324,8 +16324,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1210,
-      "height": 35
+      "width": 1108,
+      "height": 80
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -16333,7 +16333,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -607,
+      "x": -541,
       "y": -28
     },
     "_skewX": 0,
@@ -16354,12 +16354,12 @@
     "_useOriginalSize": false,
     "_actualFontSize": 35,
     "_fontSize": 35,
-    "_lineHeight": 35,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "LabelLabelLabelLabelLabelLabelLabelLabelLab",
+    "_N$string": "LabelLabelLabelLabelLabelLabelLabelLabelLabjilkjljoijoklkjpoljolijmpojmpomp;lml;m",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -16470,9 +16470,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 57,
+      "g": 57,
+      "b": 57,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -16492,8 +16492,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -513,
-      "y": 60
+      "x": -501,
+      "y": 57
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -16544,9 +16544,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 57,
+      "g": 57,
+      "b": 57,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -16557,8 +16557,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1210,
-      "height": 35
+      "width": 1087,
+      "height": 80
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -16566,7 +16566,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -607,
+      "x": -541,
       "y": -28
     },
     "_skewX": 0,
@@ -16587,12 +16587,12 @@
     "_useOriginalSize": false,
     "_actualFontSize": 35,
     "_fontSize": 35,
-    "_lineHeight": 35,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "LabelLabelLabelLabelLabelLabelLabelLabelLab",
+    "_N$string": "LabelLabelLabelLabelLabelLabelLabelLabelLabssahuifdhdosifhdosfjhndsgjnoifdljl",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
