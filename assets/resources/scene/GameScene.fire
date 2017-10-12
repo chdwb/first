@@ -5224,7 +5224,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 354
@@ -17416,6 +17416,7 @@
     "nativeVideoText3": [],
     "nativeNanNode": null,
     "nativeNvNode": null,
+    "nativeNvTextFlag": false,
     "facetimeAudioID": 0
   },
   {

@@ -111,7 +111,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 284,
+      "x": 244,
       "y": 44
     },
     "_skewX": 0,
@@ -191,7 +191,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 536,
+      "width": 500,
       "height": 30
     },
     "_rotationX": 0,
@@ -200,7 +200,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 6,
       "y": 0
     },
     "_skewX": 0,
@@ -228,7 +228,7 @@
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "撒大声地",
+    "_N$string": "撒大声地是的撒多萨达 萨达爱是萨达啊撒大",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
