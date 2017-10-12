@@ -99,6 +99,11 @@ cc.Class({
         this.startBtn = this.node.getChildByName("starBtn")
         this.btnLock = this.startBtn.getChildByName("suo")
         this.btnText = this.startBtn.getChildByName("btnText").getComponent(cc.Label)
+		if (this.isWork)
+		{
+		this.pircePic = this.node.getChildByName("upgradepic").getComponent(cc.Sprite)
+		this.priceText = this.node.getChildByName("upgradepic").getChildByName("priceText").getComponent(cc.Label)
+		}
     },
 
     getstartBtn : function(){
@@ -147,14 +152,23 @@ cc.Class({
                 this.btnLock.active = false
                 this.btnText.node.active = true
                 this.btnText.string = "开始"
+				this.timesLabel.node.active = true
+				this.pircePic.node.active = false 
+				
             } else if (workResult == 2) {
                 this.btnLock.active = false
                 this.btnText.node.active = true
                 this.btnText.string = "升职"
+				this.timesLabel.node.active = false
+				this.pircePic.node.active = true 
+				this.priceText.string = ""+workData["NEED_GOLD"]
             } else {
                 this.btnLock.active = true
                 this.btnText.node.active = false
                 this.startBtn.getComponent(cc.Button).interactable = false
+				this.timesLabel.node.active = false
+				this.pircePic.node.active = true 
+				this.priceText.string = ""+workData["NEED_GOLD"]
             }
 
         }else{
