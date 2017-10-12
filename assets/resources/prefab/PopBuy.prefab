@@ -59,12 +59,12 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 1.15,
+    "_scaleX": 1,
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 50
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -117,7 +117,7 @@
     "_rotationX": 0,
     "_rotationY": 0,
     "_scaleX": 1,
-    "_scaleY": 25,
+    "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -659,7 +659,7 @@
     },
     "_fillStart": 0,
     "_fillRange": 0,
-    "_isTrimmedMode": true,
+    "_isTrimmedMode": false,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
