@@ -211,9 +211,52 @@ cc.Class({
         else if (type == 5) {
             data["videoid"] = goodsid
         }
+        if (cc.sys.isNative && cc.sys.os == cc.sys.OS_IOS) {
+            this.miostype = type
+            this.mgoodsid = goodsid
+            this.mnum = num
+            this.mhandle = handle
+            this.obj = obj
+            let ret = jsb.reflection.callStaticMethod("RootViewController", "pay");
+            
 
+            //return ret
+        }
+        else
+        {
+            this.sendHttp("ID_12", data, handle, obj)
+        }
+    },
+
+    IOSBuy: function(recipt)
+    {
+        this.sendGoodBuyIOS(this.miostype,this.mgoodsid,this.mnum,this.mhandle,this.obj,recipt)
+    }
+
+    sendGoodBuyIOS: function(type, goodsid, num, handle, obj) {
+        cc.cs.UIMgr.showNetView()
+        var data = {}
+        data["api_token"] = cc.cs.PlayerInfo.api_token
+        data["type"] = type
+        if (type == 1) {
+            data["goodsid"] = goodsid
+            data["num"] = num
+        } else if (type == 2) {
+            data["goldid"] = goodsid
+            data["num"] = num
+        } else if (type == 3) {
+            data["hotid"] = goodsid
+        } else if (type == 4) {
+            data["workpkid"] = goodsid
+        }
+        else if (type == 5) {
+            data["videoid"] = goodsid
+        }
+        data["recipt"] = recipt
         this.sendHttp("ID_12", data, handle, obj)
     },
+
+
 
     sendSign: function(handle, obj) {
         cc.cs.UIMgr.showNetView()

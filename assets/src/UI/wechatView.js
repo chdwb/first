@@ -717,7 +717,8 @@ cc.Class({
     },
 
     buyLIJI: function() {
-        cc.cs.gameMgr.buyRightNow(1, this.onRightNowHandle, this)
+        //cc.cs.gameMgr.buyRightNow(1, this.onRightNowHandle, this)
+        cc.cs.gameMgr.sendGoodBuy(3, 1, 1, this.onBuyRightNowhandle,this) 
     },
 
     onRightNowHandle: function(ret) {
