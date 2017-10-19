@@ -275,6 +275,8 @@ cc.Class({
         if (this.canPhone()) return false
         if (this.wechat_id == 0)
             this.wechat_id = 1
+        if(this.wechat_id == cc.cs.gameData.wechat.LAST)
+            return false
         var pWechatData = cc.cs.gameData.getwechatData(this.wechat_id)
         var pNextWechatData = cc.cs.gameData.getwechatData(  parseInt(this.wechat_id) + 1)
         if (pWechatData != null) {
@@ -296,6 +298,8 @@ cc.Class({
     },
 
     canPhone: function() {
+        if(this.Phone_ID == cc.cs.gameData.phone.LAST)
+            return false
         var pPhoneData = cc.cs.gameData.getphoneData(this.Phone_ID)
         var pPhoneNextData = cc.cs.gameData.getphoneData(this.Phone_ID + 1)
         cc.log(" canPhone: function()  " + pPhoneData + "    " + this.Phone_ID)
