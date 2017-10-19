@@ -27,29 +27,29 @@ class PhpData{
 	);
 	public $buy_gold = array
 	(
-		"ID_1"=>array("ID"=>1, "BUY_PRICE"=>6, "BUY_GOLD"=>1020, "GOLD_EXTRA"=>0),
-		"ID_2"=>array("ID"=>2, "BUY_PRICE"=>12, "BUY_GOLD"=>2040, "GOLD_EXTRA"=>120),
-		"ID_3"=>array("ID"=>3, "BUY_PRICE"=>30, "BUY_GOLD"=>5100, "GOLD_EXTRA"=>450),
-		"ID_4"=>array("ID"=>4, "BUY_PRICE"=>68, "BUY_GOLD"=>11560, "GOLD_EXTRA"=>1360),
-		"ID_5"=>array("ID"=>5, "BUY_PRICE"=>98, "BUY_GOLD"=>16660, "GOLD_EXTRA"=>2450),
-		"ID_6"=>array("ID"=>6, "BUY_PRICE"=>198, "BUY_GOLD"=>33660, "GOLD_EXTRA"=>5940)
+		"ID_1"=>array("ID"=>1, "BUY_PRICE"=>6, "BUY_GOLD"=>1020, "GOLD_EXTRA"=>0, "IOS_ID1"=>"com.qyny.1", "IOS_ID2"=>"com.mmny.1", "IOS_ID3"=>"com.snpy.1"),
+		"ID_2"=>array("ID"=>2, "BUY_PRICE"=>12, "BUY_GOLD"=>2040, "GOLD_EXTRA"=>120, "IOS_ID1"=>"com.qyny.2", "IOS_ID2"=>"com.mmny.2", "IOS_ID3"=>"com.snpy.2"),
+		"ID_3"=>array("ID"=>3, "BUY_PRICE"=>30, "BUY_GOLD"=>5100, "GOLD_EXTRA"=>450, "IOS_ID1"=>"com.qyny.3", "IOS_ID2"=>"com.mmny.3", "IOS_ID3"=>"com.snpy.3"),
+		"ID_4"=>array("ID"=>4, "BUY_PRICE"=>68, "BUY_GOLD"=>11560, "GOLD_EXTRA"=>1360, "IOS_ID1"=>"com.qyny.4", "IOS_ID2"=>"com.mmny.4", "IOS_ID3"=>"com.snpy.4"),
+		"ID_5"=>array("ID"=>5, "BUY_PRICE"=>98, "BUY_GOLD"=>16660, "GOLD_EXTRA"=>2450, "IOS_ID1"=>"com.qyny.5", "IOS_ID2"=>"com.mmny.5", "IOS_ID3"=>"com.snpy.5"),
+		"ID_6"=>array("ID"=>6, "BUY_PRICE"=>198, "BUY_GOLD"=>33660, "GOLD_EXTRA"=>5940, "IOS_ID1"=>"com.qyny.6", "IOS_ID2"=>"com.mmny.6", "IOS_ID3"=>"com.snpy.6")
 	);
 	public $hot_package = array
 	(
-		"ID_1"=>array("ID"=>1, "NAME"=>"回复礼包", "BUY_PRICE"=>6, "SHOW_PRICE"=>12, "OPEN_FUNCTION"=>"1,2", "GOLD_NUM"=>666, "GOODS_1_ID"=>"dummy", "GOODS_1_NUM"=>"dummy", "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy"),
-		"ID_2"=>array("ID"=>2, "NAME"=>"一键礼包", "BUY_PRICE"=>18, "SHOW_PRICE"=>38, "OPEN_FUNCTION"=>"3,4", "GOLD_NUM"=>888, "GOODS_1_ID"=>"dummy", "GOODS_1_NUM"=>"dummy", "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy"),
-		"ID_3"=>array("ID"=>3, "NAME"=>"新手礼包", "BUY_PRICE"=>28, "SHOW_PRICE"=>34, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>1888, "GOODS_1_ID"=>104, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>2, "GOODS_2_NUM"=>5),
-		"ID_4"=>array("ID"=>4, "NAME"=>"特惠礼包", "BUY_PRICE"=>98, "SHOW_PRICE"=>134, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>16888, "GOODS_1_ID"=>105, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>3, "GOODS_2_NUM"=>5),
-		"ID_5"=>array("ID"=>5, "NAME"=>"豪华礼包", "BUY_PRICE"=>168, "SHOW_PRICE"=>244, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>28888, "GOODS_1_ID"=>106, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>4, "GOODS_2_NUM"=>5),
-		"ID_6"=>array("ID"=>6, "NAME"=>"超凡礼包", "BUY_PRICE"=>328, "SHOW_PRICE"=>494, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>48888, "GOODS_1_ID"=>107, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>5, "GOODS_2_NUM"=>5),
-		"ID_7"=>array("ID"=>7, "NAME"=>"写真视频", "BUY_PRICE"=>328, "SHOW_PRICE"=>450, "OPEN_FUNCTION"=>5, "GOLD_NUM"=>"dummy", "GOODS_1_ID"=>"dummy", "GOODS_1_NUM"=>"dummy", "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy")
+		"ID_1"=>array("ID"=>1, "NAME"=>"回复礼包", "BUY_PRICE"=>6, "SHOW_PRICE"=>12, "OPEN_FUNCTION"=>"1,2", "GOLD_NUM"=>666, "GOODS_1_ID"=>"dummy", "GOODS_1_NUM"=>"dummy", "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy", "IOS_ID1"=>"com.snpy.7", "IOS_ID2"=>"com.qyny.7", "IOS_ID3"=>"com.snpy.7"),
+		"ID_2"=>array("ID"=>2, "NAME"=>"一键礼包", "BUY_PRICE"=>18, "SHOW_PRICE"=>38, "OPEN_FUNCTION"=>"3,4", "GOLD_NUM"=>888, "GOODS_1_ID"=>"dummy", "GOODS_1_NUM"=>"dummy", "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy", "IOS_ID1"=>"com.snpy.8", "IOS_ID2"=>"com.qyny.8", "IOS_ID3"=>"com.snpy.8"),
+		"ID_3"=>array("ID"=>3, "NAME"=>"新手礼包", "BUY_PRICE"=>30, "SHOW_PRICE"=>34, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>1888, "GOODS_1_ID"=>104, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>2, "GOODS_2_NUM"=>5, "IOS_ID1"=>"com.snpy.9", "IOS_ID2"=>"com.qyny.9", "IOS_ID3"=>"com.snpy.9"),
+		"ID_4"=>array("ID"=>4, "NAME"=>"特惠礼包", "BUY_PRICE"=>98, "SHOW_PRICE"=>134, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>16888, "GOODS_1_ID"=>105, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>3, "GOODS_2_NUM"=>5, "IOS_ID1"=>"com.snpy.10", "IOS_ID2"=>"com.qyny.10", "IOS_ID3"=>"com.snpy.10"),
+		"ID_5"=>array("ID"=>5, "NAME"=>"豪华礼包", "BUY_PRICE"=>168, "SHOW_PRICE"=>244, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>28888, "GOODS_1_ID"=>106, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>4, "GOODS_2_NUM"=>5, "IOS_ID1"=>"com.snpy.11", "IOS_ID2"=>"com.qyny.15", "IOS_ID3"=>"com.snpy.11"),
+		"ID_6"=>array("ID"=>6, "NAME"=>"超凡礼包", "BUY_PRICE"=>328, "SHOW_PRICE"=>494, "OPEN_FUNCTION"=>"dummy", "GOLD_NUM"=>48888, "GOODS_1_ID"=>107, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>5, "GOODS_2_NUM"=>5, "IOS_ID1"=>"com.snpy.12", "IOS_ID2"=>"com.qyny.16", "IOS_ID3"=>"com.snpy.12"),
+		"ID_7"=>array("ID"=>7, "NAME"=>"写真视频", "BUY_PRICE"=>328, "SHOW_PRICE"=>450, "OPEN_FUNCTION"=>5, "GOLD_NUM"=>"dummy", "GOODS_1_ID"=>"dummy", "GOODS_1_NUM"=>"dummy", "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy", "IOS_ID1"=>"com.snpy.13", "IOS_ID2"=>"com.qyny.17", "IOS_ID3"=>"com.snpy.13")
 	);
 	public $work_package = array
 	(
-		"ID_1"=>array("ID"=>1, "NAME"=>"新人礼包", "BUY_PRICE"=>18, "SHOW_PRICE"=>48, "OPEN_FUNCTION"=>3, "GOLD_NUM"=>666, "GOODS_1_ID"=>1, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy"),
-		"ID_2"=>array("ID"=>2, "NAME"=>"成长礼包", "BUY_PRICE"=>68, "SHOW_PRICE"=>168, "OPEN_FUNCTION"=>5, "GOLD_NUM"=>2666, "GOODS_1_ID"=>102, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy"),
-		"ID_3"=>array("ID"=>3, "NAME"=>"进阶礼包", "BUY_PRICE"=>198, "SHOW_PRICE"=>428, "OPEN_FUNCTION"=>7, "GOLD_NUM"=>6666, "GOODS_1_ID"=>104, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy"),
-		"ID_4"=>array("ID"=>4, "NAME"=>"霸权礼包", "BUY_PRICE"=>648, "SHOW_PRICE"=>1588, "OPEN_FUNCTION"=>10, "GOLD_NUM"=>16666, "GOODS_1_ID"=>106, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy")
+		"ID_1"=>array("ID"=>1, "NAME"=>"新人礼包", "BUY_PRICE"=>18, "SHOW_PRICE"=>48, "OPEN_FUNCTION"=>3, "GOLD_NUM"=>666, "GOODS_1_ID"=>1, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy", "IOS_ID1"=>"com.qyny.18", "IOS_ID2"=>"com.mmny.14", "IOS_ID3"=>"com.snpy.14"),
+		"ID_2"=>array("ID"=>2, "NAME"=>"成长礼包", "BUY_PRICE"=>68, "SHOW_PRICE"=>168, "OPEN_FUNCTION"=>5, "GOLD_NUM"=>2666, "GOODS_1_ID"=>102, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy", "IOS_ID1"=>"com.qyny.19", "IOS_ID2"=>"com.mmny.15", "IOS_ID3"=>"com.snpy.15"),
+		"ID_3"=>array("ID"=>3, "NAME"=>"进阶礼包", "BUY_PRICE"=>198, "SHOW_PRICE"=>428, "OPEN_FUNCTION"=>7, "GOLD_NUM"=>6666, "GOODS_1_ID"=>104, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy", "IOS_ID1"=>"com.qyny.20", "IOS_ID2"=>"com.mmny.16", "IOS_ID3"=>"com.snpy.16"),
+		"ID_4"=>array("ID"=>4, "NAME"=>"霸权礼包", "BUY_PRICE"=>648, "SHOW_PRICE"=>1588, "OPEN_FUNCTION"=>10, "GOLD_NUM"=>16666, "GOODS_1_ID"=>106, "GOODS_1_NUM"=>5, "GOODS_2_ID"=>"dummy", "GOODS_2_NUM"=>"dummy", "IOS_ID1"=>"com.qyny.21", "IOS_ID2"=>"com.mmny.17", "IOS_ID3"=>"com.snpy.17")
 	);
 	public $level = array
 	(
@@ -2351,19 +2351,19 @@ class PhpData{
 		"GUIDE_ID_1"=>array("GUIDE_ID"=>1, "GUIDE_TEXT"=>"欢迎您的到来，我是你的爱情导师，请多指教哦！", "NEXT"=>2),
 		"GUIDE_ID_2"=>array("GUIDE_ID"=>2, "GUIDE_TEXT"=>"我们先来了解下游戏吧，看见左上角的桃心了么？", "NEXT"=>3),
 		"GUIDE_ID_3"=>array("GUIDE_ID"=>3, "GUIDE_TEXT"=>"当亲密值满，并且电话、微信都完成时，就能触发剧情视频和美女互动咯。", "NEXT"=>"dummy"),
-		"GUIDE_ID_4"=>array("GUIDE_ID"=>4, "GUIDE_TEXT"=>"恋爱是提升亲密度最简单的方法，去试试吧！", "NEXT"=>"dummy"),
+		"GUIDE_ID_4"=>array("GUIDE_ID"=>4, "GUIDE_TEXT"=>"恋爱是提升你和她关系的最简单的方法，快去试试吧。", "NEXT"=>"dummy"),
 		"GUIDE_ID_5"=>array("GUIDE_ID"=>5, "GUIDE_TEXT"=>"烹饪一道美味佳肴可是讨好美女的第一步，加油！", "NEXT"=>"dummy"),
-		"GUIDE_ID_6"=>array("GUIDE_ID"=>6, "GUIDE_TEXT"=>"现在可以给美女打电话了哟，打电话是触发下个剧情的必须条件，快去打电话吧！", "NEXT"=>"dummy"),
-		"GUIDE_ID_7"=>array("GUIDE_ID"=>7, "GUIDE_TEXT"=>"点击右边的拨号按钮，开始跟美女煲电话粥吧~~~", "NEXT"=>"dummy"),
+		"GUIDE_ID_6"=>array("GUIDE_ID"=>6, "GUIDE_TEXT"=>"给梦甜打电话也能提升你们的关系，同时也是剧情发展的必要部分，快给梦甜打个电话看看吧。", "NEXT"=>"dummy"),
+		"GUIDE_ID_7"=>array("GUIDE_ID"=>7, "GUIDE_TEXT"=>"点击右边的拨号按钮，开始跟梦甜煲电话粥吧。", "NEXT"=>"dummy"),
 		"GUIDE_ID_8"=>array("GUIDE_ID"=>8, "GUIDE_TEXT"=>"有些话用微信表达会比打电话更好哦！", "NEXT"=>"dummy"),
 		"GUIDE_ID_9"=>array("GUIDE_ID"=>9, "GUIDE_TEXT"=>"跟美女聊天可是有技巧的，特别要注意你的言辞哦!", "NEXT"=>"dummy"),
-		"GUIDE_ID_10"=>array("GUIDE_ID"=>10, "GUIDE_TEXT"=>"钱不是万能的，没钱却是万万不能的，去工作赚小钱钱吧。", "NEXT"=>"dummy"),
+		"GUIDE_ID_10"=>array("GUIDE_ID"=>10, "GUIDE_TEXT"=>"钱不是万能的，但没钱是万万不能的，去工作赚点零花钱吧。", "NEXT"=>"dummy"),
 		"GUIDE_ID_11"=>array("GUIDE_ID"=>11, "GUIDE_TEXT"=>"升职加薪当霸道总裁赢娶白富美走上人生巅峰，接下来全看你的了。", "NEXT"=>"dummy"),
 		"GUIDE_ID_12"=>array("GUIDE_ID"=>12, "GUIDE_TEXT"=>"每天签到，奖励多多。", "NEXT"=>"dummy"),
 		"GUIDE_ID_13"=>array("GUIDE_ID"=>13, "GUIDE_TEXT"=>"快快领取吧。", "NEXT"=>"dummy"),
 		"GUIDE_ID_14"=>array("GUIDE_ID"=>14, "GUIDE_TEXT"=>"签到赠送的亲密道具可别忘记使用，那可是能增加美女亲密值的哦！", "NEXT"=>"dummy"),
 		"GUIDE_ID_15"=>array("GUIDE_ID"=>15, "GUIDE_TEXT"=>"亲密道具除了巧克力、玫瑰花外，商城里可还有很多其他的呢，有空去逛逛把！", "NEXT"=>"dummy"),
-		"GUIDE_ID_16"=>array("GUIDE_ID"=>16, "GUIDE_TEXT"=>"美女的微博可是美女心情的指向标哟，瞧瞧去。", "NEXT"=>"dummy"),
+		"GUIDE_ID_16"=>array("GUIDE_ID"=>16, "GUIDE_TEXT"=>"梦甜的微博记录了她每日生活的点点滴滴，快进去看看吧。", "NEXT"=>"dummy"),
 		"GUIDE_ID_17"=>array("GUIDE_ID"=>17, "GUIDE_TEXT"=>"光看微博是不够的，“点赞”和“评论”留下你的足迹，可让美女好好记住你哦。", "NEXT"=>"dummy")
 	);
 	public $zone = array
@@ -2780,32 +2780,34 @@ class PhpData{
 	);
 	public $http = array
 	(
-		"ID_1"=>array("ID"=>1, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/register", "Params"=>"username, password,_deviceid", "Method"=>"POST", "Remark"=>"用户账号注册使用。"),
-		"ID_2"=>array("ID"=>2, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/login", "Params"=>"_username, _password,_deviceid", "Method"=>"POST", "Remark"=>"用户账号登录，相关数据初始化。"),
-		"ID_3"=>array("ID"=>3, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/setname", "Params"=>"api_token,name", "Method"=>"POST", "Remark"=>"给玩家命名"),
-		"ID_4"=>array("ID"=>4, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/sign/dosign", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"玩家签到与奖励。"),
-		"ID_5"=>array("ID"=>5, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/dowork", "Params"=>"api_token,workid", "Method"=>"POST", "Remark"=>"玩家工作以及相关参数返回。"),
-		"ID_6"=>array("ID"=>6, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/donework", "Params"=>"api_token,worklogid", "Method"=>"POST", "Remark"=>"工作完成。"),
-		"ID_7"=>array("ID"=>7, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/upwork", "Params"=>"api_token,workid", "Method"=>"POST", "Remark"=>"升级工作。"),
-		"ID_8"=>array("ID"=>8, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/backpack/get", "Params"=>"api_token", "Method"=>"GET", "Remark"=>"获取玩家背包。"),
-		"ID_9"=>array("ID"=>9, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/dodate", "Params"=>"api_token,dateid", "Method"=>"POST", "Remark"=>"约会请求。"),
-		"ID_10"=>array("ID"=>10, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/donedate", "Params"=>"api_token,datelogid", "Method"=>"POST", "Remark"=>"约会完成。"),
-		"ID_11"=>array("ID"=>11, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/update", "Params"=>"api_token,dateid", "Method"=>"POST", "Remark"=>"升级约会。"),
-		"ID_12"=>array("ID"=>12, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/buy", "Params"=>"api_token,type,_goodsid,_num,_goldid,_hotid,_workpkid", "Method"=>"POST", "Remark"=>"购买道具。"),
-		"ID_13"=>array("ID"=>13, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/phone", "Params"=>"api_token,phoneid", "Method"=>"POST", "Remark"=>"提交电话。"),
-		"ID_14"=>array("ID"=>14, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/thumb", "Params"=>"api_token,zoneid", "Method"=>"POST", "Remark"=>"提交点赞。"),
-		"ID_15"=>array("ID"=>15, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/reply", "Params"=>"api_token,replyid", "Method"=>"POST", "Remark"=>"提交回复。"),
-		"ID_16"=>array("ID"=>16, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/wechat", "Params"=>"api_token,wechatid", "Method"=>"POST", "Remark"=>"提交微信。"),
-		"ID_17"=>array("ID"=>17, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/touse", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"使用道具。"),
-		"ID_18"=>array("ID"=>18, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/buyright", "Params"=>"api_token,type", "Method"=>"POST", "Remark"=>"购买一键完成"),
-		"ID_19"=>array("ID"=>19, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/work/rightdone", "Params"=>"api_token,worklogid", "Method"=>"POST", "Remark"=>"工作一键完成，会扣除相应道具。"),
-		"ID_20"=>array("ID"=>20, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/rightdone", "Params"=>"api_token,datelogid", "Method"=>"POST", "Remark"=>"约会一键完成，会扣除相应道具。"),
-		"ID_21"=>array("ID"=>21, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/goods/gifts", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"提交送礼物。"),
-		"ID_22"=>array("ID"=>22, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/date/buytimes", "Params"=>"api_token,dateid,num", "Method"=>"POST", "Remark"=>"购买约会次数。"),
-		"ID_23"=>array("ID"=>23, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/donevideo", "Params"=>"api_token,videoid", "Method"=>"POST", "Remark"=>"观看视频完成。"),
-		"ID_24"=>array("ID"=>24, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/video/geturl", "Params"=>"api_token,videoid", "Method"=>"POST", "Remark"=>"获取视频url。"),
-		"ID_25"=>array("ID"=>25, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/make/fastwechat", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"购买快速回复微信。"),
-		"ID_26"=>array("ID"=>26, "Host"=>"http://112.74.36.182:8888", "Route"=>"/cygame/public/user/guide", "Params"=>"api_token,guideid", "Method"=>"POST", "Remark"=>"提交新手指引进度。")
+		"ID_1"=>array("ID"=>1, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/user/register", "Params"=>"username, password,_deviceid", "Method"=>"POST", "Remark"=>"用户账号注册使用。"),
+		"ID_2"=>array("ID"=>2, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/user/login", "Params"=>"_username, _password,_deviceid", "Method"=>"POST", "Remark"=>"用户账号登录，相关数据初始化。"),
+		"ID_3"=>array("ID"=>3, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/user/setname", "Params"=>"api_token,name", "Method"=>"POST", "Remark"=>"给玩家命名"),
+		"ID_4"=>array("ID"=>4, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/sign/dosign", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"玩家签到与奖励。"),
+		"ID_5"=>array("ID"=>5, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/work/dowork", "Params"=>"api_token,workid", "Method"=>"POST", "Remark"=>"玩家工作以及相关参数返回。"),
+		"ID_6"=>array("ID"=>6, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/work/donework", "Params"=>"api_token,worklogid", "Method"=>"POST", "Remark"=>"工作完成。"),
+		"ID_7"=>array("ID"=>7, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/work/upwork", "Params"=>"api_token,workid", "Method"=>"POST", "Remark"=>"升级工作。"),
+		"ID_8"=>array("ID"=>8, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/backpack/get", "Params"=>"api_token", "Method"=>"GET", "Remark"=>"获取玩家背包。"),
+		"ID_9"=>array("ID"=>9, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/date/dodate", "Params"=>"api_token,dateid", "Method"=>"POST", "Remark"=>"约会请求。"),
+		"ID_10"=>array("ID"=>10, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/date/donedate", "Params"=>"api_token,datelogid", "Method"=>"POST", "Remark"=>"约会完成。"),
+		"ID_11"=>array("ID"=>11, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/date/update", "Params"=>"api_token,dateid", "Method"=>"POST", "Remark"=>"升级约会。"),
+		"ID_12"=>array("ID"=>12, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/goods/buy", "Params"=>"api_token,type,_goodsid,_num,_goldid,_hotid,_workpkid,_receipt", "Method"=>"POST", "Remark"=>"购买道具。"),
+		"ID_13"=>array("ID"=>13, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/make/phone", "Params"=>"api_token,phoneid", "Method"=>"POST", "Remark"=>"提交电话。"),
+		"ID_14"=>array("ID"=>14, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/make/thumb", "Params"=>"api_token,zoneid", "Method"=>"POST", "Remark"=>"提交点赞。"),
+		"ID_15"=>array("ID"=>15, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/make/reply", "Params"=>"api_token,replyid", "Method"=>"POST", "Remark"=>"提交回复。"),
+		"ID_16"=>array("ID"=>16, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/make/wechat", "Params"=>"api_token,wechatid", "Method"=>"POST", "Remark"=>"提交微信。"),
+		"ID_17"=>array("ID"=>17, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/goods/touse", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"使用道具。"),
+		"ID_18"=>array("ID"=>18, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/goods/buyright", "Params"=>"api_token,type", "Method"=>"POST", "Remark"=>"购买一键完成"),
+		"ID_19"=>array("ID"=>19, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/work/rightdone", "Params"=>"api_token,worklogid", "Method"=>"POST", "Remark"=>"工作一键完成，会扣除相应道具。"),
+		"ID_20"=>array("ID"=>20, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/date/rightdone", "Params"=>"api_token,datelogid", "Method"=>"POST", "Remark"=>"约会一键完成，会扣除相应道具。"),
+		"ID_21"=>array("ID"=>21, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/goods/gifts", "Params"=>"api_token,goodsid,num", "Method"=>"POST", "Remark"=>"提交送礼物。"),
+		"ID_22"=>array("ID"=>22, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/date/buytimes", "Params"=>"api_token,dateid,num", "Method"=>"POST", "Remark"=>"购买约会次数。"),
+		"ID_23"=>array("ID"=>23, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/user/donevideo", "Params"=>"api_token,videoid", "Method"=>"POST", "Remark"=>"观看视频完成。"),
+		"ID_24"=>array("ID"=>24, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/video/geturl", "Params"=>"api_token,videoid", "Method"=>"POST", "Remark"=>"获取视频url。"),
+		"ID_25"=>array("ID"=>25, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/make/fastwechat", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"购买快速回复微信。"),
+		"ID_26"=>array("ID"=>26, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/user/guide", "Params"=>"api_token,guideid", "Method"=>"POST", "Remark"=>"提交新手指引进度。"),
+		"ID_27"=>array("ID"=>27, "Host"=>"https://gm.zyuegame.com", "Route"=>"/cygame-ios1/public/sys/ping", "Params"=>"api_token", "Method"=>"POST", "Remark"=>"网络状态。"),
+		"ID_28"=>array("ID"=>28, "Host"=>"https://gm.zyuegame.com", "Route"=>"/newvideo7/", "Params"=>"dummy", "Method"=>"GET", "Remark"=>"视频接口。")
 	);
 	public $errorcode = array
 	(
