@@ -4950,7 +4950,8 @@
     "nativeVideoText": [],
     "nativeNanNode": null,
     "nativeNvNode": null,
-    "nativeVideoBtn": null
+    "nativeVideoBtn": null,
+    "nativeNvTextFlag": false
   },
   {
     "__type__": "cc.Node",
