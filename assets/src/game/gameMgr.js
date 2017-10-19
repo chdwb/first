@@ -217,8 +217,12 @@ cc.Class({
             this.mnum = num
             this.mhandle = handle
             this.obj = obj
-            let ret = jsb.reflection.callStaticMethod("RootViewController", "pay");
-            
+
+            var iosid =  cc.cs.gameData.work_package["IOS_ID1"]
+            //let ret = jsb.reflection.callStaticMethod("RootViewController", "pay",iosid);
+            jsb.reflection.callStaticMethod("RootViewController", "pay:andContent:",
+                                           iosid, 
+                                           "Yes!");
 
             //return ret
         }
@@ -231,7 +235,7 @@ cc.Class({
     IOSBuy: function(recipt)
     {
         this.sendGoodBuyIOS(this.miostype,this.mgoodsid,this.mnum,this.mhandle,this.obj,recipt)
-    }
+    },
 
     sendGoodBuyIOS: function(type, goodsid, num, handle, obj) {
         cc.cs.UIMgr.showNetView()
@@ -252,7 +256,7 @@ cc.Class({
         else if (type == 5) {
             data["videoid"] = goodsid
         }
-        data["recipt"] = recipt
+        data["receipt"] = recipt
         this.sendHttp("ID_12", data, handle, obj)
     },
 
