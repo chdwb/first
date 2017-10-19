@@ -389,10 +389,10 @@ cc.Class({
             if (this.ZoneIDList[i].zoneID == id) return
         }
 
-        if (id != cc.cs.gameData.zone["FIRST"]) {
-            var line = cc.instantiate(this.linePrefab)
-            cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
-        }
+       // if (id != cc.cs.gameData.zone["FIRST"]) {
+        //    var line = cc.instantiate(this.linePrefab)
+       //     cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
+       // }
 
         var zoneData = cc.cs.gameData.getzoneData(id)
 
@@ -430,10 +430,10 @@ cc.Class({
             if (this.ZoneIDList[i].zoneID == id) return
         }
 
-        if (id != cc.cs.gameData.zone["FIRST"]) {
-            var line = cc.instantiate(this.linePrefab)
-            cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
-        }
+        //if (id != cc.cs.gameData.zone["FIRST"]) {
+        //    var line = cc.instantiate(this.linePrefab)
+        //    cc.cs.UIMgr.addItem_verticalScrollViewUp(this.scrollView, line, 0)
+        //}
 
         var zoneData = cc.cs.gameData.getzoneData(id)
 
@@ -466,8 +466,8 @@ cc.Class({
         this.addNewNode.unshift(zoneItem)
         this.scrollView.content.addChild(zoneItem)
 
-
-
+        //var line = cc.instantiate(this.linePrefab)
+        //this.scrollView.content.addChild(line)
     },
 
     /*canZone: function() {
