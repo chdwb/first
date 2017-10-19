@@ -163,12 +163,12 @@ cc.Class({
         if (videoData != null) {
             var bData = cc.cs.gameData.getbranchVideoData(videoData["PLOT_VIDEO_ID"])
             if (bData != null) {
-                this.startDownload("http://112.74.36.182:8888/newvideo7/" + bData["PLOT_VIDEO_LINK_VIDEO_1"] + ".mp4", bData["PLOT_VIDEO_LINK_VIDEO_1"] + ".mp4")
-                this.startDownload("http://112.74.36.182:8888/newvideo7/" + bData["PLOT_VIDEO_LINK_VIDEO_2"] + ".mp4", bData["PLOT_VIDEO_LINK_VIDEO_2"] + ".mp4")
+                this.startDownload(cc.cs.DownloadMgr.downLoadURL() + bData["PLOT_VIDEO_LINK_VIDEO_1"] + ".mp4", bData["PLOT_VIDEO_LINK_VIDEO_1"] + ".mp4")
+                this.startDownload(cc.cs.DownloadMgr.downLoadURL() + bData["PLOT_VIDEO_LINK_VIDEO_2"] + ".mp4", bData["PLOT_VIDEO_LINK_VIDEO_2"] + ".mp4")
             }
-            this.startDownload("http://112.74.36.182:8888/newvideo7/" + videoData["LEV_STORY_VIDEO_ID"] + ".mp4", videoData["LEV_STORY_VIDEO_ID"] + ".mp4")
+            this.startDownload(cc.cs.DownloadMgr.downLoadURL() + videoData["LEV_STORY_VIDEO_ID"] + ".mp4", videoData["LEV_STORY_VIDEO_ID"] + ".mp4")
             if (videoData["LEV_VIDEO_ID"] != "dummy") {
-                this.startDownload("http://112.74.36.182:8888/newvideo7/" + videoData["LEV_VIDEO_ID"] + ".mp4", videoData["LEV_VIDEO_ID"] + ".mp4")
+                this.startDownload(cc.cs.DownloadMgr.downLoadURL() + videoData["LEV_VIDEO_ID"] + ".mp4", videoData["LEV_VIDEO_ID"] + ".mp4")
             }
         }
     },
@@ -215,14 +215,14 @@ cc.Class({
                         this.videoPlayerNative1.preLoad(this._storagePath + this.currentDownLoadID + ".mp4")
                         this.branchVideo1Ready = true
                     } else {
-                        this.startDownload("http://112.74.36.182:8888/newvideo7/" + this.videoPlayerNativeNode1.videoID + ".mp4", this.videoPlayerNativeNode1.videoID + ".mp4")
+                        this.startDownload(cc.cs.DownloadMgr.downLoadURL() + this.videoPlayerNativeNode1.videoID + ".mp4", this.videoPlayerNativeNode1.videoID + ".mp4")
                     }
 
                     if (this.checkVideoOK(this.videoPlayerNativeNode2.videoID)) {
                         this.videoPlayerNative2.preLoad(this._storagePath + this.currentDownLoadID + ".mp4")
                         this.branchVideo2Ready = true
                     } else {
-                        this.startDownload("http://112.74.36.182:8888/newvideo7/" + this.videoPlayerNativeNode2.videoID + ".mp4", this.videoPlayerNativeNode2.videoID + ".mp4")
+                        this.startDownload(cc.cs.DownloadMgr.downLoadURL() + this.videoPlayerNativeNode2.videoID + ".mp4", this.videoPlayerNativeNode2.videoID + ".mp4")
                     }
                 }
                 this.currentDownLoadID = id
@@ -230,7 +230,7 @@ cc.Class({
                     this.videoPlayerNative.preLoad(this._storagePath + this.currentDownLoadID + ".mp4")
                     this.videoIsReadToPlay = true
                 } else {
-                    this.startDownload("http://112.74.36.182:8888/newvideo7/" + id + ".mp4", id + ".mp4")
+                    this.startDownload(cc.cs.DownloadMgr.downLoadURL() + id + ".mp4", id + ".mp4")
                 }
 
             }
@@ -325,7 +325,7 @@ cc.Class({
 
                 this.faceTimeNode.active = false
                 this.branchNode.node.active = false
-                this.backBtn.active = true
+                //this.backBtn.active = true
             }
         } else {
             this.node.active = false
@@ -607,7 +607,7 @@ cc.Class({
             videoData = cc.cs.gameData.getvideoData(i)
             if (videoData != null) {
                 if (!this.checkVideoOK(videoData["VIDEO_ID"])) {
-                    this.startDownload("http://112.74.36.182:8888/newvideo7/" + videoData["VIDEO_ID"] + ".mp4", videoData["VIDEO_ID"] + ".mp4")
+                    this.startDownload(cc.cs.DownloadMgr.downLoadURL() + videoData["VIDEO_ID"] + ".mp4", videoData["VIDEO_ID"] + ".mp4")
                     count++
                     if (count >= 2)
                         break;
@@ -721,6 +721,11 @@ cc.Class({
         if (this.videoIsReadToPlay) {
             this.videoLoadingNode.active = false
             this.isPlayStart = true
+			if(this.videoType == 4){
+				this.backBtn.active = true
+			}else{
+				this.backBtn.active = false
+			}
             if (CC_JSB) {
                 this.playNativeVideo()
             } else {
@@ -838,7 +843,7 @@ cc.Class({
 
     },
     onDownLoadError: function(task, errorCode, errorCodeInternal, errorStr) {
-        this.startDownload("http://112.74.36.182:8888/newvideo7/" + this.currentDownLoadID + ".mp4", this.currentDownLoadID + ".mp4")
+        this.startDownload(cc.cs.DownloadMgr.downLoadURL() + this.currentDownLoadID + ".mp4", this.currentDownLoadID + ".mp4")
     },
     // use this for initialization
     onLoad: function() {
@@ -870,12 +875,7 @@ cc.Class({
             if (!this._inited) {
                 cc.log('Failed to create storage path, downloader won\'t work correctly')
             }
-            this.videoPlayerNative = cc.LiveVideo.create()
-            this.videoPlayerNativeNode._sgNode.addChild(this.videoPlayerNative)
-            this.videoPlayerNative1 = cc.LiveVideo.create()
-            this.videoPlayerNativeNode1._sgNode.addChild(this.videoPlayerNative1)
-            this.videoPlayerNative2 = cc.LiveVideo.create()
-            this.videoPlayerNativeNode2._sgNode.addChild(this.videoPlayerNative2)
+            
         }
         if (!CC_JSB) {
             this.nativeNanNode.active = false
@@ -1057,9 +1057,21 @@ cc.Class({
     onEnable: function() {
         if (!cc.cs.AudioMgr.GetSoundOff())
             cc.cs.AudioMgr.stopBGM()
+		this.videoPlayerNative = cc.LiveVideo.create()
+        this.videoPlayerNativeNode._sgNode.addChild(this.videoPlayerNative)
+		this.videoPlayerNative1 = cc.LiveVideo.create()
+        this.videoPlayerNativeNode1._sgNode.addChild(this.videoPlayerNative1)
+		this.videoPlayerNative2 = cc.LiveVideo.create()
+        this.videoPlayerNativeNode2._sgNode.addChild(this.videoPlayerNative2)
     },
 
     onDisable: function() {
+		
+		this.videoPlayerNativeNode._sgNode.removeAllChild();
+        
+		this.videoPlayerNativeNode1._sgNode.removeAllChild();
+        
+		this.videoPlayerNativeNode2._sgNode.removeAllChild();
         if (!cc.cs.AudioMgr.GetSoundOff())
             cc.cs.AudioMgr.startBGM()
     },

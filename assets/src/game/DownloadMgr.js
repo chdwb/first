@@ -16,7 +16,10 @@ cc.Class({
         _storagePath: "",
         _inited: false
     },
-
+    downLoadURL : function(){
+        var httpData = cc.cs.gameMgr.gethttpData(28);
+        return httpData["Host"] + httpData["Route"]
+    },
     // use this for initialization
     onLoad: function () {
 
