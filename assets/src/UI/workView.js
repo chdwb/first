@@ -291,7 +291,8 @@ cc.Class({
 
     buyLIJI:function()
     {
-        cc.cs.gameMgr.buyRightNow(3,this.onBuyRightNowhandle,this)
+       //cc.cs.gameMgr.buyRightNow(3,this.onBuyRightNowhandle,this)
+        cc.cs.gameMgr.sendGoodBuy(3, 2, 1, this.onBuyRightNowhandle,this) 
     },
 
      onBuyRightNowhandle:function(ret)
