@@ -211,6 +211,8 @@ cc.Class({
         else if (type == 5) {
             data["videoid"] = goodsid
         }
+        cc.log("type = "+type)
+        cc.log("goodis = "+goodsid)
         if (cc.sys.isNative && cc.sys.os == cc.sys.OS_IOS && type >= 2 && type <=4) {
             this.miostype = type
             this.mgoodsid = goodsid
@@ -221,17 +223,17 @@ cc.Class({
             var iosid = ""
             if (type == 2)
             {
-                cc.cs.gameData.buy_gold["ID_"+goodsid]["IOS_ID1"]
+                iosid = cc.cs.gameData.buy_gold["ID_"+goodsid]["IOS_ID1"]
 
             }
             else if (type == 3)
             {
-                cc.cs.gameData.hot_package["ID_"+goodsid]["IOS_ID1"]
+                iosid = cc.cs.gameData.hot_package["ID_"+goodsid]["IOS_ID1"]
 
             }
             else if(type == 4)
             {
-                cc.cs.gameData.work_package["ID_"+goodsid]["IOS_ID1"]
+                iosid = cc.cs.gameData.work_package["ID_"+goodsid]["IOS_ID1"]
             }
              
             //let ret = jsb.reflection.callStaticMethod("RootViewController", "pay",iosid);
@@ -253,7 +255,7 @@ cc.Class({
         this.sendGoodBuyIOS(this.miostype,this.mgoodsid,this.mnum,this.mhandle,this.obj,recipt)
     },
 
-    sendGoodBuyIOS: function(type, goodsid, num, handle, obj) {
+    sendGoodBuyIOS: function(type, goodsid, num, handle, obj,recipt) {
         cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
