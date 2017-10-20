@@ -683,9 +683,9 @@ cc.Class({
         var nameText = nvNode.getChildByName("name").getComponent(cc.Label)
         var talkText = nvNode.getChildByName("talk").getComponent(cc.Label)
         var soundTalk = nvNode.getChildByName("soundBtn")
-        nvNode.width = 586
-        talkText.node.width = 536
-        talkText.node.x = 25
+        //nvNode.width = 586
+        //talkText.node.width = 536
+        //talkText.node.x = 25
         soundTalk.x = nvNode.width - 50
         if (issound) {
             soundTalk.active = true

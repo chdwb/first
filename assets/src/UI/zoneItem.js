@@ -38,6 +38,10 @@ cc.Class({
             type: cc.Label,
             default: null
         },
+        lineNode : {
+            type: cc.Node,
+            default: null
+        },
         recordName: {
             type: cc.Label,
             default: null
@@ -72,6 +76,7 @@ cc.Class({
         isAddOther: false,
         popupWidth: 0,
         currentExp : 0,
+        
     },
 
     getplBtn: function() {
@@ -86,6 +91,7 @@ cc.Class({
         }
         height = Math.abs(this.bghf.y) + height + 60
         this.node.height = height
+        this.lineNode.y = -this.node.height -3
     },
     closePopup: function() {
         var self = this
