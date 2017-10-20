@@ -193,7 +193,7 @@ cc.Class({
     },
 
     sendGoodBuy: function(type, goodsid, num, handle, obj) {
-        cc.cs.UIMgr.showNetView()
+        
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
         data["type"] = type
@@ -243,6 +243,7 @@ cc.Class({
         }
         else
         {
+            cc.cs.UIMgr.showNetView()
             this.sendHttp("ID_12", data, handle, obj)
         }
     },
