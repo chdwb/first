@@ -58,13 +58,13 @@ module.exports = {
 		return null
 	},
 	hot_package:{
-		"ID_1":{"ID":1, "NAME":"回复礼包", "BUY_PRICE":6, "SHOW_PRICE":12, "OPEN_FUNCTION":"1,2", "GOLD_NUM":666, "GOODS_1_ID":"dummy", "GOODS_1_NUM":"dummy", "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy", "IOS_ID1":"com.snpy.7", "IOS_ID2":"com.qyny.7", "IOS_ID3":"com.snpy.7"},
-		"ID_2":{"ID":2, "NAME":"一键礼包", "BUY_PRICE":18, "SHOW_PRICE":38, "OPEN_FUNCTION":"3,4", "GOLD_NUM":888, "GOODS_1_ID":"dummy", "GOODS_1_NUM":"dummy", "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy", "IOS_ID1":"com.snpy.8", "IOS_ID2":"com.qyny.8", "IOS_ID3":"com.snpy.8"},
-		"ID_3":{"ID":3, "NAME":"新手礼包", "BUY_PRICE":30, "SHOW_PRICE":34, "OPEN_FUNCTION":"dummy", "GOLD_NUM":1888, "GOODS_1_ID":104, "GOODS_1_NUM":5, "GOODS_2_ID":2, "GOODS_2_NUM":5, "IOS_ID1":"com.snpy.9", "IOS_ID2":"com.qyny.9", "IOS_ID3":"com.snpy.9"},
-		"ID_4":{"ID":4, "NAME":"特惠礼包", "BUY_PRICE":98, "SHOW_PRICE":134, "OPEN_FUNCTION":"dummy", "GOLD_NUM":16888, "GOODS_1_ID":105, "GOODS_1_NUM":5, "GOODS_2_ID":3, "GOODS_2_NUM":5, "IOS_ID1":"com.snpy.10", "IOS_ID2":"com.qyny.10", "IOS_ID3":"com.snpy.10"},
-		"ID_5":{"ID":5, "NAME":"豪华礼包", "BUY_PRICE":168, "SHOW_PRICE":244, "OPEN_FUNCTION":"dummy", "GOLD_NUM":28888, "GOODS_1_ID":106, "GOODS_1_NUM":5, "GOODS_2_ID":4, "GOODS_2_NUM":5, "IOS_ID1":"com.snpy.11", "IOS_ID2":"com.qyny.15", "IOS_ID3":"com.snpy.11"},
-		"ID_6":{"ID":6, "NAME":"超凡礼包", "BUY_PRICE":328, "SHOW_PRICE":494, "OPEN_FUNCTION":"dummy", "GOLD_NUM":48888, "GOODS_1_ID":107, "GOODS_1_NUM":5, "GOODS_2_ID":5, "GOODS_2_NUM":5, "IOS_ID1":"com.snpy.12", "IOS_ID2":"com.qyny.16", "IOS_ID3":"com.snpy.12"},
-		"ID_7":{"ID":7, "NAME":"写真视频", "BUY_PRICE":328, "SHOW_PRICE":450, "OPEN_FUNCTION":5, "GOLD_NUM":"dummy", "GOODS_1_ID":"dummy", "GOODS_1_NUM":"dummy", "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy", "IOS_ID1":"com.snpy.13", "IOS_ID2":"com.qyny.17", "IOS_ID3":"com.snpy.13"},
+		"ID_1":{"ID":1, "NAME":"回复礼包", "BUY_PRICE":6, "SHOW_PRICE":12, "OPEN_FUNCTION":"1,2", "GOLD_NUM":666, "GOODS_1_ID":"dummy", "GOODS_1_NUM":"dummy", "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy", "IOS_ID1":"com.qyny.7", "IOS_ID2":"com.mmny.7", "IOS_ID3":"com.snpy.7"},
+		"ID_2":{"ID":2, "NAME":"一键礼包", "BUY_PRICE":18, "SHOW_PRICE":38, "OPEN_FUNCTION":"3,4", "GOLD_NUM":888, "GOODS_1_ID":"dummy", "GOODS_1_NUM":"dummy", "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy", "IOS_ID1":"com.qyny.8", "IOS_ID2":"com.mmny.8", "IOS_ID3":"com.snpy.8"},
+		"ID_3":{"ID":3, "NAME":"新手礼包", "BUY_PRICE":30, "SHOW_PRICE":34, "OPEN_FUNCTION":"dummy", "GOLD_NUM":1888, "GOODS_1_ID":104, "GOODS_1_NUM":5, "GOODS_2_ID":2, "GOODS_2_NUM":5, "IOS_ID1":"com.qyny.9", "IOS_ID2":"com.mmny.9", "IOS_ID3":"com.snpy.9"},
+		"ID_4":{"ID":4, "NAME":"特惠礼包", "BUY_PRICE":98, "SHOW_PRICE":134, "OPEN_FUNCTION":"dummy", "GOLD_NUM":16888, "GOODS_1_ID":105, "GOODS_1_NUM":5, "GOODS_2_ID":3, "GOODS_2_NUM":5, "IOS_ID1":"com.qyny.10", "IOS_ID2":"com.mmny.10", "IOS_ID3":"com.snpy.10"},
+		"ID_5":{"ID":5, "NAME":"豪华礼包", "BUY_PRICE":168, "SHOW_PRICE":244, "OPEN_FUNCTION":"dummy", "GOLD_NUM":28888, "GOODS_1_ID":106, "GOODS_1_NUM":5, "GOODS_2_ID":4, "GOODS_2_NUM":5, "IOS_ID1":"com.qyny.15", "IOS_ID2":"com.mmny.11", "IOS_ID3":"com.snpy.11"},
+		"ID_6":{"ID":6, "NAME":"超凡礼包", "BUY_PRICE":328, "SHOW_PRICE":494, "OPEN_FUNCTION":"dummy", "GOLD_NUM":48888, "GOODS_1_ID":107, "GOODS_1_NUM":5, "GOODS_2_ID":5, "GOODS_2_NUM":5, "IOS_ID1":"com.qyny.16", "IOS_ID2":"com.mmny.12", "IOS_ID3":"com.snpy.12"},
+		"ID_7":{"ID":7, "NAME":"写真视频", "BUY_PRICE":328, "SHOW_PRICE":450, "OPEN_FUNCTION":5, "GOLD_NUM":"dummy", "GOODS_1_ID":"dummy", "GOODS_1_NUM":"dummy", "GOODS_2_ID":"dummy", "GOODS_2_NUM":"dummy", "IOS_ID1":"com.qyny.17", "IOS_ID2":"com.mmny.13", "IOS_ID3":"com.snpy.13"},
 		"LAST":7,
 		"TOTAL_COUNT":7,
 		"FIRST":1
