@@ -218,7 +218,7 @@ cc.Class({
             this.mhandle = handle
             this.obj = obj
 
-            var iosid =  cc.cs.gameData.work_package["IOS_ID1"]
+            var iosid =  cc.cs.gameData.work_package["ID_"+goodsid]["IOS_ID1"]
             //let ret = jsb.reflection.callStaticMethod("RootViewController", "pay",iosid);
             jsb.reflection.callStaticMethod("RootViewController", "pay:andContent:",
                                            iosid, 
