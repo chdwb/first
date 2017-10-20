@@ -19,7 +19,7 @@ cc.Class({
          cc.loader.loadRes("video/text/"+strname,function(err,data){
             if(!err){
                 cc.log(data)
-                
+                return
                 var ttt = ""
 				var re = new RegExp(/\n/);
                 ttt = data.replace(/^\d+\n/gm, "")
