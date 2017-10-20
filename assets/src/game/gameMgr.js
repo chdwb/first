@@ -211,14 +211,29 @@ cc.Class({
         else if (type == 5) {
             data["videoid"] = goodsid
         }
-        if (cc.sys.isNative && cc.sys.os == cc.sys.OS_IOS) {
+        if (cc.sys.isNative && cc.sys.os == cc.sys.OS_IOS && type >= 2 && type <=4) {
             this.miostype = type
             this.mgoodsid = goodsid
             this.mnum = num
             this.mhandle = handle
             this.obj = obj
 
-            var iosid =  cc.cs.gameData.work_package["ID_"+goodsid]["IOS_ID1"]
+            var iosid = ""
+            if (type == 2)
+            {
+                cc.cs.gameData.buy_gold["ID_"+goodsid]["IOS_ID1"]
+
+            }
+            else if (type == 3)
+            {
+                cc.cs.gameData.hot_package["ID_"+goodsid]["IOS_ID1"]
+
+            }
+            else if(type == 4)
+            {
+                cc.cs.gameData.work_package["ID_"+goodsid]["IOS_ID1"]
+            }
+             
             //let ret = jsb.reflection.callStaticMethod("RootViewController", "pay",iosid);
             jsb.reflection.callStaticMethod("RootViewController", "pay:andContent:",
                                            iosid, 
