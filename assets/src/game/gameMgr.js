@@ -255,7 +255,7 @@ cc.Class({
         this.sendGoodBuyIOS(this.miostype,this.mgoodsid,this.mnum,this.mhandle,this.obj,recipt)
     },
 
-    sendGoodBuyIOS: function(type, goodsid, num, handle, obj) {
+    sendGoodBuyIOS: function(type, goodsid, num, handle, obj,recipt) {
         cc.cs.UIMgr.showNetView()
         var data = {}
         data["api_token"] = cc.cs.PlayerInfo.api_token
