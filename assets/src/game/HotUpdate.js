@@ -408,8 +408,8 @@ cc.Class({
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
                 //this.panel.info.string = "Fail to download manifest file, hot update skipped.";
                 this.panel.info.string = "发生网络错误";
-                 this.updateUI.active = false
-                this.loginNode.active = true
+                 //this.updateUI.active = false
+                //this.loginNode.active = true
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
                 this.panel.info.string = "已经是最新版";
