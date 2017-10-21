@@ -5,7 +5,7 @@ var hehe = cc.Class({
         token:"",
         sendRequest : function(url, externURL, data, handler, isPost, obj){
             var xmlHttp = cc.loader.getXMLHttpRequest();
-            xmlHttp.timeout = 3000;
+           // xmlHttp.timeout = 3000;
             var param = ""
             if(!isPost)
             {
@@ -56,18 +56,24 @@ var hehe = cc.Class({
 
         handleSever: function(data)
         {
-
+                cc.log ("handleSever")
            
 
                 var JasonObject = JSON.parse(data);
-                if (JasonObject.receipt != null && JasonObject.receipt !="" && cc.sys.isNative && cc.sys.os == cc.sys.OS_IOS)
-                {
 
-                    jsb.reflection.callStaticMethod("RootViewController", "paydone:andContent:",
-                                                   JasonObject.receipt, 
-                                                   "Yes!");
+            if (JasonObject.success === true) {
+            
+
+                if (JasonObject.content.info.receipt != undefined && JasonObject.content.info.receipt != null && JasonObject.content.info.receipt !="" && cc.sys.isNative && cc.sys.os == cc.sys.OS_IOS)
+                {
+                    cc.log ("handleSever222")
+
+                    //jsb.reflection.callStaticMethod("RootViewController", "paydone:andContent:",
+                                                   //JasonObject.content.info.receipt, 
+                                                  // "Yes!");
 
                 }
+            }
         }
     },
 

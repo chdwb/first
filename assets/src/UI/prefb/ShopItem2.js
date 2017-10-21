@@ -103,6 +103,7 @@ cc.Class({
         this.GoodID = goodsdata["ID"]
         cc.log("shoptype = ",this.ShopType)
         cc.log("goodid = ",this.GoodID)
+        cc.log("level =",cc.cs.PlayerInfo.level)
 
         if(this.ShopType == 3) // 热卖礼包
         {
