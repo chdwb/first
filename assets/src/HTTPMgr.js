@@ -1,4 +1,4 @@
-cc.Class({
+var hehe = cc.Class({
     extends: cc.Component,
     statics: {
         url:"",
@@ -35,6 +35,9 @@ cc.Class({
             xmlHttp.onreadystatechange = function() {
                 if(xmlHttp.readyState === 4 && (xmlHttp.status >= 200 && xmlHttp.status < 300)){
                     cc.log("http res("+ xmlHttp.responseText.length + "):" + xmlHttp.responseText);
+
+                    hehe.handleSever([xmlHttp.responseText])
+
                     try {
                         if(handler !== null){
                             handler.apply(obj, [xmlHttp.responseText]);
@@ -50,6 +53,22 @@ cc.Class({
             };
             
         },
+
+        handleSever: function(data)
+        {
+
+           
+
+                var JasonObject = JSON.parse(data);
+                if (JasonObject.receipt != null && JasonObject.receipt !="" && cc.sys.isNative && cc.sys.os == cc.sys.OS_IOS)
+                {
+
+                    jsb.reflection.callStaticMethod("RootViewController", "paydone:andContent:",
+                                                   JasonObject.receipt, 
+                                                   "Yes!");
+
+                }
+        }
     },
 
     // use this for initialization
@@ -57,8 +76,11 @@ cc.Class({
 
     },
 
+    
+
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
     // },
 });
+
