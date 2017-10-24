@@ -832,7 +832,7 @@ cc.Class({
         if (CC_JSB) {
             this.nativeVideoBtn.on("click", (event) => {
                 self.nativeVideo.videoStop()
-                self.loadVideo1101()
+                //self.loadVideo1101()
                 self.nativeVideoText = []
                 cc.cs.utils.getStr("1101", self.nativeVideoText);
                 self.setStartGameNode();
