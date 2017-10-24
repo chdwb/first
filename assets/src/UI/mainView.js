@@ -741,8 +741,8 @@ cc.Class({
 
     onEnable: function() {
         this.updateui();
-
-
+        this.giftBtn1.active = false;
+        this.giftBtn.action = false;
     },
 
 
