@@ -285,13 +285,7 @@ cc.Class({
                         this.nativeVideoBtn.active = false
                     }
                 } else if (this.playVideoID == 1101) {
-                    cc.loader.loadResDir("video/" + 1101, function(err, id) {
-                        if (!err) {
-                            self.nativeVideo.preLoad(id + "")
-                        } else {
-                            cc.log("native video load err id = " + id)
-                        }
-                    })
+                    
                     this.nativeVideoBtn.active = false
                 }else{
                     this.nativeVideoBtn.active = false
@@ -542,13 +536,23 @@ cc.Class({
     },
 
     startgame: function() {
+        var self = this
         cc.log("isLogin = " + this.isLogin)
         if (this.isLogin) {
             cc.log("video_id = " + cc.cs.PlayerInfo.playvideo)
             if (cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
-                this.playLogoVideo("1101")
-                this.setRandomNameNode();
+                cc.loader.loadResDir("video/" + 1101, function(err, id) {
+                    if (!err) {
+                        self.nativeVideo.preLoad(id + "")
+                        self.setRandomNameNode();
+                        self.playLogoVideo("1101")
+                        
+                    } else {
+                        cc.log("native video load err id = " + id)
+                    }
+                })
+                
             } else {
                 //cc.director.loadScene('GameScene');
                 this.loadGame()
@@ -695,6 +699,7 @@ cc.Class({
             cc.cs.PlayerInfo.wechat_id = 1
     },
     gotoGameScene: function(ret) {
+        var self = this
         var JasonObject = JSON.parse(ret);
         if (JasonObject.success === true) {
             cc.sys.localStorage.setItem('API_TOKEN', JasonObject.content.info.api_token)
@@ -705,9 +710,16 @@ cc.Class({
             cc.log("video_id = " + cc.cs.PlayerInfo.playvideo)
             if (cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
-                this.playLogoVideo("1101")
-
-                this.setRandomNameNode();
+                cc.loader.loadResDir("video/" + 1101, function(err, id) {
+                    if (!err) {
+                        self.nativeVideo.preLoad(id + "")
+                        self.setRandomNameNode();
+                        self.playLogoVideo("1101")
+                        
+                    } else {
+                        cc.log("native video load err id = " + id)
+                    }
+                })
             } else {
                 //cc.director.loadScene('GameScene');
                 this.loadGame()
