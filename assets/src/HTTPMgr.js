@@ -56,6 +56,7 @@ var hehe = cc.Class({
 
         handleSever: function(data)
         {
+            return;
                 cc.log ("handleSever")
            
 
