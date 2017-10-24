@@ -284,7 +284,16 @@ cc.Class({
                     } else {
                         this.nativeVideoBtn.active = false
                     }
-                } else {
+                } else if (this.playVideoID == 1101) {
+                    cc.loader.loadResDir("video/" + 1101, function(err, id) {
+                        if (!err) {
+                            self.nativeVideo.preLoad(id + "")
+                        } else {
+                            cc.log("native video load err id = " + id)
+                        }
+                    })
+                    this.nativeVideoBtn.active = false
+                }else{
                     this.nativeVideoBtn.active = false
                 }
                 this.node.active = false
@@ -312,13 +321,7 @@ cc.Class({
                 self.nativeNanNode.active = false
                 if (this.playVideoID == 1100) {
 
-                    cc.loader.loadResDir("video/" + 1101, function(err, id) {
-                        if (!err) {
-                            self.nativeVideo.preLoad(id + "")
-                        } else {
-                            cc.log("native video load err id = " + id)
-                        }
-                    })
+                    
                     this.nativeVideoText = []
                     cc.cs.utils.getStr("1101", this.nativeVideoText);
                     this.setStartGameNode();
