@@ -1125,7 +1125,7 @@ cc.Class({
         } else {
             cc.loader.loadResDir("picture/newRes831/moment", (current, total, item) => {
                 if (total == 0) return
-                self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 80.0)
+                self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 85.0)
                 cc.log("(this.loadPress  + this.loadPress)  = " + (self.loadProcessPer + self.loadScenePer))
                 self.perLaber.string = (self.loadProcessPer + self.loadScenePer) + "%"
                 if (self.loadProcessPer + self.loadScenePer >= 100) {
@@ -1150,11 +1150,7 @@ cc.Class({
 			cc.loader.loadResDir("picture/newRes831/shop", (current, total, item) => {
 
             }, (err, ass) => {
-					self.loadProcessPer += 5 
-					self.perLaber.string = (self.loadProcessPer + self.loadScenePer) + "%"
-					if (self.loadProcessPer + self.loadScenePer >= 100) {
-						cc.director.loadScene('GameScene');
-					}
+					
             })
         }
 
