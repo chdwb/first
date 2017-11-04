@@ -217,6 +217,7 @@ cc.Class({
 
             return ret
         }
+		return "cytest1111android"
 
     },
 
@@ -542,7 +543,8 @@ cc.Class({
             cc.log("video_id = " + cc.cs.PlayerInfo.playvideo)
             if (cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
-                cc.loader.loadResDir("video/" + 1101, function(err, id) {
+				if(CC_JSB){
+					cc.loader.loadResDir("video/" + 1101, function(err, id) {
                     if (!err) {
                         self.nativeVideo.preLoad(id + "")
                         self.setRandomNameNode();
@@ -552,6 +554,12 @@ cc.Class({
                         cc.log("native video load err id = " + id)
                     }
                 })
+				}else{
+					self.playLogoVideo("1101")
+					self.setRandomNameNode();
+					
+				}
+                
                 
             } else {
                 //cc.director.loadScene('GameScene');
@@ -710,7 +718,8 @@ cc.Class({
             cc.log("video_id = " + cc.cs.PlayerInfo.playvideo)
             if (cc.cs.PlayerInfo.playvideo == 2) // 第一次进游戏 视频
             {
-                cc.loader.loadResDir("video/" + 1101, function(err, id) {
+				if(CC_JSB){
+					cc.loader.loadResDir("video/" + 1101, function(err, id) {
                     if (!err) {
                         self.nativeVideo.preLoad(id + "")
                         self.setRandomNameNode();
@@ -720,6 +729,13 @@ cc.Class({
                         cc.log("native video load err id = " + id)
                     }
                 })
+				}else{
+					
+					self.playLogoVideo("1101")
+					self.setRandomNameNode();
+				}
+           
+				
             } else {
                 //cc.director.loadScene('GameScene');
                 this.loadGame()

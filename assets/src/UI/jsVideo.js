@@ -994,6 +994,7 @@ cc.Class({
                     }
                 }
             } else {
+				return
                 if (self.isPlayStart) {
                     if (self.videoPlayerNode.isPlaying()) {
                         self.videoPlayerNode.pause()
@@ -1057,18 +1058,21 @@ cc.Class({
     onEnable: function() {
         if (!cc.cs.AudioMgr.GetSoundOff())
             cc.cs.AudioMgr.stopBGM()
-        if(this.videoPlayerNative == null){
+		if(CC_JSB){
+			if(this.videoPlayerNative == null){
             this.videoPlayerNative = cc.LiveVideo.create()
             this.videoPlayerNativeNode._sgNode.addChild(this.videoPlayerNative)
-        }
-		if(this.videoPlayerNative1 == null){
-            this.videoPlayerNative1 = cc.LiveVideo.create()
-            this.videoPlayerNativeNode1._sgNode.addChild(this.videoPlayerNative1)
-        }
-		if(this.videoPlayerNative2 == null){
-            this.videoPlayerNative2 = cc.LiveVideo.create()
-            this.videoPlayerNativeNode2._sgNode.addChild(this.videoPlayerNative2)
-        }
+			}
+			if(this.videoPlayerNative1 == null){
+				this.videoPlayerNative1 = cc.LiveVideo.create()
+				this.videoPlayerNativeNode1._sgNode.addChild(this.videoPlayerNative1)
+			}
+			if(this.videoPlayerNative2 == null){
+				this.videoPlayerNative2 = cc.LiveVideo.create()
+				this.videoPlayerNativeNode2._sgNode.addChild(this.videoPlayerNative2)
+			}
+		}
+        
     },
 
     onDisable: function() {
