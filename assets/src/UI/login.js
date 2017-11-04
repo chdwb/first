@@ -1123,7 +1123,7 @@ cc.Class({
 
             })
         } else {
-            cc.loader.loadResDir("picture/newRes831/moment", (current, total, item) => {
+            cc.loader.loadResDir("picture/newRes831", (current, total, item) => {
                 if (total == 0) return
                 self.loadProcessPer = parseInt((parseFloat(current) / parseFloat(total)) * 90.0)
                 cc.log("(this.loadPress  + this.loadPress)  = " + (self.loadProcessPer + self.loadScenePer))
