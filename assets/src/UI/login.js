@@ -1136,7 +1136,7 @@ cc.Class({
 
             })
 			
-			cc.loader.loadResDir("picture/newRes831/love_job", (current, total, item) => {                
+			/*cc.loader.loadResDir("picture/newRes831/love_job", (current, total, item) => {                
 
             }, (err, ass) => {
 					
@@ -1146,7 +1146,7 @@ cc.Class({
 
             }, (err, ass) => {
 					
-            })
+            })*/
         }
 
         cc.director.preloadScene("GameScene", () => {
