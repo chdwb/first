@@ -451,6 +451,9 @@ cc.Class({
             var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
             this.inputTableBtn.x = p2.x - 50
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
+			if(!CC_JSB){
+				this.inputTableBtn.y += this.inputTableBtn.height * 0.5
+			}
         } else
         if (replayId.length == 2) {
             text1.string = replayId[0]["WECHAT_CONTENT"]
@@ -490,7 +493,10 @@ cc.Class({
             var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
             this.inputTableBtn.x = p2.x -50
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
-        } else {
+			if(!CC_JSB){
+				this.inputTableBtn.y += this.inputTableBtn.height * 0.5
+			}
+		} else {
             text1.string = replayId[0]["WECHAT_CONTENT"]
             text2.string = replayId[1]["WECHAT_CONTENT"]
             text3.string = replayId[2]["WECHAT_CONTENT"]
@@ -543,7 +549,10 @@ cc.Class({
             var p2 = this.inputTableBtn.parent.convertToNodeSpaceAR(cc.v2(p.x, p.y))
             this.inputTableBtn.x = p2.x -50
             this.inputTableBtn.y = this.node.height * -0.5 + this.inputTableBtn.height + ((this.node.height * 0.5 + this.inputBtn.parent.y) - (this.inputBtn.parent.height * 0.5 + (this.inputBtn.parent.height - this.inputBtn.height) * 0.5)) + 20
-        }
+			if(!CC_JSB){
+				this.inputTableBtn.y += this.inputTableBtn.height * 0.5
+			}
+		}
     },
 
     refresh: function() {
